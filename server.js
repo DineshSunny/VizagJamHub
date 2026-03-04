@@ -11,49 +11,77 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname));
 
-/* BOOKING FORM */
 
-app.post("/book", (req, res) => {
+/* Utility function to read JSON safely */
 
-const data = req.body;
+function readJSON(file){
 
-let bookings = [];
-
-if(fs.existsSync("bookings.json")){
-bookings = JSON.parse(fs.readFileSync("bookings.json"));
+if(fs.existsSync(file)){
+return JSON.parse(fs.readFileSync(file));
 }
 
-bookings.push(data);
+return [];
 
-fs.writeFileSync("bookings.json", JSON.stringify(bookings,null,2));
+}
+
+
+/* Utility function to write JSON */
+
+function writeJSON(file,data){
+
+fs.writeFileSync(file, JSON.stringify(data,null,2));
+
+}
+
+
+/* BOOKING FORM */
+
+app.post("/book", (req,res)=>{
+
+const bookings = readJSON("bookings.json");
+
+bookings.push(req.body);
+
+writeJSON("bookings.json", bookings);
 
 res.send("Booking request received!");
 
 });
 
 
-/* BAND CONNECT FORM */
+/* BAND CONNECT */
 
-app.post("/connect", (req, res) => {
+app.post("/connect",(req,res)=>{
 
-const data = req.body;
+const connections = readJSON("connections.json");
 
-let connections = [];
+connections.push(req.body);
 
-if(fs.existsSync("connections.json")){
-connections = JSON.parse(fs.readFileSync("connections.json"));
-}
-
-connections.push(data);
-
-fs.writeFileSync("connections.json", JSON.stringify(connections,null,2));
+writeJSON("connections.json",connections);
 
 res.send("Connection request received!");
 
 });
 
 
-app.listen(3000, () => {
+/* TICKET BOOKING */
+
+app.post("/tickets",(req,res)=>{
+
+const tickets = readJSON("tickets.json");
+
+tickets.push(req.body);
+
+writeJSON("tickets.json",tickets);
+
+res.send("Ticket booking successful!");
+
+});
+
+
+/* START SERVER */
+
+app.listen(3000,()=>{
 
 console.log("VizagJamHub server running on port 3000");
 
