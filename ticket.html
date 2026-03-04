@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buy Tickets | VizagJamHub</title>
+
+<style>
+
+body{
+background:#0f0f0f;
+color:white;
+font-family:Arial;
+margin:0;
+padding:0;
+}
+
+header{
+background:#000;
+padding:20px;
+text-align:center;
+}
+
+.logo{
+color:#00d4ff;
+font-size:28px;
+font-weight:bold;
+}
+
+.container{
+max-width:600px;
+margin:60px auto;
+background:#1a1a1a;
+padding:30px;
+border-radius:10px;
+}
+
+h1{
+text-align:center;
+color:#00d4ff;
+}
+
+.event-box{
+background:#222;
+padding:15px;
+border-radius:6px;
+margin-bottom:20px;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+border-radius:5px;
+}
+
+button{
+margin-top:20px;
+padding:12px;
+width:100%;
+background:#00d4ff;
+border:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#00b5d6;
+}
+
+.success{
+color:#00ff9c;
+margin-top:15px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">VizagJamHub</div>
+</header>
+
+<div class="container">
+
+<h1>Buy Tickets</h1>
+
+<div class="event-box">
+<h2 id="eventName"></h2>
+</div>
+
+<form id="ticketForm">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<input type="number" name="tickets" placeholder="Number of Tickets" required>
+
+<button type="submit">Book Tickets</button>
+
+</form>
+
+<p id="successMsg" class="success"></p>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const event = params.get("event");
+
+document.getElementById("eventName").innerText =
+event ? event.replace(/-/g," ").toUpperCase() : "Event";
+
+const form = document.getElementById("ticketForm");
+
+form.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+const formData = new FormData(form);
+
+const data = Object.fromEntries(formData);
+
+data.event = event;
+
+await fetch("http://localhost:3000/tickets",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(data)
+});
+
+document.getElementById("successMsg").innerText =
+"Ticket booking request sent!";
+
+form.reset();
+
+});
+
+</script>
+
+</body>
+</html>
