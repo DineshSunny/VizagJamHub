@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vizag Jam Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+}
+
+header{
+background:#000;
+padding:20px;
+position:sticky;
+top:0;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:1100px;
+margin:auto;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#00d4ff;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+}
+
+.hero{
+height:90vh;
+background:url("https://images.unsplash.com/photo-1501612780327-45045538702b") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.hero p{
+margin-top:10px;
+font-size:18px;
+}
+
+.btn{
+margin-top:20px;
+padding:12px 25px;
+background:#00d4ff;
+border:none;
+color:black;
+font-weight:bold;
+cursor:pointer;
+}
+
+section{
+padding:70px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+margin-bottom:20px;
+color:#00d4ff;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#1a1a1a;
+padding:20px;
+border-radius:8px;
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+border-radius:5px;
+}
+
+form button{
+margin-top:10px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:10px;
+}
+
+.gallery img{
+width:100%;
+border-radius:8px;
+}
+
+footer{
+background:#000;
+padding:20px;
+text-align:center;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">VizagJamHub</div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#school">Guitar School</a></li>
+<li><a href="#shows">Shows</a></li>
+<li><a href="#book">Book Us</a></li>
+<li><a href="#connect">Band Connect</a></li>
+<li><a href="#gallery">Gallery</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div>
+<h1>Vizag Jam Hub</h1>
+<p>Connecting Musicians. Creating Music. Performing Live.</p>
+<button class="btn">Upcoming Shows</button>
+</div>
+</section>
+
+<section id="school">
+<h2>Guitar Learning School</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Beginner Guitar</h3>
+<p>Learn chords, rhythm, and your first songs.</p>
+</div>
+
+<div class="card">
+<h3>Intermediate Guitar</h3>
+<p>Lead guitar techniques, scales and solos.</p>
+</div>
+
+<div class="card">
+<h3>Advanced Guitar</h3>
+<p>Improvisation, stage performance and recording.</p>
+</div>
+
+</div>
+</section>
+
+<section id="shows">
+<h2>Upcoming Shows</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Beach Rock Night</h3>
+<p>RK Beach, Vizag</p>
+<p>July 20</p>
+</div>
+
+<div class="card">
+<h3>College Fest</h3>
+<p>GITAM University</p>
+<p>Aug 5</p>
+</div>
+
+<div class="card">
+<h3>Corporate Event</h3>
+<p>Novotel Vizag</p>
+<p>Aug 18</p>
+</div>
+
+</div>
+</section>
+
+<section id="book">
+<h2>Book Us For a Show</h2>
+
+<form>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Email">
+
+<input type="text" placeholder="Event Location">
+
+<input type="date">
+
+<textarea placeholder="Event Details"></textarea>
+
+<button class="btn">Submit Request</button>
+
+</form>
+
+</section>
+
+<section id="connect">
+<h2>Band Connect</h2>
+
+<form>
+
+<input type="text" placeholder="Name">
+
+<input type="text" placeholder="Instrument">
+
+<input type="text" placeholder="Experience Level">
+
+<input type="text" placeholder="City">
+
+<textarea placeholder="Message"></textarea>
+
+<button class="btn">Connect</button>
+
+</form>
+
+</section>
+
+<section id="gallery">
+<h2>Gallery</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2">
+
+<img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d">
+
+<img src="https://images.unsplash.com/photo-1506157786151-b8491531f063">
+
+<img src="https://images.unsplash.com/photo-1485579149621-3123dd979885">
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 VizagJamHub.com</p>
+<p>Visakhapatnam, Andhra Pradesh</p>
+
+</footer>
+
+</body>
+</html>
