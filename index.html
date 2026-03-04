@@ -211,17 +211,17 @@ margin-top:40px;
 <section id="book">
 <h2>Book Us For a Show</h2>
 
-<form>
+<form action="http://localhost:3000/book" method="POST">
 
-<input type="text" placeholder="Your Name">
+<input type="text" name="name" placeholder="Your Name" required>
 
-<input type="email" placeholder="Email">
+<input type="email" name="email" placeholder="Email" required>
 
-<input type="text" placeholder="Event Location">
+<input type="text" name="location" placeholder="Event Location" required>
 
-<input type="date">
+<input type="date" name="date" required>
 
-<textarea placeholder="Event Details"></textarea>
+<textarea name="details" placeholder="Event Details"></textarea>
 
 <button class="btn">Submit Request</button>
 
@@ -232,17 +232,17 @@ margin-top:40px;
 <section id="connect">
 <h2>Band Connect</h2>
 
-<form>
+<form action="http://localhost:3000/connect" method="POST">
 
-<input type="text" placeholder="Name">
+<input type="text" name="name" placeholder="Name" required>
 
-<input type="text" placeholder="Instrument">
+<input type="text" name="instrument" placeholder="Instrument" required>
 
-<input type="text" placeholder="Experience Level">
+<input type="text" name="experience" placeholder="Experience Level">
 
-<input type="text" placeholder="City">
+<input type="text" name="city" placeholder="City">
 
-<textarea placeholder="Message"></textarea>
+<textarea name="message" placeholder="Message"></textarea>
 
 <button class="btn">Connect</button>
 
