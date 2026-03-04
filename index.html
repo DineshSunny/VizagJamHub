@@ -24,6 +24,7 @@ background:#000;
 padding:20px;
 position:sticky;
 top:0;
+z-index:10;
 }
 
 nav{
@@ -52,12 +53,37 @@ text-decoration:none;
 }
 
 .hero{
+position:relative;
 height:90vh;
-background:url("https://images.unsplash.com/photo-1501612780327-45045538702b") center/cover;
-display:flex;
-align-items:center;
-justify-content:center;
+overflow:hidden;
+}
+
+.carousel{
+position:absolute;
+width:100%;
+height:100%;
+}
+
+.carousel img{
+width:100%;
+height:90vh;
+object-fit:cover;
+}
+
+.slides{
+display:none;
+}
+
+.hero-text{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 text-align:center;
+z-index:2;
+background:rgba(0,0,0,0.5);
+padding:20px;
+border-radius:8px;
 }
 
 .hero h1{
@@ -152,11 +178,33 @@ margin-top:40px;
 </header>
 
 <section class="hero" id="home">
-<div>
+
+<div class="carousel">
+
+<div class="slides">
+<img src="https://images.unsplash.com/photo-1501612780327-45045538702b">
+</div>
+
+<div class="slides">
+<img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2">
+</div>
+
+<div class="slides">
+<img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d">
+</div>
+
+<div class="slides">
+<img src="https://images.unsplash.com/photo-1506157786151-b8491531f063">
+</div>
+
+</div>
+
+<div class="hero-text">
 <h1>Vizag Jam Hub</h1>
 <p>Connecting Musicians. Creating Music. Performing Live.</p>
 <button class="btn">Upcoming Shows</button>
 </div>
+
 </section>
 
 <section id="school">
@@ -273,6 +321,33 @@ margin-top:40px;
 <p>Visakhapatnam, Andhra Pradesh</p>
 
 </footer>
+
+<script>
+
+let slideIndex = 0;
+showSlides();
+
+function showSlides(){
+
+let slides = document.getElementsByClassName("slides");
+
+for(let i = 0; i < slides.length; i++){
+slides[i].style.display = "none";
+}
+
+slideIndex++;
+
+if(slideIndex > slides.length){
+slideIndex = 1;
+}
+
+slides[slideIndex-1].style.display = "block";
+
+setTimeout(showSlides, 4000);
+
+}
+
+</script>
 
 </body>
 </html>
