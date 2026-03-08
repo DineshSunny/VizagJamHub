@@ -2,87 +2,104 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs");
+const path = require("path");
 
 const app = express();
+const PORT = 3000;
+
+/* Middleware */
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname));
+/* Serve frontend */
+
+app.use(express.static(path.join(__dirname, "../public")));
 
 
-/* Utility function to read JSON safely */
+/* Helper functions */
 
-function readJSON(file){
+function readJSON(filePath){
 
-if(fs.existsSync(file)){
-return JSON.parse(fs.readFileSync(file));
+    if(fs.existsSync(filePath)){
+        const data = fs.readFileSync(filePath);
+        return JSON.parse(data);
+    }
+
+    return [];
 }
 
-return [];
+function writeJSON(filePath, data){
+
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 
 }
 
 
-/* Utility function to write JSON */
-
-function writeJSON(file,data){
-
-fs.writeFileSync(file, JSON.stringify(data,null,2));
-
-}
-
-
-/* BOOKING FORM */
+/* =============================
+   BOOK US FORM
+============================= */
 
 app.post("/book", (req,res)=>{
 
-const bookings = readJSON("bookings.json");
+    const file = path.join(__dirname, "../database/bookings.json");
 
-bookings.push(req.body);
+    let bookings = readJSON(file);
 
-writeJSON("bookings.json", bookings);
+    bookings.push(req.body);
 
-res.send("Booking request received!");
+    writeJSON(file, bookings);
 
-});
-
-
-/* BAND CONNECT */
-
-app.post("/connect",(req,res)=>{
-
-const connections = readJSON("connections.json");
-
-connections.push(req.body);
-
-writeJSON("connections.json",connections);
-
-res.send("Connection request received!");
+    res.send("Booking request received!");
 
 });
 
 
-/* TICKET BOOKING */
+/* =============================
+   BAND CONNECT FORM
+============================= */
 
-app.post("/tickets",(req,res)=>{
+app.post("/connect", (req,res)=>{
 
-const tickets = readJSON("tickets.json");
+    const file = path.join(__dirname, "../database/connections.json");
 
-tickets.push(req.body);
+    let connections = readJSON(file);
 
-writeJSON("tickets.json",tickets);
+    connections.push(req.body);
 
-res.send("Ticket booking successful!");
+    writeJSON(file, connections);
+
+    res.send("Connection request received!");
 
 });
 
 
-/* START SERVER */
+/* =============================
+   TICKET PURCHASE
+============================= */
 
-app.listen(3000,()=>{
+app.post("/tickets", (req,res)=>{
 
-console.log("VizagJamHub server running on port 3000");
+    const file = path.join(__dirname, "../database/tickets.json");
+
+    let tickets = readJSON(file);
+
+    tickets.push(req.body);
+
+    writeJSON(file, tickets);
+
+    res.send("Ticket booked successfully!");
+
+});
+
+
+/* =============================
+   START SERVER
+============================= */
+
+app.listen(PORT, ()=>{
+
+    console.log("VizagJamHub server running on port " + PORT);
 
 });
