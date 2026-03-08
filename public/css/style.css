@@ -137,21 +137,3 @@ button:hover{
 background:#00b0d6;
 }
 
-/* Guitar card clickable update (ADD THIS AT THE END ONLY) */
-
-.course-link{
-text-decoration:none;
-color:inherit;
-display:block;
-}
-
-.course-card{
-cursor:pointer;
-transition:0.25s;
-}
-
-.course-card:hover{
-transform:translateY(-6px);
-background:#222;
-box-shadow:0 0 18px rgba(0,0,0,0.8);
-}
