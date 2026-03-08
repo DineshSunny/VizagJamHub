@@ -123,6 +123,25 @@ app.post("/api/shows", (req, res) => {
 /* Start Server */
 /* ============================= */
 
+/* ============================= */
+/* Guitar School */
+/* ============================= */
+
+app.post("/guitar", (req, res) => {
+
+  const file = path.join(__dirname, "../database/guitarStudents.json");
+
+  let students = readJSON(file);
+
+  students.push(req.body);
+
+  writeJSON(file, students);
+
+  res.send("Enrollment received!");
+
+});
+
+
 app.listen(PORT, () => {
   console.log("VizagJamHub server running on port " + PORT);
 });
