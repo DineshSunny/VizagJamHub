@@ -2,8 +2,10 @@ const params = new URLSearchParams(window.location.search);
 
 const event = params.get("event");
 
+if(event){
 document.getElementById("eventName").innerText =
 event.replace(/-/g," ").toUpperCase();
+}
 
 const form = document.getElementById("ticketForm");
 
@@ -20,9 +22,11 @@ data.event = event;
 await fetch("/tickets",{
 
 method:"POST",
+
 headers:{
 "Content-Type":"application/json"
 },
+
 body:JSON.stringify(data)
 
 });

@@ -7,99 +7,65 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 
-/* Middleware */
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 /* Serve frontend */
-
 app.use(express.static(path.join(__dirname, "../public")));
-
 
 /* Helper functions */
 
-function readJSON(filePath){
-
-    if(fs.existsSync(filePath)){
-        const data = fs.readFileSync(filePath);
-        return JSON.parse(data);
-    }
-
-    return [];
+function readJSON(file) {
+  if (fs.existsSync(file)) {
+    return JSON.parse(fs.readFileSync(file));
+  }
+  return [];
 }
 
-function writeJSON(filePath, data){
-
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-
+function writeJSON(file, data) {
+  fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }
 
+/* Book Us */
 
-/* =============================
-   BOOK US FORM
-============================= */
+app.post("/book", (req, res) => {
+  const file = path.join(__dirname, "../database/bookings.json");
 
-app.post("/book", (req,res)=>{
+  let bookings = readJSON(file);
+  bookings.push(req.body);
 
-    const file = path.join(__dirname, "../database/bookings.json");
+  writeJSON(file, bookings);
 
-    let bookings = readJSON(file);
-
-    bookings.push(req.body);
-
-    writeJSON(file, bookings);
-
-    res.send("Booking request received!");
-
+  res.send("Booking request received!");
 });
 
+/* Band Connect */
 
-/* =============================
-   BAND CONNECT FORM
-============================= */
+app.post("/connect", (req, res) => {
+  const file = path.join(__dirname, "../database/connections.json");
 
-app.post("/connect", (req,res)=>{
+  let connections = readJSON(file);
+  connections.push(req.body);
 
-    const file = path.join(__dirname, "../database/connections.json");
+  writeJSON(file, connections);
 
-    let connections = readJSON(file);
-
-    connections.push(req.body);
-
-    writeJSON(file, connections);
-
-    res.send("Connection request received!");
-
+  res.send("Connection request received!");
 });
 
+/* Tickets */
 
-/* =============================
-   TICKET PURCHASE
-============================= */
+app.post("/tickets", (req, res) => {
+  const file = path.join(__dirname, "../database/tickets.json");
 
-app.post("/tickets", (req,res)=>{
+  let tickets = readJSON(file);
+  tickets.push(req.body);
 
-    const file = path.join(__dirname, "../database/tickets.json");
+  writeJSON(file, tickets);
 
-    let tickets = readJSON(file);
-
-    tickets.push(req.body);
-
-    writeJSON(file, tickets);
-
-    res.send("Ticket booked successfully!");
-
+  res.send("Ticket booked!");
 });
 
-
-/* =============================
-   START SERVER
-============================= */
-
-app.listen(PORT, ()=>{
-
-    console.log("VizagJamHub server running on port " + PORT);
-
+app.listen(PORT, () => {
+  console.log("VizagJamHub server running on port " + PORT);
 });
