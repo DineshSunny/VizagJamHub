@@ -27,7 +27,9 @@ function writeJSON(file, data) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }
 
+/* ============================= */
 /* Book Us */
+/* ============================= */
 
 app.post("/book", (req, res) => {
   const file = path.join(__dirname, "../database/bookings.json");
@@ -40,7 +42,9 @@ app.post("/book", (req, res) => {
   res.send("Booking request received!");
 });
 
+/* ============================= */
 /* Band Connect */
+/* ============================= */
 
 app.post("/connect", (req, res) => {
   const file = path.join(__dirname, "../database/connections.json");
@@ -53,7 +57,9 @@ app.post("/connect", (req, res) => {
   res.send("Connection request received!");
 });
 
+/* ============================= */
 /* Tickets */
+/* ============================= */
 
 app.post("/tickets", (req, res) => {
   const file = path.join(__dirname, "../database/tickets.json");
@@ -65,6 +71,57 @@ app.post("/tickets", (req, res) => {
 
   res.send("Ticket booked!");
 });
+
+
+/* ============================= */
+/* ===== ADDED FOR SHOWS SYSTEM ===== */
+/* ============================= */
+
+
+/* GET all shows */
+
+app.get("/api/shows", (req, res) => {
+
+  const file = path.join(__dirname, "../database/shows.json");
+
+  let shows = readJSON(file);
+
+  res.json(shows);
+
+});
+
+
+/* CREATE new show (Admin) */
+
+app.post("/api/shows", (req, res) => {
+
+  const file = path.join(__dirname, "../database/shows.json");
+
+  let shows = readJSON(file);
+
+  const newShow = {
+    id: Date.now(),
+    title: req.body.title,
+    venue: req.body.venue,
+    date: req.body.date,
+    price: req.body.price
+  };
+
+  shows.push(newShow);
+
+  writeJSON(file, shows);
+
+  res.json({
+    message: "Show created successfully",
+    show: newShow
+  });
+
+});
+
+
+/* ============================= */
+/* Start Server */
+/* ============================= */
 
 app.listen(PORT, () => {
   console.log("VizagJamHub server running on port " + PORT);
