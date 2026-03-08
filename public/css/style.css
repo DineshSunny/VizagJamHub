@@ -137,3 +137,46 @@ button:hover{
 background:#00b0d6;
 }
 
+/* GUITAR SCHOOL */
+
+.guitar-school{
+padding:60px;
+text-align:center;
+background:#111;
+color:white;
+}
+
+.guitar-courses{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+/* make whole card clickable */
+.guitar-courses a{
+text-decoration:none;
+color:inherit;
+}
+
+.course-card{
+background:#1b1b1b;
+padding:25px;
+border-radius:10px;
+width:250px;
+box-shadow:0 0 10px rgba(0,0,0,0.6);
+cursor:pointer;
+transition:0.25s;
+}
+
+.course-card:hover{
+transform:translateY(-6px);
+background:#222;
+box-shadow:0 0 18px rgba(0,0,0,0.8);
+}
+
+.course-card h3{
+color:#ff4444;
+margin-bottom:10px;
+}
