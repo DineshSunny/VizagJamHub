@@ -6,3 +6,14 @@
 4. Book US for a show or concert 
 5. Band connect 
 6. Gallery - upcoming shows list This is what we want on the website
+
+
+fix the layout professionally
+
+add a carousel gallery
+
+add admin dashboard for shows
+
+add UPI ticket payments
+
+generate QR code concert tickets
