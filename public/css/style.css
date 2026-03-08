@@ -2,12 +2,13 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial;
+font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
 background:#0f0f0f;
 color:white;
+line-height:1.6;
 }
 
 header{
@@ -18,6 +19,9 @@ padding:20px;
 nav{
 display:flex;
 justify-content:space-between;
+align-items:center;
+max-width:1100px;
+margin:auto;
 }
 
 nav ul{
@@ -34,7 +38,10 @@ text-decoration:none;
 .logo{
 font-size:22px;
 color:#00d4ff;
+font-weight:bold;
 }
+
+/* HERO */
 
 .hero{
 height:60vh;
@@ -46,11 +53,20 @@ align-items:center;
 text-align:center;
 }
 
+/* SECTIONS */
+
 section{
 padding:60px 20px;
 max-width:1100px;
 margin:auto;
 }
+
+h2{
+margin-bottom:20px;
+color:#00d4ff;
+}
+
+/* SHOW CARDS */
 
 .cards{
 display:grid;
@@ -64,7 +80,15 @@ padding:20px;
 border-radius:8px;
 color:white;
 text-decoration:none;
+transition:0.3s;
 }
+
+.card:hover{
+transform:translateY(-5px);
+background:#222;
+}
+
+/* GALLERY */
 
 .gallery{
 display:grid;
@@ -77,9 +101,38 @@ width:100%;
 border-radius:8px;
 }
 
-.btn{
-padding:12px 20px;
+/* FORMS */
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+max-width:600px;
+}
+
+input, textarea{
+padding:12px;
+border-radius:6px;
+border:none;
+font-size:14px;
+width:100%;
+}
+
+textarea{
+min-height:80px;
+resize:vertical;
+}
+
+button{
+padding:12px;
 background:#00d4ff;
 border:none;
+border-radius:6px;
+font-weight:bold;
 cursor:pointer;
+width:150px;
+}
+
+button:hover{
+background:#00b0d6;
 }
