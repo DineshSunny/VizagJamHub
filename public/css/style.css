@@ -683,3 +683,70 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 filter: invert(1);
 cursor:pointer;
 }
+
+/* ===============================
+MANAGE SHOWS
+=============================== */
+
+.manage-shows{
+
+display:flex;
+flex-direction:column;
+gap:20px;
+width:600px;
+
+}
+
+.manage-show-card{
+
+display:flex;
+background:black;
+border-radius:10px;
+overflow:hidden;
+border:1px solid white;
+
+}
+
+.manage-poster{
+
+width:160px;
+height:120px;
+
+background-size:cover;
+background-position:center;
+
+}
+
+.manage-info{
+
+padding:15px;
+flex:1;
+
+}
+
+.showButtons{
+
+margin-top:10px;
+display:flex;
+gap:10px;
+
+}
+
+.showButtons button{
+
+padding:6px 12px;
+background:black;
+border:1px solid white;
+color:white;
+cursor:pointer;
+transition:0.25s;
+
+}
+
+.showButtons button:hover{
+
+box-shadow:
+0 0 10px #00d4ff,
+0 0 20px #00d4ff;
+
+}

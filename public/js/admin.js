@@ -104,6 +104,6 @@ EDIT SHOW PAGE
 
 function editShow(id){
 
-window.location.href="/editShow.html?id="+id
+window.location.href="/edit-show.html?id="+id
 
 }

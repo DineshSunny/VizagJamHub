@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Edit Show - Vizag JamHub</title>
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+<source src="/Video/1.mp4" type="video/mp4">
+</video>
+
+<section class="login-section">
+
+<h1 class="login-title">Edit Show</h1>
+
+<form class="login-form" id="editForm">
+
+<input name="title" id="title" placeholder="Show Name" required>
+
+<input name="venue" id="venue" placeholder="Venue">
+
+<input type="date" name="date" id="date">
+
+<input type="number" name="price" id="price" placeholder="Ticket Price (₹)">
+
+<textarea name="info" id="info" class="extra-info"></textarea>
+
+<button type="submit">Update Show</button>
+
+</form>
+
+</section>
+
+<script src="/js/edit-show.js"></script>
+
+</body>
+</html>

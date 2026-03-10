@@ -173,6 +173,33 @@ app.delete("/api/shows/:id", (req, res) => {
 });
 
 /* =================================
+   UPDATE SHOW
+================================= */
+
+app.put("/api/shows/:id", (req,res)=>{
+
+const file = path.join(__dirname, "../database/shows.json")
+
+let shows = readJSON(file)
+
+const index = shows.findIndex(show => show.id == req.params.id)
+
+if(index !== -1){
+
+shows[index] = {
+...shows[index],
+...req.body
+}
+
+writeJSON(file, shows)
+
+}
+
+res.json({message:"Show updated"})
+
+})
+
+/* =================================
    GUITAR SCHOOL
 ================================= */
 

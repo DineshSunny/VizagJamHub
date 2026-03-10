@@ -1,11 +1,20 @@
 [
   {
-    "id": 1773140639341,
+    "id": 1773141737856,
     "title": "Yeto Velipoyindi Manasu",
     "venue": "Studio Grill",
     "date": "2026-03-28",
     "price": "499",
-    "info": "Gervcerg",
-    "poster": "/posters/1773140639316-5.jpg"
+    "info": "Kindly don't drink and drive",
+    "poster": "/posters/1773141737832-5.jpg"
+  },
+  {
+    "id": 1773141812297,
+    "title": "Raghu College Fest",
+    "venue": "Raghu College",
+    "date": "2026-04-07",
+    "price": "",
+    "info": "Kindly dont drink and drive",
+    "poster": "/posters/1773141812290-Guitar.jpg"
   }
 ]
