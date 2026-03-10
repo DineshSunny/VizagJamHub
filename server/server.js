@@ -132,14 +132,60 @@ let shows = readJSON(file);
 const newShow = {
 
 id: Date.now(),
+
 title: req.body.title,
 venue: req.body.venue,
+address: req.body.address,
+
 date: req.body.date,
+startTime: req.body.startTime,
+endTime: req.body.endTime,
+
 price: req.body.price,
 info: req.body.info,
+
 poster: req.file ? "/posters/" + req.file.filename : ""
 
 };
+
+/* UPDATE show */
+
+app.put("/api/shows/:id", upload.single("poster"), (req, res) => {
+
+const file = path.join(__dirname, "../database/shows.json")
+
+let shows = readJSON(file)
+
+const index = shows.findIndex(s => s.id == req.params.id)
+
+if(index === -1){
+return res.status(404).json({message:"Show not found"})
+}
+
+shows[index] = {
+
+...shows[index],
+
+title: req.body.title,
+venue: req.body.venue,
+address: req.body.address,
+
+date: req.body.date,
+startTime: req.body.startTime,
+endTime: req.body.endTime,
+
+price: req.body.price,
+info: req.body.info,
+
+poster: req.file ? "/posters/" + req.file.filename : shows[index].poster
+
+}
+
+writeJSON(file, shows)
+
+res.json({message:"Show updated successfully"})
+
+})
 
 shows.push(newShow);
 
