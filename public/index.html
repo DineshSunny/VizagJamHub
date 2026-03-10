@@ -5,15 +5,20 @@
 
 <title>Vizag JamHub</title>
 
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<video autoplay muted loop id="bg-video">
-<source src="/videos/concert.mp4" type="video/mp4">
+<!-- VIDEO BACKGROUND -->
+
+<video autoplay muted loop playsinline id="bg-video">
+<source src="Video/1.mp4" type="video/mp4">
 </video>
+
+
+<!-- HEADER / NAVBAR -->
 
 <header>
 
@@ -32,6 +37,8 @@
 
 </header>
 
+
+<!-- HERO SECTION -->
 
 <section class="hero">
 
@@ -54,6 +61,8 @@
 </section>
 
 
+<!-- MUSIC SCHOOL -->
+
 <section id="school" class="guitar-school">
 
 <h2>Vizag JamHub School</h2>
@@ -62,48 +71,35 @@
 
 <div class="guitar-courses">
 
-<a href="/guitar.html">
-
+<a href="guitar.html">
 <div class="course-card">
-
-<img src="/Images/Guitar.jpg" class="course-img">
-
+<img src="Images/Guitar.jpg" class="course-img">
 <h3>Guitar</h3>
-
 </div>
-
 </a>
 
 
-<a href="/drums.html">
-
+<a href="drums.html">
 <div class="course-card">
-
-<img src="/Images/Drums.jpg" class="course-img">
-
+<img src="Images/Drums.jpg" class="course-img">
 <h3>Drums</h3>
-
 </div>
-
 </a>
 
 
-<a href="/vocals.html">
-
+<a href="vocals.html">
 <div class="course-card">
-
-<img src="/Images/Vocals.jpg" class="course-img">
-
+<img src="Images/Vocals.jpg" class="course-img">
 <h3>Vocals</h3>
-
 </div>
-
 </a>
 
 </div>
 
 </section>
 
+
+<!-- UPCOMING SHOWS -->
 
 <section id="shows">
 
@@ -112,19 +108,63 @@
 <div class="cards">
 
 <div class="card">
-<h3>Vizag Rock Night</h3>
-<p>Live bands performing original music.</p>
+
+<h3>Beach Rock Night</h3>
+
+<p>RK Beach</p>
+<p>July 20</p>
+
 </div>
 
+
 <div class="card">
-<h3>Indie Jam</h3>
-<p>Independent artists and collaborations.</p>
+
+<h3>College Fest</h3>
+
+<p>GITAM University</p>
+<p>Aug 5</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Corporate Event</h3>
+
+<p>Novotel Vizag</p>
+<p>Aug 18</p>
+
 </div>
 
 </div>
 
 </section>
 
+
+<!-- BAND CONNECT -->
+
+<section id="connect">
+
+<h2>Band Connect</h2>
+
+<p>Looking for musicians? Connect with bands.</p>
+
+<form>
+
+<input placeholder="Your Name" required>
+
+<input placeholder="Instrument / Role">
+
+<textarea placeholder="Describe what you are looking for"></textarea>
+
+<button type="submit">Post</button>
+
+</form>
+
+</section>
+
+
+<!-- GALLERY -->
 
 <section id="gallery">
 
@@ -132,14 +172,17 @@
 
 <div class="gallery">
 
-<img src="/Images/g1.jpg">
-<img src="/Images/g2.jpg">
-<img src="/Images/g3.jpg">
+<img src="Images/Guitar.jpg">
+<img src="Images/Drums.jpg">
+<img src="Images/Vocals.jpg">
+<img src="Images/Guitar.jpg">
 
 </div>
 
 </section>
 
+
+<!-- SMOOTH SCROLL -->
 
 <script>
 
@@ -149,8 +192,7 @@ anchor.addEventListener('click', function(e) {
 
 e.preventDefault();
 
-document.querySelector(this.getAttribute('href'))
-.scrollIntoView({
+document.querySelector(this.getAttribute('href')).scrollIntoView({
 behavior: 'smooth'
 });
 
