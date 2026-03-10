@@ -14,7 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /* Serve frontend */
 app.use(express.static(path.join(__dirname, "../public")));
 
-/* Helper functions */
+/* =================================
+   Helper functions
+================================= */
 
 function readJSON(file) {
   if (fs.existsSync(file)) {
@@ -27,56 +29,63 @@ function writeJSON(file, data) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }
 
-/* ============================= */
-/* Book Us */
-/* ============================= */
+/* =================================
+   BOOK US
+================================= */
 
 app.post("/book", (req, res) => {
+
   const file = path.join(__dirname, "../database/bookings.json");
 
   let bookings = readJSON(file);
+
   bookings.push(req.body);
 
   writeJSON(file, bookings);
 
   res.send("Booking request received!");
+
 });
 
-/* ============================= */
-/* Band Connect */
-/* ============================= */
+/* =================================
+   BAND CONNECT
+================================= */
 
 app.post("/connect", (req, res) => {
+
   const file = path.join(__dirname, "../database/connections.json");
 
   let connections = readJSON(file);
+
   connections.push(req.body);
 
   writeJSON(file, connections);
 
   res.send("Connection request received!");
+
 });
 
-/* ============================= */
-/* Tickets */
-/* ============================= */
+/* =================================
+   TICKETS
+================================= */
 
 app.post("/tickets", (req, res) => {
+
   const file = path.join(__dirname, "../database/tickets.json");
 
   let tickets = readJSON(file);
+
   tickets.push(req.body);
 
   writeJSON(file, tickets);
 
   res.send("Ticket booked!");
+
 });
 
-
-/* ============================= */
-/* ===== ADDED FOR SHOWS SYSTEM ===== */
-/* ============================= */
-
+/* =================================
+   SHOWS SYSTEM
+================================= */
 
 /* GET all shows */
 
@@ -89,7 +98,6 @@ app.get("/api/shows", (req, res) => {
   res.json(shows);
 
 });
-
 
 /* CREATE new show (Admin) */
 
@@ -118,14 +126,25 @@ app.post("/api/shows", (req, res) => {
 
 });
 
+/* DELETE show */
 
-/* ============================= */
-/* Start Server */
-/* ============================= */
+app.delete("/api/shows/:id", (req, res) => {
 
-/* ============================= */
-/* Guitar School */
-/* ============================= */
+  const file = path.join(__dirname, "../database/shows.json");
+
+  let shows = readJSON(file);
+
+  shows = shows.filter(show => show.id != req.params.id);
+
+  writeJSON(file, shows);
+
+  res.json({ message: "Show deleted successfully" });
+
+});
+
+/* =================================
+   GUITAR SCHOOL
+================================= */
 
 app.post("/guitar", (req, res) => {
 
@@ -141,28 +160,10 @@ app.post("/guitar", (req, res) => {
 
 });
 
+/* =================================
+   START SERVER
+================================= */
 
 app.listen(PORT, () => {
   console.log("VizagJamHub server running on port " + PORT);
 });
-
-/*
-========================================
-GET SHOWS
-Returns all stored shows
-========================================
-*/
-
-app.get("/shows",(req,res)=>{
-
-const fs = require("fs")
-
-if(!fs.existsSync("./database/shows.json")){
-return res.send([])
-}
-
-const shows = JSON.parse(fs.readFileSync("./database/shows.json"))
-
-res.send(shows)
-
-})
