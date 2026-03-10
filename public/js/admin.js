@@ -24,7 +24,7 @@ container.innerHTML += `
 <h3>${show.title}</h3>
 <p>${show.venue}</p>
 <p>${show.date}</p>
-<p>$${show.price}</p>
+<p>₹${show.price}</p>
 
 <div class="showButtons">
 
