@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
+const multer = require("multer");
 
 const app = express();
 const PORT = 3000;
@@ -28,6 +29,28 @@ function readJSON(file) {
 function writeJSON(file, data) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }
+
+/* =================================
+   POSTER IMAGE UPLOAD
+================================= */
+
+const storage = multer.diskStorage({
+
+destination: function (req, file, cb) {
+
+cb(null, path.join(__dirname, "../public/posters"));
+
+},
+
+filename: function (req, file, cb) {
+
+cb(null, Date.now() + "-" + file.originalname);
+
+}
+
+});
+
+const upload = multer({ storage: storage });
 
 /* =================================
    BOOK US
@@ -101,30 +124,38 @@ app.get("/api/shows", (req, res) => {
 
 /* CREATE new show (Admin) */
 
-app.post("/api/shows", (req, res) => {
+app.post("/api/shows", upload.single("poster"), (req, res) => {
 
-  const file = path.join(__dirname, "../database/shows.json");
+const file = path.join(__dirname, "../database/shows.json");
 
-  let shows = readJSON(file);
+let shows = readJSON(file);
 
-  const newShow = {
-    id: Date.now(),
-    title: req.body.title,
-    venue: req.body.venue,
-    date: req.body.date,
-    price: req.body.price
-  };
+const newShow = {
 
-  shows.push(newShow);
+id: Date.now(),
+title: req.body.title,
+venue: req.body.venue,
+date: req.body.date,
+price: req.body.price,
+info: req.body.info,
+poster: req.file ? "/posters/" + req.file.filename : ""
 
-  writeJSON(file, shows);
+};
 
-  res.json({
-    message: "Show created successfully",
-    show: newShow
-  });
+shows.push(newShow);
+
+writeJSON(file, shows);
+
+res.json({
+message: "Show created successfully",
+show: newShow
+});
 
 });
+
+
+
+
 
 /* DELETE show */
 

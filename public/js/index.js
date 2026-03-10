@@ -49,12 +49,17 @@ container.innerHTML = ""
 shows.forEach(show => {
 
 const card = document.createElement("div")
-card.className = "card"
+card.className = "show-card"
 
 card.innerHTML = `
+
+<img src="${show.poster}" class="show-image">
+
 <h3>${show.title}</h3>
 <p>${show.venue}</p>
 <p>${formatDate(show.date)}</p>
+<p class="price">${show.price ? "₹" + show.price : ""}</p>
+
 `
 
 container.appendChild(card)
