@@ -10,26 +10,49 @@
 
 <body>
 
+<!-- VIDEO BACKGROUND -->
+
 <video autoplay muted loop playsinline id="bg-video">
 <source src="/Video/1.mp4" type="video/mp4">
 </video>
 
+
+<!-- UPDATE SHOW FORM -->
+
 <section class="login-section">
 
-<h1 class="login-title">Edit Show</h1>
+<h1 class="login-title">Update Show</h1>
 
-<form class="login-form" id="editForm">
+<form class="login-form" id="editForm" enctype="multipart/form-data">
 
+<!-- Show Title -->
 <input name="title" id="title" placeholder="Show Name" required>
 
-<input name="venue" id="venue" placeholder="Venue">
+<!-- Venue -->
+<input name="venue" id="venue" placeholder="Venue / Place" required>
 
-<input type="date" name="date" id="date">
+<!-- Address -->
+<input name="address" id="address" placeholder="Address" required>
 
+<!-- Show Date -->
+<input type="date" name="date" id="date" required>
+
+<!-- Start Time -->
+<input type="time" name="startTime" id="startTime" required>
+
+<!-- End Time -->
+<input type="time" name="endTime" id="endTime" required>
+
+<!-- Ticket Price -->
 <input type="number" name="price" id="price" placeholder="Ticket Price (₹)">
 
-<textarea name="info" id="info" class="extra-info"></textarea>
+<!-- Poster Upload -->
+<input type="file" name="poster" id="poster">
 
+<!-- Extra Information -->
+<textarea name="info" id="info" class="extra-info" placeholder="Extra Information"></textarea>
+
+<!-- Update Button -->
 <button type="submit">Update Show</button>
 
 </form>
