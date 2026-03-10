@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": 1773158523347,
+    "title": "Yeto Velipoyindi Manasu",
+    "venue": "Studio Grill",
+    "address": " Musalayyapalem, Sagar Nagar, Endada, Andhra Pradesh 530045, India",
+    "date": "2026-03-28",
+    "startTime": "18:00",
+    "endTime": "21:00",
+    "price": "499",
+    "info": "Kindly don't drink and drive ",
+    "poster": "/posters/1773158523322-5.jpg"
+  },
+  {
+    "id": 1773158600882,
+    "title": "Chakruvah",
+    "venue": "Raghu Engineering College(REC)",
+    "address": "Dakhamari",
+    "date": "2026-04-15",
+    "startTime": "17:00",
+    "endTime": "20:00",
+    "price": "",
+    "info": "Kindly don't drink and drive",
+    "poster": "/posters/1773158600881-Guitar.jpg"
+  }
+]
