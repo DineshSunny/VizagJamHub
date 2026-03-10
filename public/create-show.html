@@ -32,23 +32,15 @@
 
 <h1 class="login-title">Create New Show</h1>
 
-<form class="login-form" id="showForm">
+<form id="showForm">
 
-<input id="showName" placeholder="Show Name" required>
+<input name="title" placeholder="Show Title" required>
 
-<input id="venue" placeholder="Venue / Place" required>
+<input name="venue" placeholder="Venue / Place" required>
 
-<input id="address" placeholder="Address" required>
+<input type="date" name="date" required>
 
-<input type="date" id="date" required>
-
-<input type="time" id="startTime" required>
-
-<input type="time" id="endTime" required>
-
-<input type="file" id="poster">
-
-<textarea id="info" class="extra-info" placeholder="Extra Information"></textarea>
+<input name="price" placeholder="Ticket Price">
 
 <button type="submit">Create Show</button>
 
