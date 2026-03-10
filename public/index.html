@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<title>Vizag Jam Hub</title>
+<title>Vizag JamHub</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
 </head>
 
 <body>
 
+<video autoplay muted loop id="bg-video">
+<source src="/videos/concert.mp4" type="video/mp4">
+</video>
+
 <header>
 
 <nav>
 
-<div class="logo">VizagJamHub</div>
+<div class="logo">Vizag JamHub</div>
 
 <ul>
 <li><a href="#shows">Shows</a></li>
-<li><a href="#book">Book Us</a></li>
+<li><a href="#school">School</a></li>
 <li><a href="#connect">Band Connect</a></li>
 <li><a href="#gallery">Gallery</a></li>
 </ul>
@@ -30,44 +35,75 @@
 
 <section class="hero">
 
-<h1>Vizag Jam Hub</h1>
+<div class="hero-content">
+
+<h1>Vizag JamHub</h1>
 
 <p>Connecting Musicians. Creating Music. Performing Live.</p>
 
+<div class="soundwave">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</div>
+
 </section>
 
-<section class="guitar-school">
 
-<h2>Guitar Lessons</h2>
+<section id="school" class="guitar-school">
 
-<p>Learn guitar with structured courses for all ages</p>
+<h2>Vizag JamHub School</h2>
+
+<p>Learn Music and develop real stage skills</p>
 
 <div class="guitar-courses">
 
-<a href="/guitar.html?level=Beginner">
+<a href="/guitar.html">
+
 <div class="course-card">
-<h3>Beginner</h3>
-<p>Start from the basics. Learn chords, rhythm, and play your first songs.</p>
+
+<img src="/Images/Guitar.jpg" class="course-img">
+
+<h3>Guitar</h3>
+
 </div>
+
 </a>
 
-<a href="/guitar.html?level=Intermediate">
+
+<a href="/drums.html">
+
 <div class="course-card">
-<h3>Intermediate</h3>
-<p>Improve your lead playing, scales, and improvisation techniques.</p>
+
+<img src="/Images/Drums.jpg" class="course-img">
+
+<h3>Drums</h3>
+
 </div>
+
 </a>
 
-<a href="/guitar.html?level=Advanced">
+
+<a href="/vocals.html">
+
 <div class="course-card">
-<h3>Advanced</h3>
-<p>Master advanced techniques, soloing, and live performance skills.</p>
+
+<img src="/Images/Vocals.jpg" class="course-img">
+
+<h3>Vocals</h3>
+
 </div>
+
 </a>
 
 </div>
 
 </section>
+
 
 <section id="shows">
 
@@ -75,71 +111,17 @@
 
 <div class="cards">
 
-<a href="ticket.html?event=beach-rock-night" class="card">
-<h3>Beach Rock Night</h3>
-<p>RK Beach</p>
-<p>July 20</p>
-</a>
-
-<a href="ticket.html?event=college-fest" class="card">
-<h3>College Fest</h3>
-<p>GITAM University</p>
-<p>Aug 5</p>
-</a>
-
-<a href="ticket.html?event=corporate-event" class="card">
-<h3>Corporate Event</h3>
-<p>Novotel Vizag</p>
-<p>Aug 18</p>
-</a>
-
+<div class="card">
+<h3>Vizag Rock Night</h3>
+<p>Live bands performing original music.</p>
 </div>
 
-</section>
+<div class="card">
+<h3>Indie Jam</h3>
+<p>Independent artists and collaborations.</p>
+</div>
 
-
-<section id="book">
-
-<h2>Book Us</h2>
-
-<form action="/book" method="POST">
-
-<input name="name" placeholder="Name" required>
-
-<input name="email" placeholder="Email" required>
-
-<input name="location" placeholder="Location">
-
-<input type="date" name="date">
-
-<textarea name="details" placeholder="Event Details"></textarea>
-
-<button class="btn">Submit</button>
-
-</form>
-
-</section>
-
-
-<section id="connect">
-
-<h2>Band Connect</h2>
-
-<form action="/connect" method="POST">
-
-<input name="name" placeholder="Name" required>
-
-<input name="instrument" placeholder="Instrument">
-
-<input name="experience" placeholder="Experience">
-
-<input name="city" placeholder="City">
-
-<textarea name="message"></textarea>
-
-<button class="btn">Connect</button>
-
-</form>
+</div>
 
 </section>
 
@@ -150,14 +132,33 @@
 
 <div class="gallery">
 
-<img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2">
-<img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d">
-<img src="https://images.unsplash.com/photo-1506157786151-b8491531f063">
-<img src="https://images.unsplash.com/photo-1485579149621-3123dd979885">
+<img src="/Images/g1.jpg">
+<img src="/Images/g2.jpg">
+<img src="/Images/g3.jpg">
 
 </div>
 
 </section>
+
+
+<script>
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+anchor.addEventListener('click', function(e) {
+
+e.preventDefault();
+
+document.querySelector(this.getAttribute('href'))
+.scrollIntoView({
+behavior: 'smooth'
+});
+
+});
+
+});
+
+</script>
 
 </body>
 </html>

@@ -6,13 +6,72 @@ font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-background:#0f0f0f;
 color:white;
 line-height:1.6;
+font-size:18px;
+overflow-x:hidden;
+background:black;
 }
 
+
+/* STAGE LIGHTS */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:
+radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 45%),
+radial-gradient(circle at 70% 30%, rgba(0,212,255,0.20), transparent 50%),
+radial-gradient(circle at 50% 80%, rgba(0,0,0,0.4), transparent 60%);
+
+animation:lightsMove 10s infinite alternate;
+z-index:-1;
+}
+
+@keyframes lightsMove{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120px)}
+}
+
+
+/* VIDEO OVERLAY */
+
+body::after{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.45);
+z-index:-1;
+}
+
+
+/* VIDEO BACKGROUND */
+
+#bg-video{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-3;
+filter:brightness(0.8) contrast(1.25) saturate(1.1);
+}
+
+
+/* HEADER */
+
 header{
-background:black;
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(6px);
 padding:20px;
 }
 
@@ -26,32 +85,89 @@ margin:auto;
 
 nav ul{
 display:flex;
-gap:20px;
+gap:25px;
 list-style:none;
 }
 
 nav a{
 color:white;
 text-decoration:none;
+font-weight:bold;
+position:relative;
 }
 
-.logo{
-font-size:22px;
-color:#00d4ff;
-font-weight:bold;
+
+/* NAV HOVER */
+
+nav a::after{
+content:"";
+position:absolute;
+width:0%;
+height:2px;
+background:#00d4ff;
+left:0;
+bottom:-5px;
+transition:0.3s;
 }
+
+nav a:hover::after{
+width:100%;
+}
+
+
+.logo{
+font-size:40px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
 
 /* HERO */
 
 .hero{
-height:60vh;
-background:url("https://images.unsplash.com/photo-1501612780327-45045538702b") center/cover;
+height:90vh;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
 }
+
+.hero h1{
+font-size:60px;
+}
+
+.hero p{
+font-size:22px;
+}
+
+
+/* SOUNDWAVE */
+
+.soundwave{
+display:flex;
+gap:6px;
+margin-top:20px;
+justify-content:center;
+}
+
+.soundwave span{
+width:6px;
+height:30px;
+background:#00d4ff;
+animation:wave 1s infinite ease-in-out;
+}
+
+.soundwave span:nth-child(2){animation-delay:0.1s}
+.soundwave span:nth-child(3){animation-delay:0.2s}
+.soundwave span:nth-child(4){animation-delay:0.3s}
+.soundwave span:nth-child(5){animation-delay:0.4s}
+
+@keyframes wave{
+0%{height:20px}
+50%{height:60px}
+100%{height:20px}
+}
+
 
 /* SECTIONS */
 
@@ -61,10 +177,55 @@ max-width:1100px;
 margin:auto;
 }
 
-h2{
-margin-bottom:20px;
-color:#00d4ff;
+
+/* MUSIC SCHOOL */
+
+.guitar-school{
+text-align:center;
 }
+
+.guitar-courses{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.guitar-courses a{
+text-decoration:none;
+color:inherit;
+}
+
+.course-card{
+background:black;
+padding:25px;
+border-radius:10px;
+width:250px;
+cursor:pointer;
+transition:0.25s;
+border:1px solid white;
+}
+
+.course-card:hover{
+transform:translateY(-8px);
+box-shadow:
+0 0 10px #00d4ff,
+0 0 25px #00d4ff;
+}
+
+.course-img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:8px;
+margin-bottom:15px;
+}
+
+.course-card h3{
+font-size:22px;
+}
+
 
 /* SHOW CARDS */
 
@@ -75,18 +236,21 @@ gap:20px;
 }
 
 .card{
-background:#1a1a1a;
+background:black;
 padding:20px;
 border-radius:8px;
-color:white;
-text-decoration:none;
+border:1px solid white;
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
-background:#222;
+transform:translateY(-8px) scale(1.03);
+background:#111;
+box-shadow:
+0 0 10px #00d4ff,
+0 0 20px #00d4ff;
 }
+
 
 /* GALLERY */
 
@@ -99,84 +263,11 @@ gap:10px;
 .gallery img{
 width:100%;
 border-radius:8px;
+transition:0.3s;
+border:1px solid white;
 }
 
-/* FORMS */
-
-form{
-display:flex;
-flex-direction:column;
-gap:15px;
-max-width:600px;
-}
-
-input, textarea{
-padding:12px;
-border-radius:6px;
-border:none;
-font-size:14px;
-width:170%;
-}
-
-textarea{
-min-height:80px;
-resize:vertical;
-}
-
-button{
-padding:12px;
-background:#00d4ff;
-border:none;
-border-radius:6px;
-font-weight:bold;
-cursor:pointer;
-width:150px;
-}
-
-button:hover{
-background:#00b0d6;
-}
-
-/* GUITAR SCHOOL */
-
-.guitar-school{
-padding:60px;
-text-align:center;
-background:#111;
-color:white;
-}
-
-.guitar-courses{
-display:flex;
-justify-content:center;
-gap:30px;
-margin-top:30px;
-flex-wrap:wrap;
-}
-
-/* make whole card clickable */
-.guitar-courses a{
-text-decoration:none;
-color:inherit;
-}
-
-.course-card{
-background:#1b1b1b;
-padding:25px;
-border-radius:10px;
-width:250px;
-box-shadow:0 0 10px rgba(0,0,0,0.6);
-cursor:pointer;
-transition:0.25s;
-}
-
-.course-card:hover{
-transform:translateY(-6px);
-background:#222;
-box-shadow:0 0 18px rgba(0,0,0,0.8);
-}
-
-.course-card h3{
-color:#ff4444;
-margin-bottom:10px;
+.gallery img:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px #00d4ff;
 }
