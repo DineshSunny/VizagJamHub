@@ -148,6 +148,17 @@ poster: req.file ? "/posters/" + req.file.filename : ""
 
 };
 
+shows.push(newShow);
+
+writeJSON(file, shows);
+
+res.json({
+message: "Show created successfully",
+show: newShow
+});
+
+});
+
 /* UPDATE show */
 
 app.put("/api/shows/:id", upload.single("poster"), (req, res) => {
@@ -187,47 +198,6 @@ res.json({message:"Show updated successfully"})
 
 })
 
-shows.push(newShow);
-
-writeJSON(file, shows);
-
-res.json({
-message: "Show created successfully",
-show: newShow
-});
-
-});
-
-
-/* UPDATE show */
-
-app.put("/api/shows/:id", upload.single("poster"), (req, res) => {
-
-const file = path.join(__dirname, "../database/shows.json")
-
-let shows = readJSON(file)
-
-let show = shows.find(s => s.id == req.params.id)
-
-if(!show){
-return res.status(404).json({message:"Show not found"})
-}
-
-show.title = req.body.title
-show.venue = req.body.venue
-show.date = req.body.date
-show.price = req.body.price
-show.info = req.body.info
-
-if(req.file){
-show.poster = "/posters/" + req.file.filename
-}
-
-writeJSON(file, shows)
-
-res.json({message:"Show updated successfully"})
-
-})
 
 
 

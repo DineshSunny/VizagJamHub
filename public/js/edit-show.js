@@ -39,6 +39,6 @@ body:formData
 
 alert("Show Updated")
 
-window.location.href="/manage-shows.html"
+window.location.replace("/admin.html")
 
 })

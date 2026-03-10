@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Buy Tickets</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<h1 id="showTitle"></h1>
+
+<p id="showVenue"></p>
+<p id="showAddress"></p>
+
+<p>Date: <span id="showDate"></span></p>
+<p>Time: <span id="showTime"></span></p>
+
+<p>Price: ₹<span id="showPrice"></span></p>
+
+<form action="/tickets" method="POST">
+
+<input type="hidden" name="showId" id="showId">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<input type="number" name="quantity" placeholder="Tickets" required>
+
+<button type="submit">Buy Tickets</button>
+
+</form>
+
+<script src="/js/buyTicket.js"></script>
+
+</body>
+</html>
