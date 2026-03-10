@@ -86,9 +86,25 @@ color:white;
 border-radius:6px;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(2);
+    opacity: 1;
+    cursor: pointer;
+}
+
 textarea{
 height:90px;
 }
+
+/* Show calendar icon on dark background */
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+filter:invert(1);
+opacity:1;
+cursor:pointer;
+}
+
+
 
 button{
 background:#00d4ff;

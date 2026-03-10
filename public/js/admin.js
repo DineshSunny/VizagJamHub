@@ -11,6 +11,8 @@ const shows = await res.json()
 
 const container = document.getElementById("showsList")
 
+if(!container) return
+
 container.innerHTML = ""
 
 shows.forEach(show => {
@@ -22,6 +24,7 @@ container.innerHTML += `
 <h3>${show.title}</h3>
 <p>${show.venue}</p>
 <p>${show.date}</p>
+<p>$${show.price}</p>
 
 <div class="showButtons">
 
@@ -49,17 +52,27 @@ CREATE NEW SHOW
 ========================================
 */
 
-document.getElementById("showForm").addEventListener("submit", async e => {
+const showForm = document.getElementById("showForm")
+
+if(showForm){
+
+showForm.addEventListener("submit", async e => {
 
 e.preventDefault()
 
 const formData = new FormData(e.target)
 
 const show = {
+
 title: formData.get("title"),
 venue: formData.get("venue"),
+address: formData.get("address"),
 date: formData.get("date"),
-price: formData.get("price")
+startTime: formData.get("startTime"),
+endTime: formData.get("endTime"),
+price: formData.get("price"),
+info: formData.get("info")
+
 }
 
 await fetch("/api/shows",{
@@ -72,9 +85,12 @@ body:JSON.stringify(show)
 
 alert("Show Created")
 
-loadShows()
+// Clear form
+showForm.reset()
 
 })
+
+}
 
 
 
