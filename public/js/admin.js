@@ -62,25 +62,9 @@ e.preventDefault()
 
 const formData = new FormData(e.target)
 
-const show = {
-
-title: formData.get("title"),
-venue: formData.get("venue"),
-address: formData.get("address"),
-date: formData.get("date"),
-startTime: formData.get("startTime"),
-endTime: formData.get("endTime"),
-price: formData.get("price"),
-info: formData.get("info")
-
-}
-
 await fetch("/api/shows",{
 method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify(show)
+body:formData
 })
 
 alert("Show Created")

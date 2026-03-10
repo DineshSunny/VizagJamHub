@@ -51,14 +51,18 @@ shows.forEach(show => {
 const card = document.createElement("div")
 card.className = "show-card"
 
+card.style.backgroundImage = `url(${show.poster})`
+
 card.innerHTML = `
 
-<img src="${show.poster}" class="show-image">
+<div class="show-info">
 
 <h3>${show.title}</h3>
 <p>${show.venue}</p>
 <p>${formatDate(show.date)}</p>
-<p class="price">${show.price ? "₹" + show.price : ""}</p>
+<p class="show-price">${show.price ? "₹" + show.price : ""}</p>
+
+</div>
 
 `
 
