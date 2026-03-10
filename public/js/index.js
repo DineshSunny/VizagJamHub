@@ -54,6 +54,10 @@ card.className = "show-card"
 
 card.style.backgroundImage = `url(${show.poster})`
 
+card.onclick = () => {
+window.location.href = `/buy-ticket.html?id=${show.id}`
+}
+
 card.innerHTML = `
 
 <div class="show-info">
