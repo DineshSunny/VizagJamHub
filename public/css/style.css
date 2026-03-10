@@ -384,3 +384,141 @@ border:1px solid white;
 transform:scale(1.08);
 box-shadow:0 0 20px #00d4ff;
 }
+
+/* ADMIN PANEL */
+
+.admin-panel{
+
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+}
+
+.admin-title{
+
+font-size:60px;
+margin-bottom:60px;
+
+}
+
+.admin-buttons{
+
+display:flex;
+flex-direction:column;
+gap:25px;
+width:320px;
+
+}
+
+.admin-btn{
+
+padding:18px;
+font-size:22px;
+background:black;
+border:1px solid white;
+color:white;
+cursor:pointer;
+border-radius:8px;
+transition:0.3s;
+
+}
+
+.admin-btn:hover{
+
+transform:translateY(-5px);
+box-shadow:
+0 0 10px #00d4ff,
+0 0 25px #00d4ff;
+
+}
+
+/* LOGIN PAGE */
+
+.login-section{
+
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+}
+
+.login-title{
+
+font-size:60px;
+margin-bottom:40px;
+
+}
+
+.login-form{
+
+width:320px;
+display:flex;
+flex-direction:column;
+gap:15px;
+
+}
+
+
+/* LOGIN INPUTS — DARK STYLE */
+
+.login-form input{
+
+padding:12px;
+border-radius:6px;
+border:1px solid white;
+font-size:16px;
+color:white;
+background:black;
+
+}
+
+.login-form input::placeholder{
+
+color:#bbb;
+
+}
+
+
+/* LOGIN BUTTON */
+
+.login-form button{
+
+padding:12px;
+background:black;
+border:1px solid white;
+color:white;
+cursor:pointer;
+font-size:18px;
+transition:0.3s;
+
+}
+
+.login-form button:hover{
+
+box-shadow:
+0 0 10px #00d4ff,
+0 0 25px #00d4ff;
+
+}
+
+
+.forgot{
+
+margin-top:10px;
+font-size:14px;
+
+}
+
+.forgot a{
+
+color:#00d4ff;
+text-decoration:none;
+
+}

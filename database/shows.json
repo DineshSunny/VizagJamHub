@@ -1,9 +1,11 @@
-[
-  {
-    "id": 1773032920321,
-    "title": "Yeto Velipoyindi Manasu",
-    "venue": "Studio Grill",
-    "date": "2026-03-28",
-    "price": "499"
-  }
-]
+{
+  "id": "17001",
+  "name": "Vizag Rock Night",
+  "place": "RK Beach",
+  "date": "2026-08-20",
+  "startTime": "18:00",
+  "endTime": "22:00",
+  "address": "RK Beach Arena, Vizag",
+  "image": "/Images/show1.jpg",
+  "info": "Outdoor rock concert featuring local bands"
+}

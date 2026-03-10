@@ -3,37 +3,48 @@
 
 <head>
 
-<title>VizagJamHub Admin</title>
+<title>Vizag JamHub Admin</title>
+
 <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
 <body>
 
-<h1>Admin Dashboard</h1>
+<!-- VIDEO BACKGROUND -->
 
-<h2>Create New Show</h2>
+<video autoplay muted loop playsinline id="bg-video">
+<source src="/Video/1.mp4" type="video/mp4">
+</video>
 
-<form id="showForm">
 
-<input id="title" placeholder="Show Title" required>
+<section class="admin-panel">
 
-<input id="venue" placeholder="Venue" required>
+<h1 class="admin-title">Vizag JamHub Admin</h1>
 
-<input type="date" id="date" required>
+<div class="admin-buttons">
 
-<input id="price" placeholder="Ticket Price" required>
+<button class="admin-btn" onclick="location.href='create-show.html'">
+Create Show
+</button>
 
-<button type="submit">Create Show</button>
+<button class="admin-btn" onclick="location.href='manage-shows.html'">
+Manage Shows
+</button>
 
-</form>
+<button class="admin-btn" onclick="location.href='tickets.html'">
+Tickets
+</button>
 
-<h2>Existing Shows</h2>
+<button class="admin-btn" onclick="logout()">
+Logout
+</button>
 
-<div id="shows"></div>
+</div>
 
-<script src="/js/admin.js"></script>
+</section>
+
+<script src="/js/admin-auth.js"></script>
 
 </body>
-
 </html>
