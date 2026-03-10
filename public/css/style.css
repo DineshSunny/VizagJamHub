@@ -512,6 +512,27 @@ transform:scale(1.08);
 box-shadow:0 0 20px #00d4ff;
 }
 
+/* =================================
+   UPCOMING SHOWS SECTION
+================================= */
+
+#shows{
+text-align:center;
+padding:80px 20px;
+}
+
+#shows h1{
+margin-bottom:40px;
+font-size:42px;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+}
+
 /* ADMIN PANEL */
 
 .admin-panel{
