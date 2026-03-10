@@ -3,7 +3,13 @@
 
 <head>
 
+<!-- =================================
+     Page Title
+================================= -->
+
 <title>Vizag JamHub Admin</title>
+
+<!-- Main website stylesheet -->
 
 <link rel="stylesheet" href="/css/style.css">
 
@@ -11,30 +17,49 @@
 
 <body>
 
-<!-- VIDEO BACKGROUND -->
+<!-- =================================
+     VIDEO BACKGROUND
+     Concert video running behind
+     the admin dashboard
+================================= -->
 
 <video autoplay muted loop playsinline id="bg-video">
 <source src="/Video/1.mp4" type="video/mp4">
 </video>
 
 
+<!-- =================================
+     ADMIN PANEL
+     Main admin control section
+================================= -->
+
 <section class="admin-panel">
+
+<!-- Dashboard title -->
 
 <h1 class="admin-title">Vizag JamHub Admin</h1>
 
 <div class="admin-buttons">
 
-<button class="admin-btn" onclick="location.href='create-show.html'">
+<!-- Navigate to Create Show page -->
+
+<button class="admin-btn" onclick="location.href='/create-show.html'">
 Create Show
 </button>
 
-<button class="admin-btn" onclick="location.href='manage-shows.html'">
+<!-- Navigate to Manage Shows page -->
+
+<button class="admin-btn" onclick="location.href='/manage-shows.html'">
 Manage Shows
 </button>
 
-<button class="admin-btn" onclick="location.href='tickets.html'">
+<!-- Navigate to Tickets page -->
+
+<button class="admin-btn" onclick="location.href='/tickets.html'">
 Tickets
 </button>
+
+<!-- Logout button triggers logout() in auth.js -->
 
 <button class="admin-btn" onclick="logout()">
 Logout
@@ -44,7 +69,21 @@ Logout
 
 </section>
 
-<script src="/js/admin-auth.js"></script>
+
+<!-- =================================
+     AUTHENTICATION SCRIPT
+     Handles login protection + logout
+================================= -->
+
+<script src="/js/auth.js"></script>
+
+
+<!-- =================================
+     ADMIN DASHBOARD SCRIPT
+     Will manage shows and tickets
+================================= -->
+
+<script src="/js/admin.js"></script>
 
 </body>
 </html>

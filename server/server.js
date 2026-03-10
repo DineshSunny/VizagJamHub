@@ -145,3 +145,24 @@ app.post("/guitar", (req, res) => {
 app.listen(PORT, () => {
   console.log("VizagJamHub server running on port " + PORT);
 });
+
+/*
+========================================
+GET SHOWS
+Returns all stored shows
+========================================
+*/
+
+app.get("/shows",(req,res)=>{
+
+const fs = require("fs")
+
+if(!fs.existsSync("./database/shows.json")){
+return res.send([])
+}
+
+const shows = JSON.parse(fs.readFileSync("./database/shows.json"))
+
+res.send(shows)
+
+})
