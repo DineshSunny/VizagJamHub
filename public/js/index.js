@@ -6,7 +6,9 @@ FORMAT DATE
 
 function formatDate(dateString){
 
-const date = new Date(dateString)
+// Fix timezone shift
+const parts = dateString.split("-")
+const date = new Date(parts[0], parts[1]-1, parts[2])
 
 const months = [
 "January","February","March","April","May","June",
@@ -28,7 +30,6 @@ default: return "th"
 return months[date.getMonth()] + " " + day + getOrdinal(day)
 
 }
-
 
 /*
 ========================================
