@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 
@@ -34,21 +35,39 @@
 
 <form class="login-form" id="showForm">
 
-<input id="showName" placeholder="Show Name" required>
+<!-- Show Title -->
 
-<input id="venue" placeholder="Venue / Place" required>
+<input name="title" id="showName" placeholder="Show Name" required>
 
-<input id="address" placeholder="Address" required>
+<!-- Venue -->
 
-<input type="date" id="date" required>
+<input name="venue" id="venue" placeholder="Venue / Place" required>
 
-<input type="time" id="startTime" required>
+<!-- Address -->
 
-<input type="time" id="endTime" required>
+<input name="address" id="address" placeholder="Address" required>
 
-<input type="file" id="poster">
+<!-- Show Date -->
 
-<textarea id="info" class="extra-info" placeholder="Extra Information"></textarea>
+<input type="date" name="date" id="date" required>
+
+<!-- Start Time -->
+
+<input type="time" name="startTime" id="startTime" required>
+
+<!-- End Time -->
+
+<input type="time" name="endTime" id="endTime" required>
+
+<!-- Poster Upload -->
+
+<input type="file" name="poster" id="poster">
+
+<!-- Extra Information -->
+
+<textarea name="info" id="info" class="extra-info" placeholder="Extra Information"></textarea>
+
+<!-- Submit Button -->
 
 <button type="submit">Create Show</button>
 
@@ -60,3 +79,4 @@
 
 </body>
 </html>
+```
