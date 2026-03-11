@@ -2,37 +2,121 @@
 <html>
 
 <head>
+
 <title>Buy Tickets</title>
-<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* BUY TICKET LAYOUT */
+
+.ticket-wrapper{
+max-width:700px;
+margin:80px auto;
+text-align:center;
+}
+
+.ticket-info{
+display:flex;
+align-items:center;
+gap:20px;
+justify-content:center;
+margin-bottom:25px;
+}
+
+.ticket-info img{
+width:120px;
+border-radius:8px;
+}
+
+.ticket-details{
+text-align:left;
+}
+
+#ticketForm{
+display:flex;
+flex-direction:column;
+gap:15px;
+max-width:400px;
+margin:0 auto;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1 id="showTitle"></h1>
+<div class="ticket-wrapper">
 
-<p id="showVenue"></p>
-<p id="showAddress"></p>
+<h2>Buy Tickets</h2>
 
-<p>Date: <span id="showDate"></span></p>
-<p>Time: <span id="showTime"></span></p>
+<div class="ticket-info">
 
-<p>Price: ₹<span id="showPrice"></span></p>
+<img id="poster">
 
-<form action="/tickets" method="POST">
+<div class="ticket-details">
 
-<input type="hidden" name="showId" id="showId">
+<h3 id="title"></h3>
 
-<input type="text" name="name" placeholder="Your Name" required>
+<p id="venue"></p>
 
-<input type="email" name="email" placeholder="Email" required>
+<p id="date"></p>
 
-<input type="number" name="quantity" placeholder="Tickets" required>
+<p id="time"></p>
 
-<button type="submit">Buy Tickets</button>
+<p id="price"></p>
+
+</div>
+
+</div>
+
+
+<form id="ticketForm">
+
+<input
+type="text"
+id="name"
+placeholder="Your Name"
+required
+>
+
+<input
+type="tel"
+id="phone"
+placeholder="Phone Number"
+pattern="[0-9]{10}"
+maxlength="10"
+inputmode="numeric"
+required
+>
+
+<input
+type="email"
+id="email"
+placeholder="Email (optional)"
+>
+
+<input
+type="number"
+id="quantity"
+value="1"
+min="1"
+>
+
+<p id="total"></p>
+
+<button type="submit" class="glow-button">
+Buy Tickets
+</button>
 
 </form>
 
-<script src="/js/buyTicket.js"></script>
+</div>
+
+<script src="js/buy-ticket.js"></script>
 
 </body>
+
 </html>
