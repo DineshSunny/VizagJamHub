@@ -809,7 +809,10 @@ transition:0.3s;
 }
 
 #ticketForm button:hover{
-box-shadow:0 0 10px white,
-           0 0 20px white,
-           0 0 30px white;
+background:#00d4ff;
+color:black;
+
+box-shadow:0 0 10px #00d4ff,
+           0 0 20px #00d4ff,
+           0 0 40px #00d4ff;
 }
