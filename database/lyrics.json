@@ -1,14 +1,94 @@
 [
-  {
-    "id": 1,
-    "song": "Deewana Deewana",
-    "artist": "A.R. Rahman",
-    "lyrics": "Deewana deewana...\nTeri yaadon mein...\n(Full lyrics here)"
-  },
-  {
-    "id": 2,
-    "song": "Tum Hi Ho",
-    "artist": "Arijit Singh",
-    "lyrics": "Hum tere bin ab reh nahi sakte..."
-  }
+  { "id": 1, "song": "Aasha Paasam", "movie": "C/O Kancharapalem", "lyrics": "" },
+  { "id": 2, "song": "Adi Nanne", "movie": "Surya S/o Krishnan", "lyrics": "" },
+  { "id": 3, "song": "Adiga Adiga", "movie": "Hi Nanna", "lyrics": "" },
+  { "id": 4, "song": "Aakasam Yenatido", "movie": "Nireekshana", "lyrics": "" },
+  { "id": 5, "song": "Ammaye Sannaga", "movie": "Kushi", "lyrics": "" },
+  { "id": 6, "song": "Andamaina Bhamalu", "movie": "Manmadhudu", "lyrics": "" },
+  { "id": 7, "song": "Appudo Ippodo", "movie": "Bommarillu", "lyrics": "" },
+  { "id": 8, "song": "Amrutham Title Song", "movie": "Amrutham", "lyrics": "" },
+  { "id": 9, "song": "Arey Rey", "movie": "Happy Days", "lyrics": "" },
+  { "id": 10, "song": "Avunu Nijam", "movie": "Athadu", "lyrics": "" },
+
+  { "id": 11, "song": "Botany Paata", "movie": "Shiva", "lyrics": "" },
+
+  { "id": 12, "song": "Chaila Chaila", "movie": "Shankar Dada MBBS", "lyrics": "" },
+  { "id": 13, "song": "Cheliya Cheliya", "movie": "Gharshana", "lyrics": "" },
+  { "id": 14, "song": "Cheppave Chirugali", "movie": "Okkadu", "lyrics": "" },
+  { "id": 15, "song": "Chikiri Chikiri", "movie": "Peddi", "lyrics": "" },
+  { "id": 16, "song": "Chinni Chinni Aasa", "movie": "Roja", "lyrics": "" },
+  { "id": 17, "song": "Chiru Chiru Chinukula", "movie": "Awaara", "lyrics": "" },
+  { "id": 18, "song": "Chitti Nee Navvante", "movie": "Jathi Ratnalu", "lyrics": "" },
+  { "id": 19, "song": "Choopultho Guchi Guchi", "movie": "Idiot", "lyrics": "" },
+  { "id": 20, "song": "Chuttamalle", "movie": "Devara", "lyrics": "" },
+
+  { "id": 21, "song": "DJ Tillu", "movie": "DJ Tillu", "lyrics": "" },
+
+  { "id": 22, "song": "Ee Varsham Sakshiga", "movie": "Varsham", "lyrics": "" },
+  { "id": 23, "song": "Edo Priyaragam", "movie": "Arya", "lyrics": "" },
+  { "id": 24, "song": "Ekada Ekada Unnado", "movie": "Veera", "lyrics": "" },
+  { "id": 25, "song": "Ekada Unna Pakkana Nuvve", "movie": "Nuvve Kavali", "lyrics": "" },
+  { "id": 26, "song": "Em Sandeham Ledu", "movie": "Oohalu Gusagusalade", "lyrics": "" },
+  { "id": 27, "song": "Enduko Emo", "movie": "Rangam", "lyrics": "" },
+
+  { "id": 28, "song": "Gallo Thelinattunde", "movie": "Jalsa", "lyrics": "" },
+
+  { "id": 29, "song": "Inthandham", "movie": "Sita Ramam", "lyrics": "" },
+
+  { "id": 30, "song": "Jabilikosam", "movie": "Manchi Manushulu", "lyrics": "" },
+  { "id": 31, "song": "Jamu Rathiri", "movie": "Kshana Kshanam", "lyrics": "" },
+
+  { "id": 32, "song": "Kammani Ee Premalekha", "movie": "Yeto Vellipoyindi Manasu", "lyrics": "" },
+  { "id": 33, "song": "Kolaveri Di", "movie": "3", "lyrics": "" },
+
+  { "id": 34, "song": "Malliswarive", "movie": "Yuvasena", "lyrics": "" },
+  { "id": 35, "song": "Manasantha Nuvve", "movie": "Manasantha Nuvve", "lyrics": "" },
+  { "id": 36, "song": "Maate Vinaduga", "movie": "Taxiwaala", "lyrics": "" },
+  { "id": 37, "song": "Maate Rani Chinnadani", "movie": "O Papa Lali", "lyrics": "" },
+  { "id": 38, "song": "Monna Kanipinchavu", "movie": "Surya S/o Krishnan", "lyrics": "" },
+  { "id": 39, "song": "Mustafa Mustafa", "movie": "Prema Desam", "lyrics": "" },
+  { "id": 40, "song": "Muvvala Navvakala", "movie": "Pournami", "lyrics": "" },
+
+  { "id": 41, "song": "Na Madhi", "movie": "Thiru", "lyrics": "" },
+  { "id": 42, "song": "Nalone Pongenu Narmada", "movie": "Surya S/o Krishnan", "lyrics": "" },
+  { "id": 43, "song": "Nanne Choosthu", "movie": "Varsham", "lyrics": "" },
+  { "id": 44, "song": "Neeti Mullai", "movie": "Varsham", "lyrics": "" },
+  { "id": 45, "song": "Nenu Putanu", "movie": "Prem Nagar", "lyrics": "" },
+  { "id": 46, "song": "Netho Cheppana", "movie": "Athadu", "lyrics": "" },
+  { "id": 47, "song": "Niluvaave Vaalu Kanuladaana", "movie": "Lakshyam", "lyrics": "" },
+  { "id": 48, "song": "Ninnu Kori Varnam", "movie": "Agni Natchathiram", "lyrics": "" },
+  { "id": 49, "song": "Nuvvu Nuvvu", "movie": "Khadgam", "lyrics": "" },
+  { "id": 50, "song": "Nuvvante Na Navvu", "movie": "Krishnagadi Veera Prema Gaadha", "lyrics": "" },
+
+  { "id": 51, "song": "Oo Antava", "movie": "Pushpa", "lyrics": "" },
+  { "id": 52, "song": "Oka Maru", "movie": "Ghajini", "lyrics": "" },
+  { "id": 53, "song": "Oy! Oy!", "movie": "Oye", "lyrics": "" },
+
+  { "id": 54, "song": "Panchadara Bomma", "movie": "Magadheera", "lyrics": "" },
+  { "id": 55, "song": "Pilla Raa", "movie": "RX 100", "lyrics": "" },
+  { "id": 56, "song": "Pillagali Allari", "movie": "Athadu", "lyrics": "" },
+  { "id": 57, "song": "Priya Priya", "movie": "Ishq", "lyrics": "" },
+  { "id": 58, "song": "Priya Priyatama", "movie": "Jagadeka Veerudu Athiloka Sundari", "lyrics": "" },
+
+  { "id": 59, "song": "Rooba Rooba", "movie": "Orange", "lyrics": "" },
+
+  { "id": 60, "song": "Samajavaragamana", "movie": "Ala Vaikunthapurramuloo", "lyrics": "" },
+  { "id": 61, "song": "Sir Osthara", "movie": "Businessman", "lyrics": "" },
+  { "id": 62, "song": "Snehithuda", "movie": "Sakhi", "lyrics": "" },
+  { "id": 63, "song": "Something Something", "movie": "Nuvvostanante Nenoddantana", "lyrics": "" },
+  { "id": 64, "song": "Sundari Neeve", "movie": "Dalapathi", "lyrics": "" },
+
+  { "id": 65, "song": "Telusa Manasa", "movie": "Criminal", "lyrics": "" },
+
+  { "id": 66, "song": "Undiporaadhey", "movie": "Hushaaru", "lyrics": "" },
+
+  { "id": 67, "song": "Vaanu Vaanu", "movie": "Varsham", "lyrics": "" },
+  { "id": 68, "song": "Vayyari Bhama", "movie": "Thammudu", "lyrics": "" },
+  { "id": 69, "song": "Vennelave Vennelave", "movie": "Merupu Kalalu", "lyrics": "" },
+  { "id": 70, "song": "Vintunnava", "movie": "Ye Maaya Chesave", "lyrics": "" },
+
+  { "id": 71, "song": "Yedane Koyyake", "movie": "Surya S/o Krishnan", "lyrics": "" },
+  { "id": 72, "song": "Yemito", "movie": "Andala Rakshasi", "lyrics": "" },
+  { "id": 73, "song": "Yentha Sakkagunnave", "movie": "Rangasthalam", "lyrics": "" },
+  { "id": 74, "song": "Yeto Vellipoyindi Manasu", "movie": "Ninne Pelladatha", "lyrics": "" }
 ]
