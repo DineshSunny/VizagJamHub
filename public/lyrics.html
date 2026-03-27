@@ -1,17 +1,213 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Lyrics | Vizag JamHub</title>
-  <link rel="stylesheet" href="lyrics.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* PAGE */
+    .lyrics-page{
+      text-align:center;
+      padding:80px 20px;
+    }
+
+    .lyrics-title{
+      font-size:48px;
+      margin-bottom:20px;
+    }
+
+    /* SEARCH */
+    .search-bar{
+      width:300px;
+      padding:12px;
+      margin:30px auto;
+      display:block;
+      background:black;
+      color:white;
+      border:1px solid white;
+      border-radius:10px;
+      outline:none;
+    }
+
+    .search-bar:focus{
+      box-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff;
+    }
+
+    /* SONG LIST */
+    .lyrics-container{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:25px;
+    }
+
+    .lyrics-card{
+      width:260px;
+      padding:18px;
+      background:black;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.8);
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .lyrics-card:hover{
+      transform:translateY(-8px) scale(1.03);
+      background:#111;
+      box-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff;
+    }
+
+    /* ANIMATION */
+    #lyrics-container{
+      transition: all 0.3s ease;
+    }
+
+  </style>
 </head>
 
 <body>
 
-<h1 class="title">🎤 Song Lyrics</h1>
+<!-- HEADER -->
 
-<div id="lyrics-container"></div>
+<header>
+  <nav>
+    <div class="logo">Vizag JamHub</div>
 
-<script src="lyrics.js"></script>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#shows">Shows</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- LYRICS PAGE -->
+
+<section class="lyrics-page">
+
+  <h1 class="lyrics-title">🎤 Song Lyrics</h1>
+
+  <!-- SEARCH -->
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="🔍 Search songs..." 
+    class="search-bar"
+  />
+
+  <!-- SONG LIST -->
+  <div class="lyrics-container" id="lyrics-container"></div>
+
+</section>
+
+<!-- SCRIPT -->
+
+<script>
+
+let songsData = [];
+
+// LOAD SONGS
+fetch("/api/lyrics")
+.then(res => res.json())
+.then(data => {
+  songsData = data;
+  renderSongs(data);
+});
+
+// RENDER SONG LIST
+function renderSongs(data){
+
+  const container = document.getElementById("lyrics-container");
+  container.innerHTML = "";
+
+  data.forEach(song => {
+
+    const card = document.createElement("div");
+    card.classList.add("lyrics-card");
+
+    card.innerHTML = `
+      <h3>${song.song}</h3>
+      <p>${song.artist}</p>
+    `;
+
+    card.addEventListener("click", () => showLyrics(song));
+
+    container.appendChild(card);
+  });
+}
+
+// SEARCH
+document.getElementById("searchInput").addEventListener("input", (e) => {
+
+  const value = e.target.value.toLowerCase();
+
+  const filtered = songsData.filter(song =>
+    song.song.toLowerCase().includes(value)
+  );
+
+  renderSongs(filtered);
+});
+
+// SHOW LYRICS
+function showLyrics(song){
+
+  const container = document.getElementById("lyrics-container");
+
+  container.style.opacity = "0";
+  container.style.transform = "translateY(20px)";
+
+  setTimeout(() => {
+
+    container.innerHTML = `
+      <div style="max-width:800px; margin:auto; text-align:center;">
+        
+        <h1>${song.song}</h1>
+        <h3>${song.artist}</h3>
+
+        <p style="margin-top:20px; white-space:pre-line; text-align:left; color:#ddd; line-height:1.8;">
+          ${song.lyrics}
+        </p>
+
+        <br><br>
+
+        <button onclick="goBack()" class="lyrics-btn">
+          ⬅ Back to Songs
+        </button>
+
+      </div>
+    `;
+
+    container.style.opacity = "1";
+    container.style.transform = "translateY(0)";
+
+  }, 200);
+}
+
+// BACK
+function goBack(){
+
+  const container = document.getElementById("lyrics-container");
+
+  container.style.opacity = "0";
+
+  setTimeout(() => {
+
+    renderSongs(songsData);
+
+    container.style.opacity = "1";
+
+    document.getElementById("lyrics-container").scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }, 200);
+}
+
+</script>
 
 </body>
 </html>
