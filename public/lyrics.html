@@ -1,10 +1,17 @@
 <script>
 
-fetch("/api/lyrics")
+document.addEventListener("DOMContentLoaded", () => {
+
+fetch("/database/lyrics.json")  // ✅ CORRECT PATH
 .then(res => res.json())
 .then(data => {
 
   const container = document.getElementById("lyrics-container");
+
+  if(!container){
+    console.error("lyrics-container not found");
+    return;
+  }
 
   data.forEach(song => {
 
@@ -13,10 +20,9 @@ fetch("/api/lyrics")
 
     card.innerHTML = `
       <h3>${song.song}</h3>
-      <p>${song.artist}</p>
+      <p>${song.movie}</p>
     `;
 
-    // 🔥 CLICK → SHOW LYRICS
     card.addEventListener("click", () => {
       showLyrics(song);
     });
@@ -24,6 +30,9 @@ fetch("/api/lyrics")
     container.appendChild(card);
 
   });
+
+})
+.catch(err => console.error("FETCH ERROR:", err));
 
 });
 
@@ -33,11 +42,12 @@ function showLyrics(song){
 
   container.innerHTML = `
     <div style="max-width:800px; margin:auto; text-align:center;">
+      
       <h1>${song.song}</h1>
-      <h3>${song.artist}</h3>
+      <h3>${song.movie}</h3>
 
       <p style="margin-top:20px; white-space:pre-line; text-align:left;">
-        ${song.lyrics}
+        ${song.lyrics || "Lyrics coming soon..."}
       </p>
 
       <br><br>
@@ -45,9 +55,9 @@ function showLyrics(song){
       <button onclick="location.reload()" class="lyrics-btn">
         ⬅ Back to Songs
       </button>
+
     </div>
   `;
-
 }
 
 </script>
