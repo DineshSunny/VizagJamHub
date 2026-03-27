@@ -120,27 +120,40 @@ function renderSongs(data){
   });
 
   // SHOW LYRICS
-  window.showLyrics = function(song){
+window.showLyrics = function(song){
 
-    container.innerHTML = `
-      <div class="card" style="max-width:800px; margin:auto;">
+  const params = new URLSearchParams(window.location.search);
+  const selectedLang = params.get("lang") || "english";
 
-        <h3>${song.song}</h3>
-        <p>${song.movie}</p>
+  let lyricsText = selectedLang === "telugu"
+    ? song.lyrics_telugu
+    : song.lyrics_english;
 
-        <p style="margin-top:15px; white-space:pre-line;">
-          ${song.lyrics || "Lyrics coming soon..."}
-        </p>
+  container.innerHTML = `
+    <div style="width:100%; margin:40px 0; padding:0 20px;">
 
-        <br>
+      <h2>${song.song}</h2>
+      <p style="opacity:0.7;">${song.movie}</p>
 
-        <button onclick="location.reload()" class="lyrics-btn">
-          ⬅ Back to Songs
-        </button>
+      <p style="
+        margin-top:20px;
+        white-space:pre-line;
+        line-height:1.9;
+        font-size:16px;
+        text-align:left;
+      ">
+        ${lyricsText || "Lyrics coming soon..."}
+      </p>
 
-      </div>
-    `;
-  }
+      <br>
+
+      <button onclick="location.reload()" class="lyrics-btn">
+        ⬅ Back to Songs
+      </button>
+
+    </div>
+  `;
+}
 
 });
 
