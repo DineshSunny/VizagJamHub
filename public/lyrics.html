@@ -36,7 +36,7 @@
   />
 
   <!-- SONG LIST -->
-  <div id="lyrics-container" class="cards"></div>
+  <div id="lyrics-container"></div>
 
 </section>
 
@@ -64,25 +64,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // RENDER SONG LIST
-  function renderSongs(data){
+function renderSongs(data){
 
-    container.innerHTML = "";
+  const container = document.getElementById("lyrics-container");
+  container.innerHTML = "";
 
-    data.forEach(song => {
+  // SORT alphabetically
+  data.sort((a, b) => a.song.localeCompare(b.song));
 
-      const card = document.createElement("div");
-      card.classList.add("card");
+  let currentLetter = "";
 
-      card.innerHTML = `
-        <h3>${song.song}</h3>
-        <p>${song.movie}</p>
+  data.forEach(song => {
+
+    const firstLetter = song.song.charAt(0).toUpperCase();
+
+    // 🔥 NEW LETTER SECTION
+    if(firstLetter !== currentLetter){
+
+      currentLetter = firstLetter;
+
+      const section = document.createElement("div");
+      section.innerHTML = `
+        <h2 style="margin-top:30px; color:#00d4ff;">🎵 ${currentLetter}</h2>
       `;
 
-      card.addEventListener("click", () => showLyrics(song));
+      container.appendChild(section);
+    }
 
-      container.appendChild(card);
-    });
-  }
+    // 🎵 SONG ITEM
+    const item = document.createElement("div");
+    item.classList.add("song-item");
+
+    item.innerHTML = `
+      ${song.song} – <span style="color:#aaa;">${song.movie}</span>
+    `;
+
+    item.addEventListener("click", () => showLyrics(song));
+
+    container.appendChild(item);
+  });
+
+}
 
   // SEARCH
   searchInput.addEventListener("input", () => {

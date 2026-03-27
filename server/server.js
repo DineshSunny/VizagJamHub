@@ -244,13 +244,16 @@ app.post("/guitar", (req, res) => {
 
 app.get("/api/lyrics", (req, res) => {
 
-  const file = path.join(__dirname, "../database/lyrics.json");
+  const file = path.resolve(__dirname, "../database/lyrics.json");
+
+  console.log("Reading file from:", file);
 
   let lyrics = readJSON(file);
 
   res.json(lyrics);
 
 });
+
 
 /* =================================
    START SERVER

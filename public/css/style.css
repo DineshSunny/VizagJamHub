@@ -903,4 +903,22 @@ box-shadow:
 #lyrics-container{
   max-height:70vh;
   overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+
+/* SONG ITEMS */
+
+.song-item{
+  padding:10px 5px;
+  cursor:pointer;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  transition:0.2s;
+}
+
+.song-item:hover{
+  color:#00d4ff;
+  transform:translateX(5px);
 }
