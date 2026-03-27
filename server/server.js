@@ -239,6 +239,20 @@ app.post("/guitar", (req, res) => {
 });
 
 /* =================================
+   LYRICS SYSTEM
+================================= */
+
+app.get("/api/lyrics", (req, res) => {
+
+  const file = path.join(__dirname, "../database/lyrics.json");
+
+  let lyrics = readJSON(file);
+
+  res.json(lyrics);
+
+});
+
+/* =================================
    START SERVER
 ================================= */
 

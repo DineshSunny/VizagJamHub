@@ -1,63 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lyrics | Vizag JamHub</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+  <nav>
+    <div class="logo">Vizag JamHub</div>
+
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#shows">Shows</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- LYRICS PAGE -->
+
+<section class="lyrics-page">
+
+  <h1>🎤 Song Lyrics</h1>
+
+  <!-- SEARCH -->
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="🔍 Search songs..." 
+    class="search-bar"
+  />
+
+  <!-- SONG LIST -->
+  <div id="lyrics-container" class="cards"></div>
+
+</section>
+
+<!-- SCRIPT -->
+
 <script>
 
 document.addEventListener("DOMContentLoaded", () => {
 
-fetch("/database/lyrics.json")  // ✅ CORRECT PATH
-.then(res => res.json())
-.then(data => {
-
   const container = document.getElementById("lyrics-container");
+  const searchInput = document.getElementById("searchInput");
 
-  if(!container){
-    console.error("lyrics-container not found");
-    return;
+  let songsData = [];
+
+  // LOAD DATA
+  fetch("/api/lyrics")
+  .then(res => res.json())
+  .then(data => {
+    songsData = data;
+    renderSongs(data);
+  })
+  .catch(err => {
+    console.error("FETCH ERROR:", err);
+    container.innerHTML = "<p>Error loading songs</p>";
+  });
+
+  // RENDER SONG LIST
+  function renderSongs(data){
+
+    container.innerHTML = "";
+
+    data.forEach(song => {
+
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <h3>${song.song}</h3>
+        <p>${song.movie}</p>
+      `;
+
+      card.addEventListener("click", () => showLyrics(song));
+
+      container.appendChild(card);
+    });
   }
 
-  data.forEach(song => {
+  // SEARCH
+  searchInput.addEventListener("input", () => {
 
-    const card = document.createElement("div");
-    card.classList.add("lyrics-card");
+    const value = searchInput.value.toLowerCase();
 
-    card.innerHTML = `
-      <h3>${song.song}</h3>
-      <p>${song.movie}</p>
-    `;
+    const filtered = songsData.filter(song =>
+      song.song.toLowerCase().includes(value)
+    );
 
-    card.addEventListener("click", () => {
-      showLyrics(song);
-    });
-
-    container.appendChild(card);
+    renderSongs(filtered);
 
   });
 
-})
-.catch(err => console.error("FETCH ERROR:", err));
+  // SHOW LYRICS
+  window.showLyrics = function(song){
+
+    container.innerHTML = `
+      <div class="card" style="max-width:800px; margin:auto;">
+
+        <h3>${song.song}</h3>
+        <p>${song.movie}</p>
+
+        <p style="margin-top:15px; white-space:pre-line;">
+          ${song.lyrics || "Lyrics coming soon..."}
+        </p>
+
+        <br>
+
+        <button onclick="location.reload()" class="lyrics-btn">
+          ⬅ Back to Songs
+        </button>
+
+      </div>
+    `;
+  }
 
 });
 
-function showLyrics(song){
-
-  const container = document.getElementById("lyrics-container");
-
-  container.innerHTML = `
-    <div style="max-width:800px; margin:auto; text-align:center;">
-      
-      <h1>${song.song}</h1>
-      <h3>${song.movie}</h3>
-
-      <p style="margin-top:20px; white-space:pre-line; text-align:left;">
-        ${song.lyrics || "Lyrics coming soon..."}
-      </p>
-
-      <br><br>
-
-      <button onclick="location.reload()" class="lyrics-btn">
-        ⬅ Back to Songs
-      </button>
-
-    </div>
-  `;
-}
-
 </script>
+
+</body>
+</html>

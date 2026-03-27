@@ -866,3 +866,41 @@ box-shadow:
   width:100%;
   margin:60px auto;
 }
+
+
+.search-bar{
+  width:300px;
+  padding:12px;
+  margin:30px auto;
+  display:block;
+  background:black;
+  color:white;
+  border:1px solid white;
+  border-radius:10px;
+}
+
+/* SCROLLING EFFECT */
+
+#lyrics-container{
+  max-height:500px;     /* controls height */
+  overflow-y:auto;      /* enables scroll */
+  padding-right:10px;   /* space for scrollbar */
+}
+
+#lyrics-container::-webkit-scrollbar{
+  width:8px;
+}
+
+#lyrics-container::-webkit-scrollbar-thumb{
+  background:#00d4ff;
+  border-radius:10px;
+}
+
+#lyrics-container::-webkit-scrollbar-track{
+  background:black;
+}
+
+#lyrics-container{
+  max-height:70vh;
+  overflow-y:auto;
+}
