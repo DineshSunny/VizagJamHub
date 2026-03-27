@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "song": "Deewana Deewana",
+    "artist": "A.R. Rahman",
+    "lyrics": "Deewana deewana...\nTeri yaadon mein...\n(Full lyrics here)"
+  },
+  {
+    "id": 2,
+    "song": "Tum Hi Ho",
+    "artist": "Arijit Singh",
+    "lyrics": "Hum tere bin ab reh nahi sakte..."
+  }
+]
