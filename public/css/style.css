@@ -857,3 +857,12 @@ box-shadow:
 0 0 20px #00d4ff;
 
 }
+
+
+.lyrics-section{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  margin:60px auto;
+}
