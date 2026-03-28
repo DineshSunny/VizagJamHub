@@ -1026,3 +1026,37 @@ nav ul li {
     font-size: 16px;
   }
 } 
+
+
+/* LYRICS PAGE FIX */
+.lyrics-page {
+  padding: 20px;
+}
+
+.lyrics-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* CARDS */
+.lyrics-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+
+  .lyrics-title {
+    font-size: 28px;
+  }
+
+  .lyrics-card {
+    width: 95%;
+    font-size: 16px;
+  }
+
+}
