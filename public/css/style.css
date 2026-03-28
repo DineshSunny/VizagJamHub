@@ -974,3 +974,55 @@ img, video {
   width: 100%;
   height: auto;
 }
+
+/* NAVBAR FIX */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* 🔥 THIS FIXES BREAKING */
+}
+
+/* MENU LINKS */
+nav ul {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+/* 📱 MOBILE NAV FIX */
+@media (max-width: 768px) {
+
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+}
+
+/* HERO TEXT */
+.hero h1 {
+  font-size: 64px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+} 
