@@ -925,3 +925,52 @@ box-shadow:
 
 
 
+/* GLOBAL MOBILE FIX */
+body {
+  font-size: 16px;
+}
+
+/* HEADINGS SCALE */
+h1 { font-size: 2rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.3rem; }
+
+/* CONTAINER WIDTH */
+.container {
+  width: 90%;
+  margin: auto;
+} 
+
+/* 📱 MOBILE VIEW */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 18px;
+  }
+
+  .lyrics-title {
+    font-size: 28px;
+  }
+
+  .lyrics-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lyrics-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+}
+
+img, video {
+  width: 100%;
+  height: auto;
+}
