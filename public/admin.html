@@ -3,13 +3,18 @@
 
 <head>
 
-<head>
-  <title>Lyrics | Vizag JamHub</title>
+<!-- =================================
+     Page Title
+================================= -->
 
-  <!-- ✅ ADD THIS (VERY IMPORTANT) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vizag JamHub Admin</title>
 
-  <link rel="stylesheet" href="/css/style.css">
+<!-- MOBILE VIEW -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Main styling -->
+<link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
@@ -56,7 +61,7 @@ Manage Shows
 Tickets
 </button>
 
-<!-- Logout button triggers logout() in auth.js -->
+<!-- Logout button (Firebase) -->
 
 <button class="admin-btn" onclick="logout()">
 Logout
@@ -68,19 +73,85 @@ Logout
 
 
 <!-- =================================
-     AUTHENTICATION SCRIPT
-     Handles login protection + logout
+     FIREBASE AUTH PROTECTION SCRIPT
+     Protects admin + handles logout
 ================================= -->
 
-<script src="/js/auth.js"></script>
+<script type="module">
+
+/* ================================
+   Import Firebase SDK
+================================ */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 
-<!-- =================================
-     ADMIN DASHBOARD SCRIPT
-     Will manage shows and tickets
-================================= -->
+/* ================================
+   Firebase Configuration
+================================ */
 
-<script src="/js/auth.js"></script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCBdBQ7wvLJkeGyMByazMigfDO9MRZEhl0",
+  authDomain: "vizagjamhub-d428a.firebaseapp.com",
+  projectId: "vizagjamhub-d428a",
+  appId: "1:577169499041:web:2d5ed9a35f62dbe847a1e0"
+};
+
+
+/* ================================
+   Initialize Firebase
+================================ */
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+
+/* ================================
+   PROTECT ADMIN PAGE
+   Redirect if not logged in
+================================ */
+
+onAuthStateChanged(auth, (user) => {
+
+  if (!user) {
+
+    // Not logged in → go to login
+    window.location.href = "/login.html";
+    return;
+
+  }
+
+  // 🔐 Allow only YOUR email
+  if (user.email !== "vizagjamhub@gmail.com") {
+
+    alert("Access denied");
+    window.location.href = "/";
+
+  }
+
+});
+
+
+/* ================================
+   LOGOUT FUNCTION
+================================ */
+
+window.logout = function () {
+
+  signOut(auth).then(() => {
+
+    window.location.href = "/login.html";
+
+  });
+
+};
+
+</script>
 
 </body>
 </html>
