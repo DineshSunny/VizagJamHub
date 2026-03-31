@@ -6,43 +6,43 @@ LOAD ALL SHOWS FOR ADMIN PANEL
 
 async function loadShows(){
 
-const res = await fetch("/api/shows")
-const shows = await res.json()
+  const res = await fetch("/api/shows");
+  const shows = await res.json();
 
-const container = document.getElementById("showsList")
+  const container = document.getElementById("showsList");
 
-if(!container) return
+  if(!container) return;
 
-container.innerHTML = ""
+  container.innerHTML = "";
 
-shows.forEach(show => {
+  shows.forEach(show => {
 
-container.innerHTML += `
+    container.innerHTML += `
 
-<div class="showCard">
+    <div class="showCard">
 
-<h3>${show.title}</h3>
-<p>${show.venue}</p>
-<p>${show.date}</p>
-<p>₹${show.price}</p>
+      <!-- 🔥 SHOW POSTER -->
+      ${show.poster ? `<img src="${show.poster}" class="showPoster">` : ""}
 
-<div class="showButtons">
+      <h3>${show.title}</h3>
+      <p>${show.venue}</p>
+      <p>${show.date}</p>
+      <p>₹${show.price || "0"}</p>
 
-<button onclick="editShow('${show.id}')">Edit</button>
+      <div class="showButtons">
 
-<button onclick="deleteShow('${show.id}')">Delete</button>
+        <button onclick="editShow('${show.id}')">Edit</button>
+        <button onclick="deleteShow('${show.id}')">Delete</button>
 
-</div>
+      </div>
 
-</div>
+    </div>
 
-`
-
-})
-
+    `;
+  });
 }
 
-loadShows()
+loadShows();
 
 
 
@@ -52,27 +52,39 @@ CREATE NEW SHOW
 ========================================
 */
 
-const showForm = document.getElementById("showForm")
+const showForm = document.getElementById("showForm");
 
 if(showForm){
 
-showForm.addEventListener("submit", async e => {
+  showForm.addEventListener("submit", async e => {
 
-e.preventDefault()
+    e.preventDefault();
 
-const formData = new FormData(e.target)
+    const formData = new FormData(showForm);
 
-await fetch("/api/shows",{
-method:"POST",
-body:formData
-})
+    try {
 
-alert("Show Created")
+      const res = await fetch("/api/shows",{
+        method:"POST",
+        body:formData
+      });
 
-// Clear form
-showForm.reset()
+      const data = await res.json();
 
-})
+      console.log("Created:", data);
+
+      alert("Show Created ✅");
+
+      showForm.reset();
+
+    } catch(err){
+
+      console.error(err);
+      alert("Error creating show ❌");
+
+    }
+
+  });
 
 }
 
@@ -86,11 +98,11 @@ DELETE SHOW
 
 async function deleteShow(id){
 
-await fetch("/api/shows/"+id,{
-method:"DELETE"
-})
+  await fetch("/api/shows/"+id,{
+    method:"DELETE"
+  });
 
-loadShows()
+  loadShows();
 
 }
 
@@ -104,6 +116,6 @@ EDIT SHOW PAGE
 
 function editShow(id){
 
-window.location.href="/edit-show.html?id="+id
+  window.location.href="/edit-show.html?id="+id;
 
 }
