@@ -11,8 +11,9 @@
 
 <!-- Main website styling -->
 <link rel="stylesheet" href="/css/style.css">
-  <!-- MOBILE VIEW -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+<!-- MOBILE VIEW -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   
 </head>
 
@@ -39,20 +40,16 @@
 
 <form class="login-form">
 
-<!-- Username input -->
-
+<!-- Username input (not used anymore, kept for UI) -->
 <input id="username" placeholder="Username" required>
 
-<!-- Password input -->
-
+<!-- Password input (not used anymore, kept for UI) -->
 <input id="password" type="password" placeholder="Password" required>
 
-<!-- Login button triggers login() in auth.js -->
-
+<!-- Login button triggers Firebase login -->
 <button type="button" onclick="login()">Login</button>
 
-<!-- Forgot password link triggers forgotPassword() -->
-
+<!-- Forgot password replaced with info -->
 <p class="forgot">
 <a onclick="forgotPassword()">Forgot Password?</a>
 </p>
@@ -63,11 +60,92 @@
 
 
 <!-- =================================
-     AUTHENTICATION SCRIPT
-     Handles login / logout / reset
+     FIREBASE AUTHENTICATION SCRIPT
+     Handles secure Google login
 ================================= -->
 
-<script src="/js/auth.js"></script>
+<script type="module">
+
+/* ================================
+   Import Firebase SDK (Web)
+================================ */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+/* ================================
+   Firebase Configuration
+================================ */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCBdBQ7wvLJkeGyMByazMigfDO9MRZEhl0",
+  authDomain: "vizagjamhub-d428a.firebaseapp.com",
+  projectId: "vizagjamhub-d428a",
+  storageBucket: "vizagjamhub-d428a.firebasestorage.app",
+  messagingSenderId: "577169499041",
+  appId: "1:577169499041:web:2d5ed9a35f62dbe847a1e0",
+  measurementId: "G-50M7EK2Y5D"
+};
+
+
+/* ================================
+   Initialize Firebase
+================================ */
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+
+/* ================================
+   LOGIN FUNCTION
+   Triggered when button clicked
+================================ */
+
+window.login = async function () {
+
+  try {
+
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    // 🔐 ADMIN ACCESS CONTROL
+    if (user.email === "vizagjamhub@gmail.com") {
+
+      window.location.href = "/admin.html";
+
+    } else {
+
+      alert("Not authorized");
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+    alert("Login failed");
+
+  }
+
+};
+
+
+/* ================================
+   FORGOT PASSWORD (DISABLED)
+================================ */
+
+window.forgotPassword = function () {
+
+  alert("Use Google login. No password required.");
+
+};
+
+</script>
 
 </body>
 </html>
