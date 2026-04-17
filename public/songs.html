@@ -2,19 +2,22 @@
 <html>
 
 <head>
-  <title>Lyrics | Vizag JamHub</title>
+  <title>Songs | Vizag JamHub</title>
 
-  <!-- MOBILE VIEW -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
 <header>
-  <nav>
+  <nav style="display:flex; justify-content:space-between; align-items:center; padding:10px 20px;">
     <div class="logo">Vizag JamHub</div>
+
+    <!-- ✅ Home Button -->
+    <a href="/index.html" class="lyrics-btn" style="font-size:14px; padding:8px 16px;">
+      🏠 Home
+    </a>
   </nav>
 </header>
 
@@ -22,20 +25,27 @@
 
   <div class="hero-content">
 
-    <h1>Select Language</h1>
+    <h1>Select Songs Category</h1>
 
-    <div style="margin-top:40px; display:flex; gap:30px; justify-content:center;">
+    <!-- ✅ Vertical Buttons -->
+    <div style="
+      margin-top:40px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:20px;
+    ">
 
       <a href="/lyrics.html?lang=english" class="lyrics-btn">
-        English
+        English Songs
       </a>
 
       <a href="/lyrics.html?lang=telugu" class="lyrics-btn">
-        Telugu
+        Telugu Songs
       </a>
 
       <a href="/lyrics.html?lang=hindi" class="lyrics-btn">
-        Hindi
+        Hindi Songs
       </a>
 
     </div>
