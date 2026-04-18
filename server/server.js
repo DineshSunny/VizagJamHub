@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 function readJSON(file) {
   if (fs.existsSync(file)) {
-    return JSON.parse(fs.readFileSync(file));
+    return JSON.parse(fs.readFileSync(file, "utf-8"));
   }
   return [];
 }
@@ -242,18 +242,26 @@ app.post("/guitar", (req, res) => {
    LYRICS SYSTEM
 ================================= */
 
-app.get("/api/lyrics", (req, res) => {
-
-  const file = path.resolve(__dirname, "../database/lyrics.json");
-
-  console.log("Reading file from:", file);
-
-  let lyrics = readJSON(file);
-
-  res.json(lyrics);
-
+// Telugu
+app.get("/api/telugusongs", (req, res) => {
+  const file = path.resolve(__dirname, "../database/telugusongs.json");
+  let songs = readJSON(file);
+  res.json(songs);
 });
 
+// English
+app.get("/api/englishsongs", (req, res) => {
+  const file = path.resolve(__dirname, "../database/englishsongs.json");
+  let songs = readJSON(file);
+  res.json(songs);
+});
+
+// Hindi
+app.get("/api/hindisongs", (req, res) => {
+  const file = path.resolve(__dirname, "../database/hindisongs.json");
+  let songs = readJSON(file);
+  res.json(songs);
+});
 
 /* =================================
    START SERVER

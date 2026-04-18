@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hindi Songs | Vizag JamHub</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Vizag JamHub</div>
+
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#shows">Shows</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="lyrics-page">
+
+  <h1>🎤 Hindi Songs</h1>
+
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="🔍 Search songs..." 
+    class="search-bar"
+  />
+
+  <div id="lyrics-container"></div>
+
+</section>
+
+<script src="/js/pagebehaviour.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const container = document.getElementById("lyrics-container");
+  const searchInput = document.getElementById("searchInput");
+
+  let songsData = [];
+
+  // ✅ LOAD HINDI DATA
+  fetch("/api/hindisongs")
+  .then(res => res.json())
+  .then(data => {
+    songsData = data;
+    renderSongs(data);
+  })
+  .catch(err => {
+    console.error("FETCH ERROR:", err);
+    container.innerHTML = "<p>Error loading songs</p>";
+  });
+
+  // ✅ RENDER SONG LIST
+  function renderSongs(data){
+
+    container.innerHTML = "";
+
+    data.sort((a, b) => a.song.localeCompare(b.song));
+
+    let currentLetter = "";
+
+    data.forEach(song => {
+
+      const firstLetter = song.song.charAt(0).toUpperCase();
+
+      if(firstLetter !== currentLetter){
+
+        currentLetter = firstLetter;
+
+        const section = document.createElement("div");
+        section.innerHTML = `
+          <h2 style="margin-top:30px; color:#00d4ff;">🎵 ${currentLetter}</h2>
+        `;
+
+        container.appendChild(section);
+      }
+
+      const item = document.createElement("div");
+      item.classList.add("song-item");
+
+      item.innerHTML = `
+        ${song.song} – <span style="color:#aaa;">${song.movie}</span>
+      `;
+
+      item.addEventListener("click", () => showLyrics(song));
+
+      container.appendChild(item);
+    });
+  }
+
+  // ✅ SEARCH
+  searchInput.addEventListener("input", () => {
+
+    const value = searchInput.value.toLowerCase();
+
+    const filtered = songsData.filter(song =>
+      song.song.toLowerCase().includes(value)
+    );
+
+    renderSongs(filtered);
+  });
+
+  // ✅ SHOW LYRICS
+  window.showLyrics = function(song){
+
+    const params = new URLSearchParams(window.location.search);
+    const scriptType = params.get("script") || "english";
+
+    let lyricsText = scriptType === "english"
+      ? song.lyrics_english
+      : song.lyrics_hindi;
+
+    container.innerHTML = `
+      <div style="width:100%; margin:40px 0; padding:0 20px;">
+
+        <h2>${song.song}</h2>
+        <p style="opacity:0.7;">${song.movie}</p>
+
+        <p style="
+          margin-top:20px;
+          white-space:pre-line;
+          line-height:1.9;
+          font-size:16px;
+          text-align:left;
+        ">
+          ${lyricsText || "Lyrics coming soon..."}
+        </p>
+
+        <br>
+
+        <button onclick="location.reload()" class="lyrics-btn">
+          ⬅ Back to Songs
+        </button>
+
+      </div>
+    `;
+
+    // ✅ smooth scroll
+    goTop(true);
+  }
+
+});
+
+</script>
+
+</body>
+</html>

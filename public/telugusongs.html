@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let songsData = [];
 
   // LOAD DATA
-  fetch("/api/lyrics")
+  fetch("/api/telugusongs")
   .then(res => res.json())
   .then(data => {
     songsData = data;
@@ -127,11 +127,11 @@ function renderSongs(data){
 window.showLyrics = function(song){
 
   const params = new URLSearchParams(window.location.search);
-  const selectedLang = params.get("lang") || "english";
+  const scriptType = params.get("script") || "english";
 
-  let lyricsText = selectedLang === "telugu"
-    ? song.lyrics_telugu
-    : song.lyrics_english;
+  let lyricsText = scriptType === "english"
+    ? song.lyrics_english
+    : song.lyrics_telugu;
 
   container.innerHTML = `
     <div style="width:100%; margin:40px 0; padding:0 20px;">
@@ -157,6 +157,10 @@ window.showLyrics = function(song){
 
     </div>
   `;
+
+     // ✅ smooth scroll
+    goTop(true);
+  
 }
 
 });
