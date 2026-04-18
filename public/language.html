@@ -2,19 +2,22 @@
 <html>
 
 <head>
-  <title>Lyrics | Vizag JamHub</title>
+  <title>Select Script | Vizag JamHub</title>
 
-  <!-- MOBILE VIEW -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
 <header>
-  <nav>
+  <nav style="display:flex; justify-content:space-between; align-items:center; padding:10px 20px;">
     <div class="logo">Vizag JamHub</div>
+
+    <!-- Back -->
+    <a href="/category.html" class="lyrics-btn" style="font-size:14px; padding:8px 16px;">
+      ⬅ Back
+    </a>
   </nav>
 </header>
 
@@ -22,27 +25,71 @@
 
   <div class="hero-content">
 
-    <h1>Select Language</h1>
+    <h1 id="title">Select Script</h1>
 
-    <div style="margin-top:40px; display:flex; gap:30px; justify-content:center;">
-
-      <a href="/lyrics.html?lang=english" class="lyrics-btn">
-        English
-      </a>
-
-      <a href="/lyrics.html?lang=telugu" class="lyrics-btn">
-        Telugu
-      </a>
-
-      <a href="/lyrics.html?lang=hindi" class="lyrics-btn">
-        Hindi
-      </a>
-
-    </div>
+    <!-- Dynamic Buttons -->
+    <div id="languageOptions" style="
+      margin-top:40px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:20px;
+    "></div>
 
   </div>
 
 </section>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const type = params.get("type");
+
+const container = document.getElementById("languageOptions");
+const title = document.getElementById("title");
+
+// 🔥 TELUGU
+if (type === "telugu") {
+  title.innerText = "Select Telugu Script";
+
+  container.innerHTML = `
+    <a href="/telugusongs.html?script=english" class="lyrics-btn" style="width:240px; text-align:center;">
+      English
+    </a>
+
+    <a href="/telugusongs.html?script=native" class="lyrics-btn" style="width:240px; text-align:center;">
+      తెలుగు
+    </a>
+  `;
+}
+
+// 🔥 HINDI
+if (type === "hindi") {
+  title.innerText = "Select Hindi Script";
+
+  container.innerHTML = `
+    <a href="/hindisongs.html?script=english" class="lyrics-btn" style="width:240px; text-align:center;">
+      English
+    </a>
+
+    <a href="/hindisongs.html?script=native" class="lyrics-btn" style="width:240px; text-align:center;">
+      हिंदी
+    </a>
+  `;
+}
+
+// ❗ Safety (if opened directly)
+if (!type) {
+  title.innerText = "Invalid Access";
+
+  container.innerHTML = `
+    <a href="/category.html" class="lyrics-btn" style="width:240px; text-align:center;">
+      Go to Categories
+    </a>
+  `;
+}
+
+</script>
 
 </body>
 </html>

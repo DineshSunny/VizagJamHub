@@ -59,20 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/api/lyrics")
   .then(res => res.json())
   .then(data => {
-
-  const params = new URLSearchParams(window.location.search);
-  const selectedLang = params.get("lang");
-
-  // 🔥 FILTER BASED ON LANG
-  if (selectedLang) {
-    songsData = data.filter(song => song.lang === selectedLang);
-  } else {
     songsData = data;
-  }
-
-  renderSongs(songsData);
-
-})
+    renderSongs(data);
+  })
   .catch(err => {
     console.error("FETCH ERROR:", err);
     container.innerHTML = "<p>Error loading songs</p>";
