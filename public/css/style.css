@@ -1040,3 +1040,14 @@ nav ul li {
   gap: 20px;
 }
 
+/* Hindi + Telugu consistency */
+.lyrics-page p {
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+/* Force better rendering for Hindi */
+.lyrics-page p:lang(hi),
+.lyrics-page p {
+  font-family: "Noto Sans Devanagari", "Noto Sans Telugu", sans-serif;
+}
