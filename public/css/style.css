@@ -1051,3 +1051,30 @@ nav ul li {
 .lyrics-page p {
   font-family: "Noto Sans Devanagari", "Noto Sans Telugu", sans-serif;
 }
+
+
+/* =========================
+   🎵 SONG LIST (BIGGER)
+========================= */
+
+.song-item {
+  font-size: 20px;
+  padding: 14px 18px;
+}
+
+.song-item span {
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+/* =========================
+   🎤 LYRICS TEXT ONLY
+========================= */
+
+.lyrics-text {
+  margin-top: 20px;
+  white-space: pre-line;
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.9;
+}
