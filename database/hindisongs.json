@@ -1,7 +1,9 @@
-{
-  "id": 1,
-  "song": "Tum Hi Ho",
-  "movie": "Aashiqui 2",
-  "lyrics_hindi": "हम तेरे बिन अब रह नहीं सकते\nतेरे बिना क्या वजूद मेरा\n\nतुम ही हो...\nतुम ही हो...",
-  "lyrics_english": "Hum tere bin ab reh nahi sakte\nTere bina kya wajood mera\n\nTum hi ho...\nTum hi ho..."
-}
+[
+  {
+    "id": 1,
+    "song": "Tum Hi Ho",
+    "movie": "Aashiqui 2",
+    "lyrics_hindi": "हम तेरे बिन अब रह नहीं सकते\nतेरे बिना क्या वजूद मेरा\n\nतुम ही हो...",
+    "lyrics_english": "Hum tere bin ab reh nahi sakte\nTere bina kya wajood mera\n\nTum hi ho..."
+  }
+]
