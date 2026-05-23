@@ -66,7 +66,18 @@ z-index:-3;
 filter:brightness(1.0) contrast(1.15) saturate(1.0);
 }
 
+@media (max-width:768px){
 
+#bg-video{
+
+width:100vw;
+height:100vh;
+
+object-fit:cover;
+
+}
+
+}
 
 /* OVERLAY VIDEO */
 
