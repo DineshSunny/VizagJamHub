@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Vizag JamHub</title>
+
+  <!-- ✅ ADD THIS LINE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+  
+</head> 
+<!-- GALLERY IMAGE POPUP SCRIPT -->
+
+<script>
+
+document.addEventListener('click', function(e){
+
+if(e.target.matches('.gallery-track img')){
+
+const popup = document.createElement('div');
+popup.classList.add('image-popup');
+
+popup.innerHTML = `<img src="${e.target.src}">`;
+
+document.body.appendChild(popup);
+
+const closePopup = () => {
+popup.remove();
+window.removeEventListener('scroll', closePopup);
+};
+
+setTimeout(() => {
+
+document.addEventListener('click', function outsideClick(event){
+
+if(!event.target.closest('.image-popup img')){
+closePopup();
+document.removeEventListener('click', outsideClick);
+}
+
+});
+
+},100);
+
+window.addEventListener('scroll', closePopup);
+
+}
+
+});
+
+</script>
+<body>
+
+<!-- VIDEO BACKGROUND -->
+
+<video autoplay muted loop playsinline id="bg-video">
+<source src="Video/1.mp4" type="video/mp4">
+</video>
+
+
+<!-- HEADER / NAVBAR -->
+
+<header>
+
+<nav>
+
+<div class="logo">Vizag JamHub</div>
+
+<ul>
+<li><a href="#shows">Shows</a></li>
+<li><a href="#school">School</a></li>
+<li><a href="#connect">Band Connect</a></li>
+<li><a href="#gallery">Gallery</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Vizag JamHub</h1>
+
+<p>Connecting Musicians. Creating Music. Performing Live.</p>
+
+<div class="soundwave">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</section>
+
+
+<section class="lyrics-section">
+<a href="/category.html" class="lyrics-btn">
+Sing Along Lyrics
+</a>
+</section>
+
+<!-- =================================
+     UPCOMING SHOWS
+================================= -->
+
+<section id="shows">
+
+<h1>Upcoming Shows</h1>
+
+<!-- Shows will load here dynamically -->
+
+<div class="cards" id="shows-container">
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- MUSIC SCHOOL -->
+
+<section id="school" class="guitar-school">
+
+<h2>Vizag JamHub School</h2>
+
+<p>Learn Music and develop real stage skills</p>
+
+<div class="guitar-courses">
+
+<a href="guitar.html">
+<div class="course-card">
+<img src="Images/Guitar.jpg" class="course-img">
+<h3>Guitar</h3>
+</div>
+</a>
+
+
+<a href="drums.html">
+<div class="course-card">
+<img src="Images/Drums.jpg" class="course-img">
+<h3>Drums</h3>
+</div>
+</a>
+
+
+<a href="vocals.html">
+<div class="course-card">
+<img src="Images/Vocals.jpg" class="course-img">
+<h3>Vocals</h3>
+</div>
+</a>
+
+</div>
+
+</section>
+
+
+<!-- BAND CONNECT -->
+
+<section id="connect">
+
+<h2>Band Connect</h2>
+
+<p>Looking for musicians? Connect with bands.</p>
+
+<form>
+
+<input placeholder="Your Name" required>
+
+<input placeholder="Instrument / Role">
+
+<textarea placeholder="Describe what you are looking for"></textarea>
+
+<button type="submit">Post</button>
+
+</form>
+
+</section>
+
+<!-- BOOK US -->
+
+<section id="book">
+
+<h2>Book Us</h2>
+
+<form>
+
+<input placeholder="Name" required>
+
+<input placeholder="Email">
+
+<input placeholder="Location">
+
+<input type="date">
+
+<textarea placeholder="Event Details"></textarea>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<h2 style="text-align:center;">Gallery</h2>
+
+<div class="gallery-wrapper">
+
+<div class="gallery-track">
+
+<img src="Images/1.jpg">
+<img src="Images/2.jpg">
+<img src="Images/3.jpg">
+<img src="Images/4.jpg">
+<img src="Images/5.jpg">
+<img src="Images/6.jpg">
+<img src="Images/7.jpg">
+<img src="Images/8.jpg">
+<img src="Images/9.jpg">
+<img src="Images/10.jpg">
+<img src="Images/11.jpg">
+
+<img src="Images/1.jpg">
+<img src="Images/2.jpg">
+<img src="Images/3.jpg">
+<img src="Images/4.jpg">
+<img src="Images/5.jpg">
+<img src="Images/6.jpg">
+<img src="Images/7.jpg">
+<img src="Images/8.jpg">
+<img src="Images/9.jpg">
+<img src="Images/10.jpg">
+<img src="Images/11.jpg">
+
+
+</section>
+
+<!-- SMOOTH SCROLL -->
+
+<script>
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+anchor.addEventListener('click', function(e) {
+
+e.preventDefault();
+
+document.querySelector(this.getAttribute('href')).scrollIntoView({
+behavior: 'smooth'
+});
+
+});
+
+});
+
+</script>
+
+
+<!-- =================================
+     LOAD UPCOMING SHOWS
+================================= -->
+
+<script src="/js/index.js"></script>
+
+</body>
+</html>
