@@ -53,6 +53,7 @@ z-index:-1;
 }
 
 
+
 /* VIDEO BACKGROUND */
 
 #bg-video{
@@ -91,11 +92,7 @@ object-fit:cover;
 
 z-index:-2;
 
-opacity:0.55;
-
 pointer-events:none;
-
-mix-blend-mode:screen;
 }
 
 /* HEADER */
