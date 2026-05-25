@@ -80,6 +80,8 @@ window.addEventListener('scroll', closePopup);
 <div class="menu-toggle">&#9776;</div>
 
 <ul class="nav-links">
+<li><a href="/index.html">Home</a></li>
+<li><a href="/category.html">Sing Along Lyrics</a></li>
 <li><a href="#shows">Shows</a></li>
 <li><a href="#school">School</a></li>
 <li><a href="#connect">Band Connect</a></li>
@@ -276,9 +278,8 @@ behavior: 'smooth'
 
 
 <script>
-
 /* =========================
-   MOBILE MENU TOGGLE
+   NAV MENU TOGGLE
 ========================= */
 
 const menuToggle = document.querySelector(".menu-toggle");
@@ -290,6 +291,21 @@ navLinks.classList.toggle("active");
 
 });
 
+/* CLOSE MENU WHEN CLICKING OUTSIDE */
+
+document.addEventListener("click", (e) => {
+
+if(
+!navLinks.contains(e.target) &&
+!menuToggle.contains(e.target)
+){
+
+navLinks.classList.remove("active");
+
+}
+
+});
+
 </script>
 
 
@@ -298,7 +314,7 @@ navLinks.classList.toggle("active");
 <script>
 
 /* =================================
-   OVERLAY LOGO SCROLL FADE
+   OVERLAY LOGO SCROLL FADE LOGO
 ================================= */
 
 const overlayLogo = document.getElementById("overlay-logo");

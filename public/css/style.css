@@ -141,30 +141,6 @@ position:relative;
 }
 
 
-/* NAV HOVER */
-
-nav a::after{
-content:"";
-position:absolute;
-width:0%;
-height:2px;
-background:#00d4ff;
-left:0;
-bottom:-5px;
-transition:0.3s;
-}
-
-nav a:hover::after{
-width:100%;
-}
-
-
-.logo{
-font-size:40px;
-font-weight:bold;
-letter-spacing:2px;
-}
-
 
 /* HERO */
 
@@ -1115,6 +1091,7 @@ nav ul li {
    NAVBAR
 ========================= */
 
+
 header{
 position:fixed;
 top:0;
@@ -1144,8 +1121,8 @@ display:block;
 
 position:fixed;
 
-top:18px;
-left:18px;
+top:8px;
+left:8px;
 
 font-size:34px;
 
@@ -1156,32 +1133,74 @@ color:white;
 z-index:9999;
 }
 
-/* DROPDOWN MENU */
+/* LEFT SLIDE MENU */
 
 .nav-links{
-display:none;
 
+display:flex;
 flex-direction:column;
 
-position:absolute;
+position:fixed;
 
-top:80px;
-left:20px;
+top:0;
+left:-100%;
 
-background:rgba(0,0,0,0.92);
+width:260px;
+height:100vh;
 
-padding:20px;
+background:rgba(0,0,0,0.96);
+
+padding-top:120px;
+padding-left:30px;
+
+gap:25px;
+
+list-style:none;
+
+transition:0.35s ease;
+
+z-index:9998;
+}
+
+/* OPEN STATE */
+
+.nav-links.active{
+left:0;
+}
+
+
+/* MENU LINK BOXES */
+
+.nav-links li a{
+
+display:block;
+
+width:190px;
+
+padding:14px 18px;
+
+background:#111;
+
+border:1px solid rgba(255,255,255,0.15);
 
 border-radius:12px;
 
-gap:15px;
+color:white;
 
-list-style:none;
+text-decoration:none;
+
+transition:0.25s ease;
+
 }
 
-/* SHOW MENU */
+.nav-links li a:hover{
 
-.nav-links.active{
-display:flex;
+transform:translateX(6px);
+
+box-shadow:
+0 0 10px #00d4ff,
+0 0 20px #00d4ff;
+
+border-color:#00d4ff;
+
 }
-
