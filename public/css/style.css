@@ -1186,41 +1186,75 @@ nav ul li {
 }
 
 /* =========================
-   MOBILE NAV MENU
+   NAVBAR
 ========================= */
 
-/* =========================
-   MOBILE NAV MENU
-========================= */
+header{
+position:fixed;
+top:0;
+left:0;
 
-.menu-toggle{
-display:none;
+width:100%;
+
+min-height:80px;
+
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(6px);
+
+padding:20px;
+
+z-index:9998;
 }
 
-@media (max-width:768px){
+nav{
+display:flex;
+align-items:center;
+}
+
+/* HAMBURGER ICON */
 
 .menu-toggle{
 display:block;
-font-size:32px;
+
+position:fixed;
+
+top:18px;
+left:18px;
+
+font-size:34px;
+
 cursor:pointer;
+
 color:white;
+
+z-index:9999;
 }
+
+/* DROPDOWN MENU */
 
 .nav-links{
 display:none;
+
 flex-direction:column;
-width:100%;
-text-align:center;
-margin-top:15px;
+
+position:absolute;
+
+top:80px;
+left:20px;
+
+background:rgba(0,0,0,0.92);
+
+padding:20px;
+
+border-radius:12px;
+
+gap:15px;
+
+list-style:none;
 }
+
+/* SHOW MENU */
 
 .nav-links.active{
 display:flex;
-}
-
-#overlay-logo{
-width:120vw;
-max-width:none;
-}
-
 }
