@@ -2,24 +2,57 @@
 <html>
 
 <head>
-  <title>Songs | Vizag JamHub</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet"
+      href="/css/mobile.css"
+      media="screen and (max-width:768px)">
+
+
 </head>
 
 <body>
 
-<header>
-  <nav style="display:flex; justify-content:space-between; align-items:center; padding:10px 20px;">
-    <div class="logo">Vizag JamHub</div>
+  <!-- VIDEO BACKGROUND -->
 
-    <!-- ✅ Home Button -->
-    <a href="/index.html" class="lyrics-btn" style="font-size:14px; padding:8px 16px;">
-      Home
-    </a>
-  </nav>
+<video autoplay muted loop playsinline preload="metadata" id="bg-video">
+<source src="/Video/3.mp4" type="video/mp4">
+</video>
+
+<div class="top-logo">
+<img src="/Images/Logo.png">
+</div>
+
+
+
+<!-- HEADER -->
+
+<header>
+
+<nav>
+
+<div class="menu-toggle">&#9776;</div>
+
+<ul class="nav-links">
+
+<li><a href="/index.html">Home</a></li>
+<li><a href="/category.html">Sing Along Lyrics</a></li>
+<li><a href="/guitar.html">Guitar</a></li>
+<li><a href="/drums.html">Drums</a></li>
+<li><a href="/vocals.html">Vocals</a></li>
+
+</ul>
+
+</nav>
+
 </header>
+
+
 
 <section class="hero">
 
@@ -53,6 +86,6 @@
   </div>
 
 </section>
-
+<script src="js/menu.js"></script>
 </body>
 </html>

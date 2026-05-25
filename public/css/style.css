@@ -90,6 +90,11 @@ pointer-events:none;
 opacity:0;
 }
 
+
+
+
+
+
 /* OVER LAY LOGO */
 
 
@@ -110,6 +115,42 @@ opacity:0.9;
 
 pointer-events:none;
 }
+
+
+/* TOP PAGE LOGO */
+
+.top-logo{
+
+width:100%;
+
+display:flex;
+justify-content:center;
+
+padding-top:10px;
+padding-bottom:5px;
+
+margin-top:-20px;
+
+position:relative;
+
+z-index:5;
+}
+
+.top-logo img{
+
+width:1000px;
+max-width:85%;
+
+}
+
+.top-logo{
+padding-bottom:0;
+margin-bottom:-350px;
+}
+
+
+
+
 
 /* HEADER */
 
