@@ -75,7 +75,9 @@ window.addEventListener('scroll', closePopup);
 
 <div class="logo">Vizag JamHub</div>
 
-<ul>
+<div class="menu-toggle">&#9776;</div>
+
+<ul class="nav-links">
 <li><a href="#shows">Shows</a></li>
 <li><a href="#school">School</a></li>
 <li><a href="#connect">Band Connect</a></li>
@@ -269,6 +271,27 @@ behavior: 'smooth'
 ================================= -->
 
 <script src="/js/index.js"></script>
+
+
+
+<script>
+
+/* =========================
+   MOBILE MENU TOGGLE
+========================= */
+
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click", () => {
+
+navLinks.classList.toggle("active");
+
+});
+
+</script>
+
+
 
 
 <script>
