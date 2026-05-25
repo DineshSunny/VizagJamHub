@@ -1032,56 +1032,6 @@ box-shadow:
 
 
 
-/* GLOBAL MOBILE FIX */
-body {
-  font-size: 16px;
-}
-
-/* HEADINGS SCALE */
-h1 { font-size: 2rem; }
-h2 { font-size: 1.6rem; }
-h3 { font-size: 1.3rem; }
-
-/* CONTAINER WIDTH */
-.container {
-  width: 90%;
-  margin: auto;
-} 
-
-/* 📱 MOBILE VIEW */
-@media (max-width: 768px) {
-
-  body {
-    font-size: 18px;
-  }
-
-  .lyrics-title {
-    font-size: 28px;
-  }
-
-  .lyrics-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .lyrics-card {
-    width: 90%;
-    padding: 15px;
-  }
-
-  button {
-    width: 100%;
-    padding: 14px;
-    font-size: 16px;
-  }
-
-}
-
-img {
-  width: 100%;
-  height: auto;
-}
-
 /* NAVBAR FIX */
 nav {
   display: flex;
@@ -1103,36 +1053,11 @@ nav ul li {
   list-style: none;
 }
 
-/* 📱 MOBILE NAV FIX */
-@media (max-width: 768px) {
-
-  nav {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-}
 
 /* HERO TEXT */
 .hero h1 {
   font-size: 64px;
 }
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 36px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-} 
 
 
 /* LYRICS PAGE FIX */
@@ -1260,27 +1185,3 @@ list-style:none;
 display:flex;
 }
 
-/* =========================
-   MOBILE VIDEO FIX
-========================= */
-
-@media (max-width:768px){
-
-#bg-video{
-
-width:auto;
-height:100vh;
-
-min-width:100%;
-min-height:100%;
-
-object-fit:cover;
-
-}
-
-#overlay-logo{
-width:170vw;
-max-width:none;
-}
-
-}

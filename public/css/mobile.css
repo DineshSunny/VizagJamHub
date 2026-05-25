@@ -1,0 +1,165 @@
+/* =========================
+   MOBILE ONLY CSS
+========================= */
+
+body{
+font-size:18px;
+overflow-x:hidden;
+}
+
+/* VIDEO */
+
+#bg-video{
+width:auto;
+height:100vh;
+
+min-width:100%;
+min-height:100%;
+
+object-fit:cover;
+}
+
+/* BIGGER MOBILE LOGO */
+
+#overlay-logo{
+width:170vw;
+max-width:none;
+}
+
+/* HERO */
+
+.hero h1{
+font-size:36px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+/* NAVBAR */
+
+header{
+padding:15px;
+min-height:70px;
+}
+
+.menu-toggle{
+display:block;
+
+position:fixed;
+
+top:8px;
+left:8px;
+
+font-size:34px;
+
+cursor:pointer;
+
+color:white;
+
+z-index:9999;
+}
+
+/* DROPDOWN */
+
+.nav-links{
+display:none;
+
+flex-direction:column;
+
+position:absolute;
+
+top:70px;
+left:10px;
+
+background:rgba(0,0,0,0.92);
+
+padding:20px;
+
+border-radius:12px;
+
+gap:15px;
+
+list-style:none;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+/* HIDE NORMAL NAV STRUCTURE */
+
+nav{
+justify-content:flex-start;
+}
+
+/* SECTIONS */
+
+section{
+padding:40px 15px;
+}
+
+/* SCHOOL CARDS */
+
+.guitar-courses{
+flex-direction:column;
+align-items:center;
+}
+
+.course-card{
+width:90%;
+}
+
+/* SHOW CARDS */
+
+#shows-container{
+flex-direction:column;
+align-items:center;
+}
+
+.show-card{
+width:92%;
+height:340px;
+}
+
+/* FORMS */
+
+#book form,
+#connect form,
+#ticketForm{
+width:95%;
+}
+
+/* GALLERY */
+
+.gallery-track img{
+width:220px;
+height:150px;
+}
+
+/* POPUP */
+
+.image-popup img{
+max-width:90%;
+max-height:90%;
+}
+
+/* LYRICS */
+
+.lyrics-btn{
+font-size:18px;
+padding:14px 28px;
+}
+
+.search-bar{
+width:90%;
+}
+
+.song-item{
+font-size:18px;
+}
+
+.lyrics-text{
+font-size:17px;
+line-height:1.8;
+}
