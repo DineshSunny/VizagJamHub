@@ -149,6 +149,33 @@ margin-bottom:-350px;
 }
 
 
+/* SOFT LYRICS VIDEO */
+
+.lyrics-video{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100vw;
+height:100vh;
+
+object-fit:cover;
+
+z-index:-3;
+
+opacity:0.18;
+
+filter:
+brightness(0.40)
+blur(2px);
+
+pointer-events:none;
+
+transform:scale(1.05);
+
+}
 
 
 
