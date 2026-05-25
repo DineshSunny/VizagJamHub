@@ -70,6 +70,8 @@ z-index:-3;
 
 will-change:transform;
 transform:translateZ(0);
+
+backface-visibility:hidden;
 }
 
 /* INVISIBLE STABILIZER */
