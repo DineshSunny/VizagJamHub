@@ -72,28 +72,42 @@ will-change:transform;
 transform:translateZ(0);
 }
 
-
-/* TRANSPARENT LOGO OVERLAY */
+/* INVISIBLE STABILIZER */
 
 #overlay-video{
 position:fixed;
+top:0;
+left:0;
+
+width:100vw;
+height:100vh;
+
+z-index:-2;
+
+pointer-events:none;
+
+opacity:0;
+}
+
+/* OVER LAY LOGO */
+
+
+#overlay-logo{
+position:fixed;
+
 top:50%;
 left:50%;
 
 transform:translate(-50%,-50%);
 
 width:100vw;
-height:100vh;
+max-width:900px;
 
-object-fit:contain;
+z-index:2;
 
-z-index:-2;
-
-opacity:1;
+opacity:0.9;
 
 pointer-events:none;
-
-will-change:transform;
 }
 
 /* HEADER */
@@ -1062,7 +1076,7 @@ h3 { font-size: 1.3rem; }
 
 }
 
-img, video {
+img {
   width: 100%;
   height: auto;
 }
@@ -1170,3 +1184,4 @@ nav ul li {
   font-size: 18px;
   line-height: 1.9;
 }
+

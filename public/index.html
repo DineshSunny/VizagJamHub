@@ -10,9 +10,14 @@
   <link rel="stylesheet" href="css/style.css">
   
 </head> 
-<!-- GALLERY IMAGE POPUP SCRIPT -->
+
 
 <script>
+
+/* =================================
+   GALLERY IMAGE POPUP SCRIPT
+================================= */
+
 
 document.addEventListener('click', function(e){
 
@@ -58,9 +63,8 @@ window.addEventListener('scroll', closePopup);
 <source src="Video/1.mp4" type="video/mp4">
 </video>
 
-<video autoplay muted loop playsinline id="overlay-video">
-  <source src="Video/Logo.webm" type="video/webm">
-</video>
+<img src="Images/Logo.png" id="overlay-logo">
+
 
 
 <!-- HEADER / NAVBAR -->
@@ -266,5 +270,33 @@ behavior: 'smooth'
 
 <script src="/js/index.js"></script>
 
+
+<script>
+
+/* =================================
+   OVERLAY LOGO SCROLL FADE
+================================= */
+
+const overlayLogo = document.getElementById("overlay-logo");
+const lyricsSection = document.querySelector(".lyrics-section");
+
+window.addEventListener("scroll", () => {
+
+const lyricsBottom = lyricsSection.offsetTop + lyricsSection.offsetHeight;
+
+if(window.scrollY > lyricsBottom - 800){
+
+overlayLogo.style.opacity = "0";
+
+}
+else{
+
+overlayLogo.style.opacity = "0.9";
+
+}
+
+});
+
+</script>
 </body>
 </html>
