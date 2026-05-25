@@ -1278,4 +1278,9 @@ object-fit:cover;
 
 }
 
+#overlay-logo{
+width:170vw;
+max-width:none;
+}
+
 }
