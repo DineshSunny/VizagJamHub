@@ -1283,3 +1283,196 @@ box-shadow:
 border-color:#00d4ff;
 
 }
+
+
+/* =========================
+   FLOATING MUSIC NOTES
+========================= */
+
+.music-notes{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:4;
+
+}
+
+/* NOTES */
+
+.music-notes span{
+
+position:absolute;
+
+bottom:-80px;
+
+color:#00d4ff;
+
+text-shadow:
+0 0 10px currentColor,
+0 0 20px currentColor,
+0 0 40px currentColor;
+
+opacity:0;
+
+animation:floatNotes linear infinite;
+
+}
+
+/* RANDOM POSITIONS + SPEEDS */
+
+.music-notes span:nth-child(1){
+left:8%;
+animation-duration:12s;
+animation-delay:0s;
+color:#00d4ff;
+}
+
+.music-notes span:nth-child(2){
+left:18%;
+animation-duration:16s;
+animation-delay:2s;
+color:white;
+}
+
+.music-notes span:nth-child(3){
+left:28%;
+animation-duration:14s;
+animation-delay:1s;
+color:#00d4ff;
+}
+
+.music-notes span:nth-child(4){
+left:38%;
+animation-duration:18s;
+animation-delay:3s;
+color:white;
+}
+
+.music-notes span:nth-child(5){
+left:48%;
+animation-duration:15s;
+animation-delay:0s;
+color:#00d4ff;
+}
+
+.music-notes span:nth-child(6){
+left:58%;
+animation-duration:20s;
+animation-delay:2s;
+color:white;
+}
+
+.music-notes span:nth-child(7){
+left:68%;
+animation-duration:13s;
+animation-delay:1s;
+color:#00d4ff;
+}
+
+.music-notes span:nth-child(8){
+left:78%;
+animation-duration:17s;
+animation-delay:4s;
+color:white;
+}
+
+.music-notes span:nth-child(9){
+left:88%;
+animation-duration:15s;
+animation-delay:0s;
+color:#00d4ff;
+}
+
+.music-notes span:nth-child(10){
+left:95%;
+animation-duration:19s;
+animation-delay:3s;
+color:white;
+}
+
+.music-notes span:nth-child(11){
+left:52%;
+animation-duration:21s;
+animation-delay:5s;
+color:#00d4ff;
+}
+
+.music-notes span:nth-child(12){
+left:32%;
+animation-duration:18s;
+animation-delay:2s;
+color:white;
+}
+
+/* SIZE VARIATIONS */
+
+.music-notes span:nth-child(odd){
+font-size:22px;
+}
+
+.music-notes span:nth-child(even){
+font-size:34px;
+}
+
+.music-notes span:nth-child(3n){
+font-size:44px;
+opacity:0.7;
+}
+
+.music-notes span:nth-child(5n){
+font-size:18px;
+opacity:0.9;
+}
+
+/* FLOATING EFFECT */
+
+@keyframes floatNotes{
+
+0%{
+
+transform:
+translateY(0)
+translateX(0)
+rotate(0deg);
+
+opacity:0;
+
+}
+
+10%{
+opacity:0.8;
+}
+
+50%{
+
+transform:
+translateY(-50vh)
+translateX(25px)
+rotate(10deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translateY(-120vh)
+translateX(-20px)
+rotate(-10deg);
+
+opacity:0;
+
+}
+
+}
