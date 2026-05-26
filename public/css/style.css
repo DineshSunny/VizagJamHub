@@ -56,8 +56,12 @@ z-index:-1;
 
 /* VIDEO BACKGROUND */
 
+/* GLOBAL CINEMATIC VIDEO */
+
 #bg-video{
+
 position:fixed;
+
 top:0;
 left:0;
 
@@ -68,9 +72,16 @@ object-fit:cover;
 
 z-index:-3;
 
-backface-visibility:hidden;
+opacity:1.0;
 
-image-rendering:auto;
+filter:
+brightness(0.60)
+blur(4px);
+
+pointer-events:none;
+
+transform:scale(1.05);
+
 }
 
 /* INVISIBLE STABILIZER */
