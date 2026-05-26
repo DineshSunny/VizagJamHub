@@ -164,6 +164,8 @@ font-size:17px;
 line-height:1.8;
 }
 
+
+
 /* SUBPAGE TOP LOGO MOBILE FIX */
 
 .top-logo{
@@ -172,7 +174,7 @@ display:flex;
 justify-content:center;
 
 padding-top:65px;
-padding-bottom:10px;
+padding-bottom:60px;
 
 }
 
@@ -182,5 +184,26 @@ width:320px;
 max-width:85%;
 
 height:auto;
+
+}
+
+
+
+
+
+/* MOBILE VIDEO DESTRETCH FIX */
+
+#bg-video,
+.lyrics-video{
+
+width:auto;
+height:100vh;
+
+min-width:100%;
+min-height:100%;
+
+object-fit:cover;
+
+object-position:center center;
 
 }
