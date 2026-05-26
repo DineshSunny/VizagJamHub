@@ -9,7 +9,11 @@ overflow-x:hidden;
 
 /* VIDEO */
 
-#bg-video{
+/* VIDEO */
+
+#bg-video,
+.lyrics-video{
+
 width:auto;
 height:100vh;
 
@@ -17,7 +21,13 @@ min-width:100%;
 min-height:100%;
 
 object-fit:cover;
+
+object-position:center center;
+
 }
+
+
+
 
 /* BIGGER MOBILE LOGO */
 
