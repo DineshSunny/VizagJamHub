@@ -590,21 +590,57 @@ box-shadow:0 0 15px #00d4ff;
 
 
 
+/*===================================================================================================================================================================*/
+
+
 /* GALLERY */
 
 .gallery-wrapper{
-overflow:hidden;
+
+overflow-x:auto;
+overflow-y:hidden;
+
 width:100vw;
+
 position:relative;
+
 margin-left:calc(-50vw + 50%);
+
 padding:20px 0;
+
+scroll-behavior:smooth;
+
+cursor:grab;
+
+scrollbar-width:none;
+
+-webkit-overflow-scrolling:touch;
+
+touch-action:pan-x;
+
 }
+
+/* HIDE SCROLLBAR */
+
+.gallery-wrapper::-webkit-scrollbar{
+display:none;
+}
+
+
 
 .gallery-track{
 display:flex;
 gap:20px;
 animation:scrollGallery 25s linear infinite;
 width:fit-content;
+}
+
+/* PAUSE AUTO SCROLL DURING INTERACTION */
+
+.gallery-wrapper:hover .gallery-track{
+
+animation-play-state:paused;
+
 }
 
 .gallery-track img{
@@ -1302,6 +1338,14 @@ border-color:#00d4ff;
 }
 
 
+
+
+
+/* ===========================================================================================================================================*/
+
+
+
+
 /* =========================
    BACKGROUND BLUR ON MENU OPEN
 ========================= */
@@ -1320,12 +1364,6 @@ transition:
 all 0.35s ease;
 
 }
-
-
-
-
-/* ===========================================================================================================================================*/
-
 
 
 /* BLUR PAGE CONTENT */
