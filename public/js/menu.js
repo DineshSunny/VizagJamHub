@@ -5,6 +5,8 @@ menuToggle.addEventListener("click", () => {
 
 navLinks.classList.toggle("active");
 
+document.body.classList.toggle("menu-open");
+
 });
 
 /* CLOSE MENU WHEN CLICKING OUTSIDE */
@@ -17,6 +19,10 @@ if(
 ){
 
 navLinks.classList.remove("active");
+
+/* REMOVE PAGE BLUR */
+
+document.body.classList.remove("menu-open");
 
 }
 

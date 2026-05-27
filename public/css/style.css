@@ -1167,6 +1167,16 @@ nav ul li {
   line-height: 1.9;
 }
 
+
+
+
+
+
+
+
+/* ===========================================================================================================================================*/
+
+
 /* =========================
    NAVBAR
 ========================= */
@@ -1290,6 +1300,59 @@ box-shadow:
 border-color:#00d4ff;
 
 }
+
+
+/* =========================
+   BACKGROUND BLUR ON MENU OPEN
+========================= */
+
+body.menu-open #bg-video,
+body.menu-open .lyrics-video{
+
+filter:
+brightness(0.45)
+blur(14px);
+
+transform:
+scale(1.08);
+
+transition:
+all 0.35s ease;
+
+}
+
+/* BLUR PAGE CONTENT */
+
+body.menu-open section,
+body.menu-open #overlay-logo,
+body.menu-open .typing-text,
+body.menu-open .music-notes{
+
+filter:blur(4px);
+
+transition:
+all 0.35s ease;
+
+}
+
+/* KEEP MENU SHARP */
+
+body.menu-open .nav-links,
+body.menu-open .menu-toggle{
+
+filter:none;
+
+}
+
+
+
+
+
+
+/* ===========================================================================================================================================*/
+
+
+
 
 
 /* =========================
@@ -1485,6 +1548,7 @@ opacity:0;
 }
 
 
+/* ===========================================================================================================================================*/
 
 
 
