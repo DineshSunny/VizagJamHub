@@ -225,3 +225,22 @@ white-space:normal;
 line-height:1.5;
 
 }
+
+
+
+/* MOBILE MUSIC NOTES SOFTER */
+
+.music-notes span{
+
+filter:blur(2px);
+
+opacity:0.55;
+
+/* SOFTER GLOW */
+
+text-shadow:
+0 0 6px rgba(255,255,255,0.18),
+0 0 12px rgba(0,212,255,0.18),
+0 0 24px rgba(0,212,255,0.10);
+
+}
