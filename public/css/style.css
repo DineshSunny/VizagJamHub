@@ -14,47 +14,38 @@ background:black;
 }
 
 
-/* STAGE LIGHTS */
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-
-background:
-radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 45%),
-radial-gradient(circle at 70% 30%, rgba(0,212,255,0.20), transparent 50%),
-radial-gradient(circle at 50% 80%, rgba(0,0,0,0.4), transparent 60%);
-
-animation:lightsMove 10s infinite alternate;
-z-index:-1;
-}
-
-@keyframes lightsMove{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120px)}
-}
 
 
 /* VIDEO OVERLAY */
 
 body::after{
+
 content:"";
+
 position:fixed;
+
 top:0;
 left:0;
+
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.0);
-z-index:-1;
+
+pointer-events:none;
+
+background:
+radial-gradient(
+circle,
+transparent 35%,
+rgba(0,0,0,0.82) 100%
+);
+
+z-index:1;
+
 }
 
 
 
-/* VIDEO BACKGROUND */
+
 
 /* GLOBAL CINEMATIC VIDEO */
 
@@ -76,7 +67,7 @@ opacity:1.0;
 
 filter:
 brightness(0.60)
-blur(4px);
+blur(7px);
 
 pointer-events:none;
 
@@ -297,7 +288,11 @@ color:inherit;
 }
 
 .course-card{
-background:black;
+background:rgba(20,20,20,0.35);
+
+backdrop-filter:blur(12px);
+
+-webkit-backdrop-filter:blur(12px);
 padding:25px;
 border-radius:10px;
 width:250px;
@@ -335,7 +330,11 @@ gap:20px;
 }
 
 .card{
-background:black;
+background:rgba(20,20,20,0.35);
+
+backdrop-filter:blur(12px);
+
+-webkit-backdrop-filter:blur(12px);
 padding:25px;
 border-radius:10px;
 border:1px solid rgba(255,255,255,0.8);
@@ -1071,6 +1070,8 @@ box-shadow:
 }
 
 
+
+
 /* SONG ITEMS */
 
 .song-item{
@@ -1227,7 +1228,13 @@ left:-100%;
 width:260px;
 height:100vh;
 
-background:rgba(0,0,0,0.96);
+background:rgba(15,15,15,0.45);
+
+backdrop-filter:blur(14px);
+
+-webkit-backdrop-filter:blur(14px);
+
+border-right:1px solid rgba(255,255,255,0.08);
 
 padding-top:120px;
 padding-left:30px;
@@ -1474,5 +1481,115 @@ rotate(-10deg);
 opacity:0;
 
 }
+
+}
+
+
+
+
+
+/* =========================
+   CINEMATIC LIVE TEXT
+========================= */
+
+.typing-text{
+
+position:fixed;
+
+top:68%;
+left:50%;
+
+transform:translateX(-50%);
+
+font-size:34px;
+
+font-weight:700;
+
+letter-spacing:8px;
+
+text-transform:uppercase;
+
+white-space:nowrap;
+
+color:rgba(255,255,255,0.92);
+
+z-index:5;
+
+/* PREMIUM GLOW */
+
+text-shadow:
+0 0 10px rgba(255,255,255,0.12),
+0 0 20px rgba(0,212,255,0.25),
+0 0 40px rgba(0,212,255,0.12);
+
+/* FLOAT */
+
+animation:
+glassFloat 8s ease-in-out infinite;
+
+}
+
+/* FLOATING MOTION */
+
+@keyframes glassFloat{
+
+0%{
+
+transform:
+translateX(-50%)
+translateY(0px);
+
+}
+
+50%{
+
+transform:
+translateX(-50%)
+translateY(-6px);
+
+}
+
+100%{
+
+transform:
+translateX(-50%)
+translateY(0px);
+
+}
+
+}
+
+/* FADE STATES */
+
+#typing{
+
+transition:
+opacity 1.2s ease,
+filter 1.2s ease,
+transform 1.2s ease;
+
+}
+
+/* SHOW */
+
+.show{
+
+opacity:1;
+
+filter:blur(0px);
+
+transform:translateY(0px);
+
+}
+
+/* HIDE */
+
+.hide{
+
+opacity:0;
+
+filter:blur(10px);
+
+transform:translateY(10px);
 
 }

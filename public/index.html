@@ -70,6 +70,18 @@ window.addEventListener('scroll', closePopup);
 <img src="Images/Logo.png" id="overlay-logo">
 
 
+
+<!-- AUTO TYPING TEXT -->
+
+<div class="typing-text">
+
+<span id="typing"></span>
+
+</div>
+
+
+
+
 <!-- FLOATING MUSIC NOTES -->
 
 <div class="music-notes">
@@ -307,5 +319,71 @@ overlayLogo.style.opacity = "0.9";
 });
 
 </script>
+
+
+
+
+
+
+
+
+
+<script>
+
+const words = [
+
+"LIVE MUSIC",
+"JAM SESSIONS",
+"VIZAG CULTURE",
+"NIGHT VIBES",
+"LIVE PERFORMANCES",
+"MUSIC COMMUNITY"
+
+];
+
+const typing = document.getElementById("typing");
+
+let index = 0;
+
+/* INITIAL */
+
+typing.textContent = words[index];
+
+typing.classList.add("show");
+
+/* LOOP */
+
+setInterval(() => {
+
+/* FADE OUT */
+
+typing.classList.remove("show");
+
+typing.classList.add("hide");
+
+setTimeout(() => {
+
+/* CHANGE TEXT */
+
+index = (index + 1) % words.length;
+
+typing.textContent = words[index];
+
+/* FADE IN */
+
+typing.classList.remove("hide");
+
+typing.classList.add("show");
+
+}, 900);
+
+}, 3200);
+
+</script>
+
+
+
+
+
 </body>
 </html>
