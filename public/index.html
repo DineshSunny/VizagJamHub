@@ -73,7 +73,7 @@ window.addEventListener('scroll', closePopup);
 
 <!-- AUTO TYPING TEXT -->
 
-<div class="typing-text">
+<div class="typing-text" id="live-text">
 
 <span id="typing"></span>
 
@@ -313,6 +313,45 @@ overlayLogo.style.opacity = "0";
 else{
 
 overlayLogo.style.opacity = "0.9";
+
+}
+
+});
+
+</script>
+
+
+
+
+
+
+<script>
+
+/* =================================
+   LIVE TEXT SCROLL FADE
+================================= */
+
+const liveText =
+document.getElementById("live-text");
+
+window.addEventListener("scroll", () => {
+
+const triggerPoint =
+lyricsSection.offsetTop - 700;
+
+/* FADE OUT */
+
+if(window.scrollY > triggerPoint){
+
+liveText.style.opacity = "0";
+
+}
+
+/* FADE IN */
+
+else{
+
+liveText.style.opacity = "1";
 
 }
 

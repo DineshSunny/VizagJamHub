@@ -1513,6 +1513,8 @@ white-space:nowrap;
 
 color:rgba(255,255,255,0.92);
 
+transition:opacity 0.8s ease;
+
 z-index:5;
 
 /* PREMIUM GLOW */
@@ -1564,9 +1566,8 @@ translateY(0px);
 #typing{
 
 transition:
-opacity 1.2s ease,
-filter 1.2s ease,
-transform 1.2s ease;
+opacity 0.18s ease,
+filter 0.18s ease;
 
 }
 
@@ -1578,8 +1579,6 @@ opacity:1;
 
 filter:blur(0px);
 
-transform:translateY(0px);
-
 }
 
 /* HIDE */
@@ -1589,7 +1588,5 @@ transform:translateY(0px);
 opacity:0;
 
 filter:blur(10px);
-
-transform:translateY(10px);
 
 }
