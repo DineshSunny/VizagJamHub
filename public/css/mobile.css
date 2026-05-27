@@ -8,10 +8,15 @@ overflow-x:hidden;
 }
 
 
-/* VIDEO */
+/* VIDEO FIX */
 
 #bg-video,
 .lyrics-video{
+
+position:fixed;
+
+top:50%;
+left:50%;
 
 width:auto;
 height:100vh;
@@ -19,12 +24,13 @@ height:100vh;
 min-width:100%;
 min-height:100%;
 
+transform:translate(-50%,-50%);
+
 object-fit:cover;
 
 object-position:center center;
 
 }
-
 
 
 
@@ -197,22 +203,3 @@ height:auto;
 }
 
 
-
-
-
-/* MOBILE VIDEO DESTRETCH FIX */
-
-#bg-video,
-.lyrics-video{
-
-width:auto;
-height:100vh;
-
-min-width:100%;
-min-height:100%;
-
-object-fit:cover;
-
-object-position:center center;
-
-}
