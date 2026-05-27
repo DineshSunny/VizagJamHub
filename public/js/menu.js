@@ -27,3 +27,21 @@ document.body.classList.remove("menu-open");
 }
 
 });
+
+
+/* CLOSE MENU AFTER CLICKING LINKS */
+
+const navItems =
+document.querySelectorAll(".nav-links a");
+
+navItems.forEach(link => {
+
+link.addEventListener("click", () => {
+
+navLinks.classList.remove("active");
+
+document.body.classList.remove("menu-open");
+
+});
+
+});
