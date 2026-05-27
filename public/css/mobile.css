@@ -203,3 +203,25 @@ height:auto;
 }
 
 
+
+
+
+/* MOBILE LIVE TEXT FIX */
+
+.typing-text{
+
+font-size:16px;
+
+letter-spacing:3px;
+
+top:64%;
+
+width:90%;
+
+text-align:center;
+
+white-space:normal;
+
+line-height:1.5;
+
+}
