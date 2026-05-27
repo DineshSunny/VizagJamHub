@@ -637,6 +637,8 @@ width:fit-content;
 
 /* PAUSE AUTO SCROLL DURING INTERACTION */
 
+
+
 .gallery-wrapper:hover .gallery-track{
 
 animation-play-state:paused;
@@ -669,6 +671,14 @@ transform:translateX(0);
 transform:translateX(-50%);
 }
 }
+
+/* DESKTOP DRAGGING */
+
+.gallery-wrapper{
+cursor:default;
+user-select:none;
+}
+
 
 
 

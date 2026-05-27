@@ -59,6 +59,11 @@ window.addEventListener('scroll', closePopup);
 });
 
 </script>
+
+
+
+
+
 <body>
 
 <!-- VIDEO BACKGROUND -->
@@ -241,6 +246,8 @@ Sing Along Lyrics
 
 </section>
 
+
+
 <!-- GALLERY -->
 
 <section id="gallery">
@@ -419,6 +426,81 @@ typing.classList.add("show");
 }, 3200);
 
 </script>
+
+
+
+
+
+
+
+<script>
+
+/* =================================
+   DRAG SCROLL GALLERY
+================================= */
+
+const slider =
+document.querySelector(".gallery-wrapper");
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+/* START DRAG ONLY WHEN MOUSE HELD */
+
+slider.addEventListener("mousedown", (e) => {
+
+isDown = true;
+
+slider.style.cursor = "grabbing";
+
+startX = e.pageX - slider.offsetLeft;
+
+scrollLeft = slider.scrollLeft;
+
+});
+
+/* STOP */
+
+slider.addEventListener("mouseup", () => {
+
+isDown = false;
+
+slider.style.cursor = "default";
+
+});
+
+slider.addEventListener("mouseleave", () => {
+
+isDown = false;
+
+slider.style.cursor = "default";
+
+});
+
+/* DRAG */
+
+slider.addEventListener("mousemove", (e) => {
+
+if(!isDown) return;
+
+e.preventDefault();
+
+const x = e.pageX - slider.offsetLeft;
+
+const walk = (x - startX) * 2;
+
+slider.scrollLeft = scrollLeft - walk;
+
+});
+
+</script>
+
+
+
+
+
+
 
 
 
