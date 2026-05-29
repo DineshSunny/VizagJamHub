@@ -45,3 +45,33 @@ document.body.classList.remove("menu-open");
 });
 
 });
+
+
+/* CLOSE MENU ON TOUCH SWIPE */
+
+document.addEventListener("touchmove", () => {
+
+if(navLinks.classList.contains("active")){
+
+navLinks.classList.remove("active");
+
+document.body.classList.remove("menu-open");
+
+}
+
+});
+
+
+/* CLOSE MENU ON MOUSE WHEEL */
+
+document.addEventListener("wheel", () => {
+
+if(navLinks.classList.contains("active")){
+
+navLinks.classList.remove("active");
+
+document.body.classList.remove("menu-open");
+
+}
+
+});
