@@ -22,3 +22,16 @@ Notes Upload
 Chord Sheet Creator
 Practice Tracker
 AI Chord Assistant
+
+
+Admin Dashboard
+
+Create Show
+Manage Shows
+Tickets
+
+Band Resources
+    ├── Chord Library
+    ├── Setlists
+    ├── Practice Notes
+    └── Jam Sessions
