@@ -121,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // RENDER SONG LIST
 window.renderSongs = function(data){
 
-  const container = document.getElementById("lyrics-container");
   container.innerHTML = "";
 
   // SORT alphabetically
@@ -184,6 +183,14 @@ window.showLyrics = function(song){
     ? song.lyrics_english
     : song.lyrics_telugu;
 
+    /* ADD SONG TO BROWSER HISTORY */
+
+history.pushState(
+{ song: song.song },
+"",
+"#" + encodeURIComponent(song.song)
+);
+
   container.innerHTML = `
     <div style="width:100%; margin:40px 0; padding:0 20px;">
 
@@ -214,6 +221,14 @@ window.showLyrics = function(song){
     goTop(true);
   
 }
+
+/* BROWSER BACK RETURNS TO SONG LIST */
+
+window.addEventListener("popstate", () => {
+
+renderSongs(songsData);
+
+});
 
 });
 

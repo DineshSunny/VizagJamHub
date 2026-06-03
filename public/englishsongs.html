@@ -200,6 +200,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.showLyrics = function(song){
 
+/* ADD SONG TO BROWSER HISTORY */
+
+history.pushState(
+{ song: song.song },
+"",
+"#" + encodeURIComponent(song.song)
+);
+
+   
+
   container.innerHTML = `
 
     <div
@@ -234,9 +244,18 @@ window.showLyrics = function(song){
 
   `;
 
+  goTop(true); 
  
 
   }
+
+  /* BROWSER BACK RETURNS TO SONG LIST */
+
+window.addEventListener("popstate", () => {
+
+renderSongs(songsData);
+
+});
 
 });
 

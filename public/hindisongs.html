@@ -208,6 +208,14 @@ window.showLyrics = function(song){
   ? song.lyrics_english
   : song.lyrics_hindi;
 
+  /* ADD SONG TO BROWSER HISTORY */
+
+history.pushState(
+{ song: song.song },
+"",
+"#" + encodeURIComponent(song.song)
+);
+
   container.innerHTML = `
 
     <div
@@ -242,9 +250,21 @@ window.showLyrics = function(song){
 
   `;
 
-    goTop(true);s
+    goTop(true);
 
   }
+
+
+/* BROWSER BACK RETURNS TO SONG LIST */
+
+window.addEventListener("popstate", () => {
+
+renderSongs(songsData);
+
+});
+
+
+  
 
 });
 
