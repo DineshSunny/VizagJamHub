@@ -109,8 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let songsData = [];
 
-  // LOAD DATA
-
   fetch("/api/englishsongs")
   .then(res => res.json())
   .then(data => {
@@ -118,6 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
     songsData = data;
 
     renderSongs(data);
+
+    window.scrollTo(0, 0);
 
   })
   .catch(err => {
@@ -128,8 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "<p>Error loading songs</p>";
 
   });
-
-  // RENDER SONG LIST
 
   function renderSongs(data){
 
@@ -177,13 +175,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       item.addEventListener("click", () => {
 
-        history.pushState(
-          { view: "lyrics" },
-          "",
-          window.location.pathname
-        );
+        container.innerHTML = "";
 
-        showLyrics(song);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+
+        window.scrollTo(0, 0);
+
+        requestAnimationFrame(() => {
+
+          history.pushState(
+            { page: "lyrics" },
+            "",
+            window.location.pathname
+          );
+
+          showLyrics(song);
+
+        });
 
       });
 
@@ -192,8 +201,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   }
-
-  // SEARCH
 
   searchInput.addEventListener("input", () => {
 
@@ -208,9 +215,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderSongs(filtered);
 
-  });
+    window.scrollTo(0, 0);
 
-  // SHOW LYRICS
+  });
 
   function showLyrics(song){
 
@@ -248,28 +255,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     `;
 
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
     window.scrollTo(0, 0);
 
-  }
+    requestAnimationFrame(() => {
 
-  // BACK BUTTON RETURNS TO TOP OF SONG LIST
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+      window.scrollTo(0, 0);
+
+    });
+
+  }
 
   window.addEventListener("popstate", () => {
 
     renderSongs(songsData);
 
-    setTimeout(() => {
+    requestAnimationFrame(() => {
+
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
       window.scrollTo(0, 0);
-    }, 10);
+
+    });
 
   });
 
 });
 
 </script>
-
-
-
 
 
 
