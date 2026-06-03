@@ -121,7 +121,7 @@ transition:opacity 0.5s ease;
 }
 
 
-/* TOP PAGE LOGO */
+/* TOP PAGE LOGO NODIFIED PLACE FOR CATEGORY, LANGUAGE PAGE AND MORE*/
 
 .top-logo{
 
@@ -154,10 +154,20 @@ margin-bottom:-350px;
 
 
 
+/* TOP PAGE LIVE TEXT MODIFIED PLACE FOR CATEGORY, LANGUAGE PAGE, SONG SELECTION PAGE AND MORE*/
+
+.category-page .typing-text{
+
+top:36%;
+
+left:51%;
+
+animation:none;
+
+}
 
 
-
-/* SOFT LYRICS VIDEO */
+/* FILTER FOR BACKGROUND VIDEO ON LYRICS PAGE */
 
 .lyrics-video{
 

@@ -24,11 +24,46 @@
 <source src="/Video/3.mp4" type="video/mp4">
 </video>
 
+
+<!-- =================================
+     CATEGORY PAGE LOGO
+================================= -->
+
 <div class="top-logo">
 <img src="/Images/Logo.png">
 </div>
 
 
+<!-- =================================
+     CATEGORY PAGE LIVE TEXT
+================================= -->
+
+
+<div class="typing-text" id="live-text">
+<span id="typing"></span>
+</div>
+
+
+<!-- =================================
+     CATEGORY PAGE MUSIC NOTES
+================================= -->
+
+<div class="music-notes">
+
+<span>♪</span>
+<span>♫</span>
+<span>♬</span>
+<span>♩</span>
+<span>𝄞</span>
+<span>♭</span>
+<span>♯</span>
+<span>♬</span>
+<span>♫</span>
+<span>♪</span>
+<span>♩</span>
+<span>𝄢</span>
+
+</div>
 
 <!-- HEADER -->
 
@@ -41,10 +76,10 @@
 <ul class="nav-links">
 
 <li><a href="/index.html">Home</a></li>
-<li><a href="/category.html">Sing Along Lyrics</a></li>
-<li><a href="#school">School</a></li>
-<li><a href="#connect">Band Connect</a></li>
-<li><a href="#gallery">Gallery</a></li>
+<li><a href="/index.html#shows">Shows</a></li>
+<li><a href="/index.html#school">School</a></li>
+<li><a href="/index.html#connect">Band Connect</a></li>
+<li><a href="/index.html#gallery">Gallery</a></li>
 
 </ul>
 
@@ -87,5 +122,70 @@
 
 </section>
 <script src="js/menu.js"></script>
+
+
+
+
+
+<!-- =================================
+     LIVE TEXT TYPING 
+================================= -->
+
+
+<script>
+
+const words = [
+
+"LIVE MUSIC",
+"JAM SESSIONS",
+"VIZAG CULTURE",
+"NIGHT VIBES",
+"LIVE PERFORMANCES",
+"MUSIC COMMUNITY"
+
+];
+
+const typing = document.getElementById("typing");
+
+let index = 0;
+
+typing.textContent = words[index];
+typing.classList.add("show");
+
+setInterval(() => {
+
+typing.classList.remove("show");
+typing.classList.add("hide");
+
+setTimeout(() => {
+
+index = (index + 1) % words.length;
+
+typing.textContent = words[index];
+
+typing.classList.remove("hide");
+typing.classList.add("show");
+
+}, 900);
+
+}, 3200);
+
+</script>
+
+
+
+
+<!-- =================================
+     CATEGORY PAGE
+================================= -->
+
+<body class="category-page">
+
+
+
+
+
+
+
 </body>
 </html>
