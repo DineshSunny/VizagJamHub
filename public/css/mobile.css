@@ -292,6 +292,25 @@ white-space:normal;
 
 }
 
+/* TOP PAGE LIVE TEXT MOBILE POSITION FOR CATEGORY PAGE */
+
+.category-page .typing-text{
+
+top:50%;
+
+}
+
+
+/* TOP PAGE LIVE TEXT MOBILE POSITION FOR LANGUAGE PAGE */
+
+.language-page .typing-text{
+
+top:50%;
+
+}
+
+
+
 
 
 /* MOBILE MUSIC NOTES SOFTER */
@@ -310,3 +329,5 @@ text-shadow:
 0 0 24px rgba(0,212,255,0.10);
 
 }
+
+
