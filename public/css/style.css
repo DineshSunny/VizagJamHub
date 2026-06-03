@@ -1230,11 +1230,6 @@ box-shadow:
 
 /* SCROLLING EFFECT */
 
-#lyrics-container{
-  max-height:500px;     /* controls height */
-  overflow-y:auto;      /* enables scroll */
-  padding-right:10px;   /* space for scrollbar */
-}
 
 #lyrics-container::-webkit-scrollbar{
   width:8px;
@@ -1250,8 +1245,6 @@ box-shadow:
 }
 
 #lyrics-container{
-  max-height:70vh;
-  overflow-y:auto;
   display:flex;
   flex-direction:column;
   gap:10px;
