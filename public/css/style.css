@@ -154,9 +154,13 @@ margin-bottom:-350px;
 
 
 
+
+
 /* TOP PAGE LIVE TEXT MODIFIED PLACE FOR CATEGORY, LANGUAGE PAGE, SONG SELECTION PAGE AND MORE*/
 
 .category-page .typing-text{
+
+position:absolute;
 
 top:36%;
 
@@ -165,6 +169,38 @@ left:51%;
 animation:none;
 
 }
+
+
+/* TOP PAGE LIVE TEXT MODIFIED PLACE FOR LANGUAGE PAGE AND MORE*/
+
+.language-page .typing-text{
+
+position:absolute;
+
+top:37%;
+
+left:51%;
+
+animation:none;
+
+}
+
+
+/* SELECT SCRIPT TITLE MODIFIED PLACE FOR LANGUAGE PAGE */
+
+.language-page #title{
+
+margin-top:-80px;
+
+}
+
+
+
+
+
+
+
+
 
 
 /* FILTER FOR BACKGROUND VIDEO ON LYRICS PAGE */

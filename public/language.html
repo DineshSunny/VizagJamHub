@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body class="language-page">
 
 <!-- VIDEO BACKGROUND -->
 
@@ -29,7 +29,48 @@
 <img src="/Images/Logo.png">
 </div>
 
-<!-- HEADER -->
+
+
+<!-- =================================
+     TOP PAGE LIVE TEXT
+================================= -->
+
+<div class="typing-text" id="live-text">
+<span id="typing"></span>
+</div>
+
+<!-- =================================
+     TOP PAGE MUSIC NOTES
+================================= -->
+
+<div class="music-notes">
+
+<span>♪</span>
+<span>♫</span>
+<span>♬</span>
+<span>♩</span>
+<span>𝄞</span>
+<span>♭</span>
+<span>♯</span>
+<span>♬</span>
+<span>♫</span>
+<span>♪</span>
+<span>♩</span>
+<span>𝄢</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =================================
+     HAMBURGER MENU
+================================= -->
 
 <header>
 
@@ -47,7 +88,7 @@
 
 <li><a href="/category.html">Sing Along Lyrics</a></li>
 
-<li><a href="#school">School</a></li>
+<li><a href="/index.html#school">School</a></li>
 
 <li><a href="/index.html#shows">Shows</a></li>
 
@@ -60,6 +101,9 @@
 </nav>
 
 </header>
+
+
+
 
 <!-- HERO -->
 
@@ -169,6 +213,58 @@ Go to Categories
 }
 
 </script>
+
+
+
+
+<!-- =================================
+     TOP PAGE LIVE TEXT SCRIPT
+================================= -->
+
+<script>
+
+const words = [
+
+"LIVE MUSIC",
+"JAM SESSIONS",
+"VIZAG CULTURE",
+"NIGHT VIBES",
+"LIVE PERFORMANCES",
+"MUSIC COMMUNITY"
+
+];
+
+const typing = document.getElementById("typing");
+
+let index = 0;
+
+typing.textContent = words[index];
+
+typing.classList.add("show");
+
+setInterval(() => {
+
+typing.classList.remove("show");
+typing.classList.add("hide");
+
+setTimeout(() => {
+
+index = (index + 1) % words.length;
+
+typing.textContent = words[index];
+
+typing.classList.remove("hide");
+typing.classList.add("show");
+
+}, 900);
+
+}, 3200);
+
+</script>
+
+
+
+
 
 <script src="/js/menu.js"></script>
 
