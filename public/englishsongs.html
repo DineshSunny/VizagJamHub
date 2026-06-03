@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // RENDER SONG LIST
 
-  function renderSongs(data){
+  window.renderSongs = function(data){
 
     container.innerHTML = "";
 
@@ -196,51 +196,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  // SHOW LYRICS
+ // SHOW LYRICS
 
-  window.showLyrics = function(song){
+window.showLyrics = function(song){
 
-    container.innerHTML = `
+  container.innerHTML = `
 
-      <div
-      style="
-      width:100%;
-      margin:40px 0;
-      padding:0 20px;
-      ">
+    <div
+    style="
+    width:100%;
+    margin:40px 0;
+    padding:0 20px;
+    ">
 
-      <h2>${song.song}</h2>
+    <h2>${song.song}</h2>
 
-      <p style="opacity:0.7;">
-      ${song.artist || ""}
-      </p>
+    <p style="opacity:0.7;">
+    ${song.artist || ""}
+    </p>
 
-      <p
-      style="
-      margin-top:20px;
-      white-space:pre-line;
-      line-height:1.9;
-      font-size:16px;
-      text-align:left;
-      ">
+    <p
+    style="
+    margin-top:20px;
+    white-space:pre-line;
+    line-height:1.9;
+    font-size:16px;
+    text-align:left;
+    ">
 
-      ${song.lyrics || "Lyrics coming soon..."}
+    ${song.lyrics || "Lyrics coming soon..."}
 
-      </p>
+    </p>
 
-      <br>
+    <br>
 
-      <button
-      onclick="location.href='/category.html'"
-      class="lyrics-btn">
+    <button
+onclick="location.href='/category.html'"
+class="lyrics-btn">
 
-      ⬅ Back to Categories
+⬅ Back to Categories
 
-      </button>
+</button>
 
-      </div>
+    </div>
 
-    `;
+  `;
+
+ 
 
   }
 

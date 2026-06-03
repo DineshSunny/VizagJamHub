@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // RENDER SONG LIST
 
-  function renderSongs(data){
+  window.renderSongs = function(data){
 
     container.innerHTML = "";
 
@@ -195,62 +195,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // SHOW LYRICS
 
-  window.showLyrics = function(song){
+window.showLyrics = function(song){
 
-    const params =
-    new URLSearchParams(window.location.search);
+  const params =
+  new URLSearchParams(window.location.search);
 
-    const scriptType =
-    params.get("script") || "english";
+  const scriptType =
+  params.get("script") || "english";
 
-    let lyricsText =
-    scriptType === "english"
-    ? song.lyrics_english
-    : song.lyrics_hindi;
+  let lyricsText =
+  scriptType === "english"
+  ? song.lyrics_english
+  : song.lyrics_hindi;
 
-    container.innerHTML = `
+  container.innerHTML = `
 
-      <div
-      style="
-      width:100%;
-      margin:40px 0;
-      padding:0 20px;
-      ">
+    <div
+    style="
+    width:100%;
+    margin:40px 0;
+    padding:0 20px;
+    ">
 
-      <h2>${song.song}</h2>
+    <h2>${song.song}</h2>
 
-      <p style="opacity:0.7;">
-      ${song.movie}
-      </p>
+    <p style="opacity:0.7;">
+    ${song.movie}
+    </p>
 
-      <p
-      style="
-      margin-top:20px;
-      white-space:pre-line;
-      line-height:1.9;
-      font-size:16px;
-      text-align:left;
-      ">
+    <p
+    style="
+    margin-top:20px;
+    white-space:pre-line;
+    line-height:1.9;
+    font-size:16px;
+    text-align:left;
+    ">
 
-      ${lyricsText || "Lyrics coming soon..."}
+    ${lyricsText || "Lyrics coming soon..."}
 
-      </p>
+    </p>
 
-      <br>
+    <br>
 
-      <button
-      onclick="location.href='/language.html?type=hindi'"
-      class="lyrics-btn">
+    <button
+    onclick="renderSongs(songsData)"
+    class="lyrics-btn">
 
-      ⬅ Back to Languages
+    ⬅ Back to Songs
 
-      </button>
+    </button>
 
-      </div>
+    </div>
 
-    `;
+  `;
 
-    goTop(true);
+    goTop(true);s
 
   }
 
