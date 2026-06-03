@@ -312,14 +312,20 @@ top:40%;
 
 
 
-/* TELUGU LANGUAGE TITLE MOBILE SIZE FIX */
+/* TELUGU LANGUAGE TITLE MOBILE SINGLE LINE FIX */
 
-.telugu-title{
+.language-page #title{
+
+white-space:nowrap;
 
 font-size:30px;
 
-}
+width:max-content;
 
+margin-left:auto;
+margin-right:auto;
+
+}
 
 
 
