@@ -190,7 +190,7 @@ history.pushState(
 "",
 "#" + encodeURIComponent(song.song)
 );
-
+  window.scrollTo(0,0);
   container.innerHTML = `
     <div style="width:100%; margin:40px 0; padding:0 20px;">
 
@@ -218,7 +218,7 @@ history.pushState(
 
 
      // ✅ smooth scroll
-     window.scrollTo(0,0);
+    
     goTop(true);
   
 }

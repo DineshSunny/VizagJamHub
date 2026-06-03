@@ -215,7 +215,7 @@ history.pushState(
 "",
 "#" + encodeURIComponent(song.song)
 );
-
+ window.scrollTo(0,0);
   container.innerHTML = `
 
     <div
@@ -249,7 +249,7 @@ history.pushState(
     </div>
 
   `;
-    window.scrollTo(0,0);
+    
     goTop(true);
 
   }
