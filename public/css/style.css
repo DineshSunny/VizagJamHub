@@ -45,8 +45,6 @@ z-index:1;
 
 
 
-
-
 /* GLOBAL CINEMATIC VIDEO */
 
 #bg-video{
@@ -154,6 +152,115 @@ margin-bottom:-350px;
 
 
 
+/* ======================================================================================================================================================================*/
+
+
+
+/* =========================
+   CINEMATIC LIVE TEXT
+========================= */
+
+.typing-text{
+
+position:fixed;
+
+top:68%;
+left:50%;
+
+transform:translateX(-50%);
+
+font-size:34px;
+
+font-weight:700;
+
+letter-spacing:8px;
+
+text-transform:uppercase;
+
+white-space:nowrap;
+
+color:rgba(255,255,255,0.92);
+
+transition:opacity 0.8s ease;
+
+z-index:5;
+
+pointer-events:none;
+
+/* PREMIUM GLOW */
+
+text-shadow:
+0 0 10px rgba(255,255,255,0.12),
+0 0 20px rgba(0,212,255,0.25),
+0 0 40px rgba(0,212,255,0.12);
+
+/* FLOAT */
+
+animation:
+glassFloat 8s ease-in-out infinite;
+
+}
+
+/* FLOATING MOTION */
+
+@keyframes glassFloat{
+
+0%{
+
+transform:
+translateX(-50%)
+translateY(0px);
+
+}
+
+50%{
+
+transform:
+translateX(-50%)
+translateY(-6px);
+
+}
+
+100%{
+
+transform:
+translateX(-50%)
+translateY(0px);
+
+}
+
+}
+
+/* FADE STATES */
+
+#typing{
+
+transition:
+opacity 0.18s ease,
+filter 0.18s ease;
+
+}
+
+/* SHOW */
+
+.show{
+
+opacity:1;
+
+filter:blur(0px);
+
+}
+
+/* HIDE */
+
+.hide{
+
+opacity:0;
+
+filter:blur(10px);
+
+}
+
 
 
 /* TOP PAGE LIVE TEXT MODIFIED PLACE FOR CATEGORY, LANGUAGE PAGE, SONG SELECTION PAGE AND MORE*/
@@ -167,6 +274,8 @@ top:36%;
 left:51%;
 
 animation:none;
+
+pointer-events:none;
 
 }
 
@@ -183,6 +292,8 @@ left:51%;
 
 animation:none;
 
+pointer-events:none;
+
 }
 
 
@@ -193,6 +304,8 @@ animation:none;
 margin-top:-80px;
 
 }
+
+
 
 
 
@@ -283,35 +396,9 @@ font-size:22px;
 }
 
 
-/* SOUNDWAVE */
-
-.soundwave{
-display:flex;
-gap:6px;
-margin-top:20px;
-justify-content:center;
-}
-
-.soundwave span{
-width:6px;
-height:30px;
-background:#00d4ff;
-animation:wave 1s infinite ease-in-out;
-}
-
-.soundwave span:nth-child(2){animation-delay:0.1s}
-.soundwave span:nth-child(3){animation-delay:0.2s}
-.soundwave span:nth-child(4){animation-delay:0.3s}
-.soundwave span:nth-child(5){animation-delay:0.4s}
-
-@keyframes wave{
-0%{height:20px}
-50%{height:60px}
-100%{height:20px}
-}
 
 
-/* SECTIONS */
+/* GLOBAL SECTION CONTAINER FOR HERO, SHOWS, SCHOOL, BAND CONNECT, GALLERY AND MORE */
 
 section{
 padding:60px 20px;
@@ -1658,117 +1745,6 @@ opacity:0;
 }
 
 }
-
-
-/* ======================================================================================================================================================================*/
-
-
-
-/* =========================
-   CINEMATIC LIVE TEXT
-========================= */
-
-.typing-text{
-
-position:fixed;
-
-top:68%;
-left:50%;
-
-transform:translateX(-50%);
-
-font-size:34px;
-
-font-weight:700;
-
-letter-spacing:8px;
-
-text-transform:uppercase;
-
-white-space:nowrap;
-
-color:rgba(255,255,255,0.92);
-
-transition:opacity 0.8s ease;
-
-z-index:5;
-
-/* PREMIUM GLOW */
-
-text-shadow:
-0 0 10px rgba(255,255,255,0.12),
-0 0 20px rgba(0,212,255,0.25),
-0 0 40px rgba(0,212,255,0.12);
-
-/* FLOAT */
-
-animation:
-glassFloat 8s ease-in-out infinite;
-
-}
-
-/* FLOATING MOTION */
-
-@keyframes glassFloat{
-
-0%{
-
-transform:
-translateX(-50%)
-translateY(0px);
-
-}
-
-50%{
-
-transform:
-translateX(-50%)
-translateY(-6px);
-
-}
-
-100%{
-
-transform:
-translateX(-50%)
-translateY(0px);
-
-}
-
-}
-
-/* FADE STATES */
-
-#typing{
-
-transition:
-opacity 0.18s ease,
-filter 0.18s ease;
-
-}
-
-/* SHOW */
-
-.show{
-
-opacity:1;
-
-filter:blur(0px);
-
-}
-
-/* HIDE */
-
-.hide{
-
-opacity:0;
-
-filter:blur(10px);
-
-}
-
-
-
 
 
 /* ======================================================================================================================================================================*/
