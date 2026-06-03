@@ -95,8 +95,6 @@
 
 </section>
 
-<!-- SCRIPT -->
-
 <script>
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -106,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let songsData = [];
 
-  // LOAD DATA
   fetch("/api/telugusongs")
   .then(res => res.json())
   .then(data => {
@@ -118,49 +115,62 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = "<p>Error loading songs</p>";
   });
 
-  // RENDER SONG LIST
-window.renderSongs = function(data){
+  function renderSongs(data){
 
-  container.innerHTML = "";
+    container.innerHTML = "";
 
-  // SORT alphabetically
-  data.sort((a, b) => a.song.localeCompare(b.song));
+    data.sort((a, b) => a.song.localeCompare(b.song));
 
-  let currentLetter = "";
+    let currentLetter = "";
 
-  data.forEach(song => {
+    data.forEach(song => {
 
-    const firstLetter = song.song.charAt(0).toUpperCase();
+      const firstLetter = song.song.charAt(0).toUpperCase();
 
-    // 🔥 NEW LETTER SECTION
-    if(firstLetter !== currentLetter){
+      if(firstLetter !== currentLetter){
 
-      currentLetter = firstLetter;
+        currentLetter = firstLetter;
 
-      const section = document.createElement("div");
-      section.innerHTML = `
-        <h2 style="margin-top:30px; color:#00d4ff;">🎵 ${currentLetter}</h2>
+        const section = document.createElement("div");
+
+        section.innerHTML = `
+          <h2 style="margin-top:30px; color:#00d4ff;">
+            🎵 ${currentLetter}
+          </h2>
+        `;
+
+        container.appendChild(section);
+      }
+
+      const item = document.createElement("div");
+
+      item.classList.add("song-item");
+
+      item.innerHTML = `
+        ${song.song} –
+        <span style="color:#aaa;">
+          ${song.movie}
+        </span>
       `;
 
-      container.appendChild(section);
-    }
+      item.addEventListener("click", () => {
 
-    // 🎵 SONG ITEM
-    const item = document.createElement("div");
-    item.classList.add("song-item");
+        history.pushState(
+          { view: "lyrics" },
+          "",
+          window.location.pathname
+        );
 
-    item.innerHTML = `
-      ${song.song} – <span style="color:#aaa;">${song.movie}</span>
-    `;
+        showLyrics(song);
 
-    item.addEventListener("click", () => showLyrics(song));
+      });
 
-    container.appendChild(item);
-  });
+      container.appendChild(item);
 
-}
+    });
 
-  // SEARCH
+  }
+
   searchInput.addEventListener("input", () => {
 
     const value = searchInput.value.toLowerCase();
@@ -173,63 +183,53 @@ window.renderSongs = function(data){
 
   });
 
- // SHOW LYRICS
-window.showLyrics = function(song){
+  function showLyrics(song){
 
-  const params = new URLSearchParams(window.location.search);
-  const scriptType = params.get("script") || "english";
+    const params = new URLSearchParams(window.location.search);
 
-  let lyricsText = scriptType === "english"
-    ? song.lyrics_english
-    : song.lyrics_telugu;
+    const scriptType =
+      params.get("script") || "english";
 
-    /* ADD SONG TO BROWSER HISTORY */
+    let lyricsText =
+      scriptType === "english"
+      ? song.lyrics_english
+      : song.lyrics_telugu;
 
-history.pushState(
-{ song: song.song },
-"",
-"#" + encodeURIComponent(song.song)
-);
- 
-  container.innerHTML = `
-    <div style="width:100%; margin:40px 0; padding:0 20px;">
+    container.innerHTML = `
+      <div style="width:100%; margin:40px 0; padding:0 20px;">
 
-      <h2>${song.song}</h2>
+        <h2>${song.song}</h2>
 
-      <p style="opacity:0.7;">
-        ${song.movie}
-      </p>
+        <p style="opacity:0.7;">
+          ${song.movie}
+        </p>
 
-      <p style="
-        margin-top:20px;
-        white-space:pre-line;
-        line-height:1.9;
-        font-size:16px;
-        text-align:left;
-      ">
-        ${lyricsText || "Lyrics coming soon..."}
-      </p>
+        <p style="
+          margin-top:20px;
+          white-space:pre-line;
+          line-height:1.9;
+          font-size:16px;
+          text-align:left;
+        ">
+          ${lyricsText || "Lyrics coming soon..."}
+        </p>
 
-      <br>
+      </div>
+    `;
 
-  
-    </div>
-  `;
+    window.scrollTo(0, 0);
 
+  }
 
-     // ✅ smooth scroll
-    
-    goTop(true);
-  
-}
+  window.addEventListener("popstate", () => {
 
-/* BROWSER BACK RETURNS TO SONG LIST */
+    renderSongs(songsData);
 
-window.addEventListener("popstate", () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 10);
 
-renderSongs(songsData);
-
-});
+  });
 
 });
 

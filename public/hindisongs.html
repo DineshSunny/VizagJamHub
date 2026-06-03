@@ -101,8 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let songsData = [];
 
-  // LOAD HINDI DATA
-
   fetch("/api/hindisongs")
   .then(res => res.json())
   .then(data => {
@@ -121,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  // RENDER SONG LIST
-
-  window.renderSongs = function(data){
+  function renderSongs(data){
 
     container.innerHTML = "";
 
@@ -167,16 +163,23 @@ document.addEventListener("DOMContentLoaded", () => {
         </span>
       `;
 
-      item.addEventListener("click", () =>
-      showLyrics(song));
+      item.addEventListener("click", () => {
+
+        history.pushState(
+          { view: "lyrics" },
+          "",
+          window.location.pathname
+        );
+
+        showLyrics(song);
+
+      });
 
       container.appendChild(item);
 
     });
 
   }
-
-  // SEARCH
 
   searchInput.addEventListener("input", () => {
 
@@ -193,82 +196,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  // SHOW LYRICS
+  function showLyrics(song){
 
-window.showLyrics = function(song){
+    const params =
+    new URLSearchParams(window.location.search);
 
-  const params =
-  new URLSearchParams(window.location.search);
+    const scriptType =
+    params.get("script") || "english";
 
-  const scriptType =
-  params.get("script") || "english";
+    let lyricsText =
+    scriptType === "english"
+    ? song.lyrics_english
+    : song.lyrics_hindi;
 
-  let lyricsText =
-  scriptType === "english"
-  ? song.lyrics_english
-  : song.lyrics_hindi;
+    container.innerHTML = `
 
-  /* ADD SONG TO BROWSER HISTORY */
+      <div
+      style="
+      width:100%;
+      margin:40px 0;
+      padding:0 20px;
+      ">
 
-history.pushState(
-{ song: song.song },
-"",
-"#" + encodeURIComponent(song.song)
-);
+      <h2>${song.song}</h2>
 
-  container.innerHTML = `
+      <p style="opacity:0.7;">
+      ${song.movie}
+      </p>
 
-    <div
-    style="
-    width:100%;
-    margin:40px 0;
-    padding:0 20px;
-    ">
+      <p
+      style="
+      margin-top:20px;
+      white-space:pre-line;
+      line-height:1.9;
+      font-size:16px;
+      text-align:left;
+      ">
 
-    <h2>${song.song}</h2>
+      ${lyricsText || "Lyrics coming soon..."}
 
-    <p style="opacity:0.7;">
-    ${song.movie}
-    </p>
+      </p>
 
-    <p
-    style="
-    margin-top:20px;
-    white-space:pre-line;
-    line-height:1.9;
-    font-size:16px;
-    text-align:left;
-    ">
+      <br>
 
-    ${lyricsText || "Lyrics coming soon..."}
+      </div>
 
-    </p>
+    `;
 
-    <br>
-
-    </div>
-
-  `;
-    
-    goTop(true);
+    window.scrollTo(0, 0);
 
   }
 
+  window.addEventListener("popstate", () => {
 
-/* BROWSER BACK RETURNS TO SONG LIST */
+    renderSongs(songsData);
 
-window.addEventListener("popstate", () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 10);
 
-renderSongs(songsData);
-
-});
-
-
-  
+  });
 
 });
 
 </script>
+
 
 <!-- HAMBURGER MENU SCRIPT -->
 

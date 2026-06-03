@@ -93,7 +93,12 @@
 
 </section>
 
-<!-- SCRIPT -->
+
+
+
+
+
+
 
 <script>
 
@@ -126,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // RENDER SONG LIST
 
-  window.renderSongs = function(data){
+  function renderSongs(data){
 
     container.innerHTML = "";
 
@@ -170,8 +175,17 @@ document.addEventListener("DOMContentLoaded", () => {
         </span>
       `;
 
-      item.addEventListener("click", () =>
-      showLyrics(song));
+      item.addEventListener("click", () => {
+
+        history.pushState(
+          { view: "lyrics" },
+          "",
+          window.location.pathname
+        );
+
+        showLyrics(song);
+
+      });
 
       container.appendChild(item);
 
@@ -196,70 +210,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
- // SHOW LYRICS
+  // SHOW LYRICS
 
-window.showLyrics = function(song){
+  function showLyrics(song){
 
-/* ADD SONG TO BROWSER HISTORY */
+    container.innerHTML = `
 
-history.pushState(
-{ song: song.song },
-"",
-"#" + encodeURIComponent(song.song)
-);
+      <div
+      style="
+      width:100%;
+      margin:40px 0;
+      padding:0 20px;
+      ">
 
-   
-  
-  container.innerHTML = `
+      <h2>${song.song}</h2>
 
-    <div
-    style="
-    width:100%;
-    margin:40px 0;
-    padding:0 20px;
-    ">
+      <p style="opacity:0.7;">
+      ${song.artist || ""}
+      </p>
 
-    <h2>${song.song}</h2>
+      <p
+      style="
+      margin-top:20px;
+      white-space:pre-line;
+      line-height:1.9;
+      font-size:16px;
+      text-align:left;
+      ">
 
-    <p style="opacity:0.7;">
-    ${song.artist || ""}
-    </p>
+      ${song.lyrics || "Lyrics coming soon..."}
 
-    <p
-    style="
-    margin-top:20px;
-    white-space:pre-line;
-    line-height:1.9;
-    font-size:16px;
-    text-align:left;
-    ">
+      </p>
 
-    ${song.lyrics || "Lyrics coming soon..."}
+      <br>
 
-    </p>
+      </div>
 
-    <br>
+    `;
 
-    </div>
-
-  `;
- 
-  goTop(true); 
- 
+    window.scrollTo(0, 0);
 
   }
 
-  /* BROWSER BACK RETURNS TO SONG LIST */
+  // BACK BUTTON RETURNS TO TOP OF SONG LIST
 
-window.addEventListener("popstate", () => {
+  window.addEventListener("popstate", () => {
 
-renderSongs(songsData);
+    renderSongs(songsData);
 
-});
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 10);
+
+  });
 
 });
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- =================================
      HAMBURGER MENU SCRIPT
