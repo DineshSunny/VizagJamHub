@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
           history.pushState(
             { page: "lyrics" },
             "",
-            window.location.pathname
+            location.pathname + location.search
           );
 
           showLyrics(song);
