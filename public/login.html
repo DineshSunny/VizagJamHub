@@ -67,16 +67,28 @@
 
     <div class="login-form">
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter Password">
+    <!-- PASSWORD FIELD -->
 
-        <button onclick="login()">
-            Login
-        </button>
+<div class="password-wrapper">
 
-        <p id="error"></p>
+    <input
+        type="password"
+        id="password"
+        placeholder="Enter Password">
+
+    <span
+        class="toggle-password"
+        onclick="togglePassword()">
+        👁
+    </span>
+
+</div>
+
+    <button onclick="login()">
+        Login
+    </button>
+
+    <p id="error"></p>
 
     </div>
 
@@ -88,13 +100,21 @@
 
 function login(){
 
+    const passwordField =
+        document.getElementById("password");
+
+    const error =
+        document.getElementById("error");
+
     const password =
-        document.getElementById("password").value;
+        passwordField.value;
 
     const correctPassword =
-        "VizagJamHub123";
+        "VizagJamHub@123d";
 
     if(password === correctPassword){
+
+        error.textContent = "";
 
         sessionStorage.setItem(
             "adminLoggedIn",
@@ -106,15 +126,82 @@ function login(){
 
     }else{
 
-        document.getElementById("error")
-            .textContent =
-            "Incorrect Password";
+    error.textContent =
+        "Incorrect Password";
+
+    passwordField.classList.add(
+        "shake"
+    );
+
+    passwordField.value = "";
+
+    passwordField.focus();
+
+    setTimeout(() => {
+
+        passwordField.classList.remove(
+            "shake"
+        );
+
+    }, 400);
+
+}
+
+}
+
+/* SHOW / HIDE PASSWORD */
+
+function togglePassword(){
+
+    const password =
+        document.getElementById("password");
+
+    if(password.type === "password"){
+
+        password.type = "text";
+
+    }else{
+
+        password.type = "password";
 
     }
 
 }
 
+/* ENTER KEY LOGIN */
+
+document
+.getElementById("password")
+.addEventListener("keydown", function(event){
+
+    if(event.key === "Enter"){
+
+        login();
+
+    }
+
+});
+
+
+
+/* CLEAR ERROR WHEN USER TYPES AGAIN */
+
+document
+.getElementById("password")
+.addEventListener("input", () => {
+
+    document
+    .getElementById("error")
+    .textContent = "";
+
+});
+
+
 </script>
+
+
+
+
 
 <!-- LIVE TEXT SCRIPT -->
 

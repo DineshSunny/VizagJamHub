@@ -1899,4 +1899,69 @@ color:#ff6666;
 
 font-size:14px;
 
+min-height:20px;
+
+transition:0.3s;
+
+}
+
+
+/* PASSWORD FIELD */
+
+.password-wrapper{
+
+    position:relative;
+
+    width:100%;
+
+}
+
+.password-wrapper input{
+
+    width:100%;
+
+    padding-right:50px;
+
+}
+
+.toggle-password{
+
+    position:absolute;
+
+    top:50%;
+
+    right:15px;
+
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:18px;
+
+    user-select:none;
+
+    z-index:5;
+
+}
+
+
+
+/* LOGIN ERROR ANIMATION */
+
+.shake{
+
+animation:shake 0.4s;
+
+}
+
+@keyframes shake{
+
+0%{transform:translateX(0);}
+25%{transform:translateX(-8px);}
+50%{transform:translateX(8px);}
+75%{transform:translateX(-8px);}
+100%{transform:translateX(0);}
+
 }
