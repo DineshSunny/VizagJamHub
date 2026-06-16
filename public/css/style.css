@@ -1758,3 +1758,35 @@ opacity:0;
 scroll-margin-top:120px;
 
 }
+
+.logout-btn{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:9999;
+
+    background:#ff2b2b;
+    color:white;
+
+    padding:12px 24px;
+
+    border-radius:30px;
+
+    text-decoration:none;
+    font-weight:bold;
+
+    box-shadow:0 0 15px rgba(255,0,0,0.5);
+
+    transition:0.3s;
+}
+
+.logout-btn:hover{
+    background:#ff0000;
+
+    box-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 40px #ff0000;
+
+    transform:scale(1.05);
+}
