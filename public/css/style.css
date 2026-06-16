@@ -883,6 +883,13 @@ gap:30px;
 }
 
 
+
+
+
+
+
+
+
 /* ADMIN PANEL */
 
 .admin-panel{
@@ -906,24 +913,26 @@ margin-bottom:60px;
 .admin-buttons{
 
 display:flex;
-flex-direction:column;
-gap:25px;
-width:320px;
+
+flex-direction:row;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:20px;
 
 }
 
 .admin-btn{
 
-padding:18px;
-font-size:22px;
-background:black;
-border:1px solid white;
-color:white;
-cursor:pointer;
-border-radius:8px;
-transition:0.3s;
+width:280px;
+
+text-align:center;
 
 }
+
+
 
 .admin-btn:hover{
 
@@ -933,6 +942,42 @@ box-shadow:
 0 0 25px #00d4ff;
 
 }
+
+
+/* LOGOUT BUTTON */
+
+.logout-btn{
+
+display:block;
+
+width:280px;
+
+margin:25px auto 0;
+
+text-align:center;
+
+}
+
+.logout-btn:hover{
+
+border-color:#ff2b2b;
+
+box-shadow:
+0 0 10px #ff2b2b,
+0 0 25px #ff2b2b;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* LOGIN PAGE */
 
@@ -1763,37 +1808,58 @@ scroll-margin-top:120px;
 
 
 
+/* LOGOUT BUTTON */
+
 .logout-btn{
+
     position:fixed;
+
     top:20px;
     right:20px;
+
     z-index:9999;
 
-    background:#ff2b2b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:140px;
+
+    padding:16px 24px;
+
+    background:black;
+
     color:white;
 
-    padding:12px 24px;
+    border:1px solid white;
 
-    border-radius:30px;
+    border-radius:12px;
 
     text-decoration:none;
-    font-weight:bold;
 
-    box-shadow:0 0 15px rgba(255,0,0,0.5);
+    font-size:18px;
 
     transition:0.3s;
+
 }
+
+/* RED HOVER */
 
 .logout-btn:hover{
-    background:#ff0000;
+
+    transform:translateY(-8px) scale(1.03);
+
+    background:#111;
+
+    border-color:#ff2b2b;
 
     box-shadow:
-        0 0 10px #ff0000,
-        0 0 20px #ff0000,
-        0 0 40px #ff0000;
+    0 0 10px #ff2b2b,
+    0 0 20px #ff2b2b;
 
-    transform:scale(1.05);
 }
+
+
 
 
 /* LOGIN PAGE */
