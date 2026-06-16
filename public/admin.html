@@ -12,6 +12,22 @@
       href="/css/mobile.css"
       media="screen and (max-width:768px)">
 
+
+
+
+<!-- LOGIN PAGE -->
+
+<script>
+if (
+    sessionStorage.getItem("adminLoggedIn")
+    !== "true"
+){
+    window.location.href = "login.html";
+}
+</script>
+
+
+
 </head>
 
 
@@ -32,7 +48,9 @@
 
 <!-- LOGOUT BUTTON -->
 
-<a href="/index.html" class="logout-btn">
+<a href="#"
+   class="logout-btn"
+   onclick="logout()">
 Logout
 </a>
 
@@ -180,6 +198,32 @@ typing.classList.add("show");
 }, 3200);
 
 </script>
+
+
+
+
+<!-- LOGOUT -->
+
+<script>
+
+function logout(){
+
+    /* CLEAR ADMIN SESSION */
+
+    sessionStorage.removeItem(
+        "adminLoggedIn"
+    );
+
+    /* RETURN TO LOGIN PAGE */
+
+    window.location.href =
+        "login.html";
+
+}
+
+</script>
+
+
 
 </body>
 
