@@ -1947,9 +1947,10 @@ box-shadow:
 }
 
 
+
+
+
 /* LOGOUT BUTTON */
-
-
 
 .logout-btn{
 
@@ -1957,19 +1958,144 @@ display:block;
 
 width:180px;
 
-margin:100px auto 0;
+margin:60px auto 0;
 
 text-align:center;
 
+background:#8b0000;
+
+border:1px solid #ff4d4d;
+
+color:white;
+
 }
+
+/* RED HOVER */
 
 .logout-btn:hover{
 
-border-color:#ff2b2b;
+background:#b30000;
+
+border-color:#ff6666;
 
 box-shadow:
 0 0 10px #ff2b2b,
-0 0 25px #ff2b2b;
+0 0 25px #ff2b2b,
+0 0 40px #ff2b2b;
+
+}
+
+
+
+/*****************************************************CREATE SHOW FORM PAGE ^***************************************************************************/
+
+/* CREATE SHOW PAGE */
+
+.create-show-form{
+
+margin-top:120px;
+
+display:grid;
+
+grid-template-columns:
+repeat(2, minmax(280px,1fr));
+
+gap:20px;
+
+max-width:900px;
+
+margin-left:auto;
+margin-right:auto;
+
+}
+
+
+/* INPUTS */
+
+.create-show-form input,
+.create-show-form textarea{
+
+width:100%;
+
+padding:15px;
+
+border:1px solid rgba(255,255,255,0.3);
+
+border-radius:12px;
+
+background:rgba(255,255,255,0.1);
+
+backdrop-filter:blur(8px);
+
+color:white;
+
+font-size:16px;
+
+box-sizing:border-box;
+
+}
+
+/* PLACEHOLDER */
+
+.create-show-form input::placeholder,
+.create-show-form textarea::placeholder{
+
+color:rgba(255,255,255,0.7);
+
+}
+
+/* EXTRA INFO */
+
+.extra-info{
+
+grid-column:1 / span 2;
+
+min-height:120px;
+
+resize:vertical;
+
+}
+
+
+/* CREATE SHOW BUTTON */
+
+.create-show-form button{
+
+grid-column:1 / span 2;
+
+justify-self:center;
+
+padding:18px 40px;
+
+background:rgba(255,255,255,0.1);
+
+backdrop-filter:blur(8px);
+
+border:1px solid rgba(255,255,255,0.3);
+
+border-radius:12px;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+/* BUTTON HOVER */
+
+.create-show-form button:hover{
+
+transform:translateY(-5px);
+
+border-color:#00d4ff;
+
+box-shadow:
+0 0 10px #00d4ff,
+0 0 25px #00d4ff;
 
 }
 
