@@ -887,98 +887,6 @@ gap:30px;
 
 
 
-
-
-
-/* ADMIN PANEL */
-
-.admin-panel{
-
-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-
-}
-
-.admin-title{
-
-font-size:60px;
-margin-bottom:60px;
-
-}
-
-.admin-buttons{
-
-display:flex;
-
-flex-direction:row;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:20px;
-
-}
-
-.admin-btn{
-
-width:280px;
-
-text-align:center;
-
-}
-
-
-
-.admin-btn:hover{
-
-transform:translateY(-5px);
-box-shadow:
-0 0 10px #00d4ff,
-0 0 25px #00d4ff;
-
-}
-
-
-/* LOGOUT BUTTON */
-
-.logout-btn{
-
-display:block;
-
-width:280px;
-
-margin:25px auto 0;
-
-text-align:center;
-
-}
-
-.logout-btn:hover{
-
-border-color:#ff2b2b;
-
-box-shadow:
-0 0 10px #ff2b2b,
-0 0 25px #ff2b2b;
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 /* LOGIN PAGE */
 
 .login-section{
@@ -1808,58 +1716,6 @@ scroll-margin-top:120px;
 
 
 
-/* LOGOUT BUTTON */
-
-.logout-btn{
-
-    position:fixed;
-
-    top:20px;
-    right:20px;
-
-    z-index:9999;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    width:140px;
-
-    padding:16px 24px;
-
-    background:black;
-
-    color:white;
-
-    border:1px solid white;
-
-    border-radius:12px;
-
-    text-decoration:none;
-
-    font-size:18px;
-
-    transition:0.3s;
-
-}
-
-/* RED HOVER */
-
-.logout-btn:hover{
-
-    transform:translateY(-8px) scale(1.03);
-
-    background:#111;
-
-    border-color:#ff2b2b;
-
-    box-shadow:
-    0 0 10px #ff2b2b,
-    0 0 20px #ff2b2b;
-
-}
-
-
 
 
 /* LOGIN PAGE */
@@ -2031,3 +1887,87 @@ animation:shake 0.4s;
 100%{transform:translateX(0);}
 
 }
+
+
+
+
+/*******************************************************************************************************************************************/
+
+/* ADMIN PANEL */
+
+.admin-panel{
+
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+}
+
+.admin-title{
+
+font-size:60px;
+margin-bottom:60px;
+
+}
+
+.admin-buttons{
+
+display:flex;
+
+flex-direction:row;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:20px;
+
+}
+
+.admin-btn{
+
+width:280px;
+
+text-align:center;
+
+}
+
+
+
+.admin-btn:hover{
+
+transform:translateY(-5px);
+box-shadow:
+0 0 10px #00d4ff,
+0 0 25px #00d4ff;
+
+}
+
+
+/* LOGOUT BUTTON */
+
+.logout-btn{
+
+display:block;
+
+width:280px;
+
+margin:25px auto 0;
+
+text-align:center;
+
+}
+
+.logout-btn:hover{
+
+border-color:#ff2b2b;
+
+box-shadow:
+0 0 10px #ff2b2b,
+0 0 25px #ff2b2b;
+
+}
+
