@@ -263,6 +263,70 @@ app.get("/api/hindisongs", (req, res) => {
   res.json(songs);
 });
 
+
+
+
+
+/* =================================
+   CHORDS SYSTEM
+================================= */
+
+// Telugu Chords
+app.get("/api/teluguchords", (req, res) => {
+
+  const file =
+    path.resolve(
+      __dirname,
+      "../database/teluguchords.json"
+    );
+
+  let songs = readJSON(file);
+
+  res.json(songs);
+
+});
+
+// English Chords
+app.get("/api/englishchords", (req, res) => {
+
+  const file =
+    path.resolve(
+      __dirname,
+      "../database/englishchords.json"
+    );
+
+  let songs = readJSON(file);
+
+  res.json(songs);
+
+});
+
+// Hindi Chords
+app.get("/api/hindichords", (req, res) => {
+
+  const file =
+    path.resolve(
+      __dirname,
+      "../database/hindichords.json"
+    );
+
+  let songs = readJSON(file);
+
+  res.json(songs);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 /* =================================
    START SERVER
 ================================= */
