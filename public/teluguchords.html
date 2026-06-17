@@ -179,26 +179,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
       item.addEventListener("click", () => {
 
-        container.innerHTML = "";
+    searchInput.style.display = "none";
 
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
+    container.innerHTML = "";
 
-        window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
-        requestAnimationFrame(() => {
+    window.scrollTo(0, 0);
 
-          history.pushState(
+    requestAnimationFrame(() => {
+
+        history.pushState(
             { page: "chords" },
             "",
             location.pathname
-          );
+        );
 
-          showChords(song);
+        showChords(song);
 
-        });
+    });
 
-      });
+});
 
       container.appendChild(item);
 
@@ -240,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p style="
           margin-top:20px;
           white-space:pre-line;
-          line-height:1.9;
+          line-height:1.2;
           font-size:16px;
           text-align:left;
         ">
