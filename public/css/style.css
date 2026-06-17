@@ -1949,13 +1949,15 @@ box-shadow:
 
 /* LOGOUT BUTTON */
 
+
+
 .logout-btn{
 
 display:block;
 
-width:280px;
+width:180px;
 
-margin:25px auto 0;
+margin:70px auto 0;
 
 text-align:center;
 
