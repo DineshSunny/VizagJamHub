@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         section.innerHTML = `
           <h2 style="margin-top:30px; color:#00d4ff;">
-            🎸 ${currentLetter}
+              ${currentLetter}
           </h2>
         `;
 
@@ -246,15 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Key: ${song.key || "N/A"}
         </p>
 
-        <p style="
-          margin-top:20px;
-          white-space:pre-line;
-          line-height:1.2;
-          font-size:16px;
-          text-align:left;
-        ">
-          ${song.chords || "Chords coming soon..."}
-        </p>
+        <div id="chord-content"></div>
 
       </div>
 
@@ -264,6 +256,83 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.scrollTop = 0;
 
     window.scrollTo(0, 0);
+
+
+  const chordContent =
+document.getElementById("chord-content");
+
+const lines =
+(song.chords || "").split("\n");
+
+let html = "";
+
+lines.forEach(line => {
+
+line = line.trim();
+
+if(!line){
+
+html += "<br>";
+
+}
+
+else if(
+line === "INTRO" ||
+line.startsWith("SOLO") ||
+line.startsWith("CHORUS") ||
+line.startsWith("OUTRO")
+){
+
+html += `
+<div class="chord-heading">
+${line}
+</div>
+`;
+
+}
+
+else if(
+line.includes("- VERSE")
+){
+
+html += `
+<div class="chord-lyric">
+${line}
+</div>
+`;
+
+}
+
+else if(
+/^[A-G]/.test(line)
+){
+
+html += `
+<div class="chord-line">
+${line}
+</div>
+`;
+
+}
+
+else{
+
+html += `
+<div class="chord-lyric">
+${line}
+</div>
+`;
+
+}
+
+});
+
+chordContent.innerHTML = html;
+
+
+
+
+
 
   }
 

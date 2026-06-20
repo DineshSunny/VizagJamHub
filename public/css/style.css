@@ -2179,7 +2179,9 @@ margin-top:25px;
 
 font-size:22px;
 
-font-weight:bold;
+font-style:italic;
+
+font-weight:600;
 
 color:#00d4ff;
 
@@ -2193,25 +2195,31 @@ text-transform:uppercase;
 
 font-style:italic;
 
-color:#ddd;
+font-size:20px;
+
+color:#00d4ff;
+
+margin-top:15px;
 
 margin-bottom:10px;
 
-font-size:18px;
-
 }
+
+
 
 .chord-line{
 
-font-weight:bold;
+font-weight:700;
 
 font-size:20px;
 
-color:white;
+color:#ffffff;
 
 letter-spacing:1px;
 
-line-height:1.8;
+line-height:1.4;
+
+margin-bottom:4px;
 
 }
 

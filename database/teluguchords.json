@@ -1,23 +1,52 @@
 [
 
 {
-  "title": "Adiga Adiga",
-  "movie": "Ninnu Kori",
-  "key": "Gm",
-  "chords": "INTRO\n\nGm D# A# F\n\nGm D# A# D\n\n\nVERSE 1\n\nNuveleni nanu\n\nA# Cm F A#\n\nCm Dm D# Cm\n\nA# Cm F A#\n\nGm F D#\n\n\nSOLO 1\n\nA# Cm F A#\n\nGm F D#\n\n\nVERSE 2\n\nGundey lothulo\n\nGm D# Cm F D\n\nA# Cm Dm D#\n\nA# Cm D#m D\n\nD# Cm D"
+"title": "Adiga Adiga",
+"movie": "Ninnu Kori",
+"key": "Gm",
+"chords": "INTRO\n\nGm D# A# F\n\nGm D# A# D\n\n\nNuveleni Nanu - VERSE 1\n\nA# Cm F A#\n\nCm Dm D# Cm\n\nA# Cm F A#\n\nGm F D#\n\n\nSOLO 1\n\nA# Cm F A#\n\nGm F D#\n\n\nGundey Lothulo - VERSE 2\n\nGm D# Cm F D\n\nA# Cm Dm D#\n\nA# Cm D#m D\n\nD# Cm D"
+},
+
+
+{
+"title": "Raayina Matram",
+"movie": "Dasavathaaram",
+"key": "D",
+"chords": "INTRO\n\nD\n\n\nRayini Matram Kantey - VERSE 1\n\nC D D# D F D# D\n\n\nHarini Thalinchana Rudhyam Nedu - VERSE 2\n\nG G Riff\n\n\nNingi Lona - VERSE 3\n\nGm Dm\n\n\nSOLO 1\n\nD D#"
+},
+
+
+{
+"title": "June Pothe",
+"movie": "Neevalle Neevalle",
+"key": "Bm",
+"chords": "INTRO\n\nBm A Em A F#m F#\n\nBm A Em A F#\n\n\nSOLO 1\n\nBm Bm Em F#m F# Bm\n\n\nJune Pothe - VERSE 1\n\nBm Em F#m\n\n(F# A)\n\nBm A F#\n\n(F# A)\n\n\nNinna Emito Thalovdanta - VERSE 2\n\nBm A Em A\n\n\nSOLO 2\n\nBm D Em F#m\n\n\nAlarinchey - VERSE 3\n\nBm F#m Bm F#m\n\n\nKinda Bhumi Undi - VERSE 4\n\nBm A Bm A\n\n\nIdhe Tharunam Thalupuki - VERSE 5\n\nBm F#m Bm F#m\n\nBm A F#"
 },
 
 {
-  "title": "Raayina Matram",
-  "movie": "Dasavathaaram",
-  "chords": "RAAYINA MATRAM\n\nKEY : D\n\nINTRO\n\nD\n\n\nVERSE 1\n\nrayini matram kantey\n\nC D D# D F D# D\n\n\nharini thalinchana rudhyam nedu\n\nG G Riff\n\n\nVERSE 2\n\nNingi lona\n\nGm Dm\n\n\nSOLO 1\n\nD D#"
+"title": "Meghalalo Teli Pommannadi",
+"movie": "Gulabi",
+"key": "Em",
+"chords": "INTRO\n\nEm\n\n\nMeghalalo - VERSE 1\n\nEm Em C D\n\n\nSOLO 1\n\nEm C Em B\n\n\nSOLO 2\n\nEm C D Em\n\n\nHello Pilla Antu - VERSE 2\n\nEm Em C D"
 },
 
 {
-  "title": "June Pothe",
-  "movie": "Neevalle Neevalle",
-  "chords": "JUNE POTHE\n\nKEY : Bm\n\nINTRO\n\nBm A Em A F#m F#\n\nBm A Em A F#\n\n\nSOLO 1\n\nBm Bm Em F#m F# Bm\n\n\nVERSE 1\n\nJune pothe\n\nBm Em F#m\n\n(F# A)\n\nBm A F#\n\n(F# A)\n\n\nVERSE 2\n\nNinna emito thalovdanta\n\nBm A Em A\n\n\nSOLO 2\n\nBm D Em F#m\n\n\nVERSE 3\n\nAlarinchey\n\nBm F#m Bm F#m\n\n\nkinda bhumi undi\n\nBm A Bm A\n\n\nVERSE 4\n\nIdhe Tharunam Thalupuki\n\nBm F#m Bm F#m\n\nBm A F#"
+"title": "Mukkala Mukaabulaa",
+"movie": "Premikudu",
+"key": "Dm",
+"chords": "RIFF\n\nD F C\n\nD F A\n\n\nLaila - VERSE 1\n\nDm\n\n\nLavuki Kapala - VERSE 2\n\nGm Am\n\nGm Am\n\nDm Gm Am\n\n\nSOLO 1\n\nDm\n\nGm Am\n\n\nJuraasik Paarkulona - VERSE 3\n\nDm G Dm Am\n\n\nCowboy - VERSE 4\n\nDm\n\nGm Am"
+},
+
+{
+"title": "Hello Doctor",
+"movie": "Prema Desham",
+"key": "Dm",
+"chords": "Hello Doctor Heart Miss Aye - VERSE 1\n\nDm C A# A"
 }
+
+
+
+
 
 
 ]
