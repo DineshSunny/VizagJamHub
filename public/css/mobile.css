@@ -349,3 +349,78 @@ text-shadow:
 }
 
 
+/* =================================
+   ADMIN PAGES MOBILE
+================================= */
+
+.admin-buttons{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:15px;
+
+width:100%;
+
+}
+
+.admin-btn{
+
+width:90%;
+
+max-width:320px;
+
+}
+
+.logout-btn{
+
+width:180px;
+
+margin:40px auto 0;
+
+}
+
+/* =================================
+   CREATE SHOW MOBILE
+================================= */
+
+.create-show-form{
+
+grid-template-columns:1fr !important;
+
+width:95%;
+
+margin-top:40px;
+
+}
+
+.create-show-form button{
+
+width:100%;
+
+}
+
+/* =================================
+   GENERAL FORM FIX
+================================= */
+
+.login-form{
+
+width:95%;
+
+max-width:95%;
+
+}
+
+.hero-content{
+
+width:95%;
+
+max-width:95%;
+
+margin:auto;
+
+}
