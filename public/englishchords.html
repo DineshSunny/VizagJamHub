@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>English Song Chords | Vizag JamHub</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet"
+      href="/css/mobile.css"
+      media="screen and (max-width:768px)">
+
+</head>
+
+<body class="category-page">
+
+<!-- VIDEO BACKGROUND -->
+
+<video autoplay muted loop playsinline preload="metadata" class="lyrics-video">
+<source src="/Video/3.mp4" type="video/mp4">
+</video>
+
+<!-- MUSIC NOTES -->
+
+<div class="music-notes">
+
+<span>♪</span>
+<span>♫</span>
+<span>♬</span>
+<span>♩</span>
+<span>𝄞</span>
+<span>♭</span>
+<span>♯</span>
+<span>♬</span>
+<span>♫</span>
+<span>♪</span>
+<span>♩</span>
+<span>𝄢</span>
+
+</div>
+
+<!-- HAMBURGER MENU -->
+
+<header>
+
+<nav>
+
+<div class="menu-toggle">&#9776;</div>
+
+<ul class="nav-links">
+
+<li><a href="/index.html">Home</a></li>
+
+<li><a href="/chord-library.html">Chord Library</a></li>
+
+<li><a href="/admin.html">Admin Panel</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<!-- CHORDS PAGE -->
+
+<section class="lyrics-page">
+
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 Search chords..."
+class="search-bar"
+/>
+
+<div id="lyrics-container"></div>
+
+</section>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+const container =
+document.getElementById("lyrics-container");
+
+const searchInput =
+document.getElementById("searchInput");
+
+let songsData = [];
+
+fetch("/api/englishchords")
+
+.then(res => res.json())
+
+.then(data => {
+
+searchInput.style.display = "block";
+
+songsData = data;
+
+renderSongs(data);
+
+window.scrollTo(0,0);
+
+})
+
+.catch(err => {
+
+console.error("FETCH ERROR:", err);
+
+container.innerHTML =
+"<p>Error loading chords</p>";
+
+});
+
+function renderSongs(data){
+
+container.innerHTML = "";
+
+data.sort((a,b)=>
+a.title.localeCompare(b.title)
+);
+
+let currentLetter = "";
+
+data.forEach(song=>{
+
+const firstLetter =
+song.title.charAt(0).toUpperCase();
+
+if(firstLetter !== currentLetter){
+
+currentLetter = firstLetter;
+
+const section =
+document.createElement("div");
+
+section.innerHTML = `
+<h2 style="margin-top:30px;color:#00d4ff;">
+${currentLetter}
+</h2>
+`;
+
+container.appendChild(section);
+
+}
+
+const item =
+document.createElement("div");
+
+item.classList.add("song-item");
+
+item.innerHTML = `
+${song.title} –
+<span style="color:#aaa;">
+${song.movie}
+</span>
+`;
+
+item.addEventListener("click",()=>{
+
+searchInput.style.display="none";
+
+container.innerHTML="";
+
+window.scrollTo(0,0);
+
+requestAnimationFrame(()=>{
+
+history.pushState(
+{page:"chords"},
+"",
+location.pathname
+);
+
+showChords(song);
+
+});
+
+});
+
+container.appendChild(item);
+
+});
+
+}
+
+searchInput.addEventListener("input",()=>{
+
+const value =
+searchInput.value.toLowerCase();
+
+const filtered =
+songsData.filter(song=>
+song.title.toLowerCase().includes(value)
+);
+
+renderSongs(filtered);
+
+});
+
+function showChords(song){
+
+container.innerHTML=`
+
+<div style="
+width:100%;
+margin:40px 0;
+padding:0 20px;
+">
+
+<h2 style="
+text-align:center;
+margin-bottom:8px;
+">
+
+${song.title}
+
+<span style="
+opacity:.6;
+font-weight:normal;
+">
+- ${song.movie}
+</span>
+
+</h2>
+
+<p style="
+text-align:center;
+opacity:.7;
+margin-bottom:25px;
+">
+
+Key: ${song.key || "N/A"}
+
+</p>
+
+<div id="chord-content"></div>
+
+</div>
+
+`;
+
+window.scrollTo(0,0);
+
+const chordContent =
+document.getElementById("chord-content");
+
+const lines =
+(song.chords || "").split("\n");
+
+let html = "";
+
+lines.forEach(rawLine=>{
+
+const line = rawLine.trim();
+
+if(!line){
+
+html += "<br>";
+return;
+
+}
+
+if(line.startsWith("# ")){
+
+const heading =
+line.substring(2);
+
+html += `
+<div class="chord-heading">
+${heading}
+</div>
+`;
+
+return;
+
+}
+
+if(line.startsWith("> ")){
+
+const lyric =
+line.substring(2);
+
+html += `
+<div class="chord-lyric">
+${lyric}
+</div>
+`;
+
+return;
+
+}
+
+html += `
+<div class="chord-line">
+${line}
+</div>
+`;
+
+});
+
+chordContent.innerHTML = html;
+
+}
+
+window.addEventListener("popstate",()=>{
+
+searchInput.style.display="block";
+
+renderSongs(songsData);
+
+window.scrollTo(0,0);
+
+});
+
+});
+
+</script>
+
+<script src="/js/menu.js"></script>
+
+</body>
+
+</html>
