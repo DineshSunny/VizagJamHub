@@ -48,82 +48,359 @@
     "chords": "# Intro\nF#m\n\n> My Name Is Nani - Verse 1\nF#m Riff\nG# A A# B\nF#m Riff\nE D# D C#\n\n# Solo\nF#\nF# G\nF#m Riff\n\n> Anuvani - Verse 2\nF#m G\n\n> Nee Size Chinadi Avani - Verse 3\nA G F#m\nG F# E\n\n> Okasari Chachinaka - Verse 4\nF#m\nF#m G G# A\n\n> Eega Eega - Chorus\nF#m G\nF#m E\n\n> Gentleman - Bridge\nD F# G#\nF#m G G# A\nG# F#\nG# A A# B"
   },
 
-  {
-  "title": "Chal Chalo Chalo",
-  "movie": "",
-  "key": "Dm",
-  "chords": "# Intro\nD G C A\nD G C D\n\n# Solo\nDm A# Gm Am\nF A# Gm A# Dm\n\n> Chala Chalo - Verse 1\nDm\n\n> Just Say Hello - Verse 2\nDm G Dm C\n\n> Theepitho Patuga - Verse 3\nF G A# C\n\n# Solo\nDm\nFm\nDm Gm A Dm\n\n> Hathuko - Verse 4\nF A# Dm\n\n> Kanirenduku - Verse 5\nDm A# Dm C\nDm A# Dm G\n\n> Ochindi Ibandi - Verse 6\nF G G# G Dm\n\n> Kastpada Vadey - Verse 7\nDm A# G C\nDm A# G A# C\n\n# Ending\nDm C A# A Dm"
-},
-
-
 
   {
-    "title": "Now Or Never",
-    "movie": "",
-    "key": "D",
-    "chords": "> Pada Pada - Verse 1\nD\n\n# Solo\nD C D\n\n> Now Or Never - Verse 2\nG F# D C D# D\nG F# D C D# D\nC F D# D\n\n> Nindu Nooru - Verse 3\nD Gm\nD Gm D#\n\n# Breakdown\nC D\nC D\n\n> Nindu Noorela Patu - Verse 4\nD A C A D\n\n> Idi Saripodu Antuu - Verse 5\nG D D D#\n\n> Yedata Leni - Verse 6\nG G F# F# D# D C A# A"
+    "title": "Chal Chalo Chalo",
+    "movie": "S/O Satyamurthy",
+    "key": "Dm",
+    "chords": "# Intro\nD G C A\nD G C D\n\n# Solo\nDm A# Gm Am\nF A# Gm A# Dm\n\n> Chala Chalo - Verse 1\nDm\n\n> Just Say Hello - Verse 2\nDm G Dm C\n\n> Theepitho Patuga - Verse 3\nF G A# C\n\n# Solo\nDm\nFm\nDm Gm A Dm\n\n> Hathuko - Verse 4\nF A# Dm\n\n> Kanirenduku - Verse 5\nDm A# Dm C\nDm A# Dm G\n\n> Ochindi Ibandi - Verse 6\nF G G# G Dm\n\n> Kastapada Vaade - Verse 7\nDm A# G C\nDm A# G A# C\n\n# Ending\nDm C A# A Dm"
   },
 
   {
-    "title": "Jaggo",
-    "movie": "",
+    "title": "Now or Never",
+    "movie": "Vedam",
     "key": "D",
-    "chords": "> Neela Neela - Verse 1\nD F F\nD F G F G\n\n> Ee Koncham Galthi Leni - Verse 2\nD D-F F-G\nG F G F G\nC\n\n> Jaggo Jaggo - Chorus\nD A# A C\nD A# C\n\n# Solo\nD F F\nD F G F G\nA# A\nD C A# C\nF F G# G\n\n> Panchesthanu Nanu - Verse 3\nD C A# C\n\n> Yedharini Kali - Verse 4\nA# B A\n\n# Solo 2\nD\nA# C\nD G A\nD C G D"
+    "chords": "> Pada Pada - Verse 1\nD\n\n# Solo\nD C D\n\n> Now or Never - Verse 2\nG F# D C D# D\nG F# D C D# D\nC F D# D\n\n> Nindu Nooru - Verse 3\nD Gm\nD Gm D#\n\n# Breakdown\nC D\nC D\n\n> Nindu Noorela Paatu - Verse 4\nD A C A D\n\n> Idi Saripodu Antuu - Verse 5\nG D D D#\n\n> Yedata Leni - Verse 6\nG G F# F# D# D C A# A"
   },
 
   {
-    "title": "Mr Nokia",
-    "movie": "",
+    "title": "Jaggo Jaggo",
+    "movie": "Srimanthudu",
+    "key": "D",
+    "chords": "> Neela Neela - Verse 1\nD F F\nD F G F G\n\n> Ee Koncham Galthi Leni - Verse 2\nD D-F F-G\nG F G F G\nC\n\n> Jaggo Jaggo - Chorus\nD A# A C\nD A# C\n\n# Solo\nD F F\nD F G F G\nA# A\nD C A# C\nF F G# G\n\n> Panchesthanu Nanu - Verse 3\nD C A# C\n\n> Yedharini Kaali - Verse 4\nA# B A\n\n# Solo 2\nD\nA# C\nD G A\nD C G D"
+  },
+
+  {
+    "title": "Mr. Nokia",
+    "movie": "Mr. Nokia",
     "key": "C",
-    "chords": "# Intro\nC\n\n> No No No - Verse 1\nC A# G D# C C\n\n> Nenekaduntey Akkada - Verse 2\nF C\nC D# C\nF C\nF G\n\n> No Keyia No Keyia - Chorus\nC A# B C A# D# C\nA# C A# D# C\n\n# Solo Intro\nC D# A# F\n\n# Solo\nCm Gm G# A#\n\n> Peda Peda Peda - Verse 3\nC C D# C D# C\nC A# A G# G\n\n> Matalo Emantuna - Verse 4\nCm G# F G\n\n# Solo 2\nC A# F"
+    "chords": "# Intro\nC\n\n> No No No - Verse 1\nC A# G D# C C\n\n> Nenekadunte Akkada - Verse 2\nF C\nC D# C\nF C\nF G\n\n> No Keyia No Keyia - Chorus\nC A# B C A# D# C\nA# C A# D# C\n\n# Solo Intro\nC D# A# F\n\n# Solo\nCm Gm G# A#\n\n> Peda Peda Peda - Verse 3\nC C D# C D# C\nC A# A G# G\n\n> Matalo Emantuna - Verse 4\nCm G# F G\n\n# Solo 2\nC A# F"
   },
 
   {
     "title": "Ukku Naram",
-    "movie": "",
+    "movie": "Guru",
     "key": "Am",
-    "chords": "# Intro\nA C D E\n\n> Nuventey Choopinchav - Verse 1\nA A C B\n\n> Ukkunaram - Verse 2\nA C B\n\n> Amma Nana - Verse 3\nA G X 2\nG G# G\nD C\n\n> Neelo Balam Intheynana - Verse 4\nAm C F Dm E"
+    "chords": "# Intro\nA C D E\n\n> Nuvvente Choopinchav - Verse 1\nA A C B\n\n> Ukku Naram - Verse 2\nA C B\n\n> Amma Nana - Verse 3\nA G X 2\nG G# G\nD C\n\n> Neelo Balam Intheynana - Verse 4\nAm C F Dm E"
   },
 
   {
-    "title": "Roja",
-    "movie": "",
+    "title": "Roja Roja",
+    "movie": "Roja",
     "key": "E",
-    "chords": "# Intro\nE\n\n> Lalal Lala Laa La La - Verse 1\nE A B\nE A B\n\n> Lala Laaa Lala Laa - Verse 2\nB A E\n\n> Kanulona Neevey - Verse 3\nG# A G F#\nE A B\n\n# Riff\nE E C"
+    "chords": "# Intro\nE\n\n> Lalal Lala Laa La La - Verse 1\nE A B\nE A B\n\n> Lala Laaa Lala Laa - Verse 2\nB A E\n\n> Kanulona Neeve - Verse 3\nG# A G F#\nE A B\n\n# Riff\nE E C"
   },
 
   {
     "title": "Maa Daddy Pockets",
-    "movie": "",
+    "movie": "Oh My Friend",
     "key": "Em",
     "chords": "> Maa Daddy Pockets - Verse 1\nE C G Riff\n\n> Campus Canteen - Verse 2\nE C G A\nE C G D\n\n> Aaa Next One Month - Verse 3\nE G A C D\nE G B D A\nE G A C D\nE G B E\n\n# Solo\nE C G A\nE C G D\nE C G A\nE C G B E\n\n> Bottom Line - Verse 4\nE C G A\nE C G Bm"
   },
 
   {
-    "title": "Yedaney Koyakey",
+    "title": "Yedhane Koyyake",
+    "movie": "Surya S/o Krishnan",
+    "key": "Am",
+    "chords": "# Riff And Bass\n\n> Yedhane Koyyake - Verse 1\nA G F E\nA A G F E\n\n> Neethoti Nadiche - Verse 2\nDm G Am G\nDm G Am Em\n\n# Solo 1 Intro\nA\n\n# Bass\nA Slide\nA B C D E\n\n> Adhram Adhram Sanmukham - Verse 3\nA\nC D E\n\n> Valapu Kada Yedo - Verse 4\nG D\n\n> Vasantha Kaalame - Verse 5\nG C D\nG D Em C D\nC D X 2\n\n> Valaaaa Laaa Eye - Chorus\nG C D G\nG D Em D\nG B Em"
+  },
+
+  {
+    "title": "Paataku Pranam",
+    "movie": "Vaasu",
+    "key": "Cm",
+    "chords": "# Intro\nCm\n\n> Paataku Pranam - Verse 1\nCm Fm G# A#\n\n> Oooh Cheli - Verse 2\nCm A# G# F G\n\n> Ooo Oo Ho - Verse 3\nCm G\nCm X 2\nA# G# G Cm\n\n> Oo Oo Ho (Female) - Verse 4\nCm G F G\n\n> Preminche Manasu Unde - Verse 5\nCm Gm"
+  },
+
+  {
+    "title": "Chiku Buku Raile",
+    "movie": "Gentleman",
+    "key": "Dm",
+    "chords": "# Intro\nDm Am A# C\n\n> Mee Emi Kaavaalo - Verse 1\nD A# C\n\n> Mee Emi Kaavaalo - Verse 2\nF Gm A# Am\nF Gm A# A\n\n> Chiku Buku Raile - Chorus\nC Dm\nA# Dm"
+  },
+
+  
+  {
+    "title": "Maasu Maranam",
+    "movie": "Petta",
+    "key": "Cm",
+    "chords": "# Intro\nCm\n\n> Ochadu - Verse 1\nCm\n\n> College Gatelu - Verse 2\nCm G# F A#\n\n# Solo\nG# D A#\nCm G# A#\nCm D D# F\n\n> Maasu Maranam - Chorus\nCm G F A#\n\n> Evadu - Verse 3\nD# G# X 2\nG# D# A# F X 2"
+  },
+
+  {
+    "title": "Cheliya Cheliya",
+    "movie": "",
+    "key": "B",
+    "chords": "# Intro\nA B Riff\nG A\n\n> Chiguru - Verse 1\nBm F#m X 2\nG A F#\n\n> Jaali Naapi - Verse 2\nBm\n\n> Prathishanam - Verse 3\nF#m F# Bm A-Bm\nEm Bm X 2\nG A F#"
+  },
+
+  {
+    "title": "Oy! Oy!",
+    "movie": "Oy!",
+    "key": "Gm",
+    "chords": "# Intro\nGm F Cm Gm\nDm A# Gm\n\n> Noota Debbairu - Verse 1\nGm F Cm Dm X 2\n\n> Oy! Oy! - Chorus\nGm F D# F\nGm A# C Dm\n\n> Naalo Kalige - Verse 2\nGm F D# Dm\nCm Dm\n\n# Solo\nGm X 2\nF D# F\nA# F Gm F\nD# F\n\n> Roopam - Verse 3\nGm D# X 2\n\n> Cinemalo - Verse 4\nGm F A# D# Dm\nGm F Cm Dm\n\n# Solo 2\nGm F Cm Dm X 2\nGm D# F Gm X 2"
+  },
+
+  {
+    "title": "Follow Follow",
+    "movie": "Nannaku Prematho",
+    "key": "D#m",
+    "chords": "# Intro\nD#m A#\n\n> Signaley Follow - Verse 1\nD#m B C# D#m\n\n> Nee Needa - Verse 2\nD#m E A#\n\n# Solo\nD#m\nF#m\n\n> Kaalu Kallu Moosukoni - Verse 3\nD#m A# D#m F# E D#m\nD#m A# D#m F# F# G#m\n\n> Naakanti Choopi - Verse 4\nG#m F B\n\n> Aa Krishna Jesus - Verse 5\nB G# E"
+  },
+
+  {
+    "title": "Hare Rama",
+    "movie": "Okkadu",
+    "key": "Dm",
+    "chords": "# Intro\nDm C Dm\n\n# Veena Solo\nDm G Gm\n\n> Hare Rama - Verse 1\nD G X 2\nC G\n\n> Stambam Kooda - Verse 2\nD C A#\nC G\n\n# Solo 1 Outro\nD A G\n\n> Charminar - Verse 3\nD A# G Am\nD A# G Dm\n\n> Eeemaya - Verse 4\nC G X 4\nD F\n\n# Solo 2\nD A D\nD F#m G"
+  },
+
+  {
+    "title": "Bheemla Nayak Title Song",
+    "movie": "Bheemla Nayak",
+    "key": "B5",
+    "chords": "> Bheeemla Nayak - Chorus\nB5\n\n> Iragadeese - Verse 1\nB5 G A\n\n> Isthiri Nalagani Chokka - Verse 2\nB5 G A E"
+  },
+
+  {
+    "title": "DJ Tillu Title Song",
+    "movie": "DJ Tillu",
+    "key": "D#m",
+    "chords": "> Lalaguda - Verse 1\nD#m E F# D#m\n\n> DJ Tillu Peru - Chorus\nD#m E"
+  },
+
+  {
+    "title": "Dheera Dheera",
+    "movie": "KGF",
+    "key": "Em",
+    "chords": "# Intro\nEm C Em F# G A B\nEm C Em D C\n\n> Adigo Adigo - Verse 1\nEm C G D\nC D X 2\nG D C D\n\n> Dheera Dheera - Chorus\nEm C Am Bm\n\n# Outro\nEm C A C D"
+  },
+
+  {
+    "title": "Vennelave",
+    "movie": "",
+    "key": "C#m",
+    "chords": "> Vennelave - Verse 1\nC#\n\n# Solo\nC# F#m X 2\nBm F#m X 2\n\n> Neelo - Verse 2\nF#m C# X 2\n\n> Idhi - Verse 3\nF#m Bm X 4\n\n> Pilla - Verse 4\nC# F#m\n\n> Pouthota - Verse 5\nC# Bm F#m\n\n# Solo 2\nF#m Bm\nF#m C#\n\n> Ahh Viyase - Verse 6\nF#m Bm C#"
+  },
+
+  {
+    "title": "Pachadaname",
+    "movie": "Sakhi",
+    "key": "F#m",
+    "chords": "# Solo\nF#m B\nF#m B\n\n> Kalika Chilakam - Verse 1\nF#m B\nF#m B F#m\n\n> Yerani Roopam - Verse 2\nB E\nB E F#\n\n> Sakhiya - Verse 3\nF#m B\nF#m B\nB\n\n> Maske Padithe - Verse 4\nE B\n\n> Alale Leni Sagara Varnam - Verse 5\nF#m B E B\nC#m B E C#m\nE B"
+  },
+
+  
+  {
+    "title": "Monna Kanipinchavu",
+    "movie": "Surya S/o Krishnan",
+    "key": "B",
+    "chords": "# Intro\nB C#m F#\n\n> Monna Kanipinchavu - Verse 1\nB A B\n\n> Paruvula Nee Vennela - Verse 2\nC#m A F# Bm\n\n> Taarasulo Ninne - Verse 3\nB C#m F#\nG#m C#m G#m C#m Bm F#"
+  },
+
+  {
+    "title": "Naloney Pongenu",
+    "movie": "Surya S/o Krishnan",
+    "key": "A",
+    "chords": "# Intro\nBm F#m E\n\n> Naloney Pongenu - Verse 1\nA F#m E C#m D E\n\n> Om Om Shanti - Verse 2\nBm A E\n\n> Edo Okati - Verse 3\nA D E\nF#m D E\n\n> Nuvu Nilichina - Verse 4\nA E\n\n> Naathoti Raa - Verse 5\nBm A\n\n> Na Naaa Naaa - Outro\nA F#m\nBm A E"
+  },
+
+  {
+    "title": "Mustafa Mustafa",
+    "movie": "Prema Desam",
+    "key": "Am",
+    "chords": "> Mustafa Mustafa - Verse 1\nAm G\n\n> Vadiponadi Snehamokate - Verse 2\nAm G F G E"
+  },
+
+  {
+    "title": "Preminche Premava",
+    "movie": "Nuvvu Nenu Prema",
+    "key": "E",
+    "chords": "> Nela Nela - Verse 1\nE B A B\n\n> Preminche Premava - Chorus\nC#m G#m F#m G#m"
+  },
+
+  {
+    "title": "Chilipiga",
+    "movie": "Orange",
+    "key": "C",
+    "chords": "> O Prema - Verse 1\nC F C Gm\n\n> Kadake - Verse 2\nC F C F\n\n> Chilipiga Choosthav Ala - Chorus\nC F C G\n\n> O Prema - Verse 3\nC F C Gm\n\n> Oopiri Aagedaaka - Verse 4\nAm G F C\nAm G F G\n\n> Koncham - Verse 5\nC A# F\nC F"
+  },
+
+  {
+    "title": "Inkem Inkem Kaavaale",
+    "movie": "Geetha Govindam",
+    "key": "Em",
+    "chords": "# Intro\nEm\n\n> Thadhigina Thakhajanu - Verse 1\nEm Bm C D\n\n> Inkem Inkem Kaavaale - Chorus\nE C#m B\n\n> Gundelone Vegam - Verse 2\nA Em\n\n> Naakoka Ganta - Verse 3\nEm A Bm C\n\n# Solo\nE A B\nE Bm C\nBm A C Em X 2\n\n> Oohlaku - Verse 4\nEm A X 2\nB C\n\n> Nee Yeduta Chanuve Veesa - Verse 5\nE Am B\nE A B"
+  },
+
+  {
+    "title": "New York Nagaram",
+    "movie": "Nuvvu Nenu Prema",
+    "key": "Am",
+    "chords": "> New York Nagaram - Verse 1\nAm F C G\n\n> Nee Cheppaa Nee - Verse 2\nAm Em F G F\nAm Em F G C"
+  },
+
+  {
+    "title": "Yemito",
+    "movie": "Andala Rakshasi",
+    "key": "Cm",
+    "chords": "> Yemito - Verse 1\nCm Gm G# A#\n\n> Yemarpu Idhi - Verse 2\nCm Cm Gm G# A#\n\n> Nee Valane - Verse 3\nCm Gm\nFm G# Fm Gm\n\n# Solo\nCm Gm Fm Gm\n\n> Aagani - Verse 4\nCm Gm Fm F# Cm\nCm Gm Cm D#\n\n> Nuvve Leni - Verse 5\nCm Gm\n\n> Lokanni Jeyinchana - Verse 6\nCm Gm Fm G# A#"
+  },
+
+  {
+    "title": "Undiporaadhey",
+    "movie": "Hushaaru",
+    "key": "A#m",
+    "chords": "> Undiporaadhey - Verse 1\nA#m Fm A#m\n\n> Aiyo Aiyo Paapam - Verse 2\nA#m Fm F# G#\nA#m G# F\nA#m Fm F# G#\nD#m C# G#\n\n> Andham Ammaayi Ante - Verse 3\nA#m Fm A#m\nF# C# G#\n\n> Mohamaatale - Verse 4\nC# D#m Fm\nC# Cm F#\n\n# Solo\nA#m Fm A#\nF# C# G#\n\n# Keys Solo\nA#m Fm F# G#\nA#m G# F# F\n\n> Nee Silo - Verse 5\nA#m G# F#\nA#m G# F# G#\n\n> Mande Endalo - Verse 6\nD#m G#\n\n> Cheekatlo Kooda - Verse 7\nA#m G# C# D#m X 3\nA#m F# F"
+  },
+
+  {
+    "title": "Neekem Kaavaalo Cheppu",
+    "movie": "Yentha Vaadu Gaani",
+    "key": "E",
+    "chords": "# Intro\nE\n\n> Neekem Kaavaalo Cheppu - Verse 1\nE\nC#m F#m B\n\n> Reyi Pagalanaka - Verse 2\nG#m E C#m F#m B\nG#m E C#m G#m B\n\n> Oka Vendi Golusu - Verse 3\nA E C#m E\n\n> Ehey Aaaa - Verse 4\nE E C#m F#m B\nE E\n\n> Kalale Cheragavani - Verse 5\nE F#m B X 2\nC#m G#m"
+  },
+
+  
+  {
+    "title": "Kammani Ee Prema Lekhane",
+    "movie": "Yeto Vellipoyindhi Manasu",
+    "key": "D",
+    "chords": "> Kammani Ee Prema Lekhane - Verse 1\nG F#m\nEm A\nD Em A\n\n# Solo\nD Bm G\nA D\nD E A\n\n> Oohalani - Verse 2\nD\n\n> Oh Hoo - Verse 3\nD A\n\n> Gundelo Gayam - Verse 4\nD A\nD A\nG A D\n\n> Venirani Veri Prema - Verse 5\nA D G\n\n> Masule Valeru - Verse 6\nBm F# Bm D"
+  },
+
+  {
+    "title": "Nilakaigirathu",
+    "movie": "",
+    "key": "D",
+    "chords": "> Neela - Verse 1\nD G D A\nG Gm A\n\n> Kallu Moosthe - Verse 2\nBm A G A\n\n> Sama Gapa - Verse 3\nD G\n\n# Solo\nD G X 2\nBm A G A\n\n> Verse - Verse 4\nD G D A X 2\nBm\nBm A G A\nBm A G Gm"
+  },
+
+  {
+    "title": "O Paapa Laali",
+    "movie": "Geethanjali",
+    "key": "Bm",
+    "chords": "> O Paapa Laali - Verse 1\nBm Em F#\n\n# Solo 1\nBm Em A\nD E A\nDm Bm\nBm F#\n\n> Naa Jolala - Verse 2\nBm F# Em Bm\n\n> Kala Laaraani - Verse 3\nD G\n\n> Chiru Chepala - Verse 4\nEm G F#"
+  },
+
+  {
+    "title": "Kallu Moosi Yochisthe",
+    "movie": "Veedokkade",
+    "key": "Gm",
+    "chords": "# Intro\nGm Cm\n\n> Idi Nijama - Verse 1\nGm Dm Cm F\n\n> Pachi Chilaka - Verse 2\nGm Cm X 2\n\n> Cherane - Verse 3\nGm D# F\n\n# Solo\nGm Cm F X 2\nA# D# Cm F X 2\nD\n\n> Kadalai Maatalu Ani - Verse 4\nGm F\nGm Dm\n\n> Yedaloki Premosthe - Verse 5\nGm Dm F D"
+  },
+
+  {
+    "title": "Nee Yedalo Naaku Chotu",
+    "movie": "Aawara",
+    "key": "Cm",
+    "chords": "# Intro\nCm Gm\n\n> Nee Yedalo Naaku Chotu - Verse 1\nG#\nA# Cm G# X 2\nFm Gm Cm A# G#\n\n> Nee Jathalona - Verse 2\nFm A# G# Gm X 2\n\n# Solo\nCm Gm D# A#\n\n> Chirugaali - Verse 3\nCm Gm Cm G# A# X 2\n\n> Prema Puttaka - Verse 4\nGm Cm X 2\nFm Gm G# A#"
+  },
+
+  {
+    "title": "Na Nana Na",
     "movie": "",
     "key": "Am",
-    "chords": "# Riff And Bass\n\n> Yedaney Koyakey - Verse 1\nA G F E\nA A G F E\n\n> Nethoti Nadichey - Verse 2\nDm G Am G\nDm G Am Em\n\n# Solo 1 Intro\nA\n\n# Bass\nA Slide\nA B C D E\n\n> Adhram Adhram Sanmukam - Verse 3\nA\nC D E\n\n> Valapu Kada Yedo - Verse 4\nG D\n\n> Vasanta Kalamey - Verse 5\nG C D\nG D Em C D\nC D X 2\n\n> Chorus (Valaaaa Laaa Eye) - Chorus\nG C D G\nG D Em D\nG B Em"
+    "chords": "# Intro\nAm Dm E\n\n# Bass\nA E\nD F\nE B\n\n# Outro\nAm\nEm"
   },
 
   {
-    "title": "Pataku Pranam",
-    "movie": "",
+    "title": "Yemitemito",
+    "movie": "Arjun Reddy",
+    "key": "C#m",
+    "chords": "> Yemitemito - Verse 1\nC#m\nE F#m G#m A\nF#m G#m\nB A\n\n> Telusa - Verse 2\nA B F#m G#m"
+  },
+
+  {
+    "title": "Yaadike",
+    "movie": "Kadali",
+    "key": "D7",
+    "chords": "> Manase Therichesave - Verse 1\nD7 G7\n\n> Moolu Poogu Poye - Verse 2\nD7 F F# G7\nG7 G# A7\nA7 A#7\n\n> Yaadike - Chorus\nD7 G7 A#7 A7"
+  },
+
+  {
+    "title": "Guruvaram March Okati",
+    "movie": "Dookudu",
     "key": "Cm",
-    "chords": "# Intro\nCm\n\n> Pataku Pranam - Verse 1\nCm Fm G# A#\n\n> Oooh Cheli - Verse 2\nCm A# G# F G\n\n> Ooo Oo Ho - Verse 3\nCm G\nCm X 2\nA# G# G Cm\n\n> Oo Oo Ho (Female) - Verse 4\nCm G F G\n\n> Preminchey Mansu Undey - Verse 5\nCm Gm"
+    "chords": "# Intro\nCm Gm\n\n> Guruvaram March Okati - Verse 1\nCm Gm G# Gm\n\n# Solo\nA# C G G#\nD# F G G#\n\n> Zara Zara - Verse 2\nCm G# A# Fm\nCm G# D# A# Gm\n\n# Solo 2\nCm G# A# Fm\nCm G# D# A#\nGm Cm\n\n> Nuvvaade Perfume - Verse 3\nCm\nCm Gm\nCm A#\nFm Gm G# A#\n\n> Climate Antha - Verse 4\nFm A# G# Gm\nFm Gm G# A#"
   },
 
   {
-    "title": "Chikubuku Railey",
-    "movie": "",
-    "key": "Dm",
-    "chords": "# Intro\nDm Am A# C\n\n> Verse - Verse 1\nD A# C\n\n> Mee Emi Kavalo - Verse 2\nF Gm A# Am\nF Gm A# A\n\n> Chiku Chiku Buku Railey - Chorus\nC Dm\nA# Dm"
+    "title": "Hai Rey Hai",
+    "movie": "Sindhooram",
+    "key": "F#m",
+    "chords": "# Intro\nB F#m\n\n# Intro Solo X 2\nF#m G# A\nF#m F E\n\n# Outro\nF#m\nB E\nD C# A F#m\n\n> Hai Rey Hai - Verse 1\nF#m\nF#m E F#m\n\n> Yeh Roppu Ra Yeh Rangu Ra - Verse 2\nB D X 2\nC#\n\n# Solo 1\nF#m X 2\nBm A C#\n\n> Yaya Yaya Yaya - Verse 3\nD F#m\nD C#\nD A C# F#m\n\n> Andhamaina - Verse 4\nC# F#m\n\n# Solo\nF#m B C# D F#m\nF#m E D F#\n\n> Perati Lona Penchukunna - Verse 5\nC# F#m\nB D F#m E\n\n# Solo 2 Intro\nF#m E\nF#m\nC# F#m\n\n# Solo Outro\nF#m E D\nF#m E A F#m"
+  },
+
+  
+  {
+    "title": "Chinni Chinni Aasa",
+    "movie": "Roja",
+    "key": "E",
+    "chords": "> Chinni Chinni Aasa - Verse 1\nE B\nE B\n\n> Jaabilini Taaki - Verse 2\nA B A E"
+  },
+
+  {
+    "title": "Yamaha Nagari",
+    "movie": "Choodalani Vundi",
+    "key": "G",
+    "chords": "# Intro\nD\n\n> Yamaha Nagari - Verse 1\nG F#m Em D\n\n> Chiru Thyaga Raju - Verse 2\nEm D Bm A X 3\n\n# Solo 1\nA A A-G\n\n> Netaji Puttina Chota - Verse 3\nG F#m Bm A\nEm A Bm Am\n\n> Parugulu - Verse 4\nD\nG-A X 3\n\n> Okaritho - Verse 5\nBm G Em F#m G A\n\n# Solo 2\nA D-G X 2"
+  },
+
+  {
+    "title": "Paruvam Vaanaga",
+    "movie": "Roja",
+    "key": "C",
+    "chords": "> Paruvam Vaanaga - Verse 1\nC\n\n> Naa Odhilona - Verse 2\nC F G\n\n> Madini Neevaithe - Verse 3\nAm Em F G X 2\n\n> Nee Chigurakulu - Verse 4\nC Gm G# A#\n\n> Nee Paala Pongulo - Verse 5\nCm Gm Fm A#\nCm Gm Fm G"
+  },
+
+  {
+    "title": "Aasha Paasham",
+    "movie": "C/o Kancharapalem",
+    "key": "D",
+    "chords": "# Intro\nD G\n\n> Aasha Paasham - Verse 1\nD F#m Bm G F#m\n\n> Aatu Potu - Verse 2\nA A A G\n\n> Tuurupu - Verse 3\nD Bm G F#m G\nD Bm A G A G\n\n> Nindu Punnamela - Verse 4\nD Em A\n\n> Hethavu Nuditi - Verse 5\nBm F#m A\nG A"
+  },
+
+  {
+    "title": "Rooba Rooba",
+    "movie": "Orange",
+    "key": "Cm",
+    "chords": "# Intro\nCm D# F\n\n> Rooba Rooba - Verse 1\nCm Fm\n\n> Iya Iyo - Verse 2\nCm Gm Cm Fm A#\nCm Gm Fm G# G\n\n# Solo\nCm Fm\n\n> Pichi Dooram - Verse 3\nCm Fm X 3\n\n> Ee Anandam - Verse 4\nCm A# G# Gm\n\n> Neetho Saage - Verse 5\nCm Gm Fm Gm\n\n# Vocals Solo\nCm Gm Cm\nCm Fm Gm"
+  },
+
+  {
+    "title": "Pillaa Raa",
+    "movie": "RX 100",
+    "key": "Bm",
+    "chords": "# Intro\nBm A\nBm A D\n\n> Pillaa Raa - Verse 1\nBm A\n\n> Chinna Daana - Verse 2\nD F#m\nBm D G A\n\n> Thapanatho - Verse 3\nBm F#m\nD A\n\n> Yenalina - Verse 4\nBm A D F#m X 2\n\n# Solo\nBm G F#m\nBm A D A\nBm A G A"
+  },
+
+  {
+    "title": "My Heart Is Beating",
+    "movie": "Jalsa",
+    "key": "Am",
+    "chords": "# Intro\nAm Dm\n\n> Pedavi Pai - Verse 1\nC Em Am F G\nC Em Am E\n\n> Tea Spoon - Verse 2\nDm Am Dm Em\nDm Am Dm E\n\n> Penu Thoofan Edaina - Verse 3\nAm E Am Dm X 2\n\n> Urikine - Verse 4\nAm G-Am\nAm Em\nAm G-Am\n\n> Thalagadatho Thagabadadhu - Verse 5\nAm G F Em Dm"
+  },
+
+  {
+    "title": "Crazy Feeling",
+    "movie": "Nenu Sailaja",
+    "key": "Gm",
+    "chords": "# Intro\nGm F\n\n> Compound - Verse 1\nGm Dm Gm A#\n\n> It's A Crazy Feeling - Chorus\nDm Gm\n\n> Road Side - Verse 2\nGm Cm Gm F"
+  },
+
+  {
+    "title": "Konte Chooputho",
+    "movie": "Ananthapuram 1980",
+    "key": "Cm",
+    "chords": "> Konte Chooputho - Verse 1\nCm A#\nG# A#\nCm A# F\n\n# Intro\nCm Gm F D#\n\n> Pagale Reyayi Aina - Verse 2\nCm Gm D# F\n\n> Vodilo Vaalalani Unnadi - Verse 3\nG# A# F Cm"
   }
 
 
 
 
 
-  
+
+
 
 ]
