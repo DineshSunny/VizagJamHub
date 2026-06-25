@@ -317,6 +317,36 @@ app.get("/api/hindichords", (req, res) => {
 });
 
 
+// Other Song Chords
+app.get("/api/othersongchords", (req, res) => {
+
+  const file =
+    path.resolve(
+      __dirname,
+      "../database/othersongchords.json"
+    );
+
+  let songs = readJSON(file);
+
+  res.json(songs);
+
+});
+
+// Instrumental Song Chords
+app.get("/api/instrumentalsongchords", (req, res) => {
+
+  const file =
+    path.resolve(
+      __dirname,
+      "../database/instrumentalsongchords.json"
+    );
+
+  let songs = readJSON(file);
+
+  res.json(songs);
+
+});
+
 
 
 
