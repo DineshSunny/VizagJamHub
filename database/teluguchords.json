@@ -394,7 +394,162 @@
     "movie": "Ananthapuram 1980",
     "key": "Cm",
     "chords": "> Konte Chooputho - Verse 1\nCm A#\nG# A#\nCm A# F\n\n# Intro\nCm Gm F D#\n\n> Pagale Reyayi Aina - Verse 2\nCm Gm D# F\n\n> Vodilo Vaalalani Unnadi - Verse 3\nG# A# F Cm"
+  },
+
+  {
+    "title": "Manohara",
+    "movie": "Cheli",
+    "key": "Fm",
+    "chords": "# Manohara Intro\nFm Cm C# Fm X 2\nFm D# C# Cm\nFm Cm A#m G#\nFm Cm C# D#\nFm D# C# C\n\n> Manohara Dagi Pomanta\nFm C# D#\n\n> Naa Yevanamey\nFm D# C# Cm\n\n> Jadi Vanai\nFm Cm A#m G#\n\n> Yenatiki\nFm Cm C# D#\nFm D# C# C\n\n# Solo 1 Outro\nG F#m Em D\nG F#m G A Bm"
+  },
+  {
+    "title": "Vayyari Bhama",
+    "movie": "Thammudu",
+    "key": "A",
+    "chords": ""
+  },
+  {
+    "title": "Samajavaragamana",
+    "movie": "Ala Vaikunthapurramuloo",
+    "key": "A#m",
+    "chords": "# Intro\nA#m C# G# D#"
+  },
+  {
+    "title": "Emi Poyave",
+    "movie": "Padi Padi Leche Manasu",
+    "key": "B",
+    "chords": "> Emi Poyave\nB F# E F# X 2\n\n> Neetho Prathi\nB C#m G#m F#\n\n> Ninu Veedi Ponande\nB F# G#m F#\nE F#\n\n> Sagamaeney\nC#m E F# E F#\n\n> Yetuchudu\nB G#m C#m F# X 2\n\n> Nuvuleni\nB F# C#m G#m\n\n> Karalga\nG#m F#\n\n> Verava\nG#m E F#"
+  },
+  {
+    "title": "Yemantramo",
+    "movie": "Andala Rakshasi",
+    "key": "Cm",
+    "chords": "# Intro\nCm A# G# X 2\nCm G# Gm Cm\n\n> Yemantramo\nCm G# Gm Cm\nCm F G# Cm\n\n> Aakasam\nCm G# A# Gm\nCm G# A# G\n\n> Maabulo Yenmayeh\nCm G# A# Gm\nFm Gm G# A#\n\n# Solo\nCm D# G# A#\nD# G# A# G\n\n# Venna Solo\nCm D# G# A#\nD# G# A# G\n\n> Kshaanam Oka Roothuvaga\nCm X 2\nCm A# (fast)\nG#\nFm G# G\n\n> Kaalalo\nCm G# A# Cm\nG# Fm A# Gm\n\n> Oomayla Omala\nG# A#\nGm G# A#\n\n> Venalooo\nD# G# Cm A#\nCm G# Fm G"
+  },
+  {
+    "title": "Andhamaina Premarani",
+    "movie": "Premikudu",
+    "key": "Cm",
+    "chords": "# Intro Solo\nCm A# Cm Gm X 2\n\n# Solo 2\nCm Gm G# A#\n\n> Prema Epudu\nCm A# Cm Gm X 2\n\n> Prema Jyothi\nCm Gm G# Gm X 2\nCm Gm Fm Gm\n\n> Aakasam Bhoomi\nCm Gm G# A# X 2\nCm A# G# Gm X 2"
+  },
+  {
+    "title": "Neelo Valapu",
+    "movie": "Robo",
+    "key": "D",
+    "chords": "# Intro\nD D G A\n\n> Iyoo\nA\n\n> Sana Sna\nG G G G\n\n> Andham Motham Nuvva\nD X 4\nEm F\nD D\n\n> Nvu Poduna (Female)\nBm F#m G D\nD Em F#m Em\nA D X 2\n\n> Oh Babe\nD G X 2\n\n# Solo\nBm X 3\nF#m\nBm X 2\nG X 2\n\n> Seetha Koka\nD D G A\nD Bm G A\n\n> Marugnidi\nBm G X 2\n\n> Asamey Rava\nBm A D Bm\n\n> Valcheyvada\nD C Em A F#m\nBm F#m G C A Em F#m\n\n> Oh Babey\nD G\nD Bm\n\n# Solo 2\nBm F#m"
+  },
+  {
+    "title": "Andham Hindolam",
+    "movie": "Yamudiki Mogudu",
+    "key": "Em",
+    "chords": "# Intro\nEm\nG D A Em\nEm D\nEm G\n\n> Sandya Ragamey\nEm G A\n\n> Verse\nEm X 2\nC G C A X 2\nC G A X 2"
+  },
+  {
+    "title": "Asale Pilla Manam",
+    "movie": "Ghatikudu",
+    "key": "Am",
+    "chords": "Am Dm G Am\n\n> Attu Vaipu\nAm X 2\nEm Am X 2\nDm Am X 2\nE\n\n# Solo\nAm Dm"
+  },
+  {
+    "title": "Srivalli",
+    "movie": "Pushpa: The Rise",
+    "key": "E",
+    "chords": "# Intro\nE\n\n> Ninu Choosthuntey\nE\n\n> Kanipinchey Devudini\nA A A B\n\n> Choopey Bangaram\nE G D A\n\n# Solo\nE E E\nA B\n\n> Anitiki Epudu\nE E E A\n\n> Intha Brathuku\nG A G E"
+  },
+  {
+    "title": "Life of Ram",
+    "movie": "Jaanu",
+    "key": "Em",
+    "chords": "Em C D Bm\n\n> Verse\nA G D Em"
+  },
+  {
+    "title": "Maya Maya",
+    "movie": "ChowRaasta",
+    "key": "Gm",
+    "chords": "> Maya\nGm F D# D\n\n> Style Maya\nGm F D# D C"
+  },
+  {
+    "title": "Puttene Prema",
+    "movie": "Gully Rowdy",
+    "key": "Em",
+    "chords": "Em Am C D"
+  },
+  {
+    "title": "Chitti Nee Navvante",
+    "movie": "Jathi Ratnalu",
+    "key": "G",
+    "chords": "G C"
+  },
+
+  
+  {
+    "title": "Kurralloi Kurrallu",
+    "movie": "Andamaina Anubhavam",
+    "key": "F",
+    "chords": "# Intro\nF F# F E\nF F# F F"
+  },
+  {
+    "title": "Telusa Manasa",
+    "movie": "Criminal",
+    "key": "Dm",
+    "chords": "> Telusa Manasa\nDm C F Dm X 2\n\n> Naho\nF Am\nF Am C\n\n> Sarey Sansara\nAm C A# Dm\n\n> Prathishanam\nC G Em Dm X 2\n\n> Opiri\nF C X 2"
+  },
+  {
+    "title": "Kai Love Chedugudu",
+    "movie": "Sakhi",
+    "key": "Gm",
+    "chords": "> Kai Love Chedugudu\nA# F G\n\n> Alai Chiti Alalai\nGm Cm D X 2\n\n> Nanu Taduthu\nGm Cm D#\nGm D# D\n\n> Nagira Nagira\nGm Cm D\n\n> Neelose\nA E\n\n> Kanirey\nGm Cm D X 2\n\n> Nee Andam\nGm Cm D# D"
+  },
+  {
+    "title": "Poovullo Daagunna",
+    "movie": "Jeans",
+    "key": "G",
+    "chords": "> Poovullo Daagunna\nG D C G X 2\n\n> Venuvulo Gali Sangeethala Athishyam\nC D Em C X 2\n\n> Athishayamey Acherv\nC Cm"
+  },
+  {
+    "title": "Ninu Choodagane",
+    "movie": "Attarintiki Daredi",
+    "key": "Cm",
+    "chords": "> Ninu Choodagane\nCm A#\n\n> Yemito\nCm Gm Fm Gm\n\n> Munchey Maradala\nG# Gm Fm D# A# Gm\n\n> Antha Peda Aakasam\nCm A#\nFm Gm\n\n> Eey Ala Nuvu Cheera\nCm Gm G# F"
+  },
+  {
+    "title": "Don'u Don'u Don'u",
+    "movie": "Maari",
+    "key": "G#m",
+    "chords": "G#m C#m D#m\nG#m D#m E F"
+  },
+  {
+    "title": "Mellaga Karagani",
+    "movie": "Varsham",
+    "key": "Bm",
+    "chords": "> Mellaga\nBm\n\n> Vallupu Vana\nD F#m G A\nD F#m G F#\n\n> Thadipey\nBm F#m X 2\nBm G Em F#m F#\n\n> Ee Varsham Sakhi Ga\nBm A G F#\n\n> Ee Melikalu Lona\nBm F#m\nG A F#m D\n\n> Nee Jadai\nD F# G A\nD F#m Bm Em\nBm Bm D A Bm F#"
+  },
+  {
+    "title": "Dhaari Choodu",
+    "movie": "Krishnarjuna Yudham",
+    "key": "G#",
+    "chords": "G# C#\n\n> Kamala Poori\nG#m B E F#"
+  },
+  {
+    "title": "Saregama",
+    "movie": "Boys",
+    "key": "Dm",
+    "chords": "# Intro\nG#\n\nDm Gm Dm\n\n> Telusu Ko\nF C A# Am\nF A\n\n> To Be A Star\nA Gm A\n\n> We Kick It\nGm\n\n> Ohh Hoooo\nF A# C Dm X 2\nGm Dm A# C\n\n> Pitta Goda\nD Am\n\n> Thapina Darilo Velam\nA# Gm A# A\nF G A# A\nGm A\n\n> Saregama\nDm E\nF E\nDm C A#\n\nDm F\nGm G# A\nAm A# B C"
+  },
+  {
+    "title": "Kikku Yekkele",
+    "movie": "Narasimha",
+    "key": "Fm",
+    "chords": "Fm A#m C\n\n> Benju Caru\nF A# C\n\n> Naaku Neeku Nokia\nE\n\n> Farnickal Silpam La\nEm Bm A A G Bm\n\n# Solo\nEm A C D Bm\nEm A C D Em\n\n> Eeka Prema\nEm Am\n\n> Ohh Ho\nEm A C Bm\nEm D Em\n\n> Nokia\nEm Bm A C"
+  },
+  {
+    "title": "Raa Raa",
+    "movie": "Chandramukhi",
+    "key": "Fm",
+    "chords": "# Intro\nC E Fm A# Fm\n\n# Intro 1\nFm C# Fm\n\n# Break\nC A# E\nFm\n\n# Solo\nFm A#m C Fm\n\n> Main\nFm Fm\nFm C Fm"
   }
+
+
 
 
 
