@@ -258,7 +258,14 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo(0, 0);
 
 
-  const chordContent =
+
+
+    /* =================================
+   CHORD RENDERER
+================================= */
+
+
+const chordContent =
 document.getElementById("chord-content");
 
 const lines =
@@ -266,64 +273,67 @@ const lines =
 
 let html = "";
 
-lines.forEach(line => {
+/* =================================
+   PARSE EACH LINE
+================================= */
 
-line = line.trim();
+
+lines.forEach(rawLine => {
+
+const line = rawLine.trim();
 
 if(!line){
 
 html += "<br>";
+return;
 
 }
 
-else if(
-line === "INTRO" ||
-line.startsWith("SOLO") ||
-line.startsWith("CHORUS") ||
-line.startsWith("OUTRO")
-){
+
+/* HEADING */
+
+if(line.startsWith("# ")){
+
+const heading = line
+.substring(2)
+.toLowerCase()
+.replace(/\b\w/g, c => c.toUpperCase());
 
 html += `
 <div class="chord-heading">
-${line}
+${heading}
 </div>
 `;
 
+return;
+
 }
 
-else if(
-line.includes("- VERSE")
-){
+/* LYRIC LABEL */
+
+if(line.startsWith("> ")){
+
+const lyric = line
+.substring(2)
+.toLowerCase()
+.replace(/\b\w/g, c => c.toUpperCase());
 
 html += `
 <div class="chord-lyric">
-${line}
+${lyric}
 </div>
 `;
 
+return;
+
 }
 
-else if(
-/^[A-G]/.test(line)
-){
-
+// EVERYTHING ELSE = CHORD
 html += `
 <div class="chord-line">
 ${line}
 </div>
 `;
-
-}
-
-else{
-
-html += `
-<div class="chord-lyric">
-${line}
-</div>
-`;
-
-}
 
 });
 

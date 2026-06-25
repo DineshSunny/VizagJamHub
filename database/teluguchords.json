@@ -1,52 +1,129 @@
 [
+  {
+    "title": "Adiga Adiga",
+    "movie": "Ninnu Kori",
+    "key": "Gm",
+    "chords": "# Intro\nGm D# A# F\nGm D# A# D\n\n> Nuveleni Nanu - Verse 1\nA# Cm F A#\nCm Dm D# Cm\nA# Cm F A#\nGm F D#\n\n# Solo 1\nA# Cm F A#\nGm F D#\n\n> Gundey Lothulo - Verse 2\nGm D# Cm F D\nA# Cm Dm D#\nA# Cm D#m D\nD# Cm D"
+  },
 
-{
-"title": "Adiga Adiga",
-"movie": "Ninnu Kori",
-"key": "Gm",
-"chords": "INTRO\n\nGm D# A# F\n\nGm D# A# D\n\n\nNuveleni Nanu - VERSE 1\n\nA# Cm F A#\n\nCm Dm D# Cm\n\nA# Cm F A#\n\nGm F D#\n\n\nSOLO 1\n\nA# Cm F A#\n\nGm F D#\n\n\nGundey Lothulo - VERSE 2\n\nGm D# Cm F D\n\nA# Cm Dm D#\n\nA# Cm D#m D\n\nD# Cm D"
+  {
+    "title": "Raayina Matram",
+    "movie": "Dasavathaaram",
+    "key": "D",
+    "chords": "# Intro\nD\n\n> Rayini Matram Kantey - Verse 1\nC D D# D F D# D\n\n> Harini Thalinchana Rudhyam Nedu - Verse 2\nG G Riff\n\n> Ningi Lona - Verse 3\nGm Dm\n\n# Solo 1\nD D#"
+  },
+
+  {
+    "title": "June Pothe",
+    "movie": "Neevalle Neevalle",
+    "key": "Bm",
+    "chords": "# Intro\nBm A Em A F#m F#\nBm A Em A F#\n\n# Solo 1\nBm Bm Em F#m F# Bm\n\n> June Pothe - Verse 1\nBm Em F#m\n(F# A)\nBm A F#\n(F# A)\n\n> Ninna Emito Thalovdanta - Verse 2\nBm A Em A\n\n# Solo 2\nBm D Em F#m\n\n> Alarinchey - Verse 3\nBm F#m Bm F#m\n\n> Kinda Bhumi Undi - Verse 4\nBm A Bm A\n\n> Idhe Tharunam Thalupuki - Verse 5\nBm F#m Bm F#m\nBm A F#"
+  },
+
+  {
+    "title": "Meghalalo Teli Pommannadi",
+    "movie": "Gulabi",
+    "key": "Em",
+    "chords": "# Intro\nEm\n\n> Meghalalo - Verse 1\nEm Em C D\n\n# Solo 1\nEm C Em B\n\n# Solo 2\nEm C D Em\n\n> Hello Pilla Antu - Verse 2\nEm Em C D"
+  },
+
+  {
+    "title": "Mukkala Mukaabulaa",
+    "movie": "Premikudu",
+    "key": "Dm",
+    "chords": "# Intro\nD F C\nD F A\n\n> Laila - Verse 1\nDm\n\n> Lavuki Kapala - Verse 2\nGm Am\nGm Am\nDm Gm Am\n\n# Solo 1\nDm\nGm Am\n\n> Juraasik Paarkulona - Verse 3\nDm G Dm Am\n\n> Cowboy - Verse 4\nDm\nGm Am"
+  },
+
+  {
+    "title": "Hello Doctor",
+    "movie": "Prema Desham",
+    "key": "Dm",
+    "chords": "> Hello Doctor Heart Miss Aye - Verse 1\nDm C A# A"
+  },
+
+  {
+    "title": "Eega Eega",
+    "movie": "Eega",
+    "key": "F#m",
+    "chords": "# Intro\nF#m\n\n> My Name Is Nani - Verse 1\nF#m Riff\nG# A A# B\nF#m Riff\nE D# D C#\n\n# Solo\nF#\nF# G\nF#m Riff\n\n> Anuvani - Verse 2\nF#m G\n\n> Nee Size Chinadi Avani - Verse 3\nA G F#m\nG F# E\n\n> Okasari Chachinaka - Verse 4\nF#m\nF#m G G# A\n\n> Eega Eega - Chorus\nF#m G\nF#m E\n\n> Gentleman - Bridge\nD F# G#\nF#m G G# A\nG# F#\nG# A A# B"
+  },
+
+  {
+  "title": "Chal Chalo Chalo",
+  "movie": "",
+  "key": "Dm",
+  "chords": "# Intro\nD G C A\nD G C D\n\n# Solo\nDm A# Gm Am\nF A# Gm A# Dm\n\n> Chala Chalo - Verse 1\nDm\n\n> Just Say Hello - Verse 2\nDm G Dm C\n\n> Theepitho Patuga - Verse 3\nF G A# C\n\n# Solo\nDm\nFm\nDm Gm A Dm\n\n> Hathuko - Verse 4\nF A# Dm\n\n> Kanirenduku - Verse 5\nDm A# Dm C\nDm A# Dm G\n\n> Ochindi Ibandi - Verse 6\nF G G# G Dm\n\n> Kastpada Vadey - Verse 7\nDm A# G C\nDm A# G A# C\n\n# Ending\nDm C A# A Dm"
 },
 
 
-{
-"title": "Raayina Matram",
-"movie": "Dasavathaaram",
-"key": "D",
-"chords": "INTRO\n\nD\n\n\nRayini Matram Kantey - VERSE 1\n\nC D D# D F D# D\n\n\nHarini Thalinchana Rudhyam Nedu - VERSE 2\n\nG G Riff\n\n\nNingi Lona - VERSE 3\n\nGm Dm\n\n\nSOLO 1\n\nD D#"
-},
+
+  {
+    "title": "Now Or Never",
+    "movie": "",
+    "key": "D",
+    "chords": "> Pada Pada - Verse 1\nD\n\n# Solo\nD C D\n\n> Now Or Never - Verse 2\nG F# D C D# D\nG F# D C D# D\nC F D# D\n\n> Nindu Nooru - Verse 3\nD Gm\nD Gm D#\n\n# Breakdown\nC D\nC D\n\n> Nindu Noorela Patu - Verse 4\nD A C A D\n\n> Idi Saripodu Antuu - Verse 5\nG D D D#\n\n> Yedata Leni - Verse 6\nG G F# F# D# D C A# A"
+  },
+
+  {
+    "title": "Jaggo",
+    "movie": "",
+    "key": "D",
+    "chords": "> Neela Neela - Verse 1\nD F F\nD F G F G\n\n> Ee Koncham Galthi Leni - Verse 2\nD D-F F-G\nG F G F G\nC\n\n> Jaggo Jaggo - Chorus\nD A# A C\nD A# C\n\n# Solo\nD F F\nD F G F G\nA# A\nD C A# C\nF F G# G\n\n> Panchesthanu Nanu - Verse 3\nD C A# C\n\n> Yedharini Kali - Verse 4\nA# B A\n\n# Solo 2\nD\nA# C\nD G A\nD C G D"
+  },
+
+  {
+    "title": "Mr Nokia",
+    "movie": "",
+    "key": "C",
+    "chords": "# Intro\nC\n\n> No No No - Verse 1\nC A# G D# C C\n\n> Nenekaduntey Akkada - Verse 2\nF C\nC D# C\nF C\nF G\n\n> No Keyia No Keyia - Chorus\nC A# B C A# D# C\nA# C A# D# C\n\n# Solo Intro\nC D# A# F\n\n# Solo\nCm Gm G# A#\n\n> Peda Peda Peda - Verse 3\nC C D# C D# C\nC A# A G# G\n\n> Matalo Emantuna - Verse 4\nCm G# F G\n\n# Solo 2\nC A# F"
+  },
+
+  {
+    "title": "Ukku Naram",
+    "movie": "",
+    "key": "Am",
+    "chords": "# Intro\nA C D E\n\n> Nuventey Choopinchav - Verse 1\nA A C B\n\n> Ukkunaram - Verse 2\nA C B\n\n> Amma Nana - Verse 3\nA G X 2\nG G# G\nD C\n\n> Neelo Balam Intheynana - Verse 4\nAm C F Dm E"
+  },
+
+  {
+    "title": "Roja",
+    "movie": "",
+    "key": "E",
+    "chords": "# Intro\nE\n\n> Lalal Lala Laa La La - Verse 1\nE A B\nE A B\n\n> Lala Laaa Lala Laa - Verse 2\nB A E\n\n> Kanulona Neevey - Verse 3\nG# A G F#\nE A B\n\n# Riff\nE E C"
+  },
+
+  {
+    "title": "Maa Daddy Pockets",
+    "movie": "",
+    "key": "Em",
+    "chords": "> Maa Daddy Pockets - Verse 1\nE C G Riff\n\n> Campus Canteen - Verse 2\nE C G A\nE C G D\n\n> Aaa Next One Month - Verse 3\nE G A C D\nE G B D A\nE G A C D\nE G B E\n\n# Solo\nE C G A\nE C G D\nE C G A\nE C G B E\n\n> Bottom Line - Verse 4\nE C G A\nE C G Bm"
+  },
+
+  {
+    "title": "Yedaney Koyakey",
+    "movie": "",
+    "key": "Am",
+    "chords": "# Riff And Bass\n\n> Yedaney Koyakey - Verse 1\nA G F E\nA A G F E\n\n> Nethoti Nadichey - Verse 2\nDm G Am G\nDm G Am Em\n\n# Solo 1 Intro\nA\n\n# Bass\nA Slide\nA B C D E\n\n> Adhram Adhram Sanmukam - Verse 3\nA\nC D E\n\n> Valapu Kada Yedo - Verse 4\nG D\n\n> Vasanta Kalamey - Verse 5\nG C D\nG D Em C D\nC D X 2\n\n> Chorus (Valaaaa Laaa Eye) - Chorus\nG C D G\nG D Em D\nG B Em"
+  },
+
+  {
+    "title": "Pataku Pranam",
+    "movie": "",
+    "key": "Cm",
+    "chords": "# Intro\nCm\n\n> Pataku Pranam - Verse 1\nCm Fm G# A#\n\n> Oooh Cheli - Verse 2\nCm A# G# F G\n\n> Ooo Oo Ho - Verse 3\nCm G\nCm X 2\nA# G# G Cm\n\n> Oo Oo Ho (Female) - Verse 4\nCm G F G\n\n> Preminchey Mansu Undey - Verse 5\nCm Gm"
+  },
+
+  {
+    "title": "Chikubuku Railey",
+    "movie": "",
+    "key": "Dm",
+    "chords": "# Intro\nDm Am A# C\n\n> Verse - Verse 1\nD A# C\n\n> Mee Emi Kavalo - Verse 2\nF Gm A# Am\nF Gm A# A\n\n> Chiku Chiku Buku Railey - Chorus\nC Dm\nA# Dm"
+  }
 
 
-{
-"title": "June Pothe",
-"movie": "Neevalle Neevalle",
-"key": "Bm",
-"chords": "INTRO\n\nBm A Em A F#m F#\n\nBm A Em A F#\n\n\nSOLO 1\n\nBm Bm Em F#m F# Bm\n\n\nJune Pothe - VERSE 1\n\nBm Em F#m\n\n(F# A)\n\nBm A F#\n\n(F# A)\n\n\nNinna Emito Thalovdanta - VERSE 2\n\nBm A Em A\n\n\nSOLO 2\n\nBm D Em F#m\n\n\nAlarinchey - VERSE 3\n\nBm F#m Bm F#m\n\n\nKinda Bhumi Undi - VERSE 4\n\nBm A Bm A\n\n\nIdhe Tharunam Thalupuki - VERSE 5\n\nBm F#m Bm F#m\n\nBm A F#"
-},
-
-{
-"title": "Meghalalo Teli Pommannadi",
-"movie": "Gulabi",
-"key": "Em",
-"chords": "INTRO\n\nEm\n\n\nMeghalalo - VERSE 1\n\nEm Em C D\n\n\nSOLO 1\n\nEm C Em B\n\n\nSOLO 2\n\nEm C D Em\n\n\nHello Pilla Antu - VERSE 2\n\nEm Em C D"
-},
-
-{
-"title": "Mukkala Mukaabulaa",
-"movie": "Premikudu",
-"key": "Dm",
-"chords": "RIFF\n\nD F C\n\nD F A\n\n\nLaila - VERSE 1\n\nDm\n\n\nLavuki Kapala - VERSE 2\n\nGm Am\n\nGm Am\n\nDm Gm Am\n\n\nSOLO 1\n\nDm\n\nGm Am\n\n\nJuraasik Paarkulona - VERSE 3\n\nDm G Dm Am\n\n\nCowboy - VERSE 4\n\nDm\n\nGm Am"
-},
-
-{
-"title": "Hello Doctor",
-"movie": "Prema Desham",
-"key": "Dm",
-"chords": "Hello Doctor Heart Miss Aye - VERSE 1\n\nDm C A# A"
-}
 
 
 
-
-
+  
 
 ]

@@ -2177,52 +2177,48 @@ margin-top:25px;
 
 .chord-heading{
 
-font-size:22px;
+color:#00d4ff;
+
+font-size:1.2rem;
+
+font-weight:bold;
+
+font-style:italic;
+
+text-transform:none;
+
+margin:12px 0 4px;
+
+}
+
+
+.chord-lyric{
+
+color:#00d4ff;
 
 font-style:italic;
 
 font-weight:600;
 
-color:#00d4ff;
+text-transform:none;
 
-margin-bottom:10px;
-
-text-transform:uppercase;
+margin:8px 0 2px;
 
 }
-
-.chord-lyric{
-
-font-style:italic;
-
-font-size:20px;
-
-color:#00d4ff;
-
-margin-top:15px;
-
-margin-bottom:10px;
-
-}
-
-
 
 .chord-line{
 
-font-weight:700;
-
-font-size:20px;
-
 color:#ffffff;
 
-letter-spacing:1px;
+font-family:monospace;
 
-line-height:1.4;
+white-space:pre-wrap;
 
-margin-bottom:4px;
+line-height:1.25;
+
+margin:0;
 
 }
-
 
 
 .chord-song-title{
