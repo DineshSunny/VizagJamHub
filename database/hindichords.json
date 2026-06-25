@@ -1,151 +1,152 @@
 [
  
+ 
   {
     "title": "Dil Se Re",
     "movie": "Dil Se",
     "key": "D",
-    "chords": "# Intro\nD G\n\n# Verse 1\n> Dil Se\nBass Loop\n\n# Chorus\n> Basic\nD G\nD\n\n# Verse 2\n> Dil Hai Toh\nD C G"
+    "chords": "# - Intro\nD G\n\n> Dil Se - Verse 1\nBass Loop\n\n> Basic - Chorus\nD G\nD\n\n> Dil Hai Toh - Verse 2\nD C G"
   },
   {
     "title": "D K Bose",
     "movie": "Delhi Belly",
     "key": "Bm",
-    "chords": "# Verse 1\n> Daddy Mujhse Bola\nBm D A Bm\n\n# Verse 2\n> Sabun Ki Shaqal Mein\nD Em G F#\n\n# Chorus\n> Bhaag Bhaag D K Bose\nBm D A G\nBm D A Bm\n\n# Bridge\n> Kisney Kisko Loota\nBm Em D A\n\n# Outro\n> Yeh Beja Garden Hai\nG Em A\nG Em F#"
+    "chords": "> Daddy Mujhse Bola - Verse 1\nBm D A Bm\n\n> Sabun Ki Shaqal Mein - Verse 2\nD Em G F#\n\n> Bhaag Bhaag D K Bose - Chorus\nBm D A G\nBm D A Bm\n\n> Kisney Kisko Loota - Bridge\nBm Em D A\n\n> Yeh Beja Garden Hai - Outro\nG Em A\nG Em F#"
   },
   {
     "title": "Urvashi Urvashi",
     "movie": "Hum Se Hai Muqabala",
     "key": "C#m",
-    "chords": "# Intro\nC#m E F# G#\n\n# Verse 1\n> Agar Ladki\nC#m\n\n# Verse 2\n> Baalayee\nC#m E F# A B\nC#m E\n\n# Bridge\n> Poorani Bath\nA G#\n\n# Chorus\n> Urvashi\nRiff A B\nC#m A B\nC#m E F# A B\nC#m E\n\n# Outro\nC#m E Note\nC#m D# Note\nA E Note\nA G#"
+    "chords": "# - Intro\nC#m E F# G#\n\n> Agar Ladki - Verse 1\nC#m\n\n> Baalayee - Verse 2\nC#m E F# A B\nC#m E\n\n> Poorani Bath - Bridge\nA G#\n\n> Urvashi - Chorus\nRiff A B\nC#m A B\nC#m E F# A B\nC#m E\n\n# - Outro\nC#m E Note\nC#m D# Note\nA E Note\nA G#"
   },
   {
     "title": "Zinda",
     "movie": "Bhaag Milkha Bhaag",
     "key": "Em",
-    "chords": "# Intro\nE\n\n# Verse 1\n> Zindagi Ki Yeh Ghadiyan Le\nEm C\nEm C\nEm C D\n\n# Verse 2\n> Koyla Kala\nEm C G D\n\n# Bridge\n> Uljhe Kyun Pairon Mein\nD Am\n\n# Chorus\n> Aag Zubaan Pe\nC G\nC G D"
+    "chords": "# - Intro\nE\n\n> Zindagi Ki Yeh Ghadiyan Le - Verse 1\nEm C\nEm C\nEm C D\n\n> Koyla Kala - Verse 2\nEm C G D\n\n> Uljhe Kyun Pairon Mein - Bridge\nD Am\n\n> Aag Zubaan Pe - Chorus\nC G\nC G D"
   },
   {
     "title": "Naam Tera",
     "movie": "Aap Kaa Surroor",
     "key": "C#m",
-    "chords": "# Intro\nC#m B\nC#m G#m A C#m\n\n# Verse 1\n> Dil Ki\nC#m G#m B\n\n# Chorus\n> Naam Tera\nC#m A B A\n\n# Solo\n\n# Verse 2\n> Tu Hi Mera\nC#m B A\n\n# Outro\n> Tere Tasveer\nC#m A B G#m"
+    "chords": "# - Intro\nC#m B\nC#m G#m A C#m\n\n> Dil Ki - Verse 1\nC#m G#m B\n\n> Naam Tera - Chorus\nC#m A B A\n\n# - Solo\n\n> Tu Hi Mera - Verse 2\nC#m B A\n\n> Tere Tasveer - Bridge\nC#m A B G#m"
   },
   {
     "title": "Jiya Jale",
     "movie": "Dil Se",
     "key": "E",
-    "chords": "# Intro\nE5\n\n# Solo\nE5 A\n\n# Chorus\n> Jiya Jale Jaan Jale\nEm A\n\n# Reprise\n> Jiya Jale Jaan Jale\nE Only\n\n# Verse 1\n> Jano Na Jano Na\nEm A B C\n\n# Verse 2\n> Dekhte Hain\nEm Bm X 2\nA Bm X 2\nEm A C B"
+    "chords": "# - Intro\nE5\n\n# - Solo\nE5 A\n\n> Jiya Jale Jaan Jale - Chorus\nEm A\n\n> Jiya Jale Jaan Jale - Reprise\nE Only\n\n> Jano Na Jano Na - Verse 1\nEm A B C\n\n> Dekhte Hain - Verse 2\nEm Bm X 2\nA Bm X 2\nEm A C B"
   },
 
   {
     "title": "Tum Hi Ho",
     "movie": "Aashiqui 2",
     "key": "Fm",
-    "chords": "# Verse 1\n> Hum Tere Bin Ab\nFm A#m\nD# Cm C#\n\n# Verse 2\n> Koi Lamha Mera\nD# G# C C# D#\n\n# Chorus\n> Tere Liye Hi\nC# Cm\n\n> Teri Wafa\nA#m Fm"
+    "chords": "> Hum Tere Bin Ab - Verse 1\nFm A#m\nD# Cm C#\n\n> Koi Lamha Mera - Verse 2\nD# G# C C# D#\n\n> Tere Liye Hi - Bridge\nC# Cm\n\n> Teri Wafa - Chorus\nA#m Fm"
   },
   {
     "title": "Tu Hi Re",
     "movie": "Bombay",
     "key": "D#",
-    "chords": "# Intro\nD#\n\n# Chorus\n> Tu Hi Re\nD# G# D# X 2\n\n# Solo\n\n# Verse 1\n> Jaan Re\nG# D#\n\n# Verse 2\n> Chahat Tu\nD# C# G# D#\n\n# Bridge\n> Saanson Mein\nG#m D#\n\n# Outro\n> Madhuram\nG#m D# A#"
+    "chords": "# - Intro\nD#\n\n> Tu Hi Re - Chorus\nD# G# D# X 2\n\n# - Solo\n\n> Jaan Re - Verse 1\nG# D#\n\n> Chahat Tu - Verse 2\nD# C# G# D#\n\n> Saanson Mein - Bridge\nG#m D#\n\n> Madhuro - Outro\nG#m D# A#"
   },
   {
     "title": "Main Tenu Samjhawan Ki",
     "movie": "Humpty Sharma Ki Dulhania",
     "key": "E",
-    "chords": "# Intro\nE\n\n# Chorus\n> Main Tenu Samjhawan\nB E\n\n# Verse 1\n> Tu Ki Jaane Pyar Mera\nC#m G#m A E F#m B\n\n# Solo\nE B\nC#m G#m\nF#m G#m\n\n# Verse 2\n> Mere Dil Mein\nE A F#m E\n\n# Outro\n> Jeena Mera\nF#m B A E"
+    "chords": "# - Intro\nE\n\n> Main Tenu Samjhawan - Chorus\nB E\n\n> Tu Ki Jaane Pyar Mera - Verse 1\nC#m G#m A E F#m B\n\n# - Solo\nE B\nC#m G#m\nF#m G#m\n\n> Mere Dil Mey - Verse 2\nE A F#m E\n\n> Jeena Mera - Outro\nF#m B A E"
   },
   {
     "title": "Senorita",
     "movie": "Zindagi Na Milegi Dobara",
     "key": "A",
-    "chords": "# Verse 1\n> Na Main Samjha\nA Bm\n\n# Verse 2\n> Mujhko Baahon Mein\nE A Bm A\n\n# Bridge\n> Chaar Din Do Pal Bhi\nD A C# F#m\n\n# Chorus\n> Suno Suno Senorita\nE E D D A A\n\n# Outro\n> Jo Bhi\nF# Bm\nB A\nG D\nE A"
+    "chords": "> Na Main Samjha - Verse 1\nA Bm\n\n> Mujko Baahom - Verse 2\nE A Bm A\n\n> Chaat Ke Do Pal Bhi - Bridge\nD A C# F#m\n\n> Suno Suno Senorita - Chorus\nE E D D A A\n\n> Jo Bhi - Outro\nF# Bm\nB A\nG D\nE A"
   },
   {
     "title": "Pani Da Rang",
     "movie": "Vicky Donor",
     "key": "Em",
-    "chords": "# Intro\nEm D\n\n# Chorus\n> Pani Da Rang\nEm D\nC D\n\n# Verse 1\n> Maahiya Na Aaya\nEm D X 2\nG D X 3\n\n# Bridge\n> Kapele\nEm A\nC Bm C Em\n\n# Verse 2\n> Kothe Utte\nEm Bm C D"
+    "chords": "# - Intro\nEm D\n\n> Pani Da Rang - Chorus\nEm D\nC D\n\n> Mahayana Aya - Verse 1\nEm D X 2\nG D X 3\n\n> Kapalee - Bridge\nEm A\nC Bm C Em\n\n> Kothe Utte - Verse 2\nEm Bm C D"
   },
   {
     "title": "Chand Sifarish",
     "movie": "Fanaa",
     "key": "Dm",
-    "chords": "# Intro\n> Lalala Laaalaa\nDm Gm C Dm\n\n# Verse 1\n> Suhana Lah\nDm C A Dm\nA# Gm A Dm\n\n# Whistle\nDm C C A#\n\n# Bridge\n> Valey Valey\nDm A\n\n# Chorus\n> Chand Sifarish\nDm C A Dm\n\n# Verse 2\n> Zidda Hai Hothey Hao\nF C A# A\n\n# Outro\n> Verse\nDm C\nF C A# A"
+    "chords": "# - Intro\n> Lalala Laaalaa\nDm Gm C Dm\n\n> Suhana Lah - Verse 1\nDm C A Dm\nA# Gm A Dm\n\n# - Whistle\nDm C C A#\n\n> Valey Valey - Bridge\nDm A\n\n> Chand Sifarish - Chorus\nDm C A Dm\n\n> Zidda He Hothey Hao - Verse 2\nF C A# A\n\n> Verse - Outro\nDm C\nF C A# A"
   },
 
   {
     "title": "Phir Mohabbat",
     "movie": "Murder 2",
     "key": "Cm",
-    "chords": "# Verse 1\n> Jab Jab Tere Paas Main Aaya\nCm G# A#\n\n# Chorus\n> Hmm Dil Sambhal Ja Zara\nCm Gm G# G\n\n# Solo\nCm Gm\nG# A#\nA# G# G Cm\n\n# Verse 2\n> Jis Raah Pe\nCm G# G\nCm G# Gm Fm G\n\n# Bridge\n> Kya Hai Yeh\nG# A# Fm G"
+    "chords": "> Jab Jab Tere Paas Main Aaya - Verse 1\nCm G# A#\n\n> Hmm Dil Sambhal Ja Zara - Chorus\nCm Gm G# G\n\n# - Solo\nCm Gm\nG# A#\nA# G# G Cm\n\n> Jis Raah Pe - Verse 2\nCm G# G\nCm G# Gm Fm G\n\n> Kya Hai Yeh - Bridge\nG# A# Fm G"
   },
   {
     "title": "Janam Janam",
     "movie": "Dilwale",
     "key": "Bm",
-    "chords": "# Verse 1\n> Janam Janam\nBm Em\nA D\nG C\nF# G Em F#\n\n# Verse 2\n> Teri Baahon\nBm Em\nA F#\n\n# Chorus\n> Tu Meri Aarzoo\nEm Bm X 3\nBm F#"
+    "chords": "> Janam Janam - Chorus\nBm Em\nA D\nG C\nF# G Em F#\n\n> Teri Baahon - Verse 1\nBm Em\nA F#\n\n> Tu Meri Aarzoo - Verse 2\nEm Bm X 3\nBm F#"
   },
   {
     "title": "Sanam Re",
     "movie": "Sanam Re",
     "key": "Gm",
-    "chords": "# Intro\nGm F Cm X 2\n\n# Intro Vocals\n> AAA Aaaho Aaahhoo\nGm D# F\nGm D# Cm\n\n# Verse 1\n> Bheegi Bheegi\nGm D# Cm\n\n# Chorus\n> Sanam Re\nGm D# F\nGm D# Cm\n\n# Verse 2\n> Tere Kareeb\nCm A# F\n\n# Outro\n> Baadalon Ki\nGm Cm X 2\nD7 Gm\nG7 Cm7 F A# D# A# F"
+    "chords": "# - Intro\nGm F Cm X 2\n\n> AAA Aaaho Aaahhoo - Intro Vocals\nGm D# F\nGm D# Cm\n\n> Bheegi Bheegi - Verse 1\nGm D# Cm\n\n> Sanam Re - Chorus\nGm D# F\nGm D# Cm\n\n> Tere Kareeb - Verse 2\nCm A# F\n\n> Baadalon Ki - Outro\nGm Cm X 2\nD7 Gm\nG7 Cm7 F A# D# A# F"
   },
   {
     "title": "Roobaroo",
     "movie": "Rang De Basanti",
     "key": "A",
-    "chords": "# Intro\nA D\n\n# Chorus\n> Roobaroo\nA D\n\n# Verse 1\n> Dooba Jaata\nA E D"
+    "chords": "# - Intro\nA D\n\n> Roobaroo - Chorus\nA D\n\n> Dooba Jaata - Verse 1\nA E D"
   },
   {
     "title": "Besabriyaan",
     "movie": "M.S. Dhoni: The Untold Story",
     "key": "D",
-    "chords": "# Intro\nD G\n\n# Verse 1\n> Rastey\nD Bm G A D\n\n# Verse 2\n> Kyun Sochna Jaaye\nBm A G\n\n# Chorus\n> Besabriyaan\nD A G\n\n# Solo 1\nBm A G X 2\nBm A Em F#m\nG A D\n\n# Bridge\n> Kadamon\nD G\nA\n\n# Solo 2\nD Bm Em G A"
+    "chords": "# - Intro\nD G\n\n> Rastey - Verse 1\nD Bm G A D\n\n> Kyun Sochna Jaa - Verse 2\nBm A G\n\n> Besabriyaan - Chorus\nD A G\n\n# - Solo 1\nBm A G X 2\nBm A Em F#m\nG A D\n\n> Kadamon - Bridge\nD G\nA\n\n# - Solo 2\nD Bm Em G A"
   },
   {
     "title": "Teri Meri Kahaani",
     "movie": "Gabbar Is Back",
     "key": "D#m",
-    "chords": "# Intro\nD#m\n\n# Verse 1\n> Mujhme Safar\nA#m D#m X 4\nC#\n\n# Chorus\n> Teri Meri Kahaani\nD#m B C#\n\n# Solo To Intro\nD#m B G#m D#m\n\n# Solo\nD#m C# B\nG#m A#m\n\n# Verse 2\n> Dekho Na\nF# A#m\nB C# A#m D#m\nF# G#m C#\n\n# Bridge\n> Jo Bhi Hai Jaisa\nD#m C# B C#\n\n# Outro Solo\nD#m G#m B A#m"
+    "chords": "# - Intro\nD#m\n\n> Mujhme Safar - Verse 1\nA#m D#m X 4\nC#\n\n> Teri Meri Kahaani - Chorus\nD#m B C#\n\n# - Solo To Intro\nD#m B G#m D#m\n\n# - Solo\nD#m C# B\nG#m A#m\n\n> Dekho Na - Verse 2\nF# A#m\nB C# A#m D#m\nF# G#m C#\n\n> Jo Bhi Hai Jaisa - Bridge\nD#m C# B C#\n\n# - Outro Solo\nD#m G#m B A#m"
   },
 
   {
     "title": "Haareya",
     "movie": "Meri Pyaari Bindu",
     "key": "Em",
-    "chords": "# Intro\nEm Am X 3\nC D\n\n# Verse 1\n> Dekhiya Main\nEm Am X 3\nC D\n\n# Chorus\n> Haareya\nEm Am G Am\nEm D C D\nEm Am C D X 2\n\n# Bridge\n> Koolu Ankoom\nEm Am\nC"
+    "chords": "# - Intro\nEm Am X 3\nC D\n\n> Deekya Main - Verse 1\nEm Am X 3\nC D\n\n> Haareya - Chorus\nEm Am G Am\nEm D C D\nEm Am C D X 2\n\n> Koolu Ankoom - Bridge\nEm Am\nC"
   },
   {
     "title": "Baarish Ban Jaana",
     "movie": "Payal Dev & Stebin Ben",
     "key": "Bm",
-    "chords": "# Intro\nBm X 2\nG X 2\n\n# Verse 1\n> Mujhko Baarish Bana Lo\nBm G A Bm\n\n# Bridge\n> Nasha Umm Mein\nA G\nA G F#\n\n# Chorus\n> Mujhko Baarish\nBm G A\nG A Bm\n\n# Verse 2\n> Mujhe Apne\nBm D A G Bm X 2"
+    "chords": "# - Intro\nBm X 2\nG X 2\n\n> Mujko Baarish Bana Lo - Verse 1\nBm G A Bm\n\n> Nasha Uum Mai - Bridge\nA G\nA G F#\n\n> Mujko Baarish - Chorus\nBm G A\nG A Bm\n\n> Mujeh Apney - Verse 2\nBm D A G Bm X 2"
   },
   {
     "title": "Enna Sona",
     "movie": "OK Jaanu",
     "key": "Gm",
-    "chords": "# Intro\nGm F D# F\nGm F D# D\nGm F D# F\nGm F D# Dm\n\n# Verse 1\n> Kolo Hothothey\nF A# D# F\nA# F Gm D"
+    "chords": "# - Intro\nGm F D# F\nGm F D# D\nGm F D# F\nGm F D# Dm\n\n> Kolo Hothothey - Verse 1\nF A# D# F\nA# F Gm D"
   },
   {
     "title": "Kabhi Kabhi Aditi",
     "movie": "Jaane Tu... Ya Jaane Na",
     "key": "Gm",
-    "chords": "# Verse 1\n> Kabhi Kabhi\nGm Cm\n\n# Verse 2\n> Aur Kaise Koi Sochta Hai\nGm D#\nF Gm\n\n# Intro\nA# F (Low F High)\n\n# Bridge\n> Socha Zara\nA# F A#\nD# F A#\n\n# Chorus\n> Gaane Tu\nGm Dm Cm G\nCm A# F\nG# Cm"
+    "chords": "# - Intro\nA# F Low F High\n\n> Kabhi Kabhi - Verse 1\nGm Cm\n\n> Aur Kaise Koi Sochithey - Verse 2\nGm D#\nF Gm\n\n> Socha Zara - Bridge\nA# F A#\nD# F A#\n\n> Ganey Thu - Chorus\nGm Dm Cm G\nCm A# F\nG# Cm"
   },
   {
     "title": "Milne Hai Mujhse Aayi",
     "movie": "Aashiqui 2",
     "key": "Bm",
-    "chords": "# Verse 1\n> Milne Hai\nBm A G F#\n\n# Intro Vocals\n> Ohh Ohhh Hoo\nD A G A\n\n# Chorus\n> Aashiqui Hai\nA Bm A G\n\n# Verse 2\n> Jaane Kyun Main\nBm A G F#m X 2\n\n# Bridge\n> Aa Dhoondu\nA Em A X 2\n\n# Solo\nG F#m F Em A Bm\n\n# Outro\nBm G F#m"
+    "chords": "> Milney Hai - Verse 1\nBm A G F#\n\n> Ohh Ohhh Hoo - Intro Vocals\nD A G A\n\n> Ashiqui Hey - Chorus\nA Bm A G\n\n> Janey Qo Main - Verse 2\nBm A G F#m X 2\n\n> AA Dundu - Bridge\nA Em A X 2\n\n# - Solo\nG F#m F Em A Bm\n\n# - Outro\nBm G F#m"
   },
   {
     "title": "Roop Tera Mastana",
     "movie": "Aradhana",
     "key": "D",
-    "chords": "# Verse 1\n> Roop Tera Mastana\nD C\nD C A#\n\n# Verse 2\n> Raat Ne Kya Kya\nF Am C G\nF Am C D"
+    "chords": "> Roopu Tera Mastana - Verse 1\nD C\nD C A#\n\n> Ratena Nise - Verse 2\nF Am C G\nF Am C D"
   }
 
 
