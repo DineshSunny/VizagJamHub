@@ -178,27 +178,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       item.addEventListener("click", () => {
 
-        container.innerHTML = "";
+  window.location.href =
+    `/language.html?type=hindi&id=${song.id}`;
 
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-
-        window.scrollTo(0, 0);
-
-        requestAnimationFrame(() => {
-
-          history.pushState(
-            { page: "lyrics" },
-            "",
-            location.pathname + location.search
-            
-          );
-
-          showLyrics(song);
-
-        });
-
-      });
+});
 
       container.appendChild(item);
 

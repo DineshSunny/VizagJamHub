@@ -120,9 +120,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     songsData = data;
 
+const params = new URLSearchParams(window.location.search);
+const songId = params.get("id");
+
+if (songId) {
+
+  const selectedSong = songsData.find(
+    song => String(song.id) === songId
+  );
+
+  if (selectedSong) {
+
+    showLyrics(selectedSong);
+
+  } else {
+
     renderSongs(data);
 
-    window.scrollTo(0, 0);
+  }
+
+} else {
+
+  renderSongs(data);
+
+}
+
+window.scrollTo(0, 0);
 
   })
   .catch(err => {
@@ -174,26 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       item.addEventListener("click", () => {
 
-        container.innerHTML = "";
+  window.location.href =
+    `/language.html?type=telugu&id=${song.id}`;
 
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-
-        window.scrollTo(0, 0);
-
-        requestAnimationFrame(() => {
-
-          history.pushState(
-            { page: "lyrics" },
-            "",
-            location.pathname + location.search
-          );
-
-          showLyrics(song);
-
-        });
-
-      });
+});
 
       container.appendChild(item);
 

@@ -131,7 +131,9 @@ gap:20px;
 <script>
 
 const params = new URLSearchParams(window.location.search);
+
 const type = params.get("type");
+const id = params.get("id");
 
 const container = document.getElementById("languageOptions");
 const title = document.getElementById("title");
@@ -145,7 +147,7 @@ title.classList.add("telugu-title");
 
 container.innerHTML = `
 
-<a href="/telugusongs.html?script=english"
+<a href="/telugusongs.html?id=${id}&script=english"
 class="lyrics-btn"
 style="width:240px; text-align:center;">
 
@@ -153,7 +155,7 @@ English
 
 </a>
 
-<a href="/telugusongs.html?script=native"
+<a href="/telugusongs.html?id=${id}&script=native"
 class="lyrics-btn"
 style="width:240px; text-align:center;">
 
@@ -173,7 +175,7 @@ title.innerText = "Select Hindi Language";
 
 container.innerHTML = `
 
-<a href="/hindisongs.html?script=english"
+<a href="/hindisongs.html?id=${id}&script=english"
 class="lyrics-btn"
 style="width:240px; text-align:center;">
 
@@ -181,7 +183,7 @@ English
 
 </a>
 
-<a href="/hindisongs.html?script=native"
+<a href="/hindisongs.html?id=${id}&script=native"
 class="lyrics-btn"
 style="width:240px; text-align:center;">
 
@@ -192,6 +194,8 @@ style="width:240px; text-align:center;">
 `;
 
 }
+
+
 
 /* INVALID */
 
