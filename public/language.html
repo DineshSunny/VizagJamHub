@@ -149,7 +149,8 @@ container.innerHTML = `
 
 <a href="/telugusongs.html?id=${id}&script=english"
 class="lyrics-btn"
-style="width:240px; text-align:center;">
+style="width:240px; text-align:center;"
+onclick="event.preventDefault(); window.location.replace(this.href);">
 
 English
 
@@ -157,7 +158,8 @@ English
 
 <a href="/telugusongs.html?id=${id}&script=native"
 class="lyrics-btn"
-style="width:240px; text-align:center;">
+style="width:240px; text-align:center;"
+onclick="event.preventDefault(); window.location.replace(this.href);">
 
 తెలుగు
 
@@ -177,15 +179,18 @@ container.innerHTML = `
 
 <a href="/hindisongs.html?id=${id}&script=english"
 class="lyrics-btn"
-style="width:240px; text-align:center;">
+style="width:240px; text-align:center;"
+onclick="event.preventDefault(); window.location.replace(this.href);">
 
 English
 
 </a>
 
+
 <a href="/hindisongs.html?id=${id}&script=native"
 class="lyrics-btn"
-style="width:240px; text-align:center;">
+style="width:240px; text-align:center;"
+onclick="event.preventDefault(); window.location.replace(this.href);">
 
 हिंदी
 

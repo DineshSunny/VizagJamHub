@@ -118,9 +118,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     songsData = data;
 
+const params = new URLSearchParams(window.location.search);
+const songId = params.get("id");
+
+if (songId) {
+
+  const selectedSong = songsData.find(
+    song => String(song.id) === String(songId)
+  );
+
+  if (selectedSong) {
+
+    showLyrics(selectedSong);
+
+  } else {
+
     renderSongs(data);
 
-    window.scrollTo(0, 0);
+  }
+
+} else {
+
+  renderSongs(data);
+
+}
+
+window.scrollTo(0, 0);
+
+
 
   })
   .catch(err => {
