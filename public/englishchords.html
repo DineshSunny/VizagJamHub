@@ -233,13 +233,32 @@ font-weight:normal;
 
 <p style="
 text-align:center;
-opacity:.7;
-margin-bottom:25px;
+opacity:0.7;
+margin-bottom:8px;
 ">
 
-Key: ${song.key || "N/A"}
+Key:
+<span id="current-key">
+${song.key || "N/A"}
+</span>
 
 </p>
+
+<div class="transpose-container">
+
+<label class="transpose-label">
+
+Transpose To
+
+</label>
+
+<select
+id="transposeSelect"
+class="transpose-select">
+
+</select>
+
+</div>
 
 <div id="chord-content"></div>
 
@@ -249,11 +268,19 @@ Key: ${song.key || "N/A"}
 
 window.scrollTo(0,0);
 
+renderSong(song.chords);
+
+buildTransposeDropdown(song);
+
+}
+
+function renderSong(chordText){
+
 const chordContent =
 document.getElementById("chord-content");
 
 const lines =
-(song.chords || "").split("\n");
+(chordText || "").split("\n");
 
 let html = "";
 
@@ -308,7 +335,7 @@ ${line}
 
 chordContent.innerHTML = html;
 
-}
+}s
 
 window.addEventListener("popstate",()=>{
 
@@ -325,6 +352,7 @@ window.scrollTo(0,0);
 </script>
 
 <script src="/js/menu.js"></script>
+<script src="/js/transpose.js"></script>
 
 </body>
 

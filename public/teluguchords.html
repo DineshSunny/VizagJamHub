@@ -240,10 +240,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <p style="
         text-align:center;
-        opacity:0.7;
-        margin-bottom:25px;
+        opacity:.7;
+        margin-bottom:10px;
         ">
-        Key: ${song.key || "N/A"}
+
+        Key:
+        <span id="current-key">
+        ${song.key || "N/A"}
+        </span>
+
         </p>
 
         <div id="chord-content"></div>
