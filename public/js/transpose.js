@@ -209,10 +209,11 @@ function transposeToken(token, steps){
 
 function transposeLine(line, steps){
 
-    return line
-        .split(/\s+/)
-        .map(token=>transposeToken(token,steps))
-        .join(" ");
+    return line.replace(/\S+/g, token => {
+
+        return transposeToken(token, steps);
+
+    });
 
 }
 
