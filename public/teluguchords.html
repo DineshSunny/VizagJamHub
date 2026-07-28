@@ -251,7 +251,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         </p>
 
-        <div id="chord-content"></div>
+        <div class="transpose-container">
+
+        <label class="transpose-label">
+        Transpose To
+        </label>
+
+        <select
+        id="transposeSelect"
+        class="transpose-select">
+        </select>
+
+</div>
+
+<div id="chord-content"></div>
 
       </div>
 
@@ -265,25 +278,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /* =================================
-   CHORD RENDERER
-================================= */
+const originalChords = song.chords;
 
+renderSong(originalChords);
+
+buildTransposeDropdown(song);
+
+const select = document.getElementById("transposeSelect");
+
+if (select) {
+
+    select.addEventListener("change", function () {
+
+        const transposed = transposeSong(
+            originalChords,
+            song.key,
+            this.value
+        );
+
+        document.getElementById("current-key").textContent =
+            this.value;
+
+        renderSong(transposed);
+
+    });
+
+}
+
+
+function renderSong(chordText){
 
 const chordContent =
 document.getElementById("chord-content");
 
 const lines =
-(song.chords || "").split("\n");
+(chordText || "").split("\n");
 
 let html = "";
 
-/* =================================
-   PARSE EACH LINE
-================================= */
-
-
-lines.forEach(rawLine => {
+lines.forEach(rawLine=>{
 
 const line = rawLine.trim();
 
@@ -294,15 +327,12 @@ return;
 
 }
 
-
-/* HEADING */
-
 if(line.startsWith("# ")){
 
-const heading = line
-.substring(2)
+const heading =
+line.substring(2)
 .toLowerCase()
-.replace(/\b\w/g, c => c.toUpperCase());
+.replace(/\b\w/g,c=>c.toUpperCase());
 
 html += `
 <div class="chord-heading">
@@ -314,14 +344,12 @@ return;
 
 }
 
-/* LYRIC LABEL */
-
 if(line.startsWith("> ")){
 
-const lyric = line
-.substring(2)
+const lyric =
+line.substring(2)
 .toLowerCase()
-.replace(/\b\w/g, c => c.toUpperCase());
+.replace(/\b\w/g,c=>c.toUpperCase());
 
 html += `
 <div class="chord-lyric">
@@ -333,7 +361,6 @@ return;
 
 }
 
-// EVERYTHING ELSE = CHORD
 html += `
 <div class="chord-line">
 ${line}
@@ -344,12 +371,9 @@ ${line}
 
 chordContent.innerHTML = html;
 
+}
 
 
-
-
-
-  }
 
   window.addEventListener("popstate", () => {
 
@@ -376,6 +400,7 @@ chordContent.innerHTML = html;
 
 
 <script src="/js/menu.js"></script>
+<script src="/js/transpose.js"></script>
 
 </body>
 

@@ -268,28 +268,31 @@ class="transpose-select">
 
 window.scrollTo(0,0);
 
+const originalChords = song.chords;
+
 renderSong(song.chords);
 
 buildTransposeDropdown(song);
-
-}
 
 const select = document.getElementById("transposeSelect");
 
 select.addEventListener("change", function () {
 
-    const newChords = transposeSong(
-        song.chords,
+    const transposed = transposeSong(
+        originalChords,
         song.key,
         this.value
     );
 
-    document.getElementById("current-key").textContent =
-        this.value;
+    document.getElementById("current-key").textContent = this.value;
 
-    renderSong(newChords);
+    renderSong(transposed);
 
 });
+
+
+
+}
 
 
 
