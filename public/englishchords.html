@@ -274,6 +274,23 @@ buildTransposeDropdown(song);
 
 }
 
+const select = document.getElementById("transposeSelect");
+
+select.addEventListener("change", function () {
+
+    const newChords = transposeSong(
+        song.chords,
+        song.key,
+        this.value
+    );
+
+    document.getElementById("current-key").textContent =
+        this.value;
+
+    renderSong(newChords);
+
+});
+
 
 
 function renderSong(chordText){
@@ -337,7 +354,7 @@ ${line}
 
 chordContent.innerHTML = html;
 
-}s
+}
 
 window.addEventListener("popstate",()=>{
 
