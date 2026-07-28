@@ -240,13 +240,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <p style="
         text-align:center;
-        opacity:0.7;
-        margin-bottom:25px;
-        ">
-        Key: ${song.key || "N/A"}
-        </p>
+        opacity:.7;
+        margin-bottom:10px;
+       ">
 
-        <div id="chord-content"></div>
+      Key:
+      <span id="current-key">
+      ${song.key || "N/A"}
+    </span>
+
+</p>
+
+        <div class="transpose-container">
+
+         <label class="transpose-label">
+         Transpose To
+         </label>
+
+         <select
+         id="transposeSelect"
+         class="transpose-select">
+         </select>
+
+        </div>
+
+<div id="chord-content"></div>
 
       </div>
 
@@ -257,15 +275,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.scrollTo(0, 0);
 
+    const originalChords = song.chords;
+    renderSong(originalChords);
+    buildTransposeDropdown(song);
+
+const select = document.getElementById("transposeSelect");
+
+if (select) {
+
+    select.addEventListener("change", function () {
+
+        const transposed = transposeSong(
+            originalChords,
+            song.key,
+            this.value
+        );
+
+        document.getElementById("current-key").textContent =
+            this.value;
+
+        renderSong(transposed);
+
+    });
+
+}
+
+}
+
+
+
+
+function renderSong(chordText){
+
 const chordContent =
 document.getElementById("chord-content");
 
 const lines =
-(song.chords || "").split("\n");
+(chordText || "").split("\n");
 
 let html = "";
 
-lines.forEach(rawLine => {
+lines.forEach(rawLine=>{
 
 const line = rawLine.trim();
 
@@ -278,10 +328,10 @@ return;
 
 if(line.startsWith("# ")){
 
-const heading = line
-.substring(2)
+const heading =
+line.substring(2)
 .toLowerCase()
-.replace(/\b\w/g, c => c.toUpperCase());
+.replace(/\b\w/g,c=>c.toUpperCase());
 
 html += `
 <div class="chord-heading">
@@ -295,10 +345,10 @@ return;
 
 if(line.startsWith("> ")){
 
-const lyric = line
-.substring(2)
+const lyric =
+line.substring(2)
 .toLowerCase()
-.replace(/\b\w/g, c => c.toUpperCase());
+.replace(/\b\w/g,c=>c.toUpperCase());
 
 html += `
 <div class="chord-lyric">
@@ -320,7 +370,10 @@ ${line}
 
 chordContent.innerHTML = html;
 
-  }
+}
+
+
+
 
   window.addEventListener("popstate", () => {
 
@@ -345,6 +398,7 @@ chordContent.innerHTML = html;
 </script>
 
 <script src="/js/menu.js"></script>
+<script src="/js/transpose.js"></script>
 
 </body>
 
