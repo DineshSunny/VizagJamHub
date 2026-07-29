@@ -2359,3 +2359,816 @@ transform:translateY(-5px) scale(1.08);
 box-shadow:0 12px 35px rgba(0,0,0,.45);
 
 }
+
+
+
+
+
+/* ===========================================
+   WEBSITE FOOTER
+=========================================== */
+
+.site-footer{
+
+width:100%;
+
+margin-top:80px;
+
+padding:30px 20px;
+
+text-align:center;
+
+background:transparent;
+
+border-top:1px solid rgba(255,255,255,.15);
+
+}
+
+.site-footer p{
+
+margin:12px 0;
+
+color:#ffffff;
+
+font-size:16px;
+
+font-weight:400;
+
+}
+
+.footer-links{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:18px;
+
+margin:18px 0;
+
+}
+
+.footer-links a{
+
+color:#ffffff;
+
+font-size:16px;
+
+font-weight:400;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.footer-links span{
+
+color:#ffffff;
+
+font-size:16px;
+
+}
+
+.footer-links a:hover{
+
+opacity:.75;
+
+}
+
+.footer-text{
+
+color:#ffffff;
+
+font-size:16px;
+
+font-weight:400;
+
+}
+
+
+
+/* ===========================================
+   CONTACT PAGE
+=========================================== */
+
+.contact-page{
+
+width:100%;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:140px 20px 80px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.contact-container{
+
+width:100%;
+
+max-width:1200px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:25px;
+
+padding:50px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.contact-container h1{
+
+color:#fff;
+
+font-size:48px;
+
+margin-bottom:20px;
+
+}
+
+.contact-description{
+
+color:#fff;
+
+font-size:18px;
+
+line-height:1.8;
+
+margin-bottom:50px;
+
+opacity:.9;
+
+}
+
+/* ===========================================
+   CONTACT CARDS
+=========================================== */
+
+.contact-cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:30px;
+
+margin-bottom:60px;
+
+}
+
+.contact-card{
+
+background:rgba(255,255,255,.07);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:20px;
+
+padding:35px 25px;
+
+transition:.3s;
+
+}
+
+.contact-card:hover{
+
+transform:translateY(-10px);
+
+background:rgba(255,255,255,.12);
+
+}
+
+.contact-card i{
+
+font-size:55px;
+
+color:#ffffff;
+
+margin-bottom:20px;
+
+}
+
+.contact-card h2{
+
+color:#fff;
+
+margin-bottom:15px;
+
+font-size:28px;
+
+}
+
+.contact-card p{
+
+color:#fff;
+
+font-size:18px;
+
+margin-bottom:10px;
+
+word-break:break-word;
+
+}
+
+.contact-card span{
+
+display:block;
+
+color:#ddd;
+
+margin-bottom:25px;
+
+font-size:15px;
+
+}
+
+.priority{
+
+color:#25D366 !important;
+
+font-weight:bold;
+
+}
+
+.contact-card a{
+
+display:inline-block;
+
+padding:12px 30px;
+
+border:2px solid #fff;
+
+border-radius:50px;
+
+text-decoration:none;
+
+color:#fff;
+
+transition:.3s;
+
+}
+
+.contact-card a:hover{
+
+background:#fff;
+
+color:#000;
+
+}
+
+/* ===========================================
+   CONTACT FORM
+=========================================== */
+
+.contact-form{
+
+margin-top:20px;
+
+}
+
+.contact-form h2{
+
+color:#fff;
+
+margin-bottom:30px;
+
+font-size:34px;
+
+}
+
+.contact-form input,
+
+.contact-form textarea{
+
+width:100%;
+
+padding:16px;
+
+margin-bottom:20px;
+
+border:none;
+
+border-radius:12px;
+
+background:rgba(255,255,255,.10);
+
+color:#fff;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+.contact-form input::placeholder,
+
+.contact-form textarea::placeholder{
+
+color:#ddd;
+
+}
+
+.contact-form textarea{
+
+resize:vertical;
+
+min-height:180px;
+
+}
+
+.contact-form button{
+
+padding:15px 45px;
+
+border:none;
+
+border-radius:50px;
+
+background:#ffffff;
+
+color:#000;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.contact-form button:hover{
+
+transform:scale(1.05);
+
+}
+
+
+
+
+/* ===========================================
+   LEGAL PAGES
+=========================================== */
+
+.legal-page{
+
+width:100%;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:140px 20px 80px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.legal-container{
+
+width:100%;
+
+max-width:1100px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:25px;
+
+padding:50px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.legal-container h1{
+
+color:#ffffff;
+
+font-size:48px;
+
+text-align:center;
+
+margin-bottom:15px;
+
+}
+
+.legal-container h1 i{
+
+margin-right:12px;
+
+}
+
+.legal-updated{
+
+text-align:center;
+
+color:#d9d9d9;
+
+font-size:16px;
+
+margin-bottom:45px;
+
+}
+
+.legal-section{
+
+margin-bottom:45px;
+
+}
+
+.legal-section:last-child{
+
+margin-bottom:0;
+
+}
+
+.legal-section h2{
+
+color:#ffffff;
+
+font-size:30px;
+
+margin-bottom:18px;
+
+border-left:4px solid #ffffff;
+
+padding-left:15px;
+
+}
+
+.legal-section p{
+
+color:#ffffff;
+
+font-size:18px;
+
+line-height:1.9;
+
+text-align:justify;
+
+}
+
+.legal-section strong{
+
+color:#ffffff;
+
+}
+
+
+
+
+
+
+/* ===========================================
+   404 ERROR PAGE
+=========================================== */
+
+.error-page{
+
+width:100%;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:140px 20px 80px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.error-container{
+
+width:100%;
+
+max-width:900px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:25px;
+
+padding:60px 40px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.error-container h1{
+
+font-size:120px;
+
+color:#ffffff;
+
+margin-bottom:10px;
+
+animation:pulse404 2.5s infinite;
+
+}
+
+.error-icon{
+
+font-size:70px;
+
+color:#ffffff;
+
+margin-bottom:20px;
+
+}
+
+.error-container h2{
+
+font-size:42px;
+
+color:#ffffff;
+
+margin-bottom:20px;
+
+}
+
+.error-container p{
+
+font-size:20px;
+
+color:#ffffff;
+
+line-height:1.8;
+
+margin-bottom:40px;
+
+}
+
+.error-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.error-buttons a{
+
+padding:15px 35px;
+
+border:2px solid #ffffff;
+
+border-radius:50px;
+
+text-decoration:none;
+
+color:#ffffff;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+.error-buttons a:hover{
+
+background:#ffffff;
+
+color:#000000;
+
+transform:translateY(-5px);
+
+}
+
+@keyframes pulse404{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+
+
+/* ===========================================
+   COMING SOON PAGE
+=========================================== */
+
+.coming-page{
+
+width:100%;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:140px 20px 80px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.coming-container{
+
+width:100%;
+
+max-width:900px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:25px;
+
+padding:60px 40px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.coming-icon{
+
+font-size:70px;
+
+color:#ffffff;
+
+margin-bottom:25px;
+
+animation:floatIcon 3s ease-in-out infinite;
+
+}
+
+.coming-container h1{
+
+font-size:64px;
+
+color:#ffffff;
+
+margin-bottom:15px;
+
+letter-spacing:2px;
+
+}
+
+.coming-container h2{
+
+font-size:34px;
+
+color:#ffffff;
+
+margin-bottom:25px;
+
+font-weight:500;
+
+}
+
+.coming-container p{
+
+font-size:20px;
+
+line-height:1.8;
+
+color:#ffffff;
+
+margin-bottom:45px;
+
+}
+
+.coming-buttons{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+}
+
+.coming-buttons a{
+
+padding:15px 35px;
+
+border:2px solid #ffffff;
+
+border-radius:50px;
+
+color:#ffffff;
+
+text-decoration:none;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+.coming-buttons a:hover{
+
+background:#ffffff;
+
+color:#000000;
+
+transform:translateY(-5px);
+
+}
+
+@keyframes floatIcon{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+
+
