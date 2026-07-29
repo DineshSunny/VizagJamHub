@@ -2279,3 +2279,83 @@ margin-bottom:30px;
     transition:all .25s ease;
 }
 
+
+
+
+/* ===========================================
+   FLOATING SOCIAL MEDIA BUTTONS
+=========================================== */
+
+.floating-social{
+
+position:fixed;
+
+bottom:25px;
+right:25px;
+
+display:flex;
+flex-direction:column;
+
+gap:15px;
+
+z-index:9999;
+
+}
+
+/* COMMON BUTTON STYLE */
+
+.floating-social a{
+
+width:60px;
+height:60px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+border-radius:50%;
+
+font-size:30px;
+
+color:#fff;
+
+text-decoration:none;
+
+box-shadow:0 8px 25px rgba(0,0,0,.35);
+
+transition:all .3s ease;
+
+}
+
+/* INSTAGRAM BUTTON */
+
+.instagram-btn{
+
+background:linear-gradient(
+45deg,
+#f09433,
+#e6683c,
+#dc2743,
+#cc2366,
+#bc1888
+);
+
+}
+
+/* WHATSAPP BUTTON */
+
+.whatsapp-btn{
+
+background:#25D366;
+
+}
+
+/* HOVER EFFECT */
+
+.floating-social a:hover{
+
+transform:translateY(-5px) scale(1.08);
+
+box-shadow:0 12px 35px rgba(0,0,0,.45);
+
+}
