@@ -1,15 +1,15 @@
 /* ==========================================================
-                    GUITAR SCHOOL
+                    DRUM SCHOOL
 ========================================================== */
 
-const guitarCourses = {
+const courses = {
 
 beginner:{
 
-title:"Beginner Guitar",
+title:"Beginner Drums",
 
 description:
-"Build a strong musical foundation by learning chords, rhythm, strumming patterns and proper playing techniques. Perfect for complete beginners.",
+"Build a strong foundation in rhythm, coordination, timing and confidence. Perfect for complete beginners starting their drumming journey.",
 
 duration:"8 Weeks",
 
@@ -17,13 +17,13 @@ level:"Beginner",
 
 curriculum:[
 
-"Parts of the Guitar",
-"Proper Playing Posture",
-"Tuning Your Guitar",
-"Basic Chords",
-"Chord Switching",
-"Strumming Patterns",
-"Simple Songs",
+"Introduction to Drum Kit",
+"Holding Drumsticks",
+"Proper Sitting Position",
+"Basic Drum Notation",
+"Quarter & Eighth Notes",
+"Simple Rock Beats",
+"Timing Exercises",
 "Daily Practice Routine"
 
 ]
@@ -32,10 +32,10 @@ curriculum:[
 
 intermediate:{
 
-title:"Intermediate Guitar",
+title:"Intermediate Drums",
 
 description:
-"Develop confidence with barre chords, fingerstyle, rhythm variations and lead guitar techniques while expanding your musical vocabulary.",
+"Take your drumming to the next level with fills, groove development, speed building and live performance techniques.",
 
 duration:"10 Weeks",
 
@@ -43,14 +43,14 @@ level:"Intermediate",
 
 curriculum:[
 
-"Barre Chords",
-"Fingerstyle Basics",
-"Power Chords",
-"Scales & Exercises",
-"Lead Guitar Basics",
-"Rhythm Variations",
+"Ghost Notes",
+"16th Note Grooves",
+"Creative Drum Fills",
+"Odd Time Signatures",
 "Playing Along With Songs",
-"Performance Techniques"
+"Dynamic Control",
+"Performance Techniques",
+"Stage Confidence"
 
 ]
 
@@ -58,10 +58,10 @@ curriculum:[
 
 advanced:{
 
-title:"Advanced Guitar",
+title:"Advanced Drums",
 
 description:
-"Master advanced techniques used by professional guitarists including improvisation, advanced harmony, solo construction and live performance.",
+"Master professional techniques used by touring and studio drummers including independence, polyrhythms and advanced coordination.",
 
 duration:"12 Weeks",
 
@@ -69,14 +69,14 @@ level:"Advanced",
 
 curriculum:[
 
-"Advanced Scales",
-"Improvisation",
-"Solo Construction",
-"Hybrid Picking",
-"Sweep Picking",
-"Music Theory",
+"Linear Drumming",
+"Polyrhythms",
+"Jazz Independence",
+"Fusion Techniques",
 "Recording Sessions",
-"Live Performance"
+"Professional Drum Solos",
+"Live Band Performance",
+"Advanced Coordination"
 
 ]
 
@@ -85,25 +85,25 @@ curriculum:[
 };
 
 const buttons =
-document.querySelectorAll(".guitar-btn");
+document.querySelectorAll(".drum-btn");
 
 const preview =
-document.getElementById("guitar-preview");
+document.getElementById("drum-preview");
 
 const buttonContainer =
-document.querySelector(".guitar-buttons");
+document.querySelector(".drum-buttons");
 
 /* ==========================================================
                     BUILD PREVIEW
 ========================================================== */
 
-function showGuitarCourse(course){
+function showCourse(course){
 
-const item = guitarCourses[course];
+const item = courses[course];
 
 preview.innerHTML = `
 
-<div class="guitar-content">
+<div class="drum-content">
 
 <h2>${item.title}</h2>
 
@@ -117,7 +117,7 @@ ${item.curriculum
 
 </ul>
 
-<div class="guitar-footer">
+<div class="drum-footer">
 
 <span>
 
@@ -147,7 +147,7 @@ ${item.level}
                 RESTORE DEFAULT VIEW
 ========================================================== */
 
-function resetGuitarPreview(){
+function resetPreview(){
 
 buttonContainer.classList.remove("preview-active");
 
@@ -173,6 +173,8 @@ Click to enter the course.
 
 </p>
 
+</div>
+
 `;
 
 }
@@ -191,13 +193,13 @@ buttons.forEach(btn=>btn.classList.remove("active"));
 
 button.classList.add("active");
 
-showGuitarCourse(button.dataset.course);
+showCourse(button.dataset.course);
 
 });
 
 });
 
-buttonContainer.addEventListener("mouseleave",resetGuitarPreview);
+buttonContainer.addEventListener("mouseleave",resetPreview);
 
 /* ==========================================================
                 DESKTOP CLICK
@@ -236,7 +238,7 @@ buttons.forEach(btn=>btn.classList.remove("active"));
 
 button.classList.add("active");
 
-showGuitarCourse(button.dataset.course);
+showCourse(button.dataset.course);
 
 },500);
 
@@ -248,7 +250,7 @@ clearTimeout(holdTimer);
 
 if(holding){
 
-resetGuitarPreview();
+resetPreview();
 
 }
 
@@ -266,4 +268,4 @@ clearTimeout(holdTimer);
                 INITIAL STATE
 ========================================================== */
 
-resetGuitarPreview();
+resetPreview();

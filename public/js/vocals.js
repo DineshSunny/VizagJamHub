@@ -1,15 +1,15 @@
 /* ==========================================================
-                    GUITAR SCHOOL
+                    VOCALS SCHOOL
 ========================================================== */
 
-const guitarCourses = {
+const vocalsCourses = {
 
 beginner:{
 
-title:"Beginner Guitar",
+title:"Beginner Vocals",
 
 description:
-"Build a strong musical foundation by learning chords, rhythm, strumming patterns and proper playing techniques. Perfect for complete beginners.",
+"Build confidence in your singing by learning breathing, pitch control, rhythm and vocal techniques. Perfect for complete beginners.",
 
 duration:"8 Weeks",
 
@@ -17,13 +17,13 @@ level:"Beginner",
 
 curriculum:[
 
-"Parts of the Guitar",
-"Proper Playing Posture",
-"Tuning Your Guitar",
-"Basic Chords",
-"Chord Switching",
-"Strumming Patterns",
-"Simple Songs",
+"Breathing Techniques",
+"Vocal Warmups",
+"Pitch Matching",
+"Rhythm & Timing",
+"Vocal Exercises",
+"First Songs",
+"Microphone Basics",
 "Daily Practice Routine"
 
 ]
@@ -32,10 +32,10 @@ curriculum:[
 
 intermediate:{
 
-title:"Intermediate Guitar",
+title:"Intermediate Vocals",
 
 description:
-"Develop confidence with barre chords, fingerstyle, rhythm variations and lead guitar techniques while expanding your musical vocabulary.",
+"Improve vocal control, harmony singing, vibrato and stage confidence while developing your own unique singing style.",
 
 duration:"10 Weeks",
 
@@ -43,14 +43,14 @@ level:"Intermediate",
 
 curriculum:[
 
-"Barre Chords",
-"Fingerstyle Basics",
-"Power Chords",
-"Scales & Exercises",
-"Lead Guitar Basics",
-"Rhythm Variations",
-"Playing Along With Songs",
-"Performance Techniques"
+"Voice Control",
+"Harmony Singing",
+"Ear Training",
+"Vibrato Techniques",
+"Vocal Dynamics",
+"Performance Skills",
+"Stage Presence",
+"Song Interpretation"
 
 ]
 
@@ -58,10 +58,10 @@ curriculum:[
 
 advanced:{
 
-title:"Advanced Guitar",
+title:"Advanced Vocals",
 
 description:
-"Master advanced techniques used by professional guitarists including improvisation, advanced harmony, solo construction and live performance.",
+"Master professional vocal techniques including riffs, improvisation, recording sessions and live stage performance.",
 
 duration:"12 Weeks",
 
@@ -69,14 +69,14 @@ level:"Advanced",
 
 curriculum:[
 
-"Advanced Scales",
+"Advanced Vocal Techniques",
+"Riffs & Runs",
+"Vocal Health",
+"Recording Studio Techniques",
+"Live Performance",
 "Improvisation",
-"Solo Construction",
-"Hybrid Picking",
-"Sweep Picking",
-"Music Theory",
-"Recording Sessions",
-"Live Performance"
+"Artist Development",
+"Professional Performance"
 
 ]
 
@@ -85,25 +85,25 @@ curriculum:[
 };
 
 const buttons =
-document.querySelectorAll(".guitar-btn");
+document.querySelectorAll(".vocals-btn");
 
 const preview =
-document.getElementById("guitar-preview");
+document.getElementById("vocals-preview");
 
 const buttonContainer =
-document.querySelector(".guitar-buttons");
+document.querySelector(".vocals-buttons");
 
 /* ==========================================================
                     BUILD PREVIEW
 ========================================================== */
 
-function showGuitarCourse(course){
+function showVocalsCourse(course){
 
-const item = guitarCourses[course];
+const item = vocalsCourses[course];
 
 preview.innerHTML = `
 
-<div class="guitar-content">
+<div class="vocals-content">
 
 <h2>${item.title}</h2>
 
@@ -117,7 +117,7 @@ ${item.curriculum
 
 </ul>
 
-<div class="guitar-footer">
+<div class="vocals-footer">
 
 <span>
 
@@ -147,7 +147,7 @@ ${item.level}
                 RESTORE DEFAULT VIEW
 ========================================================== */
 
-function resetGuitarPreview(){
+function resetVocalsPreview(){
 
 buttonContainer.classList.remove("preview-active");
 
@@ -191,13 +191,13 @@ buttons.forEach(btn=>btn.classList.remove("active"));
 
 button.classList.add("active");
 
-showGuitarCourse(button.dataset.course);
+showVocalsCourse(button.dataset.course);
 
 });
 
 });
 
-buttonContainer.addEventListener("mouseleave",resetGuitarPreview);
+buttonContainer.addEventListener("mouseleave",resetVocalsPreview);
 
 /* ==========================================================
                 DESKTOP CLICK
@@ -236,7 +236,7 @@ buttons.forEach(btn=>btn.classList.remove("active"));
 
 button.classList.add("active");
 
-showGuitarCourse(button.dataset.course);
+showVocalsCourse(button.dataset.course);
 
 },500);
 
@@ -248,7 +248,7 @@ clearTimeout(holdTimer);
 
 if(holding){
 
-resetGuitarPreview();
+resetVocalsPreview();
 
 }
 
@@ -266,4 +266,4 @@ clearTimeout(holdTimer);
                 INITIAL STATE
 ========================================================== */
 
-resetGuitarPreview();
+resetVocalsPreview();
