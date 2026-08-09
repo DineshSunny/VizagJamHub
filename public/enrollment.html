@@ -1075,121 +1075,279 @@
 
 
 
-            <!-- EMERGENCY CONTACT -->
+<!-- ======================================================
+     EMERGENCY CONTACT
+====================================================== -->
 
-            <div class="form-subsection">
+<div class="form-subsection">
 
+    <div class="form-subsection-heading">
 
-                <div class="form-subsection-heading">
+        <i class="fa-solid fa-phone-volume"></i>
 
-                    <i class="fa-solid fa-phone-volume"></i>
+        <div>
+            <small>EMERGENCY</small>
+            <h3>Emergency Contact</h3>
+        </div>
 
-                    <div>
+    </div>
 
-                        <small>
-                            EMERGENCY CONTACT
-                        </small>
-
-                        <h3>
-                            Contact Information
-                        </h3>
-
-                    </div>
-
-                </div>
-
+    <p class="form-subsection-description">
+        Please provide someone we can contact in case of an emergency.
+        All fields are required.
+    </p>
 
 
-                <div class="enrollment-grid">
+    <div class="enrollment-grid">
 
 
-                    <div class="enrollment-field">
+        <!-- EMERGENCY CONTACT NAME -->
 
-                        <label for="emergencyName">
+        <div class="enrollment-field">
 
-                            Contact Name
-                            <span>*</span>
+            <label for="emergencyName">
+                Contact Name
+                <span>*</span>
+            </label>
 
-                        </label>
+            <div class="input-wrapper">
 
+                <i class="fa-regular fa-user"></i>
 
-                        <div class="input-wrapper">
-
-                            <i class="fa-regular fa-user"></i>
-
-                            <input type="text"
-                                   id="emergencyName"
-                                   name="emergencyName"
-                                   placeholder="Full name"
-                                   required>
-
-                        </div>
-
-                        <small class="field-error"></small>
-
-                    </div>
-
-
-
-                    <div class="enrollment-field">
-
-                        <label for="emergencyRelationship">
-
-                            Relationship
-                            <span>*</span>
-
-                        </label>
-
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-solid fa-people-arrows"></i>
-
-                            <input type="text"
-                                   id="emergencyRelationship"
-                                   name="emergencyRelationship"
-                                   placeholder="Parent, guardian, sibling..."
-                                   required>
-
-                        </div>
-
-                        <small class="field-error"></small>
-
-                    </div>
-
-
-
-                    <div class="enrollment-field">
-
-                        <label for="emergencyPhone">
-
-                            Phone Number
-                            <span>*</span>
-
-                        </label>
-
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-solid fa-phone"></i>
-
-                            <input type="tel"
-                                   id="emergencyPhone"
-                                   name="emergencyPhone"
-                                   placeholder="Emergency phone number"
-                                   required>
-
-                        </div>
-
-                        <small class="field-error"></small>
-
-                    </div>
-
-
-                </div>
+                <input
+                    type="text"
+                    id="emergencyName"
+                    name="emergencyName"
+                    autocomplete="name"
+                    placeholder="Enter contact name"
+                    required
+                >
 
             </div>
 
+            <small class="field-error"></small>
+
+        </div>
+
+
+        <!-- RELATIONSHIP -->
+
+        <div class="enrollment-field">
+
+            <label for="emergencyRelationship">
+                Relationship
+                <span>*</span>
+            </label>
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-people-roof"></i>
+
+                <select
+                    id="emergencyRelationship"
+                    name="emergencyRelationship"
+                    required
+                >
+
+                    <option value="">
+                        Select relationship
+                    </option>
+
+                    <option value="father">
+                        Father
+                    </option>
+
+                    <option value="mother">
+                        Mother
+                    </option>
+
+                    <option value="sibling">
+                        Sibling
+                    </option>
+
+                    <option value="other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+            <small class="field-error"></small>
+
+        </div>
+
+
+        <!-- OTHER RELATIONSHIP -->
+
+        <div
+            class="enrollment-field"
+            id="emergencyOtherWrapper"
+            hidden
+        >
+
+            <label for="emergencyOtherRelationship">
+                Specify Relationship
+                <span>*</span>
+            </label>
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-user-group"></i>
+
+                <input
+                    type="text"
+                    id="emergencyOtherRelationship"
+                    name="emergencyOtherRelationship"
+                    placeholder="Enter relationship"
+                >
+
+            </div>
+
+            <small class="field-error"></small>
+
+        </div>
+
+
+        <!-- EMERGENCY PHONE -->
+
+        <div class="enrollment-field">
+
+            <label for="emergencyPhone">
+                Phone Number
+                <span>*</span>
+            </label>
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <input
+                    type="tel"
+                    id="emergencyPhone"
+                    name="emergencyPhone"
+                    autocomplete="tel"
+                    placeholder="Enter phone number"
+                    required
+                >
+
+            </div>
+
+            <small class="field-error"></small>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+        <!-- EMERGENCY CONTACT NAME -->
+
+        <div class="enrollment-field">
+
+            <label for="emergency-name">
+                Contact Name
+                <span>*</span>
+            </label>
+
+            <input
+                type="text"
+                id="emergency-name"
+                name="emergencyName"
+                autocomplete="name"
+                required
+            >
+
+        </div>
+
+
+        <!-- RELATIONSHIP -->
+
+        <div class="enrollment-field">
+
+            <label for="emergency-relationship">
+                Relationship
+                <span>*</span>
+            </label>
+
+            <select
+                id="emergency-relationship"
+                name="emergencyRelationship"
+                required
+            >
+
+                <option value="">
+                    Select relationship
+                </option>
+
+                <option value="father">
+                    Father
+                </option>
+
+                <option value="mother">
+                    Mother
+                </option>
+
+                <option value="sibling">
+                    Sibling
+                </option>
+
+                <option value="other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- OTHER RELATIONSHIP -->
+
+        <div
+            class="enrollment-field"
+            id="emergency-other-wrapper"
+            hidden
+        >
+
+            <label for="emergency-other-relationship">
+                Specify Relationship
+                <span>*</span>
+            </label>
+
+            <input
+                type="text"
+                id="emergency-other-relationship"
+                name="emergencyOtherRelationship"
+                placeholder="Enter relationship"
+            >
+
+        </div>
+
+
+        <!-- EMERGENCY PHONE -->
+
+        <div class="enrollment-field">
+
+            <label for="emergency-phone">
+                Phone Number
+                <span>*</span>
+            </label>
+
+            <input
+                type="tel"
+                id="emergency-phone"
+                name="emergencyPhone"
+                autocomplete="tel"
+                required
+            >
+
+        </div>
+
+
+    </div>
+
+</div>
 
 
             <!-- LEARNING INFORMATION -->

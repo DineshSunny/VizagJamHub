@@ -971,11 +971,20 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        const emergencyRelationship =
-            getFieldValue(
-                "emergencyRelationship"
-            );
+        const emergencyRelationshipValue =
+    getFieldValue(
+        "emergencyRelationship"
+    );
 
+
+const emergencyRelationship =
+    emergencyRelationshipValue === "other"
+        ? getFieldValue(
+            "emergencyOtherRelationship"
+        )
+        : capitalizeValue(
+            emergencyRelationshipValue
+        );
 
         const emergencyPhone =
             getFieldValue(
@@ -1260,25 +1269,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
             /* EMERGENCY */
 
-            emergencyContact: {
+emergencyContact: {
 
-                name:
-                    getFieldValue(
-                        "emergencyName"
-                    ),
+    name:
+        getFieldValue(
+            "emergencyName"
+        ),
 
-                relationship:
-                    getFieldValue(
-                        "emergencyRelationship"
-                    ),
+    relationship:
+        getFieldValue(
+            "emergencyRelationship"
+        ) === "other"
+            ? getFieldValue(
+                "emergencyOtherRelationship"
+            )
+            : getFieldValue(
+                "emergencyRelationship"
+            ),
 
-                phone:
-                    getFieldValue(
-                        "emergencyPhone"
-                    )
+    phone:
+        getFieldValue(
+            "emergencyPhone"
+        )
 
-            },
-
+},
 
             /* LEARNING PROFILE */
 
@@ -1447,97 +1461,298 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+/* ======================================================
+   PAYMENT METHOD + PAYMENT BUTTON
+====================================================== */
 
-    /* ======================================================
-       PAYMENT BUTTON
-    ====================================================== */
-
-    if (paymentButton) {
-
-
-        paymentButton.addEventListener(
-            "click",
-            () => {
+const paymentMethodInputs =
+    document.querySelectorAll(
+        'input[name="paymentMethod"]'
+    );
 
 
-                /*
-                 * Build the complete registration object.
-                 *
-                 * This is useful when we connect the backend,
-                 * but it is NOT proof of enrollment.
-                 */
-
-                const registrationData =
-                    buildRegistrationData();
+let selectedPaymentMethod = "";
 
 
-                /*
-                 * Temporarily save the pending registration
-                 * in this browser session.
-                 *
-                 * This is NOT a permanent database record.
-                 */
 
-                sessionStorage.setItem(
+/* ======================================================
+   PAYMENT METHOD LABEL
+====================================================== */
 
-                    "vizagJamHubPendingRegistration",
+function getPaymentMethodLabel(value) {
 
-                    JSON.stringify(
-                        registrationData
-                    )
+    switch (value) {
 
-                );
+        case "upi":
+            return "UPI";
 
+        case "card":
+            return "Debit / Credit Card";
 
-                /*
-                 * =================================================
-                 * IMPORTANT — PAYMENT SECURITY
-                 * =================================================
-                 *
-                 * Do NOT:
-                 *
-                 * - Generate a real Student ID here.
-                 * - Mark the student as enrolled here.
-                 * - Trust the ₹ amount stored in JavaScript.
-                 * - Grant student portal access here.
-                 * - Create a certificate here.
-                 *
-                 *
-                 * When the backend/payment system is added:
-                 *
-                 * 1. Send the registration request to the server.
-                 *
-                 * 2. The SERVER determines the real course
-                 *    and price.
-                 *
-                 * 3. The server creates a payment order.
-                 *
-                 * 4. Open the payment provider.
-                 *
-                 * 5. Verify successful payment SERVER-SIDE.
-                 *
-                 * 6. Store the enrollment in the database.
-                 *
-                 * 7. Generate the official Student ID.
-                 *
-                 * 8. Create student portal/course access.
-                 *
-                 * 9. Redirect to enrollment-success.html.
-                 *
-                 * =================================================
-                 */
+        case "netbanking":
+            return "Net Banking";
+
+        default:
+            return "";
+    }
+
+}
 
 
-                alert(
-                    "Payment integration is the next step. " +
-                    "No payment has been charged."
-                );
 
-            }
+/* ======================================================
+   UPDATE PAYMENT BUTTON
+====================================================== */
+
+function updatePaymentButton() {
+
+    if (!paymentButton) {
+        return;
+    }
+
+
+    const buttonText =
+        document.getElementById(
+            "payment-button-text"
         );
+
+
+    /*
+     * No payment method selected yet.
+     */
+
+    if (!selectedPaymentMethod) {
+
+        paymentButton.disabled = true;
+
+        paymentButton.classList.remove(
+            "ready"
+        );
+
+
+        if (buttonText) {
+
+            buttonText.textContent =
+                "Choose a Payment Method";
+
+        }
+
+
+        return;
+    }
+
+
+    /*
+     * Payment method selected.
+     */
+
+    paymentButton.disabled = false;
+
+    paymentButton.classList.add(
+        "ready"
+    );
+
+
+    if (buttonText) {
+
+        buttonText.textContent =
+            `Pay ${priceDisplay} Securely`;
 
     }
 
+}
+
+
+
+/* ======================================================
+   PAYMENT METHOD SELECTION
+====================================================== */
+
+paymentMethodInputs.forEach(input => {
+
+    input.addEventListener(
+        "change",
+        () => {
+
+            selectedPaymentMethod =
+                input.value;
+
+
+            updatePaymentButton();
+
+        }
+    );
+
+});
+
+
+
+/* ======================================================
+   PAYMENT BUTTON
+====================================================== */
+
+if (paymentButton) {
+
+    paymentButton.addEventListener(
+        "click",
+        () => {
+
+
+            /*
+             * Payment method is required.
+             */
+
+            if (!selectedPaymentMethod) {
+
+                alert(
+                    "Please choose a payment method."
+                );
+
+                return;
+
+            }
+
+
+
+            /*
+             * Validate Step 5.
+             */
+
+            if (!validateStep(5)) {
+
+                return;
+
+            }
+
+
+
+            /*
+             * Build complete registration information.
+             */
+
+            const registrationData =
+                buildRegistrationData();
+
+
+
+            /*
+             * Add payment information.
+             *
+             * IMPORTANT:
+             * This only records the student's
+             * preferred payment method.
+             *
+             * It does NOT mean payment succeeded.
+             */
+
+            registrationData.payment = {
+
+                method:
+                    selectedPaymentMethod,
+
+                methodLabel:
+                    getPaymentMethodLabel(
+                        selectedPaymentMethod
+                    ),
+
+                amount:
+                    enrollmentData.price,
+
+                amountDisplay:
+                    priceDisplay,
+
+                status:
+                    "pending"
+
+            };
+
+
+
+            /*
+             * Temporarily save the registration.
+             *
+             * Later this object will be sent
+             * to the Vizag JamHub backend.
+             */
+
+            sessionStorage.setItem(
+
+                "vizagJamHubPendingRegistration",
+
+                JSON.stringify(
+                    registrationData
+                )
+
+            );
+
+
+
+            /*
+             * =================================================
+             * PAYMENT GATEWAY PLACEHOLDER
+             * =================================================
+             *
+             * NEXT BACKEND PHASE:
+             *
+             * 1. Send registrationData to server.
+             *
+             * 2. Server validates course and price.
+             *
+             * 3. Server creates payment order.
+             *
+             * 4. Open payment gateway.
+             *
+             * 5. Verify payment server-side.
+             *
+             * 6. Create student record.
+             *
+             * 7. Generate Student ID.
+             *
+             * 8. Generate 24 class sessions.
+             *
+             * 9. If ONLINE:
+             *       assign Zoom/class access.
+             *
+             * 10. If IN PERSON:
+             *       assign academy location.
+             *
+             * 11. Generate calendar schedule.
+             *
+             * 12. Send Vizag JamHub confirmation email.
+             *
+             * 13. Redirect to:
+             *
+             *       registered.html
+             *
+             * =================================================
+             */
+
+
+            console.log(
+                "Pending Vizag JamHub registration:",
+                registrationData
+            );
+
+
+            alert(
+                `${getPaymentMethodLabel(selectedPaymentMethod)} selected.\n\n` +
+                `Amount: ${priceDisplay}\n\n` +
+                "Secure payment gateway integration will be connected next. " +
+                "No payment has been charged."
+            );
+
+        }
+    );
+
+}
+
+
+
+/* ======================================================
+   INITIALIZE PAYMENT BUTTON
+====================================================== */
+
+updatePaymentButton();
 
 
     /* ======================================================
