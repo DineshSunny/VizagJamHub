@@ -1,75 +1,127 @@
-/* ==========================================================
-   VIZAG JAMHUB MUSIC ACADEMY
-   ENROLLMENT SYSTEM
-
-   Shared enrollment logic for all academy courses.
-========================================================== */
-
 document.addEventListener("DOMContentLoaded", () => {
 
+    const $ = id => document.getElementById(id);
+
+    const value = id =>
+        String($(id)?.value ?? "").trim();
+
+    const setText = (id, value) => {
+
+        const element = $(id);
+
+        if (!element) return;
+
+        element.textContent =
+            value === undefined ||
+            value === null ||
+            value === ""
+                ? "—"
+                : value;
+    };
+
+    const capitalize = value => {
+
+        if (!value) return "—";
+
+        return String(value)
+            .replace(/-/g, " ")
+            .replace(
+                /\b\w/g,
+                character =>
+                    character.toUpperCase()
+            );
+    };
+
+    const getRadioValue = name =>
+        document.querySelector(
+            `input[name="${name}"]:checked`
+        )?.value || "";
+
+    const formatMoney = amount =>
+        `₹${Number(amount).toLocaleString("en-IN")}`;
+
+    const normalizeText = value =>
+        String(value || "")
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, " ");
+
+    const normalizePhone = value =>
+        String(value || "")
+            .replace(/\D/g, "");
+
+    const isNA = value =>
+        /^(n\/?a|na|not available|none)$/i.test(
+            String(value || "").trim()
+        );
+
 
     /* ======================================================
-       ELEMENTS
+       VALIDATION HELPERS
     ====================================================== */
 
-    const form =
-        document.getElementById(
-            "academy-registration-form"
+    function isValidPhone(value) {
+
+        if (isNA(value)) {
+            return false;
+        }
+
+        const digits =
+            normalizePhone(value);
+
+        return (
+            digits.length >= 7 &&
+            digits.length <= 15
         );
+    }
 
 
-    const steps =
-        document.querySelectorAll(
-            ".enrollment-step"
-        );
+    function isValidEmail(value) {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
+            .test(
+                String(value || "").trim()
+            );
+    }
 
 
-    const indicators =
-        document.querySelectorAll(
-            ".progress-step"
-        );
+    function isValidName(value) {
 
+        const text =
+            String(value || "").trim();
 
-    const progressLines =
-        document.querySelectorAll(
-            ".progress-line"
-        );
+        if (text.length < 2) {
+            return false;
+        }
 
+        /*
+         * Name must contain actual letters.
+         * Prevents a phone number from being entered
+         * as a person's name.
+         */
 
-    const nextButtons =
-        document.querySelectorAll(
-            ".enrollment-next"
-        );
+        if (
+            !/[A-Za-z\u00C0-\u024F\u0900-\u097F]/u
+                .test(text)
+        ) {
+            return false;
+        }
 
+        if (
+            /^\+?[\d\s().-]+$/.test(text)
+        ) {
+            return false;
+        }
 
-    const backButtons =
-        document.querySelectorAll(
-            ".enrollment-back"
-        );
-
-
-    const editButtons =
-        document.querySelectorAll(
-            ".review-edit"
-        );
-
-
-    const paymentButton =
-        document.getElementById(
-            "payment-button"
-        );
-
-
-    let currentStep = 1;
-
+        return true;
+    }
 
 
     /* ======================================================
-       LOAD SAVED COURSE SELECTION
+       LOAD COURSE SELECTION
     ====================================================== */
 
     let enrollmentData = null;
-
 
     try {
 
@@ -77,566 +129,405 @@ document.addEventListener("DOMContentLoaded", () => {
             JSON.parse(
                 sessionStorage.getItem(
                     "vizagJamHubEnrollment"
-                )
+                ) || "null"
             );
 
     }
-
     catch (error) {
 
         console.error(
-            "Unable to read enrollment selection:",
+            "Could not read enrollment data:",
             error
         );
-
     }
 
 
+    if (!enrollmentData) {
 
-    /* ======================================================
-       INVALID / MISSING COURSE SELECTION
-    ====================================================== */
-
-    if (
-        !enrollmentData ||
-        !enrollmentData.course ||
-        !enrollmentData.format ||
-        !enrollmentData.time ||
-        !enrollmentData.batch
-    ) {
-
-        console.warn(
-            "No valid course enrollment selection was found."
+        alert(
+            "Your class selection could not be found. Please return to the course page and choose your format, class time and batch again."
         );
-
-
-        /*
-         * The student should normally reach this page
-         * from one of the academy course pages.
-         *
-         * We do not create fake/default enrollment data here.
-         */
-
-        window.location.href =
-            "/index.html#school";
-
 
         return;
-
     }
-
 
 
     /* ======================================================
-       HELPERS
+       EXACT COURSE DATA FROM PREVIOUS PAGE
     ====================================================== */
 
-    function getElement(id) {
-
-        return document.getElementById(id);
-
-    }
-
-
-    function setText(id, value) {
-
-        const element =
-            getElement(id);
-
-
-        if (!element) {
-
-            return;
-
-        }
-
-
-        element.textContent =
-            value || "—";
-
-    }
-
-
-    function formatPrice(price) {
-
-        const numericPrice =
-            Number(price);
-
-
-        if (!Number.isFinite(numericPrice)) {
-
-            return "—";
-
-        }
-
-
-        return new Intl.NumberFormat(
-            "en-IN",
-            {
-                style: "currency",
-                currency: "INR",
-                maximumFractionDigits: 0
-            }
-        ).format(numericPrice);
-
-    }
-
-
-    function formatDate(dateValue) {
-
-        if (!dateValue) {
-
-            return "—";
-
-        }
-
-
-        const parts =
-            dateValue.split("-");
-
-
-        if (parts.length !== 3) {
-
-            return dateValue;
-
-        }
-
-
-        const year =
-            Number(parts[0]);
-
-        const month =
-            Number(parts[1]) - 1;
-
-        const day =
-            Number(parts[2]);
-
-
-        const date =
-            new Date(
-                year,
-                month,
-                day
-            );
-
-
-        if (Number.isNaN(date.getTime())) {
-
-            return dateValue;
-
-        }
-
-
-        return date.toLocaleDateString(
-            "en-IN",
-            {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            }
-        );
-
-    }
-
-
-    function getFieldValue(id) {
-
-        const field =
-            getElement(id);
-
-
-        if (!field) {
-
-            return "";
-
-        }
-
-
-        return field.value.trim();
-
-    }
-
-
-    function getCheckedValue(name) {
-
-        const selected =
-            document.querySelector(
-                `input[name="${name}"]:checked`
-            );
-
-
-        return selected
-            ? selected.value
-            : "";
-
-    }
-
-
-    function capitalizeValue(value) {
-
-        if (!value) {
-
-            return "—";
-
-        }
-
-
-        return value
-            .replace(/-/g, " ")
-            .replace(
-                /\b\w/g,
-                letter => letter.toUpperCase()
-            );
-
-    }
-
-
-
-    /* ======================================================
-       COURSE DISPLAY VALUES
-    ====================================================== */
-
-    const courseName =
-        enrollmentData.course || "—";
-
+    const course =
+        enrollmentData.course ||
+        "Beginner Drums";
 
     const level =
-        enrollmentData.level || "—";
+        enrollmentData.level ||
+        "Beginner";
 
-
-    const levelDisplay =
-        level !== "—"
-            ? `${String(level).toUpperCase()} COURSE`
-            : "—";
-
-
-    const priceDisplay =
-        formatPrice(
+    const price =
+        Number(
             enrollmentData.price
-        );
+        ) || 2000;
 
 
-    const formatDisplay =
+    const format =
+        enrollmentData.format || "";
+
+    const formatLabel =
         enrollmentData.formatLabel ||
-        capitalizeValue(
-            enrollmentData.format
-        );
+        capitalize(format);
 
 
-    const timeDisplay =
+    const time =
+        enrollmentData.time || "";
+
+    const timeLabel =
         enrollmentData.timeLabel ||
-        enrollmentData.time
-            .replace(
-                " - ",
-                " – "
-            );
+        time;
 
 
-    const batchDisplay =
+    const batch =
+        enrollmentData.batch || "";
+
+    const batchName =
         enrollmentData.batchName ||
-        capitalizeValue(
-            enrollmentData.batch
-        );
-
-
-    const durationDisplay =
-        enrollmentData.duration ||
-        "8 Weeks";
+        batch;
 
 
     const theoryDay =
-        enrollmentData.theoryDay || "—";
-
+        enrollmentData.theoryDay || "";
 
     const practicalDay =
-        enrollmentData.practicalDay || "—";
-
+        enrollmentData.practicalDay || "";
 
     const songDay =
-        enrollmentData.songDay || "—";
+        enrollmentData.songDay || "";
 
 
+    const duration =
+        enrollmentData.duration ||
+        "8 Weeks";
 
-    /* ======================================================
-       POPULATE SELECTED COURSE SUMMARY
-    ====================================================== */
+    const classesPerWeek =
+        Number(
+            enrollmentData.classesPerWeek
+        ) || 3;
 
-    setText(
-        "summary-level",
-        levelDisplay
-    );
-
-
-    setText(
-        "summary-course",
-        courseName
-    );
+    const totalClasses =
+        Number(
+            enrollmentData.totalClasses
+        ) || 24;
 
 
-    setText(
-        "summary-price",
-        priceDisplay
-    );
-
-
-    setText(
-        "summary-format",
-        formatDisplay
-    );
-
-
-    setText(
-        "summary-time",
-        timeDisplay
-    );
-
-
-    setText(
-        "summary-batch",
-        batchDisplay
-    );
-
-
-    setText(
-        "summary-duration",
-        durationDisplay
-    );
-
+    const weeklyDays =
+        [
+            theoryDay,
+            practicalDay,
+            songDay
+        ]
+            .filter(Boolean)
+            .join(" • ");
 
 
     /* ======================================================
-       POPULATE WEEKLY SCHEDULE
+       VERIFY PREVIOUS PAGE SELECTION
     ====================================================== */
 
-    setText(
-        "summary-theory-day",
-        theoryDay
-    );
+    const missingSelection = [];
 
 
-    setText(
-        "summary-practical-day",
-        practicalDay
-    );
+    if (!format) {
+        missingSelection.push(
+            "format"
+        );
+    }
+
+    if (!time) {
+        missingSelection.push(
+            "class time"
+        );
+    }
+
+    if (!batch) {
+        missingSelection.push(
+            "batch"
+        );
+    }
+
+    if (
+        !theoryDay ||
+        !practicalDay ||
+        !songDay
+    ) {
+        missingSelection.push(
+            "weekly batch days"
+        );
+    }
 
 
-    setText(
-        "summary-song-day",
-        songDay
-    );
+    if (missingSelection.length) {
 
+        alert(
+            "Your previous class selection is incomplete: " +
+            missingSelection.join(", ") +
+            ". Please return to the Beginner Drums page and select all class options."
+        );
 
-    setText(
-        "summary-theory-time",
-        timeDisplay
-    );
-
-
-    setText(
-        "summary-practical-time",
-        timeDisplay
-    );
-
-
-    setText(
-        "summary-song-time",
-        timeDisplay
-    );
-
+        return;
+    }
 
 
     /* ======================================================
-       SHOW STEP
+       POPULATE LOCKED COURSE
     ====================================================== */
+
+    function populateCourseInformation() {
+
+        setText(
+            "summary-level",
+            `${level.toUpperCase()} COURSE`
+        );
+
+        setText(
+            "summary-course",
+            course
+        );
+
+        setText(
+            "summary-price",
+            formatMoney(price)
+        );
+
+
+        setText(
+            "summary-format",
+            formatLabel
+        );
+
+        setText(
+            "summary-time",
+            timeLabel
+        );
+
+        setText(
+            "summary-batch",
+            batchName
+        );
+
+        setText(
+            "summary-duration",
+            duration
+        );
+
+
+        setText(
+            "summary-theory-day",
+            theoryDay
+        );
+
+        setText(
+            "summary-theory-time",
+            timeLabel
+        );
+
+
+        setText(
+            "summary-practical-day",
+            practicalDay
+        );
+
+        setText(
+            "summary-practical-time",
+            timeLabel
+        );
+
+
+        setText(
+            "summary-song-day",
+            songDay
+        );
+
+        setText(
+            "summary-song-time",
+            timeLabel
+        );
+    }
+
+
+    /* ======================================================
+       STEPS
+    ====================================================== */
+
+    const steps =
+        Array.from(
+            document.querySelectorAll(
+                ".enrollment-step"
+            )
+        );
+
+    const progressSteps =
+        Array.from(
+            document.querySelectorAll(
+                ".progress-step"
+            )
+        );
+
+    const progressLines =
+        Array.from(
+            document.querySelectorAll(
+                ".progress-line"
+            )
+        );
+
+
+    let currentStep = 1;
+
 
     function showStep(stepNumber) {
 
-
-        const requestedStep =
-            Number(stepNumber);
-
-
-        if (
-            !Number.isInteger(requestedStep) ||
-            requestedStep < 1 ||
-            requestedStep > steps.length
-        ) {
-
-            return;
-
-        }
-
-
         currentStep =
-            requestedStep;
+            Math.max(
+                1,
+                Math.min(
+                    5,
+                    Number(stepNumber) || 1
+                )
+            );
 
 
-
-        /* STEP CONTENT */
+        /*
+         * IMPORTANT FIX:
+         * Your HTML uses the hidden attribute.
+         * We must remove hidden when moving forward.
+         */
 
         steps.forEach(step => {
 
-
-            const number =
+            const stepValue =
                 Number(
                     step.dataset.step
                 );
 
-
             const active =
-                number === currentStep;
-
-
-            step.classList.toggle(
-                "active",
-                active
-            );
+                stepValue === currentStep;
 
 
             step.hidden =
                 !active;
 
+            step.classList.toggle(
+                "active",
+                active
+            );
         });
 
 
+        progressSteps.forEach(step => {
 
-        /* PROGRESS INDICATORS */
-
-        indicators.forEach(indicator => {
-
-
-            const number =
+            const stepValue =
                 Number(
-                    indicator.dataset.progress
+                    step.dataset.progress
                 );
 
 
-            indicator.classList.remove(
+            step.classList.toggle(
                 "active",
-                "completed"
+                stepValue === currentStep
             );
 
-
-            if (number < currentStep) {
-
-                indicator.classList.add(
-                    "completed"
-                );
-
-            }
-
-
-            if (number === currentStep) {
-
-                indicator.classList.add(
-                    "active"
-                );
-
-            }
-
+            step.classList.toggle(
+                "completed",
+                stepValue < currentStep
+            );
         });
 
-
-
-        /* PROGRESS LINES */
 
         progressLines.forEach(
             (line, index) => {
 
-
                 line.classList.toggle(
-                    "completed",
-                    index < currentStep - 1
+                    "active",
+                    index + 1 < currentStep
                 );
-
             }
         );
 
 
+        clearValidationSummary();
 
-        /* UPDATE REVIEW WHEN ENTERING STEP 4 */
 
         if (currentStep === 4) {
-
             updateReview();
-
         }
 
-
-
-        /* UPDATE PAYMENT WHEN ENTERING STEP 5 */
 
         if (currentStep === 5) {
-
             updatePaymentSummary();
-
         }
 
 
-
-        /* SCROLL TO REGISTRATION AREA */
-
-        const enrollmentHeader =
-            document.querySelector(
-                ".enrollment-header"
-            );
-
-
-        if (enrollmentHeader) {
-
-            enrollmentHeader.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }
-
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
 
 
-
     /* ======================================================
-       FIELD ERROR HELPERS
+       ERROR DISPLAY
     ====================================================== */
 
-    function clearFieldError(field) {
+    function getFieldContainer(field) {
+
+        return field?.closest(
+            ".enrollment-field"
+        ) || null;
+    }
 
 
-        field.classList.remove(
-            "invalid"
-        );
+    function getFieldLabel(field) {
+
+        const label =
+            getFieldContainer(field)
+                ?.querySelector(
+                    "label"
+                );
 
 
-        const enrollmentField =
-            field.closest(
-                ".enrollment-field"
-            );
-
-
-        if (!enrollmentField) {
-
-            return;
-
+        if (!label) {
+            return "This field";
         }
 
 
-        enrollmentField.classList.remove(
+        return label.textContent
+            .replace(/\*/g, "")
+            .replace(/\s+/g, " ")
+            .trim();
+    }
+
+
+    function clearFieldError(field) {
+
+        const container =
+            getFieldContainer(field);
+
+        if (!container) return;
+
+
+        container.classList.remove(
             "has-error"
         );
 
 
         const error =
-            enrollmentField.querySelector(
+            container.querySelector(
                 ".field-error"
             );
 
 
         if (error) {
-
             error.textContent = "";
-
         }
-
     }
 
 
@@ -645,1129 +536,2131 @@ document.addEventListener("DOMContentLoaded", () => {
         message
     ) {
 
-
-        field.classList.add(
-            "invalid"
-        );
+        if (!field) return;
 
 
-        const enrollmentField =
-            field.closest(
-                ".enrollment-field"
+        const container =
+            getFieldContainer(field);
+
+
+        if (container) {
+
+            container.classList.add(
+                "has-error"
             );
 
 
-        if (!enrollmentField) {
+            const error =
+                container.querySelector(
+                    ".field-error"
+                );
 
-            return;
 
+            if (error) {
+                error.textContent =
+                    message;
+            }
         }
-
-
-        enrollmentField.classList.add(
-            "has-error"
-        );
-
-
-        const error =
-            enrollmentField.querySelector(
-                ".field-error"
-            );
-
-
-        if (error) {
-
-            error.textContent =
-                message;
-
-        }
-
     }
 
 
+    /*
+     * Creates an error box automatically.
+     * No HTML changes are required.
+     */
+
+    function getValidationSummary() {
+
+        let summary =
+            $("validationSummary");
+
+
+        if (summary) {
+            return summary;
+        }
+
+
+        summary =
+            document.createElement(
+                "div"
+            );
+
+
+        summary.id =
+            "validationSummary";
+
+        summary.setAttribute(
+            "role",
+            "alert"
+        );
+
+        summary.setAttribute(
+            "aria-live",
+            "polite"
+        );
+
+
+        summary.style.display =
+            "none";
+
+        summary.style.marginBottom =
+            "24px";
+
+        summary.style.padding =
+            "16px 18px";
+
+        summary.style.border =
+            "1px solid rgba(255,90,90,.5)";
+
+        summary.style.borderRadius =
+            "10px";
+
+        summary.style.background =
+            "rgba(255,70,70,.10)";
+
+        summary.style.color =
+            "#ffd7d7";
+
+        summary.style.fontSize =
+            "1rem";
+
+        summary.style.lineHeight =
+            "1.6";
+
+
+        const form =
+            $("academy-registration-form");
+
+
+        if (form) {
+
+            form.insertBefore(
+                summary,
+                form.firstChild
+            );
+        }
+
+
+        return summary;
+    }
+
+
+    function clearValidationSummary() {
+
+        const summary =
+            getValidationSummary();
+
+
+        summary.style.display =
+            "none";
+
+        summary.innerHTML =
+            "";
+    }
+
+
+    function showValidationSummary(
+        errors
+    ) {
+
+        if (!errors.length) {
+            return;
+        }
+
+
+        const summary =
+            getValidationSummary();
+
+
+        const messages =
+            [
+                ...new Set(
+                    errors.map(
+                        error =>
+                            error.message
+                    )
+                )
+            ];
+
+
+        summary.innerHTML = `
+            <strong style="
+                display:block;
+                margin-bottom:6px;
+                color:#fff;
+                font-size:1.05rem;
+            ">
+                Please correct the following before continuing:
+            </strong>
+
+            ${messages
+                .map(
+                    message =>
+                        `<div>• ${message}</div>`
+                )
+                .join("")}
+        `;
+
+
+        summary.style.display =
+            "block";
+    }
+
+
+    function addError(
+        errors,
+        field,
+        message
+    ) {
+
+        errors.push({
+            field,
+            message
+        });
+
+
+        showFieldError(
+            field,
+            message
+        );
+    }
+
 
     /* ======================================================
-       REQUIRED FIELD MESSAGE
+       DATE / AGE
     ====================================================== */
 
-    function getRequiredMessage(field) {
+    const MINIMUM_STUDENT_AGE = 6;
+    const ADULT_AGE = 18;
 
 
-        const label =
-            field
-                .closest(".enrollment-field")
-                ?.querySelector("label");
+    const studentDob =
+        $("studentDob");
+
+    const calculatedAge =
+        $("calculatedAge");
 
 
-        if (label) {
+    function getLocalToday() {
+
+        const today =
+            new Date();
 
 
-            const labelText =
-                label.childNodes[0]
-                    ?.textContent
-                    ?.trim();
+        today.setHours(
+            0,
+            0,
+            0,
+            0
+        );
 
 
-            if (labelText) {
+        return today;
+    }
 
-                return `${labelText} is required.`;
 
+    function parseLocalDate(value) {
+
+        if (
+            !/^\d{4}-\d{2}-\d{2}$/
+                .test(value || "")
+        ) {
+            return null;
+        }
+
+
+        const [
+            year,
+            month,
+            day
+        ] =
+            value
+                .split("-")
+                .map(Number);
+
+
+        const date =
+            new Date(
+                year,
+                month - 1,
+                day
+            );
+
+
+        date.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+
+        if (
+            date.getFullYear() !== year ||
+            date.getMonth() !==
+                month - 1 ||
+            date.getDate() !== day
+        ) {
+            return null;
+        }
+
+
+        return date;
+    }
+
+
+    function calculateAge(value) {
+
+        const dob =
+            parseLocalDate(value);
+
+
+        if (!dob) {
+            return null;
+        }
+
+
+        const today =
+            getLocalToday();
+
+
+        let age =
+            today.getFullYear() -
+            dob.getFullYear();
+
+
+        if (
+            today.getMonth() <
+                dob.getMonth() ||
+            (
+                today.getMonth() ===
+                    dob.getMonth() &&
+                today.getDate() <
+                    dob.getDate()
+            )
+        ) {
+            age--;
+        }
+
+
+        return age;
+    }
+
+
+    function studentIsMinor() {
+
+        const age =
+            calculateAge(
+                value(
+                    "studentDob"
+                )
+            );
+
+
+        return (
+            age !== null &&
+            age < ADULT_AGE
+        );
+    }
+
+
+    /* ======================================================
+       GUARDIAN
+    ====================================================== */
+
+    const guardianSection =
+        $("guardianSection");
+
+    const guardianRelationship =
+        $("guardianRelationship");
+
+    const guardianOtherWrapper =
+        $("guardianOtherWrapper");
+
+    const guardianOtherRelationship =
+        $("guardianOtherRelationship");
+
+
+    function updateGuardianSection() {
+
+        const minor =
+            studentIsMinor();
+
+
+        if (guardianSection) {
+
+            guardianSection.hidden =
+                !minor;
+        }
+
+
+        [
+            "guardianName",
+            "guardianRelationship",
+            "guardianPhone",
+            "guardianEmail"
+        ]
+            .forEach(id => {
+
+                const field =
+                    $(id);
+
+
+                if (field) {
+
+                    field.required =
+                        minor;
+                }
+            });
+
+
+        const otherSelected =
+            minor &&
+            value(
+                "guardianRelationship"
+            ) === "other";
+
+
+        if (guardianOtherWrapper) {
+
+            guardianOtherWrapper.hidden =
+                !otherSelected;
+        }
+
+
+        if (
+            guardianOtherRelationship
+        ) {
+
+            guardianOtherRelationship
+                .required =
+                    otherSelected;
+
+
+            if (!otherSelected) {
+
+                guardianOtherRelationship
+                    .value = "";
+            }
+        }
+    }
+
+
+    /* ======================================================
+       EMERGENCY RELATIONSHIP
+    ====================================================== */
+
+    const emergencyRelationship =
+        $("emergencyRelationship");
+
+    const emergencyOtherWrapper =
+        $("emergencyOtherWrapper");
+
+    const emergencyOtherRelationship =
+        $("emergencyOtherRelationship");
+
+
+    function updateEmergencyRelationship() {
+
+        const otherSelected =
+            value(
+                "emergencyRelationship"
+            ) === "other";
+
+
+        if (emergencyOtherWrapper) {
+
+            emergencyOtherWrapper.hidden =
+                !otherSelected;
+        }
+
+
+        if (
+            emergencyOtherRelationship
+        ) {
+
+            emergencyOtherRelationship
+                .required =
+                    otherSelected;
+
+
+            if (!otherSelected) {
+
+                emergencyOtherRelationship
+                    .value = "";
+            }
+        }
+    }
+
+
+    /* ======================================================
+       DOB VALIDATION
+    ====================================================== */
+
+    function validateDateOfBirth(
+        errors
+    ) {
+
+        const dobValue =
+            value(
+                "studentDob"
+            );
+
+
+        const dob =
+            parseLocalDate(
+                dobValue
+            );
+
+
+        const today =
+            getLocalToday();
+
+
+        clearFieldError(
+            studentDob
+        );
+
+
+        if (!dobValue) {
+
+            if (calculatedAge) {
+
+                calculatedAge.textContent =
+                    "Select date of birth";
             }
 
+
+            addError(
+                errors,
+                studentDob,
+                "Date of Birth is required."
+            );
+
+            return;
         }
 
 
-        return "This field is required.";
+        if (!dob) {
 
+            if (calculatedAge) {
+
+                calculatedAge.textContent =
+                    "Invalid date of birth";
+            }
+
+
+            addError(
+                errors,
+                studentDob,
+                "Please enter a valid date of birth."
+            );
+
+            return;
+        }
+
+
+        /*
+         * Today's date and future dates
+         * are NOT valid.
+         */
+
+        if (dob >= today) {
+
+            if (calculatedAge) {
+
+                calculatedAge.textContent =
+                    "Invalid date of birth";
+            }
+
+
+            addError(
+                errors,
+                studentDob,
+                "Date of birth must be before today."
+            );
+
+            return;
+        }
+
+
+        const age =
+            calculateAge(
+                dobValue
+            );
+
+
+        if (
+            age === null ||
+            age < MINIMUM_STUDENT_AGE
+        ) {
+
+            if (calculatedAge) {
+
+                calculatedAge.textContent =
+                    age === null
+                        ? "Invalid date of birth"
+                        : `${age} years old`;
+            }
+
+
+            addError(
+                errors,
+                studentDob,
+                "Students must be at least 6 years old to enroll."
+            );
+
+            return;
+        }
+
+
+        if (calculatedAge) {
+
+            calculatedAge.textContent =
+                age < ADULT_AGE
+                    ? `${age} years old • Parent / Guardian required`
+                    : `${age} years old`;
+        }
+
+
+        updateGuardianSection();
     }
 
 
-
     /* ======================================================
-       VALIDATE STEP
+       GENERIC REQUIRED FIELD VALIDATION
     ====================================================== */
 
-    function validateStep(stepNumber) {
+    function validateRequiredFields(
+        section,
+        errors
+    ) {
+
+        const processedRadioGroups =
+            new Set();
 
 
-        const currentSection =
+        section
+            .querySelectorAll(
+                "input[required], select[required], textarea[required]"
+            )
+            .forEach(field => {
+
+                /*
+                 * Ignore fields inside hidden
+                 * conditional sections.
+                 */
+
+                if (
+                    field.closest(
+                        "[hidden]"
+                    )
+                ) {
+                    return;
+                }
+
+
+                clearFieldError(
+                    field
+                );
+
+
+                /* RADIO */
+
+                if (
+                    field.type ===
+                    "radio"
+                ) {
+
+                    if (
+                        processedRadioGroups
+                            .has(
+                                field.name
+                            )
+                    ) {
+                        return;
+                    }
+
+
+                    processedRadioGroups
+                        .add(
+                            field.name
+                        );
+
+
+                    const selected =
+                        section
+                            .querySelector(
+                                `input[name="${field.name}"]:checked`
+                            );
+
+
+                    if (!selected) {
+
+                        addError(
+                            errors,
+                            field,
+                            `Please answer: ${getFieldLabel(field)}.`
+                        );
+                    }
+
+
+                    return;
+                }
+
+
+                /* CHECKBOX */
+
+                if (
+                    field.type ===
+                    "checkbox"
+                ) {
+
+                    if (!field.checked) {
+
+                        addError(
+                            errors,
+                            field,
+                            `${getFieldLabel(field)} must be confirmed.`
+                        );
+                    }
+
+
+                    return;
+                }
+
+
+                const fieldValue =
+                    String(
+                        field.value || ""
+                    ).trim();
+
+
+                if (!fieldValue) {
+
+                    addError(
+                        errors,
+                        field,
+                        `${getFieldLabel(field)} is required.`
+                    );
+
+                    return;
+                }
+
+
+                /*
+                 * EMAIL
+                 */
+
+                if (
+                    field.type ===
+                        "email" &&
+                    !isValidEmail(
+                        fieldValue
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        field,
+                        `${getFieldLabel(field)} must be a valid email address.`
+                    );
+
+                    return;
+                }
+
+
+                /*
+                 * PHONE
+                 *
+                 * NA is handled separately
+                 * for student/guardian phones.
+                 */
+
+                if (
+                    field.type ===
+                        "tel" &&
+                    !isNA(
+                        fieldValue
+                    ) &&
+                    !isValidPhone(
+                        fieldValue
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        field,
+                        `${getFieldLabel(field)} must be a valid phone number or NA where allowed.`
+                    );
+
+                    return;
+                }
+
+
+                if (
+                    field.minLength > 0 &&
+                    fieldValue.length <
+                        field.minLength
+                ) {
+
+                    addError(
+                        errors,
+                        field,
+                        `${getFieldLabel(field)} is too short.`
+                    );
+                }
+            });
+    }
+
+
+    /* ======================================================
+       COMPLETE STEP VALIDATION
+    ====================================================== */
+
+    function validateStep(
+        stepNumber
+    ) {
+
+        clearValidationSummary();
+
+
+        const section =
             document.querySelector(
                 `.enrollment-step[data-step="${stepNumber}"]`
             );
 
 
-        if (!currentSection) {
-
-            return false;
-
+        if (!section) {
+            return true;
         }
 
 
-        const requiredFields =
-            currentSection.querySelectorAll(
-                "input[required], select[required], textarea[required]"
+        const errors = [];
+
+
+        /* ==================================================
+           STEP 1
+        ================================================== */
+
+        if (stepNumber === 1) {
+
+            validateDateOfBirth(
+                errors
             );
+        }
 
 
-        let firstInvalidField =
-            null;
+        validateRequiredFields(
+            section,
+            errors
+        );
 
 
-        requiredFields.forEach(field => {
+        if (stepNumber === 1) {
+
+            const firstName =
+                value(
+                    "firstName"
+                );
+
+            const lastName =
+                value(
+                    "lastName"
+                );
+
+            const studentFullName =
+                `${firstName} ${lastName}`
+                    .trim();
 
 
-            clearFieldError(field);
+            if (
+                firstName &&
+                !isValidName(
+                    firstName
+                )
+            ) {
 
-
-            /*
-             * RADIO GROUP
-             */
-
-            if (field.type === "radio") {
-
-
-                const checked =
-                    currentSection.querySelector(
-                        `input[name="${field.name}"]:checked`
-                    );
-
-
-                if (!checked) {
-
-
-                    if (!firstInvalidField) {
-
-                        firstInvalidField =
-                            field;
-
-                    }
-
-
-                    showFieldError(
-                        field,
-                        "Please select an option."
-                    );
-
-                }
-
-
-                return;
-
+                addError(
+                    errors,
+                    $("firstName"),
+                    "First Name must contain a valid name, not a phone number."
+                );
             }
 
 
+            if (
+                lastName &&
+                !isValidName(
+                    lastName
+                )
+            ) {
 
-            /*
-             * NORMAL REQUIRED FIELD
-             */
-
-            if (!field.checkValidity()) {
-
-
-                if (!firstInvalidField) {
-
-                    firstInvalidField =
-                        field;
-
-                }
+                addError(
+                    errors,
+                    $("lastName"),
+                    "Last Name must contain a valid name, not a phone number."
+                );
+            }
 
 
-                let message =
-                    getRequiredMessage(
-                        field
+            if (
+                studentIsMinor()
+            ) {
+
+                const guardianName =
+                    value(
+                        "guardianName"
                     );
 
 
                 if (
-                    field.type === "email" &&
-                    field.value.trim()
+                    guardianName &&
+                    !isValidName(
+                        guardianName
+                    )
                 ) {
 
-                    message =
-                        "Please enter a valid email address.";
-
+                    addError(
+                        errors,
+                        $("guardianName"),
+                        "Parent / Guardian Name must contain a valid name, not a phone number."
+                    );
                 }
 
 
-                showFieldError(
-                    field,
-                    message
+                /*
+                 * Guardian cannot simply be
+                 * entered as the student.
+                 */
+
+                if (
+                    guardianName &&
+                    normalizeText(
+                        guardianName
+                    ) ===
+                    normalizeText(
+                        studentFullName
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        $("guardianName"),
+                        "Parent / Guardian Name cannot be the same as the student's name."
+                    );
+                }
+
+
+                if (
+                    value(
+                        "guardianRelationship"
+                    ) === "other" &&
+                    !value(
+                        "guardianOtherRelationship"
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        $("guardianOtherRelationship"),
+                        "Please specify the parent / guardian relationship."
+                    );
+                }
+
+
+                if (
+                    value(
+                        "guardianEmail"
+                    ) &&
+                    !isValidEmail(
+                        value(
+                            "guardianEmail"
+                        )
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        $("guardianEmail"),
+                        "Parent / Guardian Email must be a valid email address."
+                    );
+                }
+            }
+        }
+
+
+        /* ==================================================
+           STEP 2 — CONTACT
+        ================================================== */
+
+        if (stepNumber === 2) {
+
+            const studentEmail =
+                value(
+                    "email"
                 );
 
+            const studentPhone =
+                value(
+                    "phone"
+                );
+
+
+            if (
+                !isValidEmail(
+                    studentEmail
+                )
+            ) {
+
+                addError(
+                    errors,
+                    $("email"),
+                    "Student Email must be a valid email address."
+                );
             }
 
-        });
+
+            /*
+             * MINOR:
+             *
+             * Student can enter NA.
+             * Guardian can enter NA.
+             *
+             * BUT at least ONE of the two
+             * must contain a valid phone number.
+             */
+
+            if (
+                studentIsMinor()
+            ) {
+
+                const guardianPhone =
+                    value(
+                        "guardianPhone"
+                    );
+
+                const studentPhoneValid =
+                    isValidPhone(
+                        studentPhone
+                    );
+
+                const guardianPhoneValid =
+                    isValidPhone(
+                        guardianPhone
+                    );
 
 
+                if (
+                    !studentPhoneValid &&
+                    !isNA(
+                        studentPhone
+                    )
+                ) {
 
-        if (firstInvalidField) {
+                    addError(
+                        errors,
+                        $("phone"),
+                        "Student Phone must be a valid phone number or NA."
+                    );
+                }
 
 
-            firstInvalidField.focus();
+                if (
+                    !guardianPhoneValid &&
+                    !isNA(
+                        guardianPhone
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        $("guardianPhone"),
+                        "Parent / Guardian Phone must be a valid phone number or NA."
+                    );
+                }
 
 
-            firstInvalidField.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+                /*
+                 * One real phone is compulsory.
+                 */
+
+                if (
+                    !studentPhoneValid &&
+                    !guardianPhoneValid
+                ) {
+
+                    addError(
+                        errors,
+                        $("phone"),
+                        "At least one valid phone number is required for the student or parent / guardian."
+                    );
+
+                    addError(
+                        errors,
+                        $("guardianPhone"),
+                        "At least one valid phone number is required for the student or parent / guardian."
+                    );
+                }
+
+
+                /*
+                 * Student and guardian cannot use
+                 * the exact same phone number.
+                 */
+
+                if (
+                    studentPhoneValid &&
+                    guardianPhoneValid &&
+                    normalizePhone(
+                        studentPhone
+                    ) ===
+                    normalizePhone(
+                        guardianPhone
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        $("phone"),
+                        "Student and parent / guardian phone numbers must be different."
+                    );
+
+                    addError(
+                        errors,
+                        $("guardianPhone"),
+                        "Parent / guardian phone number cannot be the same as the student's phone number."
+                    );
+                }
+
+
+                /*
+                 * Separate email addresses.
+                 */
+
+                const guardianEmail =
+                    value(
+                        "guardianEmail"
+                    );
+
+
+                if (
+                    guardianEmail &&
+                    normalizeText(
+                        guardianEmail
+                    ) ===
+                    normalizeText(
+                        studentEmail
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        $("email"),
+                        "Student and parent / guardian email addresses must be different."
+                    );
+                }
+            }
+
+
+            /*
+             * ADULT:
+             *
+             * No guardian exists, therefore
+             * student phone must be real.
+             */
+
+            else {
+
+                if (
+                    !isValidPhone(
+                        studentPhone
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        $("phone"),
+                        "A valid student phone number is required. NA is only allowed for a minor when a valid parent / guardian phone is provided."
+                    );
+                }
+            }
+        }
+
+
+        /* ==================================================
+           STEP 3 — EMERGENCY + LEARNING PROFILE
+        ================================================== */
+
+        if (stepNumber === 3) {
+
+            const emergencyName =
+                value(
+                    "emergencyName"
+                );
+
+            const emergencyPhone =
+                value(
+                    "emergencyPhone"
+                );
+
+
+            const studentFullName =
+                `${value("firstName")} ${value("lastName")}`
+                    .trim();
+
+
+            if (
+                emergencyName &&
+                !isValidName(
+                    emergencyName
+                )
+            ) {
+
+                addError(
+                    errors,
+                    $("emergencyName"),
+                    "Emergency Contact Name must contain a valid name, not a phone number."
+                );
+            }
+
+
+            if (
+                emergencyName &&
+                normalizeText(
+                    emergencyName
+                ) ===
+                normalizeText(
+                    studentFullName
+                )
+            ) {
+
+                addError(
+                    errors,
+                    $("emergencyName"),
+                    "Emergency contact cannot be the student."
+                );
+            }
+
+
+            if (
+                value(
+                    "emergencyRelationship"
+                ) === "other" &&
+                !value(
+                    "emergencyOtherRelationship"
+                )
+            ) {
+
+                addError(
+                    errors,
+                    $("emergencyOtherRelationship"),
+                    "Please specify the emergency contact relationship."
+                );
+            }
+
+
+            /*
+             * Emergency phone must always
+             * be a real phone number.
+             */
+
+            if (
+                !isValidPhone(
+                    emergencyPhone
+                )
+            ) {
+
+                addError(
+                    errors,
+                    $("emergencyPhone"),
+                    "Emergency Contact Phone must be a valid phone number. NA is not allowed for the emergency contact."
+                );
+            }
+
+
+            const studentPhone =
+                value(
+                    "phone"
+                );
+
+
+            if (
+                isValidPhone(
+                    studentPhone
+                ) &&
+                isValidPhone(
+                    emergencyPhone
+                ) &&
+                normalizePhone(
+                    emergencyPhone
+                ) ===
+                normalizePhone(
+                    studentPhone
+                )
+            ) {
+
+                addError(
+                    errors,
+                    $("emergencyPhone"),
+                    "Emergency contact phone number must be different from the student's phone number."
+                );
+            }
+
+
+            if (
+                studentIsMinor()
+            ) {
+
+                const guardianPhone =
+                    value(
+                        "guardianPhone"
+                    );
+
+
+                if (
+                    isValidPhone(
+                        guardianPhone
+                    ) &&
+                    isValidPhone(
+                        emergencyPhone
+                    ) &&
+                    normalizePhone(
+                        emergencyPhone
+                    ) ===
+                    normalizePhone(
+                        guardianPhone
+                    )
+                ) {
+
+                    addError(
+                        errors,
+                        $("emergencyPhone"),
+                        "Emergency contact phone number must be different from the parent / guardian phone number."
+                    );
+                }
+            }
+        }
+
+
+        /* ==================================================
+           STOP NAVIGATION IF INVALID
+        ================================================== */
+
+        if (errors.length) {
+
+            showValidationSummary(
+                errors
+            );
+
+
+            const firstInvalid =
+                errors.find(
+                    error =>
+                        error.field
+                )?.field;
+
+
+            if (firstInvalid) {
+
+                firstInvalid.focus();
+
+
+                firstInvalid.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }
 
 
             return false;
-
         }
 
 
         return true;
-
     }
 
 
-
     /* ======================================================
-       CLEAR ERRORS WHILE TYPING
+       RELATIONSHIPS
     ====================================================== */
 
-    if (form) {
+    function getGuardianRelationship() {
+
+        const selected =
+            value(
+                "guardianRelationship"
+            );
 
 
-        form.addEventListener(
-            "input",
-            event => {
-
-
-                const field =
-                    event.target;
-
-
-                if (
-                    field.matches(
-                        "input, select, textarea"
-                    )
-                ) {
-
-                    clearFieldError(
-                        field
-                    );
-
-                }
-
-            }
-        );
-
-
-        form.addEventListener(
-            "change",
-            event => {
-
-
-                const field =
-                    event.target;
-
-
-                if (
-                    field.matches(
-                        "input, select, textarea"
-                    )
-                ) {
-
-                    clearFieldError(
-                        field
-                    );
-
-                }
-
-            }
-        );
-
+        return selected === "other"
+            ? value(
+                "guardianOtherRelationship"
+            )
+            : capitalize(selected);
     }
 
 
+    function getEmergencyRelationship() {
+
+        const selected =
+            value(
+                "emergencyRelationship"
+            );
+
+
+        return selected === "other"
+            ? value(
+                "emergencyOtherRelationship"
+            )
+            : capitalize(selected);
+    }
+
 
     /* ======================================================
-       UPDATE REVIEW
+       REVIEW
     ====================================================== */
 
     function updateReview() {
 
-
-        const firstName =
-            getFieldValue(
-                "firstName"
-            );
-
-
-        const lastName =
-            getFieldValue(
-                "lastName"
-            );
-
-
-        const fullName =
-            `${firstName} ${lastName}`
+        const studentName =
+            `${value("firstName")} ${value("lastName")}`
                 .trim();
 
 
-        const dateOfBirth =
-            getFieldValue(
-                "dateOfBirth"
-            );
-
-
-        const email =
-            getFieldValue(
-                "email"
-            );
-
-
-        const phone =
-            getFieldValue(
-                "phone"
-            );
-
-
-        const emergencyName =
-            getFieldValue(
-                "emergencyName"
-            );
-
-
-        const emergencyRelationshipValue =
-    getFieldValue(
-        "emergencyRelationship"
-    );
-
-
-const emergencyRelationship =
-    emergencyRelationshipValue === "other"
-        ? getFieldValue(
-            "emergencyOtherRelationship"
-        )
-        : capitalizeValue(
-            emergencyRelationshipValue
-        );
-
-        const emergencyPhone =
-            getFieldValue(
-                "emergencyPhone"
-            );
-
-
-
-        /* STUDENT */
-
         setText(
             "review-student-name",
-            fullName
+            studentName
         );
-
 
         setText(
             "review-date-of-birth",
-            formatDate(
-                dateOfBirth
+            value(
+                "studentDob"
+            )
+        );
+
+        setText(
+            "review-email",
+            value(
+                "email"
+            )
+        );
+
+        setText(
+            "review-phone",
+            value(
+                "phone"
             )
         );
 
 
         setText(
-            "review-email",
-            email
-        );
-
-
-        setText(
-            "review-phone",
-            phone
-        );
-
-
-
-        /* COURSE */
-
-        setText(
             "review-course",
-            courseName
+            course
         );
-
 
         setText(
             "review-format",
-            formatDisplay
+            formatLabel
         );
-
 
         setText(
             "review-time",
-            timeDisplay
+            timeLabel
         );
-
 
         setText(
             "review-batch",
-            batchDisplay
+            batchName
         );
-
 
         setText(
             "review-days",
-            `${theoryDay} • ${practicalDay} • ${songDay}`
+            weeklyDays
         );
-
 
         setText(
             "review-price",
-            priceDisplay
+            formatMoney(price)
         );
 
-
-
-        /* EMERGENCY CONTACT */
 
         setText(
             "review-emergency-name",
-            emergencyName
+            value(
+                "emergencyName"
+            )
         );
-
 
         setText(
             "review-emergency-relationship",
-            emergencyRelationship
+            getEmergencyRelationship()
         );
-
 
         setText(
             "review-emergency-phone",
-            emergencyPhone
+            value(
+                "emergencyPhone"
+            )
         );
-
     }
 
 
-
     /* ======================================================
-       UPDATE PAYMENT SUMMARY
+       PAYMENT
     ====================================================== */
 
     function updatePaymentSummary() {
 
-
         setText(
             "payment-course",
-            courseName
+            course
         );
-
 
         setText(
             "payment-total",
-            priceDisplay
+            formatMoney(price)
         );
-
 
         setText(
             "payment-detail-course",
-            courseName
+            course
         );
-
 
         setText(
             "payment-detail-format",
-            formatDisplay
+            formatLabel
         );
-
 
         setText(
             "payment-detail-time",
-            timeDisplay
+            timeLabel
         );
-
 
         setText(
             "payment-detail-batch",
-            `${batchDisplay} • ${theoryDay}, ${practicalDay}, ${songDay}`
+            batchName
         );
-
 
         setText(
             "payment-final-total",
-            priceDisplay
+            formatMoney(price)
         );
 
+
+        const buttonText =
+            $("payment-button-text");
+
+
+        if (buttonText) {
+
+            buttonText.textContent =
+                `Proceed to Secure Payment • ${formatMoney(price)}`;
+        }
     }
 
 
-
     /* ======================================================
-       BUILD REGISTRATION DATA
+       FINAL REGISTRATION OBJECT
     ====================================================== */
 
     function buildRegistrationData() {
 
+        const studentAge =
+            calculateAge(
+                value(
+                    "studentDob"
+                )
+            );
+
 
         return {
 
-
-            /* COURSE */
-
             course: {
 
-                course:
-                    courseName,
+                course,
+                level,
+                price,
 
-                level:
-                    enrollmentData.level,
+                format,
+                formatLabel,
 
-                price:
-                    enrollmentData.price,
+                time,
+                timeLabel,
 
-                format:
-                    enrollmentData.format,
+                batch,
+                batchName,
 
-                formatLabel:
-                    formatDisplay,
+                theoryDay,
+                practicalDay,
+                songDay,
 
-                time:
-                    enrollmentData.time,
+                weeklyDays,
 
-                timeLabel:
-                    timeDisplay,
-
-                batch:
-                    enrollmentData.batch,
-
-                batchName:
-                    batchDisplay,
-
-                theoryDay:
-                    theoryDay,
-
-                practicalDay:
-                    practicalDay,
-
-                songDay:
-                    songDay,
-
-                duration:
-                    durationDisplay,
-
-                classesPerWeek:
-                    enrollmentData.classesPerWeek || 3,
-
-                totalClasses:
-                    enrollmentData.totalClasses || 24
-
+                duration,
+                classesPerWeek,
+                totalClasses
             },
 
-
-            /* STUDENT */
 
             student: {
 
                 firstName:
-                    getFieldValue(
+                    value(
                         "firstName"
                     ),
 
                 lastName:
-                    getFieldValue(
+                    value(
                         "lastName"
                     ),
 
                 dateOfBirth:
-                    getFieldValue(
-                        "dateOfBirth"
+                    value(
+                        "studentDob"
                     ),
 
+                age:
+                    studentAge,
+
                 gender:
-                    getFieldValue(
+                    value(
                         "gender"
                     )
-
             },
 
 
-            /* CONTACT */
+            guardian:
+                studentAge !== null &&
+                studentAge < ADULT_AGE
+
+                    ? {
+
+                        name:
+                            value(
+                                "guardianName"
+                            ),
+
+                        relationship:
+                            getGuardianRelationship(),
+
+                        phone:
+                            value(
+                                "guardianPhone"
+                            ),
+
+                        email:
+                            value(
+                                "guardianEmail"
+                            )
+
+                    }
+
+                    : null,
+
 
             contact: {
 
                 email:
-                    getFieldValue(
+                    value(
                         "email"
                     ),
 
                 phone:
-                    getFieldValue(
+                    value(
                         "phone"
                     ),
 
                 address:
-                    getFieldValue(
+                    value(
                         "address"
                     ),
 
                 city:
-                    getFieldValue(
+                    value(
                         "city"
                     ),
 
                 state:
-                    getFieldValue(
+                    value(
                         "state"
                     ),
 
                 postalCode:
-                    getFieldValue(
+                    value(
                         "postalCode"
                     ),
 
                 country:
-                    getFieldValue(
+                    value(
                         "country"
                     )
-
             },
 
 
-            /* EMERGENCY */
+            emergencyContact: {
 
-emergencyContact: {
+                name:
+                    value(
+                        "emergencyName"
+                    ),
 
-    name:
-        getFieldValue(
-            "emergencyName"
-        ),
+                relationship:
+                    getEmergencyRelationship(),
 
-    relationship:
-        getFieldValue(
-            "emergencyRelationship"
-        ) === "other"
-            ? getFieldValue(
-                "emergencyOtherRelationship"
-            )
-            : getFieldValue(
-                "emergencyRelationship"
-            ),
+                phone:
+                    value(
+                        "emergencyPhone"
+                    )
+            },
 
-    phone:
-        getFieldValue(
-            "emergencyPhone"
-        )
-
-},
-
-            /* LEARNING PROFILE */
 
             learningProfile: {
 
                 musicExperience:
-                    getFieldValue(
+                    value(
                         "musicExperience"
                     ),
 
                 instrumentAccess:
-                    getCheckedValue(
+                    getRadioValue(
                         "instrumentAccess"
                     ),
 
                 songLanguage:
-                    getCheckedValue(
+                    getRadioValue(
                         "songLanguage"
                     ),
 
                 notes:
-                    getFieldValue(
+                    value(
                         "studentNotes"
                     )
+            },
 
-            }
 
+            payment: {
+
+                method:
+                    getRadioValue(
+                        "paymentMethod"
+                    ),
+
+                amount:
+                    price,
+
+                currency:
+                    "INR",
+
+                status:
+                    "pending"
+            },
+
+
+            createdAt:
+                new Date()
+                    .toISOString()
         };
-
     }
-
 
 
     /* ======================================================
        NEXT BUTTONS
     ====================================================== */
 
-    nextButtons.forEach(button => {
+    document
+        .querySelectorAll(
+            ".enrollment-next"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
 
 
-        button.addEventListener(
-            "click",
-            () => {
+                    if (
+                        !validateStep(
+                            currentStep
+                        )
+                    ) {
+                        return;
+                    }
 
 
-                if (
-                    !validateStep(
-                        currentStep
-                    )
-                ) {
+                    const nextStep =
+                        Number(
+                            button.dataset.next
+                        ) ||
+                        currentStep + 1;
 
-                    return;
-
-                }
-
-
-                const nextStep =
-                    Number(
-                        button.dataset.next
-                    );
-
-
-                if (
-                    Number.isInteger(nextStep)
-                ) {
 
                     showStep(
                         nextStep
                     );
-
                 }
-
-            }
-        );
-
-    });
-
+            );
+        });
 
 
     /* ======================================================
        BACK BUTTONS
     ====================================================== */
 
-    backButtons.forEach(button => {
+    document
+        .querySelectorAll(
+            ".enrollment-back"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
 
 
-        button.addEventListener(
-            "click",
-            () => {
+                    const previousStep =
+                        Number(
+                            button.dataset.back
+                        ) ||
+                        currentStep - 1;
 
-
-                const backStep =
-                    Number(
-                        button.dataset.back
-                    );
-
-
-                if (
-                    Number.isInteger(backStep)
-                ) {
 
                     showStep(
-                        backStep
+                        previousStep
                     );
-
                 }
-
-            }
-        );
-
-    });
-
+            );
+        });
 
 
     /* ======================================================
        REVIEW EDIT BUTTONS
     ====================================================== */
 
-    editButtons.forEach(button => {
+    document
+        .querySelectorAll(
+            ".review-edit"
+        )
+        .forEach(button => {
 
-
-        button.addEventListener(
-            "click",
-            () => {
-
-
-                const editStep =
-                    Number(
-                        button.dataset.edit
-                    );
-
-
-                if (
-                    Number.isInteger(editStep)
-                ) {
+            button.addEventListener(
+                "click",
+                () => {
 
                     showStep(
-                        editStep
+                        Number(
+                            button.dataset.edit
+                        ) || 1
                     );
-
                 }
-
-            }
-        );
-
-    });
-
+            );
+        });
 
 
     /* ======================================================
-       PREVENT NORMAL FORM SUBMISSION
+       CLEAR ERRORS WHEN USER FIXES ANSWER
     ====================================================== */
 
-    if (form) {
+    document
+        .querySelectorAll(
+            ".enrollment-field input, .enrollment-field select, .enrollment-field textarea"
+        )
+        .forEach(field => {
+
+            [
+                "input",
+                "change"
+            ]
+                .forEach(eventName => {
+
+                    field.addEventListener(
+                        eventName,
+                        () => {
+
+                            clearFieldError(
+                                field
+                            );
+
+                            clearValidationSummary();
+                        }
+                    );
+                });
+        });
 
 
-        form.addEventListener(
-            "submit",
+    /* ======================================================
+       DATE LISTENERS
+    ====================================================== */
+
+    if (studentDob) {
+
+        /*
+         * Browser itself will not allow
+         * today or future dates.
+         */
+
+        const yesterday =
+            new Date();
+
+
+        yesterday.setDate(
+            yesterday.getDate() - 1
+        );
+
+
+        const year =
+            yesterday.getFullYear();
+
+        const month =
+            String(
+                yesterday.getMonth() + 1
+            ).padStart(
+                2,
+                "0"
+            );
+
+        const day =
+            String(
+                yesterday.getDate()
+            ).padStart(
+                2,
+                "0"
+            );
+
+
+        studentDob.max =
+            `${year}-${month}-${day}`;
+
+
+        [
+            "input",
+            "change"
+        ]
+            .forEach(eventName => {
+
+                studentDob.addEventListener(
+                    eventName,
+                    () => {
+
+                        const temporaryErrors =
+                            [];
+
+
+                        validateDateOfBirth(
+                            temporaryErrors
+                        );
+
+
+                        updateGuardianSection();
+                    }
+                );
+            });
+    }
+
+
+    /* ======================================================
+       RELATIONSHIP LISTENERS
+    ====================================================== */
+
+    guardianRelationship
+        ?.addEventListener(
+            "change",
+            updateGuardianSection
+        );
+
+
+    emergencyRelationship
+        ?.addEventListener(
+            "change",
+            updateEmergencyRelationship
+        );
+
+
+    /* ======================================================
+       PAYMENT BUTTON
+    ====================================================== */
+
+    const paymentButton =
+        $("payment-button");
+
+
+    if (paymentButton) {
+
+        paymentButton.addEventListener(
+            "click",
             event => {
 
                 event.preventDefault();
 
-            }
-        );
 
-    }
+                /*
+                 * Payment method is required.
+                 */
 
-
-/* ======================================================
-   PAYMENT METHOD + PAYMENT BUTTON
-====================================================== */
-
-const paymentMethodInputs =
-    document.querySelectorAll(
-        'input[name="paymentMethod"]'
-    );
+                if (
+                    !validateStep(5)
+                ) {
+                    return;
+                }
 
 
-let selectedPaymentMethod = "";
+                const registrationData =
+                    buildRegistrationData();
 
 
+                /*
+                 * Preserve ALL original
+                 * course-selection values.
+                 */
 
-/* ======================================================
-   PAYMENT METHOD LABEL
-====================================================== */
+                const updatedEnrollment = {
 
-function getPaymentMethodLabel(value) {
+                    ...enrollmentData,
 
-    switch (value) {
+                    course:
+                        registrationData
+                            .course
+                            .course,
 
-        case "upi":
-            return "UPI";
+                    level:
+                        registrationData
+                            .course
+                            .level,
 
-        case "card":
-            return "Debit / Credit Card";
+                    price:
+                        registrationData
+                            .course
+                            .price,
 
-        case "netbanking":
-            return "Net Banking";
+                    format:
+                        registrationData
+                            .course
+                            .format,
 
-        default:
-            return "";
-    }
+                    formatLabel:
+                        registrationData
+                            .course
+                            .formatLabel,
 
-}
+                    time:
+                        registrationData
+                            .course
+                            .time,
 
+                    timeLabel:
+                        registrationData
+                            .course
+                            .timeLabel,
 
+                    batch:
+                        registrationData
+                            .course
+                            .batch,
 
-/* ======================================================
-   UPDATE PAYMENT BUTTON
-====================================================== */
+                    batchName:
+                        registrationData
+                            .course
+                            .batchName,
 
-function updatePaymentButton() {
+                    theoryDay:
+                        registrationData
+                            .course
+                            .theoryDay,
 
-    if (!paymentButton) {
-        return;
-    }
+                    practicalDay:
+                        registrationData
+                            .course
+                            .practicalDay,
 
+                    songDay:
+                        registrationData
+                            .course
+                            .songDay,
 
-    const buttonText =
-        document.getElementById(
-            "payment-button-text"
-        );
+                    duration:
+                        registrationData
+                            .course
+                            .duration,
 
+                    classesPerWeek:
+                        registrationData
+                            .course
+                            .classesPerWeek,
 
-    /*
-     * No payment method selected yet.
-     */
+                    totalClasses:
+                        registrationData
+                            .course
+                            .totalClasses,
 
-    if (!selectedPaymentMethod) {
+                    student:
+                        registrationData
+                            .student,
 
-        paymentButton.disabled = true;
+                    guardian:
+                        registrationData
+                            .guardian,
 
-        paymentButton.classList.remove(
-            "ready"
-        );
+                    contact:
+                        registrationData
+                            .contact,
 
+                    emergencyContact:
+                        registrationData
+                            .emergencyContact,
 
-        if (buttonText) {
+                    learningProfile:
+                        registrationData
+                            .learningProfile,
 
-            buttonText.textContent =
-                "Choose a Payment Method";
+                    payment:
+                        registrationData
+                            .payment,
 
-        }
-
-
-        return;
-    }
-
-
-    /*
-     * Payment method selected.
-     */
-
-    paymentButton.disabled = false;
-
-    paymentButton.classList.add(
-        "ready"
-    );
-
-
-    if (buttonText) {
-
-        buttonText.textContent =
-            `Pay ${priceDisplay} Securely`;
-
-    }
-
-}
-
-
-
-/* ======================================================
-   PAYMENT METHOD SELECTION
-====================================================== */
-
-paymentMethodInputs.forEach(input => {
-
-    input.addEventListener(
-        "change",
-        () => {
-
-            selectedPaymentMethod =
-                input.value;
-
-
-            updatePaymentButton();
-
-        }
-    );
-
-});
-
-
-
-/* ======================================================
-   PAYMENT BUTTON
-====================================================== */
-
-if (paymentButton) {
-
-    paymentButton.addEventListener(
-        "click",
-        () => {
+                    createdAt:
+                        registrationData
+                            .createdAt
+                };
 
 
-            /*
-             * Payment method is required.
-             */
-
-            if (!selectedPaymentMethod) {
-
-                alert(
-                    "Please choose a payment method."
+                sessionStorage.setItem(
+                    "vizagJamHubEnrollment",
+                    JSON.stringify(
+                        updatedEnrollment
+                    )
                 );
 
-                return;
 
+                sessionStorage.setItem(
+                    "vizagJamHubPendingEnrollment",
+                    JSON.stringify(
+                        registrationData
+                    )
+                );
+
+
+                alert(
+                    "Your enrollment information is complete and has been saved. Secure payment processing is the next step."
+                );
             }
-
-
-
-            /*
-             * Validate Step 5.
-             */
-
-            if (!validateStep(5)) {
-
-                return;
-
-            }
-
-
-
-            /*
-             * Build complete registration information.
-             */
-
-            const registrationData =
-                buildRegistrationData();
-
-
-
-            /*
-             * Add payment information.
-             *
-             * IMPORTANT:
-             * This only records the student's
-             * preferred payment method.
-             *
-             * It does NOT mean payment succeeded.
-             */
-
-            registrationData.payment = {
-
-                method:
-                    selectedPaymentMethod,
-
-                methodLabel:
-                    getPaymentMethodLabel(
-                        selectedPaymentMethod
-                    ),
-
-                amount:
-                    enrollmentData.price,
-
-                amountDisplay:
-                    priceDisplay,
-
-                status:
-                    "pending"
-
-            };
-
-
-
-            /*
-             * Temporarily save the registration.
-             *
-             * Later this object will be sent
-             * to the Vizag JamHub backend.
-             */
-
-            sessionStorage.setItem(
-
-                "vizagJamHubPendingRegistration",
-
-                JSON.stringify(
-                    registrationData
-                )
-
-            );
-
-
-
-            /*
-             * =================================================
-             * PAYMENT GATEWAY PLACEHOLDER
-             * =================================================
-             *
-             * NEXT BACKEND PHASE:
-             *
-             * 1. Send registrationData to server.
-             *
-             * 2. Server validates course and price.
-             *
-             * 3. Server creates payment order.
-             *
-             * 4. Open payment gateway.
-             *
-             * 5. Verify payment server-side.
-             *
-             * 6. Create student record.
-             *
-             * 7. Generate Student ID.
-             *
-             * 8. Generate 24 class sessions.
-             *
-             * 9. If ONLINE:
-             *       assign Zoom/class access.
-             *
-             * 10. If IN PERSON:
-             *       assign academy location.
-             *
-             * 11. Generate calendar schedule.
-             *
-             * 12. Send Vizag JamHub confirmation email.
-             *
-             * 13. Redirect to:
-             *
-             *       registered.html
-             *
-             * =================================================
-             */
-
-
-            console.log(
-                "Pending Vizag JamHub registration:",
-                registrationData
-            );
-
-
-            alert(
-                `${getPaymentMethodLabel(selectedPaymentMethod)} selected.\n\n` +
-                `Amount: ${priceDisplay}\n\n` +
-                "Secure payment gateway integration will be connected next. " +
-                "No payment has been charged."
-            );
-
-        }
-    );
-
-}
-
-
-
-/* ======================================================
-   INITIALIZE PAYMENT BUTTON
-====================================================== */
-
-updatePaymentButton();
+        );
+    }
 
 
     /* ======================================================
-       INITIALIZE PAYMENT DISPLAY
+       INITIALIZE
     ====================================================== */
 
-    updatePaymentSummary();
+    populateCourseInformation();
 
+    updateEmergencyRelationship();
 
-
-    /* ======================================================
-       INITIALIZE PAGE
-    ====================================================== */
+    updateGuardianSection();
 
     showStep(1);
-
 
 });

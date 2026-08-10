@@ -32,6 +32,352 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+
+    <style>
+
+        /* =====================================================
+           ENROLLMENT READABILITY + VALIDATION
+        ===================================================== */
+
+        .enrollment-field label {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+
+        .enrollment-field input,
+        .enrollment-field select,
+        .enrollment-field textarea {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+
+        .enrollment-field input,
+        .enrollment-field select {
+            min-height: 52px;
+        }
+
+
+        .enrollment-field textarea {
+            min-height: 125px;
+        }
+
+
+        .field-description {
+            margin: 6px 0 12px;
+            color: #aaa;
+            font-size: .9rem;
+            line-height: 1.6;
+        }
+
+
+        .field-error {
+            display: block;
+            min-height: 0;
+            margin-top: 7px;
+
+            color: #ff8585;
+
+            font-size: .85rem;
+            font-weight: 500;
+            line-height: 1.45;
+        }
+
+
+        .enrollment-field.has-error input,
+        .enrollment-field.has-error select,
+        .enrollment-field.has-error textarea {
+
+            border-color: rgba(255, 90, 90, .75);
+
+            box-shadow:
+                0 0 0 1px rgba(255, 90, 90, .15);
+        }
+
+
+        .calculated-age {
+
+            display: flex;
+            align-items: center;
+
+            min-height: 52px;
+
+            padding: 0 16px;
+
+            background:
+                rgba(255, 255, 255, .025);
+
+            border:
+                1px solid rgba(255, 255, 255, .08);
+
+            border-radius: 10px;
+
+            color: #ddd;
+
+            font-size: .98rem;
+            font-weight: 600;
+        }
+
+
+        .guardian-section {
+
+            margin-top: 28px;
+            padding-top: 28px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, .08);
+        }
+
+
+        .form-subsection-description {
+
+            margin-bottom: 20px;
+
+            color: #aaa;
+
+            font-size: .94rem;
+            line-height: 1.7;
+        }
+
+
+        .phone-help {
+
+            display: block;
+
+            margin-top: 7px;
+
+            color: #888;
+
+            font-size: .8rem;
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           PAYMENT READABILITY
+        ===================================================== */
+
+        .payment-method-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+
+        .payment-method-option {
+
+            position: relative;
+
+            display: block;
+
+            cursor: pointer;
+        }
+
+
+        .payment-method-option input {
+
+            position: absolute;
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+
+        .payment-method-content {
+
+            position: relative;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 150px;
+
+            padding: 22px;
+
+            background:
+                rgba(255, 255, 255, .025);
+
+            border:
+                1px solid rgba(255, 255, 255, .08);
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            transition:
+                transform .2s ease,
+                background .2s ease,
+                border-color .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .payment-method-content > i:first-child {
+
+            margin-bottom: 14px;
+
+            color: #00d4ff;
+
+            font-size: 1.8rem;
+        }
+
+
+        .payment-method-content strong {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #eee;
+
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+
+        .payment-method-content small {
+
+            display: block;
+
+            color: #999;
+
+            font-size: .8rem;
+
+            line-height: 1.5;
+        }
+
+
+        .payment-method-option:hover
+        .payment-method-content {
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                rgba(0, 212, 255, .25);
+        }
+
+
+        .payment-method-option input:checked +
+        .payment-method-content {
+
+            background:
+                rgba(0, 212, 255, .07);
+
+            border-color:
+                rgba(0, 212, 255, .55);
+
+            box-shadow:
+                0 0 20px
+                rgba(0, 212, 255, .06);
+        }
+
+
+        .payment-check {
+
+            position: absolute;
+
+            top: 12px;
+            right: 12px;
+
+            margin: 0 !important;
+
+            color: #555 !important;
+
+            font-size: .85rem !important;
+
+            opacity: .35;
+
+            transition:
+                color .2s ease,
+                opacity .2s ease;
+        }
+
+
+        .payment-method-option input:checked +
+        .payment-method-content
+        .payment-check {
+
+            color:
+                #00d4ff !important;
+
+            opacity: 1;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media screen and (max-width: 768px) {
+
+            .enrollment-field label {
+                font-size: 1rem;
+            }
+
+
+            .enrollment-field input,
+            .enrollment-field select,
+            .enrollment-field textarea {
+
+                font-size: 16px;
+            }
+
+
+            .enrollment-field input,
+            .enrollment-field select {
+
+                min-height: 54px;
+            }
+
+
+            .enrollment-field textarea {
+
+                min-height: 135px;
+            }
+
+
+            .calculated-age {
+
+                min-height: 54px;
+
+                font-size: .95rem;
+            }
+
+
+            .field-error {
+
+                font-size: .84rem;
+            }
+
+
+            .payment-method-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .payment-method-content {
+
+                min-height: 125px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -55,6 +401,7 @@
 </video>
 
 
+
 <!-- =========================================================
      FLOATING MUSIC NOTES
 ========================================================= -->
@@ -75,6 +422,7 @@
     <span>𝄢</span>
 
 </div>
+
 
 
 <!-- =========================================================
@@ -149,9 +497,7 @@
 <main class="academy-enrollment">
 
 
-    <!-- =====================================================
-         PAGE HEADER
-    ====================================================== -->
+    <!-- PAGE HEADER -->
 
     <section class="enrollment-header">
 
@@ -308,8 +654,6 @@
 
 
 
-        <!-- COURSE -->
-
         <div class="selected-course-card">
 
 
@@ -378,7 +722,6 @@
             </div>
 
 
-
             <div>
 
                 <i class="fa-regular fa-clock"></i>
@@ -398,7 +741,6 @@
             </div>
 
 
-
             <div>
 
                 <i class="fa-solid fa-calendar-days"></i>
@@ -416,7 +758,6 @@
                 </span>
 
             </div>
-
 
 
             <div>
@@ -461,90 +802,60 @@
 
 
 
-            <!-- THEORY -->
-
             <div class="enrollment-schedule-row">
 
                 <span class="schedule-day"
                       id="summary-theory-day">
-
                     —
-
                 </span>
-
 
                 <span class="schedule-class">
-
                     Theory & Fundamentals
-
                 </span>
-
 
                 <span class="schedule-time"
                       id="summary-theory-time">
-
                     —
-
                 </span>
 
             </div>
 
 
-
-            <!-- PRACTICAL -->
 
             <div class="enrollment-schedule-row">
 
                 <span class="schedule-day"
                       id="summary-practical-day">
-
                     —
-
                 </span>
-
 
                 <span class="schedule-class">
-
                     Practical Training
-
                 </span>
-
 
                 <span class="schedule-time"
                       id="summary-practical-time">
-
                     —
-
                 </span>
 
             </div>
 
 
 
-            <!-- SONG -->
-
             <div class="enrollment-schedule-row">
 
                 <span class="schedule-day"
                       id="summary-song-day">
-
                     —
-
                 </span>
-
 
                 <span class="schedule-class">
-
                     Song Class
-
                 </span>
-
 
                 <span class="schedule-time"
                       id="summary-song-time">
-
                     —
-
                 </span>
 
             </div>
@@ -565,9 +876,8 @@
           novalidate>
 
 
-
         <!-- =================================================
-             STEP 1 — STUDENT INFORMATION
+             STEP 1 — STUDENT
         ================================================== -->
 
         <section class="enrollment-step active"
@@ -576,11 +886,9 @@
 
             <div class="enrollment-step-heading">
 
-
                 <div class="step-heading-number">
                     01
                 </div>
-
 
                 <div>
 
@@ -599,7 +907,6 @@
 
                 </div>
 
-
             </div>
 
 
@@ -612,12 +919,9 @@
                 <div class="enrollment-field">
 
                     <label for="firstName">
-
                         First Name
                         <span>*</span>
-
                     </label>
-
 
                     <div class="input-wrapper">
 
@@ -627,6 +931,7 @@
                                id="firstName"
                                name="firstName"
                                autocomplete="given-name"
+                               minlength="2"
                                placeholder="Enter first name"
                                required>
 
@@ -643,12 +948,9 @@
                 <div class="enrollment-field">
 
                     <label for="lastName">
-
                         Last Name
                         <span>*</span>
-
                     </label>
-
 
                     <div class="input-wrapper">
 
@@ -658,6 +960,7 @@
                                id="lastName"
                                name="lastName"
                                autocomplete="family-name"
+                               minlength="2"
                                placeholder="Enter last name"
                                required>
 
@@ -669,30 +972,49 @@
 
 
 
-                <!-- DATE OF BIRTH -->
+                <!-- DOB -->
 
                 <div class="enrollment-field">
 
-                    <label for="dateOfBirth">
+                    <label for="studentDob">
 
                         Date of Birth
                         <span>*</span>
 
                     </label>
 
-
                     <div class="input-wrapper">
 
                         <i class="fa-regular fa-calendar"></i>
 
                         <input type="date"
-                               id="dateOfBirth"
-                               name="dateOfBirth"
+                               id="studentDob"
+                               name="studentDob"
                                required>
 
                     </div>
 
-                    <small class="field-error"></small>
+                    <small class="field-error"
+                           id="studentDobError"></small>
+
+                </div>
+
+
+
+                <!-- AGE -->
+
+                <div class="enrollment-field">
+
+                    <label>
+                        Student Age
+                    </label>
+
+                    <div class="calculated-age"
+                         id="calculatedAge">
+
+                        Select date of birth
+
+                    </div>
 
                 </div>
 
@@ -705,16 +1027,17 @@
                     <label for="gender">
 
                         Gender
+                        <span>*</span>
 
                     </label>
-
 
                     <div class="input-wrapper">
 
                         <i class="fa-solid fa-user"></i>
 
                         <select id="gender"
-                                name="gender">
+                                name="gender"
+                                required>
 
                             <option value="">
                                 Select
@@ -740,8 +1063,233 @@
 
                     </div>
 
+                    <small class="field-error"></small>
+
                 </div>
 
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PARENT / GUARDIAN
+            ================================================== -->
+
+            <div class="form-subsection guardian-section"
+                 id="guardianSection"
+                 hidden>
+
+
+                <div class="form-subsection-heading">
+
+                    <i class="fa-solid fa-people-roof"></i>
+
+                    <div>
+
+                        <small>
+                            MINOR STUDENT
+                        </small>
+
+                        <h3>
+                            Parent / Guardian Information
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <p class="form-subsection-description">
+
+                    Students under 18 must provide parent or guardian
+                    information. The student or parent / guardian must
+                    provide at least one valid phone number.
+
+                </p>
+
+
+
+                <div class="enrollment-grid">
+
+
+                    <!-- GUARDIAN NAME -->
+
+                    <div class="enrollment-field">
+
+                        <label for="guardianName">
+
+                            Parent / Guardian Name
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <input type="text"
+                                   id="guardianName"
+                                   name="guardianName"
+                                   autocomplete="name"
+                                   minlength="2"
+                                   placeholder="Enter full name">
+
+                        </div>
+
+                        <small class="field-error"></small>
+
+                    </div>
+
+
+
+                    <!-- RELATIONSHIP -->
+
+                    <div class="enrollment-field">
+
+                        <label for="guardianRelationship">
+
+                            Relationship
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-people-roof"></i>
+
+                            <select id="guardianRelationship"
+                                    name="guardianRelationship">
+
+                                <option value="">
+                                    Select relationship
+                                </option>
+
+                                <option value="father">
+                                    Father
+                                </option>
+
+                                <option value="mother">
+                                    Mother
+                                </option>
+
+                                <option value="sibling">
+                                    Sibling
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <small class="field-error"></small>
+
+                    </div>
+
+
+
+                    <!-- OTHER RELATIONSHIP -->
+
+                    <div class="enrollment-field"
+                         id="guardianOtherWrapper"
+                         hidden>
+
+                        <label for="guardianOtherRelationship">
+
+                            Specify Relationship
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-user-group"></i>
+
+                            <input type="text"
+                                   id="guardianOtherRelationship"
+                                   name="guardianOtherRelationship"
+                                   minlength="2"
+                                   placeholder="Example: Uncle, Aunt, Grandparent">
+
+                        </div>
+
+                        <small class="field-error"></small>
+
+                    </div>
+
+
+
+                    <!-- GUARDIAN PHONE -->
+
+                    <div class="enrollment-field">
+
+                        <label for="guardianPhone">
+
+                            Parent / Guardian Phone
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input type="tel"
+                                   id="guardianPhone"
+                                   name="guardianPhone"
+                                   autocomplete="tel"
+                                   inputmode="tel"
+                                   placeholder="Phone number or NA">
+
+                        </div>
+
+                        <small class="phone-help">
+
+                            Enter a valid phone number. If the parent /
+                            guardian does not have a phone, enter NA.
+                            At least one valid student or guardian phone
+                            number is required.
+
+                        </small>
+
+                        <small class="field-error"></small>
+
+                    </div>
+
+
+
+                    <!-- GUARDIAN EMAIL -->
+
+                    <div class="enrollment-field">
+
+                        <label for="guardianEmail">
+
+                            Parent / Guardian Email
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input type="email"
+                                   id="guardianEmail"
+                                   name="guardianEmail"
+                                   autocomplete="email"
+                                   placeholder="parent@example.com">
+
+                        </div>
+
+                        <small class="field-error"></small>
+
+                    </div>
+
+
+                </div>
 
             </div>
 
@@ -750,7 +1298,6 @@
             <div class="enrollment-actions">
 
                 <span></span>
-
 
                 <button type="button"
                         class="enrollment-next"
@@ -770,7 +1317,7 @@
 
 
         <!-- =================================================
-             STEP 2 — CONTACT INFORMATION
+             STEP 2 — CONTACT
         ================================================== -->
 
         <section class="enrollment-step"
@@ -780,11 +1327,9 @@
 
             <div class="enrollment-step-heading">
 
-
                 <div class="step-heading-number">
                     02
                 </div>
-
 
                 <div>
 
@@ -797,12 +1342,13 @@
                     </h2>
 
                     <p>
+
                         We'll use these details for class updates,
                         schedule information and academy communication.
+
                     </p>
 
                 </div>
-
 
             </div>
 
@@ -817,11 +1363,10 @@
 
                     <label for="email">
 
-                        Email Address
+                        Student Email Address
                         <span>*</span>
 
                     </label>
-
 
                     <div class="input-wrapper">
 
@@ -848,11 +1393,10 @@
 
                     <label for="phone">
 
-                        Phone Number
+                        Student Phone Number
                         <span>*</span>
 
                     </label>
-
 
                     <div class="input-wrapper">
 
@@ -862,10 +1406,19 @@
                                id="phone"
                                name="phone"
                                autocomplete="tel"
-                               placeholder="Enter phone number"
+                               inputmode="tel"
+                               placeholder="Phone number or NA"
                                required>
 
                     </div>
+
+                    <small class="phone-help">
+
+                        For students under 18, enter NA if the student
+                        does not have a phone. At least one valid student
+                        or parent / guardian phone number is compulsory.
+
+                    </small>
 
                     <small class="field-error"></small>
 
@@ -880,9 +1433,9 @@
                     <label for="address">
 
                         Street Address
+                        <span>*</span>
 
                     </label>
-
 
                     <div class="input-wrapper">
 
@@ -892,9 +1445,12 @@
                                id="address"
                                name="address"
                                autocomplete="street-address"
-                               placeholder="Street address">
+                               placeholder="Street address"
+                               required>
 
                     </div>
+
+                    <small class="field-error"></small>
 
                 </div>
 
@@ -905,9 +1461,11 @@
                 <div class="enrollment-field">
 
                     <label for="city">
-                        City
-                    </label>
 
+                        City
+                        <span>*</span>
+
+                    </label>
 
                     <div class="input-wrapper">
 
@@ -917,9 +1475,12 @@
                                id="city"
                                name="city"
                                autocomplete="address-level2"
-                               placeholder="City">
+                               placeholder="City"
+                               required>
 
                     </div>
+
+                    <small class="field-error"></small>
 
                 </div>
 
@@ -930,9 +1491,11 @@
                 <div class="enrollment-field">
 
                     <label for="state">
-                        State
-                    </label>
 
+                        State
+                        <span>*</span>
+
+                    </label>
 
                     <div class="input-wrapper">
 
@@ -942,9 +1505,12 @@
                                id="state"
                                name="state"
                                autocomplete="address-level1"
-                               placeholder="State">
+                               placeholder="State"
+                               required>
 
                     </div>
+
+                    <small class="field-error"></small>
 
                 </div>
 
@@ -955,9 +1521,11 @@
                 <div class="enrollment-field">
 
                     <label for="postalCode">
-                        Postal Code
-                    </label>
 
+                        Postal Code
+                        <span>*</span>
+
+                    </label>
 
                     <div class="input-wrapper">
 
@@ -967,9 +1535,12 @@
                                id="postalCode"
                                name="postalCode"
                                autocomplete="postal-code"
-                               placeholder="Postal code">
+                               placeholder="Postal code"
+                               required>
 
                     </div>
+
+                    <small class="field-error"></small>
 
                 </div>
 
@@ -980,9 +1551,11 @@
                 <div class="enrollment-field">
 
                     <label for="country">
-                        Country
-                    </label>
 
+                        Country
+                        <span>*</span>
+
+                    </label>
 
                     <div class="input-wrapper">
 
@@ -992,9 +1565,12 @@
                                id="country"
                                name="country"
                                autocomplete="country-name"
-                               value="India">
+                               value="India"
+                               required>
 
                     </div>
+
+                    <small class="field-error"></small>
 
                 </div>
 
@@ -1036,7 +1612,7 @@
 
 
         <!-- =================================================
-             STEP 3 — EMERGENCY & ADDITIONAL INFORMATION
+             STEP 3 — EMERGENCY + LEARNING
         ================================================== -->
 
         <section class="enrollment-step"
@@ -1046,11 +1622,9 @@
 
             <div class="enrollment-step-heading">
 
-
                 <div class="step-heading-number">
                     03
                 </div>
-
 
                 <div>
 
@@ -1063,294 +1637,213 @@
                     </h2>
 
                     <p>
+
                         Provide an emergency contact and a few
                         details that will help your instructor
                         prepare for your lessons.
+
                     </p>
 
                 </div>
 
+            </div>
+
+
+
+            <!-- EMERGENCY CONTACT -->
+
+            <div class="form-subsection">
+
+
+                <div class="form-subsection-heading">
+
+                    <i class="fa-solid fa-phone-volume"></i>
+
+                    <div>
+
+                        <small>
+                            EMERGENCY
+                        </small>
+
+                        <h3>
+                            Emergency Contact
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <p class="form-subsection-description">
+
+                    Please provide someone we can contact in an
+                    emergency. The emergency contact must have a
+                    valid phone number.
+
+                </p>
+
+
+
+                <div class="enrollment-grid">
+
+
+                    <!-- EMERGENCY NAME -->
+
+                    <div class="enrollment-field">
+
+                        <label for="emergencyName">
+
+                            Contact Name
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <input type="text"
+                                   id="emergencyName"
+                                   name="emergencyName"
+                                   minlength="2"
+                                   autocomplete="name"
+                                   placeholder="Enter contact name"
+                                   required>
+
+                        </div>
+
+                        <small class="field-error"></small>
+
+                    </div>
+
+
+
+                    <!-- RELATIONSHIP -->
+
+                    <div class="enrollment-field">
+
+                        <label for="emergencyRelationship">
+
+                            Relationship
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-people-roof"></i>
+
+                            <select id="emergencyRelationship"
+                                    name="emergencyRelationship"
+                                    required>
+
+                                <option value="">
+                                    Select relationship
+                                </option>
+
+                                <option value="father">
+                                    Father
+                                </option>
+
+                                <option value="mother">
+                                    Mother
+                                </option>
+
+                                <option value="sibling">
+                                    Sibling
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <small class="field-error"></small>
+
+                    </div>
+
+
+
+                    <!-- OTHER -->
+
+                    <div class="enrollment-field"
+                         id="emergencyOtherWrapper"
+                         hidden>
+
+                        <label for="emergencyOtherRelationship">
+
+                            Specify Relationship
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-user-group"></i>
+
+                            <input type="text"
+                                   id="emergencyOtherRelationship"
+                                   name="emergencyOtherRelationship"
+                                   minlength="2"
+                                   placeholder="Example: Friend, Uncle, Aunt, Grandparent">
+
+                        </div>
+
+                        <small class="field-error"></small>
+
+                    </div>
+
+
+
+                    <!-- EMERGENCY PHONE -->
+
+                    <div class="enrollment-field">
+
+                        <label for="emergencyPhone">
+
+                            Emergency Phone Number
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input type="tel"
+                                   id="emergencyPhone"
+                                   name="emergencyPhone"
+                                   inputmode="tel"
+                                   autocomplete="tel"
+                                   placeholder="Enter valid phone number"
+                                   required>
+
+                        </div>
+
+                        <small class="phone-help">
+
+                            A valid emergency phone number is required.
+                            NA is not accepted for this field.
+
+                        </small>
+
+                        <small class="field-error"></small>
+
+                    </div>
+
+
+                </div>
 
             </div>
 
 
 
-<!-- ======================================================
-     EMERGENCY CONTACT
-====================================================== -->
-
-<div class="form-subsection">
-
-    <div class="form-subsection-heading">
-
-        <i class="fa-solid fa-phone-volume"></i>
-
-        <div>
-            <small>EMERGENCY</small>
-            <h3>Emergency Contact</h3>
-        </div>
-
-    </div>
-
-    <p class="form-subsection-description">
-        Please provide someone we can contact in case of an emergency.
-        All fields are required.
-    </p>
-
-
-    <div class="enrollment-grid">
-
-
-        <!-- EMERGENCY CONTACT NAME -->
-
-        <div class="enrollment-field">
-
-            <label for="emergencyName">
-                Contact Name
-                <span>*</span>
-            </label>
-
-            <div class="input-wrapper">
-
-                <i class="fa-regular fa-user"></i>
-
-                <input
-                    type="text"
-                    id="emergencyName"
-                    name="emergencyName"
-                    autocomplete="name"
-                    placeholder="Enter contact name"
-                    required
-                >
-
-            </div>
-
-            <small class="field-error"></small>
-
-        </div>
-
-
-        <!-- RELATIONSHIP -->
-
-        <div class="enrollment-field">
-
-            <label for="emergencyRelationship">
-                Relationship
-                <span>*</span>
-            </label>
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-people-roof"></i>
-
-                <select
-                    id="emergencyRelationship"
-                    name="emergencyRelationship"
-                    required
-                >
-
-                    <option value="">
-                        Select relationship
-                    </option>
-
-                    <option value="father">
-                        Father
-                    </option>
-
-                    <option value="mother">
-                        Mother
-                    </option>
-
-                    <option value="sibling">
-                        Sibling
-                    </option>
-
-                    <option value="other">
-                        Other
-                    </option>
-
-                </select>
-
-            </div>
-
-            <small class="field-error"></small>
-
-        </div>
-
-
-        <!-- OTHER RELATIONSHIP -->
-
-        <div
-            class="enrollment-field"
-            id="emergencyOtherWrapper"
-            hidden
-        >
-
-            <label for="emergencyOtherRelationship">
-                Specify Relationship
-                <span>*</span>
-            </label>
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-user-group"></i>
-
-                <input
-                    type="text"
-                    id="emergencyOtherRelationship"
-                    name="emergencyOtherRelationship"
-                    placeholder="Enter relationship"
-                >
-
-            </div>
-
-            <small class="field-error"></small>
-
-        </div>
-
-
-        <!-- EMERGENCY PHONE -->
-
-        <div class="enrollment-field">
-
-            <label for="emergencyPhone">
-                Phone Number
-                <span>*</span>
-            </label>
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-phone"></i>
-
-                <input
-                    type="tel"
-                    id="emergencyPhone"
-                    name="emergencyPhone"
-                    autocomplete="tel"
-                    placeholder="Enter phone number"
-                    required
-                >
-
-            </div>
-
-            <small class="field-error"></small>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-        <!-- EMERGENCY CONTACT NAME -->
-
-        <div class="enrollment-field">
-
-            <label for="emergency-name">
-                Contact Name
-                <span>*</span>
-            </label>
-
-            <input
-                type="text"
-                id="emergency-name"
-                name="emergencyName"
-                autocomplete="name"
-                required
-            >
-
-        </div>
-
-
-        <!-- RELATIONSHIP -->
-
-        <div class="enrollment-field">
-
-            <label for="emergency-relationship">
-                Relationship
-                <span>*</span>
-            </label>
-
-            <select
-                id="emergency-relationship"
-                name="emergencyRelationship"
-                required
-            >
-
-                <option value="">
-                    Select relationship
-                </option>
-
-                <option value="father">
-                    Father
-                </option>
-
-                <option value="mother">
-                    Mother
-                </option>
-
-                <option value="sibling">
-                    Sibling
-                </option>
-
-                <option value="other">
-                    Other
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <!-- OTHER RELATIONSHIP -->
-
-        <div
-            class="enrollment-field"
-            id="emergency-other-wrapper"
-            hidden
-        >
-
-            <label for="emergency-other-relationship">
-                Specify Relationship
-                <span>*</span>
-            </label>
-
-            <input
-                type="text"
-                id="emergency-other-relationship"
-                name="emergencyOtherRelationship"
-                placeholder="Enter relationship"
-            >
-
-        </div>
-
-
-        <!-- EMERGENCY PHONE -->
-
-        <div class="enrollment-field">
-
-            <label for="emergency-phone">
-                Phone Number
-                <span>*</span>
-            </label>
-
-            <input
-                type="tel"
-                id="emergency-phone"
-                name="emergencyPhone"
-                autocomplete="tel"
-                required
-            >
-
-        </div>
-
-
-    </div>
-
-</div>
-
-
-            <!-- LEARNING INFORMATION -->
+            <!-- =================================================
+                 LEARNING INFORMATION
+            ================================================== -->
 
             <div class="form-subsection">
 
@@ -1385,18 +1878,28 @@
                         <label for="musicExperience">
 
                             Previous Music Experience
+                            <span>*</span>
 
                         </label>
-
 
                         <div class="textarea-wrapper">
 
                             <textarea id="musicExperience"
                                       name="musicExperience"
                                       rows="4"
-                                      placeholder="Tell us about any previous music lessons or experience. If you're completely new, you can leave this blank."></textarea>
+                                      required
+                                      placeholder="Tell us about previous music lessons or experience. If you are completely new, enter 'None'."></textarea>
 
                         </div>
+
+                        <small class="field-description">
+
+                            If you have no previous music experience,
+                            enter "None".
+
+                        </small>
+
+                        <small class="field-error"></small>
 
                     </div>
 
@@ -1410,6 +1913,7 @@
 
                             Do you have access to a drum kit
                             or practice pad?
+                            <span>*</span>
 
                         </label>
 
@@ -1421,7 +1925,8 @@
 
                                 <input type="radio"
                                        name="instrumentAccess"
-                                       value="drum-kit">
+                                       value="drum-kit"
+                                       required>
 
                                 <span>
 
@@ -1490,6 +1995,8 @@
 
                         </div>
 
+                        <small class="field-error"></small>
+
                     </div>
 
 
@@ -1501,6 +2008,7 @@
                         <label>
 
                             Preferred Song Language
+                            <span>*</span>
 
                         </label>
 
@@ -1520,13 +2028,15 @@
 
                                 <input type="radio"
                                        name="songLanguage"
-                                       value="telugu">
+                                       value="telugu"
+                                       required>
 
                                 <span>
                                     Telugu
                                 </span>
 
                             </label>
+
 
 
                             <label class="registration-choice">
@@ -1540,6 +2050,7 @@
                                 </span>
 
                             </label>
+
 
 
                             <label class="registration-choice">
@@ -1557,6 +2068,8 @@
 
                         </div>
 
+                        <small class="field-error"></small>
+
                     </div>
 
 
@@ -1568,18 +2081,28 @@
                         <label for="studentNotes">
 
                             Notes for Your Instructor
+                            <span>*</span>
 
                         </label>
-
 
                         <div class="textarea-wrapper">
 
                             <textarea id="studentNotes"
                                       name="studentNotes"
                                       rows="4"
-                                      placeholder="Anything you'd like your instructor to know before your first class?"></textarea>
+                                      required
+                                      placeholder="Anything you would like your instructor to know? If there is nothing to add, enter 'None'."></textarea>
 
                         </div>
+
+                        <small class="field-description">
+
+                            If you have nothing additional to tell
+                            your instructor, enter "None".
+
+                        </small>
+
+                        <small class="field-error"></small>
 
                     </div>
 
@@ -1633,11 +2156,9 @@
 
             <div class="enrollment-step-heading">
 
-
                 <div class="step-heading-number">
                     04
                 </div>
-
 
                 <div>
 
@@ -1650,13 +2171,14 @@
                     </h2>
 
                     <p>
+
                         Make sure your information and class
                         selection are correct before continuing
                         to payment.
+
                     </p>
 
                 </div>
-
 
             </div>
 
@@ -1952,472 +2474,464 @@
 
 
 
-<!-- =================================================
-      STEP 5 — PAYMENT
-================================================== -->
+        <!-- =================================================
+             STEP 5 — PAYMENT
+        ================================================== -->
 
-<section class="enrollment-step"
-         data-step="5"
-         hidden>
+        <section class="enrollment-step"
+                 data-step="5"
+                 hidden>
 
 
-    <!-- STEP HEADING -->
+            <div class="enrollment-step-heading">
 
-    <div class="enrollment-step-heading">
+                <div class="step-heading-number">
+                    05
+                </div>
 
-        <div class="step-heading-number">
-            05
-        </div>
+                <div>
 
-        <div>
+                    <small>
+                        FINAL STEP
+                    </small>
 
-            <small>
-                FINAL STEP
-            </small>
+                    <h2>
+                        Complete Your Enrollment
+                    </h2>
 
-            <h2>
-                Complete Your Enrollment
-            </h2>
+                    <p>
 
-            <p>
-                Review your enrollment and choose your preferred
-                payment method to complete registration.
+                        Review your enrollment and choose your preferred
+                        payment method to complete registration.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PAYMENT SUMMARY -->
+
+            <div class="payment-summary">
+
+
+                <div>
+
+                    <small>
+                        COURSE
+                    </small>
+
+                    <strong id="payment-course">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        AMOUNT DUE
+                    </small>
+
+                    <strong id="payment-total">
+                        —
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- COURSE DETAILS -->
+
+            <div class="payment-course-details">
+
+
+                <div>
+
+                    <span>
+                        Course
+                    </span>
+
+                    <strong id="payment-detail-course">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Format
+                    </span>
+
+                    <strong id="payment-detail-format">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Class Time
+                    </span>
+
+                    <strong id="payment-detail-time">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Batch
+                    </span>
+
+                    <strong id="payment-detail-batch">
+                        —
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PAYMENT METHOD
+            ================================================== -->
+
+            <div class="form-subsection">
+
+
+                <div class="form-subsection-heading">
+
+                    <i class="fa-solid fa-wallet"></i>
+
+                    <div>
+
+                        <small>
+                            PAYMENT
+                        </small>
+
+                        <h3>
+                            Choose Payment Method
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="enrollment-field full-width">
+
+
+                    <div class="payment-method-grid">
+
+
+                        <!-- UPI -->
+
+                        <label class="payment-method-option">
+
+                            <input type="radio"
+                                   name="paymentMethod"
+                                   value="upi"
+                                   required>
+
+                            <span class="payment-method-content">
+
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+
+                                <span>
+
+                                    <strong>
+                                        UPI
+                                    </strong>
+
+                                    <small>
+                                        Google Pay • PhonePe • Paytm
+                                    </small>
+
+                                </span>
+
+                                <i class="fa-solid fa-circle-check payment-check"></i>
+
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- CARD -->
+
+                        <label class="payment-method-option">
+
+                            <input type="radio"
+                                   name="paymentMethod"
+                                   value="card">
+
+                            <span class="payment-method-content">
+
+                                <i class="fa-regular fa-credit-card"></i>
+
+                                <span>
+
+                                    <strong>
+                                        Debit / Credit Card
+                                    </strong>
+
+                                    <small>
+                                        Visa • Mastercard • RuPay
+                                    </small>
+
+                                </span>
+
+                                <i class="fa-solid fa-circle-check payment-check"></i>
+
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- NET BANKING -->
+
+                        <label class="payment-method-option">
+
+                            <input type="radio"
+                                   name="paymentMethod"
+                                   value="netbanking">
+
+                            <span class="payment-method-content">
+
+                                <i class="fa-solid fa-building-columns"></i>
+
+                                <span>
+
+                                    <strong>
+                                        Net Banking
+                                    </strong>
+
+                                    <small>
+                                        Pay securely through your bank
+                                    </small>
+
+                                </span>
+
+                                <i class="fa-solid fa-circle-check payment-check"></i>
+
+                            </span>
+
+                        </label>
+
+
+                    </div>
+
+
+                    <small class="field-error"></small>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- AFTER PAYMENT -->
+
+            <div class="payment-notice">
+
+
+                <div class="payment-notice-icon">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        What happens after payment?
+                    </h3>
+
+                    <p>
+
+                        After your payment is successfully verified,
+                        your Vizag JamHub enrollment will be activated
+                        and your academy access will be created.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- POST PAYMENT FEATURES -->
+
+            <div class="post-payment-grid">
+
+
+                <div class="post-payment-item">
+
+                    <i class="fa-solid fa-id-card"></i>
+
+                    <div>
+
+                        <strong>
+                            Student ID
+                        </strong>
+
+                        <span>
+                            Your academy Student ID will be generated
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="post-payment-item">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    <div>
+
+                        <strong>
+                            Class Calendar
+                        </strong>
+
+                        <span>
+                            All 24 class dates across the 8-week course
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="post-payment-item">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <div>
+
+                        <strong>
+                            Class Access
+                        </strong>
+
+                        <span>
+                            Zoom access online or academy location in person
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="post-payment-item">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <div>
+
+                        <strong>
+                            Enrollment Email
+                        </strong>
+
+                        <span>
+                            Confirmation and class information sent by Vizag JamHub
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- TOTAL -->
+
+            <div class="payment-total-row">
+
+                <span>
+                    Total Enrollment Fee
+                </span>
+
+                <strong id="payment-final-total">
+                    —
+                </strong>
+
+            </div>
+
+
+
+            <!-- PAYMENT ACTIONS -->
+
+            <div class="enrollment-actions">
+
+
+                <button type="button"
+                        class="enrollment-back"
+                        data-back="4">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back
+
+                </button>
+
+
+
+                <button type="button"
+                        class="payment-button"
+                        id="payment-button">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span id="payment-button-text">
+                        Proceed to Secure Payment
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+
+            <p class="payment-security">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Payment must be successfully verified before
+                your enrollment is activated.
+
             </p>
 
-        </div>
 
-    </div>
-
-
-
-    <!-- =====================================================
-         PAYMENT SUMMARY
-    ====================================================== -->
-
-    <div class="payment-summary">
-
-        <div>
-
-            <small>
-                COURSE
-            </small>
-
-            <strong id="payment-course">
-                —
-            </strong>
-
-        </div>
-
-
-        <div>
-
-            <small>
-                AMOUNT DUE
-            </small>
-
-            <strong id="payment-total">
-                —
-            </strong>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =====================================================
-         ENROLLMENT DETAILS
-    ====================================================== -->
-
-    <div class="payment-course-details">
-
-
-        <div>
-
-            <span>
-                Course
-            </span>
-
-            <strong id="payment-detail-course">
-                —
-            </strong>
-
-        </div>
-
-
-        <div>
-
-            <span>
-                Format
-            </span>
-
-            <strong id="payment-detail-format">
-                —
-            </strong>
-
-        </div>
-
-
-        <div>
-
-            <span>
-                Class Time
-            </span>
-
-            <strong id="payment-detail-time">
-                —
-            </strong>
-
-        </div>
-
-
-        <div>
-
-            <span>
-                Batch
-            </span>
-
-            <strong id="payment-detail-batch">
-                —
-            </strong>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =====================================================
-         PAYMENT METHOD
-    ====================================================== -->
-
-    <div class="form-subsection">
-
-
-        <div class="form-subsection-heading">
-
-            <i class="fa-solid fa-wallet"></i>
-
-            <div>
-
-                <small>
-                    PAYMENT
-                </small>
-
-                <h3>
-                    Choose Payment Method
-                </h3>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="payment-method-grid">
-
-
-            <!-- UPI -->
-
-            <label class="payment-method-option">
-
-                <input type="radio"
-                       name="paymentMethod"
-                       value="upi"
-                       required>
-
-                <span class="payment-method-content">
-
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-
-                    <span>
-
-                        <strong>
-                            UPI
-                        </strong>
-
-                        <small>
-                            Google Pay • PhonePe • Paytm
-                        </small>
-
-                    </span>
-
-                    <i class="fa-solid fa-circle-check payment-check"></i>
-
-                </span>
-
-            </label>
-
-
-
-            <!-- CARD -->
-
-            <label class="payment-method-option">
-
-                <input type="radio"
-                       name="paymentMethod"
-                       value="card"
-                       required>
-
-                <span class="payment-method-content">
-
-                    <i class="fa-regular fa-credit-card"></i>
-
-                    <span>
-
-                        <strong>
-                            Debit / Credit Card
-                        </strong>
-
-                        <small>
-                            Visa • Mastercard • RuPay
-                        </small>
-
-                    </span>
-
-                    <i class="fa-solid fa-circle-check payment-check"></i>
-
-                </span>
-
-            </label>
-
-
-
-            <!-- NET BANKING -->
-
-            <label class="payment-method-option">
-
-                <input type="radio"
-                       name="paymentMethod"
-                       value="netbanking"
-                       required>
-
-                <span class="payment-method-content">
-
-                    <i class="fa-solid fa-building-columns"></i>
-
-                    <span>
-
-                        <strong>
-                            Net Banking
-                        </strong>
-
-                        <small>
-                            Pay securely through your bank
-                        </small>
-
-                    </span>
-
-                    <i class="fa-solid fa-circle-check payment-check"></i>
-
-                </span>
-
-            </label>
-
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =====================================================
-         AFTER PAYMENT
-    ====================================================== -->
-
-    <div class="payment-notice">
-
-        <div class="payment-notice-icon">
-
-            <i class="fa-solid fa-graduation-cap"></i>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                What happens after payment?
-            </h3>
-
-            <p>
-                After your payment is successfully verified,
-                your Vizag JamHub enrollment will be activated
-                and your academy access will be created.
-            </p>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =====================================================
-         POST PAYMENT FEATURES
-    ====================================================== -->
-
-    <div class="post-payment-grid">
-
-
-        <!-- STUDENT ID -->
-
-        <div class="post-payment-item">
-
-            <i class="fa-solid fa-id-card"></i>
-
-            <div>
-
-                <strong>
-                    Student ID
-                </strong>
-
-                <span>
-                    Your academy Student ID will be generated
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- CLASS CALENDAR -->
-
-        <div class="post-payment-item">
-
-            <i class="fa-solid fa-calendar-days"></i>
-
-            <div>
-
-                <strong>
-                    Class Calendar
-                </strong>
-
-                <span>
-                    All 24 class dates across the 8-week course
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ONLINE / IN PERSON -->
-
-        <div class="post-payment-item">
-
-            <i class="fa-solid fa-location-dot"></i>
-
-            <div>
-
-                <strong>
-                    Class Access
-                </strong>
-
-                <span>
-                    Zoom access online or academy location in person
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- EMAIL -->
-
-        <div class="post-payment-item">
-
-            <i class="fa-solid fa-envelope"></i>
-
-            <div>
-
-                <strong>
-                    Enrollment Email
-                </strong>
-
-                <span>
-                    Confirmation and class information sent by Vizag JamHub
-                </span>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =====================================================
-         TOTAL
-    ====================================================== -->
-
-    <div class="payment-total-row">
-
-        <span>
-            Total Enrollment Fee
-        </span>
-
-        <strong id="payment-final-total">
-            —
-        </strong>
-
-    </div>
-
-
-
-    <!-- =====================================================
-         PAYMENT ACTIONS
-    ====================================================== -->
-
-    <div class="enrollment-actions">
-
-
-        <button type="button"
-                class="enrollment-back"
-                data-back="4">
-
-            <i class="fa-solid fa-arrow-left"></i>
-
-            Back
-
-        </button>
-
-
-
-        <button type="button"
-                class="payment-button"
-                id="payment-button">
-
-            <i class="fa-solid fa-lock"></i>
-
-            <span id="payment-button-text">
-                Proceed to Secure Payment
-            </span>
-
-        </button>
-
-
-    </div>
-
-
-
-    <!-- SECURITY -->
-
-    <p class="payment-security">
-
-        <i class="fa-solid fa-shield-halved"></i>
-
-        Payment must be successfully verified before
-        your enrollment is activated.
-
-    </p>
-
-
-</section>
+        </section>
 
 
     </form>
@@ -2534,5 +3048,4 @@
 
 
 </body>
-
 </html>
