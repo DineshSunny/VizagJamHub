@@ -8,7 +8,10 @@ const multer = require("multer");
    NEW — PAYMENT SYSTEM
 ================================= */
 
-require("dotenv").config();
+require("dotenv").config({
+  path: path.join(__dirname, ".env")
+});
+
 
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
