@@ -9,9 +9,8 @@ const multer = require("multer");
 ================================= */
 
 require("dotenv").config({
-  path: path.join(__dirname, ".env")
+  path: path.resolve(__dirname, "../.env")
 });
-
 
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
