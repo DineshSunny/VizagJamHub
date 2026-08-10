@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const capitalize = value => {
 
         if (!value) return "—";
-
         return String(value)
             .replace(/-/g, " ")
             .replace(
@@ -396,9 +395,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /*
-         * IMPORTANT FIX:
-         * Your HTML uses the hidden attribute.
-         * We must remove hidden when moving forward.
+         * IMPORTANT:
+         * HTML uses the hidden attribute.
+         * Remove hidden from the active step.
          */
 
         steps.forEach(step => {
@@ -649,7 +648,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const summary =
             getValidationSummary();
-
 
         summary.style.display =
             "none";
@@ -1126,8 +1124,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateGuardianSection();
     }
 
-
-    /* ======================================================
+        /* ======================================================
        GENERIC REQUIRED FIELD VALIDATION
     ====================================================== */
 
@@ -1369,6 +1366,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     "lastName"
                 );
 
+
             const studentFullName =
                 `${firstName} ${lastName}`
                     .trim();
@@ -1540,10 +1538,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         "guardianPhone"
                     );
 
+
                 const studentPhoneValid =
                     isValidPhone(
                         studentPhone
                     );
+
 
                 const guardianPhoneValid =
                     isValidPhone(
@@ -1596,6 +1596,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "At least one valid phone number is required for the student or parent / guardian."
                     );
 
+
                     addError(
                         errors,
                         $("guardianPhone"),
@@ -1625,6 +1626,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         $("phone"),
                         "Student and parent / guardian phone numbers must be different."
                     );
+
 
                     addError(
                         errors,
@@ -1933,6 +1935,7 @@ document.addEventListener("DOMContentLoaded", () => {
             studentName
         );
 
+
         setText(
             "review-date-of-birth",
             value(
@@ -1940,12 +1943,14 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         );
 
+
         setText(
             "review-email",
             value(
                 "email"
             )
         );
+
 
         setText(
             "review-phone",
@@ -1960,25 +1965,30 @@ document.addEventListener("DOMContentLoaded", () => {
             course
         );
 
+
         setText(
             "review-format",
             formatLabel
         );
+
 
         setText(
             "review-time",
             timeLabel
         );
 
+
         setText(
             "review-batch",
             batchName
         );
 
+
         setText(
             "review-days",
             weeklyDays
         );
+
 
         setText(
             "review-price",
@@ -1993,10 +2003,12 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         );
 
+
         setText(
             "review-emergency-relationship",
             getEmergencyRelationship()
         );
+
 
         setText(
             "review-emergency-phone",
@@ -2018,30 +2030,36 @@ document.addEventListener("DOMContentLoaded", () => {
             course
         );
 
+
         setText(
             "payment-total",
             formatMoney(price)
         );
+
 
         setText(
             "payment-detail-course",
             course
         );
 
+
         setText(
             "payment-detail-format",
             formatLabel
         );
+
 
         setText(
             "payment-detail-time",
             timeLabel
         );
 
+
         setText(
             "payment-detail-batch",
             batchName
         );
+
 
         setText(
             "payment-final-total",
@@ -2154,7 +2172,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             value(
                                 "guardianEmail"
                             )
-
                     }
 
                     : null,
@@ -2416,6 +2433,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const year =
             yesterday.getFullYear();
 
+
         const month =
             String(
                 yesterday.getMonth() + 1
@@ -2423,6 +2441,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 2,
                 "0"
             );
+
 
         const day =
             String(
@@ -2482,25 +2501,115 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ======================================================
-       PAYMENT BUTTON
+       PART 3 CONTINUES HERE
+       RAZORPAY PAYMENT + INITIALIZATION
+    ====================================================== */
+
+
+        /* ======================================================
+       PAYMENT BUTTON — RAZORPAY
     ====================================================== */
 
     const paymentButton =
         $("payment-button");
 
 
+    let paymentInProgress =
+        false;
+
+
+    /* ======================================================
+       PAYMENT BUTTON LOADING STATE
+    ====================================================== */
+
+    function setPaymentButtonLoading(
+        loading
+    ) {
+
+        if (!paymentButton) {
+            return;
+        }
+
+
+        paymentButton.disabled =
+            loading;
+
+
+        const buttonText =
+            $("payment-button-text");
+
+
+        if (buttonText) {
+
+            buttonText.textContent =
+                loading
+                    ? "Preparing Secure Payment..."
+                    : `Proceed to Secure Payment • ${formatMoney(price)}`;
+        }
+    }
+
+
+    /* ======================================================
+       SAFE SERVER RESPONSE READER
+    ====================================================== */
+
+    async function readJsonResponse(
+        response
+    ) {
+
+        const contentType =
+            response.headers.get(
+                "content-type"
+            ) || "";
+
+
+        if (
+            contentType.includes(
+                "application/json"
+            )
+        ) {
+
+            return await response.json();
+        }
+
+
+        const text =
+            await response.text();
+
+
+        throw new Error(
+            text ||
+            `Server returned ${response.status}.`
+        );
+    }
+
+
+    /* ======================================================
+       PAYMENT BUTTON
+    ====================================================== */
+
     if (paymentButton) {
 
         paymentButton.addEventListener(
             "click",
-            event => {
+            async event => {
 
                 event.preventDefault();
 
 
                 /*
-                 * Payment method is required.
+                 * Prevent duplicate clicks while
+                 * Razorpay is being prepared.
                  */
+
+                if (paymentInProgress) {
+                    return;
+                }
+
+
+                /* ==========================================
+                   VALIDATE FINAL PAYMENT STEP
+                ========================================== */
 
                 if (
                     !validateStep(5)
@@ -2509,123 +2618,159 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
+                /* ==========================================
+                   BUILD COMPLETE REGISTRATION
+                ========================================== */
+
                 const registrationData =
                     buildRegistrationData();
 
 
                 /*
-                 * Preserve ALL original
-                 * course-selection values.
+                 * Preserve ALL original course-selection
+                 * values from the previous course page.
                  */
 
                 const updatedEnrollment = {
 
                     ...enrollmentData,
 
+
                     course:
                         registrationData
                             .course
                             .course,
+
 
                     level:
                         registrationData
                             .course
                             .level,
 
+
                     price:
                         registrationData
                             .course
                             .price,
+
 
                     format:
                         registrationData
                             .course
                             .format,
 
+
                     formatLabel:
                         registrationData
                             .course
                             .formatLabel,
+
 
                     time:
                         registrationData
                             .course
                             .time,
 
+
                     timeLabel:
                         registrationData
                             .course
                             .timeLabel,
+
 
                     batch:
                         registrationData
                             .course
                             .batch,
 
+
                     batchName:
                         registrationData
                             .course
                             .batchName,
+
 
                     theoryDay:
                         registrationData
                             .course
                             .theoryDay,
 
+
                     practicalDay:
                         registrationData
                             .course
                             .practicalDay,
+
 
                     songDay:
                         registrationData
                             .course
                             .songDay,
 
+
+                    weeklyDays:
+                        registrationData
+                            .course
+                            .weeklyDays,
+
+
                     duration:
                         registrationData
                             .course
                             .duration,
+
 
                     classesPerWeek:
                         registrationData
                             .course
                             .classesPerWeek,
 
+
                     totalClasses:
                         registrationData
                             .course
                             .totalClasses,
 
+
                     student:
                         registrationData
                             .student,
+
 
                     guardian:
                         registrationData
                             .guardian,
 
+
                     contact:
                         registrationData
                             .contact,
+
 
                     emergencyContact:
                         registrationData
                             .emergencyContact,
 
+
                     learningProfile:
                         registrationData
                             .learningProfile,
 
+
                     payment:
                         registrationData
                             .payment,
+
 
                     createdAt:
                         registrationData
                             .createdAt
                 };
 
+
+                /* ==========================================
+                   SAVE PENDING ENROLLMENT
+                ========================================== */
 
                 sessionStorage.setItem(
                     "vizagJamHubEnrollment",
@@ -2643,9 +2788,563 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-                alert(
-                    "Your enrollment information is complete and has been saved. Secure payment processing is the next step."
-                );
+                try {
+
+                    paymentInProgress =
+                        true;
+
+
+                    setPaymentButtonLoading(
+                        true
+                    );
+
+
+                    /* ======================================
+                       VERIFY RAZORPAY SCRIPT LOADED
+                    ====================================== */
+
+                    if (
+                        typeof Razorpay ===
+                        "undefined"
+                    ) {
+
+                        throw new Error(
+                            "Razorpay Checkout could not be loaded. Please refresh the page and try again."
+                        );
+                    }
+
+
+                    /* ======================================
+                       CREATE ORDER ON OUR SERVER
+                    ====================================== */
+
+                    const orderResponse =
+                        await fetch(
+                            "/api/payment/create-order",
+                            {
+
+                                method:
+                                    "POST",
+
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+
+                                body:
+                                    JSON.stringify({
+
+                                        course:
+                                            registrationData
+                                                .course
+                                                .course,
+
+
+                                        level:
+                                            registrationData
+                                                .course
+                                                .level,
+
+
+                                        format:
+                                            registrationData
+                                                .course
+                                                .format,
+
+
+                                        time:
+                                            registrationData
+                                                .course
+                                                .time,
+
+
+                                        batch:
+                                            registrationData
+                                                .course
+                                                .batch
+                                    })
+                            }
+                        );
+
+
+                    const orderData =
+                        await readJsonResponse(
+                            orderResponse
+                        );
+
+
+                    /* ======================================
+                       VALIDATE SERVER ORDER RESPONSE
+                    ====================================== */
+
+                    if (
+                        !orderResponse.ok ||
+                        !orderData.success ||
+                        !orderData.key ||
+                        !orderData.order ||
+                        !orderData.order.id
+                    ) {
+
+                        throw new Error(
+                            orderData.message ||
+                            "Unable to create the payment order."
+                        );
+                    }
+
+
+                    /* ======================================
+                       STUDENT DETAILS
+                    ====================================== */
+
+                    const studentName =
+                        `${registrationData.student.firstName} ${registrationData.student.lastName}`
+                            .trim();
+
+
+                    /*
+                     * Find a valid phone number for
+                     * Razorpay prefill.
+                     *
+                     * Student phone is preferred.
+                     * For a minor, guardian phone can
+                     * be used when student phone is NA.
+                     */
+
+                    let razorpayPhone =
+                        "";
+
+
+                    if (
+                        isValidPhone(
+                            registrationData
+                                .contact
+                                .phone
+                        )
+                    ) {
+
+                        razorpayPhone =
+                            registrationData
+                                .contact
+                                .phone;
+                    }
+
+
+                    else if (
+                        registrationData
+                            .guardian &&
+                        isValidPhone(
+                            registrationData
+                                .guardian
+                                .phone
+                        )
+                    ) {
+
+                        razorpayPhone =
+                            registrationData
+                                .guardian
+                                .phone;
+                    }
+
+
+                    else if (
+                        isValidPhone(
+                            registrationData
+                                .emergencyContact
+                                .phone
+                        )
+                    ) {
+
+                        razorpayPhone =
+                            registrationData
+                                .emergencyContact
+                                .phone;
+                    }
+
+
+                    /* ======================================
+                       RAZORPAY CHECKOUT OPTIONS
+                    ====================================== */
+
+                    const options = {
+
+                        key:
+                            orderData.key,
+
+
+                        amount:
+                            orderData
+                                .order
+                                .amount,
+
+
+                        currency:
+                            orderData
+                                .order
+                                .currency,
+
+
+                        name:
+                            "Vizag JamHub",
+
+
+                        description:
+                            `${course} • ${formatLabel} • ${timeLabel}`,
+
+
+                        order_id:
+                            orderData
+                                .order
+                                .id,
+
+
+                        /* ==================================
+                           PAYMENT SUCCESS
+                        ================================== */
+
+                        handler:
+                            async function (
+                                response
+                            ) {
+
+                                try {
+
+                                    /*
+                                     * Payment succeeded in Razorpay.
+                                     *
+                                     * We MUST verify the signature
+                                     * on our own server before
+                                     * marking enrollment as paid.
+                                     */
+
+                                    const verifyResponse =
+                                        await fetch(
+                                            "/api/payment/verify",
+                                            {
+
+                                                method:
+                                                    "POST",
+
+
+                                                headers: {
+
+                                                    "Content-Type":
+                                                        "application/json"
+                                                },
+
+
+                                                body:
+                                                    JSON.stringify({
+
+                                                        razorpay_payment_id:
+                                                            response
+                                                                .razorpay_payment_id,
+
+
+                                                        razorpay_order_id:
+                                                            response
+                                                                .razorpay_order_id,
+
+
+                                                        razorpay_signature:
+                                                            response
+                                                                .razorpay_signature,
+
+
+                                                        enrollment:
+                                                            registrationData
+                                                    })
+                                            }
+                                        );
+
+
+                                    const verifyData =
+                                        await readJsonResponse(
+                                            verifyResponse
+                                        );
+
+
+                                    /* ==============================
+                                       SERVER VERIFICATION FAILED
+                                    ============================== */
+
+                                    if (
+                                        !verifyResponse.ok ||
+                                        !verifyData.success ||
+                                        !verifyData.verified ||
+                                        !verifyData.enrollment
+                                    ) {
+
+                                        throw new Error(
+                                            verifyData.message ||
+                                            "Payment could not be verified."
+                                        );
+                                    }
+
+
+                                    /* ==============================
+                                       VERIFIED ENROLLMENT
+                                    ============================== */
+
+                                    const verifiedEnrollment =
+                                        verifyData.enrollment;
+
+
+                                    /*
+                                     * Replace pending information
+                                     * with the final server-generated
+                                     * enrollment.
+                                     */
+
+                                    sessionStorage.setItem(
+                                        "vizagJamHubEnrollment",
+                                        JSON.stringify(
+                                            verifiedEnrollment
+                                        )
+                                    );
+
+
+                                    /*
+                                     * Keep a separate completed
+                                     * enrollment record for the
+                                     * registration success page.
+                                     */
+
+                                    sessionStorage.setItem(
+                                        "vizagJamHubCompletedEnrollment",
+                                        JSON.stringify(
+                                            verifiedEnrollment
+                                        )
+                                    );
+
+
+                                    /*
+                                     * Payment has now been verified,
+                                     * therefore pending data can go.
+                                     */
+
+                                    sessionStorage.removeItem(
+                                        "vizagJamHubPendingEnrollment"
+                                    );
+
+
+                                    /*
+                                     * Prevent another payment click.
+                                     */
+
+                                    paymentInProgress =
+                                        true;
+
+
+                                    /* ==============================
+                                       REGISTRATION COMPLETE
+                                    ============================== */
+
+                                    window.location.href =
+                                        "registered.html";
+
+                                }
+
+                                catch (error) {
+
+                                    console.error(
+                                        "Payment verification error:",
+                                        error
+                                    );
+
+
+                                    paymentInProgress =
+                                        false;
+
+
+                                    setPaymentButtonLoading(
+                                        false
+                                    );
+
+
+                                    /*
+                                     * IMPORTANT:
+                                     *
+                                     * Razorpay may already have
+                                     * received the payment.
+                                     *
+                                     * Do NOT instruct the student
+                                     * to immediately pay again.
+                                     */
+
+                                    alert(
+                                        "Your payment was received, but we could not verify the enrollment automatically. Please do not make another payment. Contact Vizag JamHub with your payment details."
+                                    );
+                                }
+                            },
+
+
+                        /* ==================================
+                           PREFILL PAYMENT DETAILS
+                        ================================== */
+
+                        prefill: {
+
+                            name:
+                                studentName,
+
+
+                            email:
+                                registrationData
+                                    .contact
+                                    .email,
+
+
+                            contact:
+                                razorpayPhone
+                        },
+
+
+                        /* ==================================
+                           PAYMENT NOTES
+                        ================================== */
+
+                        notes: {
+
+                            course:
+                                course,
+
+
+                            level:
+                                level,
+
+
+                            format:
+                                formatLabel,
+
+
+                            time:
+                                timeLabel,
+
+
+                            batch:
+                                batchName
+                        },
+
+
+                        /* ==================================
+                           CHECKOUT APPEARANCE
+                        ================================== */
+
+                        theme: {
+
+                            color:
+                                "#00d4ff"
+                        },
+
+
+                        /* ==================================
+                           CHECKOUT CLOSED
+                        ================================== */
+
+                        modal: {
+
+                            ondismiss:
+                                function () {
+
+                                    paymentInProgress =
+                                        false;
+
+
+                                    setPaymentButtonLoading(
+                                        false
+                                    );
+                                }
+                        }
+                    };
+
+
+                    /* ======================================
+                       CREATE RAZORPAY CHECKOUT
+                    ====================================== */
+
+                    const razorpayCheckout =
+                        new Razorpay(
+                            options
+                        );
+
+
+                    /* ======================================
+                       PAYMENT FAILURE
+                    ====================================== */
+
+                    razorpayCheckout.on(
+                        "payment.failed",
+                        function (
+                            response
+                        ) {
+
+                            console.error(
+                                "Razorpay payment failed:",
+                                response.error
+                            );
+
+
+                            paymentInProgress =
+                                false;
+
+
+                            setPaymentButtonLoading(
+                                false
+                            );
+
+
+                            const description =
+                                response &&
+                                response.error &&
+                                response.error.description
+
+                                    ? response
+                                        .error
+                                        .description
+
+                                    : "The payment was unsuccessful.";
+
+
+                            alert(
+                                `${description} Please try again.`
+                            );
+                        }
+                    );
+
+
+                    /* ======================================
+                       OPEN RAZORPAY
+                    ====================================== */
+
+                    razorpayCheckout.open();
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Payment initialization error:",
+                        error
+                    );
+
+
+                    paymentInProgress =
+                        false;
+
+
+                    setPaymentButtonLoading(
+                        false
+                    );
+
+
+                    alert(
+                        error.message ||
+                        "Unable to start secure payment. Please try again."
+                    );
+                }
             }
         );
     }
@@ -2664,3 +3363,4 @@ document.addEventListener("DOMContentLoaded", () => {
     showStep(1);
 
 });
+
