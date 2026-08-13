@@ -1,0 +1,64 @@
+[
+  {
+    "teacherId": "TCH-001",
+    "name": "Sunny",
+    "instruments": [
+      "Guitar",
+      "Bass Guitar"
+    ],
+    "levels": [
+      "Beginner",
+      "Intermediate",
+      "Advanced"
+    ],
+    "formats": [
+      "online",
+      "in-person"
+    ],
+    "availability": {
+      "weekdays": "all-time-slots",
+      "weekends": "all-time-slots"
+    }
+  },
+  {
+    "teacherId": "TCH-002",
+    "name": "Utej",
+    "instruments": [
+      "Guitar",
+      "Bass Guitar"
+    ],
+    "levels": [
+      "Beginner"
+    ],
+    "formats": [
+      "online",
+      "in-person"
+    ],
+    "availability": {
+      "weekdays": "evenings",
+      "weekends": "available"
+    }
+  },
+  {
+    "teacherId": "TCH-003",
+    "name": "Anil",
+    "instruments": [
+      "Drums",
+      "Guitar",
+      "Bass Guitar"
+    ],
+    "levels": [
+      "Beginner",
+      "Intermediate",
+      "Advanced"
+    ],
+    "formats": [
+      "online",
+      "in-person"
+    ],
+    "availability": {
+      "weekdays": "all-time-slots",
+      "weekends": "available"
+    }
+  }
+]
