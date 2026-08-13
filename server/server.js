@@ -504,6 +504,298 @@ const razorpay = new Razorpay({
 });
 
 
+/* =================================
+   STUDENT LOGIN + EMAIL SYSTEM
+================================= */
+
+
+/* =================================
+   EMAIL CONFIGURATION
+================================= */
+
+const emailTransporter = nodemailer.createTransport({
+
+  service: "gmail",
+
+  auth: {
+
+    user: process.env.EMAIL_USER,
+
+    pass: process.env.EMAIL_APP_PASSWORD
+
+  }
+
+});
+
+
+/* =================================
+   GENERATE TEMPORARY PASSWORD
+================================= */
+
+function generateTemporaryPassword() {
+
+  /*
+     Generate a secure temporary password.
+
+     The plain password is only used for
+     the initial registration confirmation.
+
+     Only the HASH will be stored inside
+     enrollments.json.
+  */
+
+  const uppercase =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ";
+
+  const lowercase =
+    "abcdefghijkmnopqrstuvwxyz";
+
+  const numbers =
+    "23456789";
+
+  const symbols =
+    "!@#$%";
+
+  const allCharacters =
+    uppercase +
+    lowercase +
+    numbers +
+    symbols;
+
+
+  let password = "";
+
+
+  /* Guarantee required character types */
+
+  password +=
+    uppercase[
+      crypto.randomInt(
+        0,
+        uppercase.length
+      )
+    ];
+
+
+  password +=
+    lowercase[
+      crypto.randomInt(
+        0,
+        lowercase.length
+      )
+    ];
+
+
+  password +=
+    numbers[
+      crypto.randomInt(
+        0,
+        numbers.length
+      )
+    ];
+
+
+  password +=
+    symbols[
+      crypto.randomInt(
+        0,
+        symbols.length
+      )
+    ];
+
+
+  /* Fill remaining characters */
+
+  while (password.length < 10) {
+
+    password +=
+      allCharacters[
+        crypto.randomInt(
+          0,
+          allCharacters.length
+        )
+      ];
+
+  }
+
+
+  /*
+     Shuffle so the first four characters
+     do not always follow the same pattern.
+  */
+
+  const characters =
+    password.split("");
+
+
+  for (
+    let i = characters.length - 1;
+    i > 0;
+    i--
+  ) {
+
+    const j =
+      crypto.randomInt(
+        0,
+        i + 1
+      );
+
+
+    [
+      characters[i],
+      characters[j]
+    ] = [
+      characters[j],
+      characters[i]
+    ];
+
+  }
+
+
+  return characters.join("");
+
+}
+
+
+/* =================================
+   SEND ENROLLMENT CONFIRMATION EMAIL
+================================= */
+
+async function sendEnrollmentConfirmationEmail(
+  enrollment,
+  temporaryPassword
+) {
+
+  const student =
+    enrollment?.student || {};
+
+
+  const contact =
+    enrollment?.contact || {};
+
+
+  const course =
+    enrollment?.course || {};
+
+
+  const payment =
+    enrollment?.payment || {};
+
+
+  const studentName =
+    `${student.firstName || ""} ${student.lastName || ""}`
+      .trim() ||
+    "Student";
+
+
+  const studentEmail =
+    contact.email;
+
+
+  if (!studentEmail) {
+
+    throw new Error(
+      "Student email address is missing."
+    );
+
+  }
+
+
+  const amount =
+    Number(payment.amount || 0);
+
+
+  const amountText =
+    new Intl.NumberFormat(
+      "en-IN",
+      {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0
+      }
+    ).format(amount);
+
+
+  const subject =
+    `Enrollment Confirmed - ${enrollment.studentId}`;
+
+
+  const text = `
+Hello ${studentName},
+
+Welcome to Vizag JamHub Music Academy!
+
+Your enrollment and payment have been successfully confirmed.
+
+STUDENT INFORMATION
+
+Student Name: ${studentName}
+Student ID: ${enrollment.studentId}
+
+COURSE INFORMATION
+
+Course: ${course.course || "-"}
+Level: ${course.level || "-"}
+Format: ${course.formatLabel || course.format || "-"}
+Time: ${course.timeLabel || course.time || "-"}
+Batch: ${course.batchName || course.batch || "-"}
+Duration: ${course.duration || "8 Weeks"}
+Total Classes: ${course.totalClasses || 24}
+
+CLASS SCHEDULE
+
+Theory: ${course.theoryDay || "-"}
+Practical: ${course.practicalDay || "-"}
+Song: ${course.songDay || "-"}
+
+PAYMENT
+
+Amount Paid: ${amountText}
+Payment Status: Paid
+Payment ID: ${payment.paymentId || "-"}
+Order ID: ${payment.orderId || "-"}
+
+FIRST LOGIN
+
+Student ID:
+${enrollment.studentId}
+
+Temporary Password:
+${temporaryPassword}
+
+Use your Student ID and temporary password for your first login.
+
+After signing in, you will be required to create your own password.
+
+For security, do not share your Student ID or temporary password with anyone.
+
+Thank you for joining Vizag JamHub Music Academy.
+
+Vizag JamHub Music Academy
+`.trim();
+
+
+  await emailTransporter.sendMail({
+
+    from:
+      `"Vizag JamHub Music Academy" <${process.env.EMAIL_USER}>`,
+
+    to:
+      studentEmail,
+
+    subject:
+      subject,
+
+    text:
+      text
+
+  });
+
+
+  return true;
+
+}
+
 /*
    Course prices are controlled by
    the server.
@@ -902,6 +1194,29 @@ app.post("/api/payment/verify", async (req, res) => {
       `VJH-${year}-${randomNumber}`;
 
 
+      /* =================================
+   GENERATE FIRST-LOGIN PASSWORD
+================================= */
+
+const temporaryPassword =
+  generateTemporaryPassword();
+
+
+/*
+   Hash the temporary password before
+   storing it.
+
+   The plain temporary password must
+   NEVER be written to enrollments.json.
+*/
+
+const temporaryPasswordHash =
+  await bcrypt.hash(
+    temporaryPassword,
+    12
+  );
+
+
     /* =================================
        BUILD VERIFIED ENROLLMENT
     ================================= */
@@ -920,11 +1235,31 @@ app.post("/api/payment/verify", async (req, res) => {
 
 
       studentId:
-        studentId,
+  studentId,
 
 
-      enrollmentStatus:
-        "active",
+enrollmentStatus:
+  "active",
+
+
+authentication: {
+
+  temporaryPasswordHash:
+    temporaryPasswordHash,
+
+  mustChangePassword:
+    true,
+
+  passwordCreated:
+    false,
+
+  googleLinked:
+    false,
+
+  createdAt:
+    new Date().toISOString()
+
+},
 
 
       payment: {
