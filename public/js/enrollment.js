@@ -3090,7 +3090,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                     const verifiedEnrollment =
                                         verifyData.enrollment;
+                                    
 
+                                    /* ==================================
+   FIRST LOGIN INFORMATION
+================================== */
+
+if (verifyData.firstLogin) {
+
+    verifiedEnrollment.firstLogin = {
+
+        studentId:
+            verifyData.firstLogin.studentId,
+
+        temporaryPassword:
+            verifyData.firstLogin.temporaryPassword,
+
+        mustChangePassword:
+            verifyData.firstLogin.mustChangePassword
+
+    };
+
+}
+
+
+/* ==================================
+   EMAIL CONFIRMATION STATUS
+================================== */
+
+verifiedEnrollment.emailConfirmation = {
+
+    ...(verifiedEnrollment.emailConfirmation || {}),
+
+    ...(verifyData.emailConfirmation || {})
+
+};
 
                                     /*
                                      * Replace pending information

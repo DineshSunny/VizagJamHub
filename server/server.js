@@ -1399,6 +1399,74 @@ authentication: {
       "Music Academy enrollment activated:",
       studentId
     );
+    
+
+    /* =================================
+   SEND CONFIRMATION EMAIL
+================================= */
+
+let confirmationEmailSent =
+  false;
+
+let confirmationEmailError =
+  null;
+
+
+try {
+
+  await sendEnrollmentConfirmationEmail(
+    verifiedEnrollment,
+    temporaryPassword
+  );
+
+
+  confirmationEmailSent =
+    true;
+
+
+  console.log(
+    "Enrollment confirmation email sent:",
+    verifiedEnrollment?.contact?.email
+  );
+
+}
+catch (emailError) {
+
+  confirmationEmailSent =
+    false;
+
+
+  confirmationEmailError =
+    emailError.message;
+
+
+  console.error(
+    "Enrollment confirmation email error:",
+    emailError
+  );
+
+}
+
+
+/* =================================
+   EMAIL DELIVERY STATUS
+================================= */
+
+verifiedEnrollment.emailConfirmation = {
+
+  sent:
+    confirmationEmailSent,
+
+  sentAt:
+    confirmationEmailSent
+      ? new Date().toISOString()
+      : null,
+
+  recipient:
+    verifiedEnrollment?.contact?.email || null
+
+};
+
 
 
     /* =================================
@@ -1408,24 +1476,45 @@ authentication: {
 
     res.json({
 
+  success:
+    true,
 
-      success:
-        true,
+  verified:
+    true,
 
-
-      verified:
-        true,
-
-
-      message:
-        "Payment verified and enrollment activated.",
+  message:
+    "Payment verified and enrollment activated.",
 
 
-      enrollment:
-        verifiedEnrollment
+  enrollment:
+    verifiedEnrollment,
 
 
-    });
+  firstLogin: {
+
+    studentId:
+      studentId,
+
+    temporaryPassword:
+      temporaryPassword,
+
+    mustChangePassword:
+      true
+
+  },
+
+
+  emailConfirmation: {
+
+    sent:
+      confirmationEmailSent,
+
+    recipient:
+      verifiedEnrollment?.contact?.email || null
+
+  }
+
+});
 
 
   }

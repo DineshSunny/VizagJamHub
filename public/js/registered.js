@@ -2,7 +2,7 @@
    VIZAG JAMHUB MUSIC ACADEMY
    REGISTERED STUDENT CONFIRMATION
 
-   Shared confirmation logic for all academy courses.
+   Final successful-enrollment confirmation logic.
 ========================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,6 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
+    const studentLoginButton =
+        document.getElementById(
+            "student-portal-button"
+        );
+
 
     /* ======================================================
        HELPERS
@@ -64,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return document.getElementById(id);
 
     }
-
 
 
     function setText(id, value) {
@@ -80,11 +84,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
+        if (
+            value === undefined ||
+            value === null ||
+            value === ""
+        ) {
+
+            element.textContent = "—";
+
+            return;
+
+        }
+
+
         element.textContent =
-            value || "—";
+            String(value);
 
     }
-
 
 
     function formatPrice(price) {
@@ -112,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
     function capitalizeValue(value) {
 
         if (!value) {
@@ -133,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
     function formatDate(dateValue) {
 
         if (!dateValue) {
@@ -147,9 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
             new Date(dateValue);
 
 
-        if (Number.isNaN(date.getTime())) {
+        if (
+            Number.isNaN(
+                date.getTime()
+            )
+        ) {
 
-            return dateValue;
+            return String(dateValue);
 
         }
 
@@ -167,18 +185,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
     /* ======================================================
-       LOAD CONFIRMED ENROLLMENT
+       LOAD COMPLETED ENROLLMENT
 
-       IMPORTANT:
-
-       The backend will eventually create this ONLY after
-       successful payment verification.
-
-       We intentionally DO NOT use
-       vizagJamHubPendingRegistration here because a pending
-       registration is not proof of payment/enrollment.
+       This value is written by enrollment.js only after
+       successful server-side Razorpay verification.
     ====================================================== */
 
     let registration = null;
@@ -186,43 +197,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-        registration =
-            JSON.parse(
-                sessionStorage.getItem(
-                    "vizagJamHubConfirmedEnrollment"
-                )
+        const storedEnrollment =
+            sessionStorage.getItem(
+                "vizagJamHubCompletedEnrollment"
             );
+
+
+        if (storedEnrollment) {
+
+            registration =
+                JSON.parse(
+                    storedEnrollment
+                );
+
+        }
 
     }
 
     catch (error) {
 
         console.error(
-            "Unable to read confirmed enrollment:",
+            "Unable to read completed enrollment:",
             error
         );
 
     }
 
 
-
     /* ======================================================
-       NO CONFIRMED ENROLLMENT
+       NO COMPLETED ENROLLMENT
     ====================================================== */
 
     if (!registration) {
 
         console.warn(
-            "No confirmed Vizag JamHub enrollment was found."
+            "No completed Vizag JamHub enrollment was found."
         );
 
 
         /*
-         * Once the backend exists, students should only
-         * reach registered.html after successful payment.
-         *
-         * For now, redirect away rather than showing
-         * fake confirmation information.
+         * registered.html should only be reached after
+         * successful payment verification.
          */
 
         window.location.href =
@@ -232,7 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
 
     }
-
 
 
     /* ======================================================
@@ -251,6 +265,11 @@ document.addEventListener("DOMContentLoaded", () => {
         registration.contact || {};
 
 
+    /*
+     * Some future enrollment-specific information such as
+     * Zoom links and location information may live here.
+     */
+
     const enrollment =
         registration.enrollment || {};
 
@@ -259,11 +278,52 @@ document.addEventListener("DOMContentLoaded", () => {
         registration.payment || {};
 
 
+    const authentication =
+        registration.authentication || {};
+
+
+    const firstLogin =
+        registration.firstLogin || {};
+
+
+    const emailConfirmation =
+        registration.emailConfirmation || {};
+
+
     const schedule =
-        Array.isArray(registration.schedule)
+        Array.isArray(
+            registration.schedule
+        )
             ? registration.schedule
             : [];
 
+
+    /* ======================================================
+       STUDENT INFORMATION
+    ====================================================== */
+
+    const studentName =
+        `${student.firstName || ""} ${student.lastName || ""}`
+            .trim();
+
+
+    const studentId =
+        registration.studentId ||
+        firstLogin.studentId ||
+        enrollment.studentId ||
+        "—";
+
+
+    setText(
+        "registered-student-name",
+        studentName || "Student"
+    );
+
+
+    setText(
+        "registered-student-id",
+        studentId
+    );
 
 
     /* ======================================================
@@ -280,6 +340,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const format =
         course.format || "";
+
+
+    const normalizedFormat =
+        String(format)
+            .toLowerCase()
+            .trim();
 
 
     const formatDisplay =
@@ -313,6 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const priceDisplay =
         formatPrice(
+            payment.amount ??
             course.price
         );
 
@@ -327,18 +394,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const songDay =
         course.songDay || "—";
-
-
-
-    /* ======================================================
-       STUDENT ID
-    ====================================================== */
-
-    setText(
-        "registered-student-id",
-        enrollment.studentId
-    );
-
 
 
     /* ======================================================
@@ -395,7 +450,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-
     /* ======================================================
        WEEKLY SCHEDULE
     ====================================================== */
@@ -436,32 +490,127 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-
     /* ======================================================
-       EMAIL
+       EMAIL INFORMATION
     ====================================================== */
 
-    if (contact.email) {
+    const studentEmail =
+        emailConfirmation.recipient ||
+        contact.email ||
+        "";
+
+
+    setText(
+        "registered-email",
+        studentEmail
+    );
+
+
+    /*
+     * These elements are optional.
+     * If they exist in registered.html, they will be filled.
+     */
+
+    if (emailConfirmation.sent === true) {
 
         setText(
-            "registered-email",
-            contact.email
+            "registered-email-status",
+            "Confirmation email sent"
+        );
+
+    }
+
+    else {
+
+        setText(
+            "registered-email-status",
+            "Confirmation email could not be sent"
         );
 
     }
 
 
+    /* ======================================================
+       PAYMENT INFORMATION
+    ====================================================== */
+
+    setText(
+        "registered-payment-status",
+        payment.status
+            ? capitalizeValue(
+                payment.status
+            )
+            : "Paid"
+    );
+
+
+    setText(
+        "registered-payment-id",
+        payment.paymentId
+    );
+
+
+    setText(
+        "registered-order-id",
+        payment.orderId
+    );
+
+
+    setText(
+        "registered-amount-paid",
+        formatPrice(
+            payment.amount
+        )
+    );
+
+
+    /* ======================================================
+       FIRST LOGIN INFORMATION
+    ====================================================== */
+
+    const temporaryPassword =
+        firstLogin.temporaryPassword || "";
+
+
+    setText(
+        "registered-login-student-id",
+        studentId
+    );
+
+
+    if (temporaryPassword) {
+
+        setText(
+            "registered-temporary-password",
+            temporaryPassword
+        );
+
+
+        setText(
+            "registered-password-message",
+            "Use this temporary password for your first login. You will be required to create your own password after signing in."
+        );
+
+    }
+
+    else {
+
+        setText(
+            "registered-temporary-password",
+            "Sent by email"
+        );
+
+
+        setText(
+            "registered-password-message",
+            "Use the first-login information sent to your registered email address."
+        );
+
+    }
+
 
     /* ======================================================
        FORMAT-SPECIFIC CLASS ACCESS
-
-       ONLINE:
-       - Show online access
-       - Hide physical location
-
-       IN PERSON:
-       - Show academy location
-       - Hide online access
     ====================================================== */
 
     function configureClassAccess() {
@@ -471,7 +620,9 @@ document.addEventListener("DOMContentLoaded", () => {
            ONLINE
         ================================================== */
 
-        if (format === "online") {
+        if (
+            normalizedFormat === "online"
+        ) {
 
 
             if (onlineSection) {
@@ -496,18 +647,23 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-
             /*
-             * Backend-created online meeting/class URL.
+             * Online-class information can later be assigned
+             * by the backend/admin system.
              */
 
+            const onlineClassUrl =
+                enrollment.onlineClassUrl ||
+                registration.onlineClassUrl;
+
+
             if (
-                enrollment.onlineClassUrl &&
+                onlineClassUrl &&
                 onlineClassLink
             ) {
 
                 onlineClassLink.href =
-                    enrollment.onlineClassUrl;
+                    onlineClassUrl;
 
 
                 onlineClassLink.classList.remove(
@@ -527,12 +683,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-
         /* ==================================================
            IN PERSON
         ================================================== */
 
-        if (format === "in-person") {
+        if (
+            normalizedFormat === "in-person" ||
+            normalizedFormat === "in person" ||
+            normalizedFormat === "offline"
+        ) {
 
 
             if (onlineSection) {
@@ -557,33 +716,33 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
+            const locationAddress =
+                enrollment.locationAddress ||
+                registration.locationAddress;
 
-            /*
-             * Backend/admin-controlled academy address.
-             */
 
-            if (enrollment.locationAddress) {
+            if (locationAddress) {
 
                 setText(
                     "academy-address",
-                    enrollment.locationAddress
+                    locationAddress
                 );
 
             }
 
 
+            const directionsUrl =
+                enrollment.directionsUrl ||
+                registration.directionsUrl;
 
-            /*
-             * Directions URL.
-             */
 
             if (
-                enrollment.directionsUrl &&
+                directionsUrl &&
                 directionsButton
             ) {
 
                 directionsButton.href =
-                    enrollment.directionsUrl;
+                    directionsUrl;
 
 
                 directionsButton.classList.remove(
@@ -603,12 +762,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-
         /* ==================================================
            UNKNOWN FORMAT
-
-           Hide both rather than accidentally displaying
-           the wrong access information.
         ================================================== */
 
         if (onlineSection) {
@@ -629,7 +784,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
     /* ======================================================
        CLASS CALENDAR
     ====================================================== */
@@ -644,10 +798,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-
         /*
-         * Backend should provide the complete
-         * 24-session schedule.
+         * We will populate this when the backend begins
+         * generating the complete 24-session schedule.
          */
 
         if (!schedule.length) {
@@ -657,14 +810,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
+        calendarContainer.innerHTML =
+            "";
 
-        calendarContainer.innerHTML = "";
-
-
-
-        /*
-         * Group sessions by week.
-         */
 
         const weeks = {};
 
@@ -673,7 +821,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             const week =
-                Number(session.week) || 1;
+                Number(
+                    session.week
+                ) || 1;
 
 
             if (!weeks[week]) {
@@ -690,11 +840,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-
         Object.keys(weeks)
             .sort(
                 (a, b) =>
-                    Number(a) - Number(b)
+                    Number(a) -
+                    Number(b)
             )
             .forEach(weekNumber => {
 
@@ -707,7 +857,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 week.className =
                     "registered-calendar-week";
-
 
 
                 const heading =
@@ -730,7 +879,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-
                 const classes =
                     document.createElement(
                         "div"
@@ -739,7 +887,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 classes.className =
                     "registered-calendar-classes";
-
 
 
                 weeks[weekNumber]
@@ -756,7 +903,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             "registered-calendar-class";
 
 
-
                         const date =
                             document.createElement(
                                 "div"
@@ -769,9 +915,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         date.textContent =
                             formatDate(
-                                session.date
+                                session.date ||
+                                session.startDateTime
                             );
-
 
 
                         const details =
@@ -782,7 +928,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         details.className =
                             "registered-calendar-class-details";
-
 
 
                         const type =
@@ -797,7 +942,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             "Class";
 
 
-
                         const time =
                             document.createElement(
                                 "span"
@@ -807,7 +951,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         time.textContent =
                             session.time ||
                             timeDisplay;
-
 
 
                         details.appendChild(
@@ -837,7 +980,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
 
 
-
                 week.appendChild(
                     classes
                 );
@@ -850,14 +992,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
 
+        const calendarUrl =
+            enrollment.calendarUrl ||
+            registration.calendarUrl;
 
-        /*
-         * Calendar export becomes available only
-         * when the backend provides a calendar URL/file.
-         */
 
         if (
-            enrollment.calendarUrl &&
+            calendarUrl &&
             addCalendarButton
         ) {
 
@@ -867,7 +1008,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     }
-
 
 
     /* ======================================================
@@ -886,7 +1026,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const now =
             new Date();
-
 
 
         const upcoming =
@@ -923,7 +1062,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-
         if (!upcoming.length) {
 
             return;
@@ -937,7 +1075,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setText(
             "next-class-type",
-            next.type
+            next.type ||
+            next.name ||
+            "Class"
         );
 
 
@@ -952,7 +1092,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setText(
             "next-class-name",
-            next.name
+            next.name ||
+            next.type ||
+            "Class"
         );
 
 
@@ -963,7 +1105,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
-
 
 
     /* ======================================================
@@ -977,9 +1118,12 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
 
-                if (
-                    !enrollment.calendarUrl
-                ) {
+                const calendarUrl =
+                    enrollment.calendarUrl ||
+                    registration.calendarUrl;
+
+
+                if (!calendarUrl) {
 
                     return;
 
@@ -987,13 +1131,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 window.location.href =
-                    enrollment.calendarUrl;
+                    calendarUrl;
 
             }
         );
 
     }
-
 
 
     /* ======================================================
@@ -1006,12 +1149,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-
-                /*
-                 * Receipt should come from the verified
-                 * payment record — never generated from
-                 * unverified frontend information.
-                 */
 
                 if (payment.receiptUrl) {
 
@@ -1033,6 +1170,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
+    /* ======================================================
+       STUDENT LOGIN
+    ====================================================== */
+
+    if (studentLoginButton) {
+
+        studentLoginButton.href =
+            "/studentlogin.html";
+
+
+        studentLoginButton.addEventListener(
+            "click",
+            () => {
+
+                /*
+                 * Do NOT delete completed enrollment here.
+                 *
+                 * studentlogin.html may need the Student ID
+                 * for first-login convenience.
+                 */
+
+                sessionStorage.setItem(
+                    "vizagJamHubStudentId",
+                    studentId
+                );
+
+            }
+        );
+
+    }
 
 
     /* ======================================================
@@ -1067,7 +1235,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-
     /* ======================================================
        INITIALIZE
     ====================================================== */
@@ -1079,5 +1246,9 @@ document.addEventListener("DOMContentLoaded", () => {
     displayNextClass();
 
 
-});
+    console.log(
+        "Vizag JamHub enrollment confirmation loaded:",
+        studentId
+    );
 
+});

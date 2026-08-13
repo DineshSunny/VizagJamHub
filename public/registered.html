@@ -165,8 +165,14 @@
 
         <p class="registered-intro">
 
-            Welcome to Vizag JamHub Music Academy.
-            Your enrollment has been successfully activated.
+            Welcome
+            <strong id="registered-student-name">
+                Student
+            </strong>!
+
+            Your payment has been verified and your
+            Vizag JamHub Music Academy enrollment has
+            been successfully activated.
 
         </p>
 
@@ -187,16 +193,11 @@
             <i class="fa-solid fa-id-card"></i>
 
             <span>
-                STUDENT ID
+                YOUR STUDENT ID
             </span>
 
         </div>
 
-
-        <!--
-            IMPORTANT:
-            Backend will populate this after payment verification.
-        -->
 
         <div class="registered-student-id"
              id="registered-student-id">
@@ -208,10 +209,100 @@
 
         <p>
 
-            Keep your Student ID available when contacting
-            Vizag JamHub Music Academy.
+            This is your permanent Vizag JamHub Student ID.
+            You can use it to sign in to your student account
+            and when contacting the academy.
 
         </p>
+
+
+    </section>
+
+
+
+    <!-- ======================================================
+         FIRST LOGIN
+    ======================================================= -->
+
+    <section class="registered-card">
+
+
+        <div class="registered-section-heading">
+
+            <div>
+
+                <small>
+                    STUDENT ACCOUNT
+                </small>
+
+                <h2>
+                    Your First Login
+                </h2>
+
+            </div>
+
+
+            <i class="fa-solid fa-user-lock registered-heading-icon"></i>
+
+        </div>
+
+
+        <p class="registered-section-description">
+
+            Your student account has been created.
+            Use the credentials below for your first login.
+
+        </p>
+
+
+
+        <div class="registered-details-grid">
+
+
+            <div class="registered-detail">
+
+                <span>
+                    Student ID
+                </span>
+
+                <strong id="registered-login-student-id">
+                    —
+                </strong>
+
+            </div>
+
+
+
+            <div class="registered-detail">
+
+                <span>
+                    Temporary Password
+                </span>
+
+                <strong id="registered-temporary-password">
+                    —
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="registered-access-note">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <span id="registered-password-message">
+
+                Use this temporary password for your first login.
+                You will be required to create your own password
+                immediately after signing in.
+
+            </span>
+
+        </div>
 
 
     </section>
@@ -361,6 +452,99 @@
                 </span>
 
                 <strong id="registered-price">
+                    —
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ======================================================
+         PAYMENT DETAILS
+    ======================================================= -->
+
+    <section class="registered-card">
+
+
+        <div class="registered-section-heading">
+
+            <div>
+
+                <small>
+                    PAYMENT
+                </small>
+
+                <h2>
+                    Payment Details
+                </h2>
+
+            </div>
+
+
+            <i class="fa-solid fa-receipt registered-heading-icon"></i>
+
+        </div>
+
+
+
+        <div class="registered-details-grid">
+
+
+            <div class="registered-detail">
+
+                <span>
+                    Payment Status
+                </span>
+
+                <strong id="registered-payment-status">
+                    Paid
+                </strong>
+
+            </div>
+
+
+
+            <div class="registered-detail">
+
+                <span>
+                    Amount Paid
+                </span>
+
+                <strong id="registered-amount-paid">
+                    —
+                </strong>
+
+            </div>
+
+
+
+            <div class="registered-detail">
+
+                <span>
+                    Payment ID
+                </span>
+
+                <strong id="registered-payment-id">
+                    —
+                </strong>
+
+            </div>
+
+
+
+            <div class="registered-detail">
+
+                <span>
+                    Order ID
+                </span>
+
+                <strong id="registered-order-id">
                     —
                 </strong>
 
@@ -540,7 +724,6 @@
 
     <!-- ======================================================
          ACTUAL COURSE CALENDAR
-         BACKEND GENERATED
     ======================================================= -->
 
     <section class="registered-card">
@@ -571,8 +754,6 @@
 
         </p>
 
-
-        <!-- Backend/registered.js will populate this -->
 
         <div class="registered-calendar"
              id="registered-calendar">
@@ -611,10 +792,6 @@
 
     <!-- ======================================================
          ONLINE CLASS ACCESS
-
-         IMPORTANT:
-         ONLY DISPLAY WHEN:
-         format === "online"
     ======================================================= -->
 
     <section class="registered-card registered-access-card"
@@ -683,10 +860,6 @@
 
 
 
-        <!--
-            Backend will provide the actual meeting URL.
-        -->
-
         <a href="#"
            class="registered-primary-button disabled"
            id="online-class-link"
@@ -716,10 +889,6 @@
 
     <!-- ======================================================
          IN-PERSON CLASS LOCATION
-
-         IMPORTANT:
-         ONLY DISPLAY WHEN:
-         format === "in-person"
     ======================================================= -->
 
     <section class="registered-card registered-access-card"
@@ -747,6 +916,7 @@
         </div>
 
 
+
         <div class="registered-location">
 
 
@@ -767,11 +937,6 @@
                     Vizag JamHub
                 </h3>
 
-
-                <!--
-                    Replace with official academy address
-                    when finalized.
-                -->
 
                 <p id="academy-address">
 
@@ -933,11 +1098,11 @@
                 <div>
 
                     <strong>
-                        Class Schedule Created
+                        Student Account Created
                     </strong>
 
                     <span>
-                        Your 8-week program has been scheduled
+                        Your Student ID and first-login credentials are ready
                     </span>
 
                 </div>
@@ -948,7 +1113,7 @@
 
             <div class="registered-status-item">
 
-                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-envelope-circle-check"></i>
 
                 <div>
 
@@ -956,8 +1121,8 @@
                         Confirmation Email
                     </strong>
 
-                    <span>
-                        Enrollment information sent to your email
+                    <span id="registered-email-status">
+                        Checking email delivery...
                     </span>
 
                 </div>
@@ -985,14 +1150,14 @@
         <div>
 
             <strong>
-                Check Your Email
+                Enrollment Confirmation Email
             </strong>
+
 
             <p>
 
-                Your Vizag JamHub enrollment confirmation,
-                class schedule and academy information have
-                been sent to
+                Your enrollment and first-login information
+                has been sent to
 
                 <span id="registered-email">
                     your registered email address
@@ -1014,13 +1179,13 @@
     <section class="registered-actions">
 
 
-        <a href="/student.html"
+        <a href="/studentlogin.html"
            class="registered-primary-button"
            id="student-portal-button">
 
-            <i class="fa-solid fa-graduation-cap"></i>
+            <i class="fa-solid fa-right-to-bracket"></i>
 
-            Go to Student Portal
+            Continue to Student Login
 
         </a>
 
