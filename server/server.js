@@ -14,6 +14,8 @@ require("dotenv").config({
 
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
+const bcrypt = require("bcryptjs");
+const nodemailer = require("nodemailer");
 
 
 const app = express();
