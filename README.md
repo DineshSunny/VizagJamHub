@@ -37,7 +37,7 @@ Band Resources
 
 
 
-    Enrollment + School System Updates
+Enrollment + School System Updates
 Finish successful enrollment
 Razorpay payment must be verified by the backend.
 Generate a permanent Student ID.
