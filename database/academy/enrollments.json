@@ -143,5 +143,81 @@
       "missedClasses": 0
     },
     "enrollmentActivatedAt": "2026-08-13T17:13:32.073Z"
+  },
+  {
+    "course": {
+      "course": "Beginner Drums",
+      "level": "Beginner",
+      "price": 2000,
+      "format": "in-person",
+      "formatLabel": "In Person",
+      "time": "6:00 PM - 7:00 PM",
+      "timeLabel": "6:00 PM – 7:00 PM",
+      "batch": "batch-2",
+      "batchName": "Batch 02",
+      "theoryDay": "Tuesday",
+      "practicalDay": "Thursday",
+      "songDay": "Saturday",
+      "weeklyDays": "Tuesday • Thursday • Saturday",
+      "duration": "8 Weeks",
+      "classesPerWeek": 3,
+      "totalClasses": 24
+    },
+    "student": {
+      "firstName": "Dinesh",
+      "lastName": "Seveti",
+      "dateOfBirth": "2002-01-13",
+      "age": 24,
+      "gender": "male"
+    },
+    "guardian": null,
+    "contact": {
+      "email": "dineshsunny77usa@gmail.com",
+      "phone": "16124592650",
+      "address": "340 6TH AVE S APT 4511, CLOUD ON FIFTH",
+      "city": "MN",
+      "state": "MN",
+      "postalCode": "56301",
+      "country": "India"
+    },
+    "emergencyContact": {
+      "name": "Anil",
+      "relationship": "Friend",
+      "phone": "8463903833"
+    },
+    "learningProfile": {
+      "musicExperience": "None",
+      "instrumentAccess": "none",
+      "songLanguage": "telugu",
+      "notes": "None"
+    },
+    "payment": {
+      "method": "upi",
+      "amount": 2000,
+      "currency": "INR",
+      "status": "paid",
+      "paymentId": "pay_TPh85wnuIGpDTe",
+      "orderId": "order_TPh7dORSnQcGQg",
+      "verified": true,
+      "verifiedAt": "2026-08-14T15:12:00.954Z"
+    },
+    "createdAt": "2026-08-14T15:11:14.689Z",
+    "studentId": "VJH-2026-252914",
+    "enrollmentStatus": "active",
+    "authentication": {
+      "temporaryPasswordHash": "$2b$12$EOkaKuLbftD96kvwvvBE4ONfhp7nI6kvzx9/VbB/of.1YtcNfZEay",
+      "mustChangePassword": true,
+      "passwordCreated": false,
+      "googleLinked": false,
+      "createdAt": "2026-08-14T15:12:00.954Z"
+    },
+    "attendance": {
+      "totalClasses": 24,
+      "completedClasses": 0,
+      "remainingClasses": 24,
+      "attendedClasses": 0,
+      "missedClasses": 0
+    },
+    "enrollmentActivatedAt": "2026-08-14T15:12:00.954Z"
   }
 ]
