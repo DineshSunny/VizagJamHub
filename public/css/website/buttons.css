@@ -1,0 +1,422 @@
+/* =================================
+   VIZAG JAMHUB - ALL BUTTONS
+================================= */
+
+
+/* ==========================================================
+   GLOBAL BUTTON FOUNDATION
+========================================================== */
+
+/*
+   Shared glass appearance will go here.
+
+   Used as the common visual foundation for buttons
+   across index, lyrics, academy, admin and other pages.
+*/
+
+
+/* ==========================================================
+   GLOBAL BUTTON STATES
+========================================================== */
+
+/* hover */
+/* focus-visible */
+/* active */
+/* disabled */
+
+
+
+
+/* =================================================================
+   GLOBAL NAVIGATION BUTTONS
+================================================================= */
+
+/* glass navigation links */
+
+.glass-nav a {
+
+}
+
+
+/* hamburger button */
+
+.menu-toggle {
+
+}
+
+
+
+
+/* =================================================================
+   INDEX PAGE BUTTONS
+================================================================= */
+
+
+/* SING ALONG LYRICS */
+
+.lyrics-btn {
+
+}
+
+
+/* BOOK US */
+
+#book button {
+
+}
+
+
+/* BAND CONNECT */
+
+#connect button {
+
+}
+
+
+
+
+/* =================================================================
+   FLOATING SOCIAL BUTTONS
+================================================================= */
+
+
+/* COMMON SOCIAL BUTTON */
+
+.floating-social a {
+
+}
+
+
+/* INSTAGRAM */
+
+.instagram-btn {
+
+}
+
+
+/* WHATSAPP */
+
+.whatsapp-btn {
+
+}
+
+
+
+
+/* =================================================================
+   LYRICS / CHORD BUTTONS
+================================================================= */
+
+
+/* CHORD LIBRARY BUTTONS */
+
+.chord-btn {
+
+}
+
+
+/*
+   TRANSPOSE CONTROL
+
+   Technically a select rather than a button,
+   but we can keep its control styling here if you want.
+*/
+
+.transpose-select {
+
+}
+
+
+
+
+/* =================================================================
+   ACADEMY - DRUM BUTTONS
+================================================================= */
+
+.drum-btn {
+
+}
+
+.drum-btn:hover {
+
+}
+
+.drum-buttons.preview-active .drum-btn {
+
+}
+
+.drum-buttons.preview-active .drum-btn.active {
+
+}
+
+
+
+
+/* =================================================================
+   ACADEMY - GUITAR BUTTONS
+================================================================= */
+
+.guitar-btn {
+
+}
+
+.guitar-btn:hover {
+
+}
+
+.guitar-buttons.preview-active .guitar-btn {
+
+}
+
+.guitar-buttons.preview-active .guitar-btn.active {
+
+}
+
+
+
+
+/* =================================================================
+   ACADEMY - VOCALS BUTTONS
+================================================================= */
+
+.vocals-btn {
+
+}
+
+.vocals-btn:hover {
+
+}
+
+.vocals-buttons.preview-active .vocals-btn:not(.active) {
+
+}
+
+.vocals-btn.active {
+
+}
+
+
+
+
+/* =================================================================
+   ACADEMY - ENROLLMENT BUTTONS
+================================================================= */
+
+
+/* FINAL ENROLL BUTTON */
+
+.final-enroll-btn {
+
+}
+
+.final-enroll-btn.ready {
+
+}
+
+.final-enroll-btn.ready:hover {
+
+}
+
+
+/* NEXT */
+
+.enrollment-next {
+
+}
+
+
+/* BACK */
+
+.enrollment-back {
+
+}
+
+
+/* REVIEW EDIT */
+
+.review-edit {
+
+}
+
+
+
+
+/* =================================================================
+   ACADEMY - PAYMENT BUTTONS
+================================================================= */
+
+.payment-button {
+
+}
+
+.payment-button:hover {
+
+}
+
+
+
+
+/* =================================================================
+   ACADEMY - REGISTERED PAGE BUTTONS
+================================================================= */
+
+.registered-primary-button {
+
+}
+
+.registered-primary-button:hover {
+
+}
+
+
+.registered-secondary-button {
+
+}
+
+.registered-secondary-button:hover:not(:disabled) {
+
+}
+
+
+/* DISABLED REGISTERED BUTTONS */
+
+.registered-primary-button.disabled,
+.registered-secondary-button.disabled,
+.registered-secondary-button:disabled {
+
+}
+
+
+
+
+/* =================================================================
+   ADMIN - LOGIN BUTTON
+================================================================= */
+
+.login-form button {
+
+}
+
+.login-form button:hover {
+
+}
+
+
+
+
+/* =================================================================
+   ADMIN - ADMIN PANEL BUTTONS
+================================================================= */
+
+.admin-btn {
+
+}
+
+.admin-btn:hover {
+
+}
+
+
+
+
+/* =================================================================
+   ADMIN - LOGOUT BUTTON
+================================================================= */
+
+.logout-btn {
+
+}
+
+.logout-btn:hover {
+
+}
+
+
+
+
+/* =================================================================
+   ADMIN - CREATE SHOW BUTTON
+================================================================= */
+
+.create-show-form button {
+
+}
+
+.create-show-form button:hover {
+
+}
+
+
+
+
+/* =================================================================
+   ADMIN - MANAGE SHOW BUTTONS
+================================================================= */
+
+.showButtons button {
+
+}
+
+.showButtons button:hover {
+
+}
+
+
+
+
+/* =================================================================
+   ADMIN - TICKET BUTTONS
+================================================================= */
+
+#ticketForm button {
+
+}
+
+#ticketForm button:hover {
+
+}
+
+
+
+
+/* =================================================================
+   OTHER PAGES - CONTACT BUTTON
+================================================================= */
+
+.contact-form button {
+
+}
+
+.contact-form button:hover {
+
+}
+
+
+
+
+/* =================================================================
+   OTHER PAGES - 404 BUTTONS
+================================================================= */
+
+.error-buttons a {
+
+}
+
+.error-buttons a:hover {
+
+}
+
+
+
+
+/* =================================================================
+   OTHER PAGES - COMING SOON BUTTONS
+================================================================= */
+
+.coming-buttons a {
+
+}
+
+.coming-buttons a:hover {
+
+}

@@ -94,71 +94,6 @@ opacity:0;
 
 
 
-
-/* OVER LAY LOGO */
-
-
-#overlay-logo{
-position:fixed;
-
-top:50%;
-left:50%;
-
-transform:translate(-50%,-50%);
-
-width:100vw;
-max-width:1200px;
-
-z-index:2;
-
-opacity:0.9;
-
-pointer-events:none;
-
-transition:opacity 0.5s ease;
-}
-
-
-/* TOP PAGE LOGO NODIFIED PLACE FOR CATEGORY, LANGUAGE PAGE AND MORE*/
-
-.top-logo{
-
-width:100%;
-
-display:flex;
-justify-content:center;
-
-padding-top:10px;
-padding-bottom:5px;
-
-margin-top:-20px;
-
-position:relative;
-
-z-index:5;
-
-pointer-events:none;
-
-}
-
-.top-logo img{
-
-width:1000px;
-max-width:85%;
-
-}
-
-.top-logo{
-padding-bottom:0;
-margin-bottom:-350px;
-}
-
-
-
-/* ======================================================================================================================================================================*/
-
-
-
 /* =========================
    CINEMATIC LIVE TEXT
 ========================= */
@@ -266,39 +201,6 @@ filter:blur(10px);
 
 
 
-/* TOP PAGE LIVE TEXT MODIFIED PLACE FOR CATEGORY, LANGUAGE PAGE, SONG SELECTION PAGE AND MORE*/
-
-.category-page .typing-text{
-
-position:absolute;
-
-top:36%;
-
-left:51%;
-
-animation:none;
-
-pointer-events:none;
-
-}
-
-
-/* TOP PAGE LIVE TEXT MODIFIED PLACE FOR LANGUAGE PAGE AND MORE*/
-
-.language-page .typing-text{
-
-position:absolute;
-
-top:37%;
-
-left:51%;
-
-animation:none;
-
-pointer-events:none;
-
-}
-
 
 /* SELECT SCRIPT TITLE MODIFIED PLACE FOR LANGUAGE PAGE */
 
@@ -351,19 +253,6 @@ transform:scale(1.05);
 
 /* HEADER */
 
-header{
-background:rgba(0,0,0,0.65);
-backdrop-filter:blur(6px);
-padding:20px;
-}
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-max-width:1100px;
-margin:auto;
-}
 
 nav ul{
 display:flex;
@@ -1885,14 +1774,6 @@ box-shadow:
 
 
 
-/* NAVBAR FIX */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap; /* 🔥 THIS FIXES BREAKING */
-}
-
 /* MENU LINKS */
 nav ul {
   display: flex;
@@ -1979,27 +1860,7 @@ padding-bottom:20px;
 /* ===========================================================================================================================================*/
 
 
-/* =========================
-   NAVBAR
-========================= */
 
-
-header{
-position:fixed;
-top:0;
-left:0;
-
-width:100%;
-
-min-height:80px;
-
-background:rgba(0,0,0,0.65);
-backdrop-filter:blur(6px);
-
-padding:20px;
-
-z-index:9998;
-}
 
 nav{
 display:flex;

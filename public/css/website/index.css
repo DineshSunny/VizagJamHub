@@ -1,0 +1,202 @@
+
+
+/* =================================
+ LIVE TYPING TEXT
+================================= */
+
+.typing-text {
+
+  position: fixed;
+
+  top: 68%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 34px;
+  font-weight: 700;
+
+  letter-spacing: 8px;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  transition: opacity 0.8s ease;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.12),
+    0 0 20px rgba(0, 212, 255, 0.25),
+    0 0 40px rgba(0, 212, 255, 0.12);
+
+  animation:
+    typingFloat 8s ease-in-out infinite;
+
+}
+
+
+/* =================================
+   TYPING TEXT FLOAT
+================================= */
+
+@keyframes typingFloat {
+
+  0% {
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+
+  }
+
+  50% {
+
+    transform:
+      translateX(-50%)
+      translateY(-6px);
+
+  }
+
+  100% {
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+
+  }
+
+}
+
+
+/* =================================
+   TYPING WORD TRANSITION
+================================= */
+
+#typing {
+
+  transition:
+    opacity 0.18s ease,
+    filter 0.18s ease;
+
+}
+
+
+/* SHOW */
+
+#typing.show {
+
+  opacity: 1;
+  filter: blur(0);
+
+}
+
+
+/* HIDE */
+
+#typing.hide {
+
+  opacity: 0;
+  filter: blur(10px);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =================================
+   SCHOOL
+================================= */
+
+.school {
+    text-align: center;
+}
+
+
+/* SCHOOL COURSES */
+
+.school-courses {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+
+/* COURSE LINKS */
+
+.school-courses a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* COURSE CARD */
+
+.course-card {
+    width: 250px;
+    padding: 25px;
+
+    background: rgba(20, 20, 20, 0.35);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid white;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+/* COURSE IMAGE */
+
+.course-img {
+    width: 100%;
+    height: 160px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+}
+
+
+/* COURSE TITLE */
+
+.course-card h3 {
+    font-size: 22px;
+}
+
+
+/* COURSE CARD HOVER */
+
+.course-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 0 10px #00d4ff,
+        0 0 25px #00d4ff;
+}

@@ -1,0 +1,68 @@
+/* =================================
+   VIZAG JAMHUB - LOGO STYLES
+================================= */
+
+/* =================================
+   INDEX PAGE - OVERLAY LOGO
+================================= */
+
+#overlay-logo {
+
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 100vw;
+  max-width: 1200px;
+
+  z-index: 2;
+
+  opacity: 0.9;
+
+  pointer-events: none;
+
+  transition: opacity 0.5s ease;
+
+}
+
+
+
+
+/* ==========================================================
+   TOP PAGE LOGO
+   CATEGORY / LANGUAGE / OTHER PAGES USING TOP LOGO
+========================================================== */
+
+.top-logo {
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 10px;
+  padding-bottom: 0;
+
+  margin-top: -20px;
+  margin-bottom: -350px;
+
+  position: relative;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+}
+
+
+/* TOP PAGE LOGO IMAGE */
+
+.top-logo img {
+
+  width: 1000px;
+  max-width: 85%;
+
+}
