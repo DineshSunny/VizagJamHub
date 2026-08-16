@@ -1,106 +1,141 @@
-/* ================================
-   PAGE BEHAVIOUR - Vizag JamHub
-================================ */
+/* =================================
+   PAGE BEHAVIOUR - VIZAG JAMHUB
+================================= */
 
-// ✅ Always start page from top
-function resetScroll() {
-  window.scrollTo(0, 0);
+
+/* =================================
+   SCROLL RESTORATION
+================================= */
+
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
 }
 
-// ✅ Smooth scroll to top
-function smoothScrollTop() {
+
+/* =================================
+   SCROLL TO TOP
+================================= */
+
+function resetScroll() {
+
   window.scrollTo({
     top: 0,
+    left: 0,
+    behavior: "instant"
+  });
+
+}
+
+
+/* =================================
+   SMOOTH SCROLL TO TOP
+================================= */
+
+function smoothScrollTop() {
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
     behavior: "smooth"
   });
+
 }
 
-// ✅ Smart scroll controller
+
+/* =================================
+   SCROLL CONTROLLER
+================================= */
+
 function goTop(smooth = false) {
+
   if (smooth) {
     smoothScrollTop();
-  } else {
+  }
+  else {
     resetScroll();
   }
+
 }
 
-// ================================
-// 📱 MOBILE DETECTION
-// ================================
 
-function isMobile() {
-  return window.innerWidth <= 768;
-}
-
-// ================================
-// 📱 MOBILE UI ADJUSTMENTS
-// ================================
-
-function applyMobileFixes() {
-
-  if (!isMobile()) return;
-
-  document.body.style.fontSize = "14px";
-
-  const hero = document.querySelector(".hero-content");
-  if (hero) {
-    hero.style.padding = "20px";
-  }
-
-  const buttons = document.querySelectorAll(".lyrics-btn");
-  buttons.forEach(btn => {
-    btn.style.width = "90%";
-  });
-
-  const search = document.querySelector(".search-bar");
-  if (search) {
-    search.style.width = "90%";
-  }
-}
-
-// ================================
-// 🔗 SMOOTH ANCHOR SCROLL
-// ================================
+/* =================================
+   SMOOTH ANCHOR SCROLL
+================================= */
 
 function enableSmoothAnchors() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-    anchor.addEventListener('click', function(e) {
+  const anchors =
+    document.querySelectorAll(
+      'a[href^="#"]'
+    );
 
-      const target = document.querySelector(this.getAttribute('href'));
+  anchors.forEach(anchor => {
 
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({
-          behavior: 'smooth'
-        });
+    anchor.addEventListener(
+      "click",
+      function (event) {
+
+        const targetId =
+          this.getAttribute("href");
+
+        if (
+          !targetId ||
+          targetId === "#"
+        ) {
+          return;
+        }
+
+        const target =
+          document.querySelector(
+            targetId
+          );
+
+        if (target) {
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+
       }
-
-    });
+    );
 
   });
+
 }
 
-// ================================
-// 📱 RESIZE HANDLER
-// ================================
 
-function handleResize() {
-  applyMobileFixes();
-}
-
-// ================================
-// 🚀 INIT FUNCTION
-// ================================
+/* =================================
+   INITIALIZE PAGE BEHAVIOUR
+================================= */
 
 function initPageBehaviour() {
 
   resetScroll();
-  applyMobileFixes();
   enableSmoothAnchors();
 
-  window.addEventListener("resize", handleResize);
 }
 
-// ✅ Auto run
-document.addEventListener("DOMContentLoaded", initPageBehaviour);
+
+/* =================================
+   PAGE LOAD
+================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  initPageBehaviour
+);
+
+
+/* =================================
+   FORCE TOP AFTER REFRESH
+================================= */
+
+window.addEventListener(
+  "pageshow",
+  resetScroll
+);

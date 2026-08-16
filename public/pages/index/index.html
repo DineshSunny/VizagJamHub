@@ -29,170 +29,200 @@
 </head>
 
 
-<script>
-
-/* =================================
-   GALLERY IMAGE POPUP SCRIPT
-================================= */
-
-
-document.addEventListener('click', function(e){
-
-if(e.target.matches('.gallery-track img')){
-
-const popup = document.createElement('div');
-popup.classList.add('image-popup');
-
-popup.innerHTML = `<img src="${e.target.src}">`;
-
-document.body.appendChild(popup);
-
-const closePopup = () => {
-popup.remove();
-window.removeEventListener('scroll', closePopup);
-};
-
-setTimeout(() => {
-
-document.addEventListener('click', function outsideClick(event){
-
-if(!event.target.closest('.image-popup img')){
-closePopup();
-document.removeEventListener('click', outsideClick);
-}
-
-});
-
-},100);
-
-window.addEventListener('scroll', closePopup);
-
-}
-
-});
-
-</script>
-
-
-
-
-
-
+<body>
 
 
 <!-- FLOATING SOCIAL MEDIA BUTTONS -->
 
 <div class="floating-social">
 
-<!-- INSTAGRAM -->
+  <!-- INSTAGRAM -->
 
-<a
-href="https://instagram.com/vizag.jamhub"
-target="_blank"
-class="instagram-btn"
-title="Follow us on Instagram">
+  <a
+    href="https://instagram.com/vizag.jamhub"
+    target="_blank"
+    class="instagram-btn"
+    title="Follow us on Instagram">
 
-<i class="fab fa-instagram"></i>
+    <i class="fab fa-instagram"></i>
 
-</a>
+  </a>
 
-<!-- WHATSAPP -->
 
-<a
-href="https://wa.me/918463903833"
-target="_blank"
-class="whatsapp-btn"
-title="Chat on WhatsApp">
+  <!-- WHATSAPP -->
 
-<i class="fab fa-whatsapp"></i>
+  <a
+    href="https://wa.me/918463903833"
+    target="_blank"
+    class="whatsapp-btn"
+    title="Chat on WhatsApp">
 
-</a>
+    <i class="fab fa-whatsapp"></i>
+
+  </a>
 
 </div>
 
 
+<!-- =================================
+     VIDEO BACKGROUND
+================================= -->
 
+<video
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="metadata"
+  id="bg-video">
 
+  <source
+    src="/video/1.mp4"
+    type="video/mp4">
 
-
-<body>
-
-<!-- VIDEO BACKGROUND -->
-
-<video autoplay muted loop playsinline preload="metadata" id="bg-video">
-<source src="../../video/1.mp4" type="video/mp4">
 </video>
 
-<img src="images/logo.png" id="overlay-logo">
+
+<!-- =================================
+     OVERLAY LOGO
+================================= -->
+
+<img
+  src="/images/logo.png"
+  id="overlay-logo"
+  alt="Vizag JamHub">
 
 
 
-<!-- AUTO TYPING TEXT -->
 
-<div class="typing-text" id="live-text">
 
-<span id="typing"></span>
+
+<!-- =================================
+     AUTO TYPING TEXT
+================================= -->
+
+<div
+  class="typing-text"
+  id="live-text">
+
+  <span id="typing"></span>
 
 </div>
 
 
 
 
-<!-- FLOATING MUSIC NOTES -->
+
+<!-- =================================
+     FLOATING MUSIC NOTES
+================================= -->
 
 <div class="music-notes">
 
-<span>♪</span>
-<span>♫</span>
-<span>♬</span>
-<span>♩</span>
-<span>𝄞</span>
-<span>♭</span>
-<span>♯</span>
-<span>♬</span>
-<span>♫</span>
-<span>♪</span>
-<span>♩</span>
-<span>𝄢</span>
+  <span>♪</span>
+  <span>♫</span>
+  <span>♬</span>
+  <span>♩</span>
+  <span>𝄞</span>
+  <span>♭</span>
+  <span>♯</span>
+  <span>♬</span>
+  <span>♫</span>
+  <span>♪</span>
+  <span>♩</span>
+  <span>𝄢</span>
 
 </div>
 
-<!-- HEADER / NAVBAR -->
+
+
+
+
+<!-- =================================
+     HEADER / NAVBAR
+================================= -->
 
 <header>
 
-<nav>
+  <nav>
 
-<div class="menu-toggle">&#9776;</div>
+    <div class="menu-toggle">
+      &#9776;
+    </div>
 
-<ul class="nav-links">
-<li><a href="/index.html">Home</a></li>
-<li><a href="/category.html">Sing Along Lyrics</a></li>
-<li><a href="#shows">Shows</a></li>
-<li><a href="#school">School</a></li>
-<li><a href="#connect">Band Connect</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="/admin.html">Admin Panel</a></li>
-</ul>
+    <ul class="nav-links">
 
-</nav>
+      <li>
+        <a href="/">Home</a>
+      </li>
+
+      <li>
+        <a href="/pages/lyrics/category.html">
+          Sing Along Lyrics
+        </a>
+      </li>
+
+      <li>
+        <a href="#shows">Shows</a>
+      </li>
+
+      <li>
+        <a href="#school">School</a>
+      </li>
+
+      <li>
+        <a href="#connect">Band Connect</a>
+      </li>
+
+      <li>
+        <a href="#gallery">Gallery</a>
+      </li>
+
+      <li>
+        <a href="/pages/admin/admin.html">
+          Admin Panel
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
 
 </header>
 
-<!-- HERO SECTION -->
+
+
+<!-- =================================
+     HERO SECTION
+================================= -->
 
 <section class="hero">
 
-<div class="hero-content">
+  <div class="hero-content">
+
+  </div>
 
 </section>
 
+
+
+
+<!-- =================================
+     SING ALONG LYRICS
+================================= -->
 
 <section class="lyrics-section">
-<a href="/category.html" class="lyrics-btn">
-Sing Along Lyrics
-</a>
+
+  <a
+    href="/pages/lyrics/category.html"
+    class="lyrics-btn">
+
+    Sing Along Lyrics
+
+  </a>
+
 </section>
+
 
 <!-- =================================
      UPCOMING SHOWS
@@ -200,421 +230,346 @@ Sing Along Lyrics
 
 <section id="shows">
 
-<h1>Upcoming Shows</h1>
+  <h1>Upcoming Shows</h1>
 
-<!-- Shows will load here dynamically -->
+  <!-- Shows will load here dynamically -->
 
-<div class="cards" id="shows-container">
+  <div class="cards" id="shows-container">
 
-</div>
-
-</section>
-
-
-
-
-
-<!-- MUSIC SCHOOL -->
-
-<section id="school" class="guitar-school">
-
-<h2>Vizag JamHub School</h2>
-
-<p>Learn Music and develop real stage skills</p>
-
-<div class="guitar-courses">
-
-<a href="guitar.html">
-<div class="course-card">
-<img src="Images/Guitar.jpg" class="course-img">
-<h3>Guitar</h3>
-</div>
-</a>
-
-
-<a href="drums.html">
-<div class="course-card">
-<img src="Images/Drums.jpg" class="course-img">
-<h3>Drums</h3>
-</div>
-</a>
-
-
-<a href="vocals.html">
-<div class="course-card">
-<img src="Images/Vocals.jpg" class="course-img">
-<h3>Vocals</h3>
-</div>
-</a>
-
-</div>
+  </div>
 
 </section>
 
-
-<!-- BAND CONNECT -->
-
-<section id="connect">
-
-<h2>Band Connect</h2>
-
-<p>Looking for musicians? Connect with bands.</p>
-
-<form>
-
-<input placeholder="Your Name" required>
-
-<input placeholder="Instrument / Role">
-
-<textarea placeholder="Describe what you are looking for"></textarea>
-
-<button type="submit">Post</button>
-
-</form>
-
-</section>
-
-<!-- BOOK US -->
-
-<section id="book">
-
-<h2>Book Us</h2>
-
-<form>
-
-<input placeholder="Name" required>
-
-<input placeholder="Email">
-
-<input placeholder="Location">
-
-<input type="date">
-
-<textarea placeholder="Event Details"></textarea>
-
-<button type="submit">Submit</button>
-
-</form>
-
-</section>
-
-
-
-<!-- GALLERY -->
-
-<section id="gallery">
-
-<h2 style="text-align:center;">Gallery</h2>
-
-<div class="gallery-wrapper">
-
-<div class="gallery-track">
-
-<img src="Images/1.jpg">
-<img src="Images/2.jpg">
-<img src="Images/3.jpg">
-<img src="Images/4.jpg">
-<img src="Images/5.jpg">
-<img src="Images/6.jpg">
-<img src="Images/7.jpg">
-<img src="Images/8.jpg">
-<img src="Images/9.jpg">
-<img src="Images/10.jpg">
-<img src="Images/11.jpg">
-
-<img src="Images/1.jpg">
-<img src="Images/2.jpg">
-<img src="Images/3.jpg">
-<img src="Images/4.jpg">
-<img src="Images/5.jpg">
-<img src="Images/6.jpg">
-<img src="Images/7.jpg">
-<img src="Images/8.jpg">
-<img src="Images/9.jpg">
-<img src="Images/10.jpg">
-<img src="Images/11.jpg">
-
-
-</section>
-
-<script src="/js/smoothscroll.js"></script>
-<script src="/js/menu.js"></script>
 
 
 
 <!-- =================================
-     LOAD UPCOMING SHOWS
+     MUSIC SCHOOL
 ================================= -->
 
-<script src="/js/index.js"></script>
+<section id="school" class="guitar-school">
 
+  <h2>Vizag JamHub School</h2>
 
+  <p>
+    Learn Music and develop real stage skills
+  </p>
 
 
-<script>
+  <div class="guitar-courses">
 
-/* =================================
-   OVERLAY LOGO SCROLL FADE LOGO
-================================= */
 
-const overlayLogo = document.getElementById("overlay-logo");
-const lyricsSection = document.querySelector(".lyrics-section");
+    <!-- GUITAR -->
 
-window.addEventListener("scroll", () => {
+    <a href="/pages/academy/guitar.html">
 
-const lyricsBottom = lyricsSection.offsetTop + lyricsSection.offsetHeight;
+      <div class="course-card">
 
-if(window.scrollY > lyricsBottom - 800){
+        <img
+          src="/images/guitar.jpg"
+          class="course-img"
+          alt="Guitar">
 
-overlayLogo.style.opacity = "0";
+        <h3>Guitar</h3>
 
-}
-else{
+      </div>
 
-overlayLogo.style.opacity = "0.9";
+    </a>
 
-}
 
-});
+    <!-- DRUMS -->
 
-</script>
+    <a href="/pages/academy/drums.html">
 
+      <div class="course-card">
 
+        <img
+          src="/images/drums.jpg"
+          class="course-img"
+          alt="Drums">
 
+        <h3>Drums</h3>
 
+      </div>
 
+    </a>
 
-<script>
 
-/* =================================
-   LIVE TEXT SCROLL FADE
-================================= */
+    <!-- VOCALS -->
 
-const liveText =
-document.getElementById("live-text");
+    <a href="/pages/academy/vocals.html">
 
-window.addEventListener("scroll", () => {
+      <div class="course-card">
 
-const triggerPoint =
-lyricsSection.offsetTop - 800;
+        <img
+          src="/images/vocals.jpg"
+          class="course-img"
+          alt="Vocals">
 
-/* FADE OUT */
+        <h3>Vocals</h3>
 
-if(window.scrollY > triggerPoint){
+      </div>
 
-liveText.style.opacity = "0";
+    </a>
 
-}
 
-/* FADE IN */
+  </div>
 
-else{
+</section>
 
-liveText.style.opacity = "1";
 
-}
 
-});
 
-</script>
+<!-- =================================
+     BAND CONNECT
+================================= -->
 
+<section id="connect">
 
+  <h2>Band Connect</h2>
 
+  <p>
+    Looking for musicians? Connect with bands.
+  </p>
 
+  <form
+    action="/connect"
+    method="POST">
 
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      required>
 
+    <input
+      type="text"
+      name="instrument"
+      placeholder="Instrument / Role">
 
+    <textarea
+      name="description"
+      placeholder="Describe what you are looking for">
+    </textarea>
 
+    <button type="submit">
+      Post
+    </button>
 
-<script>
+  </form>
 
-const words = [
+</section>
 
-"LIVE MUSIC",
-"JAM SESSIONS",
-"VIZAG CULTURE",
-"NIGHT VIBES",
-"LIVE PERFORMANCES",
-"MUSIC COMMUNITY"
 
-];
 
-const typing = document.getElementById("typing");
+<!-- =================================
+     BOOK US
+================================= -->
 
-let index = 0;
+<section id="book">
 
-/* INITIAL */
+  <h2>Book Us</h2>
 
-typing.textContent = words[index];
+  <form
+    action="/book"
+    method="POST">
 
-typing.classList.add("show");
+    <input
+      type="text"
+      name="name"
+      placeholder="Name"
+      required>
 
-/* LOOP */
+    <input
+      type="email"
+      name="email"
+      placeholder="Email">
 
-setInterval(() => {
+    <input
+      type="text"
+      name="location"
+      placeholder="Location">
 
-/* FADE OUT */
+    <input
+      type="date"
+      name="date">
 
-typing.classList.remove("show");
+    <textarea
+      name="details"
+      placeholder="Event Details">
+    </textarea>
 
-typing.classList.add("hide");
+    <button type="submit">
+      Submit
+    </button>
 
-setTimeout(() => {
+  </form>
 
-/* CHANGE TEXT */
+</section>
 
-index = (index + 1) % words.length;
 
-typing.textContent = words[index];
 
-/* FADE IN */
 
-typing.classList.remove("hide");
 
-typing.classList.add("show");
 
-}, 900);
 
-}, 3200);
 
-</script>
+<!-- =================================
+     GALLERY
+================================= -->
 
+<section id="gallery">
 
+  <h2 style="text-align:center;">
+    Gallery
+  </h2>
 
+  <div class="gallery-wrapper">
 
+    <div class="gallery-track">
 
+      <img src="/images/1.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/2.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/3.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/4.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/5.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/6.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/7.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/8.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/9.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/10.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/11.jpg" alt="Vizag JamHub Gallery">
 
 
-<script>
+      <!-- DUPLICATE SET FOR CONTINUOUS GALLERY -->
 
-/* =================================
-   DRAG SCROLL GALLERY
-================================= */
+      <img src="/images/1.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/2.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/3.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/4.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/5.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/6.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/7.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/8.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/9.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/10.jpg" alt="Vizag JamHub Gallery">
+      <img src="/images/11.jpg" alt="Vizag JamHub Gallery">
 
-const slider =
-document.querySelector(".gallery-wrapper");
+    </div>
 
-let isDown = false;
-let startX;
-let scrollLeft;
+  </div>
 
-/* START DRAG ONLY WHEN MOUSE HELD */
+</section>
 
-slider.addEventListener("mousedown", (e) => {
 
-isDown = true;
 
-slider.style.cursor = "grabbing";
 
-startX = e.pageX - slider.offsetLeft;
-
-scrollLeft = slider.scrollLeft;
-
-});
-
-/* STOP */
-
-slider.addEventListener("mouseup", () => {
-
-isDown = false;
-
-slider.style.cursor = "default";
-
-});
-
-slider.addEventListener("mouseleave", () => {
-
-isDown = false;
-
-slider.style.cursor = "default";
-
-});
-
-/* DRAG */
-
-slider.addEventListener("mousemove", (e) => {
-
-if(!isDown) return;
-
-e.preventDefault();
-
-const x = e.pageX - slider.offsetLeft;
-
-const walk = (x - startX) * 2;
-
-slider.scrollLeft = scrollLeft - walk;
-
-});
-
-</script>
-
-
-
-
-
-
-
-
-
-<!-- FOOTER -->
+<!-- =================================
+     FOOTER
+================================= -->
 
 <footer class="site-footer">
 
-    <div class="footer-links">
+  <div class="footer-links">
 
-        <a href="/about-us.html">About Us</a>
+    <a href="/pages/otherpages/aboutus.html">
+      About Us
+    </a>
 
-        <span>|</span>
+    <span>|</span>
 
-        <a href="/our-team.html">Our Team</a>
+    <a href="/pages/otherpages/comingsoon.html">
+      Our Team
+    </a>
 
-        <span>|</span>
+    <span>|</span>
 
-        <a href="/faq.html">FAQ</a>
+    <a href="/pages/otherpages/comingsoon.html">
+      FAQ
+    </a>
 
-        <span>|</span>
+    <span>|</span>
 
-        <a href="/events.html">Events Calendar</a>
+    <a href="/pages/otherpages/comingsoon.html">
+      Events Calendar
+    </a>
 
-        <span>|</span>
+    <span>|</span>
 
-        <a href="/sponsors.html">Sponsors & Partners</a>
+    <a href="/pages/otherpages/comingsoon.html">
+      Sponsors & Partners
+    </a>
 
-        <span>|</span>
+    <span>|</span>
 
-        <a href="/community.html">Join Our Community</a>
+    <a href="/pages/otherpages/comingsoon.html">
+      Join Our Community
+    </a>
 
-        <span>|</span>
+    <span>|</span>
 
-        <a href="/volunteer.html">Volunteer</a>
+    <a href="/pages/otherpages/comingsoon.html">
+      Volunteer
+    </a>
 
-        <span>|</span>
+    <span>|</span>
 
-        <a href="/support.html">Support Us</a>
+    <a href="/pages/otherpages/comingsoon.html">
+      Support Us
+    </a>
 
-    </div>
+  </div>
 
-    <div class="footer-links">
 
-        <a href="/contactus.html">Contact Us</a>
+  <div class="footer-links">
 
-        <span>|</span>
+    <a href="/pages/otherpages/contactus.html">
+      Contact Us
+    </a>
 
-        <a href="/privacypolicy.html">Privacy Policy</a>
+    <span>|</span>
 
-        <span>|</span>
+    <a href="/pages/otherpages/privacypolicy.html">
+      Privacy Policy
+    </a>
 
-        <a href="/termsandconditions.html">Terms & Conditions</a>
+    <span>|</span>
 
-    </div>
+    <a href="/pages/otherpages/termsandconditions.html">
+      Terms & Conditions
+    </a>
 
-    <p class="footer-copyright">
+  </div>
 
-        © 2026 <strong>Vizag JamHub</strong>. All Rights Reserved.
 
-    </p>
+  <p class="footer-copyright">
+
+    © 2026 <strong>Vizag JamHub</strong>.
+    All Rights Reserved.
+
+  </p>
 
 </footer>
+
+
+
+
+
+
+<!-- =================================
+     JAVASCRIPT
+================================= -->
+
+<script src="/js/others/pagebehaviour.js"></script>
+
+<script src="/js/others/smoothscroll.js"></script>
+
+<script src="/js/mobile/mobile.js"></script>
+
+<script src="/js/index/menu.js"></script>
+
+<script src="/js/index/index.js"></script>
+
 
 
 
