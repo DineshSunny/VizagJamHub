@@ -1,0 +1,259 @@
+/* =================================
+   VIZAG JAMHUB - ADMIN FORMS
+================================= */
+
+
+/* =================================
+   LOGIN PAGE
+================================= */
+
+.login-section{
+
+height:100vh;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+}
+
+
+.login-title{
+
+font-size:40px;
+
+margin-bottom:40px;
+
+}
+
+
+.login-form{
+
+width:320px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+
+/* =================================
+   LOGIN INPUT
+================================= */
+
+.login-form input{
+
+padding:15px;
+
+border:1px solid rgba(255,255,255,0.3);
+
+border-radius:12px;
+
+background:rgba(255,255,255,0.1);
+
+backdrop-filter:blur(8px);
+
+-webkit-backdrop-filter:blur(8px);
+
+color:white;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+
+.login-form input::placeholder{
+
+color:rgba(255,255,255,0.7);
+
+}
+
+
+/* =================================
+   LOGIN ERROR
+================================= */
+
+#error{
+
+margin-top:10px;
+
+color:#ff6666;
+
+font-size:14px;
+
+min-height:20px;
+
+transition:0.3s;
+
+}
+
+
+/* =================================
+   PASSWORD FIELD
+================================= */
+
+.password-wrapper{
+
+position:relative;
+
+width:100%;
+
+}
+
+
+.password-wrapper input{
+
+width:100%;
+
+padding-right:50px;
+
+}
+
+
+.toggle-password{
+
+position:absolute;
+
+top:50%;
+
+right:15px;
+
+transform:translateY(-50%);
+
+cursor:pointer;
+
+color:white;
+
+font-size:18px;
+
+user-select:none;
+
+z-index:5;
+
+}
+
+
+/* =================================
+   LOGIN ERROR ANIMATION
+================================= */
+
+.shake{
+
+animation:shake 0.4s;
+
+}
+
+
+@keyframes shake{
+
+0%{
+transform:translateX(0);
+}
+
+25%{
+transform:translateX(-8px);
+}
+
+50%{
+transform:translateX(8px);
+}
+
+75%{
+transform:translateX(-8px);
+}
+
+100%{
+transform:translateX(0);
+}
+
+}
+
+
+/* =================================
+   CREATE SHOW FORM
+================================= */
+
+.create-show-form{
+
+margin-top:120px;
+
+display:grid;
+
+grid-template-columns:
+repeat(2, minmax(280px,1fr));
+
+gap:20px;
+
+max-width:900px;
+
+margin-left:auto;
+
+margin-right:auto;
+
+}
+
+
+/* =================================
+   CREATE SHOW INPUTS
+================================= */
+
+.create-show-form input,
+.create-show-form textarea{
+
+width:100%;
+
+padding:15px;
+
+border:1px solid rgba(255,255,255,0.3);
+
+border-radius:12px;
+
+background:rgba(255,255,255,0.1);
+
+backdrop-filter:blur(8px);
+
+color:white;
+
+font-size:16px;
+
+box-sizing:border-box;
+
+}
+
+
+/* =================================
+   CREATE SHOW PLACEHOLDER
+================================= */
+
+.create-show-form input::placeholder,
+.create-show-form textarea::placeholder{
+
+color:rgba(255,255,255,0.7);
+
+}
+
+
+/* =================================
+   EXTRA INFORMATION FIELD
+================================= */
+
+.extra-info{
+
+grid-column:1 / span 2;
+
+min-height:120px;
+
+resize:vertical;
+
+}

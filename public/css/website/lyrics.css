@@ -1,0 +1,371 @@
+/* =================================
+   VIZAG JAMHUB - LYRICS
+================================= */
+
+
+/* =================================
+   LANGUAGE PAGE
+================================= */
+
+.language-page #title{
+
+    margin-top:-80px;
+
+}
+
+
+/* =================================
+   LYRICS BACKGROUND VIDEO
+================================= */
+
+.lyrics-video{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100vw;
+    height:100vh;
+
+    object-fit:cover;
+
+    z-index:-3;
+
+    opacity:0.40;
+
+    filter:
+        brightness(0.40)
+        blur(2px);
+
+    pointer-events:none;
+
+    transform:scale(1.05);
+
+}
+
+
+/* =================================
+   LYRICS SEARCH
+================================= */
+
+.search-bar{
+
+    width:300px;
+
+    padding:12px;
+
+    margin:30px auto;
+
+    display:block;
+
+    background:black;
+
+    color:white;
+
+    border:1px solid white;
+
+    border-radius:10px;
+
+}
+
+
+/* =================================
+   LYRICS CONTAINER
+================================= */
+
+#lyrics-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+
+/* =================================
+   LYRICS SCROLLBAR
+================================= */
+
+#lyrics-container::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+#lyrics-container::-webkit-scrollbar-thumb{
+
+    background:#00d4ff;
+
+    border-radius:10px;
+
+}
+
+
+#lyrics-container::-webkit-scrollbar-track{
+
+    background:black;
+
+}
+
+
+/* =================================
+   SONG ITEMS
+================================= */
+
+.song-item{
+
+    padding:10px 5px;
+
+    cursor:pointer;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.1);
+
+    transition:0.2s;
+
+}
+
+
+.song-item:hover{
+
+    color:#00d4ff;
+
+    transform:translateX(5px);
+
+}
+
+
+/* =================================
+   LYRICS PAGE
+================================= */
+
+.lyrics-page{
+
+    padding-top:120px;
+
+    padding-left:20px;
+
+    padding-right:20px;
+
+    padding-bottom:20px;
+
+}
+
+
+.lyrics-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+
+/* =================================
+   LYRICS LANGUAGE TEXT
+================================= */
+
+.lyrics-page p{
+
+    font-size:18px;
+
+    line-height:1.9;
+
+}
+
+
+/* HINDI + TELUGU RENDERING */
+
+.lyrics-page p:lang(hi),
+.lyrics-page p{
+
+    font-family:
+        "Noto Sans Devanagari",
+        "Noto Sans Telugu",
+        sans-serif;
+
+}
+
+
+/* =================================
+   SONG LIST - LARGER TEXT
+================================= */
+
+.song-item{
+
+    font-size:20px;
+
+    padding:14px 18px;
+
+}
+
+
+.song-item span{
+
+    font-size:16px;
+
+    opacity:0.7;
+
+}
+
+
+/* =================================
+   LYRICS TEXT
+================================= */
+
+.lyrics-text{
+
+    margin-top:20px;
+
+    white-space:pre-line;
+
+    text-align:left;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+}
+
+
+/* =================================
+   CHORD PAGE
+================================= */
+
+.chord-section{
+
+    margin-top:25px;
+
+}
+
+
+.chord-heading{
+
+    color:#00d4ff;
+
+    font-size:1.2rem;
+
+    font-weight:bold;
+
+    font-style:italic;
+
+    text-transform:none;
+
+    margin:12px 0 4px;
+
+}
+
+
+.chord-lyric{
+
+    color:#00d4ff;
+
+    font-style:italic;
+
+    font-weight:600;
+
+    text-transform:none;
+
+    margin:8px 0 2px;
+
+}
+
+
+.chord-line{
+
+    color:#ffffff;
+
+    font-family:monospace;
+
+    white-space:pre-wrap;
+
+    line-height:1.25;
+
+    margin:0;
+
+}
+
+
+.chord-song-title{
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+
+.chord-movie{
+
+    opacity:0.7;
+
+    font-style:italic;
+
+    margin-bottom:30px;
+
+}
+
+
+/* =================================
+   TRANSPOSE SELECT
+================================= */
+
+.transpose-select{
+
+    appearance:none;
+
+    -webkit-appearance:none;
+
+    -moz-appearance:none;
+
+    min-width:170px;
+
+    height:46px;
+
+    padding:
+        0 45px 0 16px;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.08)
+        ),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='white'%3E%3Cpath d='M2 4l5 6 5-6'/%3E%3C/svg%3E")
+        no-repeat right 16px center;
+
+    background-color:
+        rgba(15,15,15,.55);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    border-radius:14px;
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+    cursor:pointer;
+
+    transition:
+        all .25s ease;
+
+}
