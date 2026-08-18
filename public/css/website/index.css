@@ -1,6 +1,62 @@
 
 
 /* =================================
+   VIZAG JAMHUB - INDEX
+================================= */
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+
+    height: 90vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+.hero h1 {
+
+    font-size: 60px;
+
+}
+
+
+.hero p {
+
+    font-size: 22px;
+
+}
+
+
+/* =================================
+   LIVE TYPING TEXT
+================================= */
+
+.typing-text {
+
+    /* your existing typing styles */
+
+}
+
+
+
+
+
+
+
+
+
+
+/* =================================
  LIVE TYPING TEXT
 ================================= */
 
