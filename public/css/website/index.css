@@ -352,3 +352,628 @@ section {
     color: #ddd;
 
 }
+
+
+/* =================================
+   UPCOMING SHOWS SECTION
+================================= */
+
+#shows {
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+}
+
+
+#shows h1 {
+
+    margin-bottom: 40px;
+
+    font-size: 42px;
+
+}
+
+
+/* =================================
+   UPCOMING SHOW CARDS
+================================= */
+
+#shows-container {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* =================================
+   UPCOMING SHOW CARD
+================================= */
+
+.show-card {
+
+    width: 320px;
+    height: 360px;
+
+    position: relative;
+
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    transition:
+        all 0.35s ease;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.6);
+
+}
+
+
+/* =================================
+   SHOW CARD DARK OVERLAY
+================================= */
+
+.show-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.1)
+        );
+
+}
+
+
+/* =================================
+   SHOW CARD INFORMATION
+================================= */
+
+.show-info {
+
+    position: relative;
+
+    padding: 20px;
+
+    width: 100%;
+
+    text-align: center;
+
+}
+
+
+/* =================================
+   SHOW CARD TITLE
+================================= */
+
+.show-info h3 {
+
+    margin-bottom: 8px;
+
+    font-size: 22px;
+    font-weight: 600;
+
+}
+
+
+/* =================================
+   SHOW CARD TEXT
+================================= */
+
+.show-info p {
+
+    margin: 4px 0;
+
+    font-size: 16px;
+
+    opacity: 0.9;
+
+}
+
+
+/* =================================
+   SHOW PRICE
+================================= */
+
+.show-price {
+
+    margin-top: 8px;
+
+    color: #00d4ff;
+
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+
+/* =================================
+   SHOW CARD HOVER
+================================= */
+
+.show-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff;
+
+}
+
+
+/* =================================
+   BOOK US
+================================= */
+
+#book {
+
+    text-align: center;
+
+}
+
+
+/* =================================
+   BOOK US FORM
+================================= */
+
+#book form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 550px;
+
+}
+
+
+/* =================================
+   BOOK US INPUTS
+================================= */
+
+#book input,
+#book textarea {
+
+    padding: 14px;
+
+    background: black;
+
+    color: white;
+
+    border:
+        1px solid white;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+
+}
+
+
+/* =================================
+   BOOK US TEXTAREA
+================================= */
+
+#book textarea {
+
+    height: 120px;
+
+    resize: none;
+
+}
+
+
+/* =================================
+   BOOK US BUTTON
+================================= */
+
+#book button {
+
+    width: 160px;
+
+    margin: auto;
+
+    padding: 12px;
+
+    background: black;
+
+    color: white;
+
+    border:
+        1px solid white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition:
+        0.25s;
+
+}
+
+
+/* =================================
+   BOOK US BUTTON HOVER
+================================= */
+
+#book button:hover {
+
+    background: #00d4ff;
+
+    color: black;
+
+    box-shadow:
+        0 0 15px #00d4ff;
+
+}
+
+
+/* =================================
+   BAND CONNECT
+================================= */
+
+#connect {
+
+    text-align: center;
+
+}
+
+
+/* =================================
+   BAND CONNECT FORM
+================================= */
+
+#connect form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 550px;
+
+}
+
+
+/* =================================
+   BAND CONNECT INPUTS
+================================= */
+
+#connect input,
+#connect textarea {
+
+    background: black;
+
+    color: white;
+
+    border:
+        1px solid white;
+
+    border-radius: 8px;
+
+    padding: 14px;
+
+    font-size: 16px;
+
+    outline: none;
+
+}
+
+
+/* =================================
+   BAND CONNECT TEXTAREA
+================================= */
+
+#connect textarea {
+
+    height: 120px;
+
+    resize: none;
+
+}
+
+
+/* =================================
+   BAND CONNECT BUTTON
+================================= */
+
+#connect button {
+
+    width: 160px;
+
+    margin: auto;
+
+    background: black;
+
+    color: white;
+
+    border:
+        1px solid white;
+
+    border-radius: 8px;
+
+    padding: 12px;
+
+    cursor: pointer;
+
+    transition:
+        0.25s;
+
+}
+
+
+/* =================================
+   BAND CONNECT BUTTON HOVER
+================================= */
+
+#connect button:hover {
+
+    background: #00d4ff;
+
+    color: black;
+
+    box-shadow:
+        0 0 15px #00d4ff;
+
+}
+
+
+/* =================================
+   GALLERY
+================================= */
+
+.gallery-wrapper {
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    width: 100vw;
+
+    position: relative;
+
+    margin-left:
+        calc(-50vw + 50%);
+
+    padding:
+        20px 0;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-x;
+
+    cursor: default;
+
+    user-select: none;
+
+}
+
+
+/* =================================
+   HIDE GALLERY SCROLLBAR
+================================= */
+
+.gallery-wrapper::-webkit-scrollbar {
+
+    display: none;
+
+}
+
+
+/* =================================
+   GALLERY TRACK
+================================= */
+
+.gallery-track {
+
+    display: flex;
+
+    gap: 20px;
+
+    width: fit-content;
+
+    animation:
+        scrollGallery 25s linear infinite;
+
+}
+
+
+/* =================================
+   PAUSE GALLERY ON HOVER
+================================= */
+
+.gallery-wrapper:hover .gallery-track {
+
+    animation-play-state: paused;
+
+}
+
+
+/* =================================
+   GALLERY IMAGES
+================================= */
+
+.gallery-track img {
+
+    width: 260px;
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    border:
+        1px solid white;
+
+    transition:
+        0.3s;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+    filter:
+        brightness(0.90)
+        contrast(0.92)
+        blur(0.90px);
+
+}
+
+
+/* =================================
+   GALLERY IMAGE HOVER
+================================= */
+
+.gallery-track img:hover {
+
+    transform:
+        scale(1.03);
+
+    box-shadow:
+        0 0 12px #00d4ff;
+
+}
+
+
+/* =================================
+   GALLERY AUTO SCROLL
+================================= */
+
+@keyframes scrollGallery {
+
+    0% {
+
+        transform:
+            translateX(0);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(-50%);
+
+    }
+
+}
+
+
+/* =================================
+   IMAGE POPUP
+================================= */
+
+.image-popup {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        rgba(0, 0, 0, 0.9);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+}
+
+
+/* =================================
+   POPUP IMAGE
+================================= */
+
+.image-popup img {
+
+    max-width: 40%;
+    max-height: 40%;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 30px #00d4ff;
+
+    animation:
+        zoomIn 0.3s ease;
+
+}
+
+
+/* =================================
+   POPUP ZOOM ANIMATION
+================================= */
+
+@keyframes zoomIn {
+
+    from {
+
+        transform:
+            scale(0.7);
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform:
+            scale(1);
+
+        opacity: 1;
+
+    }
+
+}
