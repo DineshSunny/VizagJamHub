@@ -1,26 +1,5 @@
 
-/* =================================
-   EXTRA INFORMATION FIELD
-================================= */
 
-.extra-info{
-
-height:120px;
-padding:12px;
-border-radius:6px;
-border:1px solid rgb(154, 131, 131);
-background:black;
-color:white;
-font-size:16px;
-resize:vertical;
-
-}
-
-.extra-info::placeholder{
-
-color:#bbb;
-
-}
 
 /* =================================
    DATE INPUT ICON FIX (ADMIN FORM)
@@ -31,7 +10,7 @@ color:#bbb;
 input[type="date"]::-webkit-calendar-picker-indicator{
 filter: invert(1);
 cursor:pointer;
-}
+} v b
 
 /* ===============================
 MANAGE SHOWS
