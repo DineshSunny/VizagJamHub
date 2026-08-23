@@ -1,17 +1,5 @@
 
 
-
-/* =================================
-   DATE INPUT ICON FIX (ADMIN FORM)
-   Makes the calendar icon visible
-   on dark background
-================================= */
-
-input[type="date"]::-webkit-calendar-picker-indicator{
-filter: invert(1);
-cursor:pointer;
-} v b
-
 /* ===============================
 MANAGE SHOWS
 =============================== */
