@@ -51,6 +51,24 @@ section {
 
 
 /* =================================
+   SING ALONG LYRICS SECTION
+================================= */
+
+.lyrics-section {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    margin: 60px auto;
+
+}
+
+
+/* =================================
    LIVE TYPING TEXT
 ================================= */
 
@@ -603,51 +621,6 @@ section {
 
 
 /* =================================
-   BOOK US BUTTON
-================================= */
-
-#book button {
-
-    width: 160px;
-
-    margin: auto;
-
-    padding: 12px;
-
-    background: black;
-
-    color: white;
-
-    border:
-        1px solid white;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    transition:
-        0.25s;
-
-}
-
-
-/* =================================
-   BOOK US BUTTON HOVER
-================================= */
-
-#book button:hover {
-
-    background: #00d4ff;
-
-    color: black;
-
-    box-shadow:
-        0 0 15px #00d4ff;
-
-}
-
-
-/* =================================
    BAND CONNECT
 ================================= */
 
@@ -713,51 +686,6 @@ section {
     height: 120px;
 
     resize: none;
-
-}
-
-
-/* =================================
-   BAND CONNECT BUTTON
-================================= */
-
-#connect button {
-
-    width: 160px;
-
-    margin: auto;
-
-    background: black;
-
-    color: white;
-
-    border:
-        1px solid white;
-
-    border-radius: 8px;
-
-    padding: 12px;
-
-    cursor: pointer;
-
-    transition:
-        0.25s;
-
-}
-
-
-/* =================================
-   BAND CONNECT BUTTON HOVER
-================================= */
-
-#connect button:hover {
-
-    background: #00d4ff;
-
-    color: black;
-
-    box-shadow:
-        0 0 15px #00d4ff;
 
 }
 

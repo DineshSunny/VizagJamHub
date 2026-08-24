@@ -513,3 +513,40 @@
 .coming-buttons a:hover {
 
 }
+
+
+/* =================================================================
+   INDEX PAGE - SING ALONG LYRICS BUTTON
+================================================================= */
+
+.lyrics-btn {
+
+    background: black;
+
+    color: white;
+
+    padding: 16px 40px;
+
+    font-size: 22px;
+
+    border: 1px solid white;
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+.lyrics-btn:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.03);
+
+    background: #111;
+
+    box-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff;
+}
