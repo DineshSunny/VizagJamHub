@@ -8,7 +8,7 @@
 ========================================================== */
 
 /*
-   Shared glass appearance will go here.
+   Shared glass appearance can go here later.
 
    Used as the common visual foundation for buttons
    across index, lyrics, academy, admin and other pages.
@@ -25,26 +25,23 @@
 /* disabled */
 
 
-
-
 /* =================================================================
    GLOBAL NAVIGATION BUTTONS
 ================================================================= */
 
-/* glass navigation links */
+
+/* GLASS NAVIGATION LINKS */
 
 .glass-nav a {
 
 }
 
 
-/* hamburger button */
+/* HAMBURGER BUTTON */
 
 .menu-toggle {
 
 }
-
-
 
 
 /* =================================================================
@@ -63,6 +60,36 @@
 
 #book button {
 
+    width: 160px;
+
+    margin: auto;
+
+    padding: 12px;
+
+    background: black;
+
+    color: white;
+
+    border: 1px solid white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+}
+
+
+#book button:hover {
+
+    background: #00d4ff;
+
+    color: black;
+
+    box-shadow:
+        0 0 15px #00d4ff;
+
 }
 
 
@@ -70,9 +97,37 @@
 
 #connect button {
 
+    width: 160px;
+
+    margin: auto;
+
+    padding: 12px;
+
+    background: black;
+
+    color: white;
+
+    border: 1px solid white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
 }
 
 
+#connect button:hover {
+
+    background: #00d4ff;
+
+    color: black;
+
+    box-shadow:
+        0 0 15px #00d4ff;
+
+}
 
 
 /* =================================================================
@@ -101,8 +156,6 @@
 }
 
 
-
-
 /* =================================================================
    LYRICS / CHORD BUTTONS
 ================================================================= */
@@ -115,20 +168,6 @@
 }
 
 
-/*
-   TRANSPOSE CONTROL
-
-   Technically a select rather than a button,
-   but we can keep its control styling here if you want.
-*/
-
-.transpose-select {
-
-}
-
-
-
-
 /* =================================================================
    ACADEMY - DRUM BUTTONS
 ================================================================= */
@@ -137,19 +176,20 @@
 
 }
 
+
 .drum-btn:hover {
 
 }
+
 
 .drum-buttons.preview-active .drum-btn {
 
 }
 
+
 .drum-buttons.preview-active .drum-btn.active {
 
 }
-
-
 
 
 /* =================================================================
@@ -160,19 +200,20 @@
 
 }
 
+
 .guitar-btn:hover {
 
 }
+
 
 .guitar-buttons.preview-active .guitar-btn {
 
 }
 
+
 .guitar-buttons.preview-active .guitar-btn.active {
 
 }
-
-
 
 
 /* =================================================================
@@ -183,19 +224,20 @@
 
 }
 
+
 .vocals-btn:hover {
 
 }
+
 
 .vocals-buttons.preview-active .vocals-btn:not(.active) {
 
 }
 
+
 .vocals-btn.active {
 
 }
-
-
 
 
 /* =================================================================
@@ -209,9 +251,11 @@
 
 }
 
+
 .final-enroll-btn.ready {
 
 }
+
 
 .final-enroll-btn.ready:hover {
 
@@ -239,8 +283,6 @@
 }
 
 
-
-
 /* =================================================================
    ACADEMY - PAYMENT BUTTONS
 ================================================================= */
@@ -249,11 +291,10 @@
 
 }
 
+
 .payment-button:hover {
 
 }
-
-
 
 
 /* =================================================================
@@ -264,6 +305,7 @@
 
 }
 
+
 .registered-primary-button:hover {
 
 }
@@ -272,6 +314,7 @@
 .registered-secondary-button {
 
 }
+
 
 .registered-secondary-button:hover:not(:disabled) {
 
@@ -287,21 +330,36 @@
 }
 
 
-
-
 /* =================================================================
    ADMIN - LOGIN BUTTON
 ================================================================= */
 
 .login-form button {
 
+    padding: 12px;
+
+    background: black;
+
+    border: 1px solid white;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+
 }
+
 
 .login-form button:hover {
 
+    box-shadow:
+        0 0 10px #00d4ff,
+        0 0 25px #00d4ff;
+
 }
-
-
 
 
 /* =================================================================
@@ -312,11 +370,10 @@
 
 }
 
+
 .admin-btn:hover {
 
 }
-
-
 
 
 /* =================================================================
@@ -327,11 +384,10 @@
 
 }
 
+
 .logout-btn:hover {
 
 }
-
-
 
 
 /* =================================================================
@@ -342,11 +398,10 @@
 
 }
 
+
 .create-show-form button:hover {
 
 }
-
-
 
 
 /* =================================================================
@@ -355,13 +410,28 @@
 
 .showButtons button {
 
+    padding: 6px 12px;
+
+    background: black;
+
+    border: 1px solid white;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
 }
+
 
 .showButtons button:hover {
 
+    box-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff;
+
 }
-
-
 
 
 /* =================================================================
@@ -370,13 +440,37 @@
 
 #ticketForm button {
 
+    padding: 14px;
+
+    background: black;
+
+    color: white;
+
+    border: 1px solid white;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
 }
+
 
 #ticketForm button:hover {
 
+    background: #00d4ff;
+
+    color: black;
+
+    box-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff,
+        0 0 40px #00d4ff;
+
 }
-
-
 
 
 /* =================================================================
@@ -387,11 +481,10 @@
 
 }
 
+
 .contact-form button:hover {
 
 }
-
-
 
 
 /* =================================================================
@@ -402,11 +495,10 @@
 
 }
 
+
 .error-buttons a:hover {
 
 }
-
-
 
 
 /* =================================================================
@@ -416,6 +508,7 @@
 .coming-buttons a {
 
 }
+
 
 .coming-buttons a:hover {
 
