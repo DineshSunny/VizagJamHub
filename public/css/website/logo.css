@@ -1,68 +1,61 @@
 /* =================================
-   VIZAG JAMHUB - LOGO STYLES
+   VIZAG JAMHUB - LOGO
 ================================= */
 
-/* =================================
-   INDEX PAGE - OVERLAY LOGO
-================================= */
+/* OVER LAY LOGO */
 
-#overlay-logo {
 
-  position: fixed;
+#overlay-logo{
+position:fixed;
 
-  top: 50%;
-  left: 50%;
+top:50%;
+left:50%;
 
-  transform: translate(-50%, -50%);
+transform:translate(-50%,-50%);
 
-  width: 100vw;
-  max-width: 1200px;
+width:100vw;
+max-width:1200px;
 
-  z-index: 2;
+z-index:2;
 
-  opacity: 0.9;
+opacity:0.9;
 
-  pointer-events: none;
+pointer-events:none;
 
-  transition: opacity 0.5s ease;
-
+transition:opacity 0.5s ease;
 }
 
 
+/* TOP PAGE LOGO NODIFIED PLACE FOR CATEGORY, LANGUAGE PAGE AND MORE*/
 
+.top-logo{
 
-/* ==========================================================
-   TOP PAGE LOGO
-   CATEGORY / LANGUAGE / OTHER PAGES USING TOP LOGO
-========================================================== */
+width:100%;
 
-.top-logo {
+display:flex;
+justify-content:center;
 
-  width: 100%;
+padding-top:10px;
+padding-bottom:5px;
 
-  display: flex;
-  justify-content: center;
+margin-top:-20px;
 
-  padding-top: 10px;
-  padding-bottom: 0;
+position:relative;
 
-  margin-top: -20px;
-  margin-bottom: -350px;
+z-index:5;
 
-  position: relative;
-
-  z-index: 5;
-
-  pointer-events: none;
+pointer-events:none;
 
 }
 
+.top-logo img{
 
-/* TOP PAGE LOGO IMAGE */
+width:1000px;
+max-width:85%;
 
-.top-logo img {
+}
 
-  width: 1000px;
-  max-width: 85%;
-
+.top-logo{
+padding-bottom:0;
+margin-bottom:-350px;
 }
