@@ -1,0 +1,38 @@
+/* =================================
+   VIZAG JAMHUB - MOBILE ABOUT
+================================= */
+
+.about-page {
+    padding: 120px 15px 60px;
+}
+
+.about-container {
+    padding: 30px 20px;
+    border-radius: 20px;
+}
+
+.about-container h1 {
+    font-size: 34px;
+    line-height: 1.4;
+}
+
+.about-intro {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.about-section {
+    margin-bottom: 35px;
+}
+
+.about-section h2 {
+    font-size: 24px;
+    padding-left: 12px;
+}
+
+.about-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: left;
+}

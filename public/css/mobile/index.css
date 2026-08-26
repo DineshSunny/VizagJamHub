@@ -1,0 +1,68 @@
+/* =================================
+   VIZAG JAMHUB - MOBILE INDEX
+================================= */
+
+/* HERO */
+.hero h1 {
+    font-size: 36px;
+}
+
+.hero p {
+    font-size: 16px;
+}
+
+.hero-content {
+    width: 95%;
+    max-width: 95%;
+    margin: auto;
+}
+
+/* SCHOOL CARDS */
+.guitar-courses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.course-card {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* UPCOMING SHOWS */
+#shows-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.show-card {
+    width: 92%;
+    height: 340px;
+}
+
+/* GALLERY */
+.gallery-track img {
+    width: 220px;
+    height: 150px;
+}
+
+.image-popup img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* LIVE TYPING TEXT */
+.typing-text {
+    position: fixed;
+    left: 50%;
+    top: 64%;
+    transform: translateX(-50%);
+    width: 85%;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    white-space: normal;
+}

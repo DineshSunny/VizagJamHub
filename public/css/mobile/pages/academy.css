@@ -1,0 +1,654 @@
+/* =================================
+   VIZAG JAMHUB - MOBILE ACADEMY
+================================= */
+
+/* =================================
+   INSTRUMENT LANDING / PREVIEW PAGES
+================================= */
+
+@media screen and (max-width: 768px) {
+
+    .drum-school,
+    .guitar-school-page,
+    .vocals-school-page {
+        width: 92%;
+        margin: 50px auto 80px;
+        padding: 0 10px;
+    }
+
+    .drum-school h1,
+    .guitar-school-page h1,
+    .vocals-school-page h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .drum-subtitle,
+    .guitar-subtitle,
+    .vocals-subtitle {
+        font-size: .95rem;
+        line-height: 1.7;
+        margin-bottom: 35px;
+    }
+
+    .drum-buttons,
+    .guitar-buttons,
+    .vocals-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .drum-preview,
+    .guitar-preview,
+    .vocals-preview {
+        min-height: auto;
+        text-align: left;
+        margin-top: 20px;
+        padding: 0;
+    }
+
+    .drum-preview h2,
+    .guitar-preview h2,
+    .vocals-preview h2 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+    }
+
+    .drum-preview p,
+    .guitar-preview p,
+    .vocals-preview p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .drum-preview ul,
+    .guitar-preview ul,
+    .vocals-preview ul {
+        padding-left: 20px;
+    }
+
+    .drum-preview li,
+    .guitar-preview li,
+    .vocals-preview li {
+        font-size: .95rem;
+        margin-bottom: 10px;
+    }
+
+    .drum-footer,
+    .guitar-footer,
+    .vocals-footer {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+}
+
+/* =================================
+   DETAILED ACADEMY COURSE PAGES
+================================= */
+
+@media screen and (max-width: 768px) {
+
+    .academy-course {
+        padding-top: 105px;
+        padding-bottom: 50px;
+    }
+
+    .course-hero {
+        width: 92%;
+        min-height: auto;
+        padding: 48px 20px;
+        margin-bottom: 30px;
+        border-radius: 20px;
+    }
+
+    .course-level {
+        padding: 7px 13px;
+        font-size: .68rem;
+        letter-spacing: 1.4px;
+    }
+
+    .course-hero h1 {
+        font-size: 2.6rem;
+        line-height: 1.08;
+        letter-spacing: -1px;
+    }
+
+    .course-hero h2 {
+        font-size: 1.05rem;
+    }
+
+    .course-hero-description {
+        max-width: 100%;
+        font-size: .93rem;
+        line-height: 1.75;
+    }
+
+    .course-stats {
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .course-stat {
+        padding: 9px 12px;
+        font-size: .78rem;
+    }
+
+    .course-section {
+        width: 92%;
+        margin-bottom: 20px;
+    }
+
+    .course-glass-card {
+        padding: 25px 19px;
+        border-radius: 18px;
+    }
+
+    .course-section-heading {
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .course-section-heading > span {
+        font-size: 1.9rem;
+    }
+
+    .course-section-heading p {
+        font-size: .64rem;
+        letter-spacing: 1.3px;
+    }
+
+    .course-section-heading h2 {
+        font-size: 1.45rem;
+    }
+
+    .learning-outcomes-list {
+        gap: 8px;
+    }
+
+    .learning-outcome summary {
+        padding: 15px;
+    }
+
+    .learning-outcome-title {
+        gap: 11px;
+    }
+
+    .learning-outcome-title > i {
+        width: 31px;
+        height: 31px;
+        font-size: .78rem;
+    }
+
+    .learning-outcome-title strong {
+        font-size: .9rem;
+    }
+
+    .learning-outcome-content {
+        padding: 0 15px 16px 57px;
+        font-size: .84rem;
+        line-height: 1.65;
+    }
+
+    .curriculum-intro {
+        font-size: .86rem;
+        line-height: 1.7;
+    }
+
+    .curriculum-module summary {
+        padding: 14px;
+        gap: 11px;
+    }
+
+    .module-number {
+        width: 39px;
+        height: 39px;
+        font-size: .75rem;
+    }
+
+    .curriculum-module summary small {
+        font-size: .57rem;
+    }
+
+    .curriculum-module summary strong {
+        font-size: .88rem;
+    }
+
+    .module-content {
+        padding: 0 15px 17px 64px;
+        font-size: .84rem;
+    }
+
+    .weekly-class h4 {
+        font-size: .82rem;
+    }
+
+    .weekly-class p,
+    .weekly-class li {
+        font-size: .8rem;
+        line-height: 1.6;
+    }
+
+    .song-language-options {
+        gap: 6px;
+    }
+
+    .song-language-options span {
+        padding: 5px 8px;
+        font-size: .65rem;
+    }
+
+    .includes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .include-card {
+        padding: 19px 17px;
+    }
+
+    .include-card > i {
+        font-size: 1.25rem;
+    }
+
+    .include-card h3 {
+        font-size: .9rem;
+    }
+
+    .include-card p {
+        font-size: .78rem;
+        line-height: 1.6;
+    }
+
+    .requirements-list li {
+        padding: 13px 0;
+        font-size: .85rem;
+        line-height: 1.55;
+    }
+
+    .instructor-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 17px;
+    }
+
+    .instructor-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+
+    .instructor-card h3 {
+        font-size: 1rem;
+    }
+
+    .instructor-card p {
+        font-size: .83rem;
+        line-height: 1.65;
+    }
+
+    .selection-description {
+        margin-bottom: 20px;
+        font-size: .92rem;
+        line-height: 1.65;
+    }
+
+    .class-format-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .class-format-card {
+        min-height: 100px;
+        padding: 16px;
+        gap: 13px;
+    }
+
+    .class-format-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .class-format-text small {
+        font-size: .66rem;
+        letter-spacing: 1px;
+    }
+
+    .class-format-text h3 {
+        font-size: 1.05rem;
+    }
+
+    .class-format-text p {
+        font-size: .82rem;
+        line-height: 1.5;
+    }
+
+    .class-format-check {
+        width: 24px;
+        height: 24px;
+    }
+
+    .schedule-selection-message {
+        margin-top: 13px;
+        padding: 10px;
+        font-size: .78rem;
+    }
+
+    .class-time-section,
+    .batch-selection-section {
+        margin-top: 22px;
+        padding-top: 20px;
+    }
+
+    .class-time-heading {
+        margin-bottom: 14px;
+    }
+
+    .class-time-heading small {
+        font-size: .67rem;
+        letter-spacing: 1.1px;
+    }
+
+    .class-time-heading h3 {
+        font-size: 1.18rem;
+    }
+
+    .class-time-heading p {
+        font-size: .84rem;
+        line-height: 1.5;
+    }
+
+    .class-time-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .class-time-card {
+        min-height: 65px;
+        padding: 12px 14px;
+        gap: 12px;
+    }
+
+    .class-time-card > i {
+        font-size: 1rem;
+    }
+
+    .class-time-card small {
+        font-size: .61rem;
+        letter-spacing: .8px;
+    }
+
+    .class-time-card strong {
+        font-size: .92rem;
+    }
+
+    .time-check {
+        width: 21px;
+        height: 21px;
+    }
+
+    .batch-grid {
+        grid-template-columns: 1fr;
+        gap: 11px;
+        margin-top: 14px;
+    }
+
+    .batch-card {
+        padding: 15px;
+    }
+
+    .batch-card-header {
+        padding-bottom: 11px;
+        margin-bottom: 4px;
+    }
+
+    .batch-card-header small {
+        font-size: .65rem;
+        letter-spacing: 1.1px;
+    }
+
+    .batch-card-header h3 {
+        font-size: 1rem;
+        line-height: 1.35;
+    }
+
+    .batch-check {
+        width: 24px;
+        height: 24px;
+    }
+
+    .batch-class-row {
+        grid-template-columns: 38px minmax(0,1fr) auto;
+        gap: 8px;
+        min-height: 42px;
+    }
+
+    .batch-day {
+        font-size: .67rem;
+        font-weight: 700;
+    }
+
+    .batch-class-name {
+        font-size: .82rem;
+        font-weight: 400;
+    }
+
+    .batch-time-display {
+        font-size: .76rem;
+    }
+
+    .class-format-option:hover .class-format-card,
+    .class-time-option:hover .class-time-card,
+    .batch-option:hover .batch-card,
+    .batch-option input:checked + .batch-card {
+        transform: none;
+    }
+
+    .course-pricing-card {
+        padding: 38px 20px;
+        text-align: center;
+    }
+
+    .course-pricing-card h2 {
+        font-size: 1.45rem;
+    }
+
+    .course-price {
+        font-size: 3rem;
+    }
+
+    .price-description {
+        font-size: .87rem;
+    }
+
+    .price-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .price-features span {
+        font-size: .8rem;
+    }
+
+    .course-faq summary,
+    .policy-item summary {
+        padding: 16px;
+        font-size: .87rem;
+    }
+
+    .course-faq summary {
+        gap: 12px;
+    }
+
+    .course-faq details p,
+    .policy-content {
+        padding: 0 16px 16px;
+        font-size: .82rem;
+        line-height: 1.65;
+    }
+
+    .agreement-intro {
+        font-size: .85rem;
+        line-height: 1.65;
+    }
+
+    .agreement-option {
+        padding: 14px;
+        gap: 11px;
+        font-size: .82rem;
+        line-height: 1.5;
+    }
+
+    .custom-checkbox {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
+    .agreement-status {
+        padding: 13px;
+        font-size: .78rem;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .secure-enrollment {
+        font-size: .7rem;
+        line-height: 1.5;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .course-hero {
+        width: 94%;
+        padding: 42px 17px;
+    }
+
+    .course-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .course-hero h2 {
+        font-size: .98rem;
+    }
+
+    .course-hero-description {
+        font-size: .87rem;
+    }
+
+    .course-stats {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .course-stat {
+        justify-content: center;
+    }
+
+    .course-section {
+        width: 94%;
+    }
+
+    .course-glass-card {
+        padding: 23px 16px;
+    }
+
+    .course-section-heading > span {
+        font-size: 1.65rem;
+    }
+
+    .course-section-heading h2 {
+        font-size: 1.28rem;
+    }
+
+    .learning-outcome-content {
+        padding: 0 14px 15px;
+        margin-top: 3px;
+    }
+
+    .module-content {
+        padding: 0 14px 16px;
+    }
+
+    .class-format-card {
+        align-items: center;
+        padding: 14px;
+    }
+
+    .class-format-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .class-format-text h3 {
+        font-size: 1rem;
+    }
+
+    .class-format-text p {
+        font-size: .78rem;
+    }
+
+    .class-time-card {
+        min-height: 62px;
+        padding: 11px 12px;
+    }
+
+    .class-time-card strong {
+        font-size: .88rem;
+    }
+
+    .batch-card {
+        padding: 13px;
+    }
+
+    .batch-card-header {
+        align-items: flex-start;
+    }
+
+    .batch-card-header h3 {
+        font-size: .94rem;
+    }
+
+    .batch-class-row {
+        grid-template-columns: 35px minmax(0,1fr);
+        gap: 2px 7px;
+        padding: 7px 0;
+        min-height: auto;
+    }
+
+    .batch-day {
+        grid-row: 1 / span 2;
+        align-self: center;
+        font-size: .64rem;
+    }
+
+    .batch-class-name {
+        grid-column: 2;
+        overflow: visible;
+        font-size: .8rem;
+        line-height: 1.3;
+        white-space: normal;
+        text-overflow: clip;
+    }
+
+    .batch-time-display {
+        grid-column: 2;
+        color: #888;
+        font-size: .72rem;
+        line-height: 1.3;
+    }
+
+    .batch-option input:checked + .batch-card .batch-time-display {
+        color: #00d4ff;
+    }
+
+    .course-price {
+        font-size: 2.7rem;
+    }
+}

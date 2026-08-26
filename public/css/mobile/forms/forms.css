@@ -1,0 +1,9 @@
+/* =================================
+   VIZAG JAMHUB - MOBILE SHARED FORMS
+================================= */
+
+#book form,
+#connect form,
+#ticketForm {
+    width: 95%;
+}

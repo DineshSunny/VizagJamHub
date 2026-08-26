@@ -1,0 +1,37 @@
+/* =================================
+   VIZAG JAMHUB - MOBILE LEGAL
+================================= */
+
+.legal-page {
+    padding: 120px 15px 60px;
+}
+
+.legal-container {
+    padding: 30px 20px;
+    border-radius: 20px;
+}
+
+.legal-container h1 {
+    font-size: 34px;
+    line-height: 1.4;
+}
+
+.legal-updated {
+    font-size: 14px;
+    margin-bottom: 35px;
+}
+
+.legal-section {
+    margin-bottom: 35px;
+}
+
+.legal-section h2 {
+    font-size: 24px;
+    padding-left: 12px;
+}
+
+.legal-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: left;
+}

@@ -1,0 +1,23 @@
+/* =================================
+   VIZAG JAMHUB - MOBILE LOGO
+================================= */
+
+/* HOME OVERLAY LOGO */
+#overlay-logo {
+    width: 170vw;
+    max-width: none;
+}
+
+/* SUBPAGE TOP LOGO */
+.top-logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 65px;
+    padding-bottom: 80px;
+}
+
+.top-logo img {
+    width: 700px;
+    max-width: none;
+    height: auto;
+}

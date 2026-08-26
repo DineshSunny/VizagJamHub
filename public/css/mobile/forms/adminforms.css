@@ -1,0 +1,9 @@
+/* =================================
+   VIZAG JAMHUB - MOBILE ADMIN FORMS
+================================= */
+
+.create-show-form {
+    grid-template-columns: 1fr !important;
+    width: 95%;
+    margin-top: 40px;
+}

@@ -1,0 +1,95 @@
+/* =================================
+   VIZAG JAMHUB - MOBILE BUTTONS
+================================= */
+
+/* INDEX - SING ALONG */
+.lyrics-btn {
+    font-size: 18px;
+    padding: 14px 28px;
+}
+
+/* ADMIN */
+.admin-btn {
+    width: 90%;
+    max-width: 320px;
+}
+
+.logout-btn {
+    width: 180px;
+    margin: 40px auto 0;
+}
+
+/* ADMIN FORM */
+.create-show-form button {
+    width: 100%;
+}
+
+/* CONTACT */
+.contact-card a {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    font-size: 17px;
+}
+
+/* ERROR */
+.error-buttons a {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+}
+
+/* COMING SOON */
+.coming-buttons a {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+}
+
+/* ACADEMY INSTRUMENT BUTTONS */
+@media screen and (max-width: 768px) {
+    .drum-btn,
+    .guitar-btn,
+    .vocals-btn {
+        width: 100%;
+        max-width: 320px;
+        height: 56px;
+        font-size: 1rem;
+    }
+
+    .final-enroll-btn {
+        width: 100%;
+        min-height: 58px;
+        font-size: .9rem;
+    }
+
+    .registered-primary-button,
+    .registered-secondary-button {
+        width: 100%;
+        min-height: 52px;
+        padding: 13px 17px;
+        font-size: .78rem;
+    }
+
+    .registered-access-card .registered-primary-button,
+    .registered-access-card .registered-secondary-button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .drum-btn,
+    .guitar-btn,
+    .vocals-btn {
+        font-size: .95rem;
+    }
+
+    .final-enroll-btn {
+        font-size: .84rem;
+    }
+}

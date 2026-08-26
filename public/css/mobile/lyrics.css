@@ -1,0 +1,32 @@
+/* =================================
+   VIZAG JAMHUB - MOBILE LYRICS
+================================= */
+
+.search-bar {
+    width: 90%;
+}
+
+.song-item {
+    font-size: 18px;
+}
+
+.lyrics-text {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* CATEGORY / LANGUAGE LIVE TEXT */
+.category-page .typing-text,
+.language-page .typing-text {
+    top: 40%;
+}
+
+/* LANGUAGE TITLE */
+.language-page #title {
+    white-space: nowrap;
+    font-size: 30px;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    pointer-events: none;
+}
