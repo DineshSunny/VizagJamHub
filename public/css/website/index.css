@@ -1,0 +1,585 @@
+/* =================================
+   VIZAG JAMHUB - INDEX
+================================= */
+
+/* =========================
+   CINEMATIC LIVE TEXT
+========================= */
+
+.typing-text{
+
+position:fixed;
+
+top:68%;
+left:50%;
+
+transform:translateX(-50%);
+
+font-size:34px;
+
+font-weight:700;
+
+letter-spacing:8px;
+
+text-transform:uppercase;
+
+white-space:nowrap;
+
+color:rgba(255,255,255,0.92);
+
+transition:opacity 0.8s ease;
+
+z-index:5;
+
+pointer-events:none;
+
+/* PREMIUM GLOW */
+
+text-shadow:
+0 0 10px rgba(255,255,255,0.12),
+0 0 20px rgba(0,212,255,0.25),
+0 0 40px rgba(0,212,255,0.12);
+
+/* FLOAT */
+
+animation:
+glassFloat 8s ease-in-out infinite;
+
+}
+
+/* FLOATING MOTION */
+
+@keyframes glassFloat{
+
+0%{
+
+transform:
+translateX(-50%)
+translateY(0px);
+
+}
+
+50%{
+
+transform:
+translateX(-50%)
+translateY(-6px);
+
+}
+
+100%{
+
+transform:
+translateX(-50%)
+translateY(0px);
+
+}
+
+}
+
+/* FADE STATES */
+
+#typing{
+
+transition:
+opacity 0.18s ease,
+filter 0.18s ease;
+
+}
+
+/* SHOW */
+
+.show{
+
+opacity:1;
+
+filter:blur(0px);
+
+}
+
+/* HIDE */
+
+.hide{
+
+opacity:0;
+
+filter:blur(10px);
+
+}
+
+
+
+/* TOP PAGE LIVE TEXT MODIFIED PLACE FOR CATEGORY, LANGUAGE PAGE, SONG SELECTION PAGE AND MORE*/
+
+.category-page .typing-text{
+
+position:absolute;
+
+top:36%;
+
+left:51%;
+
+animation:none;
+
+pointer-events:none;
+
+}
+
+
+/* TOP PAGE LIVE TEXT MODIFIED PLACE FOR LANGUAGE PAGE AND MORE*/
+
+.language-page .typing-text{
+
+position:absolute;
+
+top:37%;
+
+left:51%;
+
+animation:none;
+
+pointer-events:none;
+
+}
+
+
+/* SELECT SCRIPT TITLE MODIFIED PLACE FOR LANGUAGE PAGE */
+
+.language-page #title{
+
+margin-top:-80px;
+
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:60px;
+}
+
+.hero p{
+font-size:22px;
+}
+
+
+
+
+/* GLOBAL SECTION CONTAINER FOR HERO, SHOWS, SCHOOL, BAND CONNECT, GALLERY AND MORE */
+
+section{
+padding:60px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+
+/******************************************************  STYLE FOR MUSIC SCHOOL ON INDEX PAGE  ******************************************************/
+
+.guitar-school{
+text-align:center;
+}
+
+.guitar-courses{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.guitar-courses a{
+text-decoration:none;
+color:inherit;
+}
+
+.course-card{
+background:rgba(20,20,20,0.35);
+
+backdrop-filter:blur(12px);
+
+-webkit-backdrop-filter:blur(12px);
+padding:25px;
+border-radius:10px;
+width:250px;
+cursor:pointer;
+transition:0.25s;
+border:1px solid white;
+}
+
+.course-card:hover{
+transform:translateY(-8px);
+box-shadow:
+0 0 10px #00d4ff,
+0 0 25px #00d4ff;
+}
+
+.course-img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:8px;
+margin-bottom:15px;
+}
+
+.course-card h3{
+font-size:22px;
+}
+
+/* SHOW CARDS */
+
+
+
+.card{
+background:rgba(20,20,20,0.35);
+
+backdrop-filter:blur(12px);
+
+-webkit-backdrop-filter:blur(12px);
+padding:25px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.8);
+transition:0.3s;
+min-height:140px;
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.03);
+background:#111;
+box-shadow:
+0 0 10px #00d4ff,
+0 0 20px #00d4ff;
+}
+
+.card h3{
+margin-bottom:12px;
+font-size:22px;
+}
+
+.card p{
+margin:5px 0;
+color:#ddd;
+}
+
+
+/* ===============================
+UPCOMING SHOW CARDS
+=============================== */
+
+#shows-container{
+
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+
+}
+
+
+/* SHOW CARD */
+
+.show-card{
+
+width:320px;
+height:360px;
+
+position:relative;
+
+background-size:cover;
+background-position:center;
+
+border-radius:14px;
+
+overflow:hidden;
+
+display:flex;
+align-items:flex-end;
+
+border:1px solid rgba(255,255,255,0.15);
+
+transition:all 0.35s ease;
+
+box-shadow:0 4px 15px rgba(0,0,0,0.6);
+
+}
+
+
+/* DARK OVERLAY FOR TEXT VISIBILITY */
+
+.show-card::before{
+
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:linear-gradient(
+to top,
+rgba(0,0,0,0.9),
+rgba(0,0,0,0.5),
+rgba(0,0,0,0.1)
+);
+
+}
+
+
+/* TEXT CONTAINER */
+
+.show-info{
+
+position:relative;
+
+padding:20px;
+
+width:100%;
+
+text-align:center;
+
+}
+
+
+/* TITLE */
+
+.show-info h3{
+
+margin-bottom:8px;
+font-size:22px;
+font-weight:600;
+
+}
+
+
+/* TEXT */
+
+.show-info p{
+
+margin:4px 0;
+font-size:16px;
+opacity:0.9;
+
+}
+
+
+/* PRICE */
+
+.show-price{
+
+margin-top:8px;
+font-weight:bold;
+color:#00d4ff;
+font-size:18px;
+
+}
+
+
+/* HOVER EFFECT (same glow as other cards) */
+
+.show-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+0 0 10px #00d4ff,
+0 0 20px #00d4ff;
+
+}
+
+/* GALLERY */
+
+.gallery-wrapper{
+
+overflow-x:auto;
+overflow-y:hidden;
+
+width:100vw;
+
+position:relative;
+
+margin-left:calc(-50vw + 50%);
+
+padding:20px 0;
+
+scroll-behavior:smooth;
+
+cursor:grab;
+
+scrollbar-width:none;
+
+-webkit-overflow-scrolling:touch;
+
+touch-action:pan-x;
+
+}
+
+/* HIDE SCROLLBAR */
+
+.gallery-wrapper::-webkit-scrollbar{
+display:none;
+}
+
+
+
+.gallery-track{
+display:flex;
+gap:20px;
+animation:scrollGallery 25s linear infinite;
+width:fit-content;
+}
+
+/* PAUSE AUTO SCROLL DURING INTERACTION */
+
+
+
+.gallery-wrapper:hover .gallery-track{
+
+animation-play-state:paused;
+
+}
+
+.gallery-track img{
+width:260px;
+height:180px;
+object-fit:cover;
+border-radius:12px;
+border:1px solid white;
+transition:0.3s;
+cursor:pointer;
+flex-shrink:0;
+
+filter:brightness(0.90) contrast(0.92) blur(0.90px);
+}
+
+.gallery-track img:hover{
+transform:scale(1.03);
+box-shadow:0 0 12px #00d4ff;
+}
+
+@keyframes scrollGallery{
+0%{
+transform:translateX(0);
+}
+100%{
+transform:translateX(-50%);
+}
+}
+
+/* DESKTOP DRAGGING */
+
+.gallery-wrapper{
+cursor:default;
+user-select:none;
+}
+
+
+
+
+/* IMAGE POPUP / FULLSCREEN VIEW */
+
+.image-popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.image-popup img{
+max-width:40%;
+max-height:40%;
+border-radius:15px;
+box-shadow:0 0 30px #00d4ff;
+animation:zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn{
+from{
+transform:scale(0.7);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+
+
+
+/* =================================
+   UPCOMING SHOWS SECTION
+================================= */
+
+#shows{
+text-align:center;
+padding:80px 20px;
+}
+
+#shows h1{
+margin-bottom:40px;
+font-size:42px;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+}
+
+/* ===============================
+   LYRICS BUTTON (MATCH SITE STYLE)
+=============================== */
+
+.lyrics-section{
+display:flex;
+justify-content:center;
+margin:50px 0 20px;
+}/* HOVER — SAME AS YOUR SHOW CARDS */
+
+
+
+.lyrics-section{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  margin:60px auto;
+}
+
+
+.search-bar{
+  width:300px;
+  padding:12px;
+  margin:30px auto;
+  display:block;
+  background:black;
+  color:white;
+  border:1px solid white;
+  border-radius:10px;
+}
+
+/* SECTION SCROLL OFFSET FIX */
+
+#shows,
+#school,
+#connect,
+#gallery,
+#book{
+
+scroll-margin-top:120px;
+
+}

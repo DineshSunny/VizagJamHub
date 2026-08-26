@@ -1,12 +1,12 @@
 /* =================================
-   VIZAG JAMHUB - ABOUT PAGE
+   VIZAG JAMHUB - LEGAL PAGES
 ================================= */
 
 /* ===========================================
-   ABOUT US PAGE
+   LEGAL PAGES
 =========================================== */
 
-.about-page{
+.legal-page{
 
 width:100%;
 
@@ -26,7 +26,7 @@ z-index:2;
 
 }
 
-.about-container{
+.legal-container{
 
 width:100%;
 
@@ -42,57 +42,55 @@ border:1px solid rgba(255,255,255,.15);
 
 border-radius:25px;
 
-padding:55px;
+padding:50px;
 
 box-shadow:0 20px 50px rgba(0,0,0,.35);
 
 }
 
-.about-container h1{
-
-text-align:center;
+.legal-container h1{
 
 color:#ffffff;
 
 font-size:48px;
 
-margin-bottom:20px;
+text-align:center;
+
+margin-bottom:15px;
 
 }
 
-.about-container h1 i{
+.legal-container h1 i{
 
 margin-right:12px;
 
 }
 
-.about-intro{
-
-color:#ffffff;
-
-font-size:20px;
-
-line-height:1.9;
+.legal-updated{
 
 text-align:center;
+
+color:#d9d9d9;
+
+font-size:16px;
 
 margin-bottom:45px;
 
 }
 
-.about-section{
+.legal-section{
 
-margin-bottom:40px;
+margin-bottom:45px;
 
 }
 
-.about-section:last-child{
+.legal-section:last-child{
 
 margin-bottom:0;
 
 }
 
-.about-section h2{
+.legal-section h2{
 
 color:#ffffff;
 
@@ -100,13 +98,13 @@ font-size:30px;
 
 margin-bottom:18px;
 
-padding-left:15px;
-
 border-left:4px solid #ffffff;
+
+padding-left:15px;
 
 }
 
-.about-section p{
+.legal-section p{
 
 color:#ffffff;
 
@@ -115,5 +113,11 @@ font-size:18px;
 line-height:1.9;
 
 text-align:justify;
+
+}
+
+.legal-section strong{
+
+color:#ffffff;
 
 }

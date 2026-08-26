@@ -1,0 +1,1901 @@
+/* =================================
+   VIZAG JAMHUB - ACADEMY COURSE PAGES
+================================= */
+
+/* ==========================================================
+                    DRUM SCHOOL
+========================================================== */
+
+.drum-school{
+
+width:min(1000px,92%);
+
+margin:80px auto 120px;
+
+text-align:center;
+
+position:relative;
+
+z-index:5;
+
+animation:fadeUp .6s ease;
+
+}
+
+.drum-school h1{
+
+font-size:3rem;
+
+color:#fff;
+
+margin-bottom:14px;
+
+letter-spacing:2px;
+
+font-weight:700;
+
+}
+
+.drum-school h1 i{
+
+color:#4db8ff;
+
+margin-right:12px;
+
+}
+
+/* ==========================================================
+                    BUTTONS
+========================================================== */
+
+.drum-buttons{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:28px;
+
+flex-wrap:wrap;
+
+transition:.35s ease;
+
+margin-bottom:35px;
+
+}/* Long Premium Glass Buttons */
+/* ==========================================================
+            HOVER EFFECT
+========================================================== */
+
+
+
+/* ==========================================================
+                PREVIEW TEXT
+========================================================== */
+
+.drum-preview{
+
+max-width:850px;
+
+margin:15px auto 0;
+
+text-align:left;
+
+color:#fff;
+
+line-height:2;
+
+min-height:420px;
+
+animation:fadeText .35s ease;
+
+}
+
+
+
+.drum-preview h2{
+
+font-size:2.3rem;
+
+margin-bottom:18px;
+
+color:#fff;
+
+}
+
+.drum-preview p{
+
+font-size:1.05rem;
+
+color:#d9d9d9;
+
+margin-bottom:28px;
+
+line-height:2;
+
+}
+
+.drum-preview h3{
+
+margin-bottom:15px;
+
+font-size:1.3rem;
+
+color:#fff;
+
+}
+
+.drum-preview ul{
+
+padding-left:22px;
+
+margin-bottom:30px;
+
+}
+
+.drum-preview li{
+
+margin-bottom:12px;
+
+font-size:1.03rem;
+
+}
+
+.drum-duration{
+
+margin-top:25px;
+
+font-size:1.1rem;
+
+font-weight:600;
+
+color:#fff;
+
+}
+
+
+/* ==========================================================
+                    ANIMATIONS
+========================================================== */
+
+@keyframes fadeText{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+
+/* ==========================================================
+                    GUITAR SCHOOL
+========================================================== */
+
+.guitar-school-page{
+
+width:min(1000px,92%);
+
+margin:80px auto 120px;
+
+text-align:center;
+
+position:relative;
+
+z-index:5;
+
+animation:fadeUp .6s ease;
+
+}
+
+.guitar-school-page h1{
+
+font-size:3rem;
+
+color:#fff;
+
+margin-bottom:14px;
+
+letter-spacing:2px;
+
+font-weight:700;
+
+}
+
+/* ==========================================================
+                    BUTTONS
+========================================================== */
+
+.guitar-buttons{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:28px;
+
+flex-wrap:wrap;
+
+transition:.35s ease;
+
+margin-bottom:35px;
+
+}/* ==========================================================
+                HOVER EFFECT
+========================================================== */
+
+
+/* ==========================================================
+                PREVIEW
+========================================================== */
+
+.guitar-preview{
+
+max-width:850px;
+
+margin:15px auto 0;
+
+text-align:left;
+
+color:#fff;
+
+line-height:2;
+
+min-height:420px;
+
+animation:fadeText .35s ease;
+
+}
+
+.guitar-preview h2{
+
+font-size:2.3rem;
+
+margin-bottom:18px;
+
+color:#fff;
+
+}
+
+.guitar-preview p{
+
+font-size:1.05rem;
+
+color:#d9d9d9;
+
+margin-bottom:28px;
+
+line-height:2;
+
+}
+
+.guitar-preview ul{
+
+padding-left:22px;
+
+margin-bottom:30px;
+
+}
+
+.guitar-preview li{
+
+margin-bottom:12px;
+
+font-size:1.03rem;
+
+}
+
+.guitar-footer{
+
+display:flex;
+
+gap:35px;
+
+margin-top:20px;
+
+font-size:1rem;
+
+font-weight:600;
+
+color:#fff;
+
+}
+
+.guitar-footer span{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.guitar-footer i{
+
+color:#4db8ff;
+
+}
+
+
+
+/*==========================================================
+                    VOCALS SCHOOL
+==========================================================*/
+
+.vocals-school-page{
+width:min(1100px,90%);
+margin:80px auto 120px;
+text-align:center;
+position:relative;
+z-index:2;
+}
+
+.vocals-school-page h1{
+font-size:3rem;
+color:#fff;
+margin-bottom:35px;
+font-weight:700;
+}
+
+.vocals-buttons{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+margin-bottom:40px;
+transition:.35s;
+}
+
+.vocals-preview{
+max-width:900px;
+margin:auto;
+min-height:320px;
+color:#fff;
+text-align:left;
+animation:fadeIn .3s ease;
+}
+
+.vocals-preview h2{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+.vocals-preview p{
+font-size:1.08rem;
+line-height:1.8;
+margin-bottom:22px;
+color:#e6e6e6;
+}
+
+.vocals-preview ul{
+padding-left:22px;
+}
+
+.vocals-preview li{
+margin-bottom:10px;
+font-size:1.02rem;
+}
+
+.vocals-content{
+animation:fadeIn .3s ease;
+}
+
+.vocals-footer{
+margin-top:30px;
+display:flex;
+gap:40px;
+font-size:1rem;
+color:#d9d9d9;
+}
+
+.vocals-footer i{
+margin-right:8px;
+color:#3db8ff;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* =================================================================================================
+   VIZAG JAMHUB MUSIC ACADEMY
+   MASTER COURSE PAGE — UPDATED
+================================================================================================= */
+
+.academy-course{
+    position:relative;
+    z-index:5;
+    width:100%;
+    padding:120px 0 80px;
+}
+
+
+/* =================================================================================================
+   COURSE HERO
+================================================================================================= */
+
+.course-hero{
+    width:min(1100px,92%);
+    min-height:560px;
+    margin:0 auto 50px;
+    padding:70px 50px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+    overflow:hidden;
+
+    text-align:center;
+
+    background:rgba(15,15,15,.36);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:28px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.course-hero::before{
+    content:"";
+
+    position:absolute;
+    width:500px;
+    height:500px;
+
+    top:-300px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#00d4ff;
+    opacity:.10;
+
+    filter:blur(110px);
+
+    pointer-events:none;
+}
+
+
+/* Beginner badge */
+
+.course-level{
+    position:relative;
+    z-index:1;
+
+    padding:8px 18px;
+    margin-bottom:20px;
+
+    border:1px solid rgba(0,212,255,.35);
+    border-radius:100px;
+
+    background:rgba(0,212,255,.08);
+
+    color:#62ddff;
+
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+
+/* Hero title */
+
+.course-hero h1{
+    position:relative;
+    z-index:1;
+
+    margin-bottom:12px;
+
+    color:#fff;
+
+    font-size:4.5rem;
+    line-height:1.05;
+    letter-spacing:-2px;
+
+    text-shadow:
+        0 0 25px rgba(0,212,255,.15);
+}
+
+.course-hero h2{
+    position:relative;
+    z-index:1;
+
+    margin-bottom:25px;
+
+    color:#b9b9b9;
+
+    font-size:1.3rem;
+    font-weight:500;
+}
+
+.course-hero-description{
+    position:relative;
+    z-index:1;
+
+    max-width:700px;
+    margin-bottom:38px;
+
+    color:#d5d5d5;
+
+    font-size:1.05rem;
+    line-height:1.9;
+}
+
+
+/* =================================================================================================
+   COURSE STATS
+================================================================================================= */
+
+.course-stats{
+    position:relative;
+    z-index:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin:0;
+}
+
+.course-stat{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    padding:11px 17px;
+
+    background:rgba(255,255,255,.045);
+
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:100px;
+
+    color:#e8e8e8;
+
+    font-size:.9rem;
+}
+
+.course-stat i{
+    color:#00d4ff;
+}
+
+
+/* =================================================================================================
+   COURSE SECTIONS
+================================================================================================= */
+
+.course-section{
+    width:min(1000px,92%);
+    margin:0 auto 35px;
+    padding:0;
+}
+
+.course-glass-card{
+    width:100%;
+
+    padding:45px;
+
+    background:rgba(20,20,20,.40);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.11);
+    border-radius:22px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.22);
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.course-glass-card:hover{
+    border-color:rgba(0,212,255,.22);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.30),
+        0 0 25px rgba(0,212,255,.04);
+}
+
+.course-glass-card > p{
+    margin-bottom:17px;
+
+    color:#d0d0d0;
+
+    line-height:1.9;
+}
+
+
+/* =================================================================================================
+   SECTION HEADINGS
+================================================================================================= */
+
+.course-section-heading{
+    display:flex;
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:32px;
+}
+
+.course-section-heading > span{
+    color:rgba(0,212,255,.20);
+
+    font-size:2.7rem;
+    font-weight:700;
+    line-height:1;
+}
+
+.course-section-heading p{
+    margin-bottom:4px;
+
+    color:#00d4ff;
+
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.course-section-heading h2{
+    color:#fff;
+
+    font-size:2rem;
+    line-height:1.2;
+}
+
+
+/* =================================================================================================
+   REUSABLE ACCORDION
+   Used for What You'll Learn and similar expandable sections
+================================================================================================= */
+
+.learning-outcomes-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.learning-outcome{
+    overflow:hidden;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:13px;
+
+    transition:
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.learning-outcome:hover{
+    border-color:rgba(0,212,255,.25);
+}
+
+.learning-outcome[open]{
+    background:rgba(0,212,255,.035);
+
+    border-color:rgba(0,212,255,.22);
+}
+
+.learning-outcome summary{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px 20px;
+
+    cursor:pointer;
+    list-style:none;
+    user-select:none;
+
+    color:#eee;
+
+    font-weight:600;
+}
+
+.learning-outcome summary::-webkit-details-marker{
+    display:none;
+}
+
+.learning-outcome summary::marker{
+    display:none;
+}
+
+.learning-outcome summary > span{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+}
+
+.learning-outcome summary > span i{
+    width:20px;
+
+    color:#00d4ff;
+
+    text-align:center;
+}
+
+.learning-outcome summary > i{
+    color:#00d4ff;
+
+    transition:transform .3s ease;
+}
+
+.learning-outcome[open] summary > i{
+    transform:rotate(45deg);
+}
+
+.learning-outcome-content{
+    padding:0 55px 20px;
+
+    color:#bbb;
+
+    font-size:.9rem;
+    line-height:1.8;
+}
+
+
+/* =================================================================================================
+   COURSE CURRICULUM
+================================================================================================= */
+
+.curriculum-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.curriculum-module{
+    overflow:hidden;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+
+    transition:
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.curriculum-module:hover{
+    border-color:rgba(0,212,255,.25);
+}
+
+.curriculum-module[open]{
+    background:rgba(0,212,255,.025);
+}
+
+.curriculum-module summary{
+    display:flex;
+    align-items:center;
+
+    gap:18px;
+
+    padding:20px;
+
+    cursor:pointer;
+    list-style:none;
+    user-select:none;
+}
+
+.curriculum-module summary::-webkit-details-marker{
+    display:none;
+}
+
+.curriculum-module summary::marker{
+    display:none;
+}
+
+.module-number{
+    width:45px;
+    height:45px;
+
+    flex-shrink:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,212,255,.08);
+
+    border:1px solid rgba(0,212,255,.20);
+    border-radius:10px;
+
+    color:#00d4ff;
+
+    font-size:.85rem;
+    font-weight:700;
+}
+
+.curriculum-module summary div{
+    flex:1;
+}
+
+.curriculum-module summary small{
+    display:block;
+
+    margin-bottom:3px;
+
+    color:#888;
+
+    font-size:.67rem;
+    letter-spacing:1.5px;
+}
+
+.curriculum-module summary strong{
+    color:#eee;
+
+    font-size:1rem;
+}
+
+.curriculum-module summary > i{
+    color:#00d4ff;
+
+    transition:transform .3s ease;
+}
+
+.curriculum-module[open] summary > i{
+    transform:rotate(45deg);
+}
+
+.module-content{
+    padding:0 25px 25px 83px;
+
+    color:#c8c8c8;
+
+    line-height:1.8;
+}
+
+.module-content p{
+    margin-bottom:12px;
+}
+
+.module-content ul{
+    padding-left:20px;
+}
+
+.module-content li{
+    margin-bottom:8px;
+}
+
+
+/* =================================================================================================
+   COURSE INCLUDES
+================================================================================================= */
+
+.includes-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+}
+
+.include-card{
+    padding:25px 20px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:15px;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.include-card:hover{
+    transform:translateY(-5px);
+
+    border-color:rgba(0,212,255,.30);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
+}
+
+.include-card > i{
+    margin-bottom:17px;
+
+    color:#00d4ff;
+
+    font-size:1.5rem;
+}
+
+.include-card h3{
+    margin-bottom:8px;
+
+    color:#eee;
+
+    font-size:1rem;
+}
+
+.include-card p{
+    margin:0;
+
+    color:#aaa;
+
+    font-size:.85rem;
+    line-height:1.7;
+}
+
+
+/* =================================================================================================
+   REQUIREMENTS
+================================================================================================= */
+
+.requirements-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:14px;
+
+    margin:0;
+    padding:0;
+
+    list-style:none;
+}
+
+.requirements-list li{
+    display:flex;
+    align-items:flex-start;
+
+    gap:13px;
+
+    color:#d5d5d5;
+
+    line-height:1.7;
+}
+
+.requirements-list i{
+    margin-top:6px;
+
+    color:#00d4ff;
+}
+
+
+/* =================================================================================================
+   INSTRUCTOR
+================================================================================================= */
+
+.instructor-card{
+    display:flex;
+    align-items:center;
+
+    gap:25px;
+}
+
+.instructor-icon{
+    width:100px;
+    height:100px;
+
+    flex-shrink:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,212,255,.08);
+
+    border:1px solid rgba(0,212,255,.25);
+    border-radius:50%;
+
+    box-shadow:
+        0 0 25px rgba(0,212,255,.08);
+}
+
+.instructor-icon i{
+    color:#00d4ff;
+
+    font-size:2rem;
+}
+
+.instructor-card h3{
+    margin-bottom:4px;
+
+    color:#fff;
+
+    font-size:1.25rem;
+}
+
+.instructor-role{
+    margin-bottom:10px !important;
+
+    color:#00d4ff !important;
+
+    font-size:.85rem;
+}
+
+.instructor-card p{
+    color:#bbb;
+
+    line-height:1.8;
+}
+
+
+
+/* =================================================================================================
+   CHOOSE YOUR CLASS
+================================================================================================= */
+
+.selection-description{
+    margin:0 0 24px;
+    color:#aaa;
+    font-size:.9rem;
+    line-height:1.7;
+}
+
+/* STEP 1 — ONLINE / IN PERSON */
+.class-format-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+    margin-top:25px;
+}
+
+.class-format-option,
+.class-time-option,
+.batch-option{
+    position:relative;
+    display:block;
+    cursor:pointer;
+}
+
+.class-format-option input,
+.class-time-option input,
+.batch-option input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+
+.class-format-card{
+    position:relative;
+    min-height:115px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:19px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+    transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;
+}
+
+.class-format-option:hover .class-format-card{
+    transform:translateY(-2px);
+    border-color:rgba(0,212,255,.28);
+    background:rgba(255,255,255,.04);
+}
+
+.class-format-option input:checked + .class-format-card{
+    transform:translateY(-1px);
+    border-color:rgba(0,212,255,.60);
+    background:rgba(0,212,255,.06);
+    box-shadow:0 0 20px rgba(0,212,255,.07);
+}
+
+.class-format-icon{
+    width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    border-radius:12px;
+    background:rgba(0,212,255,.07);
+    color:#00d4ff;
+    font-size:1.05rem;
+}
+
+.class-format-text{flex:1;}
+.class-format-text small{
+    display:block;
+    margin-bottom:3px;
+    color:#00d4ff;
+    font-size:.56rem;
+    font-weight:700;
+    letter-spacing:1.2px;
+}
+.class-format-text h3{
+    margin:0 0 4px;
+    color:#eee;
+    font-size:.95rem;
+    font-weight:600;
+}
+.class-format-text p{
+    margin:0;
+    color:#888;
+    font-size:.73rem;
+    line-height:1.5;
+}
+
+.class-format-check,
+.time-check,
+.batch-check{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+    color:transparent;
+    transition:.22s ease;
+}
+.class-format-check{width:24px;height:24px;font-size:.58rem;}
+.time-check{width:20px;height:20px;font-size:.5rem;}
+.batch-check{width:23px;height:23px;font-size:.58rem;}
+
+.class-format-option input:checked + .class-format-card .class-format-check,
+.class-time-option input:checked + .class-time-card .time-check,
+.batch-option input:checked + .batch-card .batch-check{
+    color:#061014;
+    background:#00d4ff;
+    border-color:#00d4ff;
+}
+
+/* SELECT FORMAT MESSAGE */
+.schedule-selection-message{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    margin-top:16px;
+    padding:12px;
+    color:#777;
+    font-size:.76rem;
+    text-align:center;
+}
+.schedule-selection-message i{color:#00d4ff;font-size:.7rem;}
+
+/* STEP 2 — CLASS TIME */
+.class-time-section{
+    margin-top:26px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+.class-time-heading{margin-bottom:16px;}
+.class-time-heading small{
+    display:block;
+    margin-bottom:5px;
+    color:#00d4ff;
+    font-size:.58rem;
+    font-weight:700;
+    letter-spacing:1.3px;
+}
+.class-time-heading h3{
+    margin:0 0 5px;
+    color:#eee;
+    font-size:1rem;
+    font-weight:600;
+}
+.class-time-heading p{
+    margin:0;
+    color:#777;
+    font-size:.75rem;
+    line-height:1.5;
+}
+
+.class-time-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+}
+.class-time-card{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    min-height:68px;
+    padding:13px 14px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.075);
+    border-radius:11px;
+    transition:transform .22s ease,border-color .22s ease,background .22s ease;
+}
+.class-time-option:hover .class-time-card{
+    transform:translateY(-1px);
+    border-color:rgba(0,212,255,.25);
+}
+.class-time-option input:checked + .class-time-card{
+    border-color:rgba(0,212,255,.55);
+    background:rgba(0,212,255,.055);
+}
+.class-time-card > i{color:#00d4ff;font-size:.9rem;}
+.class-time-card > span{display:flex;flex-direction:column;flex:1;}
+.class-time-card small{
+    margin-bottom:2px;
+    color:#666;
+    font-size:.5rem;
+    font-weight:700;
+    letter-spacing:.8px;
+}
+.class-time-card strong{color:#ccc;font-size:.75rem;font-weight:500;}
+
+/* STEP 3 — AVAILABLE BATCHES */
+.batch-selection-section{
+    margin-top:26px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+.batch-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+    margin-top:16px;
+}
+.batch-card{
+    height:100%;
+    padding:16px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.075);
+    border-radius:12px;
+    transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;
+}
+.batch-option:hover .batch-card{
+    transform:translateY(-2px);
+    border-color:rgba(0,212,255,.28);
+    background:rgba(255,255,255,.038);
+}
+.batch-option input:checked + .batch-card{
+    transform:translateY(-1px);
+    background:rgba(0,212,255,.055);
+    border-color:rgba(0,212,255,.55);
+    box-shadow:0 0 20px rgba(0,212,255,.07);
+}
+.batch-card-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding-bottom:11px;
+    margin-bottom:4px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+.batch-card-header small{
+    display:block;
+    margin-bottom:3px;
+    color:#00d4ff;
+    font-size:.55rem;
+    font-weight:700;
+    letter-spacing:1.2px;
+}
+.batch-card-header h3{
+    margin:0;
+    color:#ddd;
+    font-size:.86rem;
+    font-weight:500;
+    line-height:1.3;
+}
+.batch-class-list{display:flex;flex-direction:column;}
+.batch-class-row{
+    display:grid;
+    grid-template-columns:34px minmax(0,1fr) auto;
+    align-items:center;
+    gap:9px;
+    min-height:37px;
+    border-bottom:1px solid rgba(255,255,255,.04);
+}
+.batch-class-row:last-child{border-bottom:none;}
+.batch-day{
+    color:#707070;
+    font-size:.6rem;
+    font-weight:600;
+    letter-spacing:.5px;
+}
+.batch-class-name{
+    overflow:hidden;
+    color:#aaa;
+    font-size:.72rem;
+    font-weight:400;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.batch-time-display{
+    color:#858585;
+    font-size:.68rem;
+    font-weight:400;
+    white-space:nowrap;
+}
+.batch-option input:checked + .batch-card .batch-card-header h3{color:#f2f2f2;}
+.batch-option input:checked + .batch-card .batch-class-name{color:#ccc;}
+.batch-option input:checked + .batch-card .batch-time-display{color:#00d4ff;}
+
+/* HIDDEN STEP SECTIONS */
+.class-time-section[hidden],
+.batch-selection-section[hidden],
+.schedule-selection-message[hidden]{
+    display:none !important;
+}
+
+
+/* =================================================================================================
+   PRICING
+================================================================================================= */
+
+.course-pricing-card{
+    padding:60px 40px;
+
+    text-align:center;
+}
+
+.pricing-label{
+    color:#00d4ff !important;
+
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.course-pricing-card h2{
+    margin-bottom:10px;
+
+    color:#fff;
+
+    font-size:2rem;
+}
+
+.course-price{
+    margin:10px 0;
+
+    color:#fff;
+
+    font-size:4rem;
+    font-weight:700;
+    line-height:1.2;
+
+    text-shadow:
+        0 0 25px rgba(0,212,255,.20);
+}
+
+.price-description{
+    color:#aaa !important;
+}
+
+.price-features{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin-top:28px;
+}
+
+.price-features span{
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    color:#ccc;
+
+    font-size:.9rem;
+}
+
+.price-features i{
+    color:#00d4ff;
+}
+
+
+/* =================================================================================================
+   FAQ
+================================================================================================= */
+
+.course-faq{
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.course-faq details{
+    overflow:hidden;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:12px;
+}
+
+.course-faq summary{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px 20px;
+
+    cursor:pointer;
+    list-style:none;
+
+    color:#eee;
+
+    font-weight:600;
+}
+
+.course-faq summary::-webkit-details-marker{
+    display:none;
+}
+
+.course-faq summary::marker{
+    display:none;
+}
+
+.course-faq summary i{
+    color:#00d4ff;
+
+    transition:transform .3s ease;
+}
+
+.course-faq details[open] summary i{
+    transform:rotate(45deg);
+}
+
+.course-faq details p{
+    padding:0 20px 20px;
+    margin:0;
+
+    color:#bbb;
+
+    font-size:.9rem;
+    line-height:1.8;
+}
+
+
+/* =================================================================================================
+   STUDENT POLICIES
+================================================================================================= */
+
+.policy-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.policy-item{
+    overflow:hidden;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:13px;
+}
+
+.policy-item summary{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    padding:20px;
+
+    cursor:pointer;
+    list-style:none;
+
+    color:#eee;
+
+    font-weight:600;
+}
+
+.policy-item summary::-webkit-details-marker{
+    display:none;
+}
+
+.policy-item summary::marker{
+    display:none;
+}
+
+.policy-item summary span{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+}
+
+.policy-item summary span i{
+    width:22px;
+
+    color:#00d4ff;
+
+    text-align:center;
+}
+
+.policy-item summary > i{
+    color:#888;
+
+    transition:
+        transform .3s ease,
+        color .3s ease;
+}
+
+.policy-item[open] summary > i{
+    transform:rotate(180deg);
+
+    color:#00d4ff;
+}
+
+.policy-content{
+    padding:0 25px 22px 55px;
+}
+
+.policy-content p{
+    margin-bottom:12px;
+
+    color:#bbb;
+
+    font-size:.9rem;
+    line-height:1.8;
+}
+
+
+/* =================================================================================================
+   STUDENT AGREEMENT
+================================================================================================= */
+
+.agreement-card{
+    border-color:rgba(0,212,255,.18);
+}
+
+.agreement-intro{
+    margin-bottom:25px !important;
+
+    color:#aaa !important;
+}
+
+.agreement-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.agreement-option{
+    display:flex;
+    align-items:flex-start;
+
+    gap:15px;
+
+    padding:18px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:12px;
+
+    color:#ccc;
+
+    font-size:.9rem;
+    line-height:1.6;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease;
+}
+
+.agreement-option:hover{
+    background:rgba(0,212,255,.04);
+
+    border-color:rgba(0,212,255,.20);
+}
+
+.agreement-option input{
+    position:absolute;
+
+    opacity:0;
+    pointer-events:none;
+}
+
+
+/* Custom checkbox */
+
+.custom-checkbox{
+    width:21px;
+    height:21px;
+    min-width:21px;
+
+    margin-top:2px;
+
+    position:relative;
+
+    background:rgba(0,0,0,.25);
+
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:5px;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.agreement-option input:checked + .custom-checkbox{
+    background:#00d4ff;
+
+    border-color:#00d4ff;
+
+    box-shadow:
+        0 0 12px rgba(0,212,255,.35);
+}
+
+.agreement-option input:checked + .custom-checkbox::after{
+    content:"✓";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-53%);
+
+    color:#001015;
+
+    font-size:.8rem;
+    font-weight:900;
+}
+
+
+/* =================================================================================================
+   AGREEMENT STATUS
+================================================================================================= */
+
+.agreement-status{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:10px;
+
+    margin:30px 0 18px;
+
+    color:#888;
+
+    font-size:.85rem;
+}
+
+.agreement-status.accepted{
+    color:#00d4ff;
+}
+
+
+/* =================================================================================================
+   FINAL REGISTRATION BUTTON
+================================================================================================= */
+
+.final-enroll-btn{
+    width:100%;
+    min-height:60px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:12px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:12px;
+
+    color:#666;
+
+    font-size:1rem;
+    font-weight:700;
+
+    cursor:not-allowed;
+
+    transition:
+        transform .3s ease,
+        color .3s ease,
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.final-enroll-btn.ready{
+    cursor:pointer;
+
+    color:#fff;
+
+    background:rgba(0,212,255,.13);
+
+    border-color:rgba(0,212,255,.65);
+
+    box-shadow:
+        0 0 15px rgba(0,212,255,.10);
+}
+
+.final-enroll-btn.ready:hover{
+    transform:translateY(-2px);
+
+    background:rgba(0,212,255,.22);
+
+    box-shadow:
+        0 0 15px rgba(0,212,255,.30),
+        0 0 35px rgba(0,212,255,.12);
+}
+
+.secure-enrollment{
+    margin-top:15px !important;
+    margin-bottom:0 !important;
+
+    color:#666 !important;
+
+    text-align:center;
+
+    font-size:.75rem;
+}
+
+.secure-enrollment i{
+    margin-right:5px;
+}
+
+
+
+
+/* ==========================================================
+   CLASS SCHEDULE — FONT SIZE REFINEMENT
+========================================================== */
+
+/* Intro description */
+.selection-description{
+    font-size:1rem;
+}
+
+/* Online / In Person labels */
+.class-format-text small{
+    font-size:.72rem;
+}
+
+.class-format-text h3{
+    font-size:1.2rem;
+}
+
+.class-format-text p{
+    font-size:.9rem;
+}
+
+
+/* STEP 2 — Class Time */
+
+.class-time-heading small{
+    font-size:.72rem;
+}
+
+.class-time-heading h3{
+    font-size:1.3rem;
+}
+
+.class-time-heading p{
+    font-size:.9rem;
+}
+
+
+/* 5–6 / 6–7 / 7–8 time cards */
+
+.class-time-card small{
+    font-size:.65rem;
+}
+
+.class-time-card strong{
+    font-size:1rem;
+}
+
+
+/* STEP 3 — Available Batches */
+
+.batch-step-label{
+    font-size:.72rem;
+}
+
+.batch-section-title{
+    font-size:1.3rem;
+}
+
+.batch-selection-context{
+    font-size:.9rem;
+}
+
+
+/* Batch headings */
+
+.batch-card-label{
+    font-size:.7rem;
+}
+
+.batch-card h3{
+    font-size:1.1rem;
+}
+
+
+/* MON / WED / FRI etc. */
+
+.batch-day{
+    font-size:.72rem;
+}
+
+
+/* Theory / Practical / Song */
+
+.batch-class-name{
+    font-size:.9rem;
+}
+
+
+/* Class time inside batch */
+
+.batch-class-time{
+    font-size:.82rem;
+}

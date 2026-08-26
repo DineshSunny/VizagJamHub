@@ -2,101 +2,66 @@
    VIZAG JAMHUB - LOGIN FORMS
 ================================= */
 
+/* LOGIN PAGE */
 
-/* =================================
-   LOGIN SECTION
-================================= */
+.login-section{
 
-.login-section {
-
-    min-height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
 
 }
 
+.login-title{
 
-/* =================================
-   LOGIN TITLE
-================================= */
-
-.login-title {
-
-    font-size: 60px;
-
-    margin-bottom: 40px;
+font-size:40px;
+margin-bottom:40px;
 
 }
 
+.login-form{
 
-/* =================================
-   LOGIN FORM
-================================= */
-
-.login-form {
-
-    width: 320px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 15px;
+width:320px;
+display:flex;
+flex-direction:column;
+gap:15px;
 
 }
 
-/* =================================
-   LOGIN INPUTS
-================================= */
+/* LOGIN INPUT */
 
-.login-form input {
+.login-form input{
 
-    padding: 12px;
+padding:15px;
 
-    border-radius: 6px;
+border:1px solid rgba(255,255,255,0.3);
 
-    border: 1px solid white;
+border-radius:12px;
 
-    font-size: 16px;
+background:rgba(255,255,255,0.1);
 
-    color: white;
+backdrop-filter:blur(8px);
 
-    background: black;
+-webkit-backdrop-filter:blur(8px);
 
-}
+color:white;
 
+font-size:16px;
 
-.login-form input::placeholder {
-
-    color: #bbb;
+outline:none;
 
 }
 
+.login-form input::placeholder{
 
-/* =================================
-   FORGOT PASSWORD
-================================= */
+color:rgba(255,255,255,0.7);
 
-.forgot {
-
-    margin-top: 10px;
-
-    font-size: 14px;
-
-}
+}/* LOGIN BUTTON */
+/* PASSWORD FIELD */
+/* LOGIN ERROR ANIMATION */
 
 
-.forgot a {
 
-    color: #00d4ff;
-
-    text-decoration: none;
-
-}

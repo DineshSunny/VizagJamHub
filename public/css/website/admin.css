@@ -1,0 +1,86 @@
+/* =================================
+   VIZAG JAMHUB - ADMIN
+================================= */
+
+/* ===============================
+MANAGE SHOWS
+=============================== */
+
+.manage-shows{
+
+display:flex;
+flex-direction:column;
+gap:20px;
+width:600px;
+
+}
+
+.manage-show-card{
+
+display:flex;
+background:black;
+border-radius:10px;
+overflow:hidden;
+border:1px solid white;
+
+}
+
+.manage-poster{
+
+width:160px;
+height:120px;
+
+background-size:cover;
+background-position:center;
+
+}
+
+.manage-info{
+
+padding:15px;
+flex:1;
+
+}
+
+.showButtons{
+
+margin-top:10px;
+display:flex;
+gap:10px;
+
+}
+
+/* ADMIN PANEL */
+
+.admin-panel{
+
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+}
+
+.admin-title{
+
+font-size:60px;
+margin-bottom:60px;
+
+}
+
+.admin-buttons{
+
+display:flex;
+
+flex-direction:row;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:20px;
+
+}/* LOGOUT BUTTON */
+/* RED HOVER */

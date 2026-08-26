@@ -1,0 +1,225 @@
+/* =================================
+   VIZAG JAMHUB - CONTACT PAGE
+================================= */
+
+/* ===========================================
+   CONTACT PAGE
+=========================================== */
+
+.contact-page{
+
+width:100%;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:140px 20px 80px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.contact-container{
+
+width:100%;
+
+max-width:1200px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:25px;
+
+padding:50px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.contact-container h1{
+
+color:#fff;
+
+font-size:48px;
+
+margin-bottom:20px;
+
+}
+
+.contact-description{
+
+color:#fff;
+
+font-size:18px;
+
+line-height:1.8;
+
+margin-bottom:50px;
+
+opacity:.9;
+
+}
+
+/* ===========================================
+   CONTACT CARDS
+=========================================== */
+
+.contact-cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:30px;
+
+margin-bottom:60px;
+
+}
+
+.contact-card{
+
+background:rgba(255,255,255,.07);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:20px;
+
+padding:35px 25px;
+
+transition:.3s;
+
+}
+
+.contact-card:hover{
+
+transform:translateY(-10px);
+
+background:rgba(255,255,255,.12);
+
+}
+
+.contact-card i{
+
+font-size:55px;
+
+color:#ffffff;
+
+margin-bottom:20px;
+
+}
+
+.contact-card h2{
+
+color:#fff;
+
+margin-bottom:15px;
+
+font-size:28px;
+
+}
+
+.contact-card p{
+
+color:#fff;
+
+font-size:18px;
+
+margin-bottom:10px;
+
+word-break:break-word;
+
+}
+
+.contact-card span{
+
+display:block;
+
+color:#ddd;
+
+margin-bottom:25px;
+
+font-size:15px;
+
+}
+
+.priority{
+
+color:#25D366 !important;
+
+font-weight:bold;
+
+}
+
+/* ===========================================
+   CONTACT FORM
+=========================================== */
+
+.contact-form{
+
+margin-top:20px;
+
+}
+
+.contact-form h2{
+
+color:#fff;
+
+margin-bottom:30px;
+
+font-size:34px;
+
+}
+
+.contact-form input,
+
+.contact-form textarea{
+
+width:100%;
+
+padding:16px;
+
+margin-bottom:20px;
+
+border:none;
+
+border-radius:12px;
+
+background:rgba(255,255,255,.10);
+
+color:#fff;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+.contact-form input::placeholder,
+
+.contact-form textarea::placeholder{
+
+color:#ddd;
+
+}
+
+.contact-form textarea{
+
+resize:vertical;
+
+min-height:180px;
+
+}

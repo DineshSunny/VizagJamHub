@@ -1,0 +1,135 @@
+/* =================================
+   VIZAG JAMHUB - COMING SOON PAGE
+================================= */
+
+/* ===========================================
+   COMING SOON PAGE
+=========================================== */
+
+.coming-page{
+
+width:100%;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:140px 20px 80px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.coming-container{
+
+width:100%;
+
+max-width:900px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:25px;
+
+padding:60px 40px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.coming-icon{
+
+font-size:70px;
+
+color:#ffffff;
+
+margin-bottom:25px;
+
+animation:floatIcon 3s ease-in-out infinite;
+
+}
+
+.coming-container h1{
+
+font-size:64px;
+
+color:#ffffff;
+
+margin-bottom:15px;
+
+letter-spacing:2px;
+
+}
+
+.coming-container h2{
+
+font-size:34px;
+
+color:#ffffff;
+
+margin-bottom:25px;
+
+font-weight:500;
+
+}
+
+.coming-container p{
+
+font-size:20px;
+
+line-height:1.8;
+
+color:#ffffff;
+
+margin-bottom:45px;
+
+}
+
+.coming-buttons{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+}
+
+@keyframes floatIcon{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}

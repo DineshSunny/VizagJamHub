@@ -1,0 +1,129 @@
+/* =================================
+   VIZAG JAMHUB - 404 ERROR PAGE
+================================= */
+
+/* ===========================================
+   404 ERROR PAGE
+=========================================== */
+
+.error-page{
+
+width:100%;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:140px 20px 80px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.error-container{
+
+width:100%;
+
+max-width:900px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:25px;
+
+padding:60px 40px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.error-container h1{
+
+font-size:120px;
+
+color:#ffffff;
+
+margin-bottom:10px;
+
+animation:pulse404 2.5s infinite;
+
+}
+
+.error-icon{
+
+font-size:70px;
+
+color:#ffffff;
+
+margin-bottom:20px;
+
+}
+
+.error-container h2{
+
+font-size:42px;
+
+color:#ffffff;
+
+margin-bottom:20px;
+
+}
+
+.error-container p{
+
+font-size:20px;
+
+color:#ffffff;
+
+line-height:1.8;
+
+margin-bottom:40px;
+
+}
+
+.error-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+@keyframes pulse404{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
