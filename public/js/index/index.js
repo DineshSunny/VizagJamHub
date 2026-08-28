@@ -861,16 +861,24 @@ fetch("/api/shows")
 
     });
 
-    
+
+
+
+
+
+
+
+
+
+
 
 /* ==========================================================
-   GALLERY IMAGE POPUP
+   GALLERY CAROUSEL
 ========================================================== */
 
 document.addEventListener(
     "click",
     function (event) {
-
 
         /* ONLY GALLERY IMAGES */
 
@@ -879,9 +887,7 @@ document.addEventListener(
                 ".gallery-track img"
             )
         ) {
-
             return;
-
         }
 
 
@@ -890,21 +896,18 @@ document.addEventListener(
         const popup =
             document.createElement("div");
 
-
         popup.classList.add(
             "image-popup"
         );
 
 
-        /* CREATE IMAGE */
+        /* CREATE POPUP IMAGE */
 
         const popupImage =
             document.createElement("img");
 
-
         popupImage.src =
             event.target.src;
-
 
         popupImage.alt =
             event.target.alt ||
@@ -914,7 +917,6 @@ document.addEventListener(
         popup.appendChild(
             popupImage
         );
-
 
         document.body.appendChild(
             popup
@@ -928,7 +930,6 @@ document.addEventListener(
         function closePopup() {
 
             popup.remove();
-
 
             window.removeEventListener(
                 "scroll",
@@ -956,7 +957,6 @@ document.addEventListener(
 
                     closePopup();
 
-
                     document.removeEventListener(
                         "click",
                         outsideClick
@@ -972,12 +972,11 @@ document.addEventListener(
                 outsideClick
             );
 
-
         }, 100);
 
 
         /* =================================
-           CLOSE POPUP WHEN SCROLLING
+           CLOSE POPUP WHEN PAGE SCROLLS
         ================================= */
 
         window.addEventListener(
@@ -990,7 +989,24 @@ document.addEventListener(
 
 
 /* ==========================================================
-   GALLERY DRAG SCROLL
+   GALLERY AUTO SCROLL + MOUSE WHEEL CONTROL
+
+   NORMAL:
+   Gallery automatically moves LEFT.
+
+   MOUSE HOVER:
+   Automatic movement pauses.
+
+   WHEEL DOWN:
+   Gallery moves LEFT.
+
+   WHEEL UP:
+   Gallery moves RIGHT.
+
+   MOUSE LEAVE:
+   Automatic movement resumes.
+
+   NO CLICK-AND-DRAG SCROLLING.
 ========================================================== */
 
 const gallerySlider =
@@ -998,107 +1014,254 @@ const gallerySlider =
         ".gallery-wrapper"
     );
 
-
-if (gallerySlider) {
-
-    let isDragging = false;
-
-    let startX = 0;
-
-    let startingScrollLeft = 0;
-
-
-    /* =================================
-       START DRAG
-    ================================= */
-
-    gallerySlider.addEventListener(
-        "mousedown",
-        (event) => {
-
-            isDragging = true;
-
-
-            gallerySlider.style.cursor =
-                "grabbing";
-
-
-            startX =
-                event.pageX -
-                gallerySlider.offsetLeft;
-
-
-            startingScrollLeft =
-                gallerySlider.scrollLeft;
-
-        }
+const galleryTrack =
+    document.querySelector(
+        ".gallery-track"
     );
 
 
+if (
+    gallerySlider &&
+    galleryTrack
+) {
+
+    let manualPosition = 0;
+
+    let galleryHovered = false;
+
+
     /* =================================
-       STOP DRAG
+       GET CURRENT ANIMATED POSITION
+    ================================= */
+
+    function getCurrentGalleryPosition() {
+
+        const computedStyle =
+            window.getComputedStyle(
+                galleryTrack
+            );
+
+        const transform =
+            computedStyle.transform;
+
+
+        if (
+            !transform ||
+            transform === "none"
+        ) {
+            return 0;
+        }
+
+
+        try {
+
+            const matrix =
+                new DOMMatrix(
+                    transform
+                );
+
+            return matrix.m41;
+
+        }
+
+        catch (error) {
+
+            return 0;
+
+        }
+
+    }
+
+
+    /* =================================
+       GET ONE COMPLETE GALLERY WIDTH
+
+       The gallery contains the repeated
+       images required for the continuous
+       -50% animation loop.
+    ================================= */
+
+    function getGalleryLoopWidth() {
+
+        return (
+            galleryTrack.scrollWidth / 2
+        );
+
+    }
+
+
+    /* =================================
+       KEEP MANUAL SCROLL INSIDE LOOP
+
+       This allows scrolling left/right
+       without running out of gallery.
+    ================================= */
+
+    function normalizeGalleryPosition() {
+
+        const loopWidth =
+            getGalleryLoopWidth();
+
+
+        if (!loopWidth) {
+            return;
+        }
+
+
+        /* TOO FAR LEFT */
+
+        while (
+            manualPosition <=
+            -loopWidth
+        ) {
+
+            manualPosition +=
+                loopWidth;
+
+        }
+
+
+        /* TOO FAR RIGHT */
+
+        while (
+            manualPosition > 0
+        ) {
+
+            manualPosition -=
+                loopWidth;
+
+        }
+
+    }
+
+
+    /* =================================
+       MOUSE ENTER
+
+       PAUSE THE AUTOMATIC ANIMATION
+       EXACTLY WHERE IT CURRENTLY IS.
     ================================= */
 
     gallerySlider.addEventListener(
-        "mouseup",
+        "mouseenter",
         () => {
 
-            isDragging = false;
+            galleryHovered = true;
 
 
-            gallerySlider.style.cursor =
-                "default";
+            /* GET CURRENT AUTO-SCROLL POSITION */
+
+            manualPosition =
+                getCurrentGalleryPosition();
+
+
+            /* PAUSE CSS ANIMATION */
+
+            galleryTrack.style.animationPlayState =
+                "paused";
+
+
+            /* FREEZE AT CURRENT POSITION */
+
+            galleryTrack.style.transform =
+                `translateX(${manualPosition}px)`;
 
         }
     );
 
 
     /* =================================
-       STOP DRAG WHEN MOUSE LEAVES
+       MOUSE WHEEL
+
+       DOWN = LEFT
+       UP   = RIGHT
+    ================================= */
+
+    gallerySlider.addEventListener(
+        "wheel",
+        (event) => {
+
+            if (!galleryHovered) {
+                return;
+            }
+
+
+            /*
+               Prevent normal vertical page
+               scrolling while the cursor is
+               over the gallery.
+            */
+
+            event.preventDefault();
+
+
+            /*
+               CHANGE THIS NUMBER IF YOU WANT:
+
+               0.7  = slower
+               1.0  = normal
+               1.15 = current
+               1.5  = faster
+            */
+
+            const scrollSpeed = 1.15;
+
+
+            /*
+               deltaY positive:
+               wheel DOWN → move LEFT
+
+               deltaY negative:
+               wheel UP → move RIGHT
+            */
+
+            manualPosition -=
+                event.deltaY *
+                scrollSpeed;
+
+
+            normalizeGalleryPosition();
+
+
+            galleryTrack.style.transform =
+                `translateX(${manualPosition}px)`;
+
+        },
+        {
+            passive: false
+        }
+    );
+
+
+    /* =================================
+       MOUSE LEAVE
+
+       REMOVE MANUAL POSITION AND
+       RETURN TO AUTOMATIC MOVEMENT.
     ================================= */
 
     gallerySlider.addEventListener(
         "mouseleave",
         () => {
 
-            isDragging = false;
+            galleryHovered = false;
 
 
-            gallerySlider.style.cursor =
-                "default";
+            /*
+               Give transform control back
+               to the CSS animation.
+            */
 
-        }
-    );
-
-
-    /* =================================
-       DRAG
-    ================================= */
-
-    gallerySlider.addEventListener(
-        "mousemove",
-        (event) => {
-
-            if (!isDragging) {
-                return;
-            }
+            galleryTrack.style.transform =
+                "";
 
 
-            event.preventDefault();
+            /*
+               Resume automatic movement.
+            */
 
-
-            const currentX =
-                event.pageX -
-                gallerySlider.offsetLeft;
-
-
-            const distance =
-                (currentX - startX) * 2;
-
-
-            gallerySlider.scrollLeft =
-                startingScrollLeft -
-                distance;
+            galleryTrack.style.animationPlayState =
+                "running";
 
         }
     );
