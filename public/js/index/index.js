@@ -228,7 +228,7 @@ if (liveText && lyricsSection) {
         () => {
 
             const triggerPoint =
-                lyricsSection.offsetTop - 800;
+                lyricsSection.offsetTop - 850;
 
 
             /* FADE OUT */
@@ -283,7 +283,7 @@ if (
 
             if (
                 window.scrollY >
-                lyricsBottom - 800
+                lyricsBottom - 1300
             ) {
 
                 overlayLogo.style.opacity =
@@ -389,7 +389,7 @@ function formatDate(dateString) {
 
 
 /* ==========================================================
-   LOAD UPCOMING SHOWS
+   LOAD UPCOMING SHOWS - 3D CAROUSEL
 ========================================================== */
 
 fetch("/api/shows")
@@ -405,11 +405,11 @@ fetch("/api/shows")
                 "shows-container"
             );
 
+        const indicators =
+            document.getElementById(
+                "shows-indicators"
+            );
 
-        /*
-           Prevent errors if this script is ever
-           loaded on a page without the shows container.
-        */
 
         if (!container) {
             return;
@@ -418,8 +418,40 @@ fetch("/api/shows")
 
         container.innerHTML = "";
 
+        if (indicators) {
+            indicators.innerHTML = "";
+        }
 
-        shows.forEach((show) => {
+
+        /* =================================
+           NO UPCOMING SHOWS
+        ================================= */
+
+        if (!shows.length) {
+
+            container.innerHTML = `
+                <div class="no-shows">
+                    More shows coming soon.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        let activeIndex = 0;
+
+        let autoRotate = null;
+
+        const cards = [];
+
+
+        /* =================================
+           CREATE SHOW CARDS
+        ================================= */
+
+        shows.forEach((show, index) => {
 
             const card =
                 document.createElement("div");
@@ -429,31 +461,28 @@ fetch("/api/shows")
                 "show-card";
 
 
-            card.style.backgroundImage =
-                `url(${show.poster})`;
-
-
-            /* OPEN TICKET PAGE */
-
-            card.onclick = () => {
-
-                window.location.href =
-                    `/pages/admin/tickets/buyticket.html?id=${show.id}`;
-
-            };
-
-
-            /* SHOW INFORMATION */
-
             card.innerHTML = `
+
+                <img
+                    class="show-poster"
+                    src="${show.poster}"
+                    alt="${show.title}">
 
                 <div class="show-info">
 
-                    <h3>${show.title}</h3>
+                    <h3>
+                        ${show.title}
+                    </h3>
 
-                    <p>${show.venue}</p>
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        ${show.venue}
+                    </p>
 
-                    <p>${formatDate(show.date)}</p>
+                    <p>
+                        <i class="fa-regular fa-calendar"></i>
+                        ${formatDate(show.date)}
+                    </p>
 
                     <p class="show-price">
                         ${show.price ? "₹" + show.price : ""}
@@ -464,9 +493,362 @@ fetch("/api/shows")
             `;
 
 
+            /* =================================
+               CLICK CARD
+            ================================= */
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    /*
+                       Clicking a side card first
+                       moves it into the center.
+                    */
+
+                    if (index !== activeIndex) {
+
+                        activeIndex = index;
+
+                        updateCarousel();
+
+                        restartAutoRotate();
+
+                        return;
+
+                    }
+
+
+                    /*
+                       Clicking the center card
+                       opens the ticket page.
+                    */
+
+                    window.location.href =
+                        `/pages/admin/tickets/buyticket.html?id=${show.id}`;
+
+                }
+            );
+
+
             container.appendChild(card);
 
+            cards.push(card);
+
+
+            /* =================================
+               CREATE INDICATOR
+            ================================= */
+
+            if (indicators) {
+
+                const indicator =
+                    document.createElement("button");
+
+
+                indicator.className =
+                    "show-indicator";
+
+
+                indicator.type =
+                    "button";
+
+
+                indicator.setAttribute(
+                    "aria-label",
+                    `Show ${index + 1}`
+                );
+
+
+                indicator.addEventListener(
+                    "click",
+                    () => {
+
+                        activeIndex =
+                            index;
+
+                        updateCarousel();
+
+                        restartAutoRotate();
+
+                    }
+                );
+
+
+                indicators.appendChild(
+                    indicator
+                );
+
+            }
+
         });
+
+
+        /* =================================
+           SHORTEST CAROUSEL DISTANCE
+        ================================= */
+
+        function getRelativePosition(
+            index
+        ) {
+
+            let difference =
+                index - activeIndex;
+
+
+            const half =
+                Math.floor(
+                    cards.length / 2
+                );
+
+
+            if (
+                difference >
+                half
+            ) {
+
+                difference -=
+                    cards.length;
+
+            }
+
+
+            if (
+                difference <
+                -half
+            ) {
+
+                difference +=
+                    cards.length;
+
+            }
+
+
+            return difference;
+
+        }
+
+
+        /* =================================
+           UPDATE 3D POSITIONS
+        ================================= */
+
+        function updateCarousel() {
+
+            cards.forEach(
+                (card, index) => {
+
+                    const position =
+                        getRelativePosition(
+                            index
+                        );
+
+
+                    card.classList.remove(
+                        "active",
+                        "prev",
+                        "next",
+                        "prev-far",
+                        "next-far",
+                        "hidden-left",
+                        "hidden-right"
+                    );
+
+
+                    if (position === 0) {
+
+                        card.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                    else if (
+                        position === -1
+                    ) {
+
+                        card.classList.add(
+                            "prev"
+                        );
+
+                    }
+
+                    else if (
+                        position === 1
+                    ) {
+
+                        card.classList.add(
+                            "next"
+                        );
+
+                    }
+
+                    else if (
+                        position === -2
+                    ) {
+
+                        card.classList.add(
+                            "prev-far"
+                        );
+
+                    }
+
+                    else if (
+                        position === 2
+                    ) {
+
+                        card.classList.add(
+                            "next-far"
+                        );
+
+                    }
+
+                    else if (
+                        position < 0
+                    ) {
+
+                        card.classList.add(
+                            "hidden-left"
+                        );
+
+                    }
+
+                    else {
+
+                        card.classList.add(
+                            "hidden-right"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            /* UPDATE DOTS */
+
+            if (indicators) {
+
+                const dots =
+                    indicators.querySelectorAll(
+                        ".show-indicator"
+                    );
+
+
+                dots.forEach(
+                    (dot, index) => {
+
+                        dot.classList.toggle(
+                            "active",
+                            index === activeIndex
+                        );
+
+                    }
+                );
+
+            }
+
+        }
+
+
+        /* =================================
+           MOVE TO NEXT SHOW
+        ================================= */
+
+        function nextShow() {
+
+            activeIndex =
+                (activeIndex + 1) %
+                cards.length;
+
+
+            updateCarousel();
+
+        }
+
+
+        /* =================================
+           AUTO ROTATION
+        ================================= */
+
+        function startAutoRotate() {
+
+            if (
+                cards.length <= 1
+            ) {
+
+                return;
+
+            }
+
+
+            autoRotate =
+                setInterval(
+                    nextShow,
+                    4000
+                );
+
+        }
+
+
+        function stopAutoRotate() {
+
+            if (autoRotate) {
+
+                clearInterval(
+                    autoRotate
+                );
+
+                autoRotate =
+                    null;
+
+            }
+
+        }
+
+
+        function restartAutoRotate() {
+
+            stopAutoRotate();
+
+            startAutoRotate();
+
+        }
+
+
+        /* =================================
+           PAUSE WHILE HOVERING
+        ================================= */
+
+        const carousel =
+            document.querySelector(
+                ".shows-carousel"
+            );
+
+
+        if (carousel) {
+
+            carousel.addEventListener(
+                "mouseenter",
+                stopAutoRotate
+            );
+
+
+            carousel.addEventListener(
+                "mouseleave",
+                startAutoRotate
+            );
+
+        }
+
+
+        /* =================================
+           INITIALIZE
+        ================================= */
+
+        updateCarousel();
+
+        startAutoRotate();
 
     })
 
@@ -479,6 +861,7 @@ fetch("/api/shows")
 
     });
 
+    
 
 /* ==========================================================
    GALLERY IMAGE POPUP

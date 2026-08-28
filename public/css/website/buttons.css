@@ -121,7 +121,8 @@
 
     color: white;
 
-    border: 1px solid white;
+    border:
+        1px solid white;
 
     border-radius: 8px;
 
@@ -160,7 +161,8 @@
 
     color: white;
 
-    border: 1px solid white;
+    border:
+        1px solid white;
 
     border-radius: 8px;
 
@@ -184,42 +186,494 @@
 
 
 /* =================================================================
-   INDEX - SING ALONG LYRICS
+   INDEX - SING ALONG EXPERIENCE
 ================================================================= */
 
-.lyrics-btn {
+.sing-along-card {
 
-    background: black;
+    position: relative;
+
+    width: 100%;
+    max-width: 1050px;
+    min-height: 260px;
+
+    padding: 40px 60px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
 
     color: white;
 
-    padding: 16px 40px;
-
-    font-size: 22px;
-
-    border:
-        1px solid white;
-
-    border-radius: 12px;
-
+    text-align: center;
     text-decoration: none;
 
-    transition: 0.3s;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.13),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    backdrop-filter:
+        blur(20px)
+        saturate(160%);
+
+    -webkit-backdrop-filter:
+        blur(20px)
+        saturate(160%);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 22px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+        0 15px 45px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        background 0.4s ease;
 
 }
 
 
-.lyrics-btn:hover {
+/* =================================
+   SING ALONG - MOVING GLASS LIGHT
+================================= */
+
+.sing-along-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -50%;
+    left: -60%;
+
+    width: 40%;
+    height: 200%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.14),
+            transparent
+        );
+
+    transform:
+        rotate(20deg);
+
+    transition:
+        left 0.8s ease;
+
+}
+
+
+.sing-along-card:hover::before {
+
+    left: 130%;
+
+}
+
+
+/* =================================
+   SING ALONG - BACKGROUND GLOW
+================================= */
+
+.sing-along-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -120px;
+
+    width: 500px;
+    height: 200px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0, 212, 255, 0.18),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    opacity: 0.5;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+}
+
+
+/* =================================
+   SING ALONG - CARD HOVER
+================================= */
+
+.sing-along-card:hover {
 
     transform:
         translateY(-8px)
-        scale(1.03);
+        scale(1.01);
 
-    background: #111;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(0, 212, 255, 0.06)
+        );
+
+    border-color:
+        rgba(0, 212, 255, 0.55);
 
     box-shadow:
-        0 0 10px #00d4ff,
-        0 0 20px #00d4ff;
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        0 0 15px rgba(0, 212, 255, 0.20),
+        0 0 40px rgba(0, 212, 255, 0.12),
+        0 20px 50px rgba(0, 0, 0, 0.30);
+
+}
+
+
+.sing-along-card:hover::after {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        scale(1.2);
+
+}
+
+
+/* =================================
+   SING ALONG - MICROPHONE
+================================= */
+
+.sing-along-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 62px;
+    height: 62px;
+
+    margin-bottom: 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 27px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 50%;
+
+    transition:
+        transform 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+.sing-along-card:hover .sing-along-icon {
+
+    color: #00d4ff;
+
+    box-shadow:
+        0 0 15px rgba(0, 212, 255, 0.30),
+        0 0 35px rgba(0, 212, 255, 0.15);
+
+    animation:
+        microphonePulse 1.2s ease-in-out infinite;
+
+}
+
+
+@keyframes microphonePulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1.08);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.18);
+
+    }
+
+}
+
+
+/* =================================
+   SING ALONG - TITLE
+================================= */
+
+.sing-along-card h2 {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin:
+        0 0 8px;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    transition:
+        letter-spacing 0.4s ease,
+        text-shadow 0.4s ease;
+
+}
+
+
+.sing-along-card:hover h2 {
+
+    letter-spacing: 7px;
+
+    text-shadow:
+        0 0 15px rgba(0, 212, 255, 0.35);
+
+}
+
+
+/* =================================
+   SING ALONG - LANGUAGES
+================================= */
+
+.sing-along-languages {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    color: #00d4ff;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =================================
+   SING ALONG - DESCRIPTION
+================================= */
+
+.sing-along-card p {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin:
+        0 0 18px;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    font-size: 16px;
+
+}
+
+
+/* =================================
+   SING ALONG - START ACTION
+================================= */
+
+.sing-along-action {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    transition:
+        color 0.3s ease;
+
+}
+
+
+.sing-along-action span {
+
+    display: inline-block;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.sing-along-card:hover .sing-along-action {
+
+    color: #00d4ff;
+
+}
+
+
+.sing-along-card:hover .sing-along-action span {
+
+    transform:
+        translateX(8px);
+
+}
+
+
+/* =================================
+   SING ALONG - MINI EQUALIZER
+================================= */
+
+.sing-along-equalizer {
+
+    position: relative;
+
+    z-index: 2;
+
+    height: 28px;
+
+    margin-top: 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+}
+
+
+.sing-along-equalizer span {
+
+    width: 3px;
+    height: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.65);
+
+    border-radius: 10px;
+
+    transition:
+        background 0.3s ease;
+
+}
+
+
+/* =================================
+   SING ALONG - EQUALIZER ANIMATION
+================================= */
+
+.sing-along-card:hover .sing-along-equalizer span {
+
+    background: #00d4ff;
+
+    animation:
+        singEqualizer 0.65s ease-in-out infinite alternate;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(1) {
+
+    animation-delay: 0s;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(2) {
+
+    animation-delay: 0.15s;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(3) {
+
+    animation-delay: 0.30s;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(4) {
+
+    animation-delay: 0.10s;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(5) {
+
+    animation-delay: 0.25s;
+
+}
+
+
+@keyframes singEqualizer {
+
+    from {
+
+        height: 6px;
+
+    }
+
+    to {
+
+        height: 27px;
+
+    }
 
 }
 
@@ -253,7 +707,9 @@
 }
 
 
-/* INSTAGRAM */
+/* =================================
+   INSTAGRAM
+================================= */
 
 .instagram-btn {
 
@@ -270,17 +726,20 @@
 }
 
 
-/* WHATSAPP */
+/* =================================
+   WHATSAPP
+================================= */
 
 .whatsapp-btn {
 
-    background:
-        #25D366;
+    background: #25D366;
 
 }
 
 
-/* SOCIAL HOVER */
+/* =================================
+   SOCIAL BUTTON HOVER
+================================= */
 
 .floating-social a:hover {
 

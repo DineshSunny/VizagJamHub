@@ -12,9 +12,13 @@
     position: fixed;
 
     top: 68%;
-    left: 50%;
+    left: 51.5%;
+
+    width: 100%;
 
     transform: translateX(-50%);
+
+    text-align: center;
 
     font-size: 34px;
     font-weight: 700;
@@ -193,172 +197,635 @@ section {
 
 }
 
-
 /* =================================================================
-   SING ALONG LYRICS SECTION
+   INDEX - SING ALONG EXPERIENCE
 ================================================================= */
 
-.lyrics-section {
+.sing-along-card {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 1050px;
+    min-height: 260px;
+
+    padding: 40px 60px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.13),
+            rgba(255,255,255,0.04)
+        );
+
+    backdrop-filter:
+        blur(20px)
+        saturate(160%);
+
+    -webkit-backdrop-filter:
+        blur(20px)
+        saturate(160%);
+
+    border:
+        1px solid rgba(255,255,255,0.18);
+
+    border-radius: 22px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.16),
+        inset 0 -1px 0 rgba(255,255,255,0.04),
+        0 15px 45px rgba(0,0,0,0.25);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        background 0.4s ease;
+
+}
+
+
+/* =================================
+   MOVING GLASS LIGHT
+================================= */
+
+.sing-along-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -50%;
+    left: -60%;
+
+    width: 40%;
+    height: 200%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.14),
+            transparent
+        );
+
+    transform:
+        rotate(20deg);
+
+    transition:
+        left 0.8s ease;
+
+}
+
+
+.sing-along-card:hover::before {
+
+    left: 130%;
+
+}
+
+
+/* =================================
+   CYAN BACKGROUND GLOW
+================================= */
+
+.sing-along-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -120px;
+
+    width: 500px;
+    height: 200px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,212,255,0.18),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+    opacity: 0.5;
+
+}
+
+
+/* =================================
+   CARD HOVER
+================================= */
+
+.sing-along-card:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.01);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.18),
+            rgba(0,212,255,0.06)
+        );
+
+    border-color:
+        rgba(0,212,255,0.55);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        0 0 15px rgba(0,212,255,0.20),
+        0 0 40px rgba(0,212,255,0.12),
+        0 20px 50px rgba(0,0,0,0.30);
+
+}
+
+
+.sing-along-card:hover::after {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        scale(1.2);
+
+}
+
+
+/* =================================
+   MICROPHONE
+================================= */
+
+.sing-along-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 62px;
+    height: 62px;
+
+    margin-bottom: 15px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    width: 100%;
+    font-size: 27px;
 
-    margin: 60px auto;
+    background:
+        rgba(255,255,255,0.07);
+
+    border:
+        1px solid rgba(255,255,255,0.20);
+
+    border-radius: 50%;
+
+    transition:
+        transform 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+.sing-along-card:hover .sing-along-icon {
+
+    color: #00d4ff;
+
+    transform:
+        scale(1.12);
+
+    box-shadow:
+        0 0 15px rgba(0,212,255,0.30),
+        0 0 35px rgba(0,212,255,0.15);
+
+    animation:
+        microphonePulse 1.2s ease-in-out infinite;
+
+}
+
+
+@keyframes microphonePulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1.08);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.18);
+
+    }
+
+}
+
+
+/* =================================
+   TITLE
+================================= */
+
+.sing-along-card h2 {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0 0 8px;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    transition:
+        letter-spacing 0.4s ease,
+        text-shadow 0.4s ease;
+
+}
+
+
+.sing-along-card:hover h2 {
+
+    letter-spacing: 7px;
+
+    text-shadow:
+        0 0 15px rgba(0,212,255,0.35);
+
+}
+
+
+/* =================================
+   LANGUAGES
+================================= */
+
+.sing-along-languages {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    color: #00d4ff;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =================================
+   DESCRIPTION
+================================= */
+
+.sing-along-card p {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0 0 18px;
+
+    color:
+        rgba(255,255,255,0.72);
+
+    font-size: 16px;
+
+}
+
+
+/* =================================
+   START SINGING ACTION
+================================= */
+
+.sing-along-action {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    transition:
+        color 0.3s ease;
+
+}
+
+
+.sing-along-action span {
+
+    display: inline-block;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.sing-along-card:hover .sing-along-action {
+
+    color: #00d4ff;
+
+}
+
+
+.sing-along-card:hover .sing-along-action span {
+
+    transform:
+        translateX(8px);
+
+}
+
+
+/* =================================
+   MINI MUSIC EQUALIZER
+================================= */
+
+.sing-along-equalizer {
+
+    position: relative;
+
+    z-index: 2;
+
+    height: 28px;
+
+    margin-top: 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+}
+
+
+.sing-along-equalizer span {
+
+    width: 3px;
+    height: 7px;
+
+    background:
+        rgba(255,255,255,0.65);
+
+    border-radius: 10px;
+
+    transition:
+        background 0.3s ease;
+
+}
+
+
+/* =================================
+   EQUALIZER ANIMATION
+================================= */
+
+.sing-along-card:hover
+.sing-along-equalizer span {
+
+    background: #00d4ff;
+
+    animation:
+        singEqualizer 0.65s ease-in-out infinite alternate;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(1) {
+
+    animation-delay: 0s;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(2) {
+
+    animation-delay: 0.15s;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(3) {
+
+    animation-delay: 0.30s;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(4) {
+
+    animation-delay: 0.10s;
+
+}
+
+
+.sing-along-card:hover
+.sing-along-equalizer span:nth-child(5) {
+
+    animation-delay: 0.25s;
+
+}
+
+
+@keyframes singEqualizer {
+
+    from {
+
+        height: 6px;
+
+    }
+
+    to {
+
+        height: 27px;
+
+    }
 
 }
 
 
 /* =================================================================
-   UPCOMING SHOWS
+   UPCOMING SHOWS - 3D DESK CAROUSEL
 ================================================================= */
 
 #shows {
 
+    width: 100%;
+    max-width: none;
+
+    padding:
+        90px 0 110px;
+
     text-align: center;
-
-    padding: 80px 20px;
-
-}
-
-
-#shows h1 {
-
-    margin-bottom: 40px;
-
-    font-size: 42px;
-
-}
-
-
-#shows-container {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 30px;
-
-    flex-wrap: wrap;
-
-}
-
-
-.cards {
-
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 30px;
-
-}
-
-
-/* =================================
-   GENERIC CARD
-================================= */
-
-.card {
-
-    min-height: 140px;
-
-    padding: 25px;
-
-    background:
-        rgba(20,20,20,0.35);
-
-    backdrop-filter:
-        blur(12px);
-
-    -webkit-backdrop-filter:
-        blur(12px);
-
-    border:
-        1px solid rgba(255,255,255,0.8);
-
-    border-radius: 10px;
-
-    transition: 0.3s;
-
-}
-
-
-.card:hover {
-
-    transform:
-        translateY(-8px)
-        scale(1.03);
-
-    background: #111;
-
-    box-shadow:
-        0 0 10px #00d4ff,
-        0 0 20px #00d4ff;
-
-}
-
-
-.card h3 {
-
-    margin-bottom: 12px;
-
-    font-size: 22px;
-
-}
-
-
-.card p {
-
-    margin: 5px 0;
-
-    color: #ddd;
-
-}
-
-
-/* =================================
-   SHOW CARD
-================================= */
-
-.show-card {
-
-    position: relative;
-
-    width: 320px;
-    height: 360px;
-
-    display: flex;
-
-    align-items: flex-end;
 
     overflow: hidden;
 
-    background-size: cover;
-    background-position: center;
+}
 
-    border:
-        1px solid rgba(255,255,255,0.15);
 
-    border-radius: 14px;
+/* =================================
+   SHOWS HEADING
+================================= */
 
-    box-shadow:
-        0 4px 15px rgba(0,0,0,0.6);
+.shows-heading {
 
-    transition:
-        all 0.35s ease;
+    position: relative;
+
+    z-index: 10;
+
+    margin-bottom: 35px;
 
 }
 
 
-/* SHOW CARD DARK OVERLAY */
+.shows-eyebrow {
 
-.show-card::before {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #00d4ff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+
+}
+
+
+.shows-heading h1 {
+
+    margin: 0;
+
+    font-size: 42px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =================================================================
+   CAROUSEL VIEWPORT
+================================================================= */
+
+.shows-carousel {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 620px;
+
+    overflow: hidden;
+
+    perspective: 1500px;
+
+}
+
+
+/* =================================
+   DESK / STAGE
+================================= */
+
+.shows-carousel::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 25px;
+
+    width: 90%;
+    height: 120px;
+
+    transform:
+        translateX(-50%)
+        perspective(700px)
+        rotateX(68deg);
+
+    transform-origin:
+        center bottom;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.055),
+            rgba(0,212,255,0.025),
+            rgba(0,0,0,0.02)
+        );
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius:
+        50% 50% 0 0;
+
+    box-shadow:
+        0 -8px 45px rgba(0,212,255,0.035);
+
+}
+
+
+/* =================================
+   CAROUSEL EDGE FADES
+================================= */
+
+.shows-carousel::before {
 
     content: "";
 
@@ -366,26 +833,141 @@ section {
 
     inset: 0;
 
+    z-index: 20;
+
+    pointer-events: none;
+
     background:
         linear-gradient(
-            to top,
-            rgba(0,0,0,0.9),
-            rgba(0,0,0,0.5),
-            rgba(0,0,0,0.1)
+            90deg,
+            rgba(0,0,0,0.75) 0%,
+            transparent 13%,
+            transparent 87%,
+            rgba(0,0,0,0.75) 100%
         );
 
 }
 
 
-/* SHOW INFORMATION */
+/* =================================================================
+   SHOW STAGE
+================================================================= */
 
-.show-info {
+.shows-stage {
 
     position: relative;
 
     width: 100%;
+    height: 100%;
 
-    padding: 20px;
+    transform-style:
+        preserve-3d;
+
+}
+
+
+/* =================================================================
+   SHOW CARD
+================================================================= */
+
+.show-card {
+
+    position: absolute;
+
+    top: 20px;
+    left: 50%;
+
+    width: 350px;
+    height: 510px;
+
+    padding: 22px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.12),
+            rgba(255,255,255,0.035)
+        );
+
+    backdrop-filter:
+        blur(18px)
+        saturate(145%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(145%);
+
+    border:
+        1px solid rgba(255,255,255,0.30);
+
+    border-radius: 20px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        0 18px 45px rgba(0,0,0,0.38);
+
+    transform-origin:
+        center bottom;
+
+    transition:
+        transform 1s cubic-bezier(.22,.61,.36,1),
+        opacity 1s ease,
+        filter 1s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+
+/* =================================================================
+   POSTER
+================================================================= */
+
+.show-poster {
+
+    width: 100%;
+    height: 320px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.35);
+
+    pointer-events: none;
+
+}
+
+
+/* =================================================================
+   SHOW INFORMATION
+================================================================= */
+
+.show-info {
+
+    width: 100%;
+
+    padding-top: 18px;
 
     text-align: center;
 
@@ -394,47 +976,291 @@ section {
 
 .show-info h3 {
 
-    margin-bottom: 8px;
+    margin:
+        0 0 10px;
 
-    font-size: 22px;
+    overflow: hidden;
+
+    color: white;
+
+    font-size: 23px;
     font-weight: 600;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
 
 }
 
 
 .show-info p {
 
-    margin: 4px 0;
+    margin: 5px 0;
 
-    font-size: 16px;
+    overflow: hidden;
 
-    opacity: 0.9;
+    color:
+        rgba(255,255,255,0.76);
+
+    font-size: 14px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
 
 }
 
 
 .show-price {
 
-    margin-top: 8px;
+    margin-top: 10px !important;
 
-    color: #00d4ff;
+    color: #00d4ff !important;
 
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px !important;
+    font-weight: 700;
 
 }
 
 
-.show-card:hover {
+/* =================================================================
+   CENTER / ACTIVE SHOW
+================================================================= */
+
+.show-card.active {
+
+    z-index: 10;
+
+    opacity: 1;
+
+    filter:
+        brightness(1);
 
     transform:
-        translateY(-8px);
+        translateX(-50%)
+        translateZ(80px)
+        rotateY(0deg)
+        scale(1);
+
+    border-color:
+        rgba(255,255,255,0.72);
 
     box-shadow:
-        0 0 10px #00d4ff,
-        0 0 20px #00d4ff;
+        inset 0 1px 0 rgba(255,255,255,0.20),
+        0 0 15px rgba(0,212,255,0.10),
+        0 25px 55px rgba(0,0,0,0.45);
 
 }
+
+
+/* =================================================================
+   CARD IMMEDIATELY LEFT
+================================================================= */
+
+.show-card.prev {
+
+    z-index: 7;
+
+    opacity: 0.82;
+
+    filter:
+        brightness(0.78);
+
+    transform:
+        translateX(calc(-50% - 355px))
+        translateZ(-100px)
+        rotateY(28deg)
+        scale(0.88);
+
+}
+
+
+/* =================================================================
+   CARD IMMEDIATELY RIGHT
+================================================================= */
+
+.show-card.next {
+
+    z-index: 7;
+
+    opacity: 0.82;
+
+    filter:
+        brightness(0.78);
+
+    transform:
+        translateX(calc(-50% + 355px))
+        translateZ(-100px)
+        rotateY(-28deg)
+        scale(0.88);
+
+}
+
+
+/* =================================================================
+   FAR LEFT CARD
+================================================================= */
+
+.show-card.prev-far {
+
+    z-index: 4;
+
+    opacity: 0.38;
+
+    filter:
+        brightness(0.52)
+        blur(0.4px);
+
+    transform:
+        translateX(calc(-50% - 650px))
+        translateZ(-250px)
+        rotateY(38deg)
+        scale(0.70);
+
+}
+
+
+/* =================================================================
+   FAR RIGHT CARD
+================================================================= */
+
+.show-card.next-far {
+
+    z-index: 4;
+
+    opacity: 0.38;
+
+    filter:
+        brightness(0.52)
+        blur(0.4px);
+
+    transform:
+        translateX(calc(-50% + 650px))
+        translateZ(-250px)
+        rotateY(-38deg)
+        scale(0.70);
+
+}
+
+
+/* =================================================================
+   HIDDEN CARDS
+================================================================= */
+
+.show-card.hidden-left {
+
+    z-index: 1;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateX(calc(-50% - 850px))
+        translateZ(-400px)
+        rotateY(45deg)
+        scale(0.55);
+
+}
+
+
+.show-card.hidden-right {
+
+    z-index: 1;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateX(calc(-50% + 850px))
+        translateZ(-400px)
+        rotateY(-45deg)
+        scale(0.55);
+
+}
+
+
+/* =================================================================
+   ACTIVE CARD HOVER
+================================================================= */
+
+.show-card.active:hover {
+
+    border-color:
+        rgba(0,212,255,0.70);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        0 0 15px rgba(0,212,255,0.22),
+        0 0 35px rgba(0,212,255,0.12),
+        0 28px 60px rgba(0,0,0,0.48);
+
+}
+
+
+/* =================================================================
+   CAROUSEL INDICATORS
+================================================================= */
+
+.shows-indicators {
+
+    position: relative;
+
+    z-index: 25;
+
+    min-height: 15px;
+
+    margin-top: -20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+}
+
+
+.show-indicator {
+
+    width: 8px;
+    height: 8px;
+
+    padding: 0;
+
+    background:
+        rgba(255,255,255,0.30);
+
+    border: 0;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.show-indicator.active {
+
+    width: 24px;
+
+    background: #00d4ff;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px rgba(0,212,255,0.55);
+
+}
+
+
 
 
 /* =================================================================
