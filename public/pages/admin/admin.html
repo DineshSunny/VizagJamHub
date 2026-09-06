@@ -1,228 +1,373 @@
-```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =================================
+         PAGE INFORMATION
+    ================================= -->
 
-<link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
 
-<link rel="stylesheet"
-      href="/css/mobile.css"
-      media="screen and (max-width:768px)">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-
-
-
-<!-- LOGIN PAGE -->
-
-<script>
-if (
-    sessionStorage.getItem("adminLoggedIn")
-    !== "true"
-){
-    window.location.href = "login.html";
-}
-</script>
+    <title>Admin Panel | Vizag JamHub</title>
 
 
+    <!-- =================================
+         DESKTOP STYLES
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/website/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/logo.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/buttons.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/forms/forms.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/forms/adminforms.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/admin.css"
+    >
+
+
+    <!-- =================================
+         MOBILE STYLES
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/global.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/logo.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/buttons.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/forms/forms.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/forms/adminforms.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/admin.css"
+        media="screen and (max-width:768px)"
+    >
+
+
+    <!-- =================================
+         FONT AWESOME
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
 
+<body>
 
-<body class="category-page">
 
-<!-- VIDEO BACKGROUND -->
+    <!-- =================================
+         BACKGROUND VIDEO
+    ================================= -->
 
-<video autoplay muted loop playsinline preload="metadata" id="bg-video">
-<source src="/Video/3.mp4" type="video/mp4">
-</video>
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        id="bg-video"
+    >
 
-<!-- LOGO -->
+        <source
+            src="/video/1.mp4"
+            type="video/mp4"
+        >
 
-<div class="top-logo">
-<img src="/Images/Logo.png">
-</div>
+    </video>
 
 
+    <!-- =================================
+         FLOATING MUSIC NOTES
+    ================================= -->
 
+    <div class="music-notes">
 
+        <span>♪</span>
+        <span>♫</span>
+        <span>♬</span>
+        <span>♩</span>
+        <span>𝄞</span>
+        <span>♭</span>
+        <span>♯</span>
+        <span>♬</span>
+        <span>♫</span>
+        <span>♪</span>
+        <span>♩</span>
+        <span>𝄢</span>
 
-<!-- LIVE TEXT -->
+    </div>
 
-<div class="typing-text" id="live-text">
-<span id="typing"></span>
-</div>
 
-<!-- MUSIC NOTES -->
+    <!-- =================================
+         ADMIN LOGIN
+    ================================= -->
 
-<div class="music-notes">
+    <section
+        id="adminLogin"
+        class="login-section"
+    >
 
-<span>♪</span>
-<span>♫</span>
-<span>♬</span>
-<span>♩</span>
-<span>𝄞</span>
-<span>♭</span>
-<span>♯</span>
-<span>♬</span>
-<span>♫</span>
-<span>♪</span>
-<span>♩</span>
-<span>𝄢</span>
 
-</div>
+        <!-- =================================
+             LOGO
+        ================================= -->
 
-<!-- HAMBURGER MENU -->
+        <div class="top-logo">
 
-<header>
+            <img
+                src="/images/logo.png"
+                alt="Vizag JamHub"
+            >
 
-<nav>
+        </div>
 
-<div class="menu-toggle">&#9776;</div>
 
-<ul class="nav-links">
+        <!-- =================================
+             LOGIN TITLE
+        ================================= -->
 
-<li><a href="/index.html">Home</a></li>
+        <h1 class="login-title">
+            ADMINISTRATOR LOGIN
+        </h1>
 
-<li><a href="/create-show.html">Create Show</a></li>
 
-<li><a href="/manage-shows.html">Manage Shows</a></li>
+        <!-- =================================
+             LOGIN FORM
+        ================================= -->
 
-<li><a href="/tickets.html">Tickets</a></li>
+        <div class="login-form">
 
-</ul>
 
-</nav>
+            <!-- =================================
+                 PASSWORD
+            ================================= -->
 
-</header>
+            <div class="password-wrapper">
 
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter Password"
+                    autocomplete="current-password"
+                >
 
+                <button
+                    class="toggle-password"
+                    type="button"
+                    onclick="togglePassword()"
+                    aria-label="Show or hide password"
+                >
 
-<!-- ADMIN BUTTONS -->
+                    <i
+                        id="password-icon"
+                        class="fa-solid fa-eye"
+                    ></i>
 
-<section class="hero">
+                </button>
 
-<div class="hero-content">
+            </div>
 
-<div class="admin-buttons">
 
-<a href="/create-show.html"
-class="lyrics-btn admin-btn">
-Create Show
-</a>
+            <!-- =================================
+                 LOGIN BUTTON
+            ================================= -->
 
-<a href="/manage-shows.html"
-class="lyrics-btn admin-btn">
-Manage Shows
-</a>
+            <button
+                type="button"
+                class="login-btn"
+                onclick="login()"
+            >
+                Login
+            </button>
 
-<a href="/chord-library.html"
-class="lyrics-btn admin-btn">
-Chord Library
-</a>
 
-<a href="/setlists.html"
-class="lyrics-btn admin-btn">
-Set Lists
-</a>
+            <!-- =================================
+                 LOGIN ERROR
+            ================================= -->
 
-<a href="/tickets.html"
-class="lyrics-btn admin-btn">
-Tickets
-</a>
+            <p id="error"></p>
 
-</div>
 
-<a href="#"
-   class="lyrics-btn logout-btn"
-   onclick="logout()">
-Logout
-</a>
+        </div>
 
-</div>
+    </section>
 
-</section>
 
+    <!-- =================================
+         ADMIN PANEL
+    ================================= -->
 
+    <section
+        id="adminPanel"
+        class="admin-panel"
+        style="display: none;"
+    >
 
 
+        <!-- =================================
+             ADMIN TITLE
+        ================================= -->
 
+        <h1 class="admin-title">
+            ADMIN PANEL
+        </h1>
 
 
-<script src="/js/menu.js"></script>
+        <!-- =================================
+             ADMIN BUTTONS
+        ================================= -->
 
-<script>
+        <div class="admin-buttons">
 
-const words = [
+            <ul class="nav-links">
 
 
-"LIVE MUSIC",
-"JAM SESSIONS",
-"VIZAG CULTURE",
-"NIGHT VIBES",
-"LIVE PERFORMANCES",
-"MUSIC COMMUNITY"
+                <li>
 
+                    <a
+                        href="/pages/admin/shows/createshow.html"
+                    >
+                        Create Show
+                    </a>
 
-];
+                </li>
 
-const typing = document.getElementById("typing");
 
-let index = 0;
+                <li>
 
-typing.textContent = words[index];
-typing.classList.add("show");
+                    <a
+                        href="/pages/admin/shows/manage-shows.html"
+                    >
+                        Manage Shows
+                    </a>
 
-setInterval(() => {
+                </li>
 
-typing.classList.remove("show");
-typing.classList.add("hide");
 
-setTimeout(() => {
+                <li>
 
-index = (index + 1) % words.length;
+                    <a
+                        href="/pages/admin/chords/chord-library.html"
+                    >
+                        Chord Library
+                    </a>
 
-typing.textContent = words[index];
+                </li>
 
-typing.classList.remove("hide");
-typing.classList.add("show");
 
-}, 900);
+                <li>
 
-}, 3200);
+                    <a
+                        href="#"
+                        aria-disabled="true"
+                        onclick="event.preventDefault();"
+                    >
+                        Set Lists
+                    </a>
 
-</script>
+                </li>
 
 
+                <li>
 
+                    <a
+                        href="/pages/admin/tickets/ticket.html"
+                    >
+                        Tickets
+                    </a>
 
-<!-- LOGOUT -->
+                </li>
 
-<script>
 
-function logout(){
+            </ul>
 
-    /* CLEAR ADMIN SESSION */
+        </div>
 
-    sessionStorage.removeItem(
-        "adminLoggedIn"
-    );
 
-    /* RETURN TO LOGIN PAGE */
+        <!-- =================================
+             LOGOUT
+        ================================= -->
 
-    window.location.href =
-        "login.html";
+       <button
+    type="button"
+    class="login-btn logout-btn"
+    onclick="logout()"
+>
+    Logout
+</button>
 
-}
+    </section>
 
-</script>
 
+    <!-- =================================
+         SHARED JAVASCRIPT
+    ================================= -->
+
+    <script src="/js/others/pagebehaviour.js"></script>
+
+    <script src="/js/mobile/mobile.js"></script>
+
+
+    <!-- =================================
+         ADMIN JAVASCRIPT
+    ================================= -->
+
+    <script src="/js/admin/admin.js"></script>
 
 
 </body>
 
 </html>
-```

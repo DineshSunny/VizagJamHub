@@ -2,85 +2,826 @@
    VIZAG JAMHUB - ADMIN
 ================================= */
 
-/* ===============================
-MANAGE SHOWS
-=============================== */
 
-.manage-shows{
+/* =================================
+   ADMIN PANEL
+================================= */
 
-display:flex;
-flex-direction:column;
-gap:20px;
-width:600px;
+.admin-panel {
 
-}
+    height: 100vh;
 
-.manage-show-card{
+    display: flex;
 
-display:flex;
-background:black;
-border-radius:10px;
-overflow:hidden;
-border:1px solid white;
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
 
 }
 
-.manage-poster{
 
-width:160px;
-height:120px;
+/* =================================
+   ADMIN TITLE
+================================= */
 
-background-size:cover;
-background-position:center;
+.admin-title {
 
-}
+    font-size: 60px;
 
-.manage-info{
-
-padding:15px;
-flex:1;
+    margin-bottom: 60px;
 
 }
 
-.showButtons{
 
-margin-top:10px;
-display:flex;
-gap:10px;
+/* =================================
+   ADMIN BUTTONS
+================================= */
 
-}
+.admin-buttons {
 
-/* ADMIN PANEL */
+    width: 100%;
 
-.admin-panel{
+    display: flex;
 
-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
+    justify-content: center;
 
 }
 
-.admin-title{
 
-font-size:60px;
-margin-bottom:60px;
+/* =================================
+   ADMIN NAV BUTTONS
+================================= */
+
+.admin-buttons .nav-links {
+
+    display: flex;
+
+    flex-direction: row;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 20px;
 
 }
 
-.admin-buttons{
 
-display:flex;
+/* =================================
+   MANAGE SHOWS
+================================= */
 
-flex-direction:row;
+.manage-shows {
 
-flex-wrap:wrap;
+    display: flex;
 
-justify-content:center;
+    flex-direction: column;
 
-gap:20px;
+    gap: 20px;
 
-}/* LOGOUT BUTTON */
-/* RED HOVER */
+    width: 600px;
+
+}
+
+
+/* =================================
+   MANAGE SHOW CARD
+================================= */
+
+.manage-show-card {
+
+    display: flex;
+
+    background: black;
+
+    border:
+        1px solid white;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+
+/* =================================
+   MANAGE SHOW POSTER
+================================= */
+
+.manage-poster {
+
+    width: 160px;
+
+    height: 120px;
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+/* =================================
+   MANAGE SHOW INFORMATION
+================================= */
+
+.manage-info {
+
+    padding: 15px;
+
+    flex: 1;
+
+}
+
+
+/* =================================
+   SHOW BUTTONS
+================================= */
+
+.showButtons {
+
+    margin-top: 10px;
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+/* =================================
+   ADMIN LOGIN
+================================= */
+
+.login-section {
+
+    flex: 1;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+}
+
+
+/* =================================
+   ADMIN LOGIN LOGO
+================================= */
+
+.login-section .top-logo {
+
+    position: static;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+
+    margin: 0 0 -150px;
+
+    pointer-events: none;
+
+}
+
+
+.login-section .top-logo img {
+
+    display: block;
+
+    width: 900px;
+    max-width: 95%;
+
+    height: auto;
+
+}
+
+
+/* =================================
+   ADMIN LOGIN TITLE
+================================= */
+
+.login-title {
+
+    width: 100%;
+
+    margin:
+        0 0 40px;
+
+    font-size: 40px;
+
+    text-align: center;
+
+}
+
+
+/* =================================
+   ADMIN LOGIN FORM
+================================= */
+
+.login-form {
+
+    width: 320px;
+
+    max-width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+/* =================================
+   PASSWORD FIELD
+================================= */
+
+.login-form .password-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+}
+
+
+/* =================================
+   LOGIN INPUT
+================================= */
+
+.login-form input {
+
+    width: 100%;
+
+    height: 58px;
+
+    padding:
+        0 52px
+        0 18px;
+
+    box-sizing: border-box;
+
+    color: white;
+
+    font-size: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.05)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.30);
+
+    border-radius: 14px;
+
+    outline: none;
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.login-form input::placeholder {
+
+    color:
+        rgba(255, 255, 255, 0.70);
+
+}
+
+
+.login-form input:focus {
+
+    border-color:
+        #00d4ff;
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 212, 255, 0.25);
+
+}
+
+
+/* =================================
+   PASSWORD VISIBILITY BUTTON
+================================= */
+
+.login-form .toggle-password {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 18px;
+
+    transform:
+        translateY(-50%);
+
+    width: auto;
+
+    height: auto;
+
+    padding: 0;
+
+    margin: 0;
+
+    color: white;
+
+    font-size: 17px;
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+}
+
+
+/* =================================
+   LOGIN BUTTON
+================================= */
+
+.login-form .login-btn {
+
+    width: 100%;
+
+    height: 58px;
+
+    margin-top: 5px;
+
+    padding:
+        0 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.05)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 14px;
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+
+}
+
+
+/* =================================
+   LOGIN BUTTON HOVER
+================================= */
+
+.login-form .login-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        #00d4ff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 212, 255, 0.18),
+            rgba(255, 255, 255, 0.07)
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(0, 212, 255, 0.30);
+
+}
+
+
+/* =================================
+   LOGIN BUTTON ACTIVE
+================================= */
+
+.login-form .login-btn:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =================================
+   LOGIN ERROR
+================================= */
+
+#error {
+
+    min-height: 24px;
+
+    margin: 0;
+
+    color: #ff6666;
+
+    font-size: 15px;
+
+}
+
+
+/* =================================
+   LOGIN ERROR ANIMATION
+================================= */
+
+.shake {
+
+    animation:
+        shake 0.4s;
+
+}
+
+
+@keyframes shake {
+
+    0% {
+
+        transform:
+            translateX(0);
+
+    }
+
+    25% {
+
+        transform:
+            translateX(-8px);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(8px);
+
+    }
+
+    75% {
+
+        transform:
+            translateX(-8px);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+/* =================================
+   ADMIN BUTTON ANIMATION
+================================= */
+
+.admin-panel
+.admin-buttons
+.nav-links li {
+
+    opacity: 0;
+
+    transform:
+        scale(0.75);
+
+}
+
+
+/* =================================
+   BUTTONS OPEN
+================================= */
+
+.admin-panel.admin-panel-active
+.admin-buttons
+.nav-links li {
+
+    animation:
+        adminButtonOpen
+        0.7s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+
+}
+
+
+/* =================================
+   BUTTON 1
+================================= */
+
+.admin-panel.admin-panel-active
+.admin-buttons
+.nav-links li:nth-child(1) {
+
+    --start-x: 180px;
+
+    animation-delay: 0.05s;
+
+}
+
+
+/* =================================
+   BUTTON 2
+================================= */
+
+.admin-panel.admin-panel-active
+.admin-buttons
+.nav-links li:nth-child(2) {
+
+    --start-x: 90px;
+
+    animation-delay: 0.10s;
+
+}
+
+
+/* =================================
+   BUTTON 3
+================================= */
+
+.admin-panel.admin-panel-active
+.admin-buttons
+.nav-links li:nth-child(3) {
+
+    --start-x: 0px;
+
+    animation-delay: 0.15s;
+
+}
+
+
+/* =================================
+   BUTTON 4
+================================= */
+
+.admin-panel.admin-panel-active
+.admin-buttons
+.nav-links li:nth-child(4) {
+
+    --start-x: -90px;
+
+    animation-delay: 0.10s;
+
+}
+
+
+/* =================================
+   BUTTON 5
+================================= */
+
+.admin-panel.admin-panel-active
+.admin-buttons
+.nav-links li:nth-child(5) {
+
+    --start-x: -180px;
+
+    animation-delay: 0.05s;
+
+}
+
+
+/* =================================
+   BUTTON OPEN EFFECT
+================================= */
+
+@keyframes adminButtonOpen {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateX(var(--start-x))
+            scale(0.75);
+
+        filter:
+            blur(5px);
+
+    }
+
+    65% {
+
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1.04);
+
+        filter:
+            blur(0);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+
+        filter:
+            blur(0);
+
+    }
+
+}
+
+
+/* =================================
+   LOGOUT BUTTON
+================================= */
+
+.logout-btn {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 260px;
+    height: 52px;
+
+    margin-top: 35px;
+
+    padding: 0 20px;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 35, 35, 0.45),
+            rgba(255, 0, 0, 0.25)
+        );
+
+    backdrop-filter:
+        blur(18px)
+        saturate(160%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(160%);
+
+    border:
+        1px solid rgba(255, 70, 70, 0.85);
+
+    border-radius: 16px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 0 12px rgba(255, 0, 0, 0.45),
+        0 0 28px rgba(255, 0, 0, 0.25);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+/* =================================
+   LOGOUT HOVER
+================================= */
+
+.logout-btn:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 55, 55, 0.60),
+            rgba(255, 0, 0, 0.40)
+        );
+
+    border-color: #ff4545;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        0 0 15px rgba(255, 0, 0, 0.75),
+        0 0 35px rgba(255, 0, 0, 0.45);
+
+}
+
+
+/* =================================
+   LOGOUT ANIMATION
+================================= */
+
+.admin-panel .logout-btn {
+
+    opacity: 0;
+
+}
+
+
+.admin-panel.admin-panel-active
+.logout-btn {
+
+    animation:
+        adminLogoutAppear
+        0.5s
+        ease
+        0.65s
+        forwards;
+
+}
+
+
+@keyframes adminLogoutAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
