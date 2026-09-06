@@ -31,15 +31,14 @@ body {
 
     overflow-x: hidden;
 
-    /*
-       GLOBAL BASE BACKGROUND
-       Midnight navy instead of black.
-    */
-
     background: #050713;
 
-}
+    min-height: 100vh;
 
+    display: flex;
+    flex-direction: column;
+
+}
 
 /* =================================
    VIDEO OVERLAY
@@ -855,11 +854,12 @@ body.menu-open {
    WEBSITE FOOTER
 ========================================================== */
 
+
 .site-footer {
 
     width: 100%;
 
-    margin-top: 80px;
+    margin-top: auto;
 
     padding:
         30px 20px;
@@ -873,28 +873,6 @@ body.menu-open {
         1px solid rgba(255, 255, 255, 0.15);
 
 }
-
-
-/* =================================
-   FOOTER TEXT
-================================= */
-
-.site-footer p {
-
-    margin:
-        12px 0;
-
-    color:
-        #ffffff;
-
-    font-size:
-        16px;
-
-    font-weight:
-        400;
-
-}
-
 
 /* =================================
    FOOTER LINKS CONTAINER
@@ -976,3 +954,5 @@ body.menu-open {
         400;
 
 }
+
+

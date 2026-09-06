@@ -112,44 +112,6 @@
 }
 
 
-/* =================================================================
-   LYRICS PAGE LIVE TEXT POSITIONS
-================================================================= */
-
-.category-page .typing-text {
-
-    position: absolute;
-
-    top: 36%;
-    left: 51%;
-
-    animation: none;
-
-    pointer-events: none;
-
-}
-
-
-.language-page .typing-text {
-
-    position: absolute;
-
-    top: 37%;
-    left: 51%;
-
-    animation: none;
-
-    pointer-events: none;
-
-}
-
-
-.language-page #title {
-
-    margin-top: -80px;
-
-}
-
 
 /* =================================================================
    HERO
@@ -189,9 +151,12 @@
 
 section {
 
+    width: 100%;
+
     max-width: 1100px;
 
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 
     padding: 60px 20px;
 
@@ -1799,5 +1764,17 @@ section {
 #book {
 
     scroll-margin-top: 120px;
+
+}
+
+/* ==========================================================
+   INDEX FOOTER
+========================================================== */
+
+.site-footer {
+
+
+
+    margin-top: 80px;
 
 }
