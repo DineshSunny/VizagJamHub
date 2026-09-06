@@ -1,331 +1,654 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Hindi Songs | Vizag JamHub</title>
 
-  <!-- MOBILE VIEW ZOOM -->
+    <!-- =================================
+         PAGE INFORMATION
+    ================================= -->
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-  <link rel="stylesheet" href="/css/style.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <link rel="stylesheet"
-  href="css/mobile.css"
-  media="screen and (max-width:768px)">
+    <title>Hindi Songs | Vizag JamHub</title>
+
+
+    <!-- =================================
+         DESKTOP STYLES
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/website/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/buttons.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/lyrics.css"
+    >
+
+
+    <!-- =================================
+         MOBILE STYLES
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/global.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/buttons.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/lyrics.css"
+        media="screen and (max-width:768px)"
+    >
+
+
+    <!-- =================================
+         FONT AWESOME ICONS
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
+
 <body>
 
-<!-- SUBTLE VIDEO BACKGROUND -->
 
-<video autoplay muted loop playsinline preload="metadata" class="lyrics-video">
-<source src="/Video/3.mp4" type="video/mp4">
-</video>
+    <!-- =================================
+         LYRICS BACKGROUND VIDEO
+    ================================= -->
 
-<!-- =================================
-     TOP PAGE MUSIC NOTES
-================================= -->
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        class="lyrics-video"
+    >
 
-<div class="music-notes">
+        <source
+            src="/video/1.mp4"
+            type="video/mp4"
+        >
 
-<span>♪</span>
-<span>♫</span>
-<span>♬</span>
-<span>♩</span>
-<span>𝄞</span>
-<span>♭</span>
-<span>♯</span>
-<span>♬</span>
-<span>♫</span>
-<span>♪</span>
-<span>♩</span>
-<span>𝄢</span>
+    </video>
 
-</div>
 
-<!-- HAMBURGER BUTTON -->
+    <!-- =================================
+         FLOATING MUSIC NOTES
+    ================================= -->
 
-<header>
+    <div class="music-notes">
 
-<nav>
+        <span>♪</span>
+        <span>♫</span>
+        <span>♬</span>
+        <span>♩</span>
+        <span>𝄞</span>
+        <span>♭</span>
+        <span>♯</span>
+        <span>♬</span>
+        <span>♫</span>
+        <span>♪</span>
+        <span>♩</span>
+        <span>𝄢</span>
 
-<div class="menu-toggle">&#9776;</div>
+    </div>
 
-<ul class="nav-links">
 
-<li><a href="/index.html">Home</a></li>
+    <!-- =================================
+         FULLSCREEN NAVIGATION
+    ================================= -->
 
-<li><a href="/category.html">Song Categories</a></li>
+    <header>
 
-<li><a href="/index.html#shows">Shows</a></li>
+        <!-- OPEN MENU -->
 
-<li><a href="/index.html#school">School</a></li>
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
 
-<li><a href="/index.html#connect">Band Connect</a></li>
+            <i class="fa-solid fa-bars"></i>
 
-<li><a href="/index.html#gallery">Gallery</a></li>
+        </button>
 
-</ul>
 
-</nav>
+        <!-- NAVIGATION OVERLAY -->
 
-</header>
+        <div class="nav-overlay">
 
-<!-- LYRICS PAGE -->
+            <!-- CLOSE MENU -->
 
-<section class="lyrics-page">
+            <button
+                class="menu-close"
+                type="button"
+                aria-label="Close navigation"
+            >
 
-  <!-- SEARCH -->
+                <i class="fa-solid fa-xmark"></i>
 
-  <input
-    type="text"
-    id="searchInput"
-    placeholder="🔍 Search songs..."
-    class="search-bar"
-  />
+            </button>
 
-  <!-- SONG LIST -->
 
-  <div id="lyrics-container"></div>
+            <!-- NAVIGATION LINKS -->
 
-</section>
+            <nav>
 
+                <ul class="nav-links">
 
+                    <li>
+                        <a href="/">
+                            Home
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="/pages/lyrics/category.html">
+                            Sing Along Lyrics
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="/#shows">
+                            Shows
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="/#school">
+                            School
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="/#connect">
+                            Band Connect
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="/#gallery">
+                            Gallery
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="/pages/admin/admin.html">
+                            Admin Panel
+                        </a>
+                    </li>
 
+                </ul>
 
+            </nav>
 
+        </div>
 
-<script>
+    </header>
 
-document.addEventListener("DOMContentLoaded", () => {
 
-  const container = document.getElementById("lyrics-container");
-  const searchInput = document.getElementById("searchInput");
+    <!-- =================================
+         HINDI SONGS
+    ================================= -->
 
-  let songsData = [];
+    <section class="lyrics-page">
 
-  fetch("/api/hindisongs")
-  .then(res => res.json())
-  .then(data => {
 
-    songsData = data;
+        <!-- =================================
+             SONG SEARCH
+        ================================= -->
 
-const params = new URLSearchParams(window.location.search);
-const songId = params.get("id");
+        <input
+            type="text"
+            id="searchInput"
+            class="search-bar"
+            placeholder="🔍 Search songs..."
+        >
 
-if (songId) {
 
-  const selectedSong = songsData.find(
-    song => String(song.id) === String(songId)
-  );
+        <!-- =================================
+             SONG LIST / LYRICS CONTAINER
+        ================================= -->
 
-  if (selectedSong) {
+        <div id="lyrics-container"></div>
 
-    showLyrics(selectedSong);
 
-  } else {
+    </section>
 
-    renderSongs(data);
 
-  }
+    <!-- =================================
+         HINDI SONGS SCRIPT
+    ================================= -->
 
-} else {
+    <script>
 
-  renderSongs(data);
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
 
-}
+                const container =
+                    document.getElementById(
+                        "lyrics-container"
+                    );
 
-window.scrollTo(0, 0);
+                const searchInput =
+                    document.getElementById(
+                        "searchInput"
+                    );
 
+                let songsData = [];
 
 
-  })
-  .catch(err => {
+                /* =================================
+                   LOAD HINDI SONGS
+                ================================= */
 
-    console.error("FETCH ERROR:", err);
+                fetch("/api/hindisongs")
 
-    container.innerHTML =
-    "<p>Error loading songs</p>";
+                    .then((response) =>
+                        response.json()
+                    )
 
-  });
+                    .then((data) => {
 
-  function renderSongs(data){
+                        songsData = data;
 
-    container.innerHTML = "";
 
-    data.sort((a, b) =>
-      a.song.localeCompare(b.song)
-    );
+                        /* =================================
+                           CHECK FOR SONG ID
+                        ================================= */
 
-    let currentLetter = "";
+                        const params =
+                            new URLSearchParams(
+                                window.location.search
+                            );
 
-    data.forEach(song => {
+                        const songId =
+                            params.get("id");
 
-      const firstLetter =
-      song.song.charAt(0).toUpperCase();
 
-      if(firstLetter !== currentLetter){
+                        if (songId) {
 
-        currentLetter = firstLetter;
+                            const selectedSong =
+                                songsData.find(
+                                    (song) =>
+                                        String(song.id) ===
+                                        String(songId)
+                                );
 
-        const section =
-        document.createElement("div");
 
-        section.innerHTML = `
-          <h2 style="margin-top:30px; color:#00d4ff;">
-          🎵 ${currentLetter}
-          </h2>
-        `;
+                            if (selectedSong) {
 
-        container.appendChild(section);
+                                showLyrics(
+                                    selectedSong
+                                );
 
-      }
+                            } else {
 
-      const item =
-      document.createElement("div");
+                                renderSongs(
+                                    data
+                                );
 
-      item.classList.add("song-item");
+                            }
 
-      item.innerHTML = `
-        ${song.song} –
-        <span style="color:#aaa;">
-        ${song.movie}
-        </span>
-      `;
+                        } else {
 
-      item.addEventListener("click", () => {
+                            renderSongs(
+                                data
+                            );
 
-  window.location.href =
-    `/language.html?type=hindi&id=${song.id}`;
+                        }
 
-});
 
-      container.appendChild(item);
+                        window.scrollTo(
+                            0,
+                            0
+                        );
 
-    });
+                    })
 
-  }
+                    .catch((error) => {
 
-  searchInput.addEventListener("input", () => {
+                        console.error(
+                            "FETCH ERROR:",
+                            error
+                        );
 
-    const value =
-    searchInput.value.toLowerCase();
+                        container.innerHTML =
+                            "<p>Error loading songs</p>";
 
-    const filtered =
-    songsData.filter(song =>
-      song.song.toLowerCase()
-      .includes(value)
-    );
+                    });
 
-    renderSongs(filtered);
 
-    window.scrollTo(0, 0);
+                /* =================================
+                   RENDER SONG LIST
+                ================================= */
 
-  });
+                function renderSongs(data) {
 
-  function showLyrics(song){
+                    container.innerHTML = "";
 
-    const params =
-    new URLSearchParams(window.location.search);
+                    data.sort(
+                        (a, b) =>
+                            a.song.localeCompare(
+                                b.song
+                            )
+                    );
 
-    const scriptType =
-    params.get("script") || "english";
+                    let currentLetter = "";
 
-    let lyricsText =
-    scriptType === "english"
-    ? song.lyrics_english
-    : song.lyrics_hindi;
 
-    container.innerHTML = `
+                    data.forEach((song) => {
 
-      <div
-      style="
-      width:100%;
-      margin:40px 0;
-      padding:0 20px;
-      ">
+                        const firstLetter =
+                            song.song
+                                .charAt(0)
+                                .toUpperCase();
 
-      <h2>${song.song}</h2>
 
-      <p style="opacity:0.7;">
-      ${song.movie}
-      </p>
+                        /* =================================
+                           ALPHABET SECTION
+                        ================================= */
 
-      <p
-      style="
-      margin-top:20px;
-      white-space:pre-line;
-      line-height:1.9;
-      font-size:16px;
-      text-align:left;
-      ">
+                        if (
+                            firstLetter !==
+                            currentLetter
+                        ) {
 
-      ${lyricsText || "Lyrics coming soon..."}
+                            currentLetter =
+                                firstLetter;
 
-      </p>
+                            const section =
+                                document.createElement(
+                                    "div"
+                                );
 
-      <br>
+                            section.innerHTML = `
 
-      </div>
+                                <h2
+                                    style="
+                                        margin-top:30px;
+                                        color:#00d4ff;
+                                    "
+                                >
+                                    🎵 ${currentLetter}
+                                </h2>
 
-    `;
+                            `;
 
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+                            container.appendChild(
+                                section
+                            );
 
-    window.scrollTo(0, 0);
+                        }
 
-    requestAnimationFrame(() => {
 
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+                        /* =================================
+                           SONG ITEM
+                        ================================= */
 
-      window.scrollTo(0, 0);
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
 
-    });
+                        item.classList.add(
+                            "song-item"
+                        );
 
-  }
+                        item.innerHTML = `
 
-  window.addEventListener("popstate", () => {
+                            ${song.song} –
 
-    renderSongs(songsData);
+                            <span
+                                style="
+                                    color:#aaa;
+                                "
+                            >
+                                ${song.movie || ""}
+                            </span>
 
-    requestAnimationFrame(() => {
+                        `;
 
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
 
-      window.scrollTo(0, 0);
+                        /* =================================
+                           OPEN LANGUAGE SELECTION
+                        ================================= */
 
-    });
+                        item.addEventListener(
+                            "click",
+                            () => {
 
-  });
+                                window.location.href =
+                                    `/pages/lyrics/language.html?type=hindi&id=${song.id}`;
 
-});
+                            }
+                        );
 
-</script>
 
+                        container.appendChild(
+                            item
+                        );
 
+                    });
 
+                }
 
 
+                /* =================================
+                   SEARCH SONGS
+                ================================= */
 
+                searchInput.addEventListener(
+                    "input",
+                    () => {
 
+                        const value =
+                            searchInput
+                                .value
+                                .toLowerCase();
 
+                        const filtered =
+                            songsData.filter(
+                                (song) =>
+                                    song.song
+                                        .toLowerCase()
+                                        .includes(
+                                            value
+                                        )
+                            );
 
 
+                        renderSongs(
+                            filtered
+                        );
 
-<!-- HAMBURGER MENU SCRIPT -->
+                        window.scrollTo(
+                            0,
+                            0
+                        );
 
-<script src="/js/menu.js"></script>
+                    }
+                );
+
+
+                /* =================================
+                   DISPLAY SONG LYRICS
+                ================================= */
+
+                function showLyrics(song) {
+
+                    const params =
+                        new URLSearchParams(
+                            window.location.search
+                        );
+
+                    const scriptType =
+                        params.get("script") ||
+                        "english";
+
+
+                    const lyricsText =
+                        scriptType === "english"
+                            ? song.lyrics_english
+                            : song.lyrics_hindi;
+
+
+                    container.innerHTML = `
+
+                        <div
+                            style="
+                                width:100%;
+                                margin:40px 0;
+                                padding:0 20px;
+                            "
+                        >
+
+                            <h2>
+                                ${song.song}
+                            </h2>
+
+                            <p
+                                style="
+                                    opacity:0.7;
+                                "
+                            >
+                                ${song.movie || ""}
+                            </p>
+
+                            <p
+                                lang="${
+                                    scriptType === "english"
+                                        ? "en"
+                                        : "hi"
+                                }"
+                                style="
+                                    margin-top:20px;
+                                    white-space:pre-line;
+                                    line-height:1.9;
+                                    font-size:16px;
+                                    text-align:left;
+                                "
+                            >
+                                ${
+                                    lyricsText ||
+                                    "Lyrics coming soon..."
+                                }
+                            </p>
+
+                        </div>
+
+                    `;
+
+
+                    /* =================================
+                       RESET LYRICS TO TOP
+                    ================================= */
+
+                    document.documentElement
+                        .scrollTop = 0;
+
+                    document.body
+                        .scrollTop = 0;
+
+                    window.scrollTo(
+                        0,
+                        0
+                    );
+
+
+                    requestAnimationFrame(
+                        () => {
+
+                            document.documentElement
+                                .scrollTop = 0;
+
+                            document.body
+                                .scrollTop = 0;
+
+                            window.scrollTo(
+                                0,
+                                0
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================
+                   BROWSER BACK BUTTON
+                ================================= */
+
+                window.addEventListener(
+                    "popstate",
+                    () => {
+
+                        renderSongs(
+                            songsData
+                        );
+
+
+                        requestAnimationFrame(
+                            () => {
+
+                                document.documentElement
+                                    .scrollTop = 0;
+
+                                document.body
+                                    .scrollTop = 0;
+
+                                window.scrollTo(
+                                    0,
+                                    0
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+    <!-- =================================
+         SHARED PAGE SCRIPTS
+    ================================= -->
+
+    <script src="/js/others/pagebehaviour.js"></script>
+
+    <script src="/js/mobile/mobile.js"></script>
+
 
 </body>
 

@@ -1,282 +1,401 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>Select Script | Vizag JamHub</title>
+    <!-- =================================
+         PAGE INFORMATION
+    ================================= -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="/css/style.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet"
-      href="/css/mobile.css"
-      media="screen and (max-width:768px)">
+    <title>Select Script | Vizag JamHub</title>
+
+
+    <!-- =================================
+         DESKTOP STYLES
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/website/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/buttons.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/lyrics.css"
+    >
+
+
+    <!-- =================================
+         MOBILE STYLES
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/global.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/buttons.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/lyrics.css"
+        media="screen and (max-width:768px)"
+    >
+
+
+    <!-- =================================
+         FONT AWESOME ICONS
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
+
 <body class="language-page">
 
-<!-- VIDEO BACKGROUND -->
 
-<video autoplay muted loop playsinline preload="metadata" id="bg-video">
-<source src="/Video/3.mp4" type="video/mp4">
-</video>
+    <!-- =================================
+         BACKGROUND VIDEO
+    ================================= -->
 
-<!-- TOP LOGO -->
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        class="lyrics-video"
+    >
 
-<div class="top-logo">
-<img src="/Images/Logo.png">
-</div>
+        <source
+            src="/video/1.mp4"
+            type="video/mp4"
+        >
 
+    </video>
 
 
-<!-- =================================
-     TOP PAGE LIVE TEXT
-================================= -->
+    <!-- =================================
+         FLOATING MUSIC NOTES
+    ================================= -->
 
-<div class="typing-text" id="live-text">
-<span id="typing"></span>
-</div>
+    <div class="music-notes">
 
-<!-- =================================
-     TOP PAGE MUSIC NOTES
-================================= -->
+        <span>♪</span>
+        <span>♫</span>
+        <span>♬</span>
+        <span>♩</span>
+        <span>𝄞</span>
+        <span>♭</span>
+        <span>♯</span>
+        <span>♬</span>
+        <span>♫</span>
+        <span>♪</span>
+        <span>♩</span>
+        <span>𝄢</span>
 
-<div class="music-notes">
+    </div>
 
-<span>♪</span>
-<span>♫</span>
-<span>♬</span>
-<span>♩</span>
-<span>𝄞</span>
-<span>♭</span>
-<span>♯</span>
-<span>♬</span>
-<span>♫</span>
-<span>♪</span>
-<span>♩</span>
-<span>𝄢</span>
 
-</div>
+    <!-- =================================
+         FULLSCREEN NAVIGATION
+    ================================= -->
 
+    <header>
 
+        <!-- OPEN MENU -->
 
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
 
+            <i class="fa-solid fa-bars"></i>
 
+        </button>
 
 
+        <!-- NAVIGATION OVERLAY -->
 
+        <div class="nav-overlay">
 
-<!-- =================================
-     HAMBURGER MENU
-================================= -->
+            <!-- CLOSE MENU -->
 
-<header>
+            <button
+                class="menu-close"
+                type="button"
+                aria-label="Close navigation"
+            >
 
-<nav>
+                <i class="fa-solid fa-xmark"></i>
 
-<!-- HAMBURGER ICON -->
+            </button>
 
-<div class="menu-toggle">&#9776;</div>
 
-<!-- SLIDE MENU -->
+            <!-- NAVIGATION LINKS -->
 
-<ul class="nav-links">
+            <nav>
 
-<li><a href="/index.html">Home</a></li>
+                <ul class="nav-links">
 
-<li><a href="/category.html">Sing Along Lyrics</a></li>
+                    <li>
+                        <a href="/">
+                            Home
+                        </a>
+                    </li>
 
-<li><a href="/index.html#school">School</a></li>
+                    <li>
+                        <a href="/pages/lyrics/category.html">
+                            Sing Along Lyrics
+                        </a>
+                    </li>
 
-<li><a href="/index.html#shows">Shows</a></li>
+                    <li>
+                        <a href="/#shows">
+                            Shows
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/#school">
+                            School
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/#connect">
+                            Band Connect
+                        </a>
+                    </li>
 
-<li><a href="/index.html#connect">Band Connect</a></li>
+                    <li>
+                        <a href="/#gallery">
+                            Gallery
+                        </a>
+                    </li>
 
-<li><a href="/index.html#gallery">Gallery</a></li>
+                    <li>
+                        <a href="/pages/admin/admin.html">
+                            Admin Panel
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================
+         LANGUAGE / SCRIPT SELECTION
+    ================================= -->
+
+    <main
+        style="
+            flex: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        "
+    >
+
+        <!-- PAGE TITLE -->
+
+        <h1 id="title">
+            Select Script
+        </h1>
+
+
+        <!-- LANGUAGE OPTIONS -->
+
+        <ul
+            id="languageOptions"
+            class="nav-links"
+            style="
+                margin-top: 40px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                list-style: none;
+                padding: 0;
+            "
+        >
+        </ul>
+
+    </main>
+
+
+    <!-- =================================
+         SCRIPT SELECTION LOGIC
+    ================================= -->
+
+    <script>
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const type =
+            params.get("type");
+
+        const id =
+            params.get("id");
+
+        const container =
+            document.getElementById(
+                "languageOptions"
+            );
+
+        const title =
+            document.getElementById(
+                "title"
+            );
+
+
+        /* =================================
+           TELUGU
+        ================================= */
+
+        if (type === "telugu") {
 
-</ul>
+            title.innerText =
+                "Select Telugu Language";
 
-</nav>
+            container.innerHTML = `
 
-</header>
+                <li>
+                    <a
+                        href="/pages/lyrics/telugusongs.html?id=${id}&script=english"
+                        onclick="
+                            event.preventDefault();
+                            window.location.replace(this.href);
+                        "
+                    >
+                        English
+                    </a>
+                </li>
 
+                <li>
+                    <a
+                        href="/pages/lyrics/telugusongs.html?id=${id}&script=native"
+                        onclick="
+                            event.preventDefault();
+                            window.location.replace(this.href);
+                        "
+                    >
+                        తెలుగు
+                    </a>
+                </li>
 
+            `;
 
+        }
 
-<!-- HERO -->
 
-<section class="hero">
+        /* =================================
+           HINDI
+        ================================= */
 
-<div class="hero-content">
+        else if (type === "hindi") {
 
-<h1 id="title">Select Script</h1>
+            title.innerText =
+                "Select Hindi Language";
 
-<!-- BUTTONS -->
+            container.innerHTML = `
 
-<div id="languageOptions"
-style="
-margin-top:40px;
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:20px;
-"></div>
+                <li>
+                    <a
+                        href="/pages/lyrics/hindisongs.html?id=${id}&script=english"
+                        onclick="
+                            event.preventDefault();
+                            window.location.replace(this.href);
+                        "
+                    >
+                        English
+                    </a>
+                </li>
 
-</div>
+                <li>
+                    <a
+                        href="/pages/lyrics/hindisongs.html?id=${id}&script=native"
+                        onclick="
+                            event.preventDefault();
+                            window.location.replace(this.href);
+                        "
+                    >
+                        हिंदी
+                    </a>
+                </li>
 
-</section>
+            `;
 
-<script>
+        }
 
-const params = new URLSearchParams(window.location.search);
 
-const type = params.get("type");
-const id = params.get("id");
+        /* =================================
+           INVALID ACCESS
+        ================================= */
 
-const container = document.getElementById("languageOptions");
-const title = document.getElementById("title");
+        else {
 
-/* TELUGU */
+            title.innerText =
+                "Invalid Access";
 
-if(type === "telugu"){
+            container.innerHTML = `
 
-title.innerText = "Select Telugu Language";
-title.classList.add("telugu-title");
+                <li>
+                    <a href="/pages/lyrics/category.html">
+                        Go to Categories
+                    </a>
+                </li>
 
-container.innerHTML = `
+            `;
 
-<a href="/telugusongs.html?id=${id}&script=english"
-class="lyrics-btn"
-style="width:240px; text-align:center;"
-onclick="event.preventDefault(); window.location.replace(this.href);">
+        }
 
-English
+    </script>
 
-</a>
 
-<a href="/telugusongs.html?id=${id}&script=native"
-class="lyrics-btn"
-style="width:240px; text-align:center;"
-onclick="event.preventDefault(); window.location.replace(this.href);">
+    <!-- =================================
+         SHARED PAGE SCRIPTS
+    ================================= -->
 
-తెలుగు
+    <script src="/js/others/pagebehaviour.js"></script>
 
-</a>
+    <script src="/js/mobile/mobile.js"></script>
 
-`;
-
-}
-
-/* HINDI */
-
-if(type === "hindi"){
-
-title.innerText = "Select Hindi Language";
-
-container.innerHTML = `
-
-<a href="/hindisongs.html?id=${id}&script=english"
-class="lyrics-btn"
-style="width:240px; text-align:center;"
-onclick="event.preventDefault(); window.location.replace(this.href);">
-
-English
-
-</a>
-
-
-<a href="/hindisongs.html?id=${id}&script=native"
-class="lyrics-btn"
-style="width:240px; text-align:center;"
-onclick="event.preventDefault(); window.location.replace(this.href);">
-
-हिंदी
-
-</a>
-
-`;
-
-}
-
-
-
-/* INVALID */
-
-if(!type){
-
-title.innerText = "Invalid Access";
-
-container.innerHTML = `
-
-<a href="/category.html"
-class="lyrics-btn"
-style="width:240px; text-align:center;">
-
-Go to Categories
-
-</a>
-
-`;
-
-}
-
-</script>
-
-
-
-
-<!-- =================================
-     TOP PAGE LIVE TEXT SCRIPT
-================================= -->
-
-<script>
-
-const words = [
-
-"LIVE MUSIC",
-"JAM SESSIONS",
-"VIZAG CULTURE",
-"NIGHT VIBES",
-"LIVE PERFORMANCES",
-"MUSIC COMMUNITY"
-
-];
-
-const typing = document.getElementById("typing");
-
-let index = 0;
-
-typing.textContent = words[index];
-
-typing.classList.add("show");
-
-setInterval(() => {
-
-typing.classList.remove("show");
-typing.classList.add("hide");
-
-setTimeout(() => {
-
-index = (index + 1) % words.length;
-
-typing.textContent = words[index];
-
-typing.classList.remove("hide");
-typing.classList.add("show");
-
-}, 900);
-
-}, 3200);
-
-</script>
-
-
-
-
-
-<script src="/js/menu.js"></script>
 
 </body>
 
