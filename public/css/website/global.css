@@ -31,7 +31,12 @@ body {
 
     overflow-x: hidden;
 
-    background: black;
+    /*
+       GLOBAL BASE BACKGROUND
+       Midnight navy instead of black.
+    */
+
+    background: #050713;
 
 }
 

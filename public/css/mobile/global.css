@@ -3,15 +3,40 @@
 ================================= */
 
 
-/* =================================
-   MOBILE BODY
-================================= */
+/* =================================================================
+   MOBILE GLOBAL MIDNIGHT BACKGROUND
+================================================================= */
+
+html {
+
+    min-height: 100%;
+
+    background:
+        #03040c;
+
+}
+
 
 body {
+
+    min-height: 100vh;
 
     font-size: 18px;
 
     overflow-x: hidden;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 50% 22%,
+            rgba(32, 35, 78, 0.34) 0%,
+            rgba(18, 20, 48, 0.26) 25%,
+            rgba(9, 11, 28, 0.94) 55%,
+            #03040c 100%
+        );
+
+    background-attachment: fixed;
 
 }
 
@@ -104,8 +129,8 @@ body {
     background:
         linear-gradient(
             135deg,
-            rgba(10, 10, 10, 0.46),
-            rgba(20, 20, 20, 0.28)
+            rgba(5, 7, 19, 0.72),
+            rgba(18, 20, 48, 0.52)
         );
 
     backdrop-filter:
@@ -154,6 +179,9 @@ section {
     padding:
         40px 15px;
 
+    background-color:
+        transparent;
+
 }
 
 
@@ -162,6 +190,13 @@ section {
 ================================= */
 
 .music-notes span {
+
+    /*
+       KEEP THIS FILTER.
+
+       This is an intentional blur effect,
+       not the website background filter.
+    */
 
     filter:
         blur(2px);
