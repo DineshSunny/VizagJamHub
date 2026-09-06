@@ -1,11 +1,11 @@
-/* ================================= 
-   PAGE BEHAVIOUR - VIZAG JAMHUB 
-================================= */ 
+/* =================================
+   PAGE BEHAVIOUR - VIZAG JAMHUB
+================================= */
 
 
-/* ==========================================================
+/* =================================
    FULLSCREEN GLASS NAVIGATION
-========================================================== */
+================================= */
 
 const menuToggle =
   document.querySelector(".menu-toggle");
@@ -75,6 +75,34 @@ function closeMenu() {
 
 
 /* =================================
+   CLOSE MENU IMMEDIATELY
+================================= */
+
+function closeMenuImmediately() {
+
+  if (!navOverlay) {
+    return;
+  }
+
+  navOverlay.style.transition = "none";
+
+  navOverlay.classList.remove("active");
+
+  document.body.classList.remove("menu-open");
+
+  if (menuToggle) {
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  }
+
+}
+
+
+/* =================================
    HAMBURGER CLICK
 ================================= */
 
@@ -103,14 +131,14 @@ if (menuClose) {
 
 
 /* =================================
-   CLOSE AFTER CLICKING MENU LINK
+   MENU LINK CLICK
 ================================= */
 
 navItems.forEach((link) => {
 
   link.addEventListener(
     "click",
-    closeMenu
+    closeMenuImmediately
   );
 
 });
@@ -138,149 +166,174 @@ document.addEventListener(
 );
 
 
-/* ================================= 
-   SCROLL RESTORATION 
-================================= */ 
+/* =================================
+   SCROLL RESTORATION
+================================= */
 
-if ("scrollRestoration" in history) { 
+if ("scrollRestoration" in history) {
 
-  history.scrollRestoration = "manual"; 
+  history.scrollRestoration = "manual";
 
-} 
-
-
-/* ================================= 
-   SCROLL TO TOP 
-================================= */ 
-
-function resetScroll() { 
-
-  window.scrollTo({ 
-    top: 0, 
-    left: 0, 
-    behavior: "instant" 
-  }); 
-
-} 
+}
 
 
-/* ================================= 
-   SMOOTH SCROLL TO TOP 
-================================= */ 
+/* =================================
+   SCROLL TO TOP
+================================= */
 
-function smoothScrollTop() { 
+function resetScroll() {
 
-  window.scrollTo({ 
-    top: 0, 
-    left: 0, 
-    behavior: "smooth" 
-  }); 
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant"
+  });
 
-} 
+}
 
 
-/* ================================= 
-   SCROLL CONTROLLER 
-================================= */ 
+/* =================================
+   SMOOTH SCROLL TO TOP
+================================= */
 
-function goTop(smooth = false) { 
+function smoothScrollTop() {
 
-  if (smooth) { 
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth"
+  });
 
-    smoothScrollTop(); 
+}
+
+
+/* =================================
+   SCROLL CONTROLLER
+================================= */
+
+function goTop(smooth = false) {
+
+  if (smooth) {
+
+    smoothScrollTop();
 
   }
 
-  else { 
+  else {
 
-    resetScroll(); 
+    resetScroll();
 
-  } 
+  }
 
-} 
-
-
-/* ================================= 
-   SMOOTH ANCHOR SCROLL 
-================================= */ 
-
-function enableSmoothAnchors() { 
-
-  const anchors = 
-    document.querySelectorAll( 
-      'a[href^="#"]' 
-    ); 
-
-  anchors.forEach(anchor => { 
-
-    anchor.addEventListener( 
-      "click", 
-      function (event) { 
-
-        const targetId = 
-          this.getAttribute("href"); 
-
-        if ( 
-          !targetId || 
-          targetId === "#" 
-        ) { 
-
-          return; 
-
-        } 
-
-        const target = 
-          document.querySelector( 
-            targetId 
-          ); 
-
-        if (target) { 
-
-          event.preventDefault(); 
-
-          target.scrollIntoView({ 
-            behavior: "smooth", 
-            block: "start" 
-          }); 
-
-        } 
-
-      } 
-    ); 
-
-  }); 
-
-} 
+}
 
 
-/* ================================= 
-   INITIALIZE PAGE BEHAVIOUR 
-================================= */ 
+/* =================================
+   SMOOTH ANCHOR SCROLL
+================================= */
 
-function initPageBehaviour() { 
+function enableSmoothAnchors() {
 
-  resetScroll(); 
+  const anchors =
+    document.querySelectorAll(
+      'a[href^="#"]'
+    );
 
-  enableSmoothAnchors(); 
+  anchors.forEach(anchor => {
 
-} 
+    anchor.addEventListener(
+      "click",
+      function (event) {
+
+        const targetId =
+          this.getAttribute("href");
+
+        if (
+          !targetId ||
+          targetId === "#"
+        ) {
+
+          return;
+
+        }
+
+        const target =
+          document.querySelector(
+            targetId
+          );
+
+        if (target) {
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+
+      }
+    );
+
+  });
+
+}
 
 
-/* ================================= 
-   PAGE LOAD 
-================================= */ 
+/* =================================
+   INITIALIZE PAGE BEHAVIOUR
+================================= */
 
-document.addEventListener( 
-  "DOMContentLoaded", 
-  initPageBehaviour 
-); 
+function initPageBehaviour() {
+
+  resetScroll();
+
+  enableSmoothAnchors();
+
+}
 
 
-/* ================================= 
-   FORCE TOP AFTER REFRESH 
-================================= */ 
+/* =================================
+   PAGE LOAD
+================================= */
 
-window.addEventListener( 
-  "pageshow", 
-  resetScroll 
+document.addEventListener(
+  "DOMContentLoaded",
+  initPageBehaviour
+);
+
+
+/* =================================
+   PAGE SHOW
+================================= */
+
+window.addEventListener(
+  "pageshow",
+  () => {
+
+    resetScroll();
+
+    if (navOverlay) {
+
+      navOverlay.style.transition = "";
+
+      navOverlay.classList.remove("active");
+
+    }
+
+    document.body.classList.remove(
+      "menu-open"
+    );
+
+    if (menuToggle) {
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    }
+
+  }
 );

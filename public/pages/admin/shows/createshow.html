@@ -1,204 +1,391 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Create Show | Vizag JamHub</title>
+    <title>Create Show | Vizag JamHub</title>
 
-<link rel="stylesheet" href="/css/style.css">
 
-<link rel="stylesheet"
-      href="/css/mobile.css"
-      media="screen and (max-width:768px)">
+    <!-- =================================
+         DESKTOP CSS
+    ================================== -->
+
+    <link rel="stylesheet" href="/css/website/global.css">
+    <link rel="stylesheet" href="/css/website/buttons.css">
+    <link rel="stylesheet" href="/css/website/forms/forms.css">
+    <link rel="stylesheet" href="/css/website/forms/adminforms.css">
+    <link rel="stylesheet" href="/css/website/admin.css">
+
+
+    <!-- =================================
+         MOBILE CSS
+    ================================== -->
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/global.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/buttons.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/forms/forms.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/forms/adminforms.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/admin.css"
+        media="screen and (max-width:768px)"
+    >
+
+
+    <!-- =================================
+         ICONS
+    ================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
-<body class="category-page">
 
-<!-- VIDEO BACKGROUND -->
+<body>
 
-<video autoplay muted loop playsinline preload="metadata" id="bg-video">
-<source src="/Video/3.mp4" type="video/mp4">
-</video>
 
-<!-- LOGO -->
+    <!-- =================================
+         VIDEO BACKGROUND
+    ================================== -->
 
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        id="bg-video"
+    >
 
-<div class="top-logo">
-<img src="/Images/Logo.png">
-</div>
+        <source
+            src="/video/1.mp4"
+            type="video/mp4"
+        >
 
+    </video>
 
-<!-- LIVE TEXT -->
 
-<div class="typing-text" id="live-text">
-<span id="typing"></span>
-</div>
+    <!-- =================================
+         MUSIC NOTES
+    ================================== -->
 
+    <div class="music-notes">
 
+        <span>♪</span>
+        <span>♫</span>
+        <span>♬</span>
+        <span>♩</span>
+        <span>𝄞</span>
+        <span>♭</span>
+        <span>♯</span>
+        <span>♬</span>
+        <span>♫</span>
+        <span>♪</span>
+        <span>♩</span>
+        <span>𝄢</span>
 
+    </div>
 
 
-<!-- MUSIC NOTES -->
+    <!-- =================================
+         NAVIGATION
+    ================================== -->
 
-<div class="music-notes">
+    <header>
 
-<span>♪</span>
-<span>♫</span>
-<span>♬</span>
-<span>♩</span>
-<span>𝄞</span>
-<span>♭</span>
-<span>♯</span>
-<span>♬</span>
-<span>♫</span>
-<span>♪</span>
-<span>♩</span>
-<span>𝄢</span>
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
 
-</div>
+            <i class="fa-solid fa-bars"></i>
 
-<!-- HAMBURGER MENU -->
+        </button>
 
-<header>
 
-<nav>
+        <div class="nav-overlay">
 
-<div class="menu-toggle">&#9776;</div>
+            <button
+                class="menu-close"
+                type="button"
+                aria-label="Close navigation"
+            >
 
-<ul class="nav-links">
+                <i class="fa-solid fa-xmark"></i>
 
-<li><a href="/index.html">Home</a></li>
+            </button>
 
-<li><a href="/admin.html">Admin Panel</a></li>
 
-<li><a href="/manage-shows.html">Manage Shows</a></li>
+            <nav>
 
-<li><a href="/tickets.html">Tickets</a></li>
+                <ul class="nav-links">
 
-</ul>
+                    <li>
 
-</nav>
+                        <a href="/">
+                            Home
+                        </a>
 
-</header>
+                    </li>
 
+                    <li>
 
+                        <a href="/pages/admin/admin.html">
+                            Admin Panel
+                        </a>
 
-<!-- =================================
-     CREATE SHOW FORM
-================================= -->
+                    </li>
 
-<section class="hero">
+                    <li>
 
-<div class="hero-content">
+                        <a href="/pages/admin/shows/manage-shows.html">
+                            Manage Shows
+                        </a>
 
-<form class="create-show-form"
-      id="showForm"
-      enctype="multipart/form-data">
+                    </li>
 
-<input name="title"
-       id="showName"
-       placeholder="Show Name"
-       required>
+                    <li>
 
-<input name="venue"
-       id="venue"
-       placeholder="Venue / Place"
-       required>
+                        <a href="/pages/admin/tickets/ticket.html">
+                            Tickets
+                        </a>
 
-<input name="address"
-       id="address"
-       placeholder="Address"
-       required>
+                    </li>
 
-<input type="date"
-       name="date"
-       id="date"
-       required>
+                </ul>
 
-<input type="time"
-       name="startTime"
-       id="startTime"
-       required>
+            </nav>
 
-<input type="time"
-       name="endTime"
-       id="endTime"
-       required>
+        </div>
 
-<input type="number"
-       name="price"
-       id="price"
-       placeholder="Ticket Price (₹)">
+    </header>
 
-<input type="file"
-       name="poster"
-       id="poster">
 
-<textarea name="info"
-          id="info"
-          class="extra-info"
-          placeholder="Extra Information"></textarea>
+    <!-- =================================
+         CREATE SHOW
+    ================================== -->
 
-<button type="submit">
-Create Show
-</button>
+    <main
+        style="
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 45px 20px 60px;
+        "
+    >
 
-</form>
 
-</div>
+        <!-- =================================
+             HEADING
+        ================================== -->
 
-</section>
+        <h1
+            class="admin-title"
+            style="
+                width: 100%;
+                text-align: center;
+                margin: 0 0 20px;
+            "
+        >
 
+            CREATE SHOW
 
+        </h1>
 
-<script>
 
-const words = [
+        <!-- =================================
+             CREATE SHOW FORM
+        ================================== -->
 
-"CREATE SHOW",
-"LIVE MUSIC",
-"JAM SESSIONS",
-"MUSIC COMMUNITY"
+        <form
+            class="create-show-form"
+            id="showForm"
+            enctype="multipart/form-data"
+        >
 
-];
 
-const typing =
-document.getElementById("typing");
+            <!-- =================================
+                 SHOW NAME
+            ================================== -->
 
-let index = 0;
+            <input
+                type="text"
+                name="title"
+                id="showName"
+                placeholder="Show Name"
+                required
+            >
 
-typing.textContent = words[index];
-typing.classList.add("show");
 
-setInterval(() => {
+            <!-- =================================
+                 VENUE
+            ================================== -->
 
-typing.classList.remove("show");
-typing.classList.add("hide");
+            <input
+                type="text"
+                name="venue"
+                id="venue"
+                placeholder="Venue / Place"
+                required
+            >
 
-setTimeout(() => {
 
-index = (index + 1) % words.length;
+            <!-- =================================
+                 ADDRESS
+            ================================== -->
 
-typing.textContent = words[index];
+            <input
+                type="text"
+                name="address"
+                id="address"
+                placeholder="Address"
+                required
+            >
 
-typing.classList.remove("hide");
-typing.classList.add("show");
 
-}, 900);
+            <!-- =================================
+                 DATE
+            ================================== -->
 
-}, 3200);
+            <input
+                type="date"
+                name="date"
+                id="date"
+                required
+            >
 
-</script>
 
+            <!-- =================================
+                 START TIME
+            ================================== -->
 
-<script src="/js/menu.js"></script>
-<script src="/js/admin.js"></script>
+            <input
+                type="time"
+                name="startTime"
+                id="startTime"
+                required
+            >
+
+
+            <!-- =================================
+                 END TIME
+            ================================== -->
+
+            <input
+                type="time"
+                name="endTime"
+                id="endTime"
+                required
+            >
+
+
+            <!-- =================================
+                 TICKET PRICE
+            ================================== -->
+
+            <input
+                type="number"
+                name="price"
+                id="price"
+                placeholder="Ticket Price (₹)"
+            >
+
+
+            <!-- =================================
+                 POSTER
+            ================================== -->
+
+            <input
+                type="file"
+                name="poster"
+                id="poster"
+                accept="image/*"
+            >
+
+
+            <!-- =================================
+                 EXTRA INFORMATION
+            ================================== -->
+
+            <textarea
+                name="info"
+                id="info"
+                class="extra-info"
+                placeholder="Extra Information"
+            ></textarea>
+
+
+            <!-- =================================
+                 CREATE BUTTON
+            ================================== -->
+
+            <div class="create-show-action">
+
+                <div class="login-form">
+
+                    <button
+                        type="submit"
+                        class="login-btn"
+                    >
+                        CREATE
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </form>
+
+    </main>
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script src="/js/others/pagebehaviour.js"></script>
+    <script src="/js/mobile/mobile.js"></script>
+    <script src="/js/admin/admin.js"></script>
+
 
 </body>
+
 </html>
