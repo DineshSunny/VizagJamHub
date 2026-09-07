@@ -1,404 +1,819 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+    <!-- =================================
+         PAGE INFORMATION
+    ================================== -->
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Hindi Song Chords | Vizag JamHub</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="/css/style.css">
+    <title>Hindi Song Chords | Vizag JamHub</title>
 
-<link rel="stylesheet"
-      href="/css/mobile.css"
-      media="screen and (max-width:768px)">
+
+    <!-- =================================
+         DESKTOP CSS
+    ================================== -->
+
+    <link
+        rel="stylesheet"
+        href="/css/website/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/logo.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/buttons.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/pages/admin/chords.css"
+    >
+
+
+    <!-- =================================
+         MOBILE CSS
+    ================================== -->
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/global.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/logo.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/buttons.css"
+        media="screen and (max-width:768px)"
+    >
+
+
+    <!-- =================================
+         ICONS
+    ================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
-<body class="category-page">
 
-<!-- VIDEO BACKGROUND -->
+<body>
 
-<video autoplay muted loop playsinline preload="metadata" class="lyrics-video">
-<source src="/Video/3.mp4" type="video/mp4">
-</video>
 
+    <!-- =================================
+         VIDEO BACKGROUND
+    ================================== -->
 
-<!-- MUSIC NOTES -->
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        id="bg-video"
+    >
 
-<div class="music-notes">
+        <source
+            src="/video/1.mp4"
+            type="video/mp4"
+        >
 
-<span>♪</span>
-<span>♫</span>
-<span>♬</span>
-<span>♩</span>
-<span>𝄞</span>
-<span>♭</span>
-<span>♯</span>
-<span>♬</span>
-<span>♫</span>
-<span>♪</span>
-<span>♩</span>
-<span>𝄢</span>
+    </video>
 
-</div>
 
-<!-- HAMBURGER MENU -->
+    <!-- =================================
+         MUSIC NOTES
+    ================================== -->
 
-<header>
+    <div class="music-notes">
 
-<nav>
+        <span>♪</span>
+        <span>♫</span>
+        <span>♬</span>
+        <span>♩</span>
+        <span>𝄞</span>
+        <span>♭</span>
+        <span>♯</span>
+        <span>♬</span>
+        <span>♫</span>
+        <span>♪</span>
+        <span>♩</span>
+        <span>𝄢</span>
 
-<div class="menu-toggle">&#9776;</div>
+    </div>
 
-<ul class="nav-links">
 
-<li><a href="/index.html">Home</a></li>
+    <!-- =================================
+         NAVIGATION
+    ================================== -->
 
-<li><a href="/chord-library.html">Chord Library</a></li>
+    <header>
 
-<li><a href="/admin.html">Admin Panel</a></li>
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
 
-</ul>
+            <i class="fa-solid fa-bars"></i>
 
-</nav>
+        </button>
 
-</header>
 
+        <div class="nav-overlay">
 
-<!-- CHORDS PAGE -->
+            <button
+                class="menu-close"
+                type="button"
+                aria-label="Close navigation"
+            >
 
+                <i class="fa-solid fa-xmark"></i>
 
-<section class="lyrics-page">
+            </button>
 
-<input
-  type="text"
-  id="searchInput"
-  placeholder="🔍 Search chords..."
-  class="search-bar"
-/>
 
-<div id="lyrics-container"></div>
+            <nav>
 
-</section>
+                <ul class="nav-links">
 
-<script>
+                    <li>
+                        <a href="/">
+                            Home
+                        </a>
+                    </li>
 
-document.addEventListener("DOMContentLoaded", () => {
+                    <li>
+                        <a href="/pages/admin/chords/chordlibrary.html">
+                            Chord Library
+                        </a>
+                    </li>
 
-  const container =
-    document.getElementById("lyrics-container");
+                    <li>
+                        <a href="/pages/admin/admin.html">
+                            Admin Panel
+                        </a>
+                    </li>
 
-  const searchInput =
-    document.getElementById("searchInput");
-
-  let songsData = [];
-
-  fetch("/api/hindichords")
-
-  .then(res => res.json())
-
-  .then(data => {
-
-    searchInput.style.display = "block";
-
-    songsData = data;
-
-    renderSongs(data);
-
-    window.scrollTo(0, 0);
-
-  })
-
-  .catch(err => {
-
-    console.error("FETCH ERROR:", err);
-
-    container.innerHTML =
-      "<p>Error loading chords</p>";
-
-  });
-
-  function renderSongs(data){
-
-    container.innerHTML = "";
-
-    data.sort((a, b) =>
-      a.title.localeCompare(b.title)
-    );
-
-    let currentLetter = "";
-
-    data.forEach(song => {
-
-      const firstLetter =
-        song.title.charAt(0).toUpperCase();
-
-      if(firstLetter !== currentLetter){
-
-        currentLetter = firstLetter;
-
-        const section =
-          document.createElement("div");
-
-        section.innerHTML = `
-          <h2 style="margin-top:30px; color:#00d4ff;">
-              ${currentLetter}
-          </h2>
-        `;
-
-        container.appendChild(section);
-
-      }
-
-      const item =
-        document.createElement("div");
-
-      item.classList.add("song-item");
-
-      item.innerHTML = `
-        ${song.title} –
-        <span style="color:#aaa;">
-          ${song.movie}
-        </span>
-      `;
-
-      item.addEventListener("click", () => {
-
-    searchInput.style.display = "none";
-
-    container.innerHTML = "";
-
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-
-    window.scrollTo(0, 0);
-
-    requestAnimationFrame(() => {
-
-        history.pushState(
-            { page: "chords" },
-            "",
-            location.pathname
-        );
-
-        showChords(song);
-
-    });
-
-});
-
-      container.appendChild(item);
-
-    });
-
-  }
-
-  searchInput.addEventListener("input", () => {
-
-    const value =
-      searchInput.value.toLowerCase();
-
-    const filtered =
-      songsData.filter(song =>
-        song.title.toLowerCase()
-        .includes(value)
-      );
-
-    renderSongs(filtered);
-
-  });
-
- function showChords(song){
-
-    container.innerHTML = `
-
-      <div style="
-        width:100%;
-        margin:40px 0;
-        padding:0 20px;
-      ">
-
-        <h2 style="
-        text-align:center;
-        margin-bottom:8px;
-      ">
-
-      ${song.title}
-
-      <span style="
-      opacity:0.6;
-      font-weight:normal;
-      ">
-    - ${song.movie}
-     </span>
-
-      </h2>
-
-        <p style="
-        text-align:center;
-        opacity:.7;
-        margin-bottom:10px;
-       ">
-
-      Key:
-      <span id="current-key">
-      ${song.key || "N/A"}
-    </span>
-
-</p>
-
-        <div class="transpose-container">
-
-         <label class="transpose-label">
-         Transpose To
-         </label>
-
-         <select
-         id="transposeSelect"
-         class="transpose-select">
-         </select>
+                    <li>
+                        <a href="/pages/admin/shows/shows.html">
+                            Shows
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/pages/admin/tickets/ticket.html">
+                            Tickets
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
 
         </div>
 
-<div id="chord-content"></div>
+    </header>
 
-      </div>
 
-    `;
+    <!-- =================================
+         HINDI CHORDS PAGE
+    ================================== -->
 
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    <main class="chords-main">
 
-    window.scrollTo(0, 0);
+        <section class="chords-page">
 
-    const originalChords = song.chords;
-    renderSong(originalChords);
-    buildTransposeDropdown(song);
 
-const select = document.getElementById("transposeSelect");
+            <!-- =================================
+                 SEARCH
+            ================================== -->
 
-if (select) {
+            <input
+                type="text"
+                id="searchInput"
+                class="search-bar"
+                placeholder="🔍 Search chords..."
+            >
 
-    select.addEventListener("change", function () {
 
-        const transposed = transposeSong(
-            originalChords,
-            song.key,
-            this.value
+            <!-- =================================
+                 SONG LIST / CHORD READER
+            ================================== -->
+
+            <div id="lyrics-container"></div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =================================
+         HINDI CHORDS JAVASCRIPT
+    ================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+
+                const container =
+                    document.getElementById(
+                        "lyrics-container"
+                    );
+
+
+                const searchInput =
+                    document.getElementById(
+                        "searchInput"
+                    );
+
+
+                let songsData = [];
+
+
+                /* =================================
+                   LOAD HINDI CHORDS
+                ================================== */
+
+                fetch("/api/hindichords")
+
+                    .then(res => res.json())
+
+                    .then(data => {
+
+
+                        songsData = data;
+
+
+                        searchInput.style.display =
+                            "block";
+
+
+                        renderSongs(
+                            songsData
+                        );
+
+
+                        window.scrollTo(
+                            0,
+                            0
+                        );
+
+
+                    })
+
+                    .catch(err => {
+
+
+                        console.error(
+                            "FETCH ERROR:",
+                            err
+                        );
+
+
+                        container.innerHTML =
+                            "<p>Error loading chords</p>";
+
+
+                    });
+
+
+                /* =================================
+                   RENDER SONG LIST
+                ================================== */
+
+                function renderSongs(data) {
+
+
+                    container.innerHTML =
+                        "";
+
+
+                    data.sort(
+                        (a, b) =>
+                            a.title.localeCompare(
+                                b.title
+                            )
+                    );
+
+
+                    let currentLetter =
+                        "";
+
+
+                    data.forEach(song => {
+
+
+                        const firstLetter =
+                            song.title
+                                .charAt(0)
+                                .toUpperCase();
+
+
+                        /* =================================
+                           ALPHABET HEADING
+                        ================================== */
+
+                        if (
+                            firstLetter !==
+                            currentLetter
+                        ) {
+
+
+                            currentLetter =
+                                firstLetter;
+
+
+                            const heading =
+                                document.createElement(
+                                    "h2"
+                                );
+
+
+                            heading.classList.add(
+                                "chord-letter"
+                            );
+
+
+                            heading.textContent =
+                                currentLetter;
+
+
+                            container.appendChild(
+                                heading
+                            );
+
+
+                        }
+
+
+                        /* =================================
+                           SONG ITEM
+                        ================================== */
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        item.classList.add(
+                            "song-item"
+                        );
+
+
+                        item.innerHTML = `
+
+                            ${song.title} –
+
+                            <span>
+                                ${song.movie}
+                            </span>
+
+                        `;
+
+
+                        /* =================================
+                           OPEN SONG
+                        ================================== */
+
+                        item.addEventListener(
+                            "click",
+                            () => {
+
+
+                                searchInput.style.display =
+                                    "none";
+
+
+                                container.innerHTML =
+                                    "";
+
+
+                                history.pushState(
+                                    {
+                                        page:
+                                            "chords"
+                                    },
+                                    "",
+                                    location.pathname
+                                );
+
+
+                                showChords(
+                                    song
+                                );
+
+
+                            }
+                        );
+
+
+                        container.appendChild(
+                            item
+                        );
+
+
+                    });
+
+
+                }
+
+
+                /* =================================
+                   SEARCH
+                ================================== */
+
+                searchInput.addEventListener(
+                    "input",
+                    () => {
+
+
+                        const value =
+                            searchInput.value
+                                .toLowerCase();
+
+
+                        const filtered =
+                            songsData.filter(
+                                song =>
+                                    song.title
+                                        .toLowerCase()
+                                        .includes(
+                                            value
+                                        )
+                            );
+
+
+                        renderSongs(
+                            filtered
+                        );
+
+
+                    }
+                );
+
+
+                /* =================================
+                   SHOW SELECTED SONG
+                ================================== */
+
+                function showChords(song) {
+
+
+                    container.innerHTML = `
+
+                        <div class="chord-reader">
+
+
+                            <!-- SONG TITLE -->
+
+                            <h2 class="chord-song-title">
+
+                                ${song.title}
+
+                                <span class="chord-movie">
+
+                                    - ${song.movie}
+
+                                </span>
+
+                            </h2>
+
+
+                            <!-- ORIGINAL KEY -->
+
+                            <p class="chord-key">
+
+                                Key:
+
+                                <span id="current-key">
+                                    ${song.key || "N/A"}
+                                </span>
+
+                            </p>
+
+
+                            <!-- TRANSPOSE -->
+
+                            <div class="transpose-container">
+
+                                <label
+                                    class="transpose-label"
+                                    for="transposeSelect"
+                                >
+                                    Transpose To
+                                </label>
+
+
+                                <select
+                                    id="transposeSelect"
+                                    class="transpose-select"
+                                ></select>
+
+                            </div>
+
+
+                            <!-- CHORD SHEET -->
+
+                            <div
+                                id="chord-content"
+                            ></div>
+
+
+                        </div>
+
+                    `;
+
+
+                    window.scrollTo(
+                        0,
+                        0
+                    );
+
+
+                    /* =================================
+                       ORIGINAL CHORDS
+                    ================================== */
+
+                    const originalChords =
+                        song.chords;
+
+
+                    renderSong(
+                        originalChords
+                    );
+
+
+                    /* =================================
+                       BUILD DROPDOWN USING transpose.js
+                    ================================== */
+
+                    buildTransposeDropdown(
+                        song
+                    );
+
+
+                    const select =
+                        document.getElementById(
+                            "transposeSelect"
+                        );
+
+
+                    /* =================================
+                       TRANSPOSE SONG
+                    ================================== */
+
+                    if (select) {
+
+                        select.addEventListener(
+                            "change",
+                            function () {
+
+
+                                const transposed =
+                                    transposeSong(
+                                        originalChords,
+                                        song.key,
+                                        this.value
+                                    );
+
+
+                                document
+                                    .getElementById(
+                                        "current-key"
+                                    )
+                                    .textContent =
+                                        this.value;
+
+
+                                renderSong(
+                                    transposed
+                                );
+
+
+                            }
+                        );
+
+                    }
+
+
+                }
+
+
+                /* =================================
+                   RENDER CHORD SHEET
+                ================================== */
+
+                function renderSong(
+                    chordText
+                ) {
+
+
+                    const chordContent =
+                        document.getElementById(
+                            "chord-content"
+                        );
+
+
+                    const lines =
+                        (chordText || "")
+                            .split("\n");
+
+
+                    let html =
+                        "";
+
+
+                    lines.forEach(
+                        rawLine => {
+
+
+                            const line =
+                                rawLine.trim();
+
+
+                            /* =================================
+                               EMPTY LINE
+                            ================================== */
+
+                            if (!line) {
+
+
+                                html +=
+                                    "<br>";
+
+
+                                return;
+
+
+                            }
+
+
+                            /* =================================
+                               SECTION HEADING
+                            ================================== */
+
+                            if (
+                                line.startsWith(
+                                    "# "
+                                )
+                            ) {
+
+
+                                const heading =
+                                    line.substring(
+                                        2
+                                    );
+
+
+                                html += `
+
+                                    <div class="chord-heading">
+                                        ${heading}
+                                    </div>
+
+                                `;
+
+
+                                return;
+
+
+                            }
+
+
+                            /* =================================
+                               LYRIC LINE
+                            ================================== */
+
+                            if (
+                                line.startsWith(
+                                    "> "
+                                )
+                            ) {
+
+
+                                const lyric =
+                                    line.substring(
+                                        2
+                                    );
+
+
+                                html += `
+
+                                    <div class="chord-lyric">
+                                        ${lyric}
+                                    </div>
+
+                                `;
+
+
+                                return;
+
+
+                            }
+
+
+                            /* =================================
+                               CHORD LINE
+                            ================================== */
+
+                            html += `
+
+                                <div class="chord-line">${rawLine}</div>
+
+                            `;
+
+
+                        }
+                    );
+
+
+                    chordContent.innerHTML =
+                        html;
+
+
+                }
+
+
+                /* =================================
+                   BROWSER BACK
+                ================================== */
+
+                window.addEventListener(
+                    "popstate",
+                    () => {
+
+
+                        searchInput.style.display =
+                            "block";
+
+
+                        searchInput.value =
+                            "";
+
+
+                        renderSongs(
+                            songsData
+                        );
+
+
+                        window.scrollTo(
+                            0,
+                            0
+                        );
+
+
+                    }
+                );
+
+
+            }
         );
 
-        document.getElementById("current-key").textContent =
-            this.value;
-
-        renderSong(transposed);
-
-    });
-
-}
-
-}
+    </script>
 
 
+    <!-- =================================
+         SHARED JAVASCRIPT
+    ================================== -->
+
+    <script src="/js/pagebehaviour.js"></script>
+
+    <script src="/js/mobile.js"></script>
 
 
-function renderSong(chordText){
+    <!-- =================================
+         TRANSPOSE ENGINE
+    ================================== -->
 
-const chordContent =
-document.getElementById("chord-content");
+    <script src="/js/admin/transpose.js"></script>
 
-const lines =
-(chordText || "").split("\n");
-
-let html = "";
-
-lines.forEach(rawLine=>{
-
-const line = rawLine.trim();
-
-if(!line){
-
-html += "<br>";
-return;
-
-}
-
-if(line.startsWith("# ")){
-
-const heading =
-line.substring(2)
-.toLowerCase()
-.replace(/\b\w/g,c=>c.toUpperCase());
-
-html += `
-<div class="chord-heading">
-${heading}
-</div>
-`;
-
-return;
-
-}
-
-if(line.startsWith("> ")){
-
-const lyric =
-line.substring(2)
-.toLowerCase()
-.replace(/\b\w/g,c=>c.toUpperCase());
-
-html += `
-<div class="chord-lyric">
-${lyric}
-</div>
-`;
-
-return;
-
-}
-
-html += `
-<div class="chord-line">
-${line}
-</div>
-`;
-
-});
-
-chordContent.innerHTML = html;
-
-}
-
-
-
-
-  window.addEventListener("popstate", () => {
-
-    document.getElementById("searchInput")
-    .style.display = "block";
-
-    renderSongs(songsData);
-
-    requestAnimationFrame(() => {
-
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-
-      window.scrollTo(0, 0);
-
-    });
-
-  });
-
-});
-
-</script>
-
-<script src="/js/menu.js"></script>
-<script src="/js/transpose.js"></script>
 
 </body>
 
