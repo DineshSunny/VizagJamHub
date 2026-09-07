@@ -38,11 +38,6 @@
 
     <link
         rel="stylesheet"
-        href="/css/website/pages/admin/admin.css"
-    >
-
-    <link
-        rel="stylesheet"
         href="/css/website/pages/admin/chords.css"
     >
 
@@ -66,12 +61,6 @@
     <link
         rel="stylesheet"
         href="/css/mobile/buttons.css"
-        media="screen and (max-width:768px)"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/css/mobile/admin.css"
         media="screen and (max-width:768px)"
     >
 
@@ -170,47 +159,33 @@
                 <ul class="nav-links">
 
                     <li>
-
                         <a href="/">
                             Home
                         </a>
-
                     </li>
 
-
                     <li>
-
                         <a href="/pages/admin/chords/chordlibrary.html">
                             Chord Library
                         </a>
-
                     </li>
 
-
                     <li>
-
                         <a href="/pages/admin/admin.html">
                             Admin Panel
                         </a>
-
                     </li>
 
-
                     <li>
-
                         <a href="/pages/admin/shows/shows.html">
                             Shows
                         </a>
-
                     </li>
 
-
                     <li>
-
                         <a href="/pages/admin/tickets/ticket.html">
                             Tickets
                         </a>
-
                     </li>
 
                 </ul>
@@ -223,42 +198,12 @@
 
 
     <!-- =================================
-         ENGLISH SONG CHORDS
+         ENGLISH CHORDS PAGE
     ================================== -->
 
-    <main
-        style="
-            position: relative;
-            z-index: 3;
-            width: 100%;
-            min-height: 100vh;
-            padding: 45px 20px 60px;
-        "
-    >
+    <main class="chords-main">
 
-
-        <!-- =================================
-             PAGE TITLE
-        ================================== -->
-
-        <h1
-            class="admin-title"
-            style="
-                width: 100%;
-                text-align: center;
-                white-space: nowrap;
-                margin: 0 0 30px;
-            "
-        >
-            ENGLISH SONG CHORDS
-        </h1>
-
-
-        <!-- =================================
-             CHORD SEARCH / CONTENT
-        ================================== -->
-
-        <section class="lyrics-page">
+        <section class="chords-page">
 
 
             <!-- =================================
@@ -274,14 +219,13 @@
 
 
             <!-- =================================
-                 SONG LIST / CHORD CONTENT
+                 SONG LIST / CHORD READER
             ================================== -->
 
             <div id="lyrics-container"></div>
 
 
         </section>
-
 
     </main>
 
@@ -323,14 +267,16 @@
                     .then(data => {
 
 
+                        songsData = data;
+
+
                         searchInput.style.display =
                             "block";
 
 
-                        songsData = data;
-
-
-                        renderSongs(data);
+                        renderSongs(
+                            songsData
+                        );
 
 
                         window.scrollTo(
@@ -364,7 +310,8 @@
                 function renderSongs(data) {
 
 
-                    container.innerHTML = "";
+                    container.innerHTML =
+                        "";
 
 
                     data.sort(
@@ -375,7 +322,8 @@
                     );
 
 
-                    let currentLetter = "";
+                    let currentLetter =
+                        "";
 
 
                     data.forEach(song => {
@@ -387,6 +335,10 @@
                                 .toUpperCase();
 
 
+                        /* =================================
+                           ALPHABET HEADING
+                        ================================== */
+
                         if (
                             firstLetter !==
                             currentLetter
@@ -397,33 +349,32 @@
                                 firstLetter;
 
 
-                            const section =
+                            const heading =
                                 document.createElement(
-                                    "div"
+                                    "h2"
                                 );
 
 
-                            section.innerHTML = `
+                            heading.classList.add(
+                                "chord-letter"
+                            );
 
-                                <h2
-                                    style="
-                                        margin-top: 30px;
-                                        color: #00d4ff;
-                                    "
-                                >
-                                    ${currentLetter}
-                                </h2>
 
-                            `;
+                            heading.textContent =
+                                currentLetter;
 
 
                             container.appendChild(
-                                section
+                                heading
                             );
 
 
                         }
 
+
+                        /* =================================
+                           SONG ITEM
+                        ================================== */
 
                         const item =
                             document.createElement(
@@ -440,16 +391,16 @@
 
                             ${song.title} –
 
-                            <span
-                                style="
-                                    color: #aaa;
-                                "
-                            >
+                            <span>
                                 ${song.movie}
                             </span>
 
                         `;
 
+
+                        /* =================================
+                           OPEN SONG
+                        ================================== */
 
                         item.addEventListener(
                             "click",
@@ -464,31 +415,18 @@
                                     "";
 
 
-                                window.scrollTo(
-                                    0,
-                                    0
+                                history.pushState(
+                                    {
+                                        page:
+                                            "chords"
+                                    },
+                                    "",
+                                    location.pathname
                                 );
 
 
-                                requestAnimationFrame(
-                                    () => {
-
-
-                                        history.pushState(
-                                            {
-                                                page: "chords"
-                                            },
-                                            "",
-                                            location.pathname
-                                        );
-
-
-                                        showChords(
-                                            song
-                                        );
-
-
-                                    }
+                                showChords(
+                                    song
                                 );
 
 
@@ -508,7 +446,7 @@
 
 
                 /* =================================
-                   SEARCH CHORDS
+                   SEARCH
                 ================================== */
 
                 searchInput.addEventListener(
@@ -550,42 +488,27 @@
 
                     container.innerHTML = `
 
-                        <div
-                            style="
-                                width: 100%;
-                                margin: 40px 0;
-                                padding: 0 20px;
-                            "
-                        >
+                        <div class="chord-reader">
 
-                            <h2
-                                class="chord-song-title"
-                                style="
-                                    text-align: center;
-                                "
-                            >
+
+                            <!-- SONG TITLE -->
+
+                            <h2 class="chord-song-title">
 
                                 ${song.title}
 
-                                <span
-                                    style="
-                                        opacity: 0.6;
-                                        font-weight: normal;
-                                    "
-                                >
+                                <span class="chord-movie">
+
                                     - ${song.movie}
+
                                 </span>
 
                             </h2>
 
 
-                            <p
-                                style="
-                                    text-align: center;
-                                    opacity: 0.7;
-                                    margin-bottom: 8px;
-                                "
-                            >
+                            <!-- ORIGINAL KEY -->
+
+                            <p class="chord-key">
 
                                 Key:
 
@@ -596,9 +519,9 @@
                             </p>
 
 
-                            <div
-                                class="transpose-container"
-                            >
+                            <!-- TRANSPOSE -->
+
+                            <div class="transpose-container">
 
                                 <label
                                     class="transpose-label"
@@ -611,11 +534,12 @@
                                 <select
                                     id="transposeSelect"
                                     class="transpose-select"
-                                >
-                                </select>
+                                ></select>
 
                             </div>
 
+
+                            <!-- CHORD SHEET -->
 
                             <div
                                 id="chord-content"
@@ -633,14 +557,22 @@
                     );
 
 
+                    /* =================================
+                       ORIGINAL CHORDS
+                    ================================== */
+
                     const originalChords =
                         song.chords;
 
 
                     renderSong(
-                        song.chords
+                        originalChords
                     );
 
+
+                    /* =================================
+                       BUILD DROPDOWN USING transpose.js
+                    ================================== */
 
                     buildTransposeDropdown(
                         song
@@ -652,6 +584,10 @@
                             "transposeSelect"
                         );
 
+
+                    /* =================================
+                       TRANSPOSE SONG
+                    ================================== */
 
                     select.addEventListener(
                         "change",
@@ -687,7 +623,7 @@
 
 
                 /* =================================
-                   RENDER CHORD CONTENT
+                   RENDER CHORD SHEET
                 ================================== */
 
                 function renderSong(
@@ -706,7 +642,8 @@
                             .split("\n");
 
 
-                    let html = "";
+                    let html =
+                        "";
 
 
                     lines.forEach(
@@ -717,10 +654,15 @@
                                 rawLine.trim();
 
 
+                            /* =================================
+                               EMPTY LINE
+                            ================================== */
+
                             if (!line) {
 
 
-                                html += "<br>";
+                                html +=
+                                    "<br>";
 
 
                                 return;
@@ -748,9 +690,7 @@
 
                                 html += `
 
-                                    <div
-                                        class="chord-heading"
-                                    >
+                                    <div class="chord-heading">
                                         ${heading}
                                     </div>
 
@@ -782,9 +722,7 @@
 
                                 html += `
 
-                                    <div
-                                        class="chord-lyric"
-                                    >
+                                    <div class="chord-lyric">
                                         ${lyric}
                                     </div>
 
@@ -803,11 +741,7 @@
 
                             html += `
 
-                                <div
-                                    class="chord-line"
-                                >
-                                    ${line}
-                                </div>
+                                <div class="chord-line">${rawLine}</div>
 
                             `;
 
@@ -834,6 +768,10 @@
 
                         searchInput.style.display =
                             "block";
+
+
+                        searchInput.value =
+                            "";
 
 
                         renderSongs(
@@ -870,7 +808,7 @@
          TRANSPOSE ENGINE
     ================================== -->
 
-    <script src="/js/transpose.js"></script>
+    <script src="/js/admin/chords/transpose.js"></script>
 
 
 </body>
