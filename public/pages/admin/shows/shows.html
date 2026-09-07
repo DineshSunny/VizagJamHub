@@ -1,23 +1,265 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>Upcoming Shows</title>
-<link rel="stylesheet" href="/css/style.css">
+    <!-- =================================
+         PAGE INFORMATION
+    ================================= -->
 
-  <!-- MOBILE VIEW -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Shows | Vizag JamHub</title>
+
+
+    <!-- =================================
+         DESKTOP STYLES
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/website/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/buttons.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/admin.css"
+    >
+
+
+    <!-- =================================
+         MOBILE STYLES
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/global.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/buttons.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/admin.css"
+        media="screen and (max-width:768px)"
+    >
+
+
+    <!-- =================================
+         FONT AWESOME
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
+
 <body>
 
-<h1>Upcoming Shows</h1>
 
-<div id="shows"></div>
+    <!-- =================================
+         BACKGROUND VIDEO
+    ================================= -->
 
-<script src="/js/shows.js"></script>
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        id="bg-video"
+    >
+
+        <source
+            src="/video/1.mp4"
+            type="video/mp4"
+        >
+
+    </video>
+
+
+    <!-- =================================
+         FLOATING MUSIC NOTES
+    ================================= -->
+
+    <div class="music-notes">
+
+        <span>♪</span>
+        <span>♫</span>
+        <span>♬</span>
+        <span>♩</span>
+        <span>𝄞</span>
+        <span>♭</span>
+        <span>♯</span>
+        <span>♬</span>
+        <span>♫</span>
+        <span>♪</span>
+        <span>♩</span>
+        <span>𝄢</span>
+
+    </div>
+
+
+    <!-- =================================
+         NAVIGATION
+    ================================= -->
+
+    <header>
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <div class="nav-overlay">
+
+            <button
+                class="menu-close"
+                type="button"
+                aria-label="Close navigation"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <nav>
+
+                <ul class="nav-links">
+
+                    <li>
+                        <a href="/">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/pages/admin/admin.html">
+                            Admin Panel
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/pages/admin/chords/chord-library.html">
+                            Chord Library
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/pages/admin/tickets/ticket.html">
+                            Tickets
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================
+         SHOWS
+    ================================= -->
+
+    <main
+        style="
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        "
+    >
+
+
+        <!-- =================================
+             TITLE
+        ================================= -->
+
+        <h1
+            class="admin-title"
+            style="
+                text-align: center;
+                margin: 0 0 60px;
+            "
+        >
+            SHOWS
+        </h1>
+
+
+        <!-- =================================
+             BUTTONS
+        ================================= -->
+
+        <div class="admin-buttons">
+
+            <ul class="nav-links">
+
+                <li>
+
+                    <a href="/pages/admin/shows/createshow.html">
+                        Create Show
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="/pages/admin/shows/manage-shows.html">
+                        Manage Shows
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script src="/js/others/pagebehaviour.js"></script>
+
+    <script src="/js/mobile/mobile.js"></script>
+
 
 </body>
 
