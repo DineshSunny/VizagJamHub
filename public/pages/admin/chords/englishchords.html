@@ -3,6 +3,10 @@
 
 <head>
 
+    <!-- =================================
+         PAGE INFORMATION
+    ================================== -->
+
     <meta charset="UTF-8">
 
     <meta
@@ -35,6 +39,11 @@
     <link
         rel="stylesheet"
         href="/css/website/pages/admin/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/pages/admin/chords.css"
     >
 
 
@@ -186,6 +195,24 @@
 
                     </li>
 
+
+                    <li>
+
+                        <a href="/pages/admin/shows/shows.html">
+                            Shows
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="/pages/admin/tickets/ticket.html">
+                            Tickets
+                        </a>
+
+                    </li>
+
                 </ul>
 
             </nav>
@@ -196,7 +223,7 @@
 
 
     <!-- =================================
-         ENGLISH CHORDS
+         ENGLISH SONG CHORDS
     ================================== -->
 
     <main
@@ -234,22 +261,27 @@
         <section class="lyrics-page">
 
 
-            <!-- SEARCH -->
+            <!-- =================================
+                 SEARCH
+            ================================== -->
 
             <input
                 type="text"
                 id="searchInput"
-                placeholder="🔍 Search chords..."
                 class="search-bar"
+                placeholder="🔍 Search chords..."
             >
 
 
-            <!-- SONG LIST / CHORDS -->
+            <!-- =================================
+                 SONG LIST / CHORD CONTENT
+            ================================== -->
 
             <div id="lyrics-container"></div>
 
 
         </section>
+
 
     </main>
 
@@ -264,22 +296,25 @@
             "DOMContentLoaded",
             () => {
 
+
                 const container =
                     document.getElementById(
                         "lyrics-container"
                     );
+
 
                 const searchInput =
                     document.getElementById(
                         "searchInput"
                     );
 
+
                 let songsData = [];
 
 
                 /* =================================
                    LOAD ENGLISH CHORDS
-                ================================= */
+                ================================== */
 
                 fetch("/api/englishchords")
 
@@ -287,35 +322,47 @@
 
                     .then(data => {
 
+
                         searchInput.style.display =
                             "block";
 
+
                         songsData = data;
+
 
                         renderSongs(data);
 
-                        window.scrollTo(0, 0);
+
+                        window.scrollTo(
+                            0,
+                            0
+                        );
+
 
                     })
 
                     .catch(err => {
+
 
                         console.error(
                             "FETCH ERROR:",
                             err
                         );
 
+
                         container.innerHTML =
                             "<p>Error loading chords</p>";
+
 
                     });
 
 
                 /* =================================
                    RENDER SONG LIST
-                ================================= */
+                ================================== */
 
                 function renderSongs(data) {
+
 
                     container.innerHTML = "";
 
@@ -333,6 +380,7 @@
 
                     data.forEach(song => {
 
+
                         const firstLetter =
                             song.title
                                 .charAt(0)
@@ -343,6 +391,7 @@
                             firstLetter !==
                             currentLetter
                         ) {
+
 
                             currentLetter =
                                 firstLetter;
@@ -358,8 +407,8 @@
 
                                 <h2
                                     style="
-                                        margin-top:30px;
-                                        color:#00d4ff;
+                                        margin-top: 30px;
+                                        color: #00d4ff;
                                     "
                                 >
                                     ${currentLetter}
@@ -371,6 +420,7 @@
                             container.appendChild(
                                 section
                             );
+
 
                         }
 
@@ -392,7 +442,7 @@
 
                             <span
                                 style="
-                                    color:#aaa;
+                                    color: #aaa;
                                 "
                             >
                                 ${song.movie}
@@ -405,11 +455,14 @@
                             "click",
                             () => {
 
+
                                 searchInput.style.display =
                                     "none";
 
+
                                 container.innerHTML =
                                     "";
+
 
                                 window.scrollTo(
                                     0,
@@ -420,10 +473,10 @@
                                 requestAnimationFrame(
                                     () => {
 
+
                                         history.pushState(
                                             {
-                                                page:
-                                                    "chords"
+                                                page: "chords"
                                             },
                                             "",
                                             location.pathname
@@ -434,8 +487,10 @@
                                             song
                                         );
 
+
                                     }
                                 );
+
 
                             }
                         );
@@ -445,18 +500,21 @@
                             item
                         );
 
+
                     });
+
 
                 }
 
 
                 /* =================================
-                   SEARCH
-                ================================= */
+                   SEARCH CHORDS
+                ================================== */
 
                 searchInput.addEventListener(
                     "input",
                     () => {
+
 
                         const value =
                             searchInput.value
@@ -478,30 +536,32 @@
                             filtered
                         );
 
+
                     }
                 );
 
 
                 /* =================================
                    SHOW SELECTED SONG
-                ================================= */
+                ================================== */
 
                 function showChords(song) {
+
 
                     container.innerHTML = `
 
                         <div
                             style="
-                                width:100%;
-                                margin:40px 0;
-                                padding:0 20px;
+                                width: 100%;
+                                margin: 40px 0;
+                                padding: 0 20px;
                             "
                         >
 
                             <h2
+                                class="chord-song-title"
                                 style="
-                                    text-align:center;
-                                    margin-bottom:8px;
+                                    text-align: center;
                                 "
                             >
 
@@ -509,8 +569,8 @@
 
                                 <span
                                     style="
-                                        opacity:.6;
-                                        font-weight:normal;
+                                        opacity: 0.6;
+                                        font-weight: normal;
                                     "
                                 >
                                     - ${song.movie}
@@ -521,9 +581,9 @@
 
                             <p
                                 style="
-                                    text-align:center;
-                                    opacity:0.7;
-                                    margin-bottom:8px;
+                                    text-align: center;
+                                    opacity: 0.7;
+                                    margin-bottom: 8px;
                                 "
                             >
 
@@ -542,6 +602,7 @@
 
                                 <label
                                     class="transpose-label"
+                                    for="transposeSelect"
                                 >
                                     Transpose To
                                 </label>
@@ -596,6 +657,7 @@
                         "change",
                         function () {
 
+
                             const transposed =
                                 transposeSong(
                                     originalChords,
@@ -616,19 +678,22 @@
                                 transposed
                             );
 
+
                         }
                     );
+
 
                 }
 
 
                 /* =================================
                    RENDER CHORD CONTENT
-                ================================= */
+                ================================== */
 
                 function renderSong(
                     chordText
                 ) {
+
 
                     const chordContent =
                         document.getElementById(
@@ -647,24 +712,33 @@
                     lines.forEach(
                         rawLine => {
 
+
                             const line =
                                 rawLine.trim();
 
 
                             if (!line) {
 
+
                                 html += "<br>";
+
 
                                 return;
 
+
                             }
 
+
+                            /* =================================
+                               SECTION HEADING
+                            ================================== */
 
                             if (
                                 line.startsWith(
                                     "# "
                                 )
                             ) {
+
 
                                 const heading =
                                     line.substring(
@@ -682,16 +756,23 @@
 
                                 `;
 
+
                                 return;
+
 
                             }
 
+
+                            /* =================================
+                               LYRIC LINE
+                            ================================== */
 
                             if (
                                 line.startsWith(
                                     "> "
                                 )
                             ) {
+
 
                                 const lyric =
                                     line.substring(
@@ -709,10 +790,16 @@
 
                                 `;
 
+
                                 return;
+
 
                             }
 
+
+                            /* =================================
+                               CHORD LINE
+                            ================================== */
 
                             html += `
 
@@ -724,6 +811,7 @@
 
                             `;
 
+
                         }
                     );
 
@@ -731,31 +819,37 @@
                     chordContent.innerHTML =
                         html;
 
+
                 }
 
 
                 /* =================================
                    BROWSER BACK
-                ================================= */
+                ================================== */
 
                 window.addEventListener(
                     "popstate",
                     () => {
 
+
                         searchInput.style.display =
                             "block";
+
 
                         renderSongs(
                             songsData
                         );
+
 
                         window.scrollTo(
                             0,
                             0
                         );
 
+
                     }
                 );
+
 
             }
         );
