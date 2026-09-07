@@ -3,249 +3,370 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <!-- =================================
+         PAGE INFORMATION
+    ================================= -->
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Vizag JamHub Guitar School</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet"
-      href="css/style.css">
+    <title>Vizag JamHub Guitar School</title>
 
-<link rel="stylesheet"
-      href="css/mobile.css"
-      media="screen and (max-width:768px)">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- =================================
+         DESKTOP CSS
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/website/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/logo.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/buttons.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/pages/academy.css"
+    >
+
+
+    <!-- =================================
+         MOBILE CSS
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/global.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/logo.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/buttons.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/pages/academy.css"
+        media="screen and (max-width:768px)"
+    >
+
+
+    <!-- =================================
+         FONT AWESOME
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
+
 <body>
 
-<!-- ===========================
-        VIDEO BACKGROUND
-=========================== -->
 
-<video autoplay
-       muted
-       loop
-       playsinline
-       preload="metadata"
-       id="bg-video">
+    <!-- =================================
+         VIDEO BACKGROUND
+    ================================= -->
 
-<source src="Video/3.mp4"
-        type="video/mp4">
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        id="bg-video"
+    >
 
-</video>
+        <source
+            src="/video/1.mp4"
+            type="video/mp4"
+        >
 
+    </video>
 
-<!-- ===========================
-      FLOATING MUSIC NOTES
-=========================== -->
 
-<div class="music-notes">
+    <!-- =================================
+         FLOATING MUSIC NOTES
+    ================================= -->
 
-<span>♪</span>
-<span>♫</span>
-<span>♬</span>
-<span>♩</span>
-<span>𝄞</span>
-<span>♭</span>
-<span>♯</span>
-<span>♬</span>
-<span>♫</span>
-<span>♪</span>
-<span>♩</span>
-<span>𝄢</span>
+    <div class="music-notes">
 
-</div>
+        <span>♪</span>
+        <span>♫</span>
+        <span>♬</span>
+        <span>♩</span>
+        <span>𝄞</span>
+        <span>♭</span>
+        <span>♯</span>
+        <span>♬</span>
+        <span>♫</span>
+        <span>♪</span>
+        <span>♩</span>
+        <span>𝄢</span>
 
+    </div>
 
-<!-- ===========================
-          HEADER
-=========================== -->
 
-<header>
+    <!-- =================================
+         NAVIGATION
+    ================================= -->
 
-<nav>
+    <header>
 
-<div class="menu-toggle">&#9776;</div>
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
 
-<ul class="nav-links">
+            <i class="fa-solid fa-bars"></i>
 
-<li><a href="/index.html">Home</a></li>
+        </button>
 
-<li><a href="/category.html">Sing Along Lyrics</a></li>
 
-<li><a href="/index.html#shows">Shows</a></li>
+        <div class="nav-overlay">
 
-<li><a href="/index.html#school">School</a></li>
+            <button
+                class="menu-close"
+                type="button"
+                aria-label="Close navigation"
+            >
 
-<li><a href="/index.html#connect">Band Connect</a></li>
+                <i class="fa-solid fa-xmark"></i>
 
-<li><a href="/index.html#gallery">Gallery</a></li>
+            </button>
 
-<li><a href="/admin.html">Admin Panel</a></li>
 
-</ul>
+            <nav>
 
-</nav>
+                <ul class="nav-links">
 
-</header>
+                    <li><a href="/">Home</a></li>
 
+                    <li>
+                        <a href="/pages/lyrics/category.html">
+                            Sing Along Lyrics
+                        </a>
+                    </li>
 
-<!-- ===========================
-        GUITAR SCHOOL
-=========================== -->
+                    <li><a href="/#shows">Shows</a></li>
 
-<section class="guitar-school-page">
+                    <li><a href="/#school">School</a></li>
 
-<h1>
+                    <li><a href="/#connect">Band Connect</a></li>
 
-Guitar School
+                    <li><a href="/#gallery">Gallery</a></li>
 
-</h1>
+                    <li>
+                        <a href="/pages/admin/admin.html">
+                            Admin Panel
+                        </a>
+                    </li>
 
+                </ul>
 
-<div class="guitar-buttons">
+            </nav>
 
-<button
-class="guitar-btn"
-data-course="beginner"
-data-link="beginner-guitar.html">
+        </div>
 
-Beginner
+    </header>
 
-</button>
 
+    <!-- =================================
+         GUITAR SCHOOL
+    ================================= -->
 
-<button
-class="guitar-btn"
-data-course="intermediate"
-data-link="intermediate-guitar.html">
+    <section class="guitar-school">
 
-Intermediate
+        <h1>
+            Guitar School
+        </h1>
 
-</button>
 
+        <!-- =================================
+             COURSE BUTTONS
+        ================================= -->
 
-<button
-class="guitar-btn"
-data-course="advanced"
-data-link="advanced-guitar.html">
+        <div class="guitar-buttons">
 
-Advanced
 
-</button>
+            <!-- BEGINNER -->
 
-</div>
+            <button
+                class="guitar-btn"
+                data-course="beginner"
+                data-link="/pages/academy/guitar/beginnerguitar.html"
+            >
 
+                Beginner
 
-<div
-class="guitar-preview"
-id="guitar-preview">
+            </button>
 
-<div class="guitar-placeholder">
 
-<h2>
+            <!-- INTERMEDIATE -->
 
-Choose a Course
+            <button
+                class="guitar-btn"
+                data-course="intermediate"
+                data-link="/pages/academy/guitar/intermediate-guitar.html"
+            >
 
-</h2>
+                Intermediate
 
-<p>
+            </button>
 
-Hover over a course to preview the curriculum.
 
-<br><br>
+            <!-- ADVANCED -->
 
-Click to enter the course.
+            <button
+                class="guitar-btn"
+                data-course="advanced"
+                data-link="/pages/academy/guitar/advanced-guitar.html"
+            >
 
-</p>
+                Advanced
 
-</div>
+            </button>
 
-</div>
 
-</section>
+        </div>
 
 
-<!-- ===========================
-        MENU
-=========================== -->
+        <!-- =================================
+             COURSE PREVIEW
+        ================================= -->
 
-<script src="/js/menu.js"></script>
+        <div
+            class="guitar-preview"
+            id="guitar-preview"
+        >
 
-<!-- ===========================
-      GUITAR SCHOOL
-=========================== -->
+            <div class="guitar-placeholder">
 
-<script src="/js/guitar.js"></script>
+                <h2>
+                    Choose a Course
+                </h2>
 
+                <p>
 
-<!-- ===========================
-          FOOTER
-=========================== -->
+                    Hover over a course to preview everything you'll learn.
 
-<footer class="site-footer">
+                    On mobile, press and hold to preview.
 
-<div class="footer-links">
+                    Tap once to open the course.
 
-<a href="/about-us.html">About Us</a>
+                </p>
 
-<span>|</span>
+            </div>
 
-<a href="/our-team.html">Our Team</a>
+        </div>
 
-<span>|</span>
+    </section>
 
-<a href="/faq.html">FAQ</a>
 
-<span>|</span>
+    <!-- =================================
+         FOOTER
+    ================================= -->
 
-<a href="/events.html">Events Calendar</a>
+    <footer class="site-footer">
 
-<span>|</span>
+        <div class="footer-links">
 
-<a href="/sponsors.html">Sponsors & Partners</a>
+            <a href="/pages/otherpages/aboutus.html">About Us</a>
 
-<span>|</span>
+            <span>|</span>
 
-<a href="/community.html">Join Our Community</a>
+            <a href="/pages/otherpages/comingsoon.html">Our Team</a>
 
-<span>|</span>
+            <span>|</span>
 
-<a href="/volunteer.html">Volunteer</a>
+            <a href="/pages/otherpages/comingsoon.html">FAQ</a>
 
-<span>|</span>
+            <span>|</span>
 
-<a href="/support.html">Support Us</a>
+            <a href="/pages/otherpages/comingsoon.html">Events Calendar</a>
 
-</div>
+            <span>|</span>
 
-<div class="footer-links">
+            <a href="/pages/otherpages/comingsoon.html">Sponsors & Partners</a>
 
-<a href="/contactus.html">Contact Us</a>
+            <span>|</span>
 
-<span>|</span>
+            <a href="/pages/otherpages/comingsoon.html">Join Our Community</a>
 
-<a href="/privacypolicy.html">Privacy Policy</a>
+            <span>|</span>
 
-<span>|</span>
+            <a href="/pages/otherpages/comingsoon.html">Volunteer</a>
 
-<a href="/termsandconditions.html">Terms & Conditions</a>
+            <span>|</span>
 
-</div>
+            <a href="/pages/otherpages/comingsoon.html">Support Us</a>
 
-<p class="footer-copyright">
+        </div>
 
-© 2026 <strong>Vizag JamHub</strong>. All Rights Reserved.
 
-</p>
+        <div class="footer-links">
 
-</footer>
+            <a href="/pages/otherpages/contactus.html">Contact Us</a>
+
+            <span>|</span>
+
+            <a href="/pages/otherpages/privacypolicy.html">Privacy Policy</a>
+
+            <span>|</span>
+
+            <a href="/pages/otherpages/termsandconditions.html">Terms & Conditions</a>
+
+        </div>
+
+
+        <p class="footer-copyright">
+
+            © 2026 <strong>Vizag JamHub</strong>. All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+
+    <!-- =================================
+         SHARED JAVASCRIPT
+    ================================= -->
+
+    <script src="/js/pagebehaviour.js"></script>
+
+    <script src="/js/mobile.js"></script>
+
+
+    <!-- =================================
+         GUITAR SCHOOL JAVASCRIPT
+    ================================= -->
+
+    <script src="/js/academy/guitar.js"></script>
+
 
 </body>
 
