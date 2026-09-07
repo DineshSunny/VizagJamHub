@@ -1,380 +1,783 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>English Song Chords | Vizag JamHub</title>
+    <title>English Song Chords | Vizag JamHub</title>
 
-<link rel="stylesheet" href="/css/style.css">
 
-<link rel="stylesheet"
-      href="/css/mobile.css"
-      media="screen and (max-width:768px)">
+    <!-- =================================
+         DESKTOP CSS
+    ================================== -->
+
+    <link
+        rel="stylesheet"
+        href="/css/website/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/logo.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/buttons.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/pages/admin/admin.css"
+    >
+
+
+    <!-- =================================
+         MOBILE CSS
+    ================================== -->
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/global.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/logo.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/buttons.css"
+        media="screen and (max-width:768px)"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/mobile/admin.css"
+        media="screen and (max-width:768px)"
+    >
+
+
+    <!-- =================================
+         ICONS
+    ================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
-<body class="category-page">
 
-<!-- VIDEO BACKGROUND -->
+<body>
 
-<video autoplay muted loop playsinline preload="metadata" class="lyrics-video">
-<source src="/Video/3.mp4" type="video/mp4">
-</video>
 
-<!-- MUSIC NOTES -->
+    <!-- =================================
+         VIDEO BACKGROUND
+    ================================== -->
 
-<div class="music-notes">
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        id="bg-video"
+    >
 
-<span>♪</span>
-<span>♫</span>
-<span>♬</span>
-<span>♩</span>
-<span>𝄞</span>
-<span>♭</span>
-<span>♯</span>
-<span>♬</span>
-<span>♫</span>
-<span>♪</span>
-<span>♩</span>
-<span>𝄢</span>
+        <source
+            src="/video/1.mp4"
+            type="video/mp4"
+        >
 
-</div>
+    </video>
 
-<!-- HAMBURGER MENU -->
 
-<header>
+    <!-- =================================
+         MUSIC NOTES
+    ================================== -->
 
-<nav>
+    <div class="music-notes">
 
-<div class="menu-toggle">&#9776;</div>
+        <span>♪</span>
+        <span>♫</span>
+        <span>♬</span>
+        <span>♩</span>
+        <span>𝄞</span>
+        <span>♭</span>
+        <span>♯</span>
+        <span>♬</span>
+        <span>♫</span>
+        <span>♪</span>
+        <span>♩</span>
+        <span>𝄢</span>
 
-<ul class="nav-links">
+    </div>
 
-<li><a href="/index.html">Home</a></li>
 
-<li><a href="/chord-library.html">Chord Library</a></li>
+    <!-- =================================
+         NAVIGATION
+    ================================== -->
 
-<li><a href="/admin.html">Admin Panel</a></li>
+    <header>
 
-</ul>
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
 
-</nav>
+            <i class="fa-solid fa-bars"></i>
 
-</header>
+        </button>
 
-<!-- CHORDS PAGE -->
 
-<section class="lyrics-page">
+        <div class="nav-overlay">
 
-<input
-type="text"
-id="searchInput"
-placeholder="🔍 Search chords..."
-class="search-bar"
-/>
+            <button
+                class="menu-close"
+                type="button"
+                aria-label="Close navigation"
+            >
 
-<div id="lyrics-container"></div>
+                <i class="fa-solid fa-xmark"></i>
 
-</section>
+            </button>
 
-<script>
 
-document.addEventListener("DOMContentLoaded", () => {
+            <nav>
 
-const container =
-document.getElementById("lyrics-container");
+                <ul class="nav-links">
 
-const searchInput =
-document.getElementById("searchInput");
+                    <li>
 
-let songsData = [];
+                        <a href="/">
+                            Home
+                        </a>
 
-fetch("/api/englishchords")
+                    </li>
 
-.then(res => res.json())
 
-.then(data => {
+                    <li>
 
-searchInput.style.display = "block";
+                        <a href="/pages/admin/chords/chordlibrary.html">
+                            Chord Library
+                        </a>
 
-songsData = data;
+                    </li>
 
-renderSongs(data);
 
-window.scrollTo(0,0);
+                    <li>
 
-})
+                        <a href="/pages/admin/admin.html">
+                            Admin Panel
+                        </a>
 
-.catch(err => {
+                    </li>
 
-console.error("FETCH ERROR:", err);
+                </ul>
 
-container.innerHTML =
-"<p>Error loading chords</p>";
+            </nav>
 
-});
+        </div>
 
-function renderSongs(data){
+    </header>
 
-container.innerHTML = "";
 
-data.sort((a,b)=>
-a.title.localeCompare(b.title)
-);
+    <!-- =================================
+         ENGLISH CHORDS
+    ================================== -->
 
-let currentLetter = "";
+    <main
+        style="
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            min-height: 100vh;
+            padding: 45px 20px 60px;
+        "
+    >
 
-data.forEach(song=>{
 
-const firstLetter =
-song.title.charAt(0).toUpperCase();
+        <!-- =================================
+             PAGE TITLE
+        ================================== -->
 
-if(firstLetter !== currentLetter){
+        <h1
+            class="admin-title"
+            style="
+                width: 100%;
+                text-align: center;
+                white-space: nowrap;
+                margin: 0 0 30px;
+            "
+        >
+            ENGLISH SONG CHORDS
+        </h1>
 
-currentLetter = firstLetter;
 
-const section =
-document.createElement("div");
+        <!-- =================================
+             CHORD SEARCH / CONTENT
+        ================================== -->
 
-section.innerHTML = `
-<h2 style="margin-top:30px;color:#00d4ff;">
-${currentLetter}
-</h2>
-`;
+        <section class="lyrics-page">
 
-container.appendChild(section);
 
-}
+            <!-- SEARCH -->
 
-const item =
-document.createElement("div");
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search chords..."
+                class="search-bar"
+            >
 
-item.classList.add("song-item");
 
-item.innerHTML = `
-${song.title} –
-<span style="color:#aaa;">
-${song.movie}
-</span>
-`;
+            <!-- SONG LIST / CHORDS -->
 
-item.addEventListener("click",()=>{
+            <div id="lyrics-container"></div>
 
-searchInput.style.display="none";
 
-container.innerHTML="";
+        </section>
 
-window.scrollTo(0,0);
+    </main>
 
-requestAnimationFrame(()=>{
 
-history.pushState(
-{page:"chords"},
-"",
-location.pathname
-);
+    <!-- =================================
+         ENGLISH CHORDS JAVASCRIPT
+    ================================== -->
 
-showChords(song);
+    <script>
 
-});
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
 
-});
+                const container =
+                    document.getElementById(
+                        "lyrics-container"
+                    );
 
-container.appendChild(item);
+                const searchInput =
+                    document.getElementById(
+                        "searchInput"
+                    );
 
-});
+                let songsData = [];
 
-}
 
-searchInput.addEventListener("input",()=>{
+                /* =================================
+                   LOAD ENGLISH CHORDS
+                ================================= */
 
-const value =
-searchInput.value.toLowerCase();
+                fetch("/api/englishchords")
 
-const filtered =
-songsData.filter(song=>
-song.title.toLowerCase().includes(value)
-);
+                    .then(res => res.json())
 
-renderSongs(filtered);
+                    .then(data => {
 
-});
+                        searchInput.style.display =
+                            "block";
 
-function showChords(song){
+                        songsData = data;
 
-container.innerHTML=`
+                        renderSongs(data);
 
-<div style="
-width:100%;
-margin:40px 0;
-padding:0 20px;
-">
+                        window.scrollTo(0, 0);
 
-<h2 style="
-text-align:center;
-margin-bottom:8px;
-">
+                    })
 
-${song.title}
+                    .catch(err => {
 
-<span style="
-opacity:.6;
-font-weight:normal;
-">
-- ${song.movie}
-</span>
+                        console.error(
+                            "FETCH ERROR:",
+                            err
+                        );
 
-</h2>
+                        container.innerHTML =
+                            "<p>Error loading chords</p>";
 
-<p style="
-text-align:center;
-opacity:0.7;
-margin-bottom:8px;
-">
+                    });
 
-Key:
-<span id="current-key">
-${song.key || "N/A"}
-</span>
 
-</p>
+                /* =================================
+                   RENDER SONG LIST
+                ================================= */
 
-<div class="transpose-container">
+                function renderSongs(data) {
 
-<label class="transpose-label">
+                    container.innerHTML = "";
 
-Transpose To
 
-</label>
+                    data.sort(
+                        (a, b) =>
+                            a.title.localeCompare(
+                                b.title
+                            )
+                    );
 
-<select
-id="transposeSelect"
-class="transpose-select">
 
-</select>
+                    let currentLetter = "";
 
-</div>
 
-<div id="chord-content"></div>
+                    data.forEach(song => {
 
-</div>
+                        const firstLetter =
+                            song.title
+                                .charAt(0)
+                                .toUpperCase();
 
-`;
 
-window.scrollTo(0,0);
+                        if (
+                            firstLetter !==
+                            currentLetter
+                        ) {
 
-const originalChords = song.chords;
+                            currentLetter =
+                                firstLetter;
 
-renderSong(song.chords);
 
-buildTransposeDropdown(song);
+                            const section =
+                                document.createElement(
+                                    "div"
+                                );
 
-const select = document.getElementById("transposeSelect");
 
-select.addEventListener("change", function () {
+                            section.innerHTML = `
 
-    const transposed = transposeSong(
-        originalChords,
-        song.key,
-        this.value
-    );
+                                <h2
+                                    style="
+                                        margin-top:30px;
+                                        color:#00d4ff;
+                                    "
+                                >
+                                    ${currentLetter}
+                                </h2>
 
-    document.getElementById("current-key").textContent = this.value;
+                            `;
 
-    renderSong(transposed);
 
-});
+                            container.appendChild(
+                                section
+                            );
 
+                        }
 
 
-}
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
 
 
+                        item.classList.add(
+                            "song-item"
+                        );
 
-function renderSong(chordText){
 
-const chordContent =
-document.getElementById("chord-content");
+                        item.innerHTML = `
 
-const lines =
-(chordText || "").split("\n");
+                            ${song.title} –
 
-let html = "";
+                            <span
+                                style="
+                                    color:#aaa;
+                                "
+                            >
+                                ${song.movie}
+                            </span>
 
-lines.forEach(rawLine=>{
+                        `;
 
-const line = rawLine.trim();
 
-if(!line){
+                        item.addEventListener(
+                            "click",
+                            () => {
 
-html += "<br>";
-return;
+                                searchInput.style.display =
+                                    "none";
 
-}
+                                container.innerHTML =
+                                    "";
 
-if(line.startsWith("# ")){
+                                window.scrollTo(
+                                    0,
+                                    0
+                                );
 
-const heading =
-line.substring(2);
 
-html += `
-<div class="chord-heading">
-${heading}
-</div>
-`;
+                                requestAnimationFrame(
+                                    () => {
 
-return;
+                                        history.pushState(
+                                            {
+                                                page:
+                                                    "chords"
+                                            },
+                                            "",
+                                            location.pathname
+                                        );
 
-}
 
-if(line.startsWith("> ")){
+                                        showChords(
+                                            song
+                                        );
 
-const lyric =
-line.substring(2);
+                                    }
+                                );
 
-html += `
-<div class="chord-lyric">
-${lyric}
-</div>
-`;
+                            }
+                        );
 
-return;
 
-}
+                        container.appendChild(
+                            item
+                        );
 
-html += `
-<div class="chord-line">
-${line}
-</div>
-`;
+                    });
 
-});
+                }
 
-chordContent.innerHTML = html;
 
-}
+                /* =================================
+                   SEARCH
+                ================================= */
 
-window.addEventListener("popstate",()=>{
+                searchInput.addEventListener(
+                    "input",
+                    () => {
 
-searchInput.style.display="block";
+                        const value =
+                            searchInput.value
+                                .toLowerCase();
 
-renderSongs(songsData);
 
-window.scrollTo(0,0);
+                        const filtered =
+                            songsData.filter(
+                                song =>
+                                    song.title
+                                        .toLowerCase()
+                                        .includes(
+                                            value
+                                        )
+                            );
 
-});
 
-});
+                        renderSongs(
+                            filtered
+                        );
 
-</script>
+                    }
+                );
 
-<script src="/js/menu.js"></script>
-<script src="/js/transpose.js"></script>
+
+                /* =================================
+                   SHOW SELECTED SONG
+                ================================= */
+
+                function showChords(song) {
+
+                    container.innerHTML = `
+
+                        <div
+                            style="
+                                width:100%;
+                                margin:40px 0;
+                                padding:0 20px;
+                            "
+                        >
+
+                            <h2
+                                style="
+                                    text-align:center;
+                                    margin-bottom:8px;
+                                "
+                            >
+
+                                ${song.title}
+
+                                <span
+                                    style="
+                                        opacity:.6;
+                                        font-weight:normal;
+                                    "
+                                >
+                                    - ${song.movie}
+                                </span>
+
+                            </h2>
+
+
+                            <p
+                                style="
+                                    text-align:center;
+                                    opacity:0.7;
+                                    margin-bottom:8px;
+                                "
+                            >
+
+                                Key:
+
+                                <span id="current-key">
+                                    ${song.key || "N/A"}
+                                </span>
+
+                            </p>
+
+
+                            <div
+                                class="transpose-container"
+                            >
+
+                                <label
+                                    class="transpose-label"
+                                >
+                                    Transpose To
+                                </label>
+
+
+                                <select
+                                    id="transposeSelect"
+                                    class="transpose-select"
+                                >
+                                </select>
+
+                            </div>
+
+
+                            <div
+                                id="chord-content"
+                            ></div>
+
+
+                        </div>
+
+                    `;
+
+
+                    window.scrollTo(
+                        0,
+                        0
+                    );
+
+
+                    const originalChords =
+                        song.chords;
+
+
+                    renderSong(
+                        song.chords
+                    );
+
+
+                    buildTransposeDropdown(
+                        song
+                    );
+
+
+                    const select =
+                        document.getElementById(
+                            "transposeSelect"
+                        );
+
+
+                    select.addEventListener(
+                        "change",
+                        function () {
+
+                            const transposed =
+                                transposeSong(
+                                    originalChords,
+                                    song.key,
+                                    this.value
+                                );
+
+
+                            document
+                                .getElementById(
+                                    "current-key"
+                                )
+                                .textContent =
+                                    this.value;
+
+
+                            renderSong(
+                                transposed
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================
+                   RENDER CHORD CONTENT
+                ================================= */
+
+                function renderSong(
+                    chordText
+                ) {
+
+                    const chordContent =
+                        document.getElementById(
+                            "chord-content"
+                        );
+
+
+                    const lines =
+                        (chordText || "")
+                            .split("\n");
+
+
+                    let html = "";
+
+
+                    lines.forEach(
+                        rawLine => {
+
+                            const line =
+                                rawLine.trim();
+
+
+                            if (!line) {
+
+                                html += "<br>";
+
+                                return;
+
+                            }
+
+
+                            if (
+                                line.startsWith(
+                                    "# "
+                                )
+                            ) {
+
+                                const heading =
+                                    line.substring(
+                                        2
+                                    );
+
+
+                                html += `
+
+                                    <div
+                                        class="chord-heading"
+                                    >
+                                        ${heading}
+                                    </div>
+
+                                `;
+
+                                return;
+
+                            }
+
+
+                            if (
+                                line.startsWith(
+                                    "> "
+                                )
+                            ) {
+
+                                const lyric =
+                                    line.substring(
+                                        2
+                                    );
+
+
+                                html += `
+
+                                    <div
+                                        class="chord-lyric"
+                                    >
+                                        ${lyric}
+                                    </div>
+
+                                `;
+
+                                return;
+
+                            }
+
+
+                            html += `
+
+                                <div
+                                    class="chord-line"
+                                >
+                                    ${line}
+                                </div>
+
+                            `;
+
+                        }
+                    );
+
+
+                    chordContent.innerHTML =
+                        html;
+
+                }
+
+
+                /* =================================
+                   BROWSER BACK
+                ================================= */
+
+                window.addEventListener(
+                    "popstate",
+                    () => {
+
+                        searchInput.style.display =
+                            "block";
+
+                        renderSongs(
+                            songsData
+                        );
+
+                        window.scrollTo(
+                            0,
+                            0
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+    <!-- =================================
+         SHARED JAVASCRIPT
+    ================================== -->
+
+    <script src="/js/others/pagebehaviour.js"></script>
+
+    <script src="/js/mobile/mobile.js"></script>
+
+
+    <!-- =================================
+         TRANSPOSE ENGINE
+    ================================== -->
+
+    <script src="/js/transpose.js"></script>
+
 
 </body>
 
