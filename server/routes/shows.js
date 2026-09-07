@@ -17,8 +17,22 @@ const showsFile = path.join(
 
 const postersFolder = path.join(
   __dirname,
-  "../../public/posters"
+  "../../public/images/Shows"
 );
+
+
+/* =================================
+   CREATE POSTER FOLDER
+================================= */
+
+if (!fs.existsSync(postersFolder)) {
+
+  fs.mkdirSync(
+    postersFolder,
+    { recursive: true }
+  );
+
+}
 
 
 /* =================================
@@ -28,9 +42,11 @@ const postersFolder = path.join(
 function readJSON(file) {
 
   if (fs.existsSync(file)) {
+
     return JSON.parse(
       fs.readFileSync(file, "utf-8")
     );
+
   }
 
   return [];
@@ -49,6 +65,34 @@ function writeJSON(file, data) {
 
 
 /* =================================
+   DELETE POSTER
+================================= */
+
+function deletePoster(posterPath) {
+
+  if (!posterPath) {
+    return;
+  }
+
+
+  const posterName = path.basename(posterPath);
+
+  const fullPosterPath = path.join(
+    postersFolder,
+    posterName
+  );
+
+
+  if (fs.existsSync(fullPosterPath)) {
+
+    fs.unlinkSync(fullPosterPath);
+
+  }
+
+}
+
+
+/* =================================
    POSTER UPLOAD
 ================================= */
 
@@ -56,9 +100,13 @@ const storage = multer.diskStorage({
 
   destination: function (req, file, cb) {
 
-    cb(null, postersFolder);
+    cb(
+      null,
+      postersFolder
+    );
 
   },
+
 
   filename: function (req, file, cb) {
 
@@ -101,6 +149,7 @@ router.post(
 
     const shows = readJSON(showsFile);
 
+
     const newShow = {
 
       id: Date.now(),
@@ -117,21 +166,27 @@ router.post(
       info: req.body.info,
 
       poster: req.file
-        ? "/posters/" + req.file.filename
+        ? "/images/Shows/" + req.file.filename
         : ""
 
     };
 
+
     shows.push(newShow);
+
 
     writeJSON(
       showsFile,
       shows
     );
 
+
     res.json({
+
       message: "Show created successfully",
+
       show: newShow
+
     });
 
   }
@@ -149,17 +204,32 @@ router.put(
 
     const shows = readJSON(showsFile);
 
+
     const index = shows.findIndex(
       show => show.id == req.params.id
     );
 
+
     if (index === -1) {
 
       return res.status(404).json({
+
         message: "Show not found"
+
       });
 
     }
+
+
+    const oldPoster = shows[index].poster;
+
+
+    if (req.file && oldPoster) {
+
+      deletePoster(oldPoster);
+
+    }
+
 
     shows[index] = {
 
@@ -177,18 +247,24 @@ router.put(
       info: req.body.info,
 
       poster: req.file
-        ? "/posters/" + req.file.filename
-        : shows[index].poster
+        ? "/images/Shows/" + req.file.filename
+        : oldPoster
 
     };
+
 
     writeJSON(
       showsFile,
       shows
     );
 
+
     res.json({
-      message: "Show updated successfully"
+
+      message: "Show updated successfully",
+
+      show: shows[index]
+
     });
 
   }
@@ -199,24 +275,59 @@ router.put(
    DELETE SHOW
 ================================= */
 
-router.delete("/api/shows/:id", (req, res) => {
+router.delete(
+  "/api/shows/:id",
+  (req, res) => {
 
-  let shows = readJSON(showsFile);
+    const shows = readJSON(showsFile);
 
-  shows = shows.filter(
-    show => show.id != req.params.id
-  );
 
-  writeJSON(
-    showsFile,
-    shows
-  );
+    const index = shows.findIndex(
+      show => show.id == req.params.id
+    );
 
-  res.json({
-    message: "Show deleted successfully"
-  });
 
-});
+    if (index === -1) {
+
+      return res.status(404).json({
+
+        message: "Show not found"
+
+      });
+
+    }
+
+
+    const show = shows[index];
+
+
+    if (show.poster) {
+
+      deletePoster(show.poster);
+
+    }
+
+
+    shows.splice(
+      index,
+      1
+    );
+
+
+    writeJSON(
+      showsFile,
+      shows
+    );
+
+
+    res.json({
+
+      message: "Show deleted successfully"
+
+    });
+
+  }
+);
 
 
 module.exports = router;
