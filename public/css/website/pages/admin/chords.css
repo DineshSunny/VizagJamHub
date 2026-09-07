@@ -1,335 +1,710 @@
-/* =================================
-   VIZAG JAMHUB - CHORDS
-================================= */
 
 
-/* =================================
-   CHORD PAGE BACKGROUND VIDEO
-================================= */
 
-.lyrics-video {
+/* =================================================================================================
+   CHORD PAGE
+================================================================================================= */
 
-    position: fixed;
+.chords-main {
+    position: relative;
+    z-index: 3;
 
-    top: 0;
-    left: 0;
+    width: 100%;
+    min-height: 100vh;
 
-    width: 100vw;
-    height: 100vh;
-
-    object-fit: cover;
-
-    z-index: -3;
-
-    opacity: 0.40;
-
-    filter:
-        brightness(0.40)
-        blur(2px);
-
-    pointer-events: none;
-
-    transform:
-        scale(1.05);
-
+    padding: 120px 30px 60px;
 }
 
 
-/* =================================
-   CHORD SEARCH
-================================= */
+/* =================================================================================================
+   PAGE TITLE
+   Example: ENGLISH SONG CHORDS
+================================================================================================= */
+
+.chords-title {
+    width: 100%;
+
+    margin: 0 0 30px;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: bold;
+
+    line-height: 1.1;
+}
+
+
+/* =================================================================================================
+   CHORD PAGE CONTENT
+================================================================================================= */
+
+.chords-page {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+
+/* =================================================================================================
+   CHORD LIBRARY
+================================================================================================= */
+
+.chord-library {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* =================================================================================================
+   CHORD LIBRARY BUTTON CONTAINER
+================================================================================================= */
+
+.chord-buttons {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+
+    margin: 0 auto;
+}
+
+
+/* =================================================================================================
+   CHORD LIBRARY BUTTON
+   Restored from the original style.css
+================================================================================================= */
+
+.chord-btn {
+    width: 280px;
+    max-width: 100%;
+
+    padding: 18px;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 22px;
+
+    background: rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 12px;
+
+    transition: 0.3s;
+}
+
+
+/* CHORD LIBRARY BUTTON HOVER */
+
+.chord-btn:hover {
+    transform: translateY(-5px);
+
+    border-color: #00d4ff;
+
+    box-shadow:
+        0 0 10px #00d4ff,
+        0 0 25px #00d4ff;
+}
+
+
+/* =================================================================================================
+   SEARCH BAR
+   Restored from the original song-list styling
+================================================================================================= */
 
 .search-bar {
+    display: block;
 
     width: 300px;
-
-    padding: 12px;
+    max-width: 100%;
 
     margin: 30px auto;
 
-    display: block;
+    padding: 12px;
 
     background: black;
 
     color: white;
 
-    border:
-        1px solid white;
-
+    border: 1px solid white;
     border-radius: 10px;
 
+    outline: none;
+
+    font-size: 16px;
 }
 
 
-/* =================================
-   CHORD SONG CONTAINER
-================================= */
+/* SEARCH PLACEHOLDER */
+
+.search-bar::placeholder {
+    color: rgba(255,255,255,0.65);
+}
+
+
+/* SEARCH FOCUS */
+
+.search-bar:focus {
+    border-color: #00d4ff;
+
+    box-shadow:
+        0 0 8px rgba(0,212,255,0.35);
+}
+
+
+/* =================================================================================================
+   SONG LIST
+================================================================================================= */
 
 #lyrics-container {
-
     display: flex;
 
     flex-direction: column;
 
     gap: 10px;
 
+    width: 100%;
 }
 
 
-/* =================================
-   CHORD SONG SCROLLBAR
-================================= */
+/* =================================================================================================
+   SONG LIST SCROLLBAR
+================================================================================================= */
 
 #lyrics-container::-webkit-scrollbar {
-
     width: 8px;
-
 }
 
 
 #lyrics-container::-webkit-scrollbar-thumb {
-
     background: #00d4ff;
 
     border-radius: 10px;
-
 }
 
 
 #lyrics-container::-webkit-scrollbar-track {
-
     background: black;
-
 }
 
 
-/* =================================
-   CHORD SONG ITEMS
-================================= */
+/* =================================================================================================
+   SONG ITEM
+   Restored from the original style.css
+================================================================================================= */
 
 .song-item {
+    width: 100%;
 
     padding: 14px 18px;
 
+    color: #ffffff;
+
     font-size: 20px;
+
+    text-align: left;
 
     cursor: pointer;
 
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 
     transition:
-        0.2s;
-
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
+
+/* SONG ITEM HOVER */
 
 .song-item:hover {
-
     color: #00d4ff;
 
-    transform:
-        translateX(5px);
-
+    transform: translateX(5px);
 }
 
 
-.song-item span {
+/* MOVIE / SECONDARY SONG INFORMATION */
 
+.song-item span {
     font-size: 16px;
 
     opacity: 0.7;
-
 }
 
 
-/* =================================
-   CHORD READER PAGE
-================================= */
+/* =================================================================================================
+   ALPHABET LETTER HEADINGS
+   A, B, C, D...
+================================================================================================= */
 
-.lyrics-page {
+.chord-letter {
+    width: 100%;
 
-    padding-top: 120px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
+    margin: 24px 0 5px;
 
+    color: #00d4ff;
+
+    font-size: 26px;
+    font-weight: bold;
+
+    text-align: left;
 }
 
 
-/* =================================
-   CHORD LIBRARY BUTTONS
-================================= */
+/* =================================================================================================
+   OPEN SONG / CHORD READER
+================================================================================================= */
 
-.chord-buttons {
+.chord-reader {
+    width: 100%;
+    max-width: 1000px;
 
+    margin: 0 auto;
+
+    text-align: left;
+}
+
+
+/* =================================================================================================
+   SELECTED SONG TITLE
+================================================================================================= */
+
+.chord-song-title {
+    width: 100%;
+
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+    font-weight: bold;
+
+    line-height: 1.25;
+
+    text-align: center;
+}
+
+
+/* =================================================================================================
+   MOVIE NAME
+================================================================================================= */
+
+.chord-movie {
+    opacity: 0.7;
+
+    font-style: italic;
+    font-weight: normal;
+}
+
+
+/* =================================================================================================
+   CURRENT SONG KEY
+================================================================================================= */
+
+.chord-key {
+    width: 100%;
+
+    margin: 0 0 8px;
+
+    color: rgba(255,255,255,0.85);
+
+    font-size: 17px;
+
+    text-align: center;
+}
+
+
+#current-key {
+    color: #00d4ff;
+
+    font-weight: bold;
+}
+
+
+/* =================================================================================================
+   TRANSPOSE CONTROL
+================================================================================================= */
+
+.transpose-container {
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
-    gap: 15px;
+    gap: 8px;
 
     width: 100%;
 
+    margin: 18px auto 35px;
 }
 
 
-/* =================================
+/* TRANSPOSE LABEL */
+
+.transpose-label {
+    color: rgba(255,255,255,0.75);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =================================================================================================
+   TRANSPOSE SELECT
+   Restored from the original style.css
+================================================================================================= */
+
+.transpose-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    min-width: 170px;
+    height: 46px;
+
+    padding: 0 45px 0 16px;
+
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.08)
+        ),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='white'%3E%3Cpath d='M2 4l5 6 5-6'/%3E%3C/svg%3E")
+        no-repeat right 16px center;
+
+    background-color: rgba(15,15,15,.55);
+
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 14px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition: all .25s ease;
+}
+
+
+/* TRANSPOSE HOVER */
+
+.transpose-select:hover {
+    border-color: rgba(0,212,255,.65);
+
+    background-color: rgba(20,20,20,.80);
+}
+
+
+/* TRANSPOSE FOCUS */
+
+.transpose-select:focus {
+    border-color: #00d4ff;
+
+    box-shadow:
+        0 0 0 2px rgba(0,212,255,.15);
+}
+
+
+/* TRANSPOSE DROPDOWN OPTIONS */
+
+.transpose-select option {
+    color: #ffffff;
+
+    background: #111111;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+/* =================================================================================================
+   CHORD CONTENT
+================================================================================================= */
+
+#chord-content {
+    width: 100%;
+
+    margin: 0;
+
+    text-align: left;
+}
+
+
+/* =================================================================================================
    CHORD SECTION
-================================= */
+   Restored from original style.css
+================================================================================================= */
 
 .chord-section {
+    width: 100%;
 
     margin-top: 25px;
 
+    text-align: left;
 }
 
 
-/* =================================
-   CHORD HEADING
-================================= */
+/* =================================================================================================
+   CHORD SECTION HEADING
+   Example: Verse 1 / Chorus / Bridge
+================================================================================================= */
 
 .chord-heading {
+    margin: 12px 0 4px;
 
     color: #00d4ff;
 
     font-size: 1.2rem;
-
     font-weight: bold;
-
     font-style: italic;
 
     text-transform: none;
 
-    margin:
-        12px 0 4px;
-
+    text-align: left;
 }
 
 
-/* =================================
-   CHORD LYRIC
-================================= */
+/* =================================================================================================
+   CHORD LYRIC / SUBHEADING
+================================================================================================= */
 
 .chord-lyric {
+    margin: 8px 0 2px;
 
     color: #00d4ff;
 
     font-style: italic;
-
     font-weight: 600;
 
     text-transform: none;
 
-    margin:
-        8px 0 2px;
-
+    text-align: left;
 }
 
 
-/* =================================
+/* =================================================================================================
    CHORD LINE
-================================= */
+================================================================================================= */
 
 .chord-line {
+    margin: 0;
 
     color: #ffffff;
 
-    font-family:
-        monospace;
+    font-family: monospace;
 
     white-space: pre-wrap;
 
     line-height: 1.25;
 
-    margin: 0;
+    text-align: left;
+}
+
+
+/* =================================================================================================
+   LIST VIEW
+================================================================================================= */
+
+.chords-list-view {
+    display: block;
+}
+
+
+/* =================================================================================================
+   SONG VIEW
+================================================================================================= */
+
+.chords-song-view {
+    display: none;
+}
+
+
+/* SONG OPEN */
+
+.chords-page.song-open .chords-list-view {
+    display: none;
+}
+
+
+.chords-page.song-open .chords-song-view {
+    display: block;
+}
+
+
+/* =================================================================================================
+   HIDE MAIN PAGE TITLE WHEN SONG IS OPEN
+
+   ENGLISH SONG CHORDS / HINDI SONG CHORDS / TELUGU SONG CHORDS
+   disappears after selecting a song.
+================================================================================================= */
+
+.chords-main.song-open .chords-title {
+    display: none;
+}
+
+
+/* =================================================================================================
+   RESPONSIVE
+================================================================================================= */
+
+@media (max-width: 768px) {
+
+    .chords-main {
+        padding:
+            100px 18px 40px;
+    }
+
+
+    .chords-page {
+        padding:
+            0 5px 30px;
+    }
+
+
+    .chords-title {
+        margin-bottom: 20px;
+
+        font-size: clamp(2rem, 10vw, 3rem);
+
+        line-height: 1.15;
+    }
+
+
+    .chord-buttons {
+        gap: 15px;
+    }
+
+
+    .chord-btn {
+        width: 280px;
+
+        padding: 15px;
+
+        font-size: 18px;
+    }
+
+
+    .search-bar {
+        width: 100%;
+
+        margin:
+            20px auto 30px;
+    }
+
+
+    .song-item {
+        padding:
+            12px 8px;
+
+        font-size: 18px;
+    }
+
+
+    .song-item span {
+        font-size: 14px;
+    }
+
+
+    .chord-letter {
+        font-size: 23px;
+    }
+
+
+    .chord-reader {
+        max-width: 100%;
+    }
+
+
+    .chord-song-title {
+        font-size: 27px;
+    }
+
+
+    .chord-key {
+        font-size: 16px;
+    }
+
+
+    .transpose-container {
+        margin:
+            16px auto 30px;
+    }
+
+
+    .chord-heading {
+        font-size: 1.1rem;
+    }
+
+
+    .chord-line {
+        overflow-wrap: anywhere;
+
+        font-size: 15px;
+    }
 
 }
 
 
-/* =================================
-   CHORD SONG TITLE
-================================= */
+/* =================================================================================================
+   SMALL MOBILE
+================================================================================================= */
 
-.chord-song-title {
+@media (max-width: 480px) {
 
-    font-size: 34px;
-
-    font-weight: bold;
-
-    margin-bottom: 10px;
-
-}
+    .chords-main {
+        padding:
+            90px 12px 35px;
+    }
 
 
-/* =================================
-   CHORD MOVIE
-================================= */
-
-.chord-movie {
-
-    opacity: 0.7;
-
-    font-style: italic;
-
-    margin-bottom: 30px;
-
-}
+    .chords-title {
+        font-size: 2rem;
+    }
 
 
-/* =================================
-   TRANSPOSE SELECT
-================================= */
+    .chord-song-title {
+        font-size: 24px;
+    }
 
-.transpose-select {
 
-    appearance: none;
+    .transpose-select {
+        min-width: 160px;
+    }
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
 
-    min-width: 170px;
-
-    height: 46px;
-
-    padding:
-        0 45px 0 16px;
-
-    color: #fff;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    background:
-        linear-gradient(
-            rgba(255, 255, 255, 0.08),
-            rgba(255, 255, 255, 0.08)
-        ),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='white'%3E%3Cpath d='M2 4l5 6 5-6'/%3E%3C/svg%3E")
-        no-repeat right 16px center;
-
-    background-color:
-        rgba(15, 15, 15, 0.55);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.15);
-
-    border-radius: 14px;
-
-    backdrop-filter:
-        blur(15px);
-
-    -webkit-backdrop-filter:
-        blur(15px);
-
-    cursor: pointer;
-
-    transition:
-        all 0.25s ease;
+    .chord-line {
+        font-size: 14px;
+    }
 
 }
