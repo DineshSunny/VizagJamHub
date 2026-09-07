@@ -985,3 +985,232 @@ Create Show creates the master record.
 Manage Shows modifies the same record.
 Public website displays the same record.
 Tickets reference the same record by show ID.
+
+
+
+
+VizagJamHub/
+│
+├── database/
+│   │
+│   ├── academy/
+│   │   ├── enrollments.json
+│   │   ├── guitarstudents.json
+│   │   └── teachers.json
+│   │
+│   ├── admin/
+│   │   │
+│   │   ├── chords/
+│   │   │   ├── englishchords.json
+│   │   │   ├── hindichords.json
+│   │   │   ├── instrumentalsongchords.json
+│   │   │   ├── othersongchords.json
+│   │   │   └── teluguchords.json
+│   │   │
+│   │   ├── shows/
+│   │   │   ├── bookings.json
+│   │   │   ├── connections.json
+│   │   │   └── shows.json
+│   │   │
+│   │   └── tickets/
+│   │       └── tickets.json
+│   │
+│   └── lyrics/
+│       ├── englishsongs.json
+│       ├── hindisongs.json
+│       └── telugusongs.json
+│
+│
+├── node_modules/
+│
+│
+├── public/
+│   │
+│   ├── css/
+│   │   │
+│   │   ├── mobile/
+│   │   │   │
+│   │   │   ├── forms/
+│   │   │   │   ├── academyforms.css
+│   │   │   │   ├── adminforms.css
+│   │   │   │   ├── forms.css
+│   │   │   │   └── login.css
+│   │   │   │
+│   │   │   ├── pages/
+│   │   │   │   ├── about.css
+│   │   │   │   ├── academy.css
+│   │   │   │   ├── comingsoon.css
+│   │   │   │   ├── contact.css
+│   │   │   │   ├── error.css
+│   │   │   │   └── legal.css
+│   │   │   │
+│   │   │   ├── admin.css
+│   │   │   ├── buttons.css
+│   │   │   ├── global.css
+│   │   │   ├── index.css
+│   │   │   ├── logo.css
+│   │   │   ├── lyrics.css
+│   │   │   └── mobile.css
+│   │   │
+│   │   │
+│   │   └── website/
+│   │       │
+│   │       ├── forms/
+│   │       │   ├── academyforms.css
+│   │       │   ├── adminforms.css
+│   │       │   └── forms.css
+│   │       │
+│   │       ├── pages/
+│   │       │   │
+│   │       │   ├── admin/
+│   │       │   │   ├── admin.css
+│   │       │   │   ├── chords.css
+│   │       │   │   └── shows.css
+│   │       │   │
+│   │       │   ├── about.css
+│   │       │   ├── academy.css
+│   │       │   ├── comingsoon.css
+│   │       │   ├── contact.css
+│   │       │   ├── error.css
+│   │       │   └── legal.css
+│   │       │
+│   │       ├── buttons.css
+│   │       ├── global.css
+│   │       ├── index.css
+│   │       ├── logo.css
+│   │       └── lyrics.css
+│   │
+│   │
+│   ├── images/
+│   │   │
+│   │   ├── index/
+│   │   │   ├── 1.jpg
+│   │   │   ├── 2.jpg
+│   │   │   ├── 3.jpg
+│   │   │   ├── 4.jpg
+│   │   │   ├── 5.jpg
+│   │   │   ├── 6.jpg
+│   │   │   ├── 7.jpg
+│   │   │   ├── 8.jpg
+│   │   │   ├── 9.jpg
+│   │   │   ├── 10.jpg
+│   │   │   ├── 11.jpg
+│   │   │   ├── drums.jpg
+│   │   │   ├── guitar.jpg
+│   │   │   ├── logo.png
+│   │   │   └── vocals.jpg
+│   │   │
+│   │   └── Shows/
+│   │       └── YetoVelipoyindiManasu.jpg
+│   │
+│   │
+│   ├── js/
+│   │   │
+│   │   ├── academy/
+│   │   │   ├── courseenrollment.js
+│   │   │   ├── drums.js
+│   │   │   ├── enrollment.js
+│   │   │   ├── guitar.js
+│   │   │   ├── registered.js
+│   │   │   └── vocals.js
+│   │   │
+│   │   ├── admin/
+│   │   │   │
+│   │   │   ├── tickets/
+│   │   │   │   ├── buyticket.js
+│   │   │   │   └── ticket.js
+│   │   │   │
+│   │   │   ├── admin.js
+│   │   │   ├── firebase.js
+│   │   │   ├── shows.js
+│   │   │   └── transpose.js
+│   │   │
+│   │   ├── index.js
+│   │   ├── mobile.js
+│   │   └── pagebehaviour.js
+│   │
+│   │
+│   ├── pages/
+│   │   │
+│   │   ├── academy/
+│   │   │   ├── beginnerdrums.html
+│   │   │   ├── drums.html
+│   │   │   ├── enrollment.html
+│   │   │   ├── guitar.html
+│   │   │   ├── registered.html
+│   │   │   ├── studentlogin.html
+│   │   │   └── vocals.html
+│   │   │
+│   │   ├── admin/
+│   │   │   │
+│   │   │   ├── chords/
+│   │   │   │   ├── chordlibrary.html
+│   │   │   │   ├── englishchords.html
+│   │   │   │   ├── hindichords.html
+│   │   │   │   ├── instrumentalsongchords.html
+│   │   │   │   ├── othersongchords.html
+│   │   │   │   └── teluguchords.html
+│   │   │   │
+│   │   │   ├── shows/
+│   │   │   │   ├── createshows.html
+│   │   │   │   ├── manageshows.html
+│   │   │   │   └── shows.html
+│   │   │   │
+│   │   │   ├── tickets/
+│   │   │   │   ├── buyticket.html
+│   │   │   │   └── ticket.html
+│   │   │   │
+│   │   │   └── admin.html
+│   │   │
+│   │   ├── index/
+│   │   │   └── index.html
+│   │   │
+│   │   ├── lyrics/
+│   │   │   ├── category.html
+│   │   │   ├── englishsongs.html
+│   │   │   ├── hindisongs.html
+│   │   │   ├── language.html
+│   │   │   └── telugusongs.html
+│   │   │
+│   │   └── otherpages/
+│   │       ├── 404.html
+│   │       ├── aboutus.html
+│   │       ├── comingsoon.html
+│   │       ├── contactus.html
+│   │       ├── privacypolicy.html
+│   │       └── termsandconditions.html
+│   │
+│   │
+│   └── video/
+│       └── 1.mp4
+│
+│
+├── server/
+│   │
+│   ├── node_modules/
+│   │
+│   ├── routes/
+│   │   │
+│   │   ├── academy/
+│   │   │   ├── email.js
+│   │   │   ├── enrollment.js
+│   │   │   └── payment.js
+│   │   │
+│   │   ├── bandconnect.js
+│   │   ├── bookings.js
+│   │   ├── chords.js
+│   │   ├── lyrics.js
+│   │   ├── shows.js
+│   │   └── tickets.js
+│   │
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js
+│
+├── .env
+├── .gitignore
+├── old-style.css
+├── package-lock.json
+├── package.json
+├── README.md
+└── TestScript.txt
