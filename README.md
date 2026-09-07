@@ -988,7 +988,6 @@ Tickets reference the same record by show ID.
 
 
 
-
 VizagJamHub/
 │
 ├── database/
@@ -1133,13 +1132,21 @@ VizagJamHub/
 │   ├── pages/
 │   │   │
 │   │   ├── academy/
-│   │   │   ├── beginnerdrums.html
-│   │   │   ├── drums.html
+│   │   │   │
+│   │   │   ├── drums/
+│   │   │   │   ├── beginnerdrums.html
+│   │   │   │   └── drums.html
+│   │   │   │
+│   │   │   ├── guitar/
+│   │   │   │   └── guitar.html
+│   │   │   │
+│   │   │   ├── vocals/
+│   │   │   │   └── vocals.html
+│   │   │   │
 │   │   │   ├── enrollment.html
-│   │   │   ├── guitar.html
 │   │   │   ├── registered.html
-│   │   │   ├── studentlogin.html
-│   │   │   └── vocals.html
+│   │   │   └── studentlogin.html
+│   │   │
 │   │   │
 │   │   ├── admin/
 │   │   │   │
@@ -1206,6 +1213,7 @@ VizagJamHub/
 │   ├── package-lock.json
 │   ├── package.json
 │   └── server.js
+│
 │
 ├── .env
 ├── .gitignore
