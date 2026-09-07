@@ -938,3 +938,50 @@ Production Database
 ```
 
 **Current Priority → Phase 1: Enrollment Foundation**
+
+
+
+
+SHOWS SYSTEM — PLANNED ARCHITECTURE
+
+Create Show
+createshows.html
+    ↓
+POST /api/shows
+    ↓
+database/admin/shows/shows.json
+    ↓
+Single master source for all show information
+
+The same show data connects to:
+
+1. Public Website / Index
+   - GET /api/shows
+   - Displays upcoming shows/carousel
+   - Uses show.id for ticket links
+
+2. Manage Shows
+   - GET /api/shows
+   - Vertical stacked/racked card drawer
+   - Active card reveals Edit/Delete on hover
+   - PUT /api/shows/:id to edit
+   - DELETE /api/shows/:id to delete
+   - Editing happens directly in manageshows.html
+   - Separate editshows page is no longer required
+
+3. Tickets
+   - Uses the same show data
+   - Show selected using show.id
+   - Ticket/booking records remain associated with that show ID
+
+Poster Storage:
+public/images/Shows/
+
+Database:
+database/admin/shows/shows.json
+
+IMPORTANT:
+Create Show creates the master record.
+Manage Shows modifies the same record.
+Public website displays the same record.
+Tickets reference the same record by show ID.

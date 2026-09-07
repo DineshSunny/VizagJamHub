@@ -1,0 +1,641 @@
+/* =================================
+   VIZAG JAMHUB - SHOWS
+================================= */
+
+
+/* =================================
+   SHOWS PAGE
+================================= */
+
+.shows-page {
+
+    position: relative;
+    z-index: 3;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 80px 20px;
+
+}
+
+
+/* =================================
+   SHOWS TITLE
+================================= */
+
+.shows-page .admin-title {
+
+    text-align: center;
+
+    margin: 0 0 50px;
+
+}
+
+
+/* =================================
+   MANAGE SHOWS DRAWER
+================================= */
+
+.manage-shows {
+
+    position: relative;
+
+    width: min(900px, 92vw);
+    height: 72vh;
+
+    overflow-y: auto;
+    overflow-x: visible;
+
+    padding:
+        10vh
+        40px
+        30vh;
+
+    scroll-behavior: smooth;
+
+    scroll-snap-type: y mandatory;
+
+    overscroll-behavior-y: contain;
+
+    scrollbar-width: none;
+
+    perspective: 1200px;
+
+}
+
+
+/* =================================
+   HIDE SCROLLBAR
+================================= */
+
+.manage-shows::-webkit-scrollbar {
+
+    display: none;
+
+}
+
+
+/* =================================
+   SHOW ITEM
+================================= */
+
+.manage-show-item {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 760px;
+
+    margin: 0 auto -250px;
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    transform-origin: center top;
+
+    transition:
+        transform 0.45s ease,
+        opacity 0.45s ease,
+        filter 0.45s ease;
+
+}
+
+
+/* =================================
+   SHOW CARD
+================================= */
+
+.manage-show-card {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 390px;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.16);
+
+    background:
+        rgba(8, 14, 28, 0.72);
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.45);
+
+    transform:
+        scale(0.94);
+
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease,
+        border-color 0.45s ease,
+        opacity 0.45s ease;
+
+}
+
+
+/* =================================
+   ACTIVE SHOW
+================================= */
+
+.manage-show-item.active {
+
+    z-index: 20;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+
+    filter: none;
+
+}
+
+
+.manage-show-item.active
+.manage-show-card {
+
+    transform:
+        scale(1);
+
+    border-color:
+        rgba(79, 229, 255, 0.5);
+
+    box-shadow:
+        0 28px 70px
+        rgba(0, 0, 0, 0.55);
+
+}
+
+
+/* =================================
+   INACTIVE SHOWS
+================================= */
+
+.manage-show-item:not(.active) {
+
+    opacity: 0.78;
+
+    filter:
+        brightness(0.72);
+
+}
+
+
+.manage-show-item:not(.active)
+.manage-show-card {
+
+    transform:
+        scale(0.94);
+
+}
+
+
+/* =================================
+   SHOW POSTER
+================================= */
+
+.manage-poster {
+
+    display: block;
+
+    width: 100%;
+    height: 260px;
+
+    object-fit: cover;
+
+}
+
+
+/* =================================
+   SHOW INFORMATION
+================================= */
+
+.manage-info {
+
+    position: relative;
+
+    padding:
+        24px
+        28px
+        28px;
+
+}
+
+
+.manage-info h2 {
+
+    margin: 0 0 12px;
+
+    font-size: 28px;
+    line-height: 1.2;
+
+    color: #ffffff;
+
+}
+
+
+.manage-info p {
+
+    margin: 5px 0;
+
+    color:
+        rgba(255, 255, 255, 0.78);
+
+    font-size: 16px;
+
+}
+
+
+/* =================================
+   SHOW PRICE
+================================= */
+
+.manage-info .show-price {
+
+    margin-top: 12px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+}
+
+
+/* =================================
+   SHOW ACTIONS
+================================= */
+
+.showButtons {
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    padding-top: 18px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(-12px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+}
+
+
+/* =================================
+   ACTIVE CARD ACTIONS
+================================= */
+
+.manage-show-item.active:hover
+.showButtons {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+
+}
+
+
+/* =================================
+   EDIT / DELETE BUTTONS
+================================= */
+
+.showButtons button {
+
+    min-width: 130px;
+    height: 48px;
+
+    padding: 0 24px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.2);
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    color: #ffffff;
+
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.showButtons button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    border-color:
+        rgba(79, 229, 255, 0.65);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.35);
+
+}
+
+
+/* =================================
+   DELETE BUTTON
+================================= */
+
+.showButtons .delete-show-btn:hover {
+
+    border-color:
+        rgba(255, 75, 75, 0.8);
+
+    background:
+        rgba(255, 45, 45, 0.14);
+
+}
+
+
+/* =================================
+   EMPTY SHOWS
+================================= */
+
+.manage-shows-empty {
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+}
+
+
+.manage-shows-empty h2 {
+
+    margin-bottom: 10px;
+
+    color: #ffffff;
+
+}
+
+
+/* =================================
+   EDIT PANEL
+================================= */
+
+.show-edit-panel {
+
+    position: fixed;
+
+    z-index: 100;
+
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(0, 0, 0, 0.68);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+}
+
+
+/* =================================
+   EDIT PANEL ACTIVE
+================================= */
+
+.show-edit-panel.active {
+
+    display: flex;
+
+}
+
+
+/* =================================
+   EDIT CONTAINER
+================================= */
+
+.show-edit-container {
+
+    position: relative;
+
+    width: min(1000px, 94vw);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 38px;
+
+    border-radius: 24px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+    background:
+        rgba(6, 11, 24, 0.92);
+
+    backdrop-filter:
+        blur(24px);
+
+    -webkit-backdrop-filter:
+        blur(24px);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.6);
+
+    scrollbar-width: none;
+
+}
+
+
+.show-edit-container::-webkit-scrollbar {
+
+    display: none;
+
+}
+
+
+/* =================================
+   EDIT TITLE
+================================= */
+
+.show-edit-title {
+
+    margin:
+        0
+        0
+        30px;
+
+    text-align: center;
+
+    font-size: 32px;
+
+}
+
+
+/* =================================
+   EDIT FORM GRID
+================================= */
+
+.show-edit-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+}
+
+
+/* =================================
+   FULL WIDTH EDIT FIELD
+================================= */
+
+.show-edit-full {
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+/* =================================
+   EDIT ACTIONS
+================================= */
+
+.show-edit-actions {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-top: 30px;
+
+}
+
+
+/* =================================
+   DRAWER EDGE FADES
+================================= */
+
+.manage-shows::before,
+.manage-shows::after {
+
+    content: "";
+
+    position: sticky;
+
+    left: 0;
+
+    z-index: 30;
+
+    display: block;
+
+    width: 100%;
+    height: 70px;
+
+    pointer-events: none;
+
+}
+
+
+.manage-shows::before {
+
+    top: 0;
+
+    margin-bottom: -70px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #050713,
+            transparent
+        );
+
+}
+
+
+.manage-shows::after {
+
+    bottom: 0;
+
+    margin-top: -70px;
+
+    background:
+        linear-gradient(
+            to top,
+            #050713,
+            transparent
+        );
+
+}
