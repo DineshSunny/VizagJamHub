@@ -122,7 +122,39 @@ font-size:1.1rem;
 
 font-weight:600;
 
+color:#4db8ff;
+
+}
+
+.drum-footer{
+
+display:flex;
+
+gap:35px;
+
+margin-top:20px;
+
+font-size:1rem;
+
+font-weight:600;
+
 color:#fff;
+
+}
+
+.drum-footer span{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.drum-footer i{
+
+color:#4db8ff;
 
 }
 
@@ -174,7 +206,7 @@ transform:translateY(0);
                     GUITAR SCHOOL
 ========================================================== */
 
-.guitar-school-page{
+.guitar-school{
 
 width:min(1000px,92%);
 
@@ -190,7 +222,7 @@ animation:fadeUp .6s ease;
 
 }
 
-.guitar-school-page h1{
+.guitar-school h1{
 
 font-size:3rem;
 
@@ -300,19 +332,34 @@ color:#4db8ff;
                     VOCALS SCHOOL
 ==========================================================*/
 
-.vocals-school-page{
-width:min(1100px,90%);
+.vocals-school{
+
+width:min(1000px,92%);
+
 margin:80px auto 120px;
+
 text-align:center;
+
 position:relative;
-z-index:2;
+
+z-index:5;
+
+animation:fadeUp .6s ease;
+
 }
 
-.vocals-school-page h1{
+.vocals-school h1{
+
 font-size:3rem;
+
 color:#fff;
-margin-bottom:35px;
+
+margin-bottom:14px;
+
+letter-spacing:2px;
+
 font-weight:700;
+
 }
 
 .vocals-preview{
