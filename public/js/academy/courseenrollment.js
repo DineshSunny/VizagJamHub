@@ -2,9 +2,147 @@
    VIZAG JAMHUB MUSIC ACADEMY
    COURSE ENROLLMENT AGREEMENT
    Shared course selection logic
+   Supports:
+   Drums / Guitar / Vocals / Keyboard
+   Beginner / Intermediate / Advanced
 ========================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+
+
+    /* =========================================================
+       COURSE DATA FROM CURRENT PAGE
+    ========================================================= */
+
+    const page =
+        document.body;
+
+
+    const instrument =
+        String(
+            page.dataset.instrument || ""
+        )
+            .trim()
+            .toLowerCase();
+
+
+    const level =
+        String(
+            page.dataset.level || ""
+        )
+            .trim();
+
+
+    const course =
+        String(
+            page.dataset.course || ""
+        )
+            .trim();
+
+
+    const price =
+        Number(
+            page.dataset.price
+        );
+
+
+    const duration =
+        String(
+            page.dataset.duration ||
+            "8 Weeks"
+        )
+            .trim();
+
+
+    const classesPerWeek =
+        Number(
+            page.dataset.classesPerWeek
+        ) || 3;
+
+
+    const totalClasses =
+        Number(
+            page.dataset.totalClasses
+        ) || 24;
+
+
+
+    /* =========================================================
+       VERIFY COURSE PAGE CONFIGURATION
+    ========================================================= */
+
+    const supportedInstruments = [
+        "drums",
+        "guitar",
+        "vocals",
+        "keyboard"
+    ];
+
+
+    const supportedLevels = [
+        "beginner",
+        "intermediate",
+        "advanced"
+    ];
+
+
+    const courseConfigurationErrors =
+        [];
+
+
+    if (
+        !instrument ||
+        !supportedInstruments.includes(
+            instrument
+        )
+    ) {
+
+        courseConfigurationErrors.push(
+            "instrument"
+        );
+    }
+
+
+    if (
+        !level ||
+        !supportedLevels.includes(
+            level.toLowerCase()
+        )
+    ) {
+
+        courseConfigurationErrors.push(
+            "course level"
+        );
+    }
+
+
+    if (!course) {
+
+        courseConfigurationErrors.push(
+            "course name"
+        );
+    }
+
+
+    if (
+        !Number.isFinite(price) ||
+        price <= 0
+    ) {
+
+        courseConfigurationErrors.push(
+            "course price"
+        );
+    }
+
+
+    if (courseConfigurationErrors.length) {
+
+        console.error(
+            "Course page configuration is incomplete:",
+            courseConfigurationErrors
+        );
+    }
+
 
 
     /* =========================================================
@@ -371,6 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         if (
+            courseConfigurationErrors.length ||
             !selectedFormat ||
             !selectedTime ||
             !selectedBatch
@@ -384,7 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /*
          * Batch information comes directly from
-         * the selected batch input in beginnerdrums.html.
+         * the selected batch input on the course page.
          *
          * Expected attributes:
          *
@@ -417,21 +556,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+        /*
+         * Do not allow incomplete batch information
+         * to be passed to enrollment.html.
+         */
+
+        if (
+            !batchName ||
+            !theoryDay ||
+            !practicalDay ||
+            !songDay
+        ) {
+
+            console.error(
+                "Selected batch is missing required schedule information."
+            );
+
+
+            return false;
+
+        }
+
+
+
         const enrollmentData = {
 
 
             /* COURSE */
 
+            instrument:
+                instrument,
+
+
             course:
-                "Beginner Drums",
+                course,
 
 
             level:
-                "Beginner",
+                level,
 
 
             price:
-                2000,
+                price,
 
 
 
@@ -487,15 +653,15 @@ document.addEventListener("DOMContentLoaded", () => {
             /* COURSE STRUCTURE */
 
             duration:
-                "8 Weeks",
+                duration,
 
 
             classesPerWeek:
-                3,
+                classesPerWeek,
 
 
             totalClasses:
-                24
+                totalClasses
 
         };
 
@@ -544,6 +710,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateEnrollmentState() {
 
 
+        const courseConfigured =
+            courseConfigurationErrors.length === 0;
+
+
         const classSelected =
             Boolean(
                 selectedFormat &&
@@ -561,6 +731,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const ready =
+            courseConfigured &&
             classSelected &&
             agreementsAccepted;
 
@@ -630,6 +801,38 @@ document.addEventListener("DOMContentLoaded", () => {
             agreementStatus.querySelector(
                 "span"
             );
+
+
+
+        /* COURSE PAGE NOT CONFIGURED */
+
+        if (!courseConfigured) {
+
+
+            agreementStatus.classList.remove(
+                "accepted"
+            );
+
+
+            if (icon) {
+
+                icon.className =
+                    "fa-solid fa-triangle-exclamation";
+
+            }
+
+
+            if (text) {
+
+                text.textContent =
+                    "This course is currently unavailable for enrollment.";
+
+            }
+
+
+            return;
+
+        }
 
 
 
@@ -828,11 +1031,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 /*
-                 * OPEN ENROLLMENT PAGE
+                 * OPEN UNIVERSAL ENROLLMENT PAGE
                  */
 
                 window.location.href =
-                    "enrollment.html";
+                    "/pages/academy/enrollment.html";
 
             }
         );

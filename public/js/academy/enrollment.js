@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const capitalize = value => {
 
         if (!value) return "—";
+
         return String(value)
             .replace(/-/g, " ")
             .replace(
@@ -152,25 +153,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ======================================================
-       EXACT COURSE DATA FROM PREVIOUS PAGE
+       UNIVERSAL COURSE DATA FROM PREVIOUS PAGE
+       Supports all instruments and course levels
     ====================================================== */
 
-    const course =
-        enrollmentData.course ||
-        "Beginner Drums";
+    const instrument =
+        String(
+            enrollmentData.instrument || ""
+        )
+            .trim()
+            .toLowerCase();
+
 
     const level =
-        enrollmentData.level ||
-        "Beginner";
+        String(
+            enrollmentData.level || ""
+        )
+            .trim();
+
+
+    const course =
+        String(
+            enrollmentData.course || ""
+        )
+            .trim();
+
 
     const price =
         Number(
             enrollmentData.price
-        ) || 2000;
+        );
 
 
     const format =
-        enrollmentData.format || "";
+        String(
+            enrollmentData.format || ""
+        )
+            .trim();
+
 
     const formatLabel =
         enrollmentData.formatLabel ||
@@ -178,7 +198,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const time =
-        enrollmentData.time || "";
+        String(
+            enrollmentData.time || ""
+        )
+            .trim();
+
 
     const timeLabel =
         enrollmentData.timeLabel ||
@@ -186,7 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const batch =
-        enrollmentData.batch || "";
+        String(
+            enrollmentData.batch || ""
+        )
+            .trim();
+
 
     const batchName =
         enrollmentData.batchName ||
@@ -194,23 +222,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const theoryDay =
-        enrollmentData.theoryDay || "";
+        String(
+            enrollmentData.theoryDay || ""
+        )
+            .trim();
+
 
     const practicalDay =
-        enrollmentData.practicalDay || "";
+        String(
+            enrollmentData.practicalDay || ""
+        )
+            .trim();
+
 
     const songDay =
-        enrollmentData.songDay || "";
+        String(
+            enrollmentData.songDay || ""
+        )
+            .trim();
 
 
     const duration =
         enrollmentData.duration ||
         "8 Weeks";
 
+
     const classesPerWeek =
         Number(
             enrollmentData.classesPerWeek
         ) || 3;
+
 
     const totalClasses =
         Number(
@@ -235,29 +276,71 @@ document.addEventListener("DOMContentLoaded", () => {
     const missingSelection = [];
 
 
+    if (!instrument) {
+
+        missingSelection.push(
+            "instrument"
+        );
+    }
+
+
+    if (!level) {
+
+        missingSelection.push(
+            "course level"
+        );
+    }
+
+
+    if (!course) {
+
+        missingSelection.push(
+            "course"
+        );
+    }
+
+
+    if (
+        !Number.isFinite(price) ||
+        price <= 0
+    ) {
+
+        missingSelection.push(
+            "course price"
+        );
+    }
+
+
     if (!format) {
+
         missingSelection.push(
             "format"
         );
     }
 
+
     if (!time) {
+
         missingSelection.push(
             "class time"
         );
     }
 
+
     if (!batch) {
+
         missingSelection.push(
             "batch"
         );
     }
+
 
     if (
         !theoryDay ||
         !practicalDay ||
         !songDay
     ) {
+
         missingSelection.push(
             "weekly batch days"
         );
@@ -269,10 +352,141 @@ document.addEventListener("DOMContentLoaded", () => {
         alert(
             "Your previous class selection is incomplete: " +
             missingSelection.join(", ") +
-            ". Please return to the Beginner Drums page and select all class options."
+            ". Please return to the course page and select all required class options."
         );
 
         return;
+    }
+
+
+    /* ======================================================
+       VERIFY SUPPORTED INSTRUMENT + LEVEL
+    ====================================================== */
+
+    const supportedInstruments =
+        [
+            "drums",
+            "guitar",
+            "vocals",
+            "keyboard"
+        ];
+
+
+    const supportedLevels =
+        [
+            "beginner",
+            "intermediate",
+            "advanced"
+        ];
+
+
+    if (
+        !supportedInstruments.includes(
+            instrument
+        )
+    ) {
+
+        alert(
+            "The selected instrument could not be recognized. Please return to the course page and select your course again."
+        );
+
+        return;
+    }
+
+
+    if (
+        !supportedLevels.includes(
+            level.toLowerCase()
+        )
+    ) {
+
+        alert(
+            "The selected course level could not be recognized. Please return to the course page and select your course again."
+        );
+
+        return;
+    }
+
+
+    /* ======================================================
+       INSTRUMENT DISPLAY INFORMATION
+    ====================================================== */
+
+    const instrumentInformation = {
+
+        drums: {
+
+            icon:
+                "fa-solid fa-drum",
+
+            access:
+                "Do you have access to a drum kit or practice pad?"
+        },
+
+
+        guitar: {
+
+            icon:
+                "fa-solid fa-guitar",
+
+            access:
+                "Do you have access to a guitar for practice?"
+        },
+
+
+        vocals: {
+
+            icon:
+                "fa-solid fa-microphone",
+
+            access:
+                "Do you have access to a suitable space and device for vocal practice?"
+        },
+
+
+        keyboard: {
+
+            icon:
+                "fa-solid fa-keyboard",
+
+            access:
+                "Do you have access to a keyboard or piano for practice?"
+        }
+    };
+
+
+    const selectedInstrument =
+        instrumentInformation[
+            instrument
+        ];
+
+
+    /* ======================================================
+       POPULATE INSTRUMENT-SPECIFIC INFORMATION
+    ====================================================== */
+
+    function populateInstrumentInformation() {
+
+        const icon =
+            $("summary-instrument-icon");
+
+
+        if (icon) {
+
+            icon.className =
+                selectedInstrument.icon;
+        }
+
+
+        const description =
+            $("instrument-access-description");
+
+
+        if (description) {
+
+            description.textContent =
+                selectedInstrument.access;
+        }
     }
 
 
@@ -287,10 +501,12 @@ document.addEventListener("DOMContentLoaded", () => {
             `${level.toUpperCase()} COURSE`
         );
 
+
         setText(
             "summary-course",
             course
         );
+
 
         setText(
             "summary-price",
@@ -303,15 +519,18 @@ document.addEventListener("DOMContentLoaded", () => {
             formatLabel
         );
 
+
         setText(
             "summary-time",
             timeLabel
         );
 
+
         setText(
             "summary-batch",
             batchName
         );
+
 
         setText(
             "summary-duration",
@@ -324,6 +543,7 @@ document.addEventListener("DOMContentLoaded", () => {
             theoryDay
         );
 
+
         setText(
             "summary-theory-time",
             timeLabel
@@ -334,6 +554,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "summary-practical-day",
             practicalDay
         );
+
 
         setText(
             "summary-practical-time",
@@ -346,10 +567,14 @@ document.addEventListener("DOMContentLoaded", () => {
             songDay
         );
 
+
         setText(
             "summary-song-time",
             timeLabel
         );
+
+
+        populateInstrumentInformation();
     }
 
 
@@ -364,12 +589,14 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         );
 
+
     const progressSteps =
         Array.from(
             document.querySelectorAll(
                 ".progress-step"
             )
         );
+
 
     const progressLines =
         Array.from(
@@ -395,7 +622,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /*
-         * IMPORTANT:
          * HTML uses the hidden attribute.
          * Remove hidden from the active step.
          */
@@ -407,12 +633,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     step.dataset.step
                 );
 
+
             const active =
                 stepValue === currentStep;
 
 
             step.hidden =
                 !active;
+
 
             step.classList.toggle(
                 "active",
@@ -433,6 +661,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "active",
                 stepValue === currentStep
             );
+
 
             step.classList.toggle(
                 "completed",
@@ -456,11 +685,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         if (currentStep === 4) {
+
             updateReview();
         }
 
 
         if (currentStep === 5) {
+
             updatePaymentSummary();
         }
 
@@ -494,6 +725,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         if (!label) {
+
             return "This field";
         }
 
@@ -510,6 +742,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const container =
             getFieldContainer(field);
 
+
         if (!container) return;
 
 
@@ -525,6 +758,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         if (error) {
+
             error.textContent = "";
         }
     }
@@ -556,6 +790,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             if (error) {
+
                 error.textContent =
                     message;
             }
@@ -575,6 +810,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         if (summary) {
+
             return summary;
         }
 
@@ -588,10 +824,12 @@ document.addEventListener("DOMContentLoaded", () => {
         summary.id =
             "validationSummary";
 
+
         summary.setAttribute(
             "role",
             "alert"
         );
+
 
         summary.setAttribute(
             "aria-live",
@@ -602,26 +840,34 @@ document.addEventListener("DOMContentLoaded", () => {
         summary.style.display =
             "none";
 
+
         summary.style.marginBottom =
             "24px";
+
 
         summary.style.padding =
             "16px 18px";
 
+
         summary.style.border =
             "1px solid rgba(255,90,90,.5)";
+
 
         summary.style.borderRadius =
             "10px";
 
+
         summary.style.background =
             "rgba(255,70,70,.10)";
+
 
         summary.style.color =
             "#ffd7d7";
 
+
         summary.style.fontSize =
             "1rem";
+
 
         summary.style.lineHeight =
             "1.6";
@@ -649,8 +895,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const summary =
             getValidationSummary();
 
+
         summary.style.display =
             "none";
+
 
         summary.innerHTML =
             "";
@@ -662,6 +910,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
 
         if (!errors.length) {
+
             return;
         }
 
@@ -735,6 +984,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const studentDob =
         $("studentDob");
 
+
     const calculatedAge =
         $("calculatedAge");
 
@@ -763,6 +1013,7 @@ document.addEventListener("DOMContentLoaded", () => {
             !/^\d{4}-\d{2}-\d{2}$/
                 .test(value || "")
         ) {
+
             return null;
         }
 
@@ -799,6 +1050,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 month - 1 ||
             date.getDate() !== day
         ) {
+
             return null;
         }
 
@@ -814,6 +1066,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         if (!dob) {
+
             return null;
         }
 
@@ -837,6 +1090,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     dob.getDate()
             )
         ) {
+
             age--;
         }
 
@@ -869,11 +1123,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const guardianSection =
         $("guardianSection");
 
+
     const guardianRelationship =
         $("guardianRelationship");
 
+
     const guardianOtherWrapper =
         $("guardianOtherWrapper");
+
 
     const guardianOtherRelationship =
         $("guardianOtherRelationship");
@@ -951,8 +1208,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const emergencyRelationship =
         $("emergencyRelationship");
 
+
     const emergencyOtherWrapper =
         $("emergencyOtherWrapper");
+
 
     const emergencyOtherRelationship =
         $("emergencyOtherRelationship");
@@ -1035,6 +1294,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Date of Birth is required."
             );
 
+
             return;
         }
 
@@ -1053,6 +1313,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 studentDob,
                 "Please enter a valid date of birth."
             );
+
 
             return;
         }
@@ -1077,6 +1338,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 studentDob,
                 "Date of birth must be before today."
             );
+
 
             return;
         }
@@ -1108,6 +1370,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Students must be at least 6 years old to enroll."
             );
 
+
             return;
         }
 
@@ -1124,7 +1387,8 @@ document.addEventListener("DOMContentLoaded", () => {
         updateGuardianSection();
     }
 
-        /* ======================================================
+
+    /* ======================================================
        GENERIC REQUIRED FIELD VALIDATION
     ====================================================== */
 
@@ -1153,6 +1417,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "[hidden]"
                     )
                 ) {
+
                     return;
                 }
 
@@ -1175,6 +1440,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 field.name
                             )
                     ) {
+
                         return;
                     }
 
@@ -1241,6 +1507,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         `${getFieldLabel(field)} is required.`
                     );
 
+
                     return;
                 }
 
@@ -1262,6 +1529,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         field,
                         `${getFieldLabel(field)} must be a valid email address.`
                     );
+
 
                     return;
                 }
@@ -1290,6 +1558,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         field,
                         `${getFieldLabel(field)} must be a valid phone number or NA where allowed.`
                     );
+
 
                     return;
                 }
@@ -1882,7 +2151,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return true;
     }
 
-
     /* ======================================================
        RELATIONSHIPS
     ====================================================== */
@@ -2097,27 +2365,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
             course: {
 
+                instrument,
+
                 course,
+
                 level,
+
                 price,
 
+
                 format,
+
                 formatLabel,
 
+
                 time,
+
                 timeLabel,
 
+
                 batch,
+
                 batchName,
 
+
                 theoryDay,
+
                 practicalDay,
+
                 songDay,
+
 
                 weeklyDays,
 
+
                 duration,
+
                 classesPerWeek,
+
                 totalClasses
             },
 
@@ -2304,6 +2589,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             currentStep
                         )
                     ) {
+
                         return;
                     }
 
@@ -2403,6 +2689,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 field
                             );
 
+
                             clearValidationSummary();
                         }
                     );
@@ -2501,12 +2788,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ======================================================
-       PART 3 CONTINUES HERE
-       RAZORPAY PAYMENT + INITIALIZATION
-    ====================================================== */
-
-
-        /* ======================================================
        PAYMENT BUTTON — RAZORPAY
     ====================================================== */
 
@@ -2527,6 +2808,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
 
         if (!paymentButton) {
+
             return;
         }
 
@@ -2583,7 +2865,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
-
     /* ======================================================
        PAYMENT BUTTON
     ====================================================== */
@@ -2603,6 +2884,7 @@ document.addEventListener("DOMContentLoaded", () => {
                  */
 
                 if (paymentInProgress) {
+
                     return;
                 }
 
@@ -2614,6 +2896,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (
                     !validateStep(5)
                 ) {
+
                     return;
                 }
 
@@ -2634,6 +2917,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 const updatedEnrollment = {
 
                     ...enrollmentData,
+
+
+                    instrument:
+                        registrationData
+                            .course
+                            .instrument,
 
 
                     course:
@@ -2837,6 +3126,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                 body:
                                     JSON.stringify({
 
+                                        instrument:
+                                            registrationData
+                                                .course
+                                                .instrument,
+
+
                                         course:
                                             registrationData
                                                 .course
@@ -3014,9 +3309,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                     /*
                                      * Payment succeeded in Razorpay.
                                      *
-                                     * We MUST verify the signature
-                                     * on our own server before
-                                     * marking enrollment as paid.
+                                     * Verify the Razorpay signature
+                                     * on the server before treating
+                                     * the enrollment as paid.
                                      */
 
                                     const verifyResponse =
@@ -3090,41 +3385,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                     const verifiedEnrollment =
                                         verifyData.enrollment;
-                                    
+
 
                                     /* ==================================
-   FIRST LOGIN INFORMATION
-================================== */
+                                       FIRST LOGIN INFORMATION
+                                    ================================== */
 
-if (verifyData.firstLogin) {
+                                    if (
+                                        verifyData.firstLogin
+                                    ) {
 
-    verifiedEnrollment.firstLogin = {
+                                        verifiedEnrollment.firstLogin = {
 
-        studentId:
-            verifyData.firstLogin.studentId,
-
-        temporaryPassword:
-            verifyData.firstLogin.temporaryPassword,
-
-        mustChangePassword:
-            verifyData.firstLogin.mustChangePassword
-
-    };
-
-}
+                                            studentId:
+                                                verifyData
+                                                    .firstLogin
+                                                    .studentId,
 
 
-/* ==================================
-   EMAIL CONFIRMATION STATUS
-================================== */
+                                            temporaryPassword:
+                                                verifyData
+                                                    .firstLogin
+                                                    .temporaryPassword,
 
-verifiedEnrollment.emailConfirmation = {
 
-    ...(verifiedEnrollment.emailConfirmation || {}),
+                                            mustChangePassword:
+                                                verifyData
+                                                    .firstLogin
+                                                    .mustChangePassword
+                                        };
+                                    }
 
-    ...(verifyData.emailConfirmation || {})
 
-};
+                                    /* ==================================
+                                       EMAIL CONFIRMATION STATUS
+                                    ================================== */
+
+                                    verifiedEnrollment.emailConfirmation = {
+
+                                        ...(
+                                            verifiedEnrollment
+                                                .emailConfirmation ||
+                                            {}
+                                        ),
+
+                                        ...(
+                                            verifyData
+                                                .emailConfirmation ||
+                                            {}
+                                        )
+                                    };
+
 
                                     /*
                                      * Replace pending information
@@ -3177,7 +3488,7 @@ verifiedEnrollment.emailConfirmation = {
                                     ============================== */
 
                                     window.location.href =
-                                        "registered.html";
+                                        "/pages/academy/registered.html";
 
                                 }
 
@@ -3241,6 +3552,10 @@ verifiedEnrollment.emailConfirmation = {
                         ================================== */
 
                         notes: {
+
+                            instrument:
+                                instrument,
+
 
                             course:
                                 course,
