@@ -12,14 +12,13 @@ const router = express.Router();
 
 const showsFile = path.join(
   __dirname,
-  "../../database/admin/shows/shows.json"
+  "../../../database/admin/shows/shows.json"
 );
 
 const postersFolder = path.join(
   __dirname,
-  "../../public/images/Shows"
+  "../../../public/images/Shows"
 );
-
 
 /* =================================
    CREATE POSTER FOLDER
