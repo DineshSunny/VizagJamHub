@@ -1,20 +1,28 @@
 const express = require("express");
+
 const fs = require("fs");
+
 const path = require("path");
 
 const router = express.Router();
 
 
 /* =================================
+
    HELPER FUNCTION
+
 ================================= */
 
 function readJSON(file) {
 
   if (fs.existsSync(file)) {
+
     return JSON.parse(
+
       fs.readFileSync(file, "utf-8")
+
     );
+
   }
 
   return [];
@@ -23,7 +31,9 @@ function readJSON(file) {
 
 
 /* =================================
+
    CHORDS
+
 ================================= */
 
 
@@ -32,8 +42,11 @@ function readJSON(file) {
 router.get("/api/teluguchords", (req, res) => {
 
   const file = path.resolve(
+
     __dirname,
-    "../../database/admin/chords/teluguchords.json"
+
+    "../../../database/admin/chords/teluguchords.json"
+
   );
 
   const songs = readJSON(file);
@@ -48,8 +61,11 @@ router.get("/api/teluguchords", (req, res) => {
 router.get("/api/englishchords", (req, res) => {
 
   const file = path.resolve(
+
     __dirname,
-    "../../database/admin/chords/englishchords.json"
+
+    "../../../database/admin/chords/englishchords.json"
+
   );
 
   const songs = readJSON(file);
@@ -64,8 +80,11 @@ router.get("/api/englishchords", (req, res) => {
 router.get("/api/hindichords", (req, res) => {
 
   const file = path.resolve(
+
     __dirname,
-    "../../database/admin/chords/hindichords.json"
+
+    "../../../database/admin/chords/hindichords.json"
+
   );
 
   const songs = readJSON(file);
@@ -80,8 +99,11 @@ router.get("/api/hindichords", (req, res) => {
 router.get("/api/othersongchords", (req, res) => {
 
   const file = path.resolve(
+
     __dirname,
-    "../../database/admin/chords/othersongchords.json"
+
+    "../../../database/admin/chords/othersongchords.json"
+
   );
 
   const songs = readJSON(file);
@@ -96,8 +118,11 @@ router.get("/api/othersongchords", (req, res) => {
 router.get("/api/instrumentalsongchords", (req, res) => {
 
   const file = path.resolve(
+
     __dirname,
-    "../../database/admin/chords/instrumentalsongchords.json"
+
+    "../../../database/admin/chords/instrumentalsongchords.json"
+
   );
 
   const songs = readJSON(file);
