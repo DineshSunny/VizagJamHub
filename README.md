@@ -8,7 +8,6 @@
 
 ### 🎫 Shows & Concert Tickets
 
-* [ ] Create Show
 * [ ] Manage Shows
 * [ ] Generate concert tickets
 * [ ] Generate QR codes for tickets
@@ -18,17 +17,12 @@
 
 ## 🎼 Music Tools
 
-### Chord Library
-
-* [ ] Chord Library
 * [ ] Chord Sheet Creator
 * [ ] Assign chord sheets to students
 * [ ] Student chord-sheet access
 * [ ] PDF downloads
 
 ### Band Resources
-
-```text
 Band Resources
 ├── Setlists
 ├── Practice Notes
@@ -521,25 +515,7 @@ Display:
 ### Student Grouping
 
 ```text
-Students
-│
-├── Guitar
-│   ├── Beginner
-│   │   ├── Batch 01
-│   │   └── Batch 02
-│   ├── Intermediate
-│   └── Advanced
-│
-├── Bass Guitar
-│   ├── Beginner
-│   ├── Intermediate
-│   └── Advanced
-│
-└── Drums
-    ├── Beginner
-    ├── Intermediate
-    └── Advanced
-```
+
 
 Also group by teacher:
 
@@ -942,6 +918,80 @@ Production Database
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 SHOWS SYSTEM — PLANNED ARCHITECTURE
 
 Create Show
@@ -988,6 +1038,51 @@ Tickets reference the same record by show ID.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 VizagJamHub/
 │
 ├── database/
@@ -997,31 +1092,29 @@ VizagJamHub/
 │   │   ├── guitarstudents.json
 │   │   └── teachers.json
 │   │
-│   ├── admin/
-│   │   │
-│   │   ├── chords/
-│   │   │   ├── englishchords.json
-│   │   │   ├── hindichords.json
-│   │   │   ├── instrumentalsongchords.json
-│   │   │   ├── othersongchords.json
-│   │   │   └── teluguchords.json
-│   │   │
-│   │   ├── shows/
-│   │   │   ├── bookings.json
-│   │   │   ├── connections.json
-│   │   │   └── shows.json
-│   │   │
-│   │   └── tickets/
-│   │       └── tickets.json
-│   │
-│   └── lyrics/
-│       ├── englishsongs.json
-│       ├── hindisongs.json
-│       └── telugusongs.json
-│
+│   └── admin/
+│       │
+│       ├── chords/
+│       │   ├── englishchords.json
+│       │   ├── hindichords.json
+│       │   ├── instrumentalsongchords.json
+│       │   ├── othersongchords.json
+│       │   └── teluguchords.json
+│       │
+│       ├── lyrics/
+│       │   ├── englishsongs.json
+│       │   ├── hindisongs.json
+│       │   └── telugusongs.json
+│       │
+│       ├── shows/
+│       │   ├── bookings.json
+│       │   ├── connections.json
+│       │   └── shows.json
+│       │
+│       └── tickets/
+│           └── tickets.json
 │
 ├── node_modules/
-│
 │
 ├── public/
 │   │
@@ -1051,11 +1144,9 @@ VizagJamHub/
 │   │   │   ├── lyrics.css
 │   │   │   └── mobile.css
 │   │   │
-│   │   │
 │   │   └── website/
 │   │       │
 │   │       ├── forms/
-│   │       │   ├── academyforms.css
 │   │       │   ├── adminforms.css
 │   │       │   └── forms.css
 │   │       │
@@ -1064,6 +1155,7 @@ VizagJamHub/
 │   │       │   ├── admin/
 │   │       │   │   ├── admin.css
 │   │       │   │   ├── chords.css
+│   │       │   │   ├── lyrics.css
 │   │       │   │   └── shows.css
 │   │       │   │
 │   │       │   ├── about.css
@@ -1076,9 +1168,7 @@ VizagJamHub/
 │   │       ├── buttons.css
 │   │       ├── global.css
 │   │       ├── index.css
-│   │       ├── logo.css
-│   │       └── lyrics.css
-│   │
+│   │       └── logo.css
 │   │
 │   ├── images/
 │   │   │
@@ -1096,12 +1186,12 @@ VizagJamHub/
 │   │   │   ├── 11.jpg
 │   │   │   ├── drums.jpg
 │   │   │   ├── guitar.jpg
+│   │   │   ├── keyboard.jpg
 │   │   │   ├── logo.png
 │   │   │   └── vocals.jpg
 │   │   │
 │   │   └── Shows/
 │   │       └── YetoVelipoyindiManasu.jpg
-│   │
 │   │
 │   ├── js/
 │   │   │
@@ -1110,6 +1200,7 @@ VizagJamHub/
 │   │   │   ├── drums.js
 │   │   │   ├── enrollment.js
 │   │   │   ├── guitar.js
+│   │   │   ├── keyboard.js
 │   │   │   ├── registered.js
 │   │   │   └── vocals.js
 │   │   │
@@ -1128,7 +1219,6 @@ VizagJamHub/
 │   │   ├── mobile.js
 │   │   └── pagebehaviour.js
 │   │
-│   │
 │   ├── pages/
 │   │   │
 │   │   ├── academy/
@@ -1140,13 +1230,15 @@ VizagJamHub/
 │   │   │   ├── guitar/
 │   │   │   │   └── guitar.html
 │   │   │   │
+│   │   │   ├── keyboard/
+│   │   │   │   └── keyboard.html
+│   │   │   │
 │   │   │   ├── vocals/
 │   │   │   │   └── vocals.html
 │   │   │   │
 │   │   │   ├── enrollment.html
 │   │   │   ├── registered.html
 │   │   │   └── studentlogin.html
-│   │   │
 │   │   │
 │   │   ├── admin/
 │   │   │   │
@@ -1157,6 +1249,13 @@ VizagJamHub/
 │   │   │   │   ├── instrumentalsongchords.html
 │   │   │   │   ├── othersongchords.html
 │   │   │   │   └── teluguchords.html
+│   │   │   │
+│   │   │   ├── lyrics/
+│   │   │   │   ├── category.html
+│   │   │   │   ├── englishsongs.html
+│   │   │   │   ├── hindisongs.html
+│   │   │   │   ├── language.html
+│   │   │   │   └── telugusongs.html
 │   │   │   │
 │   │   │   ├── shows/
 │   │   │   │   ├── createshows.html
@@ -1172,13 +1271,6 @@ VizagJamHub/
 │   │   ├── index/
 │   │   │   └── index.html
 │   │   │
-│   │   ├── lyrics/
-│   │   │   ├── category.html
-│   │   │   ├── englishsongs.html
-│   │   │   ├── hindisongs.html
-│   │   │   ├── language.html
-│   │   │   └── telugusongs.html
-│   │   │
 │   │   └── otherpages/
 │   │       ├── 404.html
 │   │       ├── aboutus.html
@@ -1187,10 +1279,8 @@ VizagJamHub/
 │   │       ├── privacypolicy.html
 │   │       └── termsandconditions.html
 │   │
-│   │
 │   └── video/
 │       └── 1.mp4
-│
 │
 ├── server/
 │   │
@@ -1203,17 +1293,18 @@ VizagJamHub/
 │   │   │   ├── enrollment.js
 │   │   │   └── payment.js
 │   │   │
-│   │   ├── bandconnect.js
-│   │   ├── bookings.js
-│   │   ├── chords.js
-│   │   ├── lyrics.js
-│   │   ├── shows.js
-│   │   └── tickets.js
+│   │   ├── admin/
+│   │   │   ├── chords.js
+│   │   │   ├── lyrics.js
+│   │   │   ├── shows.js
+│   │   │   └── tickets.js
+│   │   │
+│   │   └── index/
+│   │       └── bandconnect.js
 │   │
 │   ├── package-lock.json
 │   ├── package.json
 │   └── server.js
-│
 │
 ├── .env
 ├── .gitignore
@@ -1222,3 +1313,127 @@ VizagJamHub/
 ├── package.json
 ├── README.md
 └── TestScript.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Finish Registration
+   ├── Payment verified
+   ├── Enrollment saved
+   ├── Generate permanent Student ID
+   ├── Generate password
+   ├── Generate 24-class calendar
+   └── Email + SMS + WhatsApp confirmation
+
+2. Student Authentication
+   ├── Student ID + generated password
+   ├── Login
+   ├── Forgot Password → phone OTP
+   └── Change Password
+
+3. Student Dashboard
+   ├── Welcome, [Student Name]
+   ├── Join Your Class
+   ├── Next Class
+   ├── Upcoming Calendar
+   ├── Course Progress
+   ├── Videos
+   ├── Learning Materials
+   ├── Song Lessons
+   ├── Announcements
+   ├── Talk to Your Teacher
+   ├── Contact Support
+   ├── Help / FAQ
+   └── Student Profile
+
+4. Teacher System
+   ├── Teacher Login
+   ├── Assigned Students
+   ├── Student conversations
+   ├── Unread messages
+   └── Course/student information
+
+5. Student ↔ Teacher Chat
+   ├── Permanent history
+   ├── Text
+   ├── Images
+   ├── PDFs/documents
+   ├── Audio
+   ├── Video
+   ├── Timestamps
+   ├── Read/unread
+   └── Attachments retained
+
+
+
+   ADMIN SIDE
+│
+├── Admin Dashboard
+│
+├── Academy Management
+│   ├── Students
+│   ├── Teachers
+│   ├── Courses
+│   ├── Batches
+│   └── Enrollments
+│
+└── Teacher Portal
+    ├── Teacher Login
+    ├── Assigned Students
+    ├── Classes / Schedule
+    ├── Student Messages
+    │   ├── Permanent chat history
+    │   ├── Text
+    │   ├── Images
+    │   ├── Documents / PDFs
+    │   ├── Audio
+    │   └── Video
+    ├── Announcements
+    └── Course Materials
