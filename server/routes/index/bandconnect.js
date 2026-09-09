@@ -11,7 +11,7 @@ const router = express.Router();
 
 const connectionsFile = path.join(
   __dirname,
-  "../../database/admin/shows/connections.json"
+  "../../../database/admin/shows/connections.json"
 );
 
 

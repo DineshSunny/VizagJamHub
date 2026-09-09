@@ -11,7 +11,7 @@ const router = express.Router();
 
 const ticketsFile = path.join(
   __dirname,
-  "../../database/admin/shows/tickets.json"
+  "../../../database/admin/tickets/tickets.json"
 );
 
 
