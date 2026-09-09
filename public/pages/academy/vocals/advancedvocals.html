@@ -1,84 +1,48 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Advanced Vocals | Vizag JamHub</title>
+    <meta name="description"
+          content="Advanced Guitar course at Vizag JamHub Music Academy.">
 
+    <title>Advanced Guitar | Vizag JamHub Music Academy</title>
 
     <!-- DESKTOP CSS -->
-
-    <link
-        rel="stylesheet"
-        href="/css/website/global.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/css/website/logo.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/css/website/buttons.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/css/website/pages/academy.css"
-    >
-
+    <link rel="stylesheet" href="/css/website/global.css">
+    <link rel="stylesheet" href="/css/website/logo.css">
+    <link rel="stylesheet" href="/css/website/buttons.css">
+    <link rel="stylesheet" href="/css/website/pages/academy.css">
 
     <!-- MOBILE CSS -->
+    <link rel="stylesheet"
+          href="/css/mobile/global.css"
+          media="screen and (max-width:768px)">
+    <link rel="stylesheet"
+          href="/css/mobile/logo.css"
+          media="screen and (max-width:768px)">
+    <link rel="stylesheet"
+          href="/css/mobile/buttons.css"
+          media="screen and (max-width:768px)">
+    <link rel="stylesheet"
+          href="/css/mobile/pages/academy.css"
+          media="screen and (max-width:768px)">
 
-    <link
-        rel="stylesheet"
-        href="/css/mobile/global.css"
-        media="screen and (max-width:768px)"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/css/mobile/logo.css"
-        media="screen and (max-width:768px)"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/css/mobile/buttons.css"
-        media="screen and (max-width:768px)"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/css/mobile/pages/academy.css"
-        media="screen and (max-width:768px)"
-    >
-
-
-    <!-- FONT AWESOME -->
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    >
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
-
 <body
     class="course-page"
-    data-instrument="vocals"
+    data-instrument="guitar"
     data-level="advanced"
-    data-course="Advanced Vocals"
+    data-course="Advanced Guitar"
     data-price="7000"
     data-duration="8 Weeks"
     data-classes-per-week="3"
@@ -86,28 +50,47 @@
 >
 
 
-<!-- BACKGROUND VIDEO -->
+<!-- =========================================================
+     VIDEO BACKGROUND
+========================================================= -->
 
-<video
-    class="bg-video"
-    autoplay
-    muted
-    loop
-    playsinline
->
+<video autoplay
+       muted
+       loop
+       playsinline
+       preload="metadata"
+       id="bg-video">
 
-    <source
-        src="/video/1.mp4"
-        type="video/mp4"
-    >
+    <source src="/video/1.mp4" type="video/mp4">
 
 </video>
 
 
-<div class="bg-overlay"></div>
+<!-- =========================================================
+     FLOATING MUSIC NOTES
+========================================================= -->
+
+<div class="music-notes">
+
+    <span>♪</span>
+    <span>♫</span>
+    <span>♬</span>
+    <span>♩</span>
+    <span>𝄞</span>
+    <span>♭</span>
+    <span>♯</span>
+    <span>♬</span>
+    <span>♫</span>
+    <span>♪</span>
+    <span>♩</span>
+    <span>𝄢</span>
+
+</div>
 
 
-<!-- HEADER -->
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header>
 
@@ -117,11 +100,8 @@
         aria-label="Open navigation"
         aria-expanded="false"
     >
-
         <i class="fa-solid fa-bars"></i>
-
     </button>
-
 
     <div class="nav-overlay">
 
@@ -130,45 +110,20 @@
             type="button"
             aria-label="Close navigation"
         >
-
             <i class="fa-solid fa-xmark"></i>
-
         </button>
-
 
         <nav>
 
             <ul class="nav-links">
 
-                <li>
-                    <a href="/pages/index/index.html">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/pages/academy/vocals/vocals.html">
-                        Vocals School
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/pages/academy/enrollment.html">
-                        Enrollment
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/pages/otherpages/aboutus.html">
-                        About Us
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/pages/otherpages/contactus.html">
-                        Contact Us
-                    </a>
-                </li>
+                <li><a href="/pages/index/index.html">Home</a></li>
+                <li><a href="/pages/lyrics/category.html">Sing Along Lyrics</a></li>
+                <li><a href="/pages/index/index.html#shows">Shows</a></li>
+                <li><a href="/pages/index/index.html#school">School</a></li>
+                <li><a href="/pages/index/index.html#connect">Band Connect</a></li>
+                <li><a href="/pages/index/index.html#gallery">Gallery</a></li>
+                <li><a href="/pages/admin/admin.html">Admin Panel</a></li>
 
             </ul>
 
@@ -179,467 +134,61 @@
 </header>
 
 
-<!-- COURSE HERO -->
+<!-- =========================================================
+     COURSE
+========================================================= -->
+
+<main class="academy-course">
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="course-hero">
 
-    <div class="course-hero-content">
-
-        <span class="course-level">
-            ADVANCED
-        </span>
-
-        <h1>
-            Advanced Vocals
-        </h1>
-
-        <p>
-            Develop advanced vocal control, range,
-            resonance, dynamics, stylistic expression
-            and professional performance skills.
-        </p>
-
-
-        <div class="course-stats">
-
-            <div>
-                <strong>8</strong>
-                <span>Weeks</span>
-            </div>
-
-            <div>
-                <strong>24</strong>
-                <span>Classes</span>
-            </div>
-
-            <div>
-                <strong>3</strong>
-                <span>Classes / Week</span>
-            </div>
-
-            <div>
-                <strong>Certificate</strong>
-                <span>On Completion</span>
-            </div>
-
-        </div>
-
+    <div class="course-level">
+        ADVANCED COURSE
     </div>
 
-</section>
+    <h1>Advanced Guitar</h1>
 
+    <h2>Professional Guitar Course</h2>
 
-<!-- ABOUT -->
+    <p class="course-hero-description">
 
-<section class="course-section">
+        Master advanced guitar technique, harmony,
+        fretboard knowledge, improvisation and performance
+        through an intensive eight-week program.
 
-    <h2>
-        About This Course
-    </h2>
-
-    <p>
-        The Advanced Vocals course is designed for
-        experienced singers who already have a strong
-        foundation in pitch, breathing, vocal control
-        and song performance.
     </p>
 
-    <p>
-        During the eight-week program, students will
-        develop advanced breath management, register
-        transitions, resonance, range, dynamics,
-        vocal agility, interpretation and stage
-        performance skills.
-    </p>
 
-</section>
+    <div class="course-stats">
 
-
-<!-- LEARNING OUTCOMES -->
-
-<section class="course-section">
-
-    <h2>
-        What You Will Learn
-    </h2>
-
-
-    <div class="course-grid">
-
-        <div class="course-card">
-
-            <i class="fa-solid fa-lungs"></i>
-
-            <h3>
-                Advanced Breath Control
-            </h3>
-
-            <p>
-                Develop efficient breath management
-                for demanding vocal passages and
-                sustained phrases.
-            </p>
-
+        <div class="course-stat">
+            <i class="fa-regular fa-clock"></i>
+            <span>8 Weeks</span>
         </div>
 
-
-        <div class="course-card">
-
-            <i class="fa-solid fa-microphone"></i>
-
-            <h3>
-                Vocal Range
-            </h3>
-
-            <p>
-                Strengthen and expand your usable
-                vocal range while maintaining
-                healthy technique.
-            </p>
-
-        </div>
-
-
-        <div class="course-card">
-
-            <i class="fa-solid fa-wave-square"></i>
-
-            <h3>
-                Register Control
-            </h3>
-
-            <p>
-                Develop smoother transitions between
-                chest, head and mixed vocal registers.
-            </p>
-
-        </div>
-
-
-        <div class="course-card">
-
-            <i class="fa-solid fa-bolt"></i>
-
-            <h3>
-                Vocal Agility
-            </h3>
-
-            <p>
-                Improve speed, flexibility and
-                accuracy through advanced vocal
-                exercises and melodic patterns.
-            </p>
-
-        </div>
-
-
-        <div class="course-card">
-
-            <i class="fa-solid fa-volume-high"></i>
-
-            <h3>
-                Dynamics
-            </h3>
-
-            <p>
-                Control volume, intensity and
-                tonal variation without losing
-                vocal stability.
-            </p>
-
-        </div>
-
-
-        <div class="course-card">
-
+        <div class="course-stat">
             <i class="fa-solid fa-music"></i>
-
-            <h3>
-                Advanced Phrasing
-            </h3>
-
-            <p>
-                Shape melodies using timing,
-                articulation, dynamics and
-                stylistic interpretation.
-            </p>
-
+            <span>24 Classes</span>
         </div>
 
-
-        <div class="course-card">
-
-            <i class="fa-solid fa-heart"></i>
-
-            <h3>
-                Vocal Expression
-            </h3>
-
-            <p>
-                Develop individual style and
-                communicate emotion through
-                controlled vocal performance.
-            </p>
-
-        </div>
-
-
-        <div class="course-card">
-
-            <i class="fa-solid fa-users"></i>
-
-            <h3>
-                Stage Performance
-            </h3>
-
-            <p>
-                Develop stage confidence,
-                microphone technique and
-                professional performance skills.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CURRICULUM -->
-
-<section class="course-section">
-
-    <h2>
-        8-Week Curriculum
-    </h2>
-
-
-    <div class="curriculum-list">
-
-
-        <div class="curriculum-item">
-
-            <span>Week 1</span>
-
-            <div>
-
-                <h3>
-                    Advanced Vocal Technique
-                </h3>
-
-                <p>
-                    Evaluate vocal technique and
-                    strengthen breath support,
-                    posture, tone and vocal control.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="curriculum-item">
-
-            <span>Week 2</span>
-
-            <div>
-
-                <h3>
-                    Range & Register Development
-                </h3>
-
-                <p>
-                    Strengthen chest, head and
-                    mixed registers while developing
-                    smoother register transitions.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="curriculum-item">
-
-            <span>Week 3</span>
-
-            <div>
-
-                <h3>
-                    Resonance & Tone Control
-                </h3>
-
-                <p>
-                    Explore resonance placement,
-                    tonal balance and controlled
-                    changes in vocal color.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="curriculum-item">
-
-            <span>Week 4</span>
-
-            <div>
-
-                <h3>
-                    Vocal Agility
-                </h3>
-
-                <p>
-                    Develop speed and accuracy
-                    through runs, melodic patterns,
-                    interval exercises and articulation.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="curriculum-item">
-
-            <span>Week 5</span>
-
-            <div>
-
-                <h3>
-                    Dynamics & Advanced Phrasing
-                </h3>
-
-                <p>
-                    Use controlled dynamics,
-                    articulation and rhythmic
-                    placement to shape vocal phrases.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="curriculum-item">
-
-            <span>Week 6</span>
-
-            <div>
-
-                <h3>
-                    Style & Interpretation
-                </h3>
-
-                <p>
-                    Explore stylistic choices,
-                    emotional delivery and individual
-                    interpretation within songs.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="curriculum-item">
-
-            <span>Week 7</span>
-
-            <div>
-
-                <h3>
-                    Stage & Microphone Technique
-                </h3>
-
-                <p>
-                    Develop microphone control,
-                    stage movement, audience connection
-                    and live performance confidence.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="curriculum-item">
-
-            <span>Week 8</span>
-
-            <div>
-
-                <h3>
-                    Advanced Final Performance
-                </h3>
-
-                <p>
-                    Prepare and perform a complete
-                    advanced song demonstrating
-                    vocal technique, interpretation
-                    and stage presence.
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- COURSE INCLUDES -->
-
-<section class="course-section">
-
-    <h2>
-        Course Includes
-    </h2>
-
-
-    <div class="includes-grid">
-
-        <div>
-            <i class="fa-solid fa-chalkboard-user"></i>
-            <span>24 Instructor-Led Classes</span>
-        </div>
-
-        <div>
-            <i class="fa-solid fa-book-open"></i>
-            <span>Advanced Vocal Theory</span>
-        </div>
-
-        <div>
-            <i class="fa-solid fa-microphone"></i>
-            <span>Advanced Practical Classes</span>
-        </div>
-
-        <div>
-            <i class="fa-solid fa-music"></i>
-            <span>Song & Performance Classes</span>
-        </div>
-
-        <div>
-            <i class="fa-solid fa-file-pdf"></i>
-            <span>Practice PDFs</span>
-        </div>
-
-        <div>
-            <i class="fa-solid fa-video"></i>
-            <span>Practice Videos</span>
-        </div>
-
-        <div>
-            <i class="fa-solid fa-headphones"></i>
-            <span>Backing Tracks</span>
-        </div>
-
-        <div>
+        <div class="course-stat">
             <i class="fa-solid fa-certificate"></i>
-            <span>Completion Certificate</span>
+            <span>Certificate</span>
+        </div>
+
+        <div class="course-stat">
+            <i class="fa-solid fa-laptop"></i>
+            <span>Online</span>
+        </div>
+
+        <div class="course-stat">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>In Person</span>
         </div>
 
     </div>
@@ -647,39 +196,43 @@
 </section>
 
 
-<!-- REQUIREMENTS -->
+<!-- =========================================================
+     01 ABOUT
+========================================================= -->
 
 <section class="course-section">
 
-    <h2>
-        Requirements
-    </h2>
+    <div class="course-glass-card">
 
+        <div class="course-section-heading">
 
-    <div class="requirements-box">
+            <span>01</span>
+
+            <div>
+                <p>COURSE INTRODUCTION</p>
+                <h2>About This Course</h2>
+            </div>
+
+        </div>
 
         <p>
-            <i class="fa-solid fa-circle-check"></i>
-            Previous vocal training or equivalent
-            singing experience is recommended.
+            Advanced Guitar is designed for experienced
+            guitarists who already have a strong foundation
+            in chords, scales, rhythm and lead guitar.
         </p>
 
         <p>
-            <i class="fa-solid fa-circle-check"></i>
-            Students should be comfortable with
-            breath control, pitch and basic vocal exercises.
+            Throughout this eight-week program, students will
+            develop advanced technique, fretboard knowledge,
+            extended chords, scales, modes, improvisation
+            and professional-level musical expression.
         </p>
 
         <p>
-            <i class="fa-solid fa-circle-check"></i>
-            Students should have experience performing
-            complete songs.
-        </p>
-
-        <p>
-            <i class="fa-solid fa-circle-check"></i>
-            Regular vocal practice between classes
-            is strongly recommended.
+            Lessons combine advanced theory, practical exercises,
+            song arrangement and performance training to help
+            students develop greater control, creativity
+            and confidence as guitarists.
         </p>
 
     </div>
@@ -687,385 +240,2105 @@
 </section>
 
 
-<!-- CLASS FORMAT -->
+<!-- =========================================================
+     02 WHAT YOU'LL LEARN
+========================================================= -->
 
 <section class="course-section">
 
-    <h2>
-        Choose Your Class Format
-    </h2>
+    <div class="course-glass-card">
+
+        <div class="course-section-heading">
+
+            <span>02</span>
+
+            <div>
+                <p>LEARNING OUTCOMES</p>
+                <h2>What You'll Learn</h2>
+            </div>
+
+        </div>
 
 
-    <div class="selection-grid">
-
-        <label class="selection-card">
-
-            <input
-                type="radio"
-                name="format"
-                value="online"
-            >
-
-            <i class="fa-solid fa-laptop"></i>
-
-            <h3>
-                Online
-            </h3>
-
-            <p>
-                Attend live instructor-led classes
-                from anywhere.
-            </p>
-
-        </label>
+        <div class="learning-outcomes-list">
 
 
-        <label class="selection-card">
+            <details class="learning-outcome">
 
-            <input
-                type="radio"
-                name="format"
-                value="in-person"
-            >
+                <summary>
 
-            <i class="fa-solid fa-location-dot"></i>
+                    <div class="learning-outcome-title">
+                        <i class="fa-solid fa-guitar"></i>
+                        <strong>Advanced Guitar Technique</strong>
+                    </div>
 
-            <h3>
-                In Person
-            </h3>
+                    <i class="fa-solid fa-plus learning-plus"></i>
 
-            <p>
-                Attend classes directly at
-                Vizag JamHub.
-            </p>
+                </summary>
 
-        </label>
+                <div class="learning-outcome-content">
+
+                    Develop greater speed, accuracy, control and
+                    coordination through advanced picking,
+                    fretting and technical exercises.
+
+                </div>
+
+            </details>
+
+
+            <details class="learning-outcome">
+
+                <summary>
+
+                    <div class="learning-outcome-title">
+                        <i class="fa-solid fa-map"></i>
+                        <strong>Fretboard Mastery</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus learning-plus"></i>
+
+                </summary>
+
+                <div class="learning-outcome-content">
+
+                    Understand note locations, intervals, chord tones
+                    and scale relationships across the entire fretboard.
+
+                </div>
+
+            </details>
+
+
+            <details class="learning-outcome">
+
+                <summary>
+
+                    <div class="learning-outcome-title">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <strong>Extended Chords</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus learning-plus"></i>
+
+                </summary>
+
+                <div class="learning-outcome-content">
+
+                    Learn seventh chords, suspended chords,
+                    added-tone chords and advanced voicings
+                    for richer harmonic playing.
+
+                </div>
+
+            </details>
+
+
+            <details class="learning-outcome">
+
+                <summary>
+
+                    <div class="learning-outcome-title">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <strong>Advanced Scales & Modes</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus learning-plus"></i>
+
+                </summary>
+
+                <div class="learning-outcome-content">
+
+                    Develop fluency with major, minor,
+                    pentatonic and modal scale concepts
+                    across multiple fretboard positions.
+
+                </div>
+
+            </details>
+
+
+            <details class="learning-outcome">
+
+                <summary>
+
+                    <div class="learning-outcome-title">
+                        <i class="fa-solid fa-bolt"></i>
+                        <strong>Advanced Lead Guitar</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus learning-plus"></i>
+
+                </summary>
+
+                <div class="learning-outcome-content">
+
+                    Refine bends, vibrato, legato, slides,
+                    alternate picking and expressive lead-guitar
+                    techniques.
+
+                </div>
+
+            </details>
+
+
+            <details class="learning-outcome">
+
+                <summary>
+
+                    <div class="learning-outcome-title">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <strong>Improvisation</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus learning-plus"></i>
+
+                </summary>
+
+                <div class="learning-outcome-content">
+
+                    Build expressive solos using scales,
+                    chord tones, motifs, dynamics and
+                    advanced melodic phrasing.
+
+                </div>
+
+            </details>
+
+
+            <details class="learning-outcome">
+
+                <summary>
+
+                    <div class="learning-outcome-title">
+                        <i class="fa-solid fa-music"></i>
+                        <strong>Song Arrangement</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus learning-plus"></i>
+
+                </summary>
+
+                <div class="learning-outcome-content">
+
+                    Arrange rhythm, harmony and lead parts
+                    into complete guitar performances.
+
+                </div>
+
+            </details>
+
+
+            <details class="learning-outcome">
+
+                <summary>
+
+                    <div class="learning-outcome-title">
+                        <i class="fa-solid fa-star"></i>
+                        <strong>Performance Skills</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus learning-plus"></i>
+
+                </summary>
+
+                <div class="learning-outcome-content">
+
+                    Develop musical confidence, stage awareness,
+                    timing and expressive control for live
+                    and recorded performance.
+
+                </div>
+
+            </details>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- CLASS TIME -->
+<!-- =========================================================
+     03 CURRICULUM
+========================================================= -->
 
 <section class="course-section">
 
-    <h2>
-        Choose Your Class Time
-    </h2>
+    <div class="course-glass-card">
+
+        <div class="course-section-heading">
+
+            <span>03</span>
+
+            <div>
+                <p>8-WEEK • 24-CLASS PROGRAM</p>
+                <h2>Course Curriculum</h2>
+            </div>
+
+        </div>
 
 
-    <div class="selection-grid">
+        <p class="curriculum-intro">
 
-        <label class="selection-card">
+            Every week includes three one-hour classes:
+            Theory & Fundamentals, Practical Training and a
+            Song Class where students apply their new skills
+            to Hindi, Telugu or English music.
 
-            <input
-                type="radio"
-                name="time"
-                value="17:00"
-            >
-
-            <h3>5:00 PM - 6:00 PM</h3>
-
-        </label>
-
-
-        <label class="selection-card">
-
-            <input
-                type="radio"
-                name="time"
-                value="18:00"
-            >
-
-            <h3>6:00 PM - 7:00 PM</h3>
-
-        </label>
-
-
-        <label class="selection-card">
-
-            <input
-                type="radio"
-                name="time"
-                value="19:00"
-            >
-
-            <h3>7:00 PM - 8:00 PM</h3>
-
-        </label>
-
-    </div>
-
-</section>
-
-
-<!-- BATCH -->
-
-<section class="course-section">
-
-    <h2>
-        Choose Your Batch
-    </h2>
-
-
-    <div class="selection-grid">
-
-
-        <label class="selection-card">
-
-            <input
-                type="radio"
-                name="batch"
-                value="batch1"
-                data-batch-name="Monday / Wednesday / Friday"
-                data-theory-day="Monday"
-                data-practical-day="Wednesday"
-                data-song-day="Friday"
-            >
-
-            <h3>
-                Batch 1
-            </h3>
-
-            <p>
-                Monday / Wednesday / Friday
-            </p>
-
-            <small>
-                Theory • Practical • Song
-            </small>
-
-        </label>
-
-
-        <label class="selection-card">
-
-            <input
-                type="radio"
-                name="batch"
-                value="batch2"
-                data-batch-name="Tuesday / Thursday / Saturday"
-                data-theory-day="Tuesday"
-                data-practical-day="Thursday"
-                data-song-day="Saturday"
-            >
-
-            <h3>
-                Batch 2
-            </h3>
-
-            <p>
-                Tuesday / Thursday / Saturday
-            </p>
-
-            <small>
-                Theory • Practical • Song
-            </small>
-
-        </label>
-
-
-    </div>
-
-</section>
-
-
-<!-- PRICING -->
-
-<section class="course-section">
-
-    <div class="course-price-card">
-
-        <span>
-            ADVANCED COURSE
-        </span>
-
-        <h2>
-            ₹7,000
-        </h2>
-
-        <p>
-            Complete 8-week Advanced Vocals program
         </p>
 
+
+        <div class="curriculum-list">
+
+
+            <!-- WEEK 1 -->
+
+            <details class="curriculum-module">
+
+                <summary>
+
+                    <span class="module-number">01</span>
+
+                    <div>
+                        <small>WEEK 1</small>
+                        <strong>Advanced Technique & Control</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </summary>
+
+                <div class="module-content">
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-book-open"></i>
+                            Theory & Fundamentals
+                        </h4>
+
+                        <ul>
+                            <li>Advanced practice structure</li>
+                            <li>Rhythmic subdivisions</li>
+                            <li>Picking mechanics</li>
+                            <li>Fretting-hand efficiency</li>
+                            <li>Technical accuracy</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Practical Training
+                        </h4>
+
+                        <ul>
+                            <li>Speed-building exercises</li>
+                            <li>Alternate picking</li>
+                            <li>String crossing</li>
+                            <li>Legato coordination</li>
+                            <li>Metronome training</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="weekly-class song-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Song Class
+                        </h4>
+
+                        <p>
+                            Apply advanced technique and timing
+                            to a selected guitar performance.
+                        </p>
+
+                        <div class="song-language-options">
+                            <span>Hindi</span>
+                            <span>Telugu</span>
+                            <span>English</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </details>
+
+
+            <!-- WEEK 2 -->
+
+            <details class="curriculum-module">
+
+                <summary>
+
+                    <span class="module-number">02</span>
+
+                    <div>
+                        <small>WEEK 2</small>
+                        <strong>Fretboard Mastery</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </summary>
+
+                <div class="module-content">
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-book-open"></i>
+                            Theory & Fundamentals
+                        </h4>
+
+                        <ul>
+                            <li>Notes across the fretboard</li>
+                            <li>Interval relationships</li>
+                            <li>Octave patterns</li>
+                            <li>Chord-tone locations</li>
+                            <li>Position connections</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Practical Training
+                        </h4>
+
+                        <p>
+                            Practice locating notes, intervals,
+                            chord tones and scale positions
+                            across the entire fretboard.
+                        </p>
+
+                    </div>
+
+                    <div class="weekly-class song-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Song Class
+                        </h4>
+
+                        <p>
+                            Apply fretboard knowledge to the
+                            harmony and melody of a selected song.
+                        </p>
+
+                        <div class="song-language-options">
+                            <span>Hindi</span>
+                            <span>Telugu</span>
+                            <span>English</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </details>
+
+
+            <!-- WEEK 3 -->
+
+            <details class="curriculum-module">
+
+                <summary>
+
+                    <span class="module-number">03</span>
+
+                    <div>
+                        <small>WEEK 3</small>
+                        <strong>Extended Chords & Voicings</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </summary>
+
+                <div class="module-content">
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-book-open"></i>
+                            Theory & Fundamentals
+                        </h4>
+
+                        <ul>
+                            <li>Major seventh chords</li>
+                            <li>Minor seventh chords</li>
+                            <li>Dominant seventh chords</li>
+                            <li>Suspended chords</li>
+                            <li>Extended chord voicings</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Practical Training
+                        </h4>
+
+                        <p>
+                            Practice extended chord shapes,
+                            voice leading and smooth transitions
+                            across different fretboard positions.
+                        </p>
+
+                    </div>
+
+                    <div class="weekly-class song-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Song Class
+                        </h4>
+
+                        <p>
+                            Apply advanced chord voicings to
+                            the arrangement of a selected song.
+                        </p>
+
+                        <div class="song-language-options">
+                            <span>Hindi</span>
+                            <span>Telugu</span>
+                            <span>English</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </details>
+
+
+            <!-- WEEK 4 -->
+
+            <details class="curriculum-module">
+
+                <summary>
+
+                    <span class="module-number">04</span>
+
+                    <div>
+                        <small>WEEK 4</small>
+                        <strong>Advanced Scales & Modes</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </summary>
+
+                <div class="module-content">
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-book-open"></i>
+                            Theory & Fundamentals
+                        </h4>
+
+                        <ul>
+                            <li>Major-scale positions</li>
+                            <li>Minor-scale positions</li>
+                            <li>Pentatonic connections</li>
+                            <li>Introduction to modes</li>
+                            <li>Scale-to-chord relationships</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Practical Training
+                        </h4>
+
+                        <p>
+                            Connect scale positions across the
+                            fretboard while developing fluidity,
+                            timing and melodic control.
+                        </p>
+
+                    </div>
+
+                    <div class="weekly-class song-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Song Class
+                        </h4>
+
+                        <p>
+                            Identify appropriate scales and
+                            tonal material for a selected song.
+                        </p>
+
+                        <div class="song-language-options">
+                            <span>Hindi</span>
+                            <span>Telugu</span>
+                            <span>English</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </details>
+
+
+            <!-- WEEK 5 -->
+
+            <details class="curriculum-module">
+
+                <summary>
+
+                    <span class="module-number">05</span>
+
+                    <div>
+                        <small>WEEK 5</small>
+                        <strong>Advanced Lead Guitar</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </summary>
+
+                <div class="module-content">
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-book-open"></i>
+                            Theory & Fundamentals
+                        </h4>
+
+                        <ul>
+                            <li>Advanced phrasing</li>
+                            <li>Bending accuracy</li>
+                            <li>Controlled vibrato</li>
+                            <li>Legato technique</li>
+                            <li>Dynamic articulation</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Practical Training
+                        </h4>
+
+                        <p>
+                            Develop expressive lead playing
+                            through bends, vibrato, slides,
+                            legato and controlled picking.
+                        </p>
+
+                    </div>
+
+                    <div class="weekly-class song-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Song Class
+                        </h4>
+
+                        <p>
+                            Learn and perform an advanced melodic
+                            or lead-guitar section from a selected song.
+                        </p>
+
+                        <div class="song-language-options">
+                            <span>Hindi</span>
+                            <span>Telugu</span>
+                            <span>English</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </details>
+
+
+            <!-- WEEK 6 -->
+
+            <details class="curriculum-module">
+
+                <summary>
+
+                    <span class="module-number">06</span>
+
+                    <div>
+                        <small>WEEK 6</small>
+                        <strong>Improvisation & Phrasing</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </summary>
+
+                <div class="module-content">
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-book-open"></i>
+                            Theory & Fundamentals
+                        </h4>
+
+                        <ul>
+                            <li>Targeting chord tones</li>
+                            <li>Motif development</li>
+                            <li>Call-and-response phrasing</li>
+                            <li>Rhythmic variation</li>
+                            <li>Building a complete solo</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Practical Training
+                        </h4>
+
+                        <p>
+                            Create melodic phrases and complete
+                            solos over chord progressions and
+                            backing tracks.
+                        </p>
+
+                    </div>
+
+                    <div class="weekly-class song-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Song Class
+                        </h4>
+
+                        <p>
+                            Develop an original lead section
+                            or improvised solo for a selected song.
+                        </p>
+
+                        <div class="song-language-options">
+                            <span>Hindi</span>
+                            <span>Telugu</span>
+                            <span>English</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </details>
+
+
+            <!-- WEEK 7 -->
+
+            <details class="curriculum-module">
+
+                <summary>
+
+                    <span class="module-number">07</span>
+
+                    <div>
+                        <small>WEEK 7</small>
+                        <strong>Advanced Song Arrangement</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </summary>
+
+                <div class="module-content">
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-book-open"></i>
+                            Theory & Fundamentals
+                        </h4>
+
+                        <ul>
+                            <li>Song structure</li>
+                            <li>Rhythm-guitar arrangement</li>
+                            <li>Lead-guitar arrangement</li>
+                            <li>Dynamic development</li>
+                            <li>Performance preparation</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Practical Training
+                        </h4>
+
+                        <p>
+                            Build a complete arrangement combining
+                            rhythm guitar, chord voicings,
+                            lead parts and dynamic changes.
+                        </p>
+
+                    </div>
+
+                    <div class="weekly-class song-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Song Class
+                        </h4>
+
+                        <p>
+                            Rehearse a complete advanced song
+                            arrangement in preparation for
+                            the final performance.
+                        </p>
+
+                        <div class="song-language-options">
+                            <span>Hindi</span>
+                            <span>Telugu</span>
+                            <span>English</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </details>
+
+
+            <!-- WEEK 8 -->
+
+            <details class="curriculum-module">
+
+                <summary>
+
+                    <span class="module-number">08</span>
+
+                    <div>
+                        <small>WEEK 8</small>
+                        <strong>Advanced Final Performance</strong>
+                    </div>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </summary>
+
+                <div class="module-content">
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-book-open"></i>
+                            Course Review
+                        </h4>
+
+                        <p>
+                            Review advanced technique, fretboard
+                            knowledge, harmony, scales, improvisation
+                            and performance concepts.
+                        </p>
+
+                    </div>
+
+                    <div class="weekly-class">
+
+                        <h4>
+                            <i class="fa-solid fa-music"></i>
+                            Final Rehearsal
+                        </h4>
+
+                        <p>
+                            Refine the final performance with
+                            instructor guidance, focusing on timing,
+                            tone, expression and musical confidence.
+                        </p>
+
+                    </div>
+
+                    <div class="weekly-class song-class">
+
+                        <h4>
+                            <i class="fa-solid fa-star"></i>
+                            Final Song Performance
+                        </h4>
+
+                        <p>
+                            Complete the Advanced Guitar program
+                            by performing a selected song and
+                            receiving final instructor feedback.
+                        </p>
+
+                        <div class="song-language-options">
+                            <span>Hindi</span>
+                            <span>Telugu</span>
+                            <span>English</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </details>
+
+
+        </div>
+
     </div>
 
 </section>
 
 
-<!-- FAQ -->
+<!-- =========================================================
+     04 COURSE INCLUDES
+========================================================= -->
 
 <section class="course-section">
 
-    <h2>
-        Frequently Asked Questions
-    </h2>
+    <div class="course-glass-card">
+
+        <div class="course-section-heading">
+
+            <span>04</span>
+
+            <div>
+                <p>YOUR ENROLLMENT</p>
+                <h2>Course Includes</h2>
+            </div>
+
+        </div>
 
 
-    <div class="faq-list">
+        <div class="includes-grid">
 
-        <details>
+            <div class="include-card">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <h3>24 Instructor-Led Classes</h3>
+                <p>Three structured one-hour classes every week.</p>
+            </div>
 
-            <summary>
-                Who should join the Advanced Vocals course?
-            </summary>
+            <div class="include-card">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>Advanced Theory</h3>
+                <p>Weekly harmony, fretboard and musical-concept lessons.</p>
+            </div>
 
-            <p>
-                The course is designed for experienced
-                singers who already have good pitch,
-                breath control and song-performance skills.
-            </p>
+            <div class="include-card">
+                <i class="fa-solid fa-guitar"></i>
+                <h3>Practical Training</h3>
+                <p>Advanced guided guitar technique and performance practice.</p>
+            </div>
 
-        </details>
+            <div class="include-card">
+                <i class="fa-solid fa-music"></i>
+                <h3>Weekly Song Classes</h3>
+                <p>Apply your skills to Hindi, Telugu or English songs.</p>
+            </div>
 
+            <div class="include-card">
+                <i class="fa-solid fa-file-pdf"></i>
+                <h3>Practice PDFs</h3>
+                <p>Downloadable exercises and lesson material.</p>
+            </div>
 
-        <details>
+            <div class="include-card">
+                <i class="fa-solid fa-circle-play"></i>
+                <h3>Video Lessons</h3>
+                <p>Supplementary demonstrations through the student portal.</p>
+            </div>
 
-            <summary>
-                Will the course help expand my vocal range?
-            </summary>
+            <div class="include-card">
+                <i class="fa-solid fa-headphones"></i>
+                <h3>Backing Tracks</h3>
+                <p>Practice advanced rhythm, lead and improvisation.</p>
+            </div>
 
-            <p>
-                Yes. The course includes advanced
-                range and register development while
-                maintaining healthy vocal technique.
-            </p>
+            <div class="include-card">
+                <i class="fa-solid fa-list-check"></i>
+                <h3>Assignments</h3>
+                <p>Weekly exercises reinforcing advanced techniques.</p>
+            </div>
 
-        </details>
+            <div class="include-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Progress Tracking</h3>
+                <p>Track assignments, attendance and development.</p>
+            </div>
 
+            <div class="include-card">
+                <i class="fa-solid fa-certificate"></i>
+                <h3>Certificate</h3>
+                <p>Certificate of Completion for eligible students.</p>
+            </div>
 
-        <details>
-
-            <summary>
-                Will I learn stage performance?
-            </summary>
-
-            <p>
-                Yes. Stage presence, microphone technique,
-                interpretation and live performance
-                are included in the course.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                How many classes are included?
-            </summary>
-
-            <p>
-                The course includes 24 classes over
-                eight weeks, with three classes each week.
-            </p>
-
-        </details>
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- POLICIES -->
+<!-- =========================================================
+     05 REQUIREMENTS
+========================================================= -->
 
 <section class="course-section">
 
-    <h2>
-        Course Policies
-    </h2>
+    <div class="course-glass-card">
+
+        <div class="course-section-heading">
+
+            <span>05</span>
+
+            <div>
+                <p>BEFORE YOU BEGIN</p>
+                <h2>Requirements</h2>
+            </div>
+
+        </div>
 
 
-    <div class="policy-box">
+        <ul class="requirements-list">
 
-        <p>
-            Students are expected to attend classes
-            regularly and arrive on time.
-        </p>
+            <li>
+                <i class="fa-solid fa-circle-check"></i>
+                Previous intermediate guitar experience is required.
+            </li>
 
-        <p>
-            Missed classes may not always be rescheduled
-            and depend on instructor availability.
-        </p>
+            <li>
+                <i class="fa-solid fa-circle-check"></i>
+                Students should be comfortable with open chords,
+                barre chords, rhythm playing and basic scales.
+            </li>
 
-        <p>
-            Students should complete assigned vocal
-            exercises between classes.
-        </p>
+            <li>
+                <i class="fa-solid fa-circle-check"></i>
+                Students should have experience performing complete songs.
+            </li>
 
-        <p>
-            Course fees are applicable to the selected
-            eight-week batch and class format.
-        </p>
+            <li>
+                <i class="fa-solid fa-circle-check"></i>
+                Access to an acoustic or electric guitar is required.
+            </li>
+
+            <li>
+                <i class="fa-solid fa-circle-check"></i>
+                Regular focused practice between lessons is strongly recommended.
+            </li>
+
+        </ul>
 
     </div>
 
 </section>
 
 
-<!-- AGREEMENT -->
+<!-- =========================================================
+     06 INSTRUCTOR
+========================================================= -->
 
 <section class="course-section">
 
-    <div class="agreement-box">
+    <div class="course-glass-card">
 
-        <label>
+        <div class="course-section-heading">
 
-            <input
-                type="checkbox"
-                id="course-agreement"
-            >
+            <span>06</span>
+
+            <div>
+                <p>YOUR MENTOR</p>
+                <h2>Instructor</h2>
+            </div>
+
+        </div>
+
+
+        <div class="instructor-card">
+
+            <div class="instructor-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div>
+
+                <h3>Vizag JamHub Guitar Instructor</h3>
+
+                <p class="instructor-role">
+                    Professional Guitar Instructor
+                </p>
+
+                <p>
+                    Students receive advanced structured instruction,
+                    practical demonstrations and personalized
+                    feedback throughout the course.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     07 CLASS SELECTION
+========================================================= -->
+
+<section class="course-section" id="class-selection">
+
+    <div class="course-glass-card">
+
+        <div class="course-section-heading">
+
+            <span>07</span>
+
+            <div>
+                <p>CLASS SCHEDULE</p>
+                <h2>Choose Your Class</h2>
+            </div>
+
+        </div>
+
+
+        <p class="selection-description">
+
+            Choose how you want to attend, select your preferred
+            one-hour class time, then choose your three-day weekly batch.
+
+        </p>
+
+
+        <!-- STEP 1 -->
+
+        <div class="class-format-grid">
+
+
+            <label class="class-format-option">
+
+                <input type="radio"
+                       name="courseFormat"
+                       value="online">
+
+                <div class="class-format-card">
+
+                    <div class="class-format-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+
+                    <div class="class-format-text">
+
+                        <small>LEARN REMOTELY</small>
+
+                        <h3>Online</h3>
+
+                        <p>
+                            Live instructor-led classes from
+                            your own practice space.
+                        </p>
+
+                    </div>
+
+                    <div class="class-format-check">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                </div>
+
+            </label>
+
+
+            <label class="class-format-option">
+
+                <input type="radio"
+                       name="courseFormat"
+                       value="in-person">
+
+                <div class="class-format-card">
+
+                    <div class="class-format-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div class="class-format-text">
+
+                        <small>LEARN AT JAMHUB</small>
+
+                        <h3>In Person</h3>
+
+                        <p>
+                            Hands-on instruction directly
+                            with your guitar instructor.
+                        </p>
+
+                    </div>
+
+                    <div class="class-format-check">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                </div>
+
+            </label>
+
+        </div>
+
+
+        <div class="schedule-selection-message"
+             id="schedule-selection-message">
+
+            <i class="fa-solid fa-arrow-up"></i>
 
             <span>
-                I have reviewed the course information,
-                schedule and policies and agree to proceed
-                with enrollment.
+                Select Online or In Person to continue.
             </span>
 
-        </label>
+        </div>
+
+
+        <!-- STEP 2 -->
+
+        <div class="class-time-section"
+             id="class-time-section"
+             hidden>
+
+            <div class="class-time-heading">
+
+                <small>STEP 2 • CLASS TIME</small>
+
+                <h3>Choose Your Time</h3>
+
+                <p>
+                    This time applies to all three weekly classes.
+                </p>
+
+            </div>
+
+
+            <div class="class-time-grid">
+
+
+                <label class="class-time-option">
+
+                    <input type="radio"
+                           name="courseTime"
+                           value="5:00 PM - 6:00 PM">
+
+                    <div class="class-time-card">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        <span>
+                            <small>EARLY EVENING</small>
+                            <strong>5:00 PM – 6:00 PM</strong>
+                        </span>
+
+                        <div class="time-check">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                    </div>
+
+                </label>
+
+
+                <label class="class-time-option">
+
+                    <input type="radio"
+                           name="courseTime"
+                           value="6:00 PM - 7:00 PM">
+
+                    <div class="class-time-card">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        <span>
+                            <small>EVENING</small>
+                            <strong>6:00 PM – 7:00 PM</strong>
+                        </span>
+
+                        <div class="time-check">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                    </div>
+
+                </label>
+
+
+                <label class="class-time-option">
+
+                    <input type="radio"
+                           name="courseTime"
+                           value="7:00 PM - 8:00 PM">
+
+                    <div class="class-time-card">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        <span>
+                            <small>LATE EVENING</small>
+                            <strong>7:00 PM – 8:00 PM</strong>
+                        </span>
+
+                        <div class="time-check">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                    </div>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 3 -->
+
+        <div class="batch-selection-section"
+             id="batch-selection-section"
+             hidden>
+
+            <div class="class-time-heading">
+
+                <small>STEP 3 • AVAILABLE BATCHES</small>
+
+                <h3>Choose Your Batch</h3>
+
+                <p id="batch-selection-description">
+                    Select your preferred three-day weekly schedule.
+                </p>
+
+            </div>
+
+
+            <div class="batch-grid">
+
+
+                <!-- BATCH 01 -->
+
+                <label class="batch-option">
+
+                    <input type="radio"
+                           name="courseBatch"
+                           value="batch-1"
+                           data-batch-name="Batch 01"
+                           data-theory-day="Monday"
+                           data-practical-day="Wednesday"
+                           data-song-day="Friday">
+
+                    <div class="batch-card">
+
+                        <div class="batch-card-header">
+
+                            <div>
+                                <small>BATCH 01</small>
+                                <h3>Monday • Wednesday • Friday</h3>
+                            </div>
+
+                            <div class="batch-check">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+
+                        </div>
+
+
+                        <div class="batch-class-list">
+
+                            <div class="batch-class-row">
+
+                                <span class="batch-day">MON</span>
+
+                                <span class="batch-class-name">
+                                    Theory & Fundamentals
+                                </span>
+
+                                <span class="batch-time-display"></span>
+
+                            </div>
+
+
+                            <div class="batch-class-row">
+
+                                <span class="batch-day">WED</span>
+
+                                <span class="batch-class-name">
+                                    Practical Training
+                                </span>
+
+                                <span class="batch-time-display"></span>
+
+                            </div>
+
+
+                            <div class="batch-class-row">
+
+                                <span class="batch-day">FRI</span>
+
+                                <span class="batch-class-name">
+                                    Song Class
+                                </span>
+
+                                <span class="batch-time-display"></span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </label>
+
+
+                <!-- BATCH 02 -->
+
+                <label class="batch-option">
+
+                    <input type="radio"
+                           name="courseBatch"
+                           value="batch-2"
+                           data-batch-name="Batch 02"
+                           data-theory-day="Tuesday"
+                           data-practical-day="Thursday"
+                           data-song-day="Saturday">
+
+                    <div class="batch-card">
+
+                        <div class="batch-card-header">
+
+                            <div>
+                                <small>BATCH 02</small>
+                                <h3>Tuesday • Thursday • Saturday</h3>
+                            </div>
+
+                            <div class="batch-check">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+
+                        </div>
+
+
+                        <div class="batch-class-list">
+
+                            <div class="batch-class-row">
+
+                                <span class="batch-day">TUE</span>
+
+                                <span class="batch-class-name">
+                                    Theory & Fundamentals
+                                </span>
+
+                                <span class="batch-time-display"></span>
+
+                            </div>
+
+
+                            <div class="batch-class-row">
+
+                                <span class="batch-day">THU</span>
+
+                                <span class="batch-class-name">
+                                    Practical Training
+                                </span>
+
+                                <span class="batch-time-display"></span>
+
+                            </div>
+
+
+                            <div class="batch-class-row">
+
+                                <span class="batch-day">SAT</span>
+
+                                <span class="batch-class-name">
+                                    Song Class
+                                </span>
+
+                                <span class="batch-time-display"></span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </label>
+
+            </div>
+
+        </div>
 
     </div>
 
+</section>
 
-    <div class="enrollment-actions">
 
-        <button
-            type="button"
-            id="enroll-button"
-            class="final-enroll-btn"
-            disabled
-        >
+<!-- =========================================================
+     08 PRICING
+========================================================= -->
 
-            Enroll in Advanced Vocals
+<section class="course-section">
+
+    <div class="course-glass-card course-pricing-card">
+
+        <p class="pricing-label">
+            ADVANCED COURSE
+        </p>
+
+        <h2>Course Fee</h2>
+
+        <div class="course-price">
+            ₹7,000
+        </div>
+
+        <p class="price-description">
+            Complete 8-week Advanced Guitar program.
+        </p>
+
+
+        <div class="price-features">
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                24 One-Hour Classes
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                8 Theory Classes
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                8 Practical Classes
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                8 Song Classes
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                Learning Materials
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                Progress Tracking
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                Certificate
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     09 FAQ
+========================================================= -->
+
+<section class="course-section">
+
+    <div class="course-glass-card">
+
+        <div class="course-section-heading">
+
+            <span>09</span>
+
+            <div>
+                <p>QUESTIONS</p>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+        </div>
+
+
+        <div class="course-faq">
+
+            <details>
+
+                <summary>
+                    Who should join Advanced Guitar?
+                    <i class="fa-solid fa-plus"></i>
+                </summary>
+
+                <p>
+                    This course is designed for experienced
+                    guitarists who already understand chords,
+                    scales, rhythm and basic lead-guitar techniques.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    How many classes are included each week?
+                    <i class="fa-solid fa-plus"></i>
+                </summary>
+
+                <p>
+                    Students attend three one-hour classes:
+                    Theory & Fundamentals, Practical Training
+                    and Song Class.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Will I learn advanced improvisation?
+                    <i class="fa-solid fa-plus"></i>
+                </summary>
+
+                <p>
+                    Yes. The course covers advanced scales,
+                    chord-tone targeting, phrasing and
+                    structured guitar improvisation.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Do I need my own guitar?
+                    <i class="fa-solid fa-plus"></i>
+                </summary>
+
+                <p>
+                    Yes. Regular access to an acoustic or electric
+                    guitar is required for practice between lessons.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can I take this course online?
+                    <i class="fa-solid fa-plus"></i>
+                </summary>
+
+                <p>
+                    Yes. Select Online and choose your preferred
+                    time and weekly batch.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Will I receive a certificate?
+                    <i class="fa-solid fa-plus"></i>
+                </summary>
+
+                <p>
+                    Eligible students who successfully complete
+                    the course receive a Certificate of Completion.
+                </p>
+
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     10 POLICIES
+========================================================= -->
+
+<section class="course-section">
+
+    <div class="course-glass-card">
+
+        <div class="course-section-heading">
+
+            <span>10</span>
+
+            <div>
+                <p>IMPORTANT INFORMATION</p>
+                <h2>Student Policies</h2>
+            </div>
+
+        </div>
+
+
+        <div class="policy-list">
+
+
+            <details class="policy-item">
+
+                <summary>
+
+                    <span>
+                        <i class="fa-solid fa-calendar-check"></i>
+                        Attendance Policy
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </summary>
+
+                <div class="policy-content">
+
+                    <p>
+                        Students are expected to attend their scheduled
+                        lessons consistently and arrive on time.
+                    </p>
+
+                    <p>
+                        If a student cannot attend, Vizag JamHub should
+                        be informed as early as possible.
+                    </p>
+
+                    <p>
+                        Missed classes may be recorded as absences unless
+                        prior notice has been provided.
+                    </p>
+
+                    <p>
+                        Rescheduling is subject to instructor and academy
+                        availability.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+            <details class="policy-item">
+
+                <summary>
+
+                    <span>
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                        Refund Policy
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </summary>
+
+                <div class="policy-content">
+
+                    <p>
+                        Students should review the course details,
+                        schedule and learning format before enrollment.
+                    </p>
+
+                    <p>
+                        Once enrollment has been completed and access
+                        to course services or materials has been provided,
+                        fees are generally non-refundable except where
+                        otherwise required by applicable law.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+            <details class="policy-item">
+
+                <summary>
+
+                    <span>
+                        <i class="fa-solid fa-handshake"></i>
+                        Student Code of Conduct
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </summary>
+
+                <div class="policy-content">
+
+                    <p>
+                        Students must behave respectfully toward
+                        instructors, staff and other students.
+                    </p>
+
+                    <p>
+                        Harassment, abusive behavior, deliberate disruption
+                        or misuse of academy resources will not be tolerated.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+            <details class="policy-item">
+
+                <summary>
+
+                    <span>
+                        <i class="fa-solid fa-laptop"></i>
+                        Online Class Rules
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </summary>
+
+                <div class="policy-content">
+
+                    <p>
+                        Online students are responsible for maintaining
+                        a suitable internet connection, compatible device
+                        and appropriate environment for lessons.
+                    </p>
+
+                    <p>
+                        Private class links must not be distributed
+                        to people who are not enrolled.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+            <details class="policy-item">
+
+                <summary>
+
+                    <span>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Privacy Policy
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </summary>
+
+                <div class="policy-content">
+
+                    <p>
+                        Student information collected during registration
+                        will be used for enrollment, course administration,
+                        communication and scheduling.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+            <details class="policy-item">
+
+                <summary>
+
+                    <span>
+                        <i class="fa-solid fa-copyright"></i>
+                        Course Material & Copyright Policy
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </summary>
+
+                <div class="policy-content">
+
+                    <p>
+                        Course PDFs, videos, backing tracks, assignments
+                        and educational materials are intended for
+                        enrolled students.
+                    </p>
+
+                    <p>
+                        Students may not reproduce, redistribute,
+                        sell or publicly upload protected academy
+                        materials without permission.
+                    </p>
+
+                </div>
+
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     11 AGREEMENT
+========================================================= -->
+
+<section class="course-section"
+         id="student-agreement">
+
+    <div class="course-glass-card agreement-card">
+
+        <div class="course-section-heading">
+
+            <span>11</span>
+
+            <div>
+                <p>BEFORE ENROLLING</p>
+                <h2>Student Agreement</h2>
+            </div>
+
+        </div>
+
+
+        <p class="agreement-intro">
+
+            Please review and accept each statement before
+            continuing with enrollment.
+
+        </p>
+
+
+        <div class="agreement-list">
+
+
+            <label class="agreement-option">
+
+                <input type="checkbox"
+                       class="course-agreement">
+
+                <span class="custom-checkbox"></span>
+
+                <span>
+                    I have read and understood all student policies.
+                </span>
+
+            </label>
+
+
+            <label class="agreement-option">
+
+                <input type="checkbox"
+                       class="course-agreement">
+
+                <span class="custom-checkbox"></span>
+
+                <span>
+                    I have read and agree to the Attendance Policy.
+                </span>
+
+            </label>
+
+
+            <label class="agreement-option">
+
+                <input type="checkbox"
+                       class="course-agreement">
+
+                <span class="custom-checkbox"></span>
+
+                <span>
+                    I understand that missed classes may be counted
+                    as absences unless prior notice is provided.
+                </span>
+
+            </label>
+
+
+            <label class="agreement-option">
+
+                <input type="checkbox"
+                       class="course-agreement">
+
+                <span class="custom-checkbox"></span>
+
+                <span>
+                    I have read and understood the Refund Policy.
+                </span>
+
+            </label>
+
+
+            <label class="agreement-option">
+
+                <input type="checkbox"
+                       class="course-agreement">
+
+                <span class="custom-checkbox"></span>
+
+                <span>
+                    I agree to follow the Vizag JamHub Student
+                    Code of Conduct.
+                </span>
+
+            </label>
+
+
+            <label class="agreement-option">
+
+                <input type="checkbox"
+                       class="course-agreement">
+
+                <span class="custom-checkbox"></span>
+
+                <span>
+                    I understand that course materials are intended
+                    for enrolled students and may not be redistributed.
+                </span>
+
+            </label>
+
+
+            <label class="agreement-option">
+
+                <input type="checkbox"
+                       class="course-agreement">
+
+                <span class="custom-checkbox"></span>
+
+                <span>
+                    I consent to receive communications related
+                    to my classes and enrollment.
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <div class="agreement-status"
+             id="agreement-status">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <span>
+                Select your class format, time and batch,
+                then accept all required agreements.
+            </span>
+
+        </div>
+
+
+        <button id="final-enroll-btn"
+                class="final-enroll-btn"
+                type="button"
+                disabled>
+
+            <i class="fa-solid fa-lock"></i>
+
+            Continue to Registration
 
         </button>
 
+
+        <p class="secure-enrollment">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            Secure enrollment through Vizag JamHub Music Academy
+
+        </p>
+
     </div>
 
 </section>
 
 
-<!-- FOOTER -->
+</main>
 
-<footer>
 
-    <p>
-        &copy; Vizag JamHub. All Rights Reserved.
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-links">
+
+        <a href="/pages/otherpages/aboutus.html">About Us</a>
+        <span>|</span>
+
+        <a href="/pages/otherpages/comingsoon.html">Our Team</a>
+        <span>|</span>
+
+        <a href="/pages/otherpages/comingsoon.html">FAQ</a>
+        <span>|</span>
+
+        <a href="/pages/otherpages/comingsoon.html">Events Calendar</a>
+        <span>|</span>
+
+        <a href="/pages/otherpages/comingsoon.html">Sponsors & Partners</a>
+        <span>|</span>
+
+        <a href="/pages/otherpages/comingsoon.html">Join Our Community</a>
+        <span>|</span>
+
+        <a href="/pages/otherpages/comingsoon.html">Volunteer</a>
+        <span>|</span>
+
+        <a href="/pages/otherpages/comingsoon.html">Support Us</a>
+
+    </div>
+
+    <div class="footer-links">
+
+        <a href="/pages/otherpages/contactus.html">Contact Us</a>
+        <span>|</span>
+
+        <a href="/pages/otherpages/privacypolicy.html">Privacy Policy</a>
+        <span>|</span>
+
+        <a href="/pages/otherpages/termsandconditions.html">Terms & Conditions</a>
+
+    </div>
+
+    <p class="footer-copyright">
+        © 2026 <strong>Vizag JamHub</strong>.
+        All Rights Reserved.
     </p>
 
 </footer>
 
 
-<!-- SCRIPTS -->
-
 <script src="/js/pagebehaviour.js"></script>
-
 <script src="/js/mobile.js"></script>
-
 <script src="/js/academy/courseenrollment.js"></script>
 
 
 </body>
-
 </html>
