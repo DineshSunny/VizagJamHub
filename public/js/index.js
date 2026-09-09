@@ -2,6 +2,44 @@
    VIZAG JAMHUB - INDEX
 ================================= */
 
+/* ==========================================================
+   INDEX SCROLL RESTORATION
+========================================================== */
+
+if ("scrollRestoration" in history) {
+
+    history.scrollRestoration = "auto";
+
+}
+
+
+window.addEventListener(
+    "load",
+    () => {
+
+        const navigationEntry =
+            performance.getEntriesByType(
+                "navigation"
+            )[0];
+
+
+        if (
+            navigationEntry &&
+            navigationEntry.type === "reload"
+        ) {
+
+            window.scrollTo(
+                0,
+                0
+            );
+
+        }
+
+    }
+);
+
+
+
 
 /* ==========================================================
    AUTO TYPING TEXT
