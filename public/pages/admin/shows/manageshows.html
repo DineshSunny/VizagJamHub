@@ -41,10 +41,14 @@
         href="/css/website/forms/adminforms.css"
     >
 
-<link
-    rel="stylesheet"
-    href="/css/website/pages/admin/admin.css"
->
+    <link
+        rel="stylesheet"
+        href="/css/website/pages/admin/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/pages/admin/shows.css"
     >
 
 
@@ -219,31 +223,14 @@
          MANAGE SHOWS
     ================================= -->
 
-    <main
-        style="
-            position: relative;
-            z-index: 3;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 100px 20px 60px;
-        "
-    >
+    <main class="manage-shows-page">
 
 
         <!-- =================================
              TITLE
         ================================= -->
 
-        <h1
-            class="admin-title"
-            style="
-                text-align: center;
-                margin: 0 0 60px;
-            "
-        >
+        <h1 class="admin-title">
             MANAGE SHOWS
         </h1>
 
@@ -252,33 +239,38 @@
              SHOW LIST
         ================================= -->
 
-        <div
+        <section
             id="showsList"
             class="manage-shows"
+            aria-label="Manage Shows"
         >
 
-            <!-- Shows are loaded by shows.js -->
+            <!--
+                Shows are loaded dynamically
+                from /api/shows by shows.js
+            -->
 
-        </div>
+        </section>
 
 
     </main>
 
 
-<!-- =================================
-     SHARED JAVASCRIPT
-================================= -->
+    <!-- =================================
+         SHARED JAVASCRIPT
+    ================================= -->
 
-<script src="/js/pagebehaviour.js"></script>
+    <script src="/js/pagebehaviour.js"></script>
 
-<script src="/js/mobile.js"></script>
+    <script src="/js/mobile.js"></script>
 
 
-<!-- =================================
-     SHOWS JAVASCRIPT
-================================= -->
+    <!-- =================================
+         SHOWS JAVASCRIPT
+    ================================= -->
 
-<script src="/js/admin/shows.js"></script>
+    <script src="/js/admin/shows.js"></script>
+
 
 </body>
 

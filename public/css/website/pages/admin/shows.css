@@ -98,6 +98,11 @@
 
     transform-origin: center top;
 
+    opacity: 0.78;
+
+    filter:
+        brightness(0.72);
+
     transition:
         transform 0.45s ease,
         opacity 0.45s ease,
@@ -121,7 +126,8 @@
 
     border-radius: 24px;
 
-    border: 1px solid
+    border:
+        1px solid
         rgba(255, 255, 255, 0.16);
 
     background:
@@ -260,6 +266,8 @@
 
     font-size: 16px;
 
+    line-height: 1.5;
+
 }
 
 
@@ -293,7 +301,10 @@
 
     gap: 16px;
 
-    padding-top: 18px;
+    padding:
+        0
+        28px
+        28px;
 
     opacity: 0;
 
@@ -408,10 +419,11 @@
 
 
 /* =================================
-   EMPTY SHOWS
+   EMPTY / STATUS MESSAGE
 ================================= */
 
-.manage-shows-empty {
+.manage-shows-empty,
+.shows-message {
 
     width: 100%;
 
@@ -536,6 +548,8 @@
 
     font-size: 32px;
 
+    color: #ffffff;
+
 }
 
 
@@ -551,6 +565,27 @@
         repeat(2, minmax(0, 1fr));
 
     gap: 20px;
+
+}
+
+
+/* =================================
+   EDIT FORM FIELDS
+================================= */
+
+.show-edit-grid input,
+.show-edit-grid textarea {
+
+    width: 100%;
+
+}
+
+
+.show-edit-grid textarea {
+
+    min-height: 140px;
+
+    resize: vertical;
 
 }
 
@@ -580,6 +615,24 @@
     gap: 16px;
 
     margin-top: 30px;
+
+}
+
+
+/* =================================
+   EDIT ACTION BUTTONS
+================================= */
+
+.show-edit-actions button {
+
+    min-width: 130px;
+    height: 48px;
+
+    padding: 0 24px;
+
+    border-radius: 14px;
+
+    cursor: pointer;
 
 }
 
@@ -637,5 +690,158 @@
             #050713,
             transparent
         );
+
+}
+
+
+/* =================================
+   RESPONSIVE SAFETY
+================================= */
+
+@media screen and (max-width: 768px) {
+
+    .shows-page {
+
+        padding:
+            70px
+            12px
+            40px;
+
+    }
+
+
+    .shows-page .admin-title {
+
+        margin-bottom: 35px;
+
+    }
+
+
+    .manage-shows {
+
+        width: 100%;
+        height: 72vh;
+
+        padding:
+            8vh
+            12px
+            28vh;
+
+    }
+
+
+    .manage-show-item {
+
+        max-width: 100%;
+
+        margin-bottom: -210px;
+
+    }
+
+
+    .manage-show-card {
+
+        min-height: 340px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .manage-poster {
+
+        height: 220px;
+
+    }
+
+
+    .manage-info {
+
+        padding:
+            20px
+            20px
+            24px;
+
+    }
+
+
+    .manage-info h2 {
+
+        font-size: 24px;
+
+    }
+
+
+    .showButtons {
+
+        padding:
+            0
+            20px
+            24px;
+
+        opacity: 1;
+
+        visibility: visible;
+
+        transform: none;
+
+        pointer-events: auto;
+
+    }
+
+
+    .showButtons button {
+
+        flex: 1;
+
+        min-width: 0;
+
+    }
+
+
+    .show-edit-panel {
+
+        padding: 16px;
+
+    }
+
+
+    .show-edit-container {
+
+        width: 100%;
+
+        padding: 24px 18px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .show-edit-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .show-edit-full {
+
+        grid-column: auto;
+
+    }
+
+
+    .show-edit-actions {
+
+        flex-direction: column;
+
+    }
+
+
+    .show-edit-actions button {
+
+        width: 100%;
+
+    }
 
 }
