@@ -19,20 +19,135 @@
     flex-direction: column;
     align-items: center;
 
-    padding: 80px 20px;
+    padding: 80px 20px 60px;
 
 }
 
 
 /* =================================
-   SHOWS TITLE
+   GLASS / NEON PAGE TITLE
 ================================= */
 
 .shows-page .admin-title {
 
+    position: relative;
+
+    margin: 0 0 55px;
+
     text-align: center;
 
-    margin: 0 0 50px;
+    font-size: clamp(42px, 6vw, 78px);
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(235, 248, 255, 0.96);
+
+    text-shadow:
+        0 0 4px rgba(255, 255, 255, 0.95),
+        0 0 10px rgba(117, 213, 255, 0.9),
+        0 0 22px rgba(56, 157, 255, 0.8),
+        0 0 38px rgba(115, 82, 255, 0.65),
+        0 0 55px rgba(220, 76, 255, 0.4);
+
+    -webkit-text-stroke:
+        1px
+        rgba(255, 255, 255, 0.28);
+
+    filter:
+        drop-shadow(
+            0 8px 22px
+            rgba(44, 139, 255, 0.3)
+        );
+
+}
+
+
+/* =================================
+   TITLE GLASS HIGHLIGHT
+================================= */
+
+.shows-page .admin-title::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 112%;
+    height: 120%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: -1;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(66, 167, 255, 0.04),
+            rgba(184, 72, 255, 0.05)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.14),
+
+        0 0 35px
+        rgba(41, 145, 255, 0.12);
+
+}
+
+
+/* =================================
+   TITLE LIGHT LINE
+================================= */
+
+.shows-page .admin-title::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -16px;
+
+    width: 72%;
+    height: 2px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(63, 190, 255, 0.8),
+            rgba(187, 85, 255, 0.85),
+            transparent
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(78, 184, 255, 0.75);
 
 }
 
@@ -58,13 +173,16 @@
 
     scroll-behavior: smooth;
 
-    scroll-snap-type: y mandatory;
+    scroll-snap-type:
+        y mandatory;
 
-    overscroll-behavior-y: contain;
+    overscroll-behavior-y:
+        contain;
 
     scrollbar-width: none;
 
-    perspective: 1200px;
+    perspective:
+        1400px;
 
 }
 
@@ -89,19 +207,25 @@
     position: relative;
 
     width: 100%;
-    max-width: 760px;
+    max-width: 720px;
 
-    margin: 0 auto -250px;
+    margin:
+        0 auto -235px;
 
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
+    scroll-snap-align:
+        center;
 
-    transform-origin: center top;
+    scroll-snap-stop:
+        always;
 
-    opacity: 0.78;
+    transform-origin:
+        center top;
+
+    opacity: 0.62;
 
     filter:
-        brightness(0.72);
+        brightness(0.55)
+        saturate(0.75);
 
     transition:
         transform 0.45s ease,
@@ -112,7 +236,7 @@
 
 
 /* =================================
-   SHOW CARD
+   SHOW CARD - GLASS
 ================================= */
 
 .manage-show-card {
@@ -120,28 +244,42 @@
     position: relative;
 
     width: 100%;
-    min-height: 390px;
 
     overflow: hidden;
 
-    border-radius: 24px;
+    border-radius: 26px;
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.16);
+        rgba(135, 205, 255, 0.22);
 
     background:
-        rgba(8, 14, 28, 0.72);
+        linear-gradient(
+            145deg,
+            rgba(18, 34, 64, 0.78),
+            rgba(6, 13, 30, 0.86)
+        );
 
     backdrop-filter:
-        blur(22px);
+        blur(26px)
+        saturate(130%);
 
     -webkit-backdrop-filter:
-        blur(22px);
+        blur(26px)
+        saturate(130%);
 
     box-shadow:
-        0 20px 50px
-        rgba(0, 0, 0, 0.45);
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.15),
+
+        inset 0 -1px 0
+        rgba(76, 113, 255, 0.12),
+
+        0 20px 55px
+        rgba(0, 0, 0, 0.55),
+
+        0 0 20px
+        rgba(39, 145, 255, 0.08);
 
     transform:
         scale(0.94);
@@ -150,7 +288,37 @@
         transform 0.45s ease,
         box-shadow 0.45s ease,
         border-color 0.45s ease,
-        opacity 0.45s ease;
+        filter 0.45s ease;
+
+}
+
+
+/* =================================
+   GLASS CARD HIGHLIGHT
+================================= */
+
+.manage-show-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: 5;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            125deg,
+            rgba(255, 255, 255, 0.11),
+            transparent 20%,
+            transparent 70%,
+            rgba(111, 73, 255, 0.07)
+        );
 
 }
 
@@ -163,13 +331,13 @@
 
     z-index: 20;
 
-    transform:
-        translateY(0)
-        scale(1);
-
     opacity: 1;
 
     filter: none;
+
+    transform:
+        translateY(0)
+        scale(1);
 
 }
 
@@ -181,28 +349,30 @@
         scale(1);
 
     border-color:
-        rgba(79, 229, 255, 0.5);
+        rgba(91, 201, 255, 0.75);
 
     box-shadow:
-        0 28px 70px
-        rgba(0, 0, 0, 0.55);
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.28),
+
+        0 25px 70px
+        rgba(0, 0, 0, 0.6),
+
+        0 0 14px
+        rgba(46, 177, 255, 0.55),
+
+        0 0 32px
+        rgba(56, 128, 255, 0.32),
+
+        0 0 52px
+        rgba(171, 61, 255, 0.16);
 
 }
 
 
 /* =================================
-   INACTIVE SHOWS
+   INACTIVE SHOW
 ================================= */
-
-.manage-show-item:not(.active) {
-
-    opacity: 0.78;
-
-    filter:
-        brightness(0.72);
-
-}
-
 
 .manage-show-item:not(.active)
 .manage-show-card {
@@ -214,17 +384,33 @@
 
 
 /* =================================
-   SHOW POSTER
+   SQUARE POSTER
 ================================= */
 
 .manage-poster {
 
+    position: relative;
+
     display: block;
 
     width: 100%;
-    height: 260px;
 
-    object-fit: cover;
+    aspect-ratio:
+        1 / 1;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+    border-bottom:
+        1px solid
+        rgba(123, 205, 255, 0.2);
+
+    box-shadow:
+        inset 0 -20px 30px
+        rgba(0, 0, 0, 0.2);
 
 }
 
@@ -237,36 +423,73 @@
 
     position: relative;
 
+    z-index: 6;
+
     padding:
-        24px
-        28px
-        28px;
+        26px
+        30px
+        30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(11, 24, 48, 0.78),
+            rgba(7, 15, 32, 0.88)
+        );
 
 }
 
 
+/* =================================
+   SHOW NAME
+================================= */
+
 .manage-info h2 {
 
-    margin: 0 0 12px;
+    margin:
+        0 0 16px;
 
-    font-size: 28px;
+    font-size:
+        clamp(25px, 3vw, 32px);
+
     line-height: 1.2;
 
     color: #ffffff;
 
+    text-shadow:
+        0 0 8px
+        rgba(101, 197, 255, 0.65),
+
+        0 0 18px
+        rgba(57, 127, 255, 0.35);
+
 }
 
 
+/* =================================
+   SHOW DETAILS
+================================= */
+
 .manage-info p {
 
-    margin: 5px 0;
+    margin:
+        7px 0;
 
     color:
-        rgba(255, 255, 255, 0.78);
+        rgba(225, 238, 255, 0.8);
 
     font-size: 16px;
+    line-height: 1.55;
 
-    line-height: 1.5;
+}
+
+
+.manage-info strong {
+
+    color:
+        rgba(245, 250, 255, 0.96);
+
+    font-weight: 600;
 
 }
 
@@ -277,12 +500,16 @@
 
 .manage-info .show-price {
 
-    margin-top: 12px;
+    margin-top: 14px;
 
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 800;
 
     color: #ffffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(93, 205, 255, 0.65);
 
 }
 
@@ -299,19 +526,16 @@
     align-items: center;
     justify-content: center;
 
-    gap: 16px;
+    gap: 18px;
 
-    padding:
-        0
-        28px
-        28px;
+    padding-top: 24px;
 
     opacity: 0;
 
     visibility: hidden;
 
     transform:
-        translateY(-12px);
+        translateY(10px);
 
     pointer-events: none;
 
@@ -343,36 +567,45 @@
 
 
 /* =================================
-   EDIT / DELETE BUTTONS
+   NEON BUTTON BASE
 ================================= */
 
 .showButtons button {
 
-    min-width: 130px;
-    height: 48px;
+    position: relative;
 
-    padding: 0 24px;
+    min-width: 145px;
+    height: 50px;
 
-    border-radius: 14px;
+    padding:
+        0 26px;
+
+    border-radius: 15px;
 
     border:
         1px solid
         rgba(255, 255, 255, 0.2);
 
     background:
-        rgba(255, 255, 255, 0.08);
+        linear-gradient(
+            145deg,
+            rgba(27, 62, 102, 0.7),
+            rgba(9, 21, 43, 0.8)
+        );
 
     backdrop-filter:
-        blur(16px);
+        blur(18px);
 
     -webkit-backdrop-filter:
-        blur(16px);
+        blur(18px);
 
     color: #ffffff;
 
     font: inherit;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
 
     cursor: pointer;
 
@@ -385,20 +618,47 @@
 }
 
 
-.showButtons button:hover {
+/* =================================
+   EDIT BUTTON
+================================= */
+
+.showButtons
+.edit-show-btn {
+
+    border-color:
+        rgba(67, 190, 255, 0.65);
+
+    color:
+        #bfeaff;
+
+    box-shadow:
+        inset 0 0 18px
+        rgba(31, 151, 255, 0.12),
+
+        0 0 12px
+        rgba(40, 167, 255, 0.18);
+
+}
+
+
+.showButtons
+.edit-show-btn:hover {
 
     transform:
         translateY(-3px);
 
-    background:
-        rgba(255, 255, 255, 0.14);
-
     border-color:
-        rgba(79, 229, 255, 0.65);
+        rgba(91, 216, 255, 0.95);
+
+    background:
+        rgba(34, 125, 210, 0.22);
 
     box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.35);
+        0 0 12px
+        rgba(64, 195, 255, 0.65),
+
+        0 0 26px
+        rgba(43, 128, 255, 0.38);
 
 }
 
@@ -407,13 +667,43 @@
    DELETE BUTTON
 ================================= */
 
-.showButtons .delete-show-btn:hover {
+.showButtons
+.delete-show-btn {
 
     border-color:
-        rgba(255, 75, 75, 0.8);
+        rgba(255, 73, 145, 0.55);
+
+    color:
+        #ffb2ce;
+
+    box-shadow:
+        inset 0 0 18px
+        rgba(255, 45, 114, 0.1),
+
+        0 0 12px
+        rgba(255, 46, 120, 0.12);
+
+}
+
+
+.showButtons
+.delete-show-btn:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(255, 93, 155, 0.95);
 
     background:
-        rgba(255, 45, 45, 0.14);
+        rgba(191, 24, 77, 0.2);
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 68, 134, 0.65),
+
+        0 0 28px
+        rgba(255, 34, 107, 0.35);
 
 }
 
@@ -427,27 +717,35 @@
 
     width: 100%;
 
+    padding:
+        80px
+        20px;
+
     text-align: center;
 
-    padding: 80px 20px;
-
     color:
-        rgba(255, 255, 255, 0.72);
+        rgba(225, 238, 255, 0.72);
 
 }
 
 
 .manage-shows-empty h2 {
 
-    margin-bottom: 10px;
+    margin-bottom:
+        10px;
 
-    color: #ffffff;
+    color:
+        #ffffff;
+
+    text-shadow:
+        0 0 14px
+        rgba(68, 181, 255, 0.45);
 
 }
 
 
 /* =================================
-   EDIT PANEL
+   EDIT PANEL BACKDROP
 ================================= */
 
 .show-edit-panel {
@@ -465,13 +763,13 @@
     padding: 30px;
 
     background:
-        rgba(0, 0, 0, 0.68);
+        rgba(0, 4, 14, 0.76);
 
     backdrop-filter:
-        blur(12px);
+        blur(16px);
 
     -webkit-backdrop-filter:
-        blur(12px);
+        blur(16px);
 
 }
 
@@ -488,40 +786,60 @@
 
 
 /* =================================
-   EDIT CONTAINER
+   EDIT GLASS CONTAINER
 ================================= */
 
 .show-edit-container {
 
     position: relative;
 
-    width: min(1000px, 94vw);
-    max-height: 90vh;
+    width:
+        min(1000px, 94vw);
 
-    overflow-y: auto;
+    max-height:
+        90vh;
 
-    padding: 38px;
+    overflow-y:
+        auto;
 
-    border-radius: 24px;
+    padding:
+        38px;
+
+    border-radius:
+        26px;
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.18);
+        rgba(92, 194, 255, 0.42);
 
     background:
-        rgba(6, 11, 24, 0.92);
+        linear-gradient(
+            145deg,
+            rgba(16, 34, 65, 0.92),
+            rgba(5, 12, 28, 0.95)
+        );
 
     backdrop-filter:
-        blur(24px);
+        blur(28px);
 
     -webkit-backdrop-filter:
-        blur(24px);
+        blur(28px);
 
     box-shadow:
-        0 30px 80px
-        rgba(0, 0, 0, 0.6);
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.16),
 
-    scrollbar-width: none;
+        0 30px 80px
+        rgba(0, 0, 0, 0.7),
+
+        0 0 35px
+        rgba(48, 154, 255, 0.22),
+
+        0 0 55px
+        rgba(157, 62, 255, 0.1);
+
+    scrollbar-width:
+        none;
 
 }
 
@@ -546,9 +864,20 @@
 
     text-align: center;
 
-    font-size: 32px;
+    font-size: 34px;
+    font-weight: 800;
 
     color: #ffffff;
+
+    text-shadow:
+        0 0 8px
+        rgba(113, 214, 255, 0.8),
+
+        0 0 22px
+        rgba(83, 127, 255, 0.5),
+
+        0 0 32px
+        rgba(184, 69, 255, 0.25);
 
 }
 
@@ -562,7 +891,10 @@
     display: grid;
 
     grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
 
     gap: 20px;
 
@@ -578,14 +910,44 @@
 
     width: 100%;
 
+    border:
+        1px solid
+        rgba(135, 204, 255, 0.22);
+
+    background:
+        rgba(4, 12, 28, 0.52);
+
+    color: #ffffff;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.05);
+
+}
+
+
+.show-edit-grid input:focus,
+.show-edit-grid textarea:focus {
+
+    outline: none;
+
+    border-color:
+        rgba(82, 199, 255, 0.8);
+
+    box-shadow:
+        0 0 12px
+        rgba(49, 172, 255, 0.3);
+
 }
 
 
 .show-edit-grid textarea {
 
-    min-height: 140px;
+    min-height:
+        140px;
 
-    resize: vertical;
+    resize:
+        vertical;
 
 }
 
@@ -612,7 +974,7 @@
     justify-content: center;
     align-items: center;
 
-    gap: 16px;
+    gap: 18px;
 
     margin-top: 30px;
 
@@ -625,14 +987,56 @@
 
 .show-edit-actions button {
 
-    min-width: 130px;
-    height: 48px;
+    min-width: 145px;
+    height: 50px;
 
-    padding: 0 24px;
+    padding:
+        0 26px;
 
-    border-radius: 14px;
+    border-radius: 15px;
+
+    color: #ffffff;
+
+    font: inherit;
+    font-weight: 700;
 
     cursor: pointer;
+
+}
+
+
+/* =================================
+   SAVE BUTTON
+================================= */
+
+.show-save-btn {
+
+    border:
+        1px solid
+        rgba(70, 199, 255, 0.7);
+
+    background:
+        rgba(29, 119, 201, 0.22);
+
+    box-shadow:
+        0 0 16px
+        rgba(42, 167, 255, 0.22);
+
+}
+
+
+/* =================================
+   CANCEL BUTTON
+================================= */
+
+.show-cancel-btn {
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.25);
+
+    background:
+        rgba(255, 255, 255, 0.06);
 
 }
 
@@ -666,12 +1070,13 @@
 
     top: 0;
 
-    margin-bottom: -70px;
+    margin-bottom:
+        -70px;
 
     background:
         linear-gradient(
             to bottom,
-            #050713,
+            rgba(5, 7, 19, 0.95),
             transparent
         );
 
@@ -682,12 +1087,13 @@
 
     bottom: 0;
 
-    margin-top: -70px;
+    margin-top:
+        -70px;
 
     background:
         linear-gradient(
             to top,
-            #050713,
+            rgba(5, 7, 19, 0.95),
             transparent
         );
 
@@ -695,7 +1101,7 @@
 
 
 /* =================================
-   RESPONSIVE SAFETY
+   MOBILE
 ================================= */
 
 @media screen and (max-width: 768px) {
@@ -712,7 +1118,18 @@
 
     .shows-page .admin-title {
 
-        margin-bottom: 35px;
+        margin-bottom:
+            45px;
+
+        font-size:
+            clamp(
+                34px,
+                11vw,
+                52px
+            );
+
+        letter-spacing:
+            1px;
 
     }
 
@@ -732,25 +1149,37 @@
 
     .manage-show-item {
 
-        max-width: 100%;
+        max-width:
+            100%;
 
-        margin-bottom: -210px;
+        margin-bottom:
+            -210px;
 
     }
 
 
     .manage-show-card {
 
-        min-height: 340px;
-
-        border-radius: 20px;
+        border-radius:
+            20px;
 
     }
 
 
+    /* Square poster remains square */
+
     .manage-poster {
 
-        height: 220px;
+        width: 100%;
+
+        aspect-ratio:
+            1 / 1;
+
+        object-fit:
+            cover;
+
+        object-position:
+            center;
 
     }
 
@@ -758,7 +1187,7 @@
     .manage-info {
 
         padding:
-            20px
+            22px
             20px
             24px;
 
@@ -767,17 +1196,16 @@
 
     .manage-info h2 {
 
-        font-size: 24px;
+        font-size:
+            25px;
 
     }
 
 
-    .showButtons {
+    /* Buttons always available on touch */
 
-        padding:
-            0
-            20px
-            24px;
+    .manage-show-item.active
+    .showButtons {
 
         opacity: 1;
 
@@ -790,11 +1218,21 @@
     }
 
 
+    .showButtons {
+
+        gap: 12px;
+
+    }
+
+
     .showButtons button {
 
         flex: 1;
 
         min-width: 0;
+
+        padding:
+            0 15px;
 
     }
 
@@ -810,30 +1248,44 @@
 
         width: 100%;
 
-        padding: 24px 18px;
+        padding:
+            25px
+            18px;
 
-        border-radius: 20px;
+        border-radius:
+            20px;
+
+    }
+
+
+    .show-edit-title {
+
+        font-size:
+            28px;
 
     }
 
 
     .show-edit-grid {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
     }
 
 
     .show-edit-full {
 
-        grid-column: auto;
+        grid-column:
+            auto;
 
     }
 
 
     .show-edit-actions {
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
     }
 
