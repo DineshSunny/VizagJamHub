@@ -1,1299 +1,1195 @@
 /* =================================
-   VIZAG JAMHUB - SHOWS
+   EXISTING SHOWS SYSTEM
+   PRESERVED
 ================================= */
 
+async function loadShows(){
+
+const res = await fetch("/api/shows");
+
+const shows = await res.json();
+
+const container = document.getElementById("shows-container");
 
 /* =================================
-   SHOWS PAGE
+   PAGE DOES NOT USE SHOWS CONTAINER
 ================================= */
 
-.shows-page {
+if (!container) {
+    return;
+}
 
-    position: relative;
-    z-index: 3;
+container.innerHTML = "";
 
-    width: 100%;
-    min-height: 100vh;
+shows.forEach(show => {
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+container.innerHTML += `
 
-    padding: 80px 20px 60px;
+<a href="/buy-ticket.html?id=${show.id}" class="show-card">
+
+<h2>${show.title}</h2>
+
+<p>Venue: ${show.venue}</p>
+
+<p>${show.address || ""}</p>
+
+<p>Date: ${show.date}</p>
+
+<p>Time: ${show.startTime || ""}</p>
+
+<p>Price: ₹${show.price}</p>
+
+</a>
+
+`;
+
+});
 
 }
 
+loadShows();
+
+
 
 /* =================================
-   GLASS / NEON PAGE TITLE
+   MANAGE SHOWS CAROUSEL
 ================================= */
 
-.shows-page .admin-title {
+let activeShowIndex = 0;
 
-    position: relative;
+let manageShowsData = [];
 
-    margin: 0 0 55px;
+let touchStartX = 0;
 
-    text-align: center;
+let wheelLocked = false;
 
-    font-size: clamp(42px, 6vw, 78px);
-    font-weight: 900;
 
-    letter-spacing: 3px;
 
-    color:
-        rgba(235, 248, 255, 0.96);
+/* =================================
+   LOAD MANAGE SHOWS
+================================= */
 
-    text-shadow:
-        0 0 4px rgba(255, 255, 255, 0.95),
-        0 0 10px rgba(117, 213, 255, 0.9),
-        0 0 22px rgba(56, 157, 255, 0.8),
-        0 0 38px rgba(115, 82, 255, 0.65),
-        0 0 55px rgba(220, 76, 255, 0.4);
+async function loadManageShows() {
 
-    -webkit-text-stroke:
-        1px
-        rgba(255, 255, 255, 0.28);
-
-    filter:
-        drop-shadow(
-            0 8px 22px
-            rgba(44, 139, 255, 0.3)
+    const container =
+        document.getElementById(
+            "showsList"
         );
 
-}
 
-
-/* =================================
-   TITLE GLASS HIGHLIGHT
-================================= */
-
-.shows-page .admin-title::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 112%;
-    height: 120%;
-
-    transform:
-        translate(-50%, -50%);
-
-    z-index: -1;
-
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.08),
-            rgba(66, 167, 255, 0.04),
-            rgba(184, 72, 255, 0.05)
-        );
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.08);
-
-    backdrop-filter:
-        blur(12px);
-
-    -webkit-backdrop-filter:
-        blur(12px);
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.14),
-
-        0 0 35px
-        rgba(41, 145, 255, 0.12);
-
-}
-
-
-/* =================================
-   TITLE LIGHT LINE
-================================= */
-
-.shows-page .admin-title::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    bottom: -16px;
-
-    width: 72%;
-    height: 2px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(63, 190, 255, 0.8),
-            rgba(187, 85, 255, 0.85),
-            transparent
-        );
-
-    box-shadow:
-        0 0 14px
-        rgba(78, 184, 255, 0.75);
-
-}
-
-
-/* =================================
-   MANAGE SHOWS DRAWER
-================================= */
-
-.manage-shows {
-
-    position: relative;
-
-    width: min(900px, 92vw);
-    height: 72vh;
-
-    overflow-y: auto;
-    overflow-x: visible;
-
-    padding:
-        10vh
-        40px
-        30vh;
-
-    scroll-behavior: smooth;
-
-    scroll-snap-type:
-        y mandatory;
-
-    overscroll-behavior-y:
-        contain;
-
-    scrollbar-width: none;
-
-    perspective:
-        1400px;
-
-}
-
-
-/* =================================
-   HIDE SCROLLBAR
-================================= */
-
-.manage-shows::-webkit-scrollbar {
-
-    display: none;
-
-}
-
-
-/* =================================
-   SHOW ITEM
-================================= */
-
-.manage-show-item {
-
-    position: relative;
-
-    width: 100%;
-    max-width: 720px;
-
-    margin:
-        0 auto -235px;
-
-    scroll-snap-align:
-        center;
-
-    scroll-snap-stop:
-        always;
-
-    transform-origin:
-        center top;
-
-    opacity: 0.62;
-
-    filter:
-        brightness(0.55)
-        saturate(0.75);
-
-    transition:
-        transform 0.45s ease,
-        opacity 0.45s ease,
-        filter 0.45s ease;
-
-}
-
-
-/* =================================
-   SHOW CARD - GLASS
-================================= */
-
-.manage-show-card {
-
-    position: relative;
-
-    width: 100%;
-
-    overflow: hidden;
-
-    border-radius: 26px;
-
-    border:
-        1px solid
-        rgba(135, 205, 255, 0.22);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18, 34, 64, 0.78),
-            rgba(6, 13, 30, 0.86)
-        );
-
-    backdrop-filter:
-        blur(26px)
-        saturate(130%);
-
-    -webkit-backdrop-filter:
-        blur(26px)
-        saturate(130%);
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.15),
-
-        inset 0 -1px 0
-        rgba(76, 113, 255, 0.12),
-
-        0 20px 55px
-        rgba(0, 0, 0, 0.55),
-
-        0 0 20px
-        rgba(39, 145, 255, 0.08);
-
-    transform:
-        scale(0.94);
-
-    transition:
-        transform 0.45s ease,
-        box-shadow 0.45s ease,
-        border-color 0.45s ease,
-        filter 0.45s ease;
-
-}
-
-
-/* =================================
-   GLASS CARD HIGHLIGHT
-================================= */
-
-.manage-show-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    z-index: 5;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    border-radius: inherit;
-
-    background:
-        linear-gradient(
-            125deg,
-            rgba(255, 255, 255, 0.11),
-            transparent 20%,
-            transparent 70%,
-            rgba(111, 73, 255, 0.07)
-        );
-
-}
-
-
-/* =================================
-   ACTIVE SHOW
-================================= */
-
-.manage-show-item.active {
-
-    z-index: 20;
-
-    opacity: 1;
-
-    filter: none;
-
-    transform:
-        translateY(0)
-        scale(1);
-
-}
-
-
-.manage-show-item.active
-.manage-show-card {
-
-    transform:
-        scale(1);
-
-    border-color:
-        rgba(91, 201, 255, 0.75);
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.28),
-
-        0 25px 70px
-        rgba(0, 0, 0, 0.6),
-
-        0 0 14px
-        rgba(46, 177, 255, 0.55),
-
-        0 0 32px
-        rgba(56, 128, 255, 0.32),
-
-        0 0 52px
-        rgba(171, 61, 255, 0.16);
-
-}
-
-
-/* =================================
-   INACTIVE SHOW
-================================= */
-
-.manage-show-item:not(.active)
-.manage-show-card {
-
-    transform:
-        scale(0.94);
-
-}
-
-
-/* =================================
-   SQUARE POSTER
-================================= */
-
-.manage-poster {
-
-    position: relative;
-
-    display: block;
-
-    width: 100%;
-
-    aspect-ratio:
-        1 / 1;
-
-    object-fit:
-        cover;
-
-    object-position:
-        center;
-
-    border-bottom:
-        1px solid
-        rgba(123, 205, 255, 0.2);
-
-    box-shadow:
-        inset 0 -20px 30px
-        rgba(0, 0, 0, 0.2);
-
-}
-
-
-/* =================================
-   SHOW INFORMATION
-================================= */
-
-.manage-info {
-
-    position: relative;
-
-    z-index: 6;
-
-    padding:
-        26px
-        30px
-        30px;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(11, 24, 48, 0.78),
-            rgba(7, 15, 32, 0.88)
-        );
-
-}
-
-
-/* =================================
-   SHOW NAME
-================================= */
-
-.manage-info h2 {
-
-    margin:
-        0 0 16px;
-
-    font-size:
-        clamp(25px, 3vw, 32px);
-
-    line-height: 1.2;
-
-    color: #ffffff;
-
-    text-shadow:
-        0 0 8px
-        rgba(101, 197, 255, 0.65),
-
-        0 0 18px
-        rgba(57, 127, 255, 0.35);
-
-}
-
-
-/* =================================
-   SHOW DETAILS
-================================= */
-
-.manage-info p {
-
-    margin:
-        7px 0;
-
-    color:
-        rgba(225, 238, 255, 0.8);
-
-    font-size: 16px;
-    line-height: 1.55;
-
-}
-
-
-.manage-info strong {
-
-    color:
-        rgba(245, 250, 255, 0.96);
-
-    font-weight: 600;
-
-}
-
-
-/* =================================
-   SHOW PRICE
-================================= */
-
-.manage-info .show-price {
-
-    margin-top: 14px;
-
-    font-size: 22px;
-    font-weight: 800;
-
-    color: #ffffff;
-
-    text-shadow:
-        0 0 12px
-        rgba(93, 205, 255, 0.65);
-
-}
-
-
-/* =================================
-   SHOW ACTIONS
-================================= */
-
-.showButtons {
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 18px;
-
-    padding-top: 24px;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        translateY(10px);
-
-    pointer-events: none;
-
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease,
-        visibility 0.3s ease;
-
-}
-
-
-/* =================================
-   ACTIVE CARD ACTIONS
-================================= */
-
-.manage-show-item.active:hover
-.showButtons {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateY(0);
-
-    pointer-events: auto;
-
-}
-
-
-/* =================================
-   NEON BUTTON BASE
-================================= */
-
-.showButtons button {
-
-    position: relative;
-
-    min-width: 145px;
-    height: 50px;
-
-    padding:
-        0 26px;
-
-    border-radius: 15px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.2);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(27, 62, 102, 0.7),
-            rgba(9, 21, 43, 0.8)
-        );
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
-    color: #ffffff;
-
-    font: inherit;
-    font-size: 15px;
-    font-weight: 700;
-
-    letter-spacing: 0.5px;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-
-}
-
-
-/* =================================
-   EDIT BUTTON
-================================= */
-
-.showButtons
-.edit-show-btn {
-
-    border-color:
-        rgba(67, 190, 255, 0.65);
-
-    color:
-        #bfeaff;
-
-    box-shadow:
-        inset 0 0 18px
-        rgba(31, 151, 255, 0.12),
-
-        0 0 12px
-        rgba(40, 167, 255, 0.18);
-
-}
-
-
-.showButtons
-.edit-show-btn:hover {
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(91, 216, 255, 0.95);
-
-    background:
-        rgba(34, 125, 210, 0.22);
-
-    box-shadow:
-        0 0 12px
-        rgba(64, 195, 255, 0.65),
-
-        0 0 26px
-        rgba(43, 128, 255, 0.38);
-
-}
-
-
-/* =================================
-   DELETE BUTTON
-================================= */
-
-.showButtons
-.delete-show-btn {
-
-    border-color:
-        rgba(255, 73, 145, 0.55);
-
-    color:
-        #ffb2ce;
-
-    box-shadow:
-        inset 0 0 18px
-        rgba(255, 45, 114, 0.1),
-
-        0 0 12px
-        rgba(255, 46, 120, 0.12);
-
-}
-
-
-.showButtons
-.delete-show-btn:hover {
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(255, 93, 155, 0.95);
-
-    background:
-        rgba(191, 24, 77, 0.2);
-
-    box-shadow:
-        0 0 12px
-        rgba(255, 68, 134, 0.65),
-
-        0 0 28px
-        rgba(255, 34, 107, 0.35);
-
-}
-
-
-/* =================================
-   EMPTY / STATUS MESSAGE
-================================= */
-
-.manage-shows-empty,
-.shows-message {
-
-    width: 100%;
-
-    padding:
-        80px
-        20px;
-
-    text-align: center;
-
-    color:
-        rgba(225, 238, 255, 0.72);
-
-}
-
-
-.manage-shows-empty h2 {
-
-    margin-bottom:
-        10px;
-
-    color:
-        #ffffff;
-
-    text-shadow:
-        0 0 14px
-        rgba(68, 181, 255, 0.45);
-
-}
-
-
-/* =================================
-   EDIT PANEL BACKDROP
-================================= */
-
-.show-edit-panel {
-
-    position: fixed;
-
-    z-index: 100;
-
-    inset: 0;
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    padding: 30px;
-
-    background:
-        rgba(0, 4, 14, 0.76);
-
-    backdrop-filter:
-        blur(16px);
-
-    -webkit-backdrop-filter:
-        blur(16px);
-
-}
-
-
-/* =================================
-   EDIT PANEL ACTIVE
-================================= */
-
-.show-edit-panel.active {
-
-    display: flex;
-
-}
-
-
-/* =================================
-   EDIT GLASS CONTAINER
-================================= */
-
-.show-edit-container {
-
-    position: relative;
-
-    width:
-        min(1000px, 94vw);
-
-    max-height:
-        90vh;
-
-    overflow-y:
-        auto;
-
-    padding:
-        38px;
-
-    border-radius:
-        26px;
-
-    border:
-        1px solid
-        rgba(92, 194, 255, 0.42);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(16, 34, 65, 0.92),
-            rgba(5, 12, 28, 0.95)
-        );
-
-    backdrop-filter:
-        blur(28px);
-
-    -webkit-backdrop-filter:
-        blur(28px);
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.16),
-
-        0 30px 80px
-        rgba(0, 0, 0, 0.7),
-
-        0 0 35px
-        rgba(48, 154, 255, 0.22),
-
-        0 0 55px
-        rgba(157, 62, 255, 0.1);
-
-    scrollbar-width:
-        none;
-
-}
-
-
-.show-edit-container::-webkit-scrollbar {
-
-    display: none;
-
-}
-
-
-/* =================================
-   EDIT TITLE
-================================= */
-
-.show-edit-title {
-
-    margin:
-        0
-        0
-        30px;
-
-    text-align: center;
-
-    font-size: 34px;
-    font-weight: 800;
-
-    color: #ffffff;
-
-    text-shadow:
-        0 0 8px
-        rgba(113, 214, 255, 0.8),
-
-        0 0 22px
-        rgba(83, 127, 255, 0.5),
-
-        0 0 32px
-        rgba(184, 69, 255, 0.25);
-
-}
-
-
-/* =================================
-   EDIT FORM GRID
-================================= */
-
-.show-edit-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0, 1fr)
-        );
-
-    gap: 20px;
-
-}
-
-
-/* =================================
-   EDIT FORM FIELDS
-================================= */
-
-.show-edit-grid input,
-.show-edit-grid textarea {
-
-    width: 100%;
-
-    border:
-        1px solid
-        rgba(135, 204, 255, 0.22);
-
-    background:
-        rgba(4, 12, 28, 0.52);
-
-    color: #ffffff;
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.05);
-
-}
-
-
-.show-edit-grid input:focus,
-.show-edit-grid textarea:focus {
-
-    outline: none;
-
-    border-color:
-        rgba(82, 199, 255, 0.8);
-
-    box-shadow:
-        0 0 12px
-        rgba(49, 172, 255, 0.3);
-
-}
-
-
-.show-edit-grid textarea {
-
-    min-height:
-        140px;
-
-    resize:
-        vertical;
-
-}
-
-
-/* =================================
-   FULL WIDTH EDIT FIELD
-================================= */
-
-.show-edit-full {
-
-    grid-column:
-        1 / -1;
-
-}
-
-
-/* =================================
-   EDIT ACTIONS
-================================= */
-
-.show-edit-actions {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 18px;
-
-    margin-top: 30px;
-
-}
-
-
-/* =================================
-   EDIT ACTION BUTTONS
-================================= */
-
-.show-edit-actions button {
-
-    min-width: 145px;
-    height: 50px;
-
-    padding:
-        0 26px;
-
-    border-radius: 15px;
-
-    color: #ffffff;
-
-    font: inherit;
-    font-weight: 700;
-
-    cursor: pointer;
-
-}
-
-
-/* =================================
-   SAVE BUTTON
-================================= */
-
-.show-save-btn {
-
-    border:
-        1px solid
-        rgba(70, 199, 255, 0.7);
-
-    background:
-        rgba(29, 119, 201, 0.22);
-
-    box-shadow:
-        0 0 16px
-        rgba(42, 167, 255, 0.22);
-
-}
-
-
-/* =================================
-   CANCEL BUTTON
-================================= */
-
-.show-cancel-btn {
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.25);
-
-    background:
-        rgba(255, 255, 255, 0.06);
-
-}
-
-
-/* =================================
-   DRAWER EDGE FADES
-================================= */
-
-.manage-shows::before,
-.manage-shows::after {
-
-    content: "";
-
-    position: sticky;
-
-    left: 0;
-
-    z-index: 30;
-
-    display: block;
-
-    width: 100%;
-    height: 70px;
-
-    pointer-events: none;
-
-}
-
-
-.manage-shows::before {
-
-    top: 0;
-
-    margin-bottom:
-        -70px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(5, 7, 19, 0.95),
-            transparent
-        );
-
-}
-
-
-.manage-shows::after {
-
-    bottom: 0;
-
-    margin-top:
-        -70px;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(5, 7, 19, 0.95),
-            transparent
-        );
-
-}
-
-
-/* =================================
-   MOBILE
-================================= */
-
-@media screen and (max-width: 768px) {
-
-    .shows-page {
-
-        padding:
-            70px
-            12px
-            40px;
-
+    if (!container) {
+        return;
     }
 
 
-    .shows-page .admin-title {
+    try {
 
-        margin-bottom:
-            45px;
-
-        font-size:
-            clamp(
-                34px,
-                11vw,
-                52px
+        const response =
+            await fetch(
+                "/api/shows"
             );
 
-        letter-spacing:
-            1px;
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to load shows"
+            );
+
+        }
+
+
+        manageShowsData =
+            await response.json();
+
+
+        container.innerHTML =
+            "";
+
+
+        if (
+            !Array.isArray(manageShowsData) ||
+            manageShowsData.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <div class="manage-shows-empty">
+
+                    <h2>
+                        No Shows Available
+                    </h2>
+
+                    <p>
+                        Create a show to manage it here.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        if (
+            activeShowIndex >=
+            manageShowsData.length
+        ) {
+
+            activeShowIndex =
+                manageShowsData.length - 1;
+
+        }
+
+
+        manageShowsData.forEach(
+            (show, index) => {
+
+                const item =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                item.className =
+                    "manage-show-item";
+
+
+                item.dataset.index =
+                    index;
+
+
+                item.dataset.id =
+                    show.id;
+
+
+                item.innerHTML = `
+
+                    <div class="manage-show-card">
+
+
+                        <!-- =============================
+                             SQUARE POSTER
+                        ============================== -->
+
+                        <div class="manage-poster-frame">
+
+                            ${
+                                show.poster
+                                    ? `
+
+                                        <img
+                                            class="manage-poster"
+                                            src="${escapeAttribute(show.poster)}"
+                                            alt="${escapeAttribute(show.title || "Show")} poster"
+                                        >
+
+                                    `
+                                    : `
+
+                                        <div class="manage-poster"></div>
+
+                                    `
+                            }
+
+                        </div>
+
+
+                        <!-- =============================
+                             SHOW INFORMATION
+                        ============================== -->
+
+                        <div class="manage-info">
+
+
+                            <h2>
+                                ${escapeHTML(show.title || "")}
+                            </h2>
+
+
+                            <p>
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                ${escapeHTML(show.venue || "")}
+
+                            </p>
+
+
+                            ${
+                                show.address
+                                    ? `
+
+                                        <p>
+
+                                            <i class="fa-regular fa-map"></i>
+
+                                            ${escapeHTML(show.address)}
+
+                                        </p>
+
+                                    `
+                                    : ""
+                            }
+
+
+                            <p>
+
+                                <i class="fa-regular fa-calendar"></i>
+
+                                ${escapeHTML(show.date || "")}
+
+                            </p>
+
+
+                            <p>
+
+                                <i class="fa-regular fa-clock"></i>
+
+                                ${escapeHTML(
+                                    formatShowTime(show)
+                                )}
+
+                            </p>
+
+
+                            <p class="show-price">
+
+                                ₹${escapeHTML(show.price || "0")}
+
+                            </p>
+
+
+                            ${
+                                show.info
+                                    ? `
+
+                                        <p>
+
+                                            <i class="fa-regular fa-file-lines"></i>
+
+                                            ${escapeHTML(show.info)}
+
+                                        </p>
+
+                                    `
+                                    : ""
+                            }
+
+
+                            <!-- =============================
+                                 EDIT / DELETE
+                            ============================== -->
+
+                            <div class="showButtons">
+
+
+                                <button
+                                    type="button"
+                                    class="edit-show-btn"
+                                >
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                    EDIT
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="delete-show-btn"
+                                >
+
+                                    <i class="fa-regular fa-trash-can"></i>
+
+                                    DELETE
+
+                                </button>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    item
+                );
+
+
+                /* =================================
+                   CLICK SIDE CARD
+                ================================= */
+
+                item.addEventListener(
+                    "click",
+                    event => {
+
+                        if (
+                            event.target.closest(
+                                "button"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            index !==
+                            activeShowIndex
+                        ) {
+
+                            activeShowIndex =
+                                index;
+
+
+                            updateCarouselPositions();
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================
+                   EDIT
+                ================================= */
+
+                const editButton =
+                    item.querySelector(
+                        ".edit-show-btn"
+                    );
+
+
+                editButton.addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+
+                        openEditPanel(
+                            show
+                        );
+
+                    }
+                );
+
+
+                /* =================================
+                   DELETE
+                ================================= */
+
+                const deleteButton =
+                    item.querySelector(
+                        ".delete-show-btn"
+                    );
+
+
+                deleteButton.addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+
+                        deleteShow(
+                            show
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        updateCarouselPositions();
+
+
+        setupCarouselControls(
+            container
+        );
+
 
     }
 
+    catch (error) {
 
-    .manage-shows {
+        console.error(
+            "MANAGE SHOWS ERROR:",
+            error
+        );
 
-        width: 100%;
-        height: 72vh;
 
-        padding:
-            8vh
-            12px
-            28vh;
+        container.innerHTML = `
 
-    }
+            <p class="shows-message">
+                Unable to load shows.
+            </p>
 
-
-    .manage-show-item {
-
-        max-width:
-            100%;
-
-        margin-bottom:
-            -210px;
-
-    }
-
-
-    .manage-show-card {
-
-        border-radius:
-            20px;
-
-    }
-
-
-    /* Square poster remains square */
-
-    .manage-poster {
-
-        width: 100%;
-
-        aspect-ratio:
-            1 / 1;
-
-        object-fit:
-            cover;
-
-        object-position:
-            center;
-
-    }
-
-
-    .manage-info {
-
-        padding:
-            22px
-            20px
-            24px;
-
-    }
-
-
-    .manage-info h2 {
-
-        font-size:
-            25px;
-
-    }
-
-
-    /* Buttons always available on touch */
-
-    .manage-show-item.active
-    .showButtons {
-
-        opacity: 1;
-
-        visibility: visible;
-
-        transform: none;
-
-        pointer-events: auto;
-
-    }
-
-
-    .showButtons {
-
-        gap: 12px;
-
-    }
-
-
-    .showButtons button {
-
-        flex: 1;
-
-        min-width: 0;
-
-        padding:
-            0 15px;
-
-    }
-
-
-    .show-edit-panel {
-
-        padding: 16px;
-
-    }
-
-
-    .show-edit-container {
-
-        width: 100%;
-
-        padding:
-            25px
-            18px;
-
-        border-radius:
-            20px;
-
-    }
-
-
-    .show-edit-title {
-
-        font-size:
-            28px;
-
-    }
-
-
-    .show-edit-grid {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .show-edit-full {
-
-        grid-column:
-            auto;
-
-    }
-
-
-    .show-edit-actions {
-
-        flex-direction:
-            column;
-
-    }
-
-
-    .show-edit-actions button {
-
-        width: 100%;
+        `;
 
     }
 
 }
+
+
+
+/* =================================
+   UPDATE CAROUSEL POSITIONS
+================================= */
+
+function updateCarouselPositions() {
+
+    const container =
+        document.getElementById(
+            "showsList"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    const items =
+        container.querySelectorAll(
+            ".manage-show-item"
+        );
+
+
+    items.forEach(
+        (item, index) => {
+
+            item.classList.remove(
+                "active",
+                "left",
+                "right",
+                "far-left",
+                "far-right",
+                "hidden"
+            );
+
+
+            const difference =
+                index -
+                activeShowIndex;
+
+
+            if (difference === 0) {
+
+                item.classList.add(
+                    "active"
+                );
+
+            }
+
+            else if (difference === -1) {
+
+                item.classList.add(
+                    "left"
+                );
+
+            }
+
+            else if (difference === 1) {
+
+                item.classList.add(
+                    "right"
+                );
+
+            }
+
+            else if (difference === -2) {
+
+                item.classList.add(
+                    "far-left"
+                );
+
+            }
+
+            else if (difference === 2) {
+
+                item.classList.add(
+                    "far-right"
+                );
+
+            }
+
+            else {
+
+                item.classList.add(
+                    "hidden"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =================================
+   NEXT SHOW
+================================= */
+
+function nextManageShow() {
+
+    if (
+        activeShowIndex <
+        manageShowsData.length - 1
+    ) {
+
+        activeShowIndex++;
+
+        updateCarouselPositions();
+
+    }
+
+}
+
+
+
+/* =================================
+   PREVIOUS SHOW
+================================= */
+
+function previousManageShow() {
+
+    if (
+        activeShowIndex > 0
+    ) {
+
+        activeShowIndex--;
+
+        updateCarouselPositions();
+
+    }
+
+}
+
+
+
+/* =================================
+   CAROUSEL CONTROLS
+================================= */
+
+function setupCarouselControls(
+    container
+) {
+
+    if (
+        container.dataset.controlsReady ===
+        "true"
+    ) {
+
+        return;
+
+    }
+
+
+    container.dataset.controlsReady =
+        "true";
+
+
+    /* =================================
+       MOUSE WHEEL / TRACKPAD
+    ================================= */
+
+    container.addEventListener(
+        "wheel",
+        event => {
+
+            if (wheelLocked) {
+                return;
+            }
+
+
+            const movement =
+                Math.abs(event.deltaX) >
+                Math.abs(event.deltaY)
+
+                    ? event.deltaX
+
+                    : event.deltaY;
+
+
+            if (
+                Math.abs(movement) <
+                10
+            ) {
+
+                return;
+
+            }
+
+
+            event.preventDefault();
+
+
+            wheelLocked =
+                true;
+
+
+            if (movement > 0) {
+
+                nextManageShow();
+
+            }
+
+            else {
+
+                previousManageShow();
+
+            }
+
+
+            setTimeout(
+                () => {
+
+                    wheelLocked =
+                        false;
+
+                },
+                420
+            );
+
+        },
+        {
+            passive: false
+        }
+    );
+
+
+    /* =================================
+       TOUCH START
+    ================================= */
+
+    container.addEventListener(
+        "touchstart",
+        event => {
+
+            touchStartX =
+                event.touches[0].clientX;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* =================================
+       TOUCH END
+    ================================= */
+
+    container.addEventListener(
+        "touchend",
+        event => {
+
+            const touchEndX =
+                event.changedTouches[0].clientX;
+
+
+            const distance =
+                touchEndX -
+                touchStartX;
+
+
+            if (
+                Math.abs(distance) <
+                45
+            ) {
+
+                return;
+
+            }
+
+
+            if (distance < 0) {
+
+                nextManageShow();
+
+            }
+
+            else {
+
+                previousManageShow();
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+}
+
+
+
+/* =================================
+   OPEN EDIT PANEL
+================================= */
+
+function openEditPanel(show) {
+
+    closeEditPanel();
+
+
+    const panel =
+        document.createElement(
+            "div"
+        );
+
+
+    panel.className =
+        "show-edit-panel active";
+
+
+    panel.innerHTML = `
+
+        <div class="show-edit-container">
+
+
+            <h2 class="show-edit-title">
+                EDIT SHOW
+            </h2>
+
+
+            <form
+                id="showEditForm"
+                enctype="multipart/form-data"
+            >
+
+
+                <div class="show-edit-grid">
+
+
+                    <input
+                        type="text"
+                        name="title"
+                        value="${escapeAttribute(show.title || "")}"
+                        placeholder="Show Name"
+                        required
+                    >
+
+
+                    <input
+                        type="text"
+                        name="venue"
+                        value="${escapeAttribute(show.venue || "")}"
+                        placeholder="Venue / Place"
+                        required
+                    >
+
+
+                    <input
+                        type="text"
+                        name="address"
+                        value="${escapeAttribute(show.address || "")}"
+                        placeholder="Address"
+                    >
+
+
+                    <input
+                        type="date"
+                        name="date"
+                        value="${escapeAttribute(show.date || "")}"
+                        required
+                    >
+
+
+                    <input
+                        type="time"
+                        name="startTime"
+                        value="${escapeAttribute(show.startTime || "")}"
+                    >
+
+
+                    <input
+                        type="time"
+                        name="endTime"
+                        value="${escapeAttribute(show.endTime || "")}"
+                    >
+
+
+                    <input
+                        type="number"
+                        name="price"
+                        value="${escapeAttribute(show.price || "")}"
+                        placeholder="Ticket Price (₹)"
+                    >
+
+
+                    <input
+                        type="file"
+                        name="poster"
+                        accept="image/*"
+                    >
+
+
+                    <textarea
+                        name="info"
+                        class="show-edit-full extra-info"
+                        placeholder="Extra Information"
+                    >${escapeHTML(show.info || "")}</textarea>
+
+
+                </div>
+
+
+                <div class="show-edit-actions">
+
+
+                    <button
+                        type="submit"
+                        class="show-save-btn"
+                    >
+                        SAVE
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="show-cancel-btn"
+                    >
+                        CANCEL
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        panel
+    );
+
+
+    const form =
+        panel.querySelector(
+            "#showEditForm"
+        );
+
+
+    const cancelButton =
+        panel.querySelector(
+            ".show-cancel-btn"
+        );
+
+
+    /* =================================
+       SAVE EDIT
+    ================================= */
+
+    form.addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+
+            const formData =
+                new FormData(
+                    form
+                );
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `/api/shows/${show.id}`,
+                        {
+
+                            method:
+                                "PUT",
+
+                            body:
+                                formData
+
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to update show"
+                    );
+
+                }
+
+
+                closeEditPanel();
+
+
+                await loadManageShows();
+
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "UPDATE SHOW ERROR:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to update show."
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =================================
+       CANCEL
+    ================================= */
+
+    cancelButton.addEventListener(
+        "click",
+        closeEditPanel
+    );
+
+
+    /* =================================
+       CLICK BACKDROP
+    ================================= */
+
+    panel.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target === panel
+            ) {
+
+                closeEditPanel();
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =================================
+   CLOSE EDIT PANEL
+================================= */
+
+function closeEditPanel() {
+
+    const panel =
+        document.querySelector(
+            ".show-edit-panel"
+        );
+
+
+    if (panel) {
+
+        panel.remove();
+
+    }
+
+}
+
+
+
+/* =================================
+   DELETE SHOW
+================================= */
+
+async function deleteShow(show) {
+
+    const confirmed =
+        confirm(
+            `Delete "${show.title}"?`
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                `/api/shows/${show.id}`,
+                {
+
+                    method:
+                        "DELETE"
+
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to delete show"
+            );
+
+        }
+
+
+        if (
+            activeShowIndex >
+            0 &&
+            activeShowIndex >=
+            manageShowsData.length - 1
+        ) {
+
+            activeShowIndex--;
+
+        }
+
+
+        await loadManageShows();
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "DELETE SHOW ERROR:",
+            error
+        );
+
+
+        alert(
+            "Unable to delete show."
+        );
+
+    }
+
+}
+
+
+
+/* =================================
+   FORMAT SHOW TIME
+================================= */
+
+function formatShowTime(show) {
+
+    const start =
+        show.startTime || "";
+
+
+    const end =
+        show.endTime || "";
+
+
+    if (
+        start &&
+        end
+    ) {
+
+        return (
+            start +
+            " - " +
+            end
+        );
+
+    }
+
+
+    return (
+        start ||
+        end ||
+        ""
+    );
+
+}
+
+
+
+/* =================================
+   SAFE HTML
+================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+
+/* =================================
+   SAFE ATTRIBUTE
+================================= */
+
+function escapeAttribute(value) {
+
+    return escapeHTML(
+        value
+    );
+
+}
+
+
+
+/* =================================
+   START MANAGE SHOWS
+================================= */
+
+loadManageShows();
