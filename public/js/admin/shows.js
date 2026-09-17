@@ -3,69 +3,97 @@
    PRESERVED
 ================================= */
 
-async function loadShows(){
+async function loadShows() {
 
-const res = await fetch("/api/shows");
+    const res = await fetch("/api/shows");
 
-const shows = await res.json();
+    const shows = await res.json();
 
-const container = document.getElementById("shows-container");
+    const container =
+        document.getElementById("shows-container");
 
-/* =================================
-   PAGE DOES NOT USE SHOWS CONTAINER
-================================= */
 
-if (!container) {
-    return;
+    /* =================================
+       PAGE DOES NOT USE SHOWS CONTAINER
+    ================================= */
+
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    shows.forEach(show => {
+
+        container.innerHTML += `
+
+            <a
+                href="/buy-ticket.html?id=${show.id}"
+                class="show-card"
+            >
+
+                <h2>
+                    ${show.title}
+                </h2>
+
+                <p>
+                    Venue: ${show.venue}
+                </p>
+
+                <p>
+                    ${show.address || ""}
+                </p>
+
+                <p>
+                    Date: ${show.date}
+                </p>
+
+                <p>
+                    Time: ${show.startTime || ""}
+                </p>
+
+                <p>
+                    Price: ₹${show.price}
+                </p>
+
+            </a>
+
+        `;
+
+    });
+
 }
 
-container.innerHTML = "";
-
-shows.forEach(show => {
-
-container.innerHTML += `
-
-<a href="/buy-ticket.html?id=${show.id}" class="show-card">
-
-<h2>${show.title}</h2>
-
-<p>Venue: ${show.venue}</p>
-
-<p>${show.address || ""}</p>
-
-<p>Date: ${show.date}</p>
-
-<p>Time: ${show.startTime || ""}</p>
-
-<p>Price: ₹${show.price}</p>
-
-</a>
-
-`;
-
-});
-
-}
 
 loadShows();
 
 
 
 /* =================================
-   MANAGE SHOWS SYSTEM
+   MANAGE SHOWS CAROUSEL
+================================= */
+
+let activeShowIndex = 0;
+
+let manageShowsData = [];
+
+let touchStartX = 0;
+
+let wheelLocked = false;
+
+
+
+/* =================================
+   LOAD MANAGE SHOWS
 ================================= */
 
 async function loadManageShows() {
 
     const container =
-        document.getElementById(
-            "showsList"
-        );
+        document.getElementById("showsList");
 
-
-    /* =================================
-       PAGE DOES NOT USE MANAGE SHOWS
-    ================================= */
 
     if (!container) {
         return;
@@ -74,13 +102,11 @@ async function loadManageShows() {
 
     try {
 
-        const res =
-            await fetch(
-                "/api/shows"
-            );
+        const response =
+            await fetch("/api/shows");
 
 
-        if (!res.ok) {
+        if (!response.ok) {
 
             throw new Error(
                 "Unable to load shows"
@@ -89,12 +115,11 @@ async function loadManageShows() {
         }
 
 
-        const shows =
-            await res.json();
+        manageShowsData =
+            await response.json();
 
 
-        container.innerHTML =
-            "";
+        container.innerHTML = "";
 
 
         /* =================================
@@ -102,8 +127,8 @@ async function loadManageShows() {
         ================================= */
 
         if (
-            !Array.isArray(shows) ||
-            shows.length === 0
+            !Array.isArray(manageShowsData) ||
+            manageShowsData.length === 0
         ) {
 
             container.innerHTML = `
@@ -128,15 +153,37 @@ async function loadManageShows() {
 
 
         /* =================================
-           CREATE MANAGE SHOW CARDS
+           KEEP ACTIVE INDEX VALID
         ================================= */
 
-        shows.forEach(
+        if (
+            activeShowIndex >=
+            manageShowsData.length
+        ) {
+
+            activeShowIndex =
+                manageShowsData.length - 1;
+
+        }
+
+
+        if (activeShowIndex < 0) {
+
+            activeShowIndex = 0;
+
+        }
+
+
+        /* =================================
+           CREATE CARDS
+        ================================= */
+
+        manageShowsData.forEach(
             (show, index) => {
 
                 const item =
                     document.createElement(
-                        "div"
+                        "article"
                     );
 
 
@@ -144,25 +191,12 @@ async function loadManageShows() {
                     "manage-show-item";
 
 
+                item.dataset.index =
+                    index;
+
+
                 item.dataset.id =
                     show.id;
-
-
-                item.style.zIndex =
-                    shows.length - index;
-
-
-                /* =================================
-                   FIRST CARD ACTIVE
-                ================================= */
-
-                if (index === 0) {
-
-                    item.classList.add(
-                        "active"
-                    );
-
-                }
 
 
                 item.innerHTML = `
@@ -170,47 +204,61 @@ async function loadManageShows() {
                     <div class="manage-show-card">
 
 
-                        ${
-                            show.poster
-                                ? `
+                        <!-- =============================
+                             POSTER
+                        ============================== -->
 
-                                    <img
-                                        class="manage-poster"
-                                        src="${show.poster}"
-                                        alt="${show.title || "Show"}"
-                                    >
+                        <div class="manage-poster-frame">
 
-                                `
-                                : ""
-                        }
+                            ${
+                                show.poster
+                                    ? `
 
+                                        <img
+                                            class="manage-poster"
+                                            src="${escapeAttribute(show.poster)}"
+                                            alt="${escapeAttribute(show.title || "Show")} poster"
+                                        >
+
+                                    `
+                                    : `
+
+                                        <div class="manage-poster manage-poster-empty">
+
+                                            <i class="fa-solid fa-music"></i>
+
+                                        </div>
+
+                                    `
+                            }
+
+                        </div>
+
+
+                        <!-- =============================
+                             SHOW INFORMATION
+                        ============================== -->
 
                         <div class="manage-info">
 
+
                             <h2>
-                                ${show.title || ""}
+                                ${escapeHTML(show.title || "")}
                             </h2>
 
 
-                            <p>
-                                <strong>
-                                    Venue:
-                                </strong>
-
-                                ${show.venue || ""}
-                            </p>
-
-
                             ${
-                                show.address
+                                show.venue
                                     ? `
 
                                         <p>
-                                            <strong>
-                                                Address:
-                                            </strong>
 
-                                            ${show.address}
+                                            <i class="fa-solid fa-location-dot"></i>
+
+                                            <span>
+                                                ${escapeHTML(show.venue)}
+                                            </span>
+
                                         </p>
 
                                     `
@@ -218,27 +266,72 @@ async function loadManageShows() {
                             }
 
 
-                            <p>
-                                <strong>
-                                    Date:
-                                </strong>
+                            ${
+                                show.address
+                                    ? `
 
-                                ${show.date || ""}
-                            </p>
+                                        <p>
+
+                                            <i class="fa-regular fa-map"></i>
+
+                                            <span>
+                                                ${escapeHTML(show.address)}
+                                            </span>
+
+                                        </p>
+
+                                    `
+                                    : ""
+                            }
 
 
-                            <p>
-                                <strong>
-                                    Time:
-                                </strong>
+                            ${
+                                show.date
+                                    ? `
 
-                                ${formatShowTime(show)}
-                            </p>
+                                        <p>
+
+                                            <i class="fa-regular fa-calendar"></i>
+
+                                            <span>
+                                                ${escapeHTML(show.date)}
+                                            </span>
+
+                                        </p>
+
+                                    `
+                                    : ""
+                            }
+
+
+                            ${
+                                formatShowTime(show)
+                                    ? `
+
+                                        <p>
+
+                                            <i class="fa-regular fa-clock"></i>
+
+                                            <span>
+                                                ${escapeHTML(
+                                                    formatShowTime(show)
+                                                )}
+                                            </span>
+
+                                        </p>
+
+                                    `
+                                    : ""
+                            }
 
 
                             <p class="show-price">
 
-                                ₹${show.price || "0"}
+                                <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                                <span>
+                                    ₹${escapeHTML(show.price || "0")}
+                                </span>
 
                             </p>
 
@@ -247,8 +340,14 @@ async function loadManageShows() {
                                 show.info
                                     ? `
 
-                                        <p>
-                                            ${show.info}
+                                        <p class="show-description">
+
+                                            <i class="fa-regular fa-file-lines"></i>
+
+                                            <span>
+                                                ${escapeHTML(show.info)}
+                                            </span>
+
                                         </p>
 
                                     `
@@ -256,17 +355,24 @@ async function loadManageShows() {
                             }
 
 
-                            <!-- =================================
-                                 SHOW ACTIONS
-                            ================================== -->
+                            <!-- =============================
+                                 EDIT / DELETE
+                            ============================== -->
 
                             <div class="showButtons">
+
 
                                 <button
                                     type="button"
                                     class="edit-show-btn"
                                 >
-                                    EDIT
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                    <span>
+                                        EDIT
+                                    </span>
+
                                 </button>
 
 
@@ -274,10 +380,18 @@ async function loadManageShows() {
                                     type="button"
                                     class="delete-show-btn"
                                 >
-                                    DELETE
+
+                                    <i class="fa-regular fa-trash-can"></i>
+
+                                    <span>
+                                        DELETE
+                                    </span>
+
                                 </button>
 
+
                             </div>
+
 
                         </div>
 
@@ -287,8 +401,40 @@ async function loadManageShows() {
                 `;
 
 
-                container.appendChild(
-                    item
+                container.appendChild(item);
+
+
+                /* =================================
+                   CLICK SIDE CARD
+                ================================= */
+
+                item.addEventListener(
+                    "click",
+                    event => {
+
+                        if (
+                            event.target.closest("button")
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            index !==
+                            activeShowIndex
+                        ) {
+
+                            activeShowIndex =
+                                index;
+
+
+                            updateCarouselPositions();
+
+                        }
+
+                    }
                 );
 
 
@@ -304,11 +450,12 @@ async function loadManageShows() {
 
                 editButton.addEventListener(
                     "click",
-                    () => {
+                    event => {
 
-                        openEditPanel(
-                            show
-                        );
+                        event.stopPropagation();
+
+
+                        openEditPanel(show);
 
                     }
                 );
@@ -326,11 +473,12 @@ async function loadManageShows() {
 
                 deleteButton.addEventListener(
                     "click",
-                    () => {
+                    event => {
 
-                        deleteShow(
-                            show
-                        );
+                        event.stopPropagation();
+
+
+                        deleteShow(show);
 
                     }
                 );
@@ -339,21 +487,12 @@ async function loadManageShows() {
         );
 
 
-        /* =================================
-           ACTIVATE CARD NEAREST CENTER
-        ================================= */
-
-        updateActiveShow();
+        updateCarouselPositions();
 
 
-        container.addEventListener(
-            "scroll",
-            updateActiveShow,
-            {
-                passive: true
-            }
+        setupCarouselControls(
+            container
         );
-
 
     }
 
@@ -380,10 +519,10 @@ async function loadManageShows() {
 
 
 /* =================================
-   ACTIVE SHOW CARD
+   UPDATE CAROUSEL POSITIONS
 ================================= */
 
-function updateActiveShow() {
+function updateCarouselPositions() {
 
     const container =
         document.getElementById(
@@ -402,76 +541,265 @@ function updateActiveShow() {
         );
 
 
-    if (!items.length) {
-        return;
-    }
-
-
-    const containerRect =
-        container.getBoundingClientRect();
-
-
-    const center =
-        containerRect.top +
-        (
-            containerRect.height / 2
-        );
-
-
-    let activeItem =
-        null;
-
-
-    let closestDistance =
-        Infinity;
-
-
     items.forEach(
-        item => {
+        (item, index) => {
 
-            const rect =
-                item.getBoundingClientRect();
+            item.classList.remove(
+                "active",
+                "left",
+                "right",
+                "far-left",
+                "far-right",
+                "hidden"
+            );
 
 
-            const itemCenter =
-                rect.top +
-                (
-                    rect.height / 2
+            const difference =
+                index -
+                activeShowIndex;
+
+
+            if (difference === 0) {
+
+                item.classList.add(
+                    "active"
                 );
 
+            }
 
-            const distance =
-                Math.abs(
-                    center -
-                    itemCenter
+            else if (difference === -1) {
+
+                item.classList.add(
+                    "left"
                 );
 
+            }
 
-            if (
-                distance <
-                closestDistance
-            ) {
+            else if (difference === 1) {
 
-                closestDistance =
-                    distance;
+                item.classList.add(
+                    "right"
+                );
 
-                activeItem =
-                    item;
+            }
+
+            else if (difference === -2) {
+
+                item.classList.add(
+                    "far-left"
+                );
+
+            }
+
+            else if (difference === 2) {
+
+                item.classList.add(
+                    "far-right"
+                );
+
+            }
+
+            else {
+
+                item.classList.add(
+                    "hidden"
+                );
 
             }
 
         }
     );
 
+}
 
-    items.forEach(
-        item => {
 
-            item.classList.toggle(
-                "active",
-                item === activeItem
+
+/* =================================
+   NEXT SHOW
+================================= */
+
+function nextManageShow() {
+
+    if (
+        activeShowIndex <
+        manageShowsData.length - 1
+    ) {
+
+        activeShowIndex++;
+
+        updateCarouselPositions();
+
+    }
+
+}
+
+
+
+/* =================================
+   PREVIOUS SHOW
+================================= */
+
+function previousManageShow() {
+
+    if (
+        activeShowIndex > 0
+    ) {
+
+        activeShowIndex--;
+
+        updateCarouselPositions();
+
+    }
+
+}
+
+
+
+/* =================================
+   CAROUSEL CONTROLS
+================================= */
+
+function setupCarouselControls(container) {
+
+    if (
+        container.dataset.controlsReady ===
+        "true"
+    ) {
+
+        return;
+
+    }
+
+
+    container.dataset.controlsReady =
+        "true";
+
+
+    /* =================================
+       MOUSE WHEEL / TRACKPAD
+    ================================= */
+
+    container.addEventListener(
+        "wheel",
+        event => {
+
+            if (wheelLocked) {
+                return;
+            }
+
+
+            const movement =
+                Math.abs(event.deltaX) >
+                Math.abs(event.deltaY)
+
+                    ? event.deltaX
+
+                    : event.deltaY;
+
+
+            if (
+                Math.abs(movement) < 10
+            ) {
+
+                return;
+
+            }
+
+
+            event.preventDefault();
+
+
+            wheelLocked = true;
+
+
+            if (movement > 0) {
+
+                nextManageShow();
+
+            }
+
+            else {
+
+                previousManageShow();
+
+            }
+
+
+            setTimeout(
+                () => {
+
+                    wheelLocked = false;
+
+                },
+                420
             );
 
+        },
+        {
+            passive: false
+        }
+    );
+
+
+    /* =================================
+       TOUCH START
+    ================================= */
+
+    container.addEventListener(
+        "touchstart",
+        event => {
+
+            touchStartX =
+                event.touches[0].clientX;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* =================================
+       TOUCH END
+    ================================= */
+
+    container.addEventListener(
+        "touchend",
+        event => {
+
+            const touchEndX =
+                event.changedTouches[0].clientX;
+
+
+            const distance =
+                touchEndX -
+                touchStartX;
+
+
+            if (
+                Math.abs(distance) < 45
+            ) {
+
+                return;
+
+            }
+
+
+            if (distance < 0) {
+
+                nextManageShow();
+
+            }
+
+            else {
+
+                previousManageShow();
+
+            }
+
+        },
+        {
+            passive: true
         }
     );
 
@@ -486,6 +814,40 @@ function updateActiveShow() {
 function openEditPanel(show) {
 
     closeEditPanel();
+
+
+    /* =================================
+       ORIGINAL VALUES
+       USED FOR CHANGE DETECTION
+    ================================= */
+
+    const originalValues = {
+
+        title:
+            String(show.title || ""),
+
+        venue:
+            String(show.venue || ""),
+
+        address:
+            String(show.address || ""),
+
+        date:
+            String(show.date || ""),
+
+        startTime:
+            String(show.startTime || ""),
+
+        endTime:
+            String(show.endTime || ""),
+
+        price:
+            String(show.price || ""),
+
+        info:
+            String(show.info || "")
+
+    };
 
 
     const panel =
@@ -503,111 +865,222 @@ function openEditPanel(show) {
         <div class="show-edit-container">
 
 
+            <!-- =================================
+                 CLOSE BUTTON
+            ================================== -->
+
+            <button
+                type="button"
+                class="show-edit-close"
+                aria-label="Close edit show"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <!-- =================================
+                 TITLE
+            ================================== -->
+
             <h2 class="show-edit-title">
                 EDIT SHOW
             </h2>
 
 
+            <!-- =================================
+                 CURRENT POSTER
+            ================================== -->
+
+            ${
+                show.poster
+                    ? `
+
+                        <div class="show-edit-current-poster">
+
+                            <img
+                                src="${escapeAttribute(show.poster)}"
+                                alt="${escapeAttribute(show.title || "Show")} poster"
+                            >
+
+                            <p>
+                                Current Poster
+                            </p>
+
+                        </div>
+
+                    `
+                    : ""
+            }
+
+
+            <!-- =================================
+                 EDIT FORM
+                 SAME STRUCTURE AS CREATE SHOW
+            ================================== -->
+
             <form
+                class="create-show-form"
                 id="showEditForm"
                 enctype="multipart/form-data"
             >
 
 
-                <div class="show-edit-grid">
+                <!-- =================================
+                     SHOW NAME
+                ================================== -->
+
+                <input
+                    type="text"
+                    name="title"
+                    id="editShowName"
+                    value="${escapeAttribute(show.title || "")}"
+                    placeholder="Show Name"
+                    required
+                >
 
 
-                    <input
-                        type="text"
-                        name="title"
-                        value="${escapeAttribute(show.title || "")}"
-                        placeholder="Show Name"
-                        required
-                    >
+                <!-- =================================
+                     VENUE
+                ================================== -->
+
+                <input
+                    type="text"
+                    name="venue"
+                    id="editVenue"
+                    value="${escapeAttribute(show.venue || "")}"
+                    placeholder="Venue / Place"
+                    required
+                >
 
 
-                    <input
-                        type="text"
-                        name="venue"
-                        value="${escapeAttribute(show.venue || "")}"
-                        placeholder="Venue / Place"
-                        required
-                    >
+                <!-- =================================
+                     ADDRESS
+                ================================== -->
+
+                <input
+                    type="text"
+                    name="address"
+                    id="editAddress"
+                    value="${escapeAttribute(show.address || "")}"
+                    placeholder="Address"
+                    required
+                >
 
 
-                    <input
-                        type="text"
-                        name="address"
-                        value="${escapeAttribute(show.address || "")}"
-                        placeholder="Address"
-                    >
+                <!-- =================================
+                     DATE
+                ================================== -->
+
+                <input
+                    type="date"
+                    name="date"
+                    id="editDate"
+                    value="${escapeAttribute(show.date || "")}"
+                    required
+                >
 
 
-                    <input
-                        type="date"
-                        name="date"
-                        value="${escapeAttribute(show.date || "")}"
-                        required
-                    >
+                <!-- =================================
+                     START TIME
+                ================================== -->
+
+                <input
+                    type="time"
+                    name="startTime"
+                    id="editStartTime"
+                    value="${escapeAttribute(show.startTime || "")}"
+                    required
+                >
 
 
-                    <input
-                        type="time"
-                        name="startTime"
-                        value="${escapeAttribute(show.startTime || "")}"
-                    >
+                <!-- =================================
+                     END TIME
+                ================================== -->
+
+                <input
+                    type="time"
+                    name="endTime"
+                    id="editEndTime"
+                    value="${escapeAttribute(show.endTime || "")}"
+                    required
+                >
 
 
-                    <input
-                        type="time"
-                        name="endTime"
-                        value="${escapeAttribute(show.endTime || "")}"
-                    >
+                <!-- =================================
+                     TICKET PRICE
+                ================================== -->
+
+                <input
+                    type="number"
+                    name="price"
+                    id="editPrice"
+                    value="${escapeAttribute(show.price || "")}"
+                    placeholder="Ticket Price (₹)"
+                >
 
 
-                    <input
-                        type="number"
-                        name="price"
-                        value="${escapeAttribute(show.price || "")}"
-                        placeholder="Ticket Price (₹)"
-                    >
+                <!-- =================================
+                     NEW POSTER
+                ================================== -->
+
+                <input
+                    type="file"
+                    name="poster"
+                    id="editPoster"
+                    accept="image/*"
+                >
 
 
-                    <input
-                        type="file"
-                        name="poster"
-                        accept="image/*"
-                    >
+                <!-- =================================
+                     EXTRA INFORMATION
+                ================================== -->
+
+                <textarea
+                    name="info"
+                    id="editInfo"
+                    class="extra-info"
+                    placeholder="Extra Information"
+                >${escapeHTML(show.info || "")}</textarea>
 
 
-                    <textarea
-                        name="info"
-                        class="show-edit-full extra-info"
-                        placeholder="Extra Information"
-                    >${escapeHTML(show.info || "")}</textarea>
+                <!-- =================================
+                     UPDATE BUTTON
+                ================================== -->
 
+                <div class="create-show-action">
+
+                    <div class="login-form">
+
+                        <button
+                            type="submit"
+                            class="login-btn"
+                        >
+                            UPDATE
+                        </button>
+
+                    </div>
 
                 </div>
 
 
-                <div class="show-edit-actions">
+                <!-- =================================
+                     CANCEL BUTTON
+                ================================== -->
 
+                <div class="create-show-action">
 
-                    <button
-                        type="submit"
-                        class="show-save-btn"
-                    >
-                        SAVE
-                    </button>
+                    <div class="login-form">
 
+                        <button
+                            type="button"
+                            class="login-btn show-cancel-btn"
+                        >
+                            CANCEL
+                        </button>
 
-                    <button
-                        type="button"
-                        class="show-cancel-btn"
-                    >
-                        CANCEL
-                    </button>
-
+                    </div>
 
                 </div>
 
@@ -620,9 +1093,7 @@ function openEditPanel(show) {
     `;
 
 
-    document.body.appendChild(
-        panel
-    );
+    document.body.appendChild(panel);
 
 
     const form =
@@ -637,8 +1108,20 @@ function openEditPanel(show) {
         );
 
 
+    const closeButton =
+        panel.querySelector(
+            ".show-edit-close"
+        );
+
+
+    const posterInput =
+        panel.querySelector(
+            "#editPoster"
+        );
+
+
     /* =================================
-       SAVE EDIT
+       UPDATE SHOW
     ================================= */
 
     form.addEventListener(
@@ -648,10 +1131,121 @@ function openEditPanel(show) {
             event.preventDefault();
 
 
-            const formData =
-                new FormData(
-                    form
+            /* =================================
+               CURRENT FORM VALUES
+            ================================= */
+
+            const currentValues = {
+
+                title:
+                    String(
+                        form.elements.title.value
+                    ),
+
+                venue:
+                    String(
+                        form.elements.venue.value
+                    ),
+
+                address:
+                    String(
+                        form.elements.address.value
+                    ),
+
+                date:
+                    String(
+                        form.elements.date.value
+                    ),
+
+                startTime:
+                    String(
+                        form.elements.startTime.value
+                    ),
+
+                endTime:
+                    String(
+                        form.elements.endTime.value
+                    ),
+
+                price:
+                    String(
+                        form.elements.price.value
+                    ),
+
+                info:
+                    String(
+                        form.elements.info.value
+                    )
+
+            };
+
+
+            /* =================================
+               CHECK TEXT / DATE / TIME CHANGES
+            ================================= */
+
+            const valuesChanged =
+                Object.keys(
+                    originalValues
+                ).some(
+                    key => {
+
+                        return (
+                            originalValues[key] !==
+                            currentValues[key]
+                        );
+
+                    }
                 );
+
+
+            /* =================================
+               CHECK POSTER CHANGE
+            ================================= */
+
+            const posterChanged =
+                posterInput.files.length > 0;
+
+
+            /* =================================
+               NOTHING CHANGED
+            ================================= */
+
+            if (
+                !valuesChanged &&
+                !posterChanged
+            ) {
+
+                alert(
+                    "No changes were made."
+                );
+
+                return;
+
+            }
+
+
+            /* =================================
+               CONFIRM UPDATE
+            ================================= */
+
+            const confirmed =
+                confirm(
+                    "Update this show with the changes?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            /* =================================
+               CREATE FORM DATA
+            ================================= */
+
+            const formData =
+                new FormData(form);
 
 
             try {
@@ -680,6 +1274,10 @@ function openEditPanel(show) {
                 }
 
 
+                /* =================================
+                   UPDATE SUCCESS
+                ================================= */
+
                 closeEditPanel();
 
 
@@ -707,7 +1305,7 @@ function openEditPanel(show) {
 
 
     /* =================================
-       CANCEL EDIT
+       CANCEL
     ================================= */
 
     cancelButton.addEventListener(
@@ -717,7 +1315,17 @@ function openEditPanel(show) {
 
 
     /* =================================
-       CLICK OUTSIDE TO CLOSE
+       CLOSE X
+    ================================= */
+
+    closeButton.addEventListener(
+        "click",
+        closeEditPanel
+    );
+
+
+    /* =================================
+       CLICK BACKDROP
     ================================= */
 
     panel.addEventListener(
@@ -797,6 +1405,21 @@ async function deleteShow(show) {
             throw new Error(
                 "Unable to delete show"
             );
+
+        }
+
+
+        /* =================================
+           KEEP CAROUSEL INDEX VALID
+        ================================= */
+
+        if (
+            activeShowIndex > 0 &&
+            activeShowIndex >=
+            manageShowsData.length - 1
+        ) {
+
+            activeShowIndex--;
 
         }
 
@@ -905,16 +1528,14 @@ function escapeHTML(value) {
 
 function escapeAttribute(value) {
 
-    return escapeHTML(
-        value
-    );
+    return escapeHTML(value);
 
 }
 
 
 
 /* =================================
-   LOAD MANAGE SHOWS
+   START MANAGE SHOWS
 ================================= */
 
 loadManageShows();
