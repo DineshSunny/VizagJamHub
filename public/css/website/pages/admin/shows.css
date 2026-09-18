@@ -2,421 +2,1442 @@
    VIZAG JAMHUB - MANAGE SHOWS
 ================================= */
 
+
+/* =================================================================
+   PAGE
+================================================================= */
+
 .shows-page {
+
     position: relative;
+
     z-index: 3;
+
     width: 100%;
     min-height: 100vh;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
-    padding: 58px 0 30px;
+
+    padding: 70px 0 40px;
+
     overflow: hidden;
+
 }
+
+
+/* =================================================================
+   HEADING
+================================================================= */
 
 .shows-heading {
+
     position: relative;
+
     z-index: 40;
+
     width: 100%;
+
+    margin-bottom: 28px;
+
     padding: 0 20px;
-    margin-bottom: 2px;
+
     text-align: center;
+
 }
+
 
 .shows-page .admin-title {
+
     display: inline-block;
+
     margin: 0;
-    color: rgba(240,250,255,.98);
-    font-size: clamp(54px,6.5vw,94px);
-    font-weight: 900;
-    line-height: .95;
-    letter-spacing: 1px;
-    -webkit-text-stroke: 1px rgba(255,255,255,.72);
+
+    color: rgba(255,255,255,0.96);
+
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 2px;
+
     text-shadow:
-        0 1px 0 #fff,
-        0 0 5px rgba(255,255,255,.95),
-        0 0 12px rgba(102,211,255,.95),
-        0 0 25px rgba(49,135,255,.85),
-        0 0 42px rgba(118,73,255,.65),
-        0 0 58px rgba(227,75,255,.38);
-    filter: drop-shadow(0 10px 25px rgba(40,123,255,.35));
+        0 0 10px rgba(255,255,255,0.10),
+        0 0 22px rgba(0,212,255,0.16);
+
+    filter: none;
+
+    -webkit-text-stroke: 0;
+
 }
+
 
 .shows-subtitle {
-    margin: 14px 0 0;
-    color: rgba(218,235,255,.85);
+
+    margin: 16px 0 0;
+
+    color: rgba(255,255,255,0.68);
+
     font-size: 12px;
     font-weight: 500;
+
     letter-spacing: 6px;
-    text-shadow: 0 0 10px rgba(69,165,255,.4);
+
+    text-transform: uppercase;
+
+    text-shadow: none;
+
 }
+
+
+/* =================================================================
+   CAROUSEL VIEWPORT
+================================================================= */
 
 .manage-shows-stage {
+
     position: relative;
+
     width: 100%;
-    height: 720px;
+    height: 690px;
+
     overflow: hidden;
-    perspective: 1800px;
+
+    perspective: 1500px;
+
 }
+
+
+/* =================================
+   EDGE FADES
+================================= */
+
+.manage-shows-stage::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 50;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.62) 0%,
+            transparent 11%,
+            transparent 89%,
+            rgba(0,0,0,0.62) 100%
+        );
+
+}
+
+
+/* =================================
+   SUBTLE STAGE / FLOOR
+================================= */
+
+.manage-shows-stage::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 15px;
+
+    width: 88%;
+    height: 100px;
+
+    transform:
+        translateX(-50%)
+        perspective(700px)
+        rotateX(68deg);
+
+    transform-origin:
+        center bottom;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.04),
+            rgba(0,212,255,0.018),
+            transparent
+        );
+
+    border-top:
+        1px solid rgba(255,255,255,0.06);
+
+    border-radius:
+        50% 50% 0 0;
+
+}
+
+
+/* =================================================================
+   CAROUSEL
+================================================================= */
 
 .manage-shows {
+
     position: relative;
+
     width: 100%;
     height: 100%;
+
     overflow: visible;
+
     transform-style: preserve-3d;
+
     touch-action: pan-y;
+
 }
+
+
+/* =================================================================
+   SHOW ITEM
+================================================================= */
 
 .manage-show-item {
+
     position: absolute;
-    top: 18px;
+
+    top: 10px;
     left: 50%;
-    width: clamp(310px,27vw,430px);
+
+    width: 350px;
+
     opacity: 0;
+
     cursor: pointer;
+
     transform-style: preserve-3d;
-    transform-origin: center center;
+
+    transform-origin: center bottom;
+
+    will-change:
+        transform,
+        opacity;
+
     transition:
-        transform .58s cubic-bezier(.22,.8,.25,1),
-        opacity .5s ease,
-        filter .5s ease;
+        transform 0.9s cubic-bezier(.22,.61,.36,1),
+        opacity 0.8s ease,
+        filter 0.8s ease;
+
 }
+
+
+/* =================================================================
+   ACTIVE / CENTER
+================================================================= */
 
 .manage-show-item.active {
+
     z-index: 30;
+
     opacity: 1;
-    filter: none;
+
     cursor: default;
-    transform: translateX(-50%) translateZ(120px) scale(1.04);
+
+    filter:
+        brightness(1);
+
+    transform:
+        translateX(-50%)
+        translateZ(80px)
+        rotateY(0deg)
+        scale(1);
+
 }
+
+
+/* =================================================================
+   LEFT
+================================================================= */
 
 .manage-show-item.left {
+
     z-index: 20;
-    opacity: .84;
-    filter: brightness(.72) saturate(.88);
-    transform: translateX(-142%) translateZ(-110px) rotateY(8deg) scale(.86);
+
+    opacity: 0.82;
+
+    filter:
+        brightness(0.78);
+
+    transform:
+        translateX(calc(-50% - 355px))
+        translateZ(-100px)
+        rotateY(28deg)
+        scale(0.88);
+
 }
+
+
+/* =================================================================
+   RIGHT
+================================================================= */
 
 .manage-show-item.right {
+
     z-index: 20;
-    opacity: .84;
-    filter: brightness(.72) saturate(.88);
-    transform: translateX(42%) translateZ(-110px) rotateY(-8deg) scale(.86);
+
+    opacity: 0.82;
+
+    filter:
+        brightness(0.78);
+
+    transform:
+        translateX(calc(-50% + 355px))
+        translateZ(-100px)
+        rotateY(-28deg)
+        scale(0.88);
+
 }
+
+
+/* =================================================================
+   FAR LEFT
+================================================================= */
 
 .manage-show-item.far-left {
+
     z-index: 10;
-    opacity: .55;
-    filter: brightness(.48) saturate(.65);
-    transform: translateX(-220%) translateZ(-260px) rotateY(12deg) scale(.72);
+
+    opacity: 0.38;
+
+    filter:
+        brightness(0.52)
+        blur(0.4px);
+
+    transform:
+        translateX(calc(-50% - 650px))
+        translateZ(-250px)
+        rotateY(38deg)
+        scale(0.70);
+
 }
+
+
+/* =================================================================
+   FAR RIGHT
+================================================================= */
 
 .manage-show-item.far-right {
+
     z-index: 10;
-    opacity: .55;
-    filter: brightness(.48) saturate(.65);
-    transform: translateX(120%) translateZ(-260px) rotateY(-12deg) scale(.72);
+
+    opacity: 0.38;
+
+    filter:
+        brightness(0.52)
+        blur(0.4px);
+
+    transform:
+        translateX(calc(-50% + 650px))
+        translateZ(-250px)
+        rotateY(-38deg)
+        scale(0.70);
+
 }
+
+
+/* =================================================================
+   HIDDEN CARDS
+================================================================= */
 
 .manage-show-item.hidden {
+
     z-index: 1;
+
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
-    transform: translateX(-50%) translateZ(-500px) scale(.60);
+
+    transform:
+        translateX(-50%)
+        translateZ(-400px)
+        scale(0.55);
+
 }
+
+
+/* =================================================================
+   SHOW CARD
+================================================================= */
 
 .manage-show-card {
+
     position: relative;
-    width: 100%;
+
+    width: 350px;
+    height: 570px;
+
+    padding: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
     overflow: hidden;
-    border: 1px solid rgba(127,202,255,.30);
-    border-radius: 24px;
-    background: linear-gradient(145deg,rgba(18,39,72,.82),rgba(5,13,30,.94));
-    backdrop-filter: blur(28px) saturate(145%);
-    -webkit-backdrop-filter: blur(28px) saturate(145%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.17),0 25px 60px rgba(0,0,0,.58);
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.12),
+            rgba(255,255,255,0.035)
+        );
+
+    backdrop-filter:
+        blur(18px)
+        saturate(145%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(145%);
+
+    border:
+        1px solid rgba(255,255,255,0.30);
+
+    border-radius: 20px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        0 18px 45px rgba(0,0,0,0.38);
+
+    transition:
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        background 0.4s ease;
+
 }
+
+
+/* =================================
+   SUBTLE GLASS LIGHT
+================================= */
 
 .manage-show-card::before {
+
     content: "";
+
     position: absolute;
-    inset: 0;
-    z-index: 4;
-    border-radius: inherit;
+
+    top: -60%;
+    left: -70%;
+
+    z-index: 2;
+
+    width: 45%;
+    height: 220%;
+
     pointer-events: none;
-    background: linear-gradient(125deg,rgba(255,255,255,.10),transparent 22%,transparent 72%,rgba(161,74,255,.08));
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.10),
+            transparent
+        );
+
+    transform:
+        rotate(20deg);
+
+    transition:
+        left 0.8s ease;
+
 }
 
-.manage-show-item.active .manage-show-card {
-    border-color: rgba(105,218,255,.95);
+
+/* =================================
+   ACTIVE CARD
+================================= */
+
+.manage-show-item.active
+.manage-show-card {
+
+    border-color:
+        rgba(255,255,255,0.72);
+
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.28),
-        0 0 7px rgba(112,224,255,.95),
-        0 0 25px rgba(41,160,255,.60),
-        0 0 48px rgba(92,76,255,.38),
-        0 0 68px rgba(221,64,255,.15),
-        0 32px 75px rgba(0,0,0,.68);
+        inset 0 1px 0 rgba(255,255,255,0.20),
+        0 0 15px rgba(0,212,255,0.10),
+        0 25px 55px rgba(0,0,0,0.45);
+
 }
+
+
+/* =================================
+   ACTIVE CARD HOVER
+================================= */
+
+.manage-show-item.active
+.manage-show-card:hover {
+
+    border-color:
+        rgba(0,212,255,0.62);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        0 0 15px rgba(0,212,255,0.18),
+        0 0 35px rgba(0,212,255,0.08),
+        0 28px 60px rgba(0,0,0,0.48);
+
+}
+
+
+.manage-show-item.active
+.manage-show-card:hover::before {
+
+    left: 135%;
+
+}
+
+
+/* =================================================================
+   POSTER FRAME
+================================================================= */
 
 .manage-poster-frame {
+
     position: relative;
-    margin: 17px 17px 0;
-    aspect-ratio: 1.28 / 1;
+
+    z-index: 3;
+
+    width: 100%;
+    height: 275px;
+
+    flex-shrink: 0;
+
+    margin: 0;
+
     overflow: hidden;
-    border: 1px solid rgba(137,219,255,.78);
-    border-radius: 18px;
-    background: rgba(3,10,24,.72);
-    box-shadow: inset 0 0 20px rgba(50,180,255,.17),0 0 8px rgba(75,201,255,.55),0 0 22px rgba(95,82,255,.22);
+
+    background:
+        rgba(0,0,0,0.25);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.35);
+
 }
+
+
+/* =================================================================
+   POSTER
+================================================================= */
 
 .manage-poster {
+
     display: block;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+
     object-position: center;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
 }
+
+
+/* =================================
+   NO POSTER
+================================= */
 
 .manage-poster-empty {
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    color: rgba(140,210,255,.5);
-    font-size: 56px;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 52px;
+
 }
+
+
+/* =================================================================
+   SHOW INFORMATION
+================================================================= */
 
 .manage-info {
+
     position: relative;
+
     z-index: 5;
-    padding: 17px 25px 22px;
-    background: linear-gradient(180deg,rgba(11,27,52,.28),rgba(5,13,30,.54));
+
+    width: 100%;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 17px 2px 0;
+
+    background: none;
+
 }
+
+
+/* =================================
+   TITLE
+================================= */
 
 .manage-info h2 {
-    margin: 0 0 12px;
-    color: #fff;
-    font-size: 26px;
-    font-weight: 700;
+
+    margin:
+        0 0 10px;
+
+    overflow: hidden;
+
+    color: white;
+
+    font-size: 22px;
+    font-weight: 600;
+
     line-height: 1.2;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
 }
+
+
+/* =================================
+   INFORMATION ROWS
+================================= */
 
 .manage-info p {
+
+    width: 100%;
+
+    margin: 4px 0;
+
     display: flex;
-    align-items: flex-start;
-    gap: 11px;
-    margin: 6px 0;
-    color: rgba(220,235,255,.80);
+
+    align-items: center;
+
+    gap: 10px;
+
+    overflow: hidden;
+
+    color:
+        rgba(255,255,255,0.72);
+
     font-size: 13px;
-    line-height: 1.45;
+
+    line-height: 1.35;
+
 }
+
+
+/* =================================
+   INFORMATION ICONS
+================================= */
 
 .manage-info p i {
-    width: 18px;
+
+    width: 17px;
+
     flex-shrink: 0;
-    margin-top: 3px;
-    color: rgba(159,207,255,.95);
+
+    margin: 0;
+
+    color:
+        rgba(180,215,255,0.88);
+
     text-align: center;
+
 }
+
+
+/* =================================
+   INFORMATION TEXT
+================================= */
+
+.manage-info p span {
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+/* =================================
+   PRICE
+================================= */
 
 .manage-info .show-price {
-    margin-top: 9px;
-    color: #fff;
+
+    margin-top: 7px;
+
+    color: #00d4ff;
+
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 700;
+
 }
+
+
+/* =================================
+   DESCRIPTION
+================================= */
+
+.manage-info .show-description {
+
+    align-items: flex-start;
+
+    margin-top: 6px;
+
+}
+
 
 .show-description span {
+
     display: -webkit-box;
+
     overflow: hidden;
+
+    white-space: normal;
+
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+
 }
+
+
+/* =================================================================
+   EDIT / DELETE BUTTON AREA
+================================================================= */
 
 .showButtons {
+
     position: relative;
-    z-index: 30;
+
+    z-index: 20;
+
+    width: 100%;
+
+    margin-top: auto;
+    padding-top: 13px;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    margin-top: 17px;
+
+    gap: 12px;
+
 }
+
+
+/* =================================================================
+   EDIT / DELETE BUTTONS
+================================================================= */
 
 .showButtons button {
-    display: inline-flex;
+
+    height: 42px;
+
     flex: 1;
+
+    display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
     gap: 8px;
-    height: 48px;
-    padding: 0 16px;
-    border-radius: 14px;
-    color: #fff;
+
+    padding: 0 14px;
+
+    color: white;
+
     font: inherit;
-    font-size: 14px;
-    font-weight: 700;
+
+    font-size: 13px;
+    font-weight: 600;
+
     cursor: pointer;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    transition: transform .25s ease,box-shadow .25s ease,background .25s ease;
+
+    background:
+        rgba(20,20,20,0.32);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    border:
+        1px solid rgba(255,255,255,0.38);
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+
 }
 
-.edit-show-btn {
-    border: 1px solid rgba(65,188,255,.85);
-    background: rgba(24,116,213,.20);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.12),0 0 14px rgba(32,158,255,.18);
-}
+
+/* =================================
+   EDIT
+================================= */
 
 .edit-show-btn:hover {
-    transform: translateY(-2px);
-    background: rgba(30,140,255,.28);
-    box-shadow: 0 0 12px rgba(42,180,255,.65),0 0 28px rgba(42,126,255,.35);
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(0,212,255,0.72);
+
+    background:
+        rgba(0,212,255,0.08);
+
+    box-shadow:
+        0 0 10px rgba(0,212,255,0.20);
+
 }
 
-.delete-show-btn {
-    border: 1px solid rgba(255,72,145,.90);
-    background: rgba(204,27,87,.18);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.10),0 0 14px rgba(255,42,121,.18);
-}
+
+/* =================================
+   DELETE
+================================= */
 
 .delete-show-btn:hover {
-    transform: translateY(-2px);
-    background: rgba(238,32,103,.26);
-    box-shadow: 0 0 12px rgba(255,60,135,.70),0 0 30px rgba(255,40,110,.35);
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(255,85,120,0.75);
+
+    background:
+        rgba(255,60,95,0.08);
+
+    box-shadow:
+        0 0 10px rgba(255,60,100,0.18);
+
 }
+
+
+/* =================================================================
+   EMPTY / ERROR MESSAGE
+================================================================= */
 
 .manage-shows-empty,
 .shows-message {
+
     position: absolute;
+
     top: 100px;
     left: 50%;
-    transform: translateX(-50%);
-    width: min(500px,90vw);
+
+    width:
+        min(500px,90vw);
+
     padding: 30px;
+
+    transform:
+        translateX(-50%);
+
+    color: white;
+
     text-align: center;
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 18px;
-    background: rgba(5,13,30,.72);
-    backdrop-filter: blur(20px);
+
+    background:
+        rgba(20,20,20,0.35);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    border:
+        1px solid rgba(255,255,255,0.30);
+
+    border-radius: 14px;
+
 }
 
-/* =================================
-   EDIT SHOW POPUP
-   SAME FORM LANGUAGE AS CREATE SHOW
-================================= */
 
-body.show-edit-open { overflow: hidden; }
+/* =================================================================
+   EDIT SHOW POPUP
+================================================================= */
+
+body.show-edit-open {
+
+    overflow: hidden;
+
+}
+
 
 .show-edit-panel {
+
     position: fixed;
+
     inset: 0;
+
     z-index: 20000;
+
     display: flex;
+
     align-items: flex-start;
     justify-content: center;
+
     overflow-y: auto;
-    padding: 45px 20px;
-    background: rgba(2,5,15,.62);
-    backdrop-filter: blur(20px) saturate(130%);
-    -webkit-backdrop-filter: blur(20px) saturate(130%);
+
+    padding:
+        45px 20px;
+
+    background:
+        rgba(0,0,0,0.72);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
 }
+
+
+/* =================================================================
+   EDIT CONTAINER
+================================================================= */
 
 .show-edit-container {
+
     position: relative;
-    width: min(620px,94vw);
-    padding: 32px 30px 36px;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 24px;
-    background: linear-gradient(145deg,rgba(18,34,64,.88),rgba(5,13,30,.94));
-    box-shadow: 0 0 30px rgba(0,212,255,.14),0 30px 80px rgba(0,0,0,.55);
+
+    width:
+        min(600px,94vw);
+
+    padding:
+        32px 30px 36px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.12),
+            rgba(15,15,15,0.70)
+        );
+
+    backdrop-filter:
+        blur(20px)
+        saturate(145%);
+
+    -webkit-backdrop-filter:
+        blur(20px)
+        saturate(145%);
+
+    border:
+        1px solid rgba(255,255,255,0.30);
+
+    border-radius: 20px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        0 25px 70px rgba(0,0,0,0.55);
+
 }
 
-.show-edit-container .show-edit-title {
+
+/* =================================================================
+   EDIT TITLE
+================================================================= */
+
+.show-edit-container
+.show-edit-title {
+
     display: block;
-    margin: 0 0 24px;
-    font-size: 42px;
+
+    margin:
+        0 0 24px;
+
+    color: white;
+
+    font-size: 36px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
     text-align: center;
+
 }
+
+
+/* =================================================================
+   CLOSE BUTTON
+================================================================= */
 
 .show-edit-close {
+
     position: absolute;
-    top: 18px;
-    right: 18px;
+
+    top: 16px;
+    right: 16px;
+
     z-index: 5;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(255,255,255,.20);
-    border-radius: 50%;
-    background: rgba(255,255,255,.06);
-    color: #fff;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    color: white;
+
     cursor: pointer;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    border:
+        1px solid rgba(255,255,255,0.20);
+
+    border-radius: 50%;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+
 }
 
-.show-edit-container .create-show-form {
-    width: 100%;
+
+.show-edit-close:hover {
+
+    transform:
+        rotate(90deg);
+
+    background:
+        rgba(255,255,255,0.12);
+
+    border-color:
+        rgba(255,255,255,0.40);
+
 }
 
-.edit-current-poster {
+
+/* =================================================================
+   CURRENT POSTER
+================================================================= */
+
+.show-edit-current-poster {
+
     position: relative;
+
     width: 100%;
+    height: 220px;
+
+    margin-bottom: 20px;
+
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 14px;
-    background: rgba(0,0,0,.25);
+
+    background:
+        rgba(0,0,0,0.25);
+
+    border:
+        1px solid rgba(255,255,255,0.18);
+
+    border-radius: 13px;
+
 }
 
-.edit-current-poster img {
+
+.show-edit-current-poster img {
+
     display: block;
+
     width: 100%;
-    max-height: 220px;
+    height: 100%;
+
     object-fit: cover;
+
+    object-position: center;
+
 }
 
-.edit-current-poster span {
+
+.show-edit-current-poster p {
+
     position: absolute;
+
     left: 12px;
-    bottom: 12px;
-    padding: 5px 9px;
-    border-radius: 8px;
-    background: rgba(0,0,0,.72);
-    color: #fff;
+    bottom: 10px;
+
+    margin: 0;
+
+    padding:
+        5px 9px;
+
+    color: white;
+
     font-size: 12px;
+
+    background:
+        rgba(0,0,0,0.70);
+
+    border-radius: 7px;
+
 }
 
-.show-edit-actions .login-form {
+
+/* =================================================================
+   EDIT FORM
+   REUSES CREATE SHOW FORM
+================================================================= */
+
+.show-edit-container
+.create-show-form {
+
     width: 100%;
+
 }
 
-.show-edit-actions .show-cancel-btn:hover {
-    border-color: rgba(255,90,120,.75);
-    background: rgba(255,50,80,.12);
-    box-shadow: 0 0 20px rgba(255,50,90,.20);
+
+/* =================================
+   MAKE EDIT FIELDS CONSISTENT
+================================= */
+
+.show-edit-container
+.create-show-form input,
+
+.show-edit-container
+.create-show-form textarea {
+
+    width: 100%;
+
 }
+
+
+/* =================================================================
+   EDIT FORM ACTIONS
+================================================================= */
+
+.show-edit-container
+.create-show-action {
+
+    width: 100%;
+
+}
+
+
+.show-edit-container
+.login-form {
+
+    width: 100%;
+
+}
+
+
+/* =================================
+   CANCEL BUTTON
+================================= */
+
+.show-edit-container
+.show-cancel-btn:hover {
+
+    border-color:
+        rgba(255,85,120,0.72);
+
+    background:
+        rgba(255,60,95,0.08);
+
+    box-shadow:
+        0 0 15px rgba(255,60,100,0.16);
+
+}
+
+
+/* =================================================================
+   TABLET
+================================================================= */
 
 @media screen and (max-width:1100px) {
-    .manage-show-item { width: clamp(300px,34vw,390px); }
-    .manage-show-item.left { transform: translateX(-132%) translateZ(-110px) rotateY(8deg) scale(.82); }
-    .manage-show-item.right { transform: translateX(32%) translateZ(-110px) rotateY(-8deg) scale(.82); }
-    .manage-show-item.far-left { transform: translateX(-202%) translateZ(-250px) rotateY(12deg) scale(.68); }
-    .manage-show-item.far-right { transform: translateX(102%) translateZ(-250px) rotateY(-12deg) scale(.68); }
+
+    .manage-show-item {
+
+        width: 330px;
+
+    }
+
+
+    .manage-show-card {
+
+        width: 330px;
+
+    }
+
+
+    .manage-show-item.left {
+
+        transform:
+            translateX(calc(-50% - 300px))
+            translateZ(-100px)
+            rotateY(25deg)
+            scale(0.84);
+
+    }
+
+
+    .manage-show-item.right {
+
+        transform:
+            translateX(calc(-50% + 300px))
+            translateZ(-100px)
+            rotateY(-25deg)
+            scale(0.84);
+
+    }
+
+
+    .manage-show-item.far-left {
+
+        transform:
+            translateX(calc(-50% - 530px))
+            translateZ(-240px)
+            rotateY(35deg)
+            scale(0.66);
+
+    }
+
+
+    .manage-show-item.far-right {
+
+        transform:
+            translateX(calc(-50% + 530px))
+            translateZ(-240px)
+            rotateY(-35deg)
+            scale(0.66);
+
+    }
+
 }
 
+
+/* =================================================================
+   MOBILE
+================================================================= */
+
 @media screen and (max-width:768px) {
-    .shows-page { padding: 70px 0 25px; }
-    .shows-page .admin-title { font-size: clamp(38px,12vw,58px); }
-    .shows-subtitle { margin-top: 12px; font-size: 9px; letter-spacing: 2px; }
-    .manage-shows-stage { height: 660px; }
-    .manage-show-item { top: 20px; width: min(82vw,350px); }
-    .manage-show-item.active { transform: translateX(-50%) translateZ(80px) scale(1); }
-    .manage-show-item.left { opacity: .42; transform: translateX(-118%) translateZ(-130px) rotateY(8deg) scale(.76); }
-    .manage-show-item.right { opacity: .42; transform: translateX(18%) translateZ(-130px) rotateY(-8deg) scale(.76); }
-    .manage-show-item.far-left,.manage-show-item.far-right { opacity: 0; visibility: hidden; pointer-events: none; }
-    .manage-poster-frame { margin: 14px 14px 0; }
-    .manage-info { padding: 16px 18px 20px; }
-    .manage-info h2 { font-size: 23px; }
-    .show-edit-panel { padding: 20px 12px; }
-    .show-edit-container { width: 100%; padding: 28px 18px; }
-    .show-edit-container .show-edit-title { font-size: 32px; }
+
+    .shows-page {
+
+        padding:
+            70px 0 25px;
+
+    }
+
+
+    .shows-heading {
+
+        margin-bottom: 22px;
+
+    }
+
+
+    .shows-page
+    .admin-title {
+
+        font-size:
+            clamp(34px,10vw,48px);
+
+    }
+
+
+    .shows-subtitle {
+
+        margin-top: 11px;
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .manage-shows-stage {
+
+        height: 650px;
+
+    }
+
+
+    .manage-show-item {
+
+        top: 5px;
+
+        width:
+            min(82vw,340px);
+
+    }
+
+
+    .manage-show-card {
+
+        width: 100%;
+        height: 555px;
+
+        padding: 18px;
+
+    }
+
+
+    .manage-poster-frame {
+
+        height: 260px;
+
+    }
+
+
+    .manage-show-item.active {
+
+        transform:
+            translateX(-50%)
+            translateZ(60px)
+            scale(1);
+
+    }
+
+
+    .manage-show-item.left {
+
+        opacity: 0.32;
+
+        transform:
+            translateX(calc(-50% - 235px))
+            translateZ(-130px)
+            rotateY(24deg)
+            scale(0.74);
+
+    }
+
+
+    .manage-show-item.right {
+
+        opacity: 0.32;
+
+        transform:
+            translateX(calc(-50% + 235px))
+            translateZ(-130px)
+            rotateY(-24deg)
+            scale(0.74);
+
+    }
+
+
+    .manage-show-item.far-left,
+    .manage-show-item.far-right {
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+    }
+
+
+    .manage-info h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .manage-info p {
+
+        font-size: 12px;
+
+    }
+
+
+    .showButtons button {
+
+        height: 40px;
+
+        font-size: 12px;
+
+    }
+
+
+    /* =================================
+       EDIT POPUP MOBILE
+    ================================= */
+
+    .show-edit-panel {
+
+        padding:
+            20px 12px;
+
+    }
+
+
+    .show-edit-container {
+
+        width: 100%;
+
+        padding:
+            28px 18px;
+
+    }
+
+
+    .show-edit-container
+    .show-edit-title {
+
+        font-size: 30px;
+
+    }
+
+
+    .show-edit-current-poster {
+
+        height: 190px;
+
+    }
+
 }
