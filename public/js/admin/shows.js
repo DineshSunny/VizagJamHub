@@ -203,11 +203,6 @@ async function loadManageShows() {
 
                     <div class="manage-show-card">
 
-
-                        <!-- =============================
-                             POSTER
-                        ============================== -->
-
                         <div class="manage-poster-frame">
 
                             ${
@@ -235,12 +230,7 @@ async function loadManageShows() {
                         </div>
 
 
-                        <!-- =============================
-                             SHOW INFORMATION
-                        ============================== -->
-
                         <div class="manage-info">
-
 
                             <h2>
                                 ${escapeHTML(show.title || "")}
@@ -355,12 +345,7 @@ async function loadManageShows() {
                             }
 
 
-                            <!-- =============================
-                                 EDIT / DELETE
-                            ============================== -->
-
                             <div class="showButtons">
-
 
                                 <button
                                     type="button"
@@ -389,12 +374,9 @@ async function loadManageShows() {
 
                                 </button>
 
-
                             </div>
 
-
                         </div>
-
 
                     </div>
 
@@ -415,20 +397,16 @@ async function loadManageShows() {
                         if (
                             event.target.closest("button")
                         ) {
-
                             return;
-
                         }
 
 
                         if (
-                            index !==
-                            activeShowIndex
+                            index !== activeShowIndex
                         ) {
 
                             activeShowIndex =
                                 index;
-
 
                             updateCarouselPositions();
 
@@ -454,7 +432,6 @@ async function loadManageShows() {
 
                         event.stopPropagation();
 
-
                         openEditPanel(show);
 
                     }
@@ -476,7 +453,6 @@ async function loadManageShows() {
                     event => {
 
                         event.stopPropagation();
-
 
                         deleteShow(show);
 
@@ -665,9 +641,7 @@ function setupCarouselControls(container) {
         container.dataset.controlsReady ===
         "true"
     ) {
-
         return;
-
     }
 
 
@@ -700,9 +674,7 @@ function setupCarouselControls(container) {
             if (
                 Math.abs(movement) < 10
             ) {
-
                 return;
-
             }
 
 
@@ -779,9 +751,7 @@ function setupCarouselControls(container) {
             if (
                 Math.abs(distance) < 45
             ) {
-
                 return;
-
             }
 
 
@@ -815,11 +785,6 @@ function openEditPanel(show) {
 
     closeEditPanel();
 
-
-    /* =================================
-       ORIGINAL VALUES
-       USED FOR CHANGE DETECTION
-    ================================= */
 
     const originalValues = {
 
@@ -864,11 +829,6 @@ function openEditPanel(show) {
 
         <div class="show-edit-container">
 
-
-            <!-- =================================
-                 CLOSE BUTTON
-            ================================== -->
-
             <button
                 type="button"
                 class="show-edit-close"
@@ -880,18 +840,10 @@ function openEditPanel(show) {
             </button>
 
 
-            <!-- =================================
-                 TITLE
-            ================================== -->
-
             <h2 class="show-edit-title">
                 EDIT SHOW
             </h2>
 
-
-            <!-- =================================
-                 CURRENT POSTER
-            ================================== -->
 
             ${
                 show.poster
@@ -915,21 +867,11 @@ function openEditPanel(show) {
             }
 
 
-            <!-- =================================
-                 EDIT FORM
-                 SAME STRUCTURE AS CREATE SHOW
-            ================================== -->
-
             <form
                 class="create-show-form"
                 id="showEditForm"
                 enctype="multipart/form-data"
             >
-
-
-                <!-- =================================
-                     SHOW NAME
-                ================================== -->
 
                 <input
                     type="text"
@@ -940,11 +882,6 @@ function openEditPanel(show) {
                     required
                 >
 
-
-                <!-- =================================
-                     VENUE
-                ================================== -->
-
                 <input
                     type="text"
                     name="venue"
@@ -953,11 +890,6 @@ function openEditPanel(show) {
                     placeholder="Venue / Place"
                     required
                 >
-
-
-                <!-- =================================
-                     ADDRESS
-                ================================== -->
 
                 <input
                     type="text"
@@ -968,11 +900,6 @@ function openEditPanel(show) {
                     required
                 >
 
-
-                <!-- =================================
-                     DATE
-                ================================== -->
-
                 <input
                     type="date"
                     name="date"
@@ -980,11 +907,6 @@ function openEditPanel(show) {
                     value="${escapeAttribute(show.date || "")}"
                     required
                 >
-
-
-                <!-- =================================
-                     START TIME
-                ================================== -->
 
                 <input
                     type="time"
@@ -994,11 +916,6 @@ function openEditPanel(show) {
                     required
                 >
 
-
-                <!-- =================================
-                     END TIME
-                ================================== -->
-
                 <input
                     type="time"
                     name="endTime"
@@ -1006,11 +923,6 @@ function openEditPanel(show) {
                     value="${escapeAttribute(show.endTime || "")}"
                     required
                 >
-
-
-                <!-- =================================
-                     TICKET PRICE
-                ================================== -->
 
                 <input
                     type="number"
@@ -1020,22 +932,12 @@ function openEditPanel(show) {
                     placeholder="Ticket Price (₹)"
                 >
 
-
-                <!-- =================================
-                     NEW POSTER
-                ================================== -->
-
                 <input
                     type="file"
                     name="poster"
                     id="editPoster"
                     accept="image/*"
                 >
-
-
-                <!-- =================================
-                     EXTRA INFORMATION
-                ================================== -->
 
                 <textarea
                     name="info"
@@ -1044,10 +946,6 @@ function openEditPanel(show) {
                     placeholder="Extra Information"
                 >${escapeHTML(show.info || "")}</textarea>
 
-
-                <!-- =================================
-                     UPDATE BUTTON
-                ================================== -->
 
                 <div class="create-show-action">
 
@@ -1065,10 +963,6 @@ function openEditPanel(show) {
                 </div>
 
 
-                <!-- =================================
-                     CANCEL BUTTON
-                ================================== -->
-
                 <div class="create-show-action">
 
                     <div class="login-form">
@@ -1084,9 +978,7 @@ function openEditPanel(show) {
 
                 </div>
 
-
             </form>
-
 
         </div>
 
@@ -1130,10 +1022,6 @@ function openEditPanel(show) {
 
             event.preventDefault();
 
-
-            /* =================================
-               CURRENT FORM VALUES
-            ================================= */
 
             const currentValues = {
 
@@ -1180,10 +1068,6 @@ function openEditPanel(show) {
             };
 
 
-            /* =================================
-               CHECK TEXT / DATE / TIME CHANGES
-            ================================= */
-
             const valuesChanged =
                 Object.keys(
                     originalValues
@@ -1199,17 +1083,9 @@ function openEditPanel(show) {
                 );
 
 
-            /* =================================
-               CHECK POSTER CHANGE
-            ================================= */
-
             const posterChanged =
                 posterInput.files.length > 0;
 
-
-            /* =================================
-               NOTHING CHANGED
-            ================================= */
 
             if (
                 !valuesChanged &&
@@ -1225,10 +1101,6 @@ function openEditPanel(show) {
             }
 
 
-            /* =================================
-               CONFIRM UPDATE
-            ================================= */
-
             const confirmed =
                 confirm(
                     "Update this show with the changes?"
@@ -1239,10 +1111,6 @@ function openEditPanel(show) {
                 return;
             }
 
-
-            /* =================================
-               CREATE FORM DATA
-            ================================= */
 
             const formData =
                 new FormData(form);
@@ -1274,15 +1142,10 @@ function openEditPanel(show) {
                 }
 
 
-                /* =================================
-                   UPDATE SUCCESS
-                ================================= */
-
                 closeEditPanel();
 
 
                 await loadManageShows();
-
 
             }
 
@@ -1304,29 +1167,17 @@ function openEditPanel(show) {
     );
 
 
-    /* =================================
-       CANCEL
-    ================================= */
-
     cancelButton.addEventListener(
         "click",
         closeEditPanel
     );
 
 
-    /* =================================
-       CLOSE X
-    ================================= */
-
     closeButton.addEventListener(
         "click",
         closeEditPanel
     );
 
-
-    /* =================================
-       CLICK BACKDROP
-    ================================= */
 
     panel.addEventListener(
         "click",
@@ -1409,10 +1260,6 @@ async function deleteShow(show) {
         }
 
 
-        /* =================================
-           KEEP CAROUSEL INDEX VALID
-        ================================= */
-
         if (
             activeShowIndex > 0 &&
             activeShowIndex >=
@@ -1425,7 +1272,6 @@ async function deleteShow(show) {
 
 
         await loadManageShows();
-
 
     }
 
@@ -1539,3 +1385,247 @@ function escapeAttribute(value) {
 ================================= */
 
 loadManageShows();
+
+
+
+/* =================================
+   CREATE SHOW
+================================= */
+
+const createShowForm =
+    document.getElementById(
+        "showForm"
+    );
+
+
+if (createShowForm) {
+
+    let showCreatedSuccessfully =
+        false;
+
+
+    /* =================================
+       CREATE SHOW SUBMISSION
+    ================================= */
+
+    createShowForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const createButton =
+                createShowForm.querySelector(
+                    'button[type="submit"]'
+                );
+
+
+            const formData =
+                new FormData(
+                    createShowForm
+                );
+
+
+            try {
+
+                /* =================================
+                   PREVENT DOUBLE SUBMISSION
+                ================================= */
+
+                if (createButton) {
+
+                    createButton.disabled =
+                        true;
+
+                    createButton.textContent =
+                        "CREATING...";
+
+                }
+
+
+                /* =================================
+                   SAVE SHOW TO MASTER DATABASE
+                ================================= */
+
+                const response =
+                    await fetch(
+                        "/api/shows",
+                        {
+
+                            method:
+                                "POST",
+
+                            body:
+                                formData
+
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to create show"
+                    );
+
+                }
+
+
+                /* =================================
+                   SERVER CONFIRMED SHOW
+                ================================= */
+
+                const createdShow =
+                    await response.json();
+
+
+                console.log(
+                    "SHOW CREATED:",
+                    createdShow
+                );
+
+
+                /* =================================
+                   RESET ALL CREATE SHOW FIELDS
+                ================================= */
+
+                createShowForm.reset();
+
+
+                const posterInput =
+                    document.getElementById(
+                        "poster"
+                    );
+
+
+                if (posterInput) {
+
+                    posterInput.value = "";
+
+                }
+
+
+                if (
+                    document.activeElement &&
+                    typeof document.activeElement.blur ===
+                        "function"
+                ) {
+
+                    document.activeElement.blur();
+
+                }
+
+
+                /* =================================
+                   MARK CREATION COMPLETE
+                ================================= */
+
+                showCreatedSuccessfully =
+                    true;
+
+
+                /* =================================
+                   SUCCESS NOTIFICATION
+                ================================= */
+
+                alert(
+                    "Show created successfully."
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "CREATE SHOW ERROR:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to create show."
+                );
+
+            }
+
+            finally {
+
+                /* =================================
+                   RESTORE CREATE BUTTON
+                ================================= */
+
+                if (createButton) {
+
+                    createButton.disabled =
+                        false;
+
+                    createButton.textContent =
+                        "CREATE";
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =================================
+       BROWSER BACK AFTER CREATION
+       GO TO SHOWS MENU
+    ================================= */
+
+    window.addEventListener(
+        "popstate",
+        function() {
+
+            if (
+                showCreatedSuccessfully
+            ) {
+
+                window.location.replace(
+                    "/pages/admin/shows/shows.html"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =================================
+       CLEAR RESTORED FORM
+       IF BROWSER CACHE RESTORES PAGE
+    ================================= */
+
+    window.addEventListener(
+        "pageshow",
+        function(event) {
+
+            if (
+                event.persisted &&
+                showCreatedSuccessfully
+            ) {
+
+                createShowForm.reset();
+
+
+                const posterInput =
+                    document.getElementById(
+                        "poster"
+                    );
+
+
+                if (posterInput) {
+
+                    posterInput.value = "";
+
+                }
+
+            }
+
+        }
+    );
+
+}
