@@ -238,104 +238,15 @@ async function loadManageShows() {
 
 
                             ${
-                                show.venue
-                                    ? `
-
-                                        <p>
-
-                                            <i class="fa-solid fa-location-dot"></i>
-
-                                            <span>
-                                                ${escapeHTML(show.venue)}
-                                            </span>
-
-                                        </p>
-
-                                    `
-                                    : ""
-                            }
-
-
-                            ${
-                                show.address
-                                    ? `
-
-                                        <p>
-
-                                            <i class="fa-regular fa-map"></i>
-
-                                            <span>
-                                                ${escapeHTML(show.address)}
-                                            </span>
-
-                                        </p>
-
-                                    `
-                                    : ""
-                            }
-
-
-                            ${
                                 show.date
                                     ? `
 
-                                        <p>
+                                        <p class="manage-show-date">
 
                                             <i class="fa-regular fa-calendar"></i>
 
                                             <span>
                                                 ${escapeHTML(show.date)}
-                                            </span>
-
-                                        </p>
-
-                                    `
-                                    : ""
-                            }
-
-
-                            ${
-                                formatShowTime(show)
-                                    ? `
-
-                                        <p>
-
-                                            <i class="fa-regular fa-clock"></i>
-
-                                            <span>
-                                                ${escapeHTML(
-                                                    formatShowTime(show)
-                                                )}
-                                            </span>
-
-                                        </p>
-
-                                    `
-                                    : ""
-                            }
-
-
-                            <p class="show-price">
-
-                                <i class="fa-solid fa-indian-rupee-sign"></i>
-
-                                <span>
-                                    ₹${escapeHTML(show.price || "0")}
-                                </span>
-
-                            </p>
-
-
-                            ${
-                                show.info
-                                    ? `
-
-                                        <p class="show-description">
-
-                                            <i class="fa-regular fa-file-lines"></i>
-
-                                            <span>
-                                                ${escapeHTML(show.info)}
                                             </span>
 
                                         </p>

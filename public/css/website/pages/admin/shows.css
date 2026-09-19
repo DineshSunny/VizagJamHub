@@ -21,75 +21,11 @@
     flex-direction: column;
 
     align-items: center;
+    justify-content: center;
 
-    padding: 70px 0 40px;
+    padding: 40px 0;
 
     overflow: hidden;
-
-}
-
-
-/* =================================================================
-   HEADING
-================================================================= */
-
-.shows-heading {
-
-    position: relative;
-
-    z-index: 40;
-
-    width: 100%;
-
-    margin-bottom: 28px;
-
-    padding: 0 20px;
-
-    text-align: center;
-
-}
-
-
-.shows-page .admin-title {
-
-    display: inline-block;
-
-    margin: 0;
-
-    color: rgba(255,255,255,0.96);
-
-    font-size: clamp(42px, 5vw, 68px);
-    font-weight: 700;
-
-    line-height: 1;
-
-    letter-spacing: 2px;
-
-    text-shadow:
-        0 0 10px rgba(255,255,255,0.10),
-        0 0 22px rgba(0,212,255,0.16);
-
-    filter: none;
-
-    -webkit-text-stroke: 0;
-
-}
-
-
-.shows-subtitle {
-
-    margin: 16px 0 0;
-
-    color: rgba(255,255,255,0.68);
-
-    font-size: 12px;
-    font-weight: 500;
-
-    letter-spacing: 6px;
-
-    text-transform: uppercase;
-
-    text-shadow: none;
 
 }
 
@@ -103,82 +39,11 @@
     position: relative;
 
     width: 100%;
-    height: 690px;
+    height: 570px;
 
     overflow: hidden;
 
     perspective: 1500px;
-
-}
-
-
-/* =================================
-   EDGE FADES
-================================= */
-
-.manage-shows-stage::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 50;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,0.62) 0%,
-            transparent 11%,
-            transparent 89%,
-            rgba(0,0,0,0.62) 100%
-        );
-
-}
-
-
-/* =================================
-   SUBTLE STAGE / FLOOR
-================================= */
-
-.manage-shows-stage::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 15px;
-
-    width: 88%;
-    height: 100px;
-
-    transform:
-        translateX(-50%)
-        perspective(700px)
-        rotateX(68deg);
-
-    transform-origin:
-        center bottom;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(255,255,255,0.04),
-            rgba(0,212,255,0.018),
-            transparent
-        );
-
-    border-top:
-        1px solid rgba(255,255,255,0.06);
-
-    border-radius:
-        50% 50% 0 0;
 
 }
 
@@ -211,10 +76,11 @@
 
     position: absolute;
 
-    top: 10px;
+    top: 18px;
     left: 50%;
 
-    width: 350px;
+    width: 300px;
+    height: 455px;
 
     opacity: 0;
 
@@ -222,16 +88,17 @@
 
     transform-style: preserve-3d;
 
-    transform-origin: center bottom;
+    transform-origin:
+        center center;
 
     will-change:
         transform,
         opacity;
 
     transition:
-        transform 0.9s cubic-bezier(.22,.61,.36,1),
-        opacity 0.8s ease,
-        filter 0.8s ease;
+        transform 0.75s cubic-bezier(.22,.61,.36,1),
+        opacity 0.75s ease,
+        filter 0.75s ease;
 
 }
 
@@ -253,7 +120,7 @@
 
     transform:
         translateX(-50%)
-        translateZ(80px)
+        translateZ(70px)
         rotateY(0deg)
         scale(1);
 
@@ -268,15 +135,15 @@
 
     z-index: 20;
 
-    opacity: 0.82;
+    opacity: 0.72;
 
     filter:
-        brightness(0.78);
+        brightness(0.72);
 
     transform:
-        translateX(calc(-50% - 355px))
-        translateZ(-100px)
-        rotateY(28deg)
+        translateX(calc(-50% - 310px))
+        translateZ(-90px)
+        rotateY(26deg)
         scale(0.88);
 
 }
@@ -290,15 +157,15 @@
 
     z-index: 20;
 
-    opacity: 0.82;
+    opacity: 0.72;
 
     filter:
-        brightness(0.78);
+        brightness(0.72);
 
     transform:
-        translateX(calc(-50% + 355px))
-        translateZ(-100px)
-        rotateY(-28deg)
+        translateX(calc(-50% + 310px))
+        translateZ(-90px)
+        rotateY(-26deg)
         scale(0.88);
 
 }
@@ -312,17 +179,16 @@
 
     z-index: 10;
 
-    opacity: 0.38;
+    opacity: 0.30;
 
     filter:
-        brightness(0.52)
-        blur(0.4px);
+        brightness(0.48);
 
     transform:
-        translateX(calc(-50% - 650px))
-        translateZ(-250px)
-        rotateY(38deg)
-        scale(0.70);
+        translateX(calc(-50% - 555px))
+        translateZ(-230px)
+        rotateY(36deg)
+        scale(0.68);
 
 }
 
@@ -335,17 +201,16 @@
 
     z-index: 10;
 
-    opacity: 0.38;
+    opacity: 0.30;
 
     filter:
-        brightness(0.52)
-        blur(0.4px);
+        brightness(0.48);
 
     transform:
-        translateX(calc(-50% + 650px))
-        translateZ(-250px)
-        rotateY(-38deg)
-        scale(0.70);
+        translateX(calc(-50% + 555px))
+        translateZ(-230px)
+        rotateY(-36deg)
+        scale(0.68);
 
 }
 
@@ -366,7 +231,7 @@
 
     transform:
         translateX(-50%)
-        translateZ(-400px)
+        translateZ(-350px)
         scale(0.55);
 
 }
@@ -380,10 +245,10 @@
 
     position: relative;
 
-    width: 350px;
-    height: 570px;
+    width: 100%;
+    height: 100%;
 
-    padding: 22px;
+    padding: 16px;
 
     display: flex;
 
@@ -394,115 +259,56 @@
     color: white;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.12),
-            rgba(255,255,255,0.035)
-        );
+        rgba(20,20,20,0.35);
 
     backdrop-filter:
-        blur(18px)
-        saturate(145%);
+        blur(12px);
 
     -webkit-backdrop-filter:
-        blur(18px)
-        saturate(145%);
+        blur(12px);
 
     border:
-        1px solid rgba(255,255,255,0.30);
+        1px solid white;
 
-    border-radius: 20px;
+    border-radius: 10px;
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.15),
-        0 18px 45px rgba(0,0,0,0.38);
+        0 8px 25px rgba(0,0,0,0.20);
 
     transition:
-        border-color 0.4s ease,
-        box-shadow 0.4s ease,
-        background 0.4s ease;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 
 }
 
 
-/* =================================
-   SUBTLE GLASS LIGHT
-================================= */
-
-.manage-show-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: -60%;
-    left: -70%;
-
-    z-index: 2;
-
-    width: 45%;
-    height: 220%;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.10),
-            transparent
-        );
-
-    transform:
-        rotate(20deg);
-
-    transition:
-        left 0.8s ease;
-
-}
-
-
-/* =================================
+/* =================================================================
    ACTIVE CARD
-================================= */
+================================================================= */
 
 .manage-show-item.active
 .manage-show-card {
 
-    border-color:
-        rgba(255,255,255,0.72);
+    border-color: white;
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.20),
-        0 0 15px rgba(0,212,255,0.10),
-        0 25px 55px rgba(0,0,0,0.45);
+        0 10px 30px rgba(0,0,0,0.25);
 
 }
 
 
-/* =================================
+/* =================================================================
    ACTIVE CARD HOVER
-================================= */
+================================================================= */
 
 .manage-show-item.active
 .manage-show-card:hover {
 
-    border-color:
-        rgba(0,212,255,0.62);
+    border-color: #00d4ff;
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.22),
-        0 0 15px rgba(0,212,255,0.18),
-        0 0 35px rgba(0,212,255,0.08),
-        0 28px 60px rgba(0,0,0,0.48);
-
-}
-
-
-.manage-show-item.active
-.manage-show-card:hover::before {
-
-    left: 135%;
+        0 0 10px rgba(0,212,255,0.35),
+        0 0 25px rgba(0,212,255,0.18);
 
 }
 
@@ -515,27 +321,23 @@
 
     position: relative;
 
-    z-index: 3;
-
     width: 100%;
-    height: 275px;
+    height: 235px;
 
     flex-shrink: 0;
-
-    margin: 0;
 
     overflow: hidden;
 
     background:
-        rgba(0,0,0,0.25);
+        rgba(0,0,0,0.20);
 
     border:
         1px solid rgba(255,255,255,0.12);
 
-    border-radius: 13px;
+    border-radius: 8px;
 
     box-shadow:
-        0 10px 25px rgba(0,0,0,0.35);
+        0 6px 18px rgba(0,0,0,0.25);
 
 }
 
@@ -555,16 +357,33 @@
 
     object-position: center;
 
-    border-radius: inherit;
+    border-radius: 8px;
+
+    filter:
+        brightness(0.94)
+        contrast(1.04);
+
+    transition:
+        filter 0.35s ease;
 
     pointer-events: none;
 
 }
 
 
-/* =================================
+.manage-show-item.active
+.manage-poster {
+
+    filter:
+        brightness(1)
+        contrast(1.05);
+
+}
+
+
+/* =================================================================
    NO POSTER
-================================= */
+================================================================= */
 
 .manage-poster-empty {
 
@@ -576,7 +395,7 @@
     color:
         rgba(255,255,255,0.30);
 
-    font-size: 52px;
+    font-size: 45px;
 
 }
 
@@ -592,37 +411,39 @@
     z-index: 5;
 
     width: 100%;
+    min-height: 0;
 
-    flex: 1;
+    padding-top: 18px;
 
     display: flex;
 
+    flex: 1;
     flex-direction: column;
 
-    padding: 17px 2px 0;
+    text-align: center;
 
     background: none;
 
 }
 
 
-/* =================================
-   TITLE
-================================= */
+/* =================================================================
+   SHOW TITLE
+================================================================= */
 
 .manage-info h2 {
 
-    margin:
-        0 0 10px;
+    margin: 0 0 15px;
 
     overflow: hidden;
 
-    color: white;
+    color:
+        rgba(255,255,255,0.92);
 
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 600;
 
-    line-height: 1.2;
+    line-height: 1.25;
 
     text-overflow: ellipsis;
 
@@ -631,61 +452,32 @@
 }
 
 
-/* =================================
-   INFORMATION ROWS
-================================= */
+/* =================================================================
+   SHOW DATE
+================================================================= */
 
-.manage-info p {
+.manage-show-date {
 
     width: 100%;
 
-    margin: 4px 0;
+    margin: 5px 0 !important;
 
     display: flex;
 
     align-items: center;
+    justify-content: center;
 
-    gap: 10px;
+    gap: 6px;
 
     overflow: hidden;
 
     color:
-        rgba(255,255,255,0.72);
+        rgba(255,255,255,0.78) !important;
 
-    font-size: 13px;
+    font-size: 16px !important;
+    font-weight: 500;
 
-    line-height: 1.35;
-
-}
-
-
-/* =================================
-   INFORMATION ICONS
-================================= */
-
-.manage-info p i {
-
-    width: 17px;
-
-    flex-shrink: 0;
-
-    margin: 0;
-
-    color:
-        rgba(180,215,255,0.88);
-
-    text-align: center;
-
-}
-
-
-/* =================================
-   INFORMATION TEXT
-================================= */
-
-.manage-info p span {
-
-    overflow: hidden;
+    line-height: 1.4;
 
     text-overflow: ellipsis;
 
@@ -694,45 +486,25 @@
 }
 
 
-/* =================================
-   PRICE
-================================= */
+.manage-show-date i {
 
-.manage-info .show-price {
+    flex-shrink: 0;
 
-    margin-top: 7px;
+    color:
+        rgba(255,255,255,0.78);
 
-    color: #00d4ff;
-
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 15px;
 
 }
 
 
-/* =================================
-   DESCRIPTION
-================================= */
-
-.manage-info .show-description {
-
-    align-items: flex-start;
-
-    margin-top: 6px;
-
-}
-
-
-.show-description span {
-
-    display: -webkit-box;
+.manage-show-date span {
 
     overflow: hidden;
 
-    white-space: normal;
+    text-overflow: ellipsis;
 
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    white-space: nowrap;
 
 }
 
@@ -750,14 +522,15 @@
     width: 100%;
 
     margin-top: auto;
-    padding-top: 13px;
+
+    padding-top: 15px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 12px;
+    gap: 10px;
 
 }
 
@@ -768,89 +541,115 @@
 
 .showButtons button {
 
-    height: 42px;
+    width: 50%;
+    height: 36px;
 
-    flex: 1;
+    margin: 0;
 
-    display: inline-flex;
+    padding: 0 10px;
+
+    display: flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 8px;
+    gap: 7px;
 
-    padding: 0 14px;
+    font-family: inherit;
 
-    color: white;
+    font-size: 11px;
+    font-weight: 700;
 
-    font: inherit;
+    letter-spacing: 1.4px;
 
-    font-size: 13px;
-    font-weight: 600;
+    line-height: 1;
 
     cursor: pointer;
 
     background:
-        rgba(20,20,20,0.32);
+        rgba(20,20,20,0.25);
 
-    backdrop-filter:
-        blur(12px);
-
-    -webkit-backdrop-filter:
-        blur(12px);
-
-    border:
-        1px solid rgba(255,255,255,0.38);
-
-    border-radius: 10px;
+    border-radius: 8px;
 
     transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
+        color 0.25s ease,
         background 0.25s ease,
+        border-color 0.25s ease,
         box-shadow 0.25s ease;
 
 }
 
 
-/* =================================
-   EDIT
-================================= */
+/* =================================================================
+   EDIT BUTTON - BLUE BY DEFAULT
+================================================================= */
 
-.edit-show-btn:hover {
+.showButtons .edit-show-btn {
 
-    transform:
-        translateY(-2px);
+    color: #00d4ff;
 
-    border-color:
-        rgba(0,212,255,0.72);
-
-    background:
-        rgba(0,212,255,0.08);
+    border:
+        1px solid rgba(0,212,255,0.78);
 
     box-shadow:
-        0 0 10px rgba(0,212,255,0.20);
+        0 0 8px rgba(0,212,255,0.12);
 
 }
 
 
-/* =================================
-   DELETE
-================================= */
+/* =================================================================
+   EDIT BUTTON - STRONGER BLUE GLOW ON HOVER
+================================================================= */
 
-.delete-show-btn:hover {
+.showButtons .edit-show-btn:hover {
 
-    transform:
-        translateY(-2px);
-
-    border-color:
-        rgba(255,85,120,0.75);
+    color: #00e5ff;
 
     background:
-        rgba(255,60,95,0.08);
+        rgba(0,212,255,0.08);
+
+    border-color: #00e5ff;
 
     box-shadow:
-        0 0 10px rgba(255,60,100,0.18);
+        0 0 10px rgba(0,212,255,0.55),
+        0 0 24px rgba(0,212,255,0.30);
+
+}
+
+
+/* =================================================================
+   DELETE BUTTON - RED BY DEFAULT
+================================================================= */
+
+.showButtons .delete-show-btn {
+
+    color: #ff5b5b;
+
+    border:
+        1px solid rgba(255,91,91,0.78);
+
+    box-shadow:
+        0 0 8px rgba(255,91,91,0.12);
+
+}
+
+
+/* =================================================================
+   DELETE BUTTON - STRONGER RED GLOW ON HOVER
+================================================================= */
+
+.showButtons .delete-show-btn:hover {
+
+    color: #ff7070;
+
+    background:
+        rgba(255,91,91,0.08);
+
+    border-color: #ff7070;
+
+    box-shadow:
+        0 0 10px rgba(255,91,91,0.55),
+        0 0 24px rgba(255,91,91,0.30);
 
 }
 
@@ -1138,9 +937,9 @@ body.show-edit-open {
 }
 
 
-/* =================================
+/* =================================================================
    MAKE EDIT FIELDS CONSISTENT
-================================= */
+================================================================= */
 
 .show-edit-container
 .create-show-form input,
@@ -1173,9 +972,9 @@ body.show-edit-open {
 }
 
 
-/* =================================
+/* =================================================================
    CANCEL BUTTON
-================================= */
+================================================================= */
 
 .show-edit-container
 .show-cancel-btn:hover {
@@ -1200,14 +999,7 @@ body.show-edit-open {
 
     .manage-show-item {
 
-        width: 330px;
-
-    }
-
-
-    .manage-show-card {
-
-        width: 330px;
+        width: 300px;
 
     }
 
@@ -1215,8 +1007,8 @@ body.show-edit-open {
     .manage-show-item.left {
 
         transform:
-            translateX(calc(-50% - 300px))
-            translateZ(-100px)
+            translateX(calc(-50% - 280px))
+            translateZ(-90px)
             rotateY(25deg)
             scale(0.84);
 
@@ -1226,8 +1018,8 @@ body.show-edit-open {
     .manage-show-item.right {
 
         transform:
-            translateX(calc(-50% + 300px))
-            translateZ(-100px)
+            translateX(calc(-50% + 280px))
+            translateZ(-90px)
             rotateY(-25deg)
             scale(0.84);
 
@@ -1237,8 +1029,8 @@ body.show-edit-open {
     .manage-show-item.far-left {
 
         transform:
-            translateX(calc(-50% - 530px))
-            translateZ(-240px)
+            translateX(calc(-50% - 500px))
+            translateZ(-230px)
             rotateY(35deg)
             scale(0.66);
 
@@ -1248,8 +1040,8 @@ body.show-edit-open {
     .manage-show-item.far-right {
 
         transform:
-            translateX(calc(-50% + 530px))
-            translateZ(-240px)
+            translateX(calc(-50% + 500px))
+            translateZ(-230px)
             rotateY(-35deg)
             scale(0.66);
 
@@ -1267,51 +1059,26 @@ body.show-edit-open {
     .shows-page {
 
         padding:
-            70px 0 25px;
-
-    }
-
-
-    .shows-heading {
-
-        margin-bottom: 22px;
-
-    }
-
-
-    .shows-page
-    .admin-title {
-
-        font-size:
-            clamp(34px,10vw,48px);
-
-    }
-
-
-    .shows-subtitle {
-
-        margin-top: 11px;
-
-        font-size: 9px;
-
-        letter-spacing: 2px;
+            25px 0;
 
     }
 
 
     .manage-shows-stage {
 
-        height: 650px;
+        height: 540px;
 
     }
 
 
     .manage-show-item {
 
-        top: 5px;
+        top: 10px;
 
         width:
-            min(82vw,340px);
+            min(82vw,300px);
+
+        height: 455px;
 
     }
 
@@ -1319,16 +1086,16 @@ body.show-edit-open {
     .manage-show-card {
 
         width: 100%;
-        height: 555px;
+        height: 100%;
 
-        padding: 18px;
+        padding: 16px;
 
     }
 
 
     .manage-poster-frame {
 
-        height: 260px;
+        height: 235px;
 
     }
 
@@ -1348,7 +1115,7 @@ body.show-edit-open {
         opacity: 0.32;
 
         transform:
-            translateX(calc(-50% - 235px))
+            translateX(calc(-50% - 215px))
             translateZ(-130px)
             rotateY(24deg)
             scale(0.74);
@@ -1361,7 +1128,7 @@ body.show-edit-open {
         opacity: 0.32;
 
         transform:
-            translateX(calc(-50% + 235px))
+            translateX(calc(-50% + 215px))
             translateZ(-130px)
             rotateY(-24deg)
             scale(0.74);
@@ -1388,18 +1155,18 @@ body.show-edit-open {
     }
 
 
-    .manage-info p {
+    .manage-show-date {
 
-        font-size: 12px;
+        font-size: 14px !important;
 
     }
 
 
     .showButtons button {
 
-        height: 40px;
+        height: 36px;
 
-        font-size: 12px;
+        font-size: 10px;
 
     }
 
