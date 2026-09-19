@@ -657,18 +657,16 @@ section {
 
 }
 
-
 /* =================================================================
-   UPCOMING SHOWS - 3D DESK CAROUSEL
+   INDEX UPCOMING SHOWS
 ================================================================= */
 
-#shows {
+.index-shows-page {
 
     width: 100%;
     max-width: none;
 
-    padding:
-        90px 0 110px;
+    padding: 75px 0 90px;
 
     text-align: center;
 
@@ -678,61 +676,48 @@ section {
 
 
 /* =================================
-   SHOWS HEADING
+   INDEX SHOWS HEADING
 ================================= */
 
-.shows-heading {
+.index-shows-heading {
 
     position: relative;
 
     z-index: 10;
 
-    margin-bottom: 35px;
+    margin-bottom: 25px;
+
+    text-align: center;
 
 }
 
 
-.shows-eyebrow {
+.index-shows-heading h1 {
 
-    display: block;
+    margin: 0;
 
-    margin-bottom: 12px;
+    color: white;
 
-    color: #00d4ff;
-
-    font-size: 14px;
+    font-size: 30px;
     font-weight: 600;
 
-    letter-spacing: 7px;
+    letter-spacing: 5px;
 
     text-transform: uppercase;
 
 }
 
 
-.shows-heading h1 {
-
-    margin: 0;
-
-    font-size: 42px;
-    font-weight: 600;
-
-    letter-spacing: 1px;
-
-}
-
-
 /* =================================================================
-   CAROUSEL VIEWPORT
+   INDEX SHOWS 3D STAGE
 ================================================================= */
 
-.shows-carousel {
+.index-shows-stage {
 
     position: relative;
 
     width: 100%;
-
-    height: 620px;
+    height: 570px;
 
     overflow: hidden;
 
@@ -741,85 +726,11 @@ section {
 }
 
 
-/* =================================
-   DESK / STAGE
-================================= */
-
-.shows-carousel::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 25px;
-
-    width: 90%;
-    height: 120px;
-
-    transform:
-        translateX(-50%)
-        perspective(700px)
-        rotateX(68deg);
-
-    transform-origin:
-        center bottom;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(255,255,255,0.055),
-            rgba(0,212,255,0.025),
-            rgba(0,0,0,0.02)
-        );
-
-    border-top:
-        1px solid rgba(255,255,255,0.08);
-
-    border-radius:
-        50% 50% 0 0;
-
-    box-shadow:
-        0 -8px 45px rgba(0,212,255,0.035);
-
-}
-
-
-/* =================================
-   CAROUSEL EDGE FADES
-================================= */
-
-.shows-carousel::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 20;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,0.75) 0%,
-            transparent 13%,
-            transparent 87%,
-            rgba(0,0,0,0.75) 100%
-        );
-
-}
-
-
 /* =================================================================
-   SHOW STAGE
+   INDEX SHOWS CAROUSEL
 ================================================================= */
 
-.shows-stage {
+.index-shows {
 
     position: relative;
 
@@ -833,65 +744,28 @@ section {
 
 
 /* =================================================================
-   SHOW CARD
+   INDEX SHOW ITEM
 ================================================================= */
 
-.show-card {
+.index-show-item {
 
     position: absolute;
 
-    top: 20px;
+    top: 18px;
     left: 50%;
 
-    width: 350px;
-    height: 510px;
-
-    padding: 22px;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-
-    overflow: hidden;
+    width: 300px;
+    height: 485px;
 
     cursor: pointer;
 
-    color: white;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.12),
-            rgba(255,255,255,0.035)
-        );
-
-    backdrop-filter:
-        blur(18px)
-        saturate(145%);
-
-    -webkit-backdrop-filter:
-        blur(18px)
-        saturate(145%);
-
-    border:
-        1px solid rgba(255,255,255,0.30);
-
-    border-radius: 20px;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.15),
-        0 18px 45px rgba(0,0,0,0.38);
-
     transform-origin:
-        center bottom;
+        center center;
 
     transition:
-        transform 1s cubic-bezier(.22,.61,.36,1),
-        opacity 1s ease,
-        filter 1s ease,
-        border-color 0.4s ease,
-        box-shadow 0.4s ease;
+        transform 0.75s cubic-bezier(.22,.61,.36,1),
+        opacity 0.75s ease,
+        filter 0.75s ease;
 
     will-change:
         transform,
@@ -901,74 +775,171 @@ section {
 
 
 /* =================================================================
-   POSTER
+   INDEX SHOW CARD
 ================================================================= */
 
-.show-poster {
+.index-show-card {
+
+    position: relative;
 
     width: 100%;
-    height: 320px;
+    height: 100%;
+
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    color: white;
+
+    background:
+        rgba(20,20,20,0.35);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    border:
+        1px solid white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.20);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+/* =================================================================
+   INDEX SHOW POSTER FRAME
+================================================================= */
+
+.index-show-poster-frame {
+
+    position: relative;
+
+    width: 100%;
+    height: 235px;
 
     flex-shrink: 0;
 
-    object-fit: cover;
+    overflow: hidden;
 
-    object-position: center;
+    border:
+        1px solid rgba(255,255,255,0.12);
 
-    border-radius: 13px;
+    border-radius: 8px;
+
+    background:
+        rgba(0,0,0,0.20);
 
     box-shadow:
-        0 10px 25px rgba(0,0,0,0.35);
+        0 6px 18px rgba(0,0,0,0.25);
+
+}
+
+
+/* =================================================================
+   INDEX SHOW POSTER
+================================================================= */
+
+.index-show-poster {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 8px;
+
+    filter:
+        brightness(0.94)
+        contrast(1.04);
+
+    transition:
+        filter 0.35s ease;
 
     pointer-events: none;
 
 }
 
 
+.index-show-item.active
+.index-show-poster {
+
+    filter:
+        brightness(1)
+        contrast(1.05);
+
+}
+
+
+.index-show-poster-empty {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color:
+        rgba(255,255,255,0.40);
+
+    font-size: 15px;
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+}
+
+
 /* =================================================================
-   SHOW INFORMATION
+   INDEX SHOW INFORMATION
 ================================================================= */
 
-.show-info {
+.index-show-info {
 
     width: 100%;
+    min-height: 0;
 
     padding-top: 18px;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 
     text-align: center;
 
 }
 
 
-.show-info h3 {
+/* =================================
+   SHOW TITLE
+================================= */
 
-    margin:
-        0 0 10px;
+.index-show-info h2 {
 
-    overflow: hidden;
-
-    color: white;
-
-    font-size: 23px;
-    font-weight: 600;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-
-}
-
-
-.show-info p {
-
-    margin: 5px 0;
+    margin: 0 0 15px;
 
     overflow: hidden;
 
     color:
-        rgba(255,255,255,0.76);
+        rgba(255,255,255,0.92);
 
-    font-size: 14px;
+    font-size: 23px;
+    font-weight: 600;
+
+    line-height: 1.25;
 
     text-overflow: ellipsis;
 
@@ -977,23 +948,144 @@ section {
 }
 
 
-.show-price {
+/* =================================
+   SHOW DATE
+================================= */
+
+.index-show-date {
+
+    margin: 5px 0 !important;
+
+    overflow: hidden;
+
+    color:
+        rgba(255,255,255,0.78) !important;
+
+    font-size: 16px !important;
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+.index-show-date i {
+
+    width: 20px;
+
+    margin-right: 5px;
+
+    color:
+        rgba(255,255,255,0.78) !important;
+
+    font-size: 15px;
+
+}
+
+
+/* =================================
+   SHOW PRICE
+================================= */
+
+.index-show-price {
 
     margin-top: 10px !important;
 
-    color: #00d4ff !important;
+    color:
+        rgba(255,255,255,0.92) !important;
 
-    font-size: 20px !important;
-    font-weight: 700;
+    font-size: 22px !important;
+    font-weight: 600;
 
 }
 
 
 /* =================================================================
-   CENTER / ACTIVE SHOW
+   BUY TICKETS
 ================================================================= */
 
-.show-card.active {
+.index-show-action {
+
+    width: 100%;
+
+    margin-top: auto;
+
+    padding-top: 8px;
+
+}
+
+
+.index-ticket-btn {
+
+    width: 100%;
+    height: 36px;
+
+    padding: 0 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color:
+        rgba(255,255,255,0.92);
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    background:
+        rgba(20,20,20,0.25);
+
+    border:
+        1px solid rgba(255,255,255,0.70);
+
+    border-radius: 8px;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.index-ticket-btn:hover {
+
+    color: #00d4ff;
+
+    border-color: #00d4ff;
+
+    box-shadow:
+        0 0 10px rgba(0,212,255,0.35),
+        0 0 25px rgba(0,212,255,0.15);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =================================================================
+   CENTER / ACTIVE INDEX SHOW
+================================================================= */
+
+.index-show-item.active {
 
     z-index: 10;
 
@@ -1004,17 +1096,38 @@ section {
 
     transform:
         translateX(-50%)
-        translateZ(80px)
+        translateZ(70px)
         rotateY(0deg)
         scale(1);
 
-    border-color:
-        rgba(255,255,255,0.72);
+}
+
+
+.index-show-item.active
+.index-show-card {
+
+    border-color: white;
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.20),
-        0 0 15px rgba(0,212,255,0.10),
-        0 25px 55px rgba(0,0,0,0.45);
+        0 10px 30px rgba(0,0,0,0.25);
+
+}
+
+
+/* =================================================================
+   ACTIVE CARD HOVER
+================================================================= */
+
+.index-show-item.active:hover
+.index-show-card {
+
+    transform: none;
+
+    border-color: #00d4ff;
+
+    box-shadow:
+        0 0 10px rgba(0,212,255,0.35),
+        0 0 25px rgba(0,212,255,0.18);
 
 }
 
@@ -1023,19 +1136,19 @@ section {
    CARD IMMEDIATELY LEFT
 ================================================================= */
 
-.show-card.prev {
+.index-show-item.left {
 
     z-index: 7;
 
-    opacity: 0.82;
+    opacity: 0.72;
 
     filter:
-        brightness(0.78);
+        brightness(0.72);
 
     transform:
-        translateX(calc(-50% - 355px))
-        translateZ(-100px)
-        rotateY(28deg)
+        translateX(calc(-50% - 310px))
+        translateZ(-90px)
+        rotateY(26deg)
         scale(0.88);
 
 }
@@ -1045,19 +1158,19 @@ section {
    CARD IMMEDIATELY RIGHT
 ================================================================= */
 
-.show-card.next {
+.index-show-item.right {
 
     z-index: 7;
 
-    opacity: 0.82;
+    opacity: 0.72;
 
     filter:
-        brightness(0.78);
+        brightness(0.72);
 
     transform:
-        translateX(calc(-50% + 355px))
-        translateZ(-100px)
-        rotateY(-28deg)
+        translateX(calc(-50% + 310px))
+        translateZ(-90px)
+        rotateY(-26deg)
         scale(0.88);
 
 }
@@ -1067,21 +1180,20 @@ section {
    FAR LEFT CARD
 ================================================================= */
 
-.show-card.prev-far {
+.index-show-item.far-left {
 
     z-index: 4;
 
-    opacity: 0.38;
+    opacity: 0.30;
 
     filter:
-        brightness(0.52)
-        blur(0.4px);
+        brightness(0.48);
 
     transform:
-        translateX(calc(-50% - 650px))
-        translateZ(-250px)
-        rotateY(38deg)
-        scale(0.70);
+        translateX(calc(-50% - 555px))
+        translateZ(-230px)
+        rotateY(36deg)
+        scale(0.68);
 
 }
 
@@ -1090,30 +1202,29 @@ section {
    FAR RIGHT CARD
 ================================================================= */
 
-.show-card.next-far {
+.index-show-item.far-right {
 
     z-index: 4;
 
-    opacity: 0.38;
+    opacity: 0.30;
 
     filter:
-        brightness(0.52)
-        blur(0.4px);
+        brightness(0.48);
 
     transform:
-        translateX(calc(-50% + 650px))
-        translateZ(-250px)
-        rotateY(-38deg)
-        scale(0.70);
+        translateX(calc(-50% + 555px))
+        translateZ(-230px)
+        rotateY(-36deg)
+        scale(0.68);
 
 }
 
 
 /* =================================================================
-   HIDDEN CARDS
+   HIDDEN INDEX SHOWS
 ================================================================= */
 
-.show-card.hidden-left {
+.index-show-item.hidden-left {
 
     z-index: 1;
 
@@ -1122,15 +1233,15 @@ section {
     pointer-events: none;
 
     transform:
-        translateX(calc(-50% - 850px))
-        translateZ(-400px)
-        rotateY(45deg)
+        translateX(calc(-50% - 760px))
+        translateZ(-350px)
+        rotateY(42deg)
         scale(0.55);
 
 }
 
 
-.show-card.hidden-right {
+.index-show-item.hidden-right {
 
     z-index: 1;
 
@@ -1139,90 +1250,36 @@ section {
     pointer-events: none;
 
     transform:
-        translateX(calc(-50% + 850px))
-        translateZ(-400px)
-        rotateY(-45deg)
+        translateX(calc(-50% + 760px))
+        translateZ(-350px)
+        rotateY(-42deg)
         scale(0.55);
 
 }
 
 
 /* =================================================================
-   ACTIVE CARD HOVER
+   NO SHOWS
 ================================================================= */
 
-.show-card.active:hover {
+.index-shows .no-shows {
 
-    border-color:
-        rgba(0,212,255,0.70);
+    position: absolute;
 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.22),
-        0 0 15px rgba(0,212,255,0.22),
-        0 0 35px rgba(0,212,255,0.12),
-        0 28px 60px rgba(0,0,0,0.48);
+    top: 50%;
+    left: 50%;
 
-}
+    transform:
+        translate(-50%, -50%);
 
+    color:
+        rgba(255,255,255,0.65);
 
-/* =================================================================
-   CAROUSEL INDICATORS
-================================================================= */
+    font-size: 16px;
 
-.shows-indicators {
+    letter-spacing: 2px;
 
-    position: relative;
-
-    z-index: 25;
-
-    min-height: 15px;
-
-    margin-top: -20px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 10px;
-
-}
-
-
-.show-indicator {
-
-    width: 8px;
-    height: 8px;
-
-    padding: 0;
-
-    background:
-        rgba(255,255,255,0.30);
-
-    border: 0;
-
-    border-radius: 50%;
-
-    cursor: pointer;
-
-    transition:
-        width 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
-
-}
-
-
-.show-indicator.active {
-
-    width: 24px;
-
-    background: #00d4ff;
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 0 10px rgba(0,212,255,0.55);
+    white-space: nowrap;
 
 }
 

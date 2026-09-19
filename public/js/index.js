@@ -39,8 +39,6 @@ window.addEventListener(
 );
 
 
-
-
 /* ==========================================================
    AUTO TYPING TEXT
 ========================================================== */
@@ -294,45 +292,67 @@ function formatDate(dateString) {
 
 
 /* ==========================================================
-   LOAD UPCOMING SHOWS - 3D CAROUSEL
+   INDEX UPCOMING SHOWS
 ========================================================== */
 
-fetch("/api/shows")
+let indexActiveShowIndex = 0;
 
-    .then((res) =>
-        res.json()
-    )
+let indexShowsData = [];
 
-    .then((shows) => {
+let indexTouchStartX = 0;
 
-        const container =
-            document.getElementById(
-                "shows-container"
+let indexWheelLocked = false;
+
+
+/* ==========================================================
+   LOAD INDEX SHOWS
+========================================================== */
+
+async function loadIndexShows() {
+
+    const container =
+        document.getElementById(
+            "shows-container"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/shows"
             );
 
-        const indicators =
-            document.getElementById(
-                "shows-indicators"
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to load shows"
             );
 
-
-        if (!container) {
-            return;
         }
 
 
-        container.innerHTML = "";
+        indexShowsData =
+            await response.json();
 
-        if (indicators) {
-            indicators.innerHTML = "";
-        }
+
+        container.innerHTML =
+            "";
 
 
         /* =================================
            NO UPCOMING SHOWS
         ================================= */
 
-        if (!shows.length) {
+        if (
+            !indexShowsData.length
+        ) {
 
             container.innerHTML = `
                 <div class="no-shows">
@@ -345,426 +365,606 @@ fetch("/api/shows")
         }
 
 
-        let activeIndex = 0;
-
-        let autoRotate = null;
-
-        const cards = [];
-
-
         /* =================================
-           CREATE SHOW CARDS
+           KEEP ACTIVE INDEX VALID
         ================================= */
 
-        shows.forEach((show, index) => {
-
-            const card =
-                document.createElement("div");
-
-
-            card.className =
-                "show-card";
-
-
-            card.innerHTML = `
-
-                <img
-                    class="show-poster"
-                    src="${show.poster}"
-                    alt="${show.title}">
-
-                <div class="show-info">
-
-                    <h3>
-                        ${show.title}
-                    </h3>
-
-                    <p>
-                        <i class="fa-solid fa-location-dot"></i>
-                        ${show.venue}
-                    </p>
-
-                    <p>
-                        <i class="fa-regular fa-calendar"></i>
-                        ${formatDate(show.date)}
-                    </p>
-
-                    <p class="show-price">
-                        ${show.price ? "₹" + show.price : ""}
-                    </p>
-
-                </div>
-
-            `;
-
-
-            /* =================================
-               CLICK CARD
-            ================================= */
-
-            card.addEventListener(
-                "click",
-                () => {
-
-                    /*
-                       Clicking a side card first
-                       moves it into the center.
-                    */
-
-                    if (index !== activeIndex) {
-
-                        activeIndex = index;
-
-                        updateCarousel();
-
-                        restartAutoRotate();
-
-                        return;
-
-                    }
-
-
-                    /*
-                       Clicking the center card
-                       opens the ticket page.
-                    */
-
-                    window.location.href =
-                        `/pages/admin/tickets/buyticket.html?id=${show.id}`;
-
-                }
-            );
-
-
-            container.appendChild(card);
-
-            cards.push(card);
-
-
-            /* =================================
-               CREATE INDICATOR
-            ================================= */
-
-            if (indicators) {
-
-                const indicator =
-                    document.createElement("button");
-
-
-                indicator.className =
-                    "show-indicator";
-
-
-                indicator.type =
-                    "button";
-
-
-                indicator.setAttribute(
-                    "aria-label",
-                    `Show ${index + 1}`
-                );
-
-
-                indicator.addEventListener(
-                    "click",
-                    () => {
-
-                        activeIndex =
-                            index;
-
-                        updateCarousel();
-
-                        restartAutoRotate();
-
-                    }
-                );
-
-
-                indicators.appendChild(
-                    indicator
-                );
-
-            }
-
-        });
-
-
-        /* =================================
-           SHORTEST CAROUSEL DISTANCE
-        ================================= */
-
-        function getRelativePosition(
-            index
+        if (
+            indexActiveShowIndex >=
+            indexShowsData.length
         ) {
 
-            let difference =
-                index - activeIndex;
-
-
-            const half =
-                Math.floor(
-                    cards.length / 2
-                );
-
-
-            if (
-                difference >
-                half
-            ) {
-
-                difference -=
-                    cards.length;
-
-            }
-
-
-            if (
-                difference <
-                -half
-            ) {
-
-                difference +=
-                    cards.length;
-
-            }
-
-
-            return difference;
+            indexActiveShowIndex =
+                0;
 
         }
 
 
         /* =================================
-           UPDATE 3D POSITIONS
+           CREATE INDEX SHOW CARDS
         ================================= */
 
-        function updateCarousel() {
+        indexShowsData.forEach(
+            (show, index) => {
 
-            cards.forEach(
-                (card, index) => {
-
-                    const position =
-                        getRelativePosition(
-                            index
-                        );
-
-
-                    card.classList.remove(
-                        "active",
-                        "prev",
-                        "next",
-                        "prev-far",
-                        "next-far",
-                        "hidden-left",
-                        "hidden-right"
+                const item =
+                    document.createElement(
+                        "div"
                     );
 
 
-                    if (position === 0) {
+                item.className =
+                    "index-show-item";
 
-                        card.classList.add(
-                            "active"
-                        );
+
+                item.innerHTML = `
+
+                    <div class="index-show-card">
+
+                        <div class="index-show-poster-frame">
+
+                            ${
+                                show.poster
+                                    ? `
+                                        <img
+                                            class="index-show-poster"
+                                            src="${show.poster}"
+                                            alt="${show.title || "Show Poster"}"
+                                        >
+                                      `
+                                    : `
+                                        <div class="index-show-poster index-show-poster-empty">
+                                            SHOW
+                                        </div>
+                                      `
+                            }
+
+                        </div>
+
+
+                        <div class="index-show-info">
+
+                            <h2>
+                                ${show.title || ""}
+                            </h2>
+
+
+                            <p class="index-show-date">
+                                <i class="fa-regular fa-calendar"></i>
+                                ${formatDate(show.date)}
+                            </p>
+
+
+                            ${
+                                show.price
+                                    ? `
+                                        <p class="index-show-price">
+                                            ₹${show.price}
+                                        </p>
+                                      `
+                                    : ""
+                            }
+
+
+                            <div class="index-show-action">
+
+                                <button
+                                    type="button"
+                                    class="index-ticket-btn"
+                                >
+                                    BUY TICKETS
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                /* =================================
+                   SIDE CARD CLICK
+                ================================= */
+
+                item.addEventListener(
+                    "click",
+                    (event) => {
+
+                        if (
+                            event.target.closest(
+                                ".index-ticket-btn"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            index !==
+                            indexActiveShowIndex
+                        ) {
+
+                            indexActiveShowIndex =
+                                index;
+
+
+                            updateIndexShowsCarousel();
+
+                        }
 
                     }
+                );
 
-                    else if (
-                        position === -1
-                    ) {
 
-                        card.classList.add(
-                            "prev"
-                        );
+                /* =================================
+                   BUY TICKETS
+                ================================= */
 
-                    }
+                const ticketButton =
+                    item.querySelector(
+                        ".index-ticket-btn"
+                    );
 
-                    else if (
-                        position === 1
-                    ) {
 
-                        card.classList.add(
-                            "next"
-                        );
+                if (ticketButton) {
 
-                    }
+                    ticketButton.addEventListener(
+                        "click",
+                        (event) => {
 
-                    else if (
-                        position === -2
-                    ) {
+                            event.stopPropagation();
 
-                        card.classList.add(
-                            "prev-far"
-                        );
 
-                    }
+                            window.location.href =
+                                `/pages/admin/tickets/buyticket.html?id=${show.id}`;
 
-                    else if (
-                        position === 2
-                    ) {
-
-                        card.classList.add(
-                            "next-far"
-                        );
-
-                    }
-
-                    else if (
-                        position < 0
-                    ) {
-
-                        card.classList.add(
-                            "hidden-left"
-                        );
-
-                    }
-
-                    else {
-
-                        card.classList.add(
-                            "hidden-right"
-                        );
-
-                    }
+                        }
+                    );
 
                 }
-            );
 
 
-            /* UPDATE DOTS */
-
-            if (indicators) {
-
-                const dots =
-                    indicators.querySelectorAll(
-                        ".show-indicator"
-                    );
-
-
-                dots.forEach(
-                    (dot, index) => {
-
-                        dot.classList.toggle(
-                            "active",
-                            index === activeIndex
-                        );
-
-                    }
+                container.appendChild(
+                    item
                 );
 
             }
-
-        }
-
-
-        /* =================================
-           MOVE TO NEXT SHOW
-        ================================= */
-
-        function nextShow() {
-
-            activeIndex =
-                (activeIndex + 1) %
-                cards.length;
-
-
-            updateCarousel();
-
-        }
+        );
 
 
         /* =================================
-           AUTO ROTATION
+           INITIAL CAROUSEL POSITION
         ================================= */
 
-        function startAutoRotate() {
+        updateIndexShowsCarousel();
 
-            if (
-                cards.length <= 1
-            ) {
 
-                return;
+        /* =================================
+           INDEX MOUSE WHEEL
+        ================================= */
 
+        container.addEventListener(
+            "wheel",
+            handleIndexShowsWheel,
+            {
+                passive: false
             }
+        );
 
 
-            autoRotate =
-                setInterval(
-                    nextShow,
-                    4000
-                );
+        /* =================================
+           INDEX TOUCH
+        ================================= */
 
-        }
-
-
-        function stopAutoRotate() {
-
-            if (autoRotate) {
-
-                clearInterval(
-                    autoRotate
-                );
-
-                autoRotate =
-                    null;
-
+        container.addEventListener(
+            "touchstart",
+            handleIndexShowsTouchStart,
+            {
+                passive: true
             }
-
-        }
-
-
-        function restartAutoRotate() {
-
-            stopAutoRotate();
-
-            startAutoRotate();
-
-        }
+        );
 
 
-        /* =================================
-           PAUSE WHILE HOVERING
-        ================================= */
+        container.addEventListener(
+            "touchend",
+            handleIndexShowsTouchEnd,
+            {
+                passive: true
+            }
+        );
 
-        const carousel =
-            document.querySelector(
-                ".shows-carousel"
-            );
+    }
 
-
-        if (carousel) {
-
-            carousel.addEventListener(
-                "mouseenter",
-                stopAutoRotate
-            );
-
-
-            carousel.addEventListener(
-                "mouseleave",
-                startAutoRotate
-            );
-
-        }
-
-
-        /* =================================
-           INITIALIZE
-        ================================= */
-
-        updateCarousel();
-
-        startAutoRotate();
-
-    })
-
-    .catch((error) => {
+    catch (error) {
 
         console.error(
             "Failed to fetch shows:",
             error
         );
 
-    });
+
+        container.innerHTML = `
+            <div class="no-shows">
+                Unable to load shows.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* ==========================================================
+   GET INDEX CAROUSEL POSITION
+========================================================== */
+
+function getIndexShowPosition(
+    index
+) {
+
+    let difference =
+        index -
+        indexActiveShowIndex;
+
+
+    const total =
+        indexShowsData.length;
+
+
+    if (!total) {
+        return 0;
+    }
+
+
+    const half =
+        Math.floor(
+            total / 2
+        );
+
+
+    if (
+        difference >
+        half
+    ) {
+
+        difference -=
+            total;
+
+    }
+
+
+    if (
+        difference <
+        -half
+    ) {
+
+        difference +=
+            total;
+
+    }
+
+
+    return difference;
+
+}
+
+
+/* ==========================================================
+   UPDATE INDEX SHOWS CAROUSEL
+========================================================== */
+
+function updateIndexShowsCarousel() {
+
+    const items =
+        document.querySelectorAll(
+            "#shows-container .index-show-item"
+        );
+
+
+    items.forEach(
+        (item, index) => {
+
+            const position =
+                getIndexShowPosition(
+                    index
+                );
+
+
+            item.classList.remove(
+                "active",
+                "left",
+                "right",
+                "far-left",
+                "far-right",
+                "hidden-left",
+                "hidden-right"
+            );
+
+
+            if (
+                position === 0
+            ) {
+
+                item.classList.add(
+                    "active"
+                );
+
+            }
+
+            else if (
+                position === -1
+            ) {
+
+                item.classList.add(
+                    "left"
+                );
+
+            }
+
+            else if (
+                position === 1
+            ) {
+
+                item.classList.add(
+                    "right"
+                );
+
+            }
+
+            else if (
+                position === -2
+            ) {
+
+                item.classList.add(
+                    "far-left"
+                );
+
+            }
+
+            else if (
+                position === 2
+            ) {
+
+                item.classList.add(
+                    "far-right"
+                );
+
+            }
+
+            else if (
+                position < 0
+            ) {
+
+                item.classList.add(
+                    "hidden-left"
+                );
+
+            }
+
+            else {
+
+                item.classList.add(
+                    "hidden-right"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ==========================================================
+   INDEX SHOWS NEXT
+========================================================== */
+
+function indexNextShow() {
+
+    if (
+        indexShowsData.length <= 1
+    ) {
+        return;
+    }
+
+
+    indexActiveShowIndex =
+        (
+            indexActiveShowIndex +
+            1
+        ) %
+        indexShowsData.length;
+
+
+    updateIndexShowsCarousel();
+
+}
+
+
+/* ==========================================================
+   INDEX SHOWS PREVIOUS
+========================================================== */
+
+function indexPreviousShow() {
+
+    if (
+        indexShowsData.length <= 1
+    ) {
+        return;
+    }
+
+
+    indexActiveShowIndex =
+        (
+            indexActiveShowIndex -
+            1 +
+            indexShowsData.length
+        ) %
+        indexShowsData.length;
+
+
+    updateIndexShowsCarousel();
+
+}
+
+
+/* ==========================================================
+   INDEX SHOWS MOUSE WHEEL
+
+   ONLY THE CENTER CARD CONTROLS
+   THE SHOW CAROUSEL.
+
+   LEFT / RIGHT CARDS AND EMPTY
+   SPACE KEEP NORMAL PAGE SCROLL.
+========================================================== */
+
+function handleIndexShowsWheel(
+    event
+) {
+
+    if (
+        indexShowsData.length <= 1
+    ) {
+        return;
+    }
+
+
+    const activeCard =
+        document.querySelector(
+            "#shows-container .index-show-item.active"
+        );
+
+
+    if (
+        !activeCard ||
+        !activeCard.contains(event.target)
+    ) {
+
+        return;
+
+    }
+
+
+    event.preventDefault();
+
+
+    if (indexWheelLocked) {
+        return;
+    }
+
+
+    indexWheelLocked =
+        true;
+
+
+    if (
+        event.deltaY > 0 ||
+        event.deltaX > 0
+    ) {
+
+        indexNextShow();
+
+    }
+
+    else {
+
+        indexPreviousShow();
+
+    }
+
+
+    setTimeout(
+        () => {
+
+            indexWheelLocked =
+                false;
+
+        },
+        450
+    );
+
+}
+
+
+/* ==========================================================
+   INDEX SHOWS TOUCH START
+========================================================== */
+
+function handleIndexShowsTouchStart(
+    event
+) {
+
+    if (
+        !event.touches.length
+    ) {
+        return;
+    }
+
+
+    indexTouchStartX =
+        event.touches[0].clientX;
+
+}
+
+
+/* ==========================================================
+   INDEX SHOWS TOUCH END
+========================================================== */
+
+function handleIndexShowsTouchEnd(
+    event
+) {
+
+    if (
+        !event.changedTouches.length
+    ) {
+        return;
+    }
+
+
+    const touchEndX =
+        event.changedTouches[0].clientX;
+
+
+    const difference =
+        indexTouchStartX -
+        touchEndX;
+
+
+    if (
+        Math.abs(difference) <
+        50
+    ) {
+        return;
+    }
+
+
+    if (
+        difference > 0
+    ) {
+
+        indexNextShow();
+
+    }
+
+    else {
+
+        indexPreviousShow();
+
+    }
+
+}
+
+
+/* ==========================================================
+   INITIALIZE INDEX SHOWS
+========================================================== */
+
+loadIndexShows();
 
 
 /* ==========================================================
@@ -1081,34 +1281,11 @@ if (
             }
 
 
-            /*
-               Prevent normal vertical page
-               scrolling while the cursor is
-               over the gallery.
-            */
-
             event.preventDefault();
 
 
-            /*
-               CHANGE THIS NUMBER IF YOU WANT:
-
-               0.7  = slower
-               1.0  = normal
-               1.15 = current
-               1.5  = faster
-            */
-
             const scrollSpeed = 1.15;
 
-
-            /*
-               deltaY positive:
-               wheel DOWN → move LEFT
-
-               deltaY negative:
-               wheel UP → move RIGHT
-            */
 
             manualPosition -=
                 event.deltaY *
@@ -1130,9 +1307,6 @@ if (
 
     /* =================================
        MOUSE LEAVE
-
-       REMOVE MANUAL POSITION AND
-       RETURN TO AUTOMATIC MOVEMENT.
     ================================= */
 
     gallerySlider.addEventListener(
@@ -1142,18 +1316,9 @@ if (
             galleryHovered = false;
 
 
-            /*
-               Give transform control back
-               to the CSS animation.
-            */
-
             galleryTrack.style.transform =
                 "";
 
-
-            /*
-               Resume automatic movement.
-            */
 
             galleryTrack.style.animationPlayState =
                 "running";

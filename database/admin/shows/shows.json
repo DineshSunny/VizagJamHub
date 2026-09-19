@@ -1,17 +1,5 @@
 [
   {
-    "id": 1773158523347,
-    "title": "Yeto Velipoyindi Manasu",
-    "venue": "Studio Grill",
-    "address": " Musalayyapalem, Sagar Nagar, Endada, Andhra Pradesh 530045, India",
-    "date": "2026-03-28",
-    "startTime": "18:00",
-    "endTime": "21:00",
-    "price": "499",
-    "info": "Kindly don't drink and drive ",
-    "poster": "/images/Shows/YetoVelipoyindiManasu.jpg"
-  },
-  {
     "id": 1789793437692,
     "title": "Dil Se",
     "venue": "Gurajada Kalaksethram",
@@ -21,6 +9,30 @@
     "endTime": "23:50",
     "price": "499",
     "info": "Kindly book tickets",
+    "poster": ""
+  },
+  {
+    "id": 1789796452665,
+    "title": "Yeto Velipoyindi Manasu",
+    "venue": "Srikakulam",
+    "address": "Mayurpeta",
+    "date": "2026-12-22",
+    "startTime": "18:00",
+    "endTime": "22:00",
+    "price": "499",
+    "info": "Please book your tickets",
+    "poster": ""
+  },
+  {
+    "id": 1789796527422,
+    "title": "Priya Priyathama Ragalu",
+    "venue": "Siripuram",
+    "address": "Siripuram",
+    "date": "2026-11-17",
+    "startTime": "18:00",
+    "endTime": "22:00",
+    "price": "698",
+    "info": "Please get your tickets",
     "poster": ""
   }
 ]
