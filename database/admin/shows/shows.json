@@ -1,5 +1,4 @@
 [
-  
   {
     "id": 1773158523347,
     "title": "Yeto Velipoyindi Manasu",
@@ -11,6 +10,17 @@
     "price": "499",
     "info": "Kindly don't drink and drive ",
     "poster": "/images/Shows/YetoVelipoyindiManasu.jpg"
+  },
+  {
+    "id": 1789793437692,
+    "title": "Dil Se",
+    "venue": "Gurajada Kalaksethram",
+    "address": " Musalayyapalem, Sagar Nagar, Endada, Andhra Pradesh 530045, India",
+    "date": "2026-11-04",
+    "startTime": "18:50",
+    "endTime": "23:50",
+    "price": "499",
+    "info": "Kindly book tickets",
+    "poster": ""
   }
-
 ]
