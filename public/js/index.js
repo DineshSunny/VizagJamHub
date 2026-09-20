@@ -175,36 +175,46 @@ if (
     lyricsSection
 ) {
 
+    function updateOverlayLogo() {
+
+        const lyricsBottom =
+            lyricsSection.offsetTop +
+            lyricsSection.offsetHeight;
+
+
+        if (
+            window.scrollY >
+            lyricsBottom - 1300
+        ) {
+
+            overlayLogo.style.opacity =
+                "0";
+
+        }
+
+        else {
+
+            overlayLogo.style.opacity =
+                "0.9";
+
+        }
+
+    }
+
+
     window.addEventListener(
         "scroll",
-        () => {
-
-            const lyricsBottom =
-                lyricsSection.offsetTop +
-                lyricsSection.offsetHeight;
-
-
-            if (
-                window.scrollY >
-                lyricsBottom - 1300
-            ) {
-
-                overlayLogo.style.opacity =
-                    "0";
-
-            }
-
-            else {
-
-                overlayLogo.style.opacity =
-                    "0.9";
-
-            }
-
+        updateOverlayLogo,
+        {
+            passive: true
         }
     );
 
+
+    updateOverlayLogo();
+
 }
+
 
 
 /* ==========================================================
