@@ -300,17 +300,13 @@ function formatDate(dateString) {
 
 }
 
-
 /* ==========================================================
    INDEX UPCOMING SHOWS
 ========================================================== */
 
 let indexActiveShowIndex = 0;
-
 let indexShowsData = [];
-
-let indexTouchStartX = 0;
-
+let indexTouchStartY = 0;
 let indexWheelLocked = false;
 
 
@@ -325,11 +321,9 @@ async function loadIndexShows() {
             "shows-container"
         );
 
-
     if (!container) {
         return;
     }
-
 
     try {
 
@@ -338,31 +332,21 @@ async function loadIndexShows() {
                 "/api/shows"
             );
 
-
         if (!response.ok) {
-
             throw new Error(
                 "Unable to load shows"
             );
-
         }
-
 
         indexShowsData =
             await response.json();
 
-
-        container.innerHTML =
-            "";
+        container.innerHTML = "";
 
 
-        /* =================================
-           NO UPCOMING SHOWS
-        ================================= */
+        /* NO SHOWS */
 
-        if (
-            !indexShowsData.length
-        ) {
+        if (!indexShowsData.length) {
 
             container.innerHTML = `
                 <div class="no-shows">
@@ -371,28 +355,18 @@ async function loadIndexShows() {
             `;
 
             return;
-
         }
 
-
-        /* =================================
-           KEEP ACTIVE INDEX VALID
-        ================================= */
 
         if (
             indexActiveShowIndex >=
             indexShowsData.length
         ) {
-
-            indexActiveShowIndex =
-                0;
-
+            indexActiveShowIndex = 0;
         }
 
 
-        /* =================================
-           CREATE INDEX SHOW CARDS
-        ================================= */
+        /* CREATE CARDS */
 
         indexShowsData.forEach(
             (show, index) => {
@@ -402,10 +376,8 @@ async function loadIndexShows() {
                         "div"
                     );
 
-
                 item.className =
                     "index-show-item";
-
 
                 item.innerHTML = `
 
@@ -474,24 +446,19 @@ async function loadIndexShows() {
                 `;
 
 
-                /* =================================
-                   SIDE CARD CLICK
-                ================================= */
+                /* SIDE CARD CLICK */
 
                 item.addEventListener(
                     "click",
-                    (event) => {
+                    event => {
 
                         if (
                             event.target.closest(
                                 ".index-ticket-btn"
                             )
                         ) {
-
                             return;
-
                         }
-
 
                         if (
                             index !==
@@ -501,61 +468,46 @@ async function loadIndexShows() {
                             indexActiveShowIndex =
                                 index;
 
-
                             updateIndexShowsCarousel();
-
                         }
 
                     }
                 );
 
 
-                /* =================================
-                   BUY TICKETS
-                ================================= */
+                /* BUY TICKETS */
 
                 const ticketButton =
                     item.querySelector(
                         ".index-ticket-btn"
                     );
 
-
                 if (ticketButton) {
 
                     ticketButton.addEventListener(
                         "click",
-                        (event) => {
+                        event => {
 
                             event.stopPropagation();
-
 
                             window.location.href =
                                 `/pages/admin/tickets/buyticket.html?id=${show.id}`;
 
                         }
                     );
-
                 }
 
 
-                container.appendChild(
-                    item
-                );
+                container.appendChild(item);
 
             }
         );
 
 
-        /* =================================
-           INITIAL CAROUSEL POSITION
-        ================================= */
-
         updateIndexShowsCarousel();
 
 
-        /* =================================
-           INDEX MOUSE WHEEL
-        ================================= */
+        /* WHEEL */
 
         container.addEventListener(
             "wheel",
@@ -566,9 +518,7 @@ async function loadIndexShows() {
         );
 
 
-        /* =================================
-           INDEX TOUCH
-        ================================= */
+        /* TOUCH */
 
         container.addEventListener(
             "touchstart",
@@ -577,7 +527,6 @@ async function loadIndexShows() {
                 passive: true
             }
         );
-
 
         container.addEventListener(
             "touchend",
@@ -596,75 +545,18 @@ async function loadIndexShows() {
             error
         );
 
-
         container.innerHTML = `
             <div class="no-shows">
                 Unable to load shows.
             </div>
         `;
-
     }
 
 }
 
 
 /* ==========================================================
-   GET INDEX CAROUSEL POSITION
-========================================================== */
-
-function getIndexShowPosition(
-    index
-) {
-
-    let difference =
-        index -
-        indexActiveShowIndex;
-
-
-    const total =
-        indexShowsData.length;
-
-
-    if (!total) {
-        return 0;
-    }
-
-
-    const half =
-        Math.floor(
-            total / 2
-        );
-
-
-    if (
-        difference >
-        half
-    ) {
-
-        difference -=
-            total;
-
-    }
-
-
-    if (
-        difference <
-        -half
-    ) {
-
-        difference +=
-            total;
-
-    }
-
-
-    return difference;
-
-}
-
-
-/* ==========================================================
-   UPDATE INDEX SHOWS CAROUSEL
+   UPDATE CAROUSEL
 ========================================================== */
 
 function updateIndexShowsCarousel() {
@@ -674,30 +566,24 @@ function updateIndexShowsCarousel() {
             "#shows-container .index-show-item"
         );
 
-
     items.forEach(
         (item, index) => {
 
-            const position =
-                getIndexShowPosition(
-                    index
-                );
-
+            const difference =
+                index -
+                indexActiveShowIndex;
 
             item.classList.remove(
                 "active",
-                "left",
-                "right",
-                "far-left",
-                "far-right",
-                "hidden-left",
-                "hidden-right"
+                "above",
+                "below",
+                "far-above",
+                "far-below",
+                "hidden"
             );
 
 
-            if (
-                position === 0
-            ) {
+            if (difference === 0) {
 
                 item.classList.add(
                     "active"
@@ -705,52 +591,34 @@ function updateIndexShowsCarousel() {
 
             }
 
-            else if (
-                position === -1
-            ) {
+            else if (difference === -1) {
 
                 item.classList.add(
-                    "left"
+                    "above"
                 );
 
             }
 
-            else if (
-                position === 1
-            ) {
+            else if (difference === 1) {
 
                 item.classList.add(
-                    "right"
+                    "below"
                 );
 
             }
 
-            else if (
-                position === -2
-            ) {
+            else if (difference === -2) {
 
                 item.classList.add(
-                    "far-left"
+                    "far-above"
                 );
 
             }
 
-            else if (
-                position === 2
-            ) {
+            else if (difference === 2) {
 
                 item.classList.add(
-                    "far-right"
-                );
-
-            }
-
-            else if (
-                position < 0
-            ) {
-
-                item.classList.add(
-                    "hidden-left"
+                    "far-below"
                 );
 
             }
@@ -758,7 +626,7 @@ function updateIndexShowsCarousel() {
             else {
 
                 item.classList.add(
-                    "hidden-right"
+                    "hidden"
                 );
 
             }
@@ -770,78 +638,47 @@ function updateIndexShowsCarousel() {
 
 
 /* ==========================================================
-   INDEX SHOWS NEXT
+   NEXT / PREVIOUS
 ========================================================== */
 
 function indexNextShow() {
 
     if (
-        indexShowsData.length <= 1
+        indexActiveShowIndex <
+        indexShowsData.length - 1
     ) {
-        return;
+
+        indexActiveShowIndex++;
+
+        updateIndexShowsCarousel();
     }
-
-
-    indexActiveShowIndex =
-        (
-            indexActiveShowIndex +
-            1
-        ) %
-        indexShowsData.length;
-
-
-    updateIndexShowsCarousel();
 
 }
 
-
-/* ==========================================================
-   INDEX SHOWS PREVIOUS
-========================================================== */
 
 function indexPreviousShow() {
 
     if (
-        indexShowsData.length <= 1
+        indexActiveShowIndex > 0
     ) {
-        return;
+
+        indexActiveShowIndex--;
+
+        updateIndexShowsCarousel();
     }
-
-
-    indexActiveShowIndex =
-        (
-            indexActiveShowIndex -
-            1 +
-            indexShowsData.length
-        ) %
-        indexShowsData.length;
-
-
-    updateIndexShowsCarousel();
 
 }
 
 
 /* ==========================================================
-   INDEX SHOWS MOUSE WHEEL
-
-   ONLY THE CENTER CARD CONTROLS
-   THE SHOW CAROUSEL.
-
-   LEFT / RIGHT CARDS AND EMPTY
-   SPACE KEEP NORMAL PAGE SCROLL.
+   INDEX SHOWS WHEEL
 ========================================================== */
 
-function handleIndexShowsWheel(
-    event
-) {
+function handleIndexShowsWheel(event) {
 
-    if (
-        indexShowsData.length <= 1
-    ) {
+    if (indexShowsData.length <= 1) {
         return;
     }
-
 
     const activeCard =
         document.querySelector(
@@ -849,17 +686,44 @@ function handleIndexShowsWheel(
         );
 
 
+    /* CENTER CARD ONLY */
+
     if (
         !activeCard ||
         !activeCard.contains(event.target)
     ) {
-
         return;
-
     }
 
 
-    event.preventDefault();
+    const movement =
+        Math.abs(event.deltaX) >
+        Math.abs(event.deltaY)
+            ? event.deltaX
+            : event.deltaY;
+
+
+    if (Math.abs(movement) < 10) {
+        return;
+    }
+
+
+    /* RELEASE PAGE AT ENDS */
+
+    if (
+        movement < 0 &&
+        indexActiveShowIndex === 0
+    ) {
+        return;
+    }
+
+    if (
+        movement > 0 &&
+        indexActiveShowIndex ===
+            indexShowsData.length - 1
+    ) {
+        return;
+    }
 
 
     if (indexWheelLocked) {
@@ -867,20 +731,16 @@ function handleIndexShowsWheel(
     }
 
 
-    indexWheelLocked =
-        true;
+    event.preventDefault();
+
+    indexWheelLocked = true;
 
 
-    if (
-        event.deltaY > 0 ||
-        event.deltaX > 0
-    ) {
+    if (movement > 0) {
 
         indexNextShow();
 
-    }
-
-    else {
+    } else {
 
         indexPreviousShow();
 
@@ -889,79 +749,54 @@ function handleIndexShowsWheel(
 
     setTimeout(
         () => {
-
-            indexWheelLocked =
-                false;
-
+            indexWheelLocked = false;
         },
-        450
+        420
     );
 
 }
 
 
 /* ==========================================================
-   INDEX SHOWS TOUCH START
+   INDEX SHOWS TOUCH
 ========================================================== */
 
-function handleIndexShowsTouchStart(
-    event
-) {
+function handleIndexShowsTouchStart(event) {
 
-    if (
-        !event.touches.length
-    ) {
+    if (!event.touches.length) {
         return;
     }
 
-
-    indexTouchStartX =
-        event.touches[0].clientX;
+    indexTouchStartY =
+        event.touches[0].clientY;
 
 }
 
 
-/* ==========================================================
-   INDEX SHOWS TOUCH END
-========================================================== */
+function handleIndexShowsTouchEnd(event) {
 
-function handleIndexShowsTouchEnd(
-    event
-) {
-
-    if (
-        !event.changedTouches.length
-    ) {
+    if (!event.changedTouches.length) {
         return;
     }
 
-
-    const touchEndX =
-        event.changedTouches[0].clientX;
-
+    const touchEndY =
+        event.changedTouches[0].clientY;
 
     const difference =
-        indexTouchStartX -
-        touchEndX;
+        indexTouchStartY -
+        touchEndY;
 
 
-    if (
-        Math.abs(difference) <
-        50
-    ) {
+    if (Math.abs(difference) < 45) {
         return;
     }
 
 
-    if (
-        difference > 0
-    ) {
+    if (difference > 0) {
 
         indexNextShow();
 
-    }
-
-    else {
+    } else {
 
         indexPreviousShow();
 
@@ -975,6 +810,7 @@ function handleIndexShowsTouchEnd(
 ========================================================== */
 
 loadIndexShows();
+
 
 
 /* ==========================================================
