@@ -657,11 +657,12 @@ section {
 
 }
 
-/* ==========================================================
-   INDEX SHOWS
-========================================================== */
+/* =================================================================
+   INDEX UPCOMING SHOWS
+================================================================= */
 
 .index-shows-page {
+
     width: 100%;
     max-width: none;
 
@@ -672,39 +673,67 @@ section {
     text-align: center;
 
     overflow: hidden;
+
 }
 
 
+/* =================================
+   HEADING
+================================= */
+
 .index-shows-heading {
+
+    position: relative;
+
+    z-index: 10;
+
     margin-bottom: 25px;
+
+    text-align: center;
+
 }
 
 
 .index-shows-heading h1 {
+
     margin: 0;
+
+    color: white;
 
     font-size: 30px;
     font-weight: 600;
 
     letter-spacing: 5px;
+
+    text-transform: uppercase;
+
 }
 
 
-/* STAGE */
+/* =================================================================
+   STAGE
+================================================================= */
 
 .index-shows-stage {
+
     position: relative;
 
     width: 100%;
-    height: 650px;
+    height: 570px;
 
     overflow: hidden;
 
     perspective: 1500px;
+
 }
 
 
+/* =================================================================
+   CAROUSEL
+================================================================= */
+
 .index-shows {
+
     position: relative;
 
     width: 100%;
@@ -712,28 +741,37 @@ section {
 
     overflow: visible;
 
-    transform-style: preserve-3d;
+    transform-style:
+        preserve-3d;
 
-    touch-action: pan-x;
+    touch-action: pan-y;
+
 }
 
 
-/* SHOW ITEM */
+/* =================================================================
+   SHOW ITEM
+================================================================= */
 
 .index-show-item {
+
     position: absolute;
 
-    top: 50%;
+    top: 18px;
     left: 50%;
 
-    width: min(900px, 78vw);
-    height: 250px;
+    width: 300px;
+    height: 485px;
 
     opacity: 0;
 
     cursor: pointer;
 
-    transform-style: preserve-3d;
+    transform-origin:
+        center center;
+
+    transform-style:
+        preserve-3d;
 
     transition:
         transform 0.75s cubic-bezier(.22,.61,.36,1),
@@ -744,25 +782,32 @@ section {
         transform,
         opacity,
         filter;
+
 }
 
 
-/* CARD */
+/* =================================================================
+   SHOW CARD
+================================================================= */
 
 .index-show-card {
+
+    position: relative;
+
     width: 100%;
     height: 100%;
 
     padding: 16px;
 
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
+    flex-direction: column;
 
-    gap: 28px;
+    overflow: hidden;
+
+    color: white;
 
     background:
-        rgba(20, 20, 20, 0.35);
+        rgba(20,20,20,0.35);
 
     backdrop-filter:
         blur(12px);
@@ -771,23 +816,297 @@ section {
         blur(12px);
 
     border:
-        1px solid
-        rgba(255, 255, 255, 0.18);
+        1px solid white;
 
     border-radius: 10px;
 
-    box-sizing: border-box;
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.20);
 
     transition:
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
 }
 
 
-/* ACTIVE CARD */
+/* =================================================================
+   POSTER
+================================================================= */
+
+.index-show-poster-frame {
+
+    position: relative;
+
+    width: 100%;
+    height: 235px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 8px;
+
+    background:
+        rgba(0,0,0,0.20);
+
+    box-shadow:
+        0 6px 18px
+        rgba(0,0,0,0.25);
+
+}
+
+
+.index-show-poster {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 8px;
+
+    filter:
+        brightness(0.94)
+        contrast(1.04);
+
+    transition:
+        filter 0.35s ease;
+
+    pointer-events: none;
+
+}
+
+
+.index-show-item.active
+.index-show-poster {
+
+    filter:
+        brightness(1)
+        contrast(1.05);
+
+}
+
+
+.index-show-poster-empty {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color:
+        rgba(255,255,255,0.40);
+
+    font-size: 15px;
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+}
+
+
+/* =================================================================
+   INFORMATION
+================================================================= */
+
+.index-show-info {
+
+    width: 100%;
+    min-height: 0;
+
+    padding-top: 18px;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    text-align: center;
+
+}
+
+
+.index-show-info h2 {
+
+    margin:
+        0 0
+        15px;
+
+    overflow: hidden;
+
+    color:
+        rgba(255,255,255,0.92);
+
+    font-size: 23px;
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+/* =================================
+   DATE
+================================= */
+
+.index-show-date {
+
+    margin:
+        5px 0 !important;
+
+    overflow: hidden;
+
+    color:
+        rgba(255,255,255,0.78)
+        !important;
+
+    font-size:
+        16px !important;
+
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+.index-show-date i {
+
+    width: 20px;
+
+    margin-right: 5px;
+
+    color:
+        rgba(255,255,255,0.78)
+        !important;
+
+    font-size: 15px;
+
+}
+
+
+/* =================================
+   PRICE
+================================= */
+
+.index-show-price {
+
+    margin-top:
+        10px !important;
+
+    color:
+        rgba(255,255,255,0.92)
+        !important;
+
+    font-size:
+        22px !important;
+
+    font-weight: 600;
+
+}
+
+
+/* =================================================================
+   BUY TICKETS
+================================================================= */
+
+.index-show-action {
+
+    width: 100%;
+
+    margin-top: auto;
+
+    padding-top: 8px;
+
+}
+
+
+.index-ticket-btn {
+
+    width: 100%;
+    height: 36px;
+
+    padding:
+        0 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color:
+        rgba(255,255,255,0.92);
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    background:
+        rgba(20,20,20,0.25);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.70);
+
+    border-radius: 8px;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.index-ticket-btn:hover {
+
+    color: #00d4ff;
+
+    border-color:
+        #00d4ff;
+
+    box-shadow:
+        0 0 10px
+        rgba(0,212,255,0.35),
+        0 0 25px
+        rgba(0,212,255,0.15);
+
+}
+
+
+/* =================================================================
+   ACTIVE
+================================================================= */
 
 .index-show-item.active {
-    z-index: 5;
+
+    z-index: 10;
 
     opacity: 1;
 
@@ -795,102 +1114,147 @@ section {
         brightness(1);
 
     transform:
-        translate(-50%, -50%)
+        translateX(-50%)
         translateZ(70px)
+        rotateY(0deg)
         scale(1);
+
 }
 
+
+.index-show-item.active
+.index-show-card {
+
+    border-color: white;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,0.25);
+
+}
+
+
+/* =================================================================
+   ACTIVE HOVER
+================================================================= */
 
 .index-show-item.active:hover
 .index-show-card {
+
     border-color:
-        rgba(0, 238, 255, 0.7);
+        #00d4ff;
 
     box-shadow:
-        0 0 28px
-        rgba(0, 238, 255, 0.18);
+        0 0 10px
+        rgba(0,212,255,0.35),
+        0 0 25px
+        rgba(0,212,255,0.18);
+
 }
 
 
-/* ABOVE */
+/* =================================================================
+   LEFT
+================================================================= */
 
-.index-show-item.above {
-    z-index: 4;
+.index-show-item.left {
 
-    opacity: 0.70;
+    z-index: 7;
+
+    opacity: 0.72;
 
     filter:
         brightness(0.72);
 
     transform:
-        translate(-50%, -50%)
-        translateY(-235px)
+        translateX(
+            calc(-50% - 310px)
+        )
         translateZ(-90px)
-        rotateX(-16deg)
-        scale(0.86);
+        rotateY(26deg)
+        scale(0.88);
+
 }
 
 
-/* BELOW */
+/* =================================================================
+   RIGHT
+================================================================= */
 
-.index-show-item.below {
-    z-index: 4;
+.index-show-item.right {
 
-    opacity: 0.70;
+    z-index: 7;
+
+    opacity: 0.72;
 
     filter:
         brightness(0.72);
 
     transform:
-        translate(-50%, -50%)
-        translateY(235px)
+        translateX(
+            calc(-50% + 310px)
+        )
         translateZ(-90px)
-        rotateX(16deg)
-        scale(0.86);
+        rotateY(-26deg)
+        scale(0.88);
+
 }
 
 
-/* FAR ABOVE */
+/* =================================================================
+   FAR LEFT
+================================================================= */
 
-.index-show-item.far-above {
-    z-index: 3;
+.index-show-item.far-left {
 
-    opacity: 0.25;
+    z-index: 4;
+
+    opacity: 0.30;
 
     filter:
-        brightness(0.55);
+        brightness(0.48);
 
     transform:
-        translate(-50%, -50%)
-        translateY(-410px)
+        translateX(
+            calc(-50% - 555px)
+        )
         translateZ(-230px)
-        rotateX(-25deg)
+        rotateY(36deg)
         scale(0.68);
+
 }
 
 
-/* FAR BELOW */
+/* =================================================================
+   FAR RIGHT
+================================================================= */
 
-.index-show-item.far-below {
-    z-index: 3;
+.index-show-item.far-right {
 
-    opacity: 0.25;
+    z-index: 4;
+
+    opacity: 0.30;
 
     filter:
-        brightness(0.55);
+        brightness(0.48);
 
     transform:
-        translate(-50%, -50%)
-        translateY(410px)
+        translateX(
+            calc(-50% + 555px)
+        )
         translateZ(-230px)
-        rotateX(25deg)
+        rotateY(-36deg)
         scale(0.68);
+
 }
 
 
-/* HIDDEN */
+/* =================================================================
+   HIDDEN
+================================================================= */
 
 .index-show-item.hidden {
+
     z-index: 1;
 
     opacity: 0;
@@ -900,159 +1264,19 @@ section {
     pointer-events: none;
 
     transform:
-        translate(-50%, -50%)
+        translateX(-50%)
         translateZ(-350px)
         scale(0.55);
+
 }
 
 
-/* POSTER */
+/* =================================================================
+   NO SHOWS
+================================================================= */
 
-.index-show-poster-frame {
-    width: 300px;
-    min-width: 300px;
+.index-shows .no-shows {
 
-    height: 100%;
-
-    overflow: hidden;
-
-    border-radius: 8px;
-}
-
-
-.index-show-poster {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-}
-
-
-.index-show-poster-empty {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        rgba(255, 255, 255, 0.05);
-
-    font-size: 18px;
-
-    letter-spacing: 3px;
-}
-
-
-/* INFO */
-
-.index-show-info {
-    flex: 1;
-
-    min-width: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: flex-start;
-    justify-content: center;
-
-    text-align: left;
-}
-
-
-.index-show-info h2 {
-    margin:
-        0 0
-        18px;
-
-    font-size: 28px;
-    font-weight: 600;
-
-    letter-spacing: 1px;
-}
-
-
-.index-show-date {
-    margin:
-        0 0
-        14px;
-
-    font-size: 17px;
-
-    opacity: 0.85;
-}
-
-
-.index-show-date i {
-    margin-right: 8px;
-}
-
-
-.index-show-price {
-    margin:
-        0 0
-        22px;
-
-    font-size: 24px;
-    font-weight: 600;
-}
-
-
-/* BUY TICKETS */
-
-.index-show-action {
-    width: 100%;
-    max-width: 260px;
-}
-
-
-.index-ticket-btn {
-    width: 100%;
-    height: 40px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.75);
-
-    border-radius: 6px;
-
-    background:
-        rgba(255, 255, 255, 0.08);
-
-    color: white;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    letter-spacing: 1.5px;
-
-    cursor: pointer;
-
-    transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
-}
-
-
-.index-ticket-btn:hover {
-    border-color:
-        rgba(0, 238, 255, 0.9);
-
-    background:
-        rgba(0, 238, 255, 0.08);
-
-    box-shadow:
-        0 0 18px
-        rgba(0, 238, 255, 0.25);
-}
-
-
-/* EMPTY */
-
-.no-shows {
     position: absolute;
 
     top: 50%;
@@ -1061,15 +1285,16 @@ section {
     transform:
         translate(-50%, -50%);
 
-    opacity: 0.75;
+    color:
+        rgba(255,255,255,0.65);
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+
 }
-
-
-
-
-
-
-
 
 
 /* =================================================================
