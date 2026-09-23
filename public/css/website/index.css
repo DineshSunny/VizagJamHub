@@ -657,110 +657,83 @@ section {
 
 }
 
-/* =================================================================
-   INDEX UPCOMING SHOWS
-================================================================= */
+/* ==========================================================
+   INDEX SHOWS
+========================================================== */
 
 .index-shows-page {
-
     width: 100%;
     max-width: none;
 
-    padding: 75px 0 90px;
+    padding:
+        75px 0
+        90px;
 
     text-align: center;
 
     overflow: hidden;
-
 }
 
 
-/* =================================
-   INDEX SHOWS HEADING
-================================= */
-
 .index-shows-heading {
-
-    position: relative;
-
-    z-index: 10;
-
     margin-bottom: 25px;
-
-    text-align: center;
-
 }
 
 
 .index-shows-heading h1 {
-
     margin: 0;
-
-    color: white;
 
     font-size: 30px;
     font-weight: 600;
 
     letter-spacing: 5px;
-
-    text-transform: uppercase;
-
 }
 
 
-/* =================================================================
-   INDEX SHOWS 3D STAGE
-================================================================= */
+/* STAGE */
 
 .index-shows-stage {
-
     position: relative;
 
     width: 100%;
-    height: 570px;
+    height: 650px;
 
     overflow: hidden;
 
     perspective: 1500px;
-
 }
 
 
-/* =================================================================
-   INDEX SHOWS CAROUSEL
-================================================================= */
-
 .index-shows {
-
     position: relative;
 
     width: 100%;
     height: 100%;
 
-    transform-style:
-        preserve-3d;
+    overflow: visible;
 
+    transform-style: preserve-3d;
+
+    touch-action: pan-x;
 }
 
 
-/* =================================================================
-   INDEX SHOW ITEM
-================================================================= */
+/* SHOW ITEM */
 
 .index-show-item {
-
     position: absolute;
 
-    top: 18px;
+    top: 50%;
     left: 50%;
 
-    width: 300px;
-    height: 485px;
+    width: min(900px, 78vw);
+    height: 250px;
+
+    opacity: 0;
 
     cursor: pointer;
 
-    transform-origin:
-        center center;
+    transform-style: preserve-3d;
 
     transition:
         transform 0.75s cubic-bezier(.22,.61,.36,1),
@@ -769,33 +742,27 @@ section {
 
     will-change:
         transform,
-        opacity;
-
+        opacity,
+        filter;
 }
 
 
-/* =================================================================
-   INDEX SHOW CARD
-================================================================= */
+/* CARD */
 
 .index-show-card {
-
-    position: relative;
-
     width: 100%;
     height: 100%;
 
     padding: 16px;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: stretch;
 
-    overflow: hidden;
-
-    color: white;
+    gap: 28px;
 
     background:
-        rgba(20,20,20,0.35);
+        rgba(20, 20, 20, 0.35);
 
     backdrop-filter:
         blur(12px);
@@ -804,290 +771,23 @@ section {
         blur(12px);
 
     border:
-        1px solid white;
+        1px solid
+        rgba(255, 255, 255, 0.18);
 
     border-radius: 10px;
 
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.20);
+    box-sizing: border-box;
 
     transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
 
-/* =================================================================
-   INDEX SHOW POSTER FRAME
-================================================================= */
-
-.index-show-poster-frame {
-
-    position: relative;
-
-    width: 100%;
-    height: 235px;
-
-    flex-shrink: 0;
-
-    overflow: hidden;
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    border-radius: 8px;
-
-    background:
-        rgba(0,0,0,0.20);
-
-    box-shadow:
-        0 6px 18px rgba(0,0,0,0.25);
-
-}
-
-
-/* =================================================================
-   INDEX SHOW POSTER
-================================================================= */
-
-.index-show-poster {
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-    object-position: center;
-
-    border-radius: 8px;
-
-    filter:
-        brightness(0.94)
-        contrast(1.04);
-
-    transition:
-        filter 0.35s ease;
-
-    pointer-events: none;
-
-}
-
-
-.index-show-item.active
-.index-show-poster {
-
-    filter:
-        brightness(1)
-        contrast(1.05);
-
-}
-
-
-.index-show-poster-empty {
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color:
-        rgba(255,255,255,0.40);
-
-    font-size: 15px;
-    font-weight: 600;
-
-    letter-spacing: 5px;
-
-}
-
-
-/* =================================================================
-   INDEX SHOW INFORMATION
-================================================================= */
-
-.index-show-info {
-
-    width: 100%;
-    min-height: 0;
-
-    padding-top: 18px;
-
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-
-    text-align: center;
-
-}
-
-
-/* =================================
-   SHOW TITLE
-================================= */
-
-.index-show-info h2 {
-
-    margin: 0 0 15px;
-
-    overflow: hidden;
-
-    color:
-        rgba(255,255,255,0.92);
-
-    font-size: 23px;
-    font-weight: 600;
-
-    line-height: 1.25;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-
-}
-
-
-/* =================================
-   SHOW DATE
-================================= */
-
-.index-show-date {
-
-    margin: 5px 0 !important;
-
-    overflow: hidden;
-
-    color:
-        rgba(255,255,255,0.78) !important;
-
-    font-size: 16px !important;
-    font-weight: 500;
-
-    line-height: 1.4;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-
-}
-
-
-.index-show-date i {
-
-    width: 20px;
-
-    margin-right: 5px;
-
-    color:
-        rgba(255,255,255,0.78) !important;
-
-    font-size: 15px;
-
-}
-
-
-/* =================================
-   SHOW PRICE
-================================= */
-
-.index-show-price {
-
-    margin-top: 10px !important;
-
-    color:
-        rgba(255,255,255,0.92) !important;
-
-    font-size: 22px !important;
-    font-weight: 600;
-
-}
-
-
-/* =================================================================
-   BUY TICKETS
-================================================================= */
-
-.index-show-action {
-
-    width: 100%;
-
-    margin-top: auto;
-
-    padding-top: 8px;
-
-}
-
-
-.index-ticket-btn {
-
-    width: 100%;
-    height: 36px;
-
-    padding: 0 15px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color:
-        rgba(255,255,255,0.92);
-
-    font-family: inherit;
-
-    font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: 1.8px;
-
-    line-height: 1;
-
-    text-transform: uppercase;
-
-    cursor: pointer;
-
-    background:
-        rgba(20,20,20,0.25);
-
-    border:
-        1px solid rgba(255,255,255,0.70);
-
-    border-radius: 8px;
-
-    transition:
-        color 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        transform 0.25s ease;
-
-}
-
-
-.index-ticket-btn:hover {
-
-    color: #00d4ff;
-
-    border-color: #00d4ff;
-
-    box-shadow:
-        0 0 10px rgba(0,212,255,0.35),
-        0 0 25px rgba(0,212,255,0.15);
-
-    transform:
-        translateY(-1px);
-
-}
-
-
-/* =================================================================
-   CENTER / ACTIVE INDEX SHOW
-================================================================= */
+/* ACTIVE CARD */
 
 .index-show-item.active {
-
-    z-index: 10;
+    z-index: 5;
 
     opacity: 1;
 
@@ -1095,175 +795,264 @@ section {
         brightness(1);
 
     transform:
-        translateX(-50%)
+        translate(-50%, -50%)
         translateZ(70px)
-        rotateY(0deg)
         scale(1);
-
 }
 
-
-.index-show-item.active
-.index-show-card {
-
-    border-color: white;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.25);
-
-}
-
-
-/* =================================================================
-   ACTIVE CARD HOVER
-================================================================= */
 
 .index-show-item.active:hover
 .index-show-card {
-
-    transform: none;
-
-    border-color: #00d4ff;
+    border-color:
+        rgba(0, 238, 255, 0.7);
 
     box-shadow:
-        0 0 10px rgba(0,212,255,0.35),
-        0 0 25px rgba(0,212,255,0.18);
-
+        0 0 28px
+        rgba(0, 238, 255, 0.18);
 }
 
 
-/* =================================================================
-   CARD IMMEDIATELY LEFT
-================================================================= */
+/* ABOVE */
 
-.index-show-item.left {
+.index-show-item.above {
+    z-index: 4;
 
-    z-index: 7;
-
-    opacity: 0.72;
+    opacity: 0.70;
 
     filter:
         brightness(0.72);
 
     transform:
-        translateX(calc(-50% - 310px))
+        translate(-50%, -50%)
+        translateY(-235px)
         translateZ(-90px)
-        rotateY(26deg)
-        scale(0.88);
-
+        rotateX(-16deg)
+        scale(0.86);
 }
 
 
-/* =================================================================
-   CARD IMMEDIATELY RIGHT
-================================================================= */
+/* BELOW */
 
-.index-show-item.right {
+.index-show-item.below {
+    z-index: 4;
 
-    z-index: 7;
-
-    opacity: 0.72;
+    opacity: 0.70;
 
     filter:
         brightness(0.72);
 
     transform:
-        translateX(calc(-50% + 310px))
+        translate(-50%, -50%)
+        translateY(235px)
         translateZ(-90px)
-        rotateY(-26deg)
-        scale(0.88);
-
+        rotateX(16deg)
+        scale(0.86);
 }
 
 
-/* =================================================================
-   FAR LEFT CARD
-================================================================= */
+/* FAR ABOVE */
 
-.index-show-item.far-left {
+.index-show-item.far-above {
+    z-index: 3;
 
-    z-index: 4;
-
-    opacity: 0.30;
+    opacity: 0.25;
 
     filter:
-        brightness(0.48);
+        brightness(0.55);
 
     transform:
-        translateX(calc(-50% - 555px))
+        translate(-50%, -50%)
+        translateY(-410px)
         translateZ(-230px)
-        rotateY(36deg)
+        rotateX(-25deg)
         scale(0.68);
-
 }
 
 
-/* =================================================================
-   FAR RIGHT CARD
-================================================================= */
+/* FAR BELOW */
 
-.index-show-item.far-right {
+.index-show-item.far-below {
+    z-index: 3;
 
-    z-index: 4;
-
-    opacity: 0.30;
+    opacity: 0.25;
 
     filter:
-        brightness(0.48);
+        brightness(0.55);
 
     transform:
-        translateX(calc(-50% + 555px))
+        translate(-50%, -50%)
+        translateY(410px)
         translateZ(-230px)
-        rotateY(-36deg)
+        rotateX(25deg)
         scale(0.68);
-
 }
 
 
-/* =================================================================
-   HIDDEN INDEX SHOWS
-================================================================= */
+/* HIDDEN */
 
-.index-show-item.hidden-left {
-
+.index-show-item.hidden {
     z-index: 1;
 
     opacity: 0;
 
-    pointer-events: none;
-
-    transform:
-        translateX(calc(-50% - 760px))
-        translateZ(-350px)
-        rotateY(42deg)
-        scale(0.55);
-
-}
-
-
-.index-show-item.hidden-right {
-
-    z-index: 1;
-
-    opacity: 0;
+    visibility: hidden;
 
     pointer-events: none;
 
     transform:
-        translateX(calc(-50% + 760px))
+        translate(-50%, -50%)
         translateZ(-350px)
-        rotateY(-42deg)
         scale(0.55);
-
 }
 
 
-/* =================================================================
-   NO SHOWS
-================================================================= */
+/* POSTER */
 
-.index-shows .no-shows {
+.index-show-poster-frame {
+    width: 300px;
+    min-width: 300px;
 
+    height: 100%;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+}
+
+
+.index-show-poster {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+.index-show-poster-empty {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+}
+
+
+/* INFO */
+
+.index-show-info {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    text-align: left;
+}
+
+
+.index-show-info h2 {
+    margin:
+        0 0
+        18px;
+
+    font-size: 28px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+}
+
+
+.index-show-date {
+    margin:
+        0 0
+        14px;
+
+    font-size: 17px;
+
+    opacity: 0.85;
+}
+
+
+.index-show-date i {
+    margin-right: 8px;
+}
+
+
+.index-show-price {
+    margin:
+        0 0
+        22px;
+
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+/* BUY TICKETS */
+
+.index-show-action {
+    width: 100%;
+    max-width: 260px;
+}
+
+
+.index-ticket-btn {
+    width: 100%;
+    height: 40px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.75);
+
+    border-radius: 6px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.index-ticket-btn:hover {
+    border-color:
+        rgba(0, 238, 255, 0.9);
+
+    background:
+        rgba(0, 238, 255, 0.08);
+
+    box-shadow:
+        0 0 18px
+        rgba(0, 238, 255, 0.25);
+}
+
+
+/* EMPTY */
+
+.no-shows {
     position: absolute;
 
     top: 50%;
@@ -1272,16 +1061,15 @@ section {
     transform:
         translate(-50%, -50%);
 
-    color:
-        rgba(255,255,255,0.65);
-
-    font-size: 16px;
-
-    letter-spacing: 2px;
-
-    white-space: nowrap;
-
+    opacity: 0.75;
 }
+
+
+
+
+
+
+
 
 
 /* =================================================================
