@@ -1,165 +1,65 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    const $ = id => document.getElementById(id);
 
-    const value = id =>
-        String($(id)?.value ?? "").trim();
+    // =========================================================
+    // ENROLLMENT DATA
+    // =========================================================
 
-    const setText = (id, value) => {
-
-        const element = $(id);
-
-        if (!element) return;
-
-        element.textContent =
-            value === undefined ||
-            value === null ||
-            value === ""
-                ? "—"
-                : value;
-    };
-
-    const capitalize = value => {
-
-        if (!value) return "—";
-
-        return String(value)
-            .replace(/-/g, " ")
-            .replace(
-                /\b\w/g,
-                character =>
-                    character.toUpperCase()
-            );
-    };
-
-    const getRadioValue = name =>
-        document.querySelector(
-            `input[name="${name}"]:checked`
-        )?.value || "";
-
-    const formatMoney = amount =>
-        `₹${Number(amount).toLocaleString("en-IN")}`;
-
-    const normalizeText = value =>
-        String(value || "")
-            .trim()
-            .toLowerCase()
-            .replace(/\s+/g, " ");
-
-    const normalizePhone = value =>
-        String(value || "")
-            .replace(/\D/g, "");
-
-    const isNA = value =>
-        /^(n\/?a|na|not available|none)$/i.test(
-            String(value || "").trim()
+    const storedEnrollment =
+        sessionStorage.getItem(
+            "vizagJamHubEnrollment"
         );
 
 
-    /* ======================================================
-       VALIDATION HELPERS
-    ====================================================== */
-
-    function isValidPhone(value) {
-
-        if (isNA(value)) {
-            return false;
-        }
-
-        const digits =
-            normalizePhone(value);
-
-        return (
-            digits.length >= 7 &&
-            digits.length <= 15
-        );
-    }
-
-
-    function isValidEmail(value) {
-
-        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
-            .test(
-                String(value || "").trim()
-            );
-    }
-
-
-    function isValidName(value) {
-
-        const text =
-            String(value || "").trim();
-
-        if (text.length < 2) {
-            return false;
-        }
-
-        /*
-         * Name must contain actual letters.
-         * Prevents a phone number from being entered
-         * as a person's name.
-         */
-
-        if (
-            !/[A-Za-z\u00C0-\u024F\u0900-\u097F]/u
-                .test(text)
-        ) {
-            return false;
-        }
-
-        if (
-            /^\+?[\d\s().-]+$/.test(text)
-        ) {
-            return false;
-        }
-
-        return true;
-    }
-
-
-    /* ======================================================
-       LOAD COURSE SELECTION
-    ====================================================== */
-
-    let enrollmentData = null;
-
-    try {
-
-        enrollmentData =
-            JSON.parse(
-                sessionStorage.getItem(
-                    "vizagJamHubEnrollment"
-                ) || "null"
-            );
-
-    }
-    catch (error) {
-
-        console.error(
-            "Could not read enrollment data:",
-            error
-        );
-    }
-
-
-    if (!enrollmentData) {
+    if (!storedEnrollment) {
 
         alert(
-            "Your class selection could not be found. Please return to the course page and choose your format, class time and batch again."
+            "Your class selection could not be found. " +
+            "Please return to the course page and choose " +
+            "your format, class time and batch again."
         );
 
         return;
     }
 
 
-    /* ======================================================
-       UNIVERSAL COURSE DATA FROM PREVIOUS PAGE
-       Supports all instruments and course levels
-    ====================================================== */
+    let enrollmentSelection;
+
+
+    try {
+
+        enrollmentSelection =
+            JSON.parse(storedEnrollment);
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Unable to read enrollment selection:",
+            error
+        );
+
+        alert(
+            "Your class selection could not be read. " +
+            "Please return to the course page and select " +
+            "your class again."
+        );
+
+        return;
+    }
+
+
+
+    // =========================================================
+    // SELECTED COURSE
+    // =========================================================
 
     const instrument =
         String(
-            enrollmentData.instrument || ""
+            enrollmentSelection.instrument || ""
         )
             .trim()
             .toLowerCase();
@@ -167,250 +67,220 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const level =
         String(
-            enrollmentData.level || ""
+            enrollmentSelection.level || ""
         )
-            .trim();
+            .trim()
+            .toLowerCase();
 
 
     const course =
         String(
-            enrollmentData.course || ""
-        )
-            .trim();
+            enrollmentSelection.course || ""
+        ).trim();
 
 
     const price =
         Number(
-            enrollmentData.price
+            enrollmentSelection.price
         );
 
 
     const format =
         String(
-            enrollmentData.format || ""
-        )
-            .trim();
+            enrollmentSelection.format || ""
+        ).trim();
 
 
     const formatLabel =
-        enrollmentData.formatLabel ||
-        capitalize(format);
+        String(
+            enrollmentSelection.formatLabel ||
+            enrollmentSelection.format ||
+            ""
+        ).trim();
 
 
     const time =
         String(
-            enrollmentData.time || ""
-        )
-            .trim();
+            enrollmentSelection.time || ""
+        ).trim();
 
 
     const timeLabel =
-        enrollmentData.timeLabel ||
-        time;
+        String(
+            enrollmentSelection.timeLabel ||
+            enrollmentSelection.time ||
+            ""
+        ).trim();
 
 
     const batch =
         String(
-            enrollmentData.batch || ""
-        )
-            .trim();
+            enrollmentSelection.batch || ""
+        ).trim();
 
 
     const batchName =
-        enrollmentData.batchName ||
-        batch;
+        String(
+            enrollmentSelection.batchName ||
+            enrollmentSelection.batch ||
+            ""
+        ).trim();
 
 
     const theoryDay =
         String(
-            enrollmentData.theoryDay || ""
-        )
-            .trim();
+            enrollmentSelection.theoryDay || ""
+        ).trim();
 
 
     const practicalDay =
         String(
-            enrollmentData.practicalDay || ""
-        )
-            .trim();
+            enrollmentSelection.practicalDay || ""
+        ).trim();
 
 
     const songDay =
         String(
-            enrollmentData.songDay || ""
-        )
-            .trim();
+            enrollmentSelection.songDay || ""
+        ).trim();
 
 
     const duration =
-        enrollmentData.duration ||
-        "8 Weeks";
+        String(
+            enrollmentSelection.duration ||
+            "8 Weeks"
+        ).trim();
 
 
     const classesPerWeek =
         Number(
-            enrollmentData.classesPerWeek
+            enrollmentSelection.classesPerWeek
         ) || 3;
 
 
     const totalClasses =
         Number(
-            enrollmentData.totalClasses
+            enrollmentSelection.totalClasses
         ) || 24;
 
 
-    const weeklyDays =
-        [
-            theoryDay,
-            practicalDay,
-            songDay
-        ]
-            .filter(Boolean)
-            .join(" • ");
+
+    // =========================================================
+    // VALIDATE COURSE SELECTION
+    // =========================================================
+
+    const supportedInstruments = [
+        "drums",
+        "guitar",
+        "vocals",
+        "keyboard"
+    ];
 
 
-    /* ======================================================
-       VERIFY PREVIOUS PAGE SELECTION
-    ====================================================== */
+    const supportedLevels = [
+        "beginner",
+        "intermediate",
+        "advanced"
+    ];
 
-    const missingSelection = [];
+
+    const validSelection =
+        supportedInstruments.includes(instrument) &&
+        supportedLevels.includes(level) &&
+        course &&
+        Number.isFinite(price) &&
+        price > 0 &&
+        format &&
+        time &&
+        batch &&
+        theoryDay &&
+        practicalDay &&
+        songDay;
 
 
-    if (!instrument) {
+    if (!validSelection) {
 
-        missingSelection.push(
-            "instrument"
+        console.error(
+            "Incomplete enrollment selection:",
+            enrollmentSelection
         );
-    }
-
-
-    if (!level) {
-
-        missingSelection.push(
-            "course level"
-        );
-    }
-
-
-    if (!course) {
-
-        missingSelection.push(
-            "course"
-        );
-    }
-
-
-    if (
-        !Number.isFinite(price) ||
-        price <= 0
-    ) {
-
-        missingSelection.push(
-            "course price"
-        );
-    }
-
-
-    if (!format) {
-
-        missingSelection.push(
-            "format"
-        );
-    }
-
-
-    if (!time) {
-
-        missingSelection.push(
-            "class time"
-        );
-    }
-
-
-    if (!batch) {
-
-        missingSelection.push(
-            "batch"
-        );
-    }
-
-
-    if (
-        !theoryDay ||
-        !practicalDay ||
-        !songDay
-    ) {
-
-        missingSelection.push(
-            "weekly batch days"
-        );
-    }
-
-
-    if (missingSelection.length) {
 
         alert(
-            "Your previous class selection is incomplete: " +
-            missingSelection.join(", ") +
-            ". Please return to the course page and select all required class options."
+            "Your class selection is incomplete. " +
+            "Please return to the course page and choose " +
+            "your format, class time and batch again."
         );
 
         return;
     }
 
 
-    /* ======================================================
-       VERIFY SUPPORTED INSTRUMENT + LEVEL
-    ====================================================== */
 
-    const supportedInstruments =
-        [
-            "drums",
-            "guitar",
-            "vocals",
-            "keyboard"
-        ];
+    // =========================================================
+    // HELPERS
+    // =========================================================
+
+    const $ =
+        id =>
+            document.getElementById(id);
 
 
-    const supportedLevels =
-        [
-            "beginner",
-            "intermediate",
-            "advanced"
-        ];
+    const value =
+        id => {
+
+            const element = $(id);
+
+            return element
+                ? element.value.trim()
+                : "";
+        };
 
 
-    if (
-        !supportedInstruments.includes(
-            instrument
-        )
-    ) {
+    const text =
+        (id, content) => {
 
-        alert(
-            "The selected instrument could not be recognized. Please return to the course page and select your course again."
-        );
+            const element = $(id);
 
-        return;
-    }
+            if (element) {
 
-
-    if (
-        !supportedLevels.includes(
-            level.toLowerCase()
-        )
-    ) {
-
-        alert(
-            "The selected course level could not be recognized. Please return to the course page and select your course again."
-        );
-
-        return;
-    }
+                element.textContent =
+                    content;
+            }
+        };
 
 
-    /* ======================================================
-       INSTRUMENT DISPLAY INFORMATION
-    ====================================================== */
+    const getRadioValue =
+        name => {
+
+            const selected =
+                document.querySelector(
+                    `input[name="${name}"]:checked`
+                );
+
+            return selected
+                ? selected.value
+                : "";
+        };
+
+
+    const formatPrice =
+        amount => {
+
+            return new Intl.NumberFormat(
+                "en-IN",
+                {
+                    style: "currency",
+                    currency: "INR",
+                    maximumFractionDigits: 0
+                }
+            ).format(amount);
+        };
+
+
+
+    // =========================================================
+    // INSTRUMENT INFORMATION
+    // =========================================================
 
     const instrumentInformation = {
 
@@ -420,7 +290,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 "fa-solid fa-drum",
 
             access:
-                "Do you have access to a drum kit or practice pad?"
+                "Do you have access to a drum kit or practice pad?",
+
+            options: [
+
+                {
+                    value: "drum-kit",
+                    label: "Drum Kit",
+                    icon: "fa-solid fa-drum"
+                },
+
+                {
+                    value: "practice-pad",
+                    label: "Practice Pad",
+                    icon: "fa-solid fa-circle"
+                },
+
+                {
+                    value: "both",
+                    label: "Both",
+                    icon: "fa-solid fa-check-double"
+                },
+
+                {
+                    value: "none",
+                    label: "Not Yet",
+                    icon: "fa-solid fa-xmark"
+                }
+
+            ]
         },
 
 
@@ -430,17 +328,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 "fa-solid fa-guitar",
 
             access:
-                "Do you have access to a guitar for practice?"
-        },
+                "Do you have access to a guitar?",
 
+            options: [
 
-        vocals: {
+                {
+                    value: "acoustic-guitar",
+                    label: "Acoustic Guitar",
+                    icon: "fa-solid fa-guitar"
+                },
 
-            icon:
-                "fa-solid fa-microphone",
+                {
+                    value: "electric-guitar",
+                    label: "Electric Guitar",
+                    icon: "fa-solid fa-guitar"
+                },
 
-            access:
-                "Do you have access to a suitable space and device for vocal practice?"
+                {
+                    value: "both",
+                    label: "Both",
+                    icon: "fa-solid fa-check-double"
+                },
+
+                {
+                    value: "none",
+                    label: "Not Yet",
+                    icon: "fa-solid fa-xmark"
+                }
+
+            ]
         },
 
 
@@ -450,20 +366,74 @@ document.addEventListener("DOMContentLoaded", () => {
                 "fa-solid fa-keyboard",
 
             access:
-                "Do you have access to a keyboard or piano for practice?"
+                "Do you have access to a keyboard or piano?",
+
+            options: [
+
+                {
+                    value: "keyboard",
+                    label: "Keyboard",
+                    icon: "fa-solid fa-keyboard"
+                },
+
+                {
+                    value: "piano",
+                    label: "Piano",
+                    icon: "fa-solid fa-music"
+                },
+
+                {
+                    value: "both",
+                    label: "Both",
+                    icon: "fa-solid fa-check-double"
+                },
+
+                {
+                    value: "none",
+                    label: "Not Yet",
+                    icon: "fa-solid fa-xmark"
+                }
+
+            ]
+        },
+
+
+        vocals: {
+
+            icon:
+                "fa-solid fa-microphone",
+
+            access:
+                "Do you have access to a pitch reference instrument?",
+
+            options: [
+
+                {
+                    value: "yes",
+                    label: "Yes",
+                    icon: "fa-solid fa-check"
+                },
+
+                {
+                    value: "none",
+                    label: "Not Yet",
+                    icon: "fa-solid fa-xmark"
+                }
+
+            ]
         }
+
     };
 
 
     const selectedInstrument =
-        instrumentInformation[
-            instrument
-        ];
+        instrumentInformation[instrument];
 
 
-    /* ======================================================
-       POPULATE INSTRUMENT-SPECIFIC INFORMATION
-    ====================================================== */
+
+    // =========================================================
+    // POPULATE INSTRUMENT INFORMATION
+    // =========================================================
 
     function populateInstrumentInformation() {
 
@@ -486,101 +456,159 @@ document.addEventListener("DOMContentLoaded", () => {
 
             description.textContent =
                 selectedInstrument.access;
+
+
+            const required =
+                document.createElement("span");
+
+            required.textContent = "*";
+
+            description.appendChild(required);
+        }
+
+
+        const choices =
+            $("instrument-access-choices");
+
+
+        if (choices) {
+
+            choices.innerHTML =
+                selectedInstrument.options
+                    .map(
+                        (option, index) => `
+
+                            <label class="registration-choice">
+
+                                <input
+                                    type="radio"
+                                    name="instrumentAccess"
+                                    value="${option.value}"
+                                    ${index === 0
+                                        ? "required"
+                                        : ""}>
+
+                                <span>
+
+                                    <i class="${option.icon}"></i>
+
+                                    ${option.label}
+
+                                </span>
+
+                            </label>
+
+                        `
+                    )
+                    .join("");
         }
     }
 
+        // =========================================================
+    // POPULATE COURSE SUMMARY
+    // =========================================================
 
-    /* ======================================================
-       POPULATE LOCKED COURSE
-    ====================================================== */
+    function populateCourseSummary() {
 
-    function populateCourseInformation() {
-
-        setText(
+        text(
             "summary-level",
             `${level.toUpperCase()} COURSE`
         );
 
 
-        setText(
+        text(
             "summary-course",
             course
         );
 
 
-        setText(
-            "summary-price",
-            formatMoney(price)
-        );
-
-
-        setText(
-            "summary-format",
-            formatLabel
-        );
-
-
-        setText(
-            "summary-time",
-            timeLabel
-        );
-
-
-        setText(
-            "summary-batch",
-            batchName
-        );
-
-
-        setText(
+        text(
             "summary-duration",
             duration
         );
 
 
-        setText(
+        text(
+            "summary-price",
+            formatPrice(price)
+        );
+
+
+        text(
+            "summary-format",
+            formatLabel
+        );
+
+
+        text(
+            "summary-time",
+            timeLabel
+        );
+
+
+        text(
+            "summary-batch",
+            batchName
+        );
+
+
+        text(
             "summary-theory-day",
             theoryDay
         );
 
 
-        setText(
+        text(
             "summary-theory-time",
             timeLabel
         );
 
 
-        setText(
+        text(
             "summary-practical-day",
             practicalDay
         );
 
 
-        setText(
+        text(
             "summary-practical-time",
             timeLabel
         );
 
 
-        setText(
+        text(
             "summary-song-day",
             songDay
         );
 
 
-        setText(
+        text(
             "summary-song-time",
             timeLabel
         );
 
 
-        populateInstrumentInformation();
+        text(
+            "summary-classes-per-week",
+            `${classesPerWeek} Classes / Week`
+        );
+
+
+        text(
+            "summary-total-classes",
+            `${totalClasses} Classes`
+        );
     }
 
 
-    /* ======================================================
-       STEPS
-    ====================================================== */
+
+    // =========================================================
+    // FORM / STEP ELEMENTS
+    // =========================================================
+
+    const form =
+        $("enrollment-form");
+
 
     const steps =
         Array.from(
@@ -609,65 +637,150 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentStep = 1;
 
 
+
+    // =========================================================
+    // VALIDATION SUMMARY
+    // =========================================================
+
+    function clearValidationSummary() {
+
+        const existing =
+            document.querySelector(
+                ".validation-summary"
+            );
+
+
+        if (existing) {
+
+            existing.remove();
+        }
+    }
+
+
+
+    function showValidationSummary(
+        messages
+    ) {
+
+        clearValidationSummary();
+
+
+        if (
+            !messages ||
+            !messages.length ||
+            !form
+        ) {
+
+            return;
+        }
+
+
+        const summary =
+            document.createElement("div");
+
+
+        summary.className =
+            "validation-summary";
+
+
+        const title =
+            document.createElement("strong");
+
+
+        title.textContent =
+            "Please check the following:";
+
+
+        const list =
+            document.createElement("ul");
+
+
+        messages.forEach(
+            message => {
+
+                const item =
+                    document.createElement("li");
+
+
+                item.textContent =
+                    message;
+
+
+                list.appendChild(item);
+            }
+        );
+
+
+        summary.appendChild(title);
+
+        summary.appendChild(list);
+
+
+        form.prepend(summary);
+    }
+
+
+
+    // =========================================================
+    // SHOW STEP
+    // =========================================================
+
     function showStep(stepNumber) {
 
+        const requestedStep =
+            Number(stepNumber);
+
+
         currentStep =
-            Math.max(
-                1,
-                Math.min(
-                    5,
-                    Number(stepNumber) || 1
-                )
+            Math.min(
+                Math.max(
+                    requestedStep,
+                    1
+                ),
+                5
             );
 
 
-        /*
-         * HTML uses the hidden attribute.
-         * Remove hidden from the active step.
-         */
+        steps.forEach(
+            step => {
 
-        steps.forEach(step => {
+                const stepValue =
+                    Number(
+                        step.dataset.step
+                    );
 
-            const stepValue =
-                Number(
-                    step.dataset.step
+
+                const active =
+                    stepValue === currentStep;
+
+
+                step.hidden =
+                    !active;
+
+
+                step.classList.toggle(
+                    "active",
+                    active
                 );
+            }
+        );
 
 
-            const active =
-                stepValue === currentStep;
+        progressSteps.forEach(
+            step => {
+
+                const stepValue =
+                    Number(
+                        step.dataset.progressStep
+                    );
 
 
-            step.hidden =
-                !active;
-
-
-            step.classList.toggle(
-                "active",
-                active
-            );
-        });
-
-
-        progressSteps.forEach(step => {
-
-            const stepValue =
-                Number(
-                    step.dataset.progress
+                step.classList.toggle(
+                    "active",
+                    stepValue <= currentStep
                 );
-
-
-            step.classList.toggle(
-                "active",
-                stepValue === currentStep
-            );
-
-
-            step.classList.toggle(
-                "completed",
-                stepValue < currentStep
-            );
-        });
+            }
+        );
 
 
         progressLines.forEach(
@@ -679,6 +792,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
             }
         );
+
+
+        // Selected Course is only shown on Step 1.
+
+        const courseSummary =
+            document.querySelector(
+                ".enrollment-course-summary"
+            );
+
+
+        if (courseSummary) {
+
+            courseSummary.hidden =
+                currentStep !== 1;
+        }
 
 
         clearValidationSummary();
@@ -696,1824 +824,899 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    }
-
-
-    /* ======================================================
-       ERROR DISPLAY
-    ====================================================== */
-
-    function getFieldContainer(field) {
-
-        return field?.closest(
-            ".enrollment-field"
-        ) || null;
-    }
-
-
-    function getFieldLabel(field) {
-
-        const label =
-            getFieldContainer(field)
-                ?.querySelector(
-                    "label"
-                );
-
-
-        if (!label) {
-
-            return "This field";
-        }
-
-
-        return label.textContent
-            .replace(/\*/g, "")
-            .replace(/\s+/g, " ")
-            .trim();
-    }
-
-
-    function clearFieldError(field) {
-
-        const container =
-            getFieldContainer(field);
-
-
-        if (!container) return;
-
-
-        container.classList.remove(
-            "has-error"
-        );
-
-
-        const error =
-            container.querySelector(
-                ".field-error"
-            );
-
-
-        if (error) {
-
-            error.textContent = "";
-        }
-    }
-
-
-    function showFieldError(
-        field,
-        message
-    ) {
-
-        if (!field) return;
-
-
-        const container =
-            getFieldContainer(field);
-
-
-        if (container) {
-
-            container.classList.add(
-                "has-error"
-            );
-
-
-            const error =
-                container.querySelector(
-                    ".field-error"
-                );
-
-
-            if (error) {
-
-                error.textContent =
-                    message;
+        window.scrollTo(
+            {
+                top: 0,
+                behavior: "smooth"
             }
-        }
+        );
     }
 
+        // =========================================================
+    // POPULATE COURSE SUMMARY
+    // =========================================================
 
-    /*
-     * Creates an error box automatically.
-     * No HTML changes are required.
-     */
+    function populateCourseSummary() {
 
-    function getValidationSummary() {
-
-        let summary =
-            $("validationSummary");
-
-
-        if (summary) {
-
-            return summary;
-        }
-
-
-        summary =
-            document.createElement(
-                "div"
-            );
-
-
-        summary.id =
-            "validationSummary";
-
-
-        summary.setAttribute(
-            "role",
-            "alert"
+        text(
+            "summary-level",
+            `${level.toUpperCase()} COURSE`
         );
 
 
-        summary.setAttribute(
-            "aria-live",
-            "polite"
+        text(
+            "summary-course",
+            course
         );
 
 
-        summary.style.display =
-            "none";
+        text(
+            "summary-duration",
+            duration
+        );
 
 
-        summary.style.marginBottom =
-            "24px";
+        text(
+            "summary-price",
+            formatPrice(price)
+        );
 
 
-        summary.style.padding =
-            "16px 18px";
+        text(
+            "summary-format",
+            formatLabel
+        );
 
 
-        summary.style.border =
-            "1px solid rgba(255,90,90,.5)";
+        text(
+            "summary-time",
+            timeLabel
+        );
 
 
-        summary.style.borderRadius =
-            "10px";
+        text(
+            "summary-batch",
+            batchName
+        );
 
 
-        summary.style.background =
-            "rgba(255,70,70,.10)";
+        text(
+            "summary-theory-day",
+            theoryDay
+        );
 
 
-        summary.style.color =
-            "#ffd7d7";
+        text(
+            "summary-theory-time",
+            timeLabel
+        );
 
 
-        summary.style.fontSize =
-            "1rem";
+        text(
+            "summary-practical-day",
+            practicalDay
+        );
 
 
-        summary.style.lineHeight =
-            "1.6";
+        text(
+            "summary-practical-time",
+            timeLabel
+        );
 
 
-        const form =
-            $("academy-registration-form");
+        text(
+            "summary-song-day",
+            songDay
+        );
 
 
-        if (form) {
-
-            form.insertBefore(
-                summary,
-                form.firstChild
-            );
-        }
+        text(
+            "summary-song-time",
+            timeLabel
+        );
 
 
-        return summary;
+        text(
+            "summary-classes-per-week",
+            `${classesPerWeek} Classes / Week`
+        );
+
+
+        text(
+            "summary-total-classes",
+            `${totalClasses} Classes`
+        );
     }
 
+
+
+    // =========================================================
+    // FORM / STEP ELEMENTS
+    // =========================================================
+
+    const form =
+        $("enrollment-form");
+
+
+    const steps =
+        Array.from(
+            document.querySelectorAll(
+                ".enrollment-step"
+            )
+        );
+
+
+    const progressSteps =
+        Array.from(
+            document.querySelectorAll(
+                ".progress-step"
+            )
+        );
+
+
+    const progressLines =
+        Array.from(
+            document.querySelectorAll(
+                ".progress-line"
+            )
+        );
+
+
+    let currentStep = 1;
+
+
+
+    // =========================================================
+    // VALIDATION SUMMARY
+    // =========================================================
 
     function clearValidationSummary() {
 
-        const summary =
-            getValidationSummary();
+        const existing =
+            document.querySelector(
+                ".validation-summary"
+            );
 
 
-        summary.style.display =
-            "none";
+        if (existing) {
 
-
-        summary.innerHTML =
-            "";
+            existing.remove();
+        }
     }
+
 
 
     function showValidationSummary(
-        errors
-    ) {
-
-        if (!errors.length) {
-
-            return;
-        }
-
-
-        const summary =
-            getValidationSummary();
-
-
-        const messages =
-            [
-                ...new Set(
-                    errors.map(
-                        error =>
-                            error.message
-                    )
-                )
-            ];
-
-
-        summary.innerHTML = `
-            <strong style="
-                display:block;
-                margin-bottom:6px;
-                color:#fff;
-                font-size:1.05rem;
-            ">
-                Please correct the following before continuing:
-            </strong>
-
-            ${messages
-                .map(
-                    message =>
-                        `<div>• ${message}</div>`
-                )
-                .join("")}
-        `;
-
-
-        summary.style.display =
-            "block";
-    }
-
-
-    function addError(
-        errors,
-        field,
-        message
-    ) {
-
-        errors.push({
-            field,
-            message
-        });
-
-
-        showFieldError(
-            field,
-            message
-        );
-    }
-
-
-    /* ======================================================
-       DATE / AGE
-    ====================================================== */
-
-    const MINIMUM_STUDENT_AGE = 6;
-    const ADULT_AGE = 18;
-
-
-    const studentDob =
-        $("studentDob");
-
-
-    const calculatedAge =
-        $("calculatedAge");
-
-
-    function getLocalToday() {
-
-        const today =
-            new Date();
-
-
-        today.setHours(
-            0,
-            0,
-            0,
-            0
-        );
-
-
-        return today;
-    }
-
-
-    function parseLocalDate(value) {
-
-        if (
-            !/^\d{4}-\d{2}-\d{2}$/
-                .test(value || "")
-        ) {
-
-            return null;
-        }
-
-
-        const [
-            year,
-            month,
-            day
-        ] =
-            value
-                .split("-")
-                .map(Number);
-
-
-        const date =
-            new Date(
-                year,
-                month - 1,
-                day
-            );
-
-
-        date.setHours(
-            0,
-            0,
-            0,
-            0
-        );
-
-
-        if (
-            date.getFullYear() !== year ||
-            date.getMonth() !==
-                month - 1 ||
-            date.getDate() !== day
-        ) {
-
-            return null;
-        }
-
-
-        return date;
-    }
-
-
-    function calculateAge(value) {
-
-        const dob =
-            parseLocalDate(value);
-
-
-        if (!dob) {
-
-            return null;
-        }
-
-
-        const today =
-            getLocalToday();
-
-
-        let age =
-            today.getFullYear() -
-            dob.getFullYear();
-
-
-        if (
-            today.getMonth() <
-                dob.getMonth() ||
-            (
-                today.getMonth() ===
-                    dob.getMonth() &&
-                today.getDate() <
-                    dob.getDate()
-            )
-        ) {
-
-            age--;
-        }
-
-
-        return age;
-    }
-
-
-    function studentIsMinor() {
-
-        const age =
-            calculateAge(
-                value(
-                    "studentDob"
-                )
-            );
-
-
-        return (
-            age !== null &&
-            age < ADULT_AGE
-        );
-    }
-
-
-    /* ======================================================
-       GUARDIAN
-    ====================================================== */
-
-    const guardianSection =
-        $("guardianSection");
-
-
-    const guardianRelationship =
-        $("guardianRelationship");
-
-
-    const guardianOtherWrapper =
-        $("guardianOtherWrapper");
-
-
-    const guardianOtherRelationship =
-        $("guardianOtherRelationship");
-
-
-    function updateGuardianSection() {
-
-        const minor =
-            studentIsMinor();
-
-
-        if (guardianSection) {
-
-            guardianSection.hidden =
-                !minor;
-        }
-
-
-        [
-            "guardianName",
-            "guardianRelationship",
-            "guardianPhone",
-            "guardianEmail"
-        ]
-            .forEach(id => {
-
-                const field =
-                    $(id);
-
-
-                if (field) {
-
-                    field.required =
-                        minor;
-                }
-            });
-
-
-        const otherSelected =
-            minor &&
-            value(
-                "guardianRelationship"
-            ) === "other";
-
-
-        if (guardianOtherWrapper) {
-
-            guardianOtherWrapper.hidden =
-                !otherSelected;
-        }
-
-
-        if (
-            guardianOtherRelationship
-        ) {
-
-            guardianOtherRelationship
-                .required =
-                    otherSelected;
-
-
-            if (!otherSelected) {
-
-                guardianOtherRelationship
-                    .value = "";
-            }
-        }
-    }
-
-
-    /* ======================================================
-       EMERGENCY RELATIONSHIP
-    ====================================================== */
-
-    const emergencyRelationship =
-        $("emergencyRelationship");
-
-
-    const emergencyOtherWrapper =
-        $("emergencyOtherWrapper");
-
-
-    const emergencyOtherRelationship =
-        $("emergencyOtherRelationship");
-
-
-    function updateEmergencyRelationship() {
-
-        const otherSelected =
-            value(
-                "emergencyRelationship"
-            ) === "other";
-
-
-        if (emergencyOtherWrapper) {
-
-            emergencyOtherWrapper.hidden =
-                !otherSelected;
-        }
-
-
-        if (
-            emergencyOtherRelationship
-        ) {
-
-            emergencyOtherRelationship
-                .required =
-                    otherSelected;
-
-
-            if (!otherSelected) {
-
-                emergencyOtherRelationship
-                    .value = "";
-            }
-        }
-    }
-
-
-    /* ======================================================
-       DOB VALIDATION
-    ====================================================== */
-
-    function validateDateOfBirth(
-        errors
-    ) {
-
-        const dobValue =
-            value(
-                "studentDob"
-            );
-
-
-        const dob =
-            parseLocalDate(
-                dobValue
-            );
-
-
-        const today =
-            getLocalToday();
-
-
-        clearFieldError(
-            studentDob
-        );
-
-
-        if (!dobValue) {
-
-            if (calculatedAge) {
-
-                calculatedAge.textContent =
-                    "Select date of birth";
-            }
-
-
-            addError(
-                errors,
-                studentDob,
-                "Date of Birth is required."
-            );
-
-
-            return;
-        }
-
-
-        if (!dob) {
-
-            if (calculatedAge) {
-
-                calculatedAge.textContent =
-                    "Invalid date of birth";
-            }
-
-
-            addError(
-                errors,
-                studentDob,
-                "Please enter a valid date of birth."
-            );
-
-
-            return;
-        }
-
-
-        /*
-         * Today's date and future dates
-         * are NOT valid.
-         */
-
-        if (dob >= today) {
-
-            if (calculatedAge) {
-
-                calculatedAge.textContent =
-                    "Invalid date of birth";
-            }
-
-
-            addError(
-                errors,
-                studentDob,
-                "Date of birth must be before today."
-            );
-
-
-            return;
-        }
-
-
-        const age =
-            calculateAge(
-                dobValue
-            );
-
-
-        if (
-            age === null ||
-            age < MINIMUM_STUDENT_AGE
-        ) {
-
-            if (calculatedAge) {
-
-                calculatedAge.textContent =
-                    age === null
-                        ? "Invalid date of birth"
-                        : `${age} years old`;
-            }
-
-
-            addError(
-                errors,
-                studentDob,
-                "Students must be at least 6 years old to enroll."
-            );
-
-
-            return;
-        }
-
-
-        if (calculatedAge) {
-
-            calculatedAge.textContent =
-                age < ADULT_AGE
-                    ? `${age} years old • Parent / Guardian required`
-                    : `${age} years old`;
-        }
-
-
-        updateGuardianSection();
-    }
-
-
-    /* ======================================================
-       GENERIC REQUIRED FIELD VALIDATION
-    ====================================================== */
-
-    function validateRequiredFields(
-        section,
-        errors
-    ) {
-
-        const processedRadioGroups =
-            new Set();
-
-
-        section
-            .querySelectorAll(
-                "input[required], select[required], textarea[required]"
-            )
-            .forEach(field => {
-
-                /*
-                 * Ignore fields inside hidden
-                 * conditional sections.
-                 */
-
-                if (
-                    field.closest(
-                        "[hidden]"
-                    )
-                ) {
-
-                    return;
-                }
-
-
-                clearFieldError(
-                    field
-                );
-
-
-                /* RADIO */
-
-                if (
-                    field.type ===
-                    "radio"
-                ) {
-
-                    if (
-                        processedRadioGroups
-                            .has(
-                                field.name
-                            )
-                    ) {
-
-                        return;
-                    }
-
-
-                    processedRadioGroups
-                        .add(
-                            field.name
-                        );
-
-
-                    const selected =
-                        section
-                            .querySelector(
-                                `input[name="${field.name}"]:checked`
-                            );
-
-
-                    if (!selected) {
-
-                        addError(
-                            errors,
-                            field,
-                            `Please answer: ${getFieldLabel(field)}.`
-                        );
-                    }
-
-
-                    return;
-                }
-
-
-                /* CHECKBOX */
-
-                if (
-                    field.type ===
-                    "checkbox"
-                ) {
-
-                    if (!field.checked) {
-
-                        addError(
-                            errors,
-                            field,
-                            `${getFieldLabel(field)} must be confirmed.`
-                        );
-                    }
-
-
-                    return;
-                }
-
-
-                const fieldValue =
-                    String(
-                        field.value || ""
-                    ).trim();
-
-
-                if (!fieldValue) {
-
-                    addError(
-                        errors,
-                        field,
-                        `${getFieldLabel(field)} is required.`
-                    );
-
-
-                    return;
-                }
-
-
-                /*
-                 * EMAIL
-                 */
-
-                if (
-                    field.type ===
-                        "email" &&
-                    !isValidEmail(
-                        fieldValue
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        field,
-                        `${getFieldLabel(field)} must be a valid email address.`
-                    );
-
-
-                    return;
-                }
-
-
-                /*
-                 * PHONE
-                 *
-                 * NA is handled separately
-                 * for student/guardian phones.
-                 */
-
-                if (
-                    field.type ===
-                        "tel" &&
-                    !isNA(
-                        fieldValue
-                    ) &&
-                    !isValidPhone(
-                        fieldValue
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        field,
-                        `${getFieldLabel(field)} must be a valid phone number or NA where allowed.`
-                    );
-
-
-                    return;
-                }
-
-
-                if (
-                    field.minLength > 0 &&
-                    fieldValue.length <
-                        field.minLength
-                ) {
-
-                    addError(
-                        errors,
-                        field,
-                        `${getFieldLabel(field)} is too short.`
-                    );
-                }
-            });
-    }
-
-
-    /* ======================================================
-       COMPLETE STEP VALIDATION
-    ====================================================== */
-
-    function validateStep(
-        stepNumber
+        messages
     ) {
 
         clearValidationSummary();
 
 
-        const section =
-            document.querySelector(
-                `.enrollment-step[data-step="${stepNumber}"]`
-            );
+        if (
+            !messages ||
+            !messages.length ||
+            !form
+        ) {
 
-
-        if (!section) {
-            return true;
+            return;
         }
 
 
-        const errors = [];
+        const summary =
+            document.createElement("div");
 
 
-        /* ==================================================
-           STEP 1
-        ================================================== */
-
-        if (stepNumber === 1) {
-
-            validateDateOfBirth(
-                errors
-            );
-        }
+        summary.className =
+            "validation-summary";
 
 
-        validateRequiredFields(
-            section,
-            errors
+        const title =
+            document.createElement("strong");
+
+
+        title.textContent =
+            "Please check the following:";
+
+
+        const list =
+            document.createElement("ul");
+
+
+        messages.forEach(
+            message => {
+
+                const item =
+                    document.createElement("li");
+
+
+                item.textContent =
+                    message;
+
+
+                list.appendChild(item);
+            }
         );
 
 
-        if (stepNumber === 1) {
+        summary.appendChild(title);
 
-            const firstName =
-                value(
-                    "firstName"
-                );
+        summary.appendChild(list);
 
-            const lastName =
-                value(
-                    "lastName"
-                );
 
-
-            const studentFullName =
-                `${firstName} ${lastName}`
-                    .trim();
-
-
-            if (
-                firstName &&
-                !isValidName(
-                    firstName
-                )
-            ) {
-
-                addError(
-                    errors,
-                    $("firstName"),
-                    "First Name must contain a valid name, not a phone number."
-                );
-            }
-
-
-            if (
-                lastName &&
-                !isValidName(
-                    lastName
-                )
-            ) {
-
-                addError(
-                    errors,
-                    $("lastName"),
-                    "Last Name must contain a valid name, not a phone number."
-                );
-            }
-
-
-            if (
-                studentIsMinor()
-            ) {
-
-                const guardianName =
-                    value(
-                        "guardianName"
-                    );
-
-
-                if (
-                    guardianName &&
-                    !isValidName(
-                        guardianName
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("guardianName"),
-                        "Parent / Guardian Name must contain a valid name, not a phone number."
-                    );
-                }
-
-
-                /*
-                 * Guardian cannot simply be
-                 * entered as the student.
-                 */
-
-                if (
-                    guardianName &&
-                    normalizeText(
-                        guardianName
-                    ) ===
-                    normalizeText(
-                        studentFullName
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("guardianName"),
-                        "Parent / Guardian Name cannot be the same as the student's name."
-                    );
-                }
-
-
-                if (
-                    value(
-                        "guardianRelationship"
-                    ) === "other" &&
-                    !value(
-                        "guardianOtherRelationship"
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("guardianOtherRelationship"),
-                        "Please specify the parent / guardian relationship."
-                    );
-                }
-
-
-                if (
-                    value(
-                        "guardianEmail"
-                    ) &&
-                    !isValidEmail(
-                        value(
-                            "guardianEmail"
-                        )
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("guardianEmail"),
-                        "Parent / Guardian Email must be a valid email address."
-                    );
-                }
-            }
-        }
-
-
-        /* ==================================================
-           STEP 2 — CONTACT
-        ================================================== */
-
-        if (stepNumber === 2) {
-
-            const studentEmail =
-                value(
-                    "email"
-                );
-
-            const studentPhone =
-                value(
-                    "phone"
-                );
-
-
-            if (
-                !isValidEmail(
-                    studentEmail
-                )
-            ) {
-
-                addError(
-                    errors,
-                    $("email"),
-                    "Student Email must be a valid email address."
-                );
-            }
-
-
-            /*
-             * MINOR:
-             *
-             * Student can enter NA.
-             * Guardian can enter NA.
-             *
-             * BUT at least ONE of the two
-             * must contain a valid phone number.
-             */
-
-            if (
-                studentIsMinor()
-            ) {
-
-                const guardianPhone =
-                    value(
-                        "guardianPhone"
-                    );
-
-
-                const studentPhoneValid =
-                    isValidPhone(
-                        studentPhone
-                    );
-
-
-                const guardianPhoneValid =
-                    isValidPhone(
-                        guardianPhone
-                    );
-
-
-                if (
-                    !studentPhoneValid &&
-                    !isNA(
-                        studentPhone
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("phone"),
-                        "Student Phone must be a valid phone number or NA."
-                    );
-                }
-
-
-                if (
-                    !guardianPhoneValid &&
-                    !isNA(
-                        guardianPhone
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("guardianPhone"),
-                        "Parent / Guardian Phone must be a valid phone number or NA."
-                    );
-                }
-
-
-                /*
-                 * One real phone is compulsory.
-                 */
-
-                if (
-                    !studentPhoneValid &&
-                    !guardianPhoneValid
-                ) {
-
-                    addError(
-                        errors,
-                        $("phone"),
-                        "At least one valid phone number is required for the student or parent / guardian."
-                    );
-
-
-                    addError(
-                        errors,
-                        $("guardianPhone"),
-                        "At least one valid phone number is required for the student or parent / guardian."
-                    );
-                }
-
-
-                /*
-                 * Student and guardian cannot use
-                 * the exact same phone number.
-                 */
-
-                if (
-                    studentPhoneValid &&
-                    guardianPhoneValid &&
-                    normalizePhone(
-                        studentPhone
-                    ) ===
-                    normalizePhone(
-                        guardianPhone
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("phone"),
-                        "Student and parent / guardian phone numbers must be different."
-                    );
-
-
-                    addError(
-                        errors,
-                        $("guardianPhone"),
-                        "Parent / guardian phone number cannot be the same as the student's phone number."
-                    );
-                }
-
-
-                /*
-                 * Separate email addresses.
-                 */
-
-                const guardianEmail =
-                    value(
-                        "guardianEmail"
-                    );
-
-
-                if (
-                    guardianEmail &&
-                    normalizeText(
-                        guardianEmail
-                    ) ===
-                    normalizeText(
-                        studentEmail
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("email"),
-                        "Student and parent / guardian email addresses must be different."
-                    );
-                }
-            }
-
-
-            /*
-             * ADULT:
-             *
-             * No guardian exists, therefore
-             * student phone must be real.
-             */
-
-            else {
-
-                if (
-                    !isValidPhone(
-                        studentPhone
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("phone"),
-                        "A valid student phone number is required. NA is only allowed for a minor when a valid parent / guardian phone is provided."
-                    );
-                }
-            }
-        }
-
-
-        /* ==================================================
-           STEP 3 — EMERGENCY + LEARNING PROFILE
-        ================================================== */
-
-        if (stepNumber === 3) {
-
-            const emergencyName =
-                value(
-                    "emergencyName"
-                );
-
-            const emergencyPhone =
-                value(
-                    "emergencyPhone"
-                );
-
-
-            const studentFullName =
-                `${value("firstName")} ${value("lastName")}`
-                    .trim();
-
-
-            if (
-                emergencyName &&
-                !isValidName(
-                    emergencyName
-                )
-            ) {
-
-                addError(
-                    errors,
-                    $("emergencyName"),
-                    "Emergency Contact Name must contain a valid name, not a phone number."
-                );
-            }
-
-
-            if (
-                emergencyName &&
-                normalizeText(
-                    emergencyName
-                ) ===
-                normalizeText(
-                    studentFullName
-                )
-            ) {
-
-                addError(
-                    errors,
-                    $("emergencyName"),
-                    "Emergency contact cannot be the student."
-                );
-            }
-
-
-            if (
-                value(
-                    "emergencyRelationship"
-                ) === "other" &&
-                !value(
-                    "emergencyOtherRelationship"
-                )
-            ) {
-
-                addError(
-                    errors,
-                    $("emergencyOtherRelationship"),
-                    "Please specify the emergency contact relationship."
-                );
-            }
-
-
-            /*
-             * Emergency phone must always
-             * be a real phone number.
-             */
-
-            if (
-                !isValidPhone(
-                    emergencyPhone
-                )
-            ) {
-
-                addError(
-                    errors,
-                    $("emergencyPhone"),
-                    "Emergency Contact Phone must be a valid phone number. NA is not allowed for the emergency contact."
-                );
-            }
-
-
-            const studentPhone =
-                value(
-                    "phone"
-                );
-
-
-            if (
-                isValidPhone(
-                    studentPhone
-                ) &&
-                isValidPhone(
-                    emergencyPhone
-                ) &&
-                normalizePhone(
-                    emergencyPhone
-                ) ===
-                normalizePhone(
-                    studentPhone
-                )
-            ) {
-
-                addError(
-                    errors,
-                    $("emergencyPhone"),
-                    "Emergency contact phone number must be different from the student's phone number."
-                );
-            }
-
-
-            if (
-                studentIsMinor()
-            ) {
-
-                const guardianPhone =
-                    value(
-                        "guardianPhone"
-                    );
-
-
-                if (
-                    isValidPhone(
-                        guardianPhone
-                    ) &&
-                    isValidPhone(
-                        emergencyPhone
-                    ) &&
-                    normalizePhone(
-                        emergencyPhone
-                    ) ===
-                    normalizePhone(
-                        guardianPhone
-                    )
-                ) {
-
-                    addError(
-                        errors,
-                        $("emergencyPhone"),
-                        "Emergency contact phone number must be different from the parent / guardian phone number."
-                    );
-                }
-            }
-        }
-
-
-        /* ==================================================
-           STOP NAVIGATION IF INVALID
-        ================================================== */
-
-        if (errors.length) {
-
-            showValidationSummary(
-                errors
-            );
-
-
-            const firstInvalid =
-                errors.find(
-                    error =>
-                        error.field
-                )?.field;
-
-
-            if (firstInvalid) {
-
-                firstInvalid.focus();
-
-
-                firstInvalid.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-            }
-
-
-            return false;
-        }
-
-
-        return true;
+        form.prepend(summary);
     }
 
-    /* ======================================================
-       RELATIONSHIPS
-    ====================================================== */
 
-    function getGuardianRelationship() {
 
-        const selected =
-            value(
-                "guardianRelationship"
+    // =========================================================
+    // SHOW STEP
+    // =========================================================
+
+    function showStep(stepNumber) {
+
+        const requestedStep =
+            Number(stepNumber);
+
+
+        currentStep =
+            Math.min(
+                Math.max(
+                    requestedStep,
+                    1
+                ),
+                5
             );
 
 
-        return selected === "other"
-            ? value(
-                "guardianOtherRelationship"
+        steps.forEach(
+            step => {
+
+                const stepValue =
+                    Number(
+                        step.dataset.step
+                    );
+
+
+                const active =
+                    stepValue === currentStep;
+
+
+                step.hidden =
+                    !active;
+
+
+                step.classList.toggle(
+                    "active",
+                    active
+                );
+            }
+        );
+
+
+        progressSteps.forEach(
+            step => {
+
+                const stepValue =
+                    Number(
+                        step.dataset.progressStep
+                    );
+
+
+                step.classList.toggle(
+                    "active",
+                    stepValue <= currentStep
+                );
+            }
+        );
+
+
+        progressLines.forEach(
+            (line, index) => {
+
+                line.classList.toggle(
+                    "active",
+                    index + 1 < currentStep
+                );
+            }
+        );
+
+
+        // Selected Course is only shown on Step 1.
+
+        const courseSummary =
+            document.querySelector(
+                ".enrollment-course-summary"
+            );
+
+
+        if (courseSummary) {
+
+            courseSummary.hidden =
+                currentStep !== 1;
+        }
+
+
+        clearValidationSummary();
+
+
+        if (currentStep === 4) {
+
+            updateReview();
+        }
+
+
+        if (currentStep === 5) {
+
+            updatePaymentSummary();
+        }
+
+
+        window.scrollTo(
+            {
+                top: 0,
+                behavior: "smooth"
+            }
+        );
+    }
+
+        // =========================================================
+    // FORMAT DISPLAY VALUES
+    // =========================================================
+
+    function formatDisplayValue(
+        value
+    ) {
+
+        if (!value) {
+
+            return "—";
+        }
+
+
+        return String(value)
+            .replace(
+                /-/g,
+                " "
             )
-            : capitalize(selected);
-    }
-
-
-    function getEmergencyRelationship() {
-
-        const selected =
-            value(
-                "emergencyRelationship"
+            .replace(
+                /\b\w/g,
+                character =>
+                    character.toUpperCase()
             );
-
-
-        return selected === "other"
-            ? value(
-                "emergencyOtherRelationship"
-            )
-            : capitalize(selected);
     }
 
 
-    /* ======================================================
-       REVIEW
-    ====================================================== */
+
+    // =========================================================
+    // UPDATE REVIEW
+    // =========================================================
 
     function updateReview() {
 
-        const studentName =
-            `${value("firstName")} ${value("lastName")}`
-                .trim();
+        // STUDENT INFORMATION
+
+        const fullName =
+            [
+                value("firstName"),
+                value("lastName")
+            ]
+                .filter(Boolean)
+                .join(" ");
 
 
-        setText(
-            "review-student-name",
-            studentName
+        text(
+            "review-name",
+            fullName || "—"
         );
 
 
-        setText(
+        text(
             "review-date-of-birth",
-            value(
-                "studentDob"
+            value("dateOfBirth") || "—"
+        );
+
+
+        text(
+            "review-gender",
+            formatDisplayValue(
+                value("gender")
             )
         );
 
 
-        setText(
+        text(
+            "review-age",
+            value("age") || "—"
+        );
+
+
+        text(
+            "review-occupation",
+            formatDisplayValue(
+                value("occupation")
+            )
+        );
+
+
+        const location =
+            [
+                value("city"),
+                value("country")
+            ]
+                .filter(Boolean)
+                .join(", ");
+
+
+        text(
+            "review-location",
+            location || "—"
+        );
+
+
+
+        // CONTACT INFORMATION
+
+        text(
             "review-email",
-            value(
-                "email"
-            )
+            value("email") || "—"
         );
 
 
-        setText(
+        text(
             "review-phone",
-            value(
-                "phone"
+            value("phone") || "—"
+        );
+
+
+        text(
+            "review-whatsapp",
+            value("whatsapp") || "—"
+        );
+
+
+        text(
+            "review-preferred-contact",
+            formatDisplayValue(
+                value("preferredContact")
             )
         );
 
 
-        setText(
+        text(
+            "review-guardian-name",
+            value("guardianName") || "—"
+        );
+
+
+        text(
+            "review-guardian-phone",
+            value("guardianPhone") || "—"
+        );
+
+
+
+        // LEARNING DETAILS
+
+        text(
+            "review-music-experience",
+            formatDisplayValue(
+                value("musicExperience")
+            )
+        );
+
+
+        text(
+            "review-instrument-access",
+            formatDisplayValue(
+                getRadioValue(
+                    "instrumentAccess"
+                )
+            )
+        );
+
+
+        text(
+            "review-song-language",
+            formatDisplayValue(
+                getRadioValue(
+                    "songLanguage"
+                )
+            )
+        );
+
+
+        text(
+            "review-notes",
+            value("studentNotes") || "—"
+        );
+
+
+
+        // COURSE
+
+        const reviewInstrumentIcon =
+            $("review-instrument-icon");
+
+
+        if (reviewInstrumentIcon) {
+
+            reviewInstrumentIcon.className =
+                selectedInstrument.icon;
+        }
+
+
+        text(
+            "review-level",
+            `${level.toUpperCase()} COURSE`
+        );
+
+
+        text(
             "review-course",
             course
         );
 
 
-        setText(
+        text(
+            "review-duration",
+            duration
+        );
+
+
+        text(
+            "review-price",
+            formatPrice(price)
+        );
+
+
+        text(
             "review-format",
             formatLabel
         );
 
 
-        setText(
+        text(
             "review-time",
             timeLabel
         );
 
 
-        setText(
+        text(
             "review-batch",
             batchName
         );
 
 
-        setText(
-            "review-days",
-            weeklyDays
+        text(
+            "review-class-count",
+            `${totalClasses} Classes`
         );
 
 
-        setText(
-            "review-price",
-            formatMoney(price)
+
+        // WEEKLY SCHEDULE
+
+        text(
+            "review-theory",
+            `${theoryDay} · ${timeLabel}`
         );
 
 
-        setText(
-            "review-emergency-name",
-            value(
-                "emergencyName"
-            )
+        text(
+            "review-practical",
+            `${practicalDay} · ${timeLabel}`
         );
 
 
-        setText(
-            "review-emergency-relationship",
-            getEmergencyRelationship()
-        );
-
-
-        setText(
-            "review-emergency-phone",
-            value(
-                "emergencyPhone"
-            )
+        text(
+            "review-song",
+            `${songDay} · ${timeLabel}`
         );
     }
 
 
-    /* ======================================================
-       PAYMENT
-    ====================================================== */
+
+    // =========================================================
+    // UPDATE PAYMENT SUMMARY
+    // =========================================================
 
     function updatePaymentSummary() {
 
-        setText(
+        const paymentInstrumentIcon =
+            $("payment-instrument-icon");
+
+
+        if (paymentInstrumentIcon) {
+
+            paymentInstrumentIcon.className =
+                selectedInstrument.icon;
+        }
+
+
+        text(
+            "payment-level",
+            `${level.toUpperCase()} COURSE`
+        );
+
+
+        text(
             "payment-course",
             course
         );
 
 
-        setText(
-            "payment-total",
-            formatMoney(price)
+        text(
+            "payment-duration",
+            duration
         );
 
 
-        setText(
-            "payment-detail-course",
-            course
-        );
-
-
-        setText(
-            "payment-detail-format",
+        text(
+            "payment-format",
             formatLabel
         );
 
 
-        setText(
-            "payment-detail-time",
+        text(
+            "payment-time",
             timeLabel
         );
 
 
-        setText(
-            "payment-detail-batch",
+        text(
+            "payment-batch",
             batchName
         );
 
 
-        setText(
-            "payment-final-total",
-            formatMoney(price)
+        text(
+            "payment-total-classes",
+            `${totalClasses} Classes`
         );
 
 
-        const buttonText =
-            $("payment-button-text");
+        text(
+            "payment-course-fee",
+            formatPrice(price)
+        );
 
 
-        if (buttonText) {
+        text(
+            "payment-total",
+            formatPrice(price)
+        );
+    }
 
-            buttonText.textContent =
-                `Proceed to Secure Payment • ${formatMoney(price)}`;
-        }
+        // =========================================================
+    // EDIT FROM REVIEW
+    // =========================================================
+
+    document
+        .querySelectorAll(
+            ".review-edit"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    event => {
+
+                        event.preventDefault();
+
+
+                        const editStep =
+                            Number(
+                                button.dataset.editStep
+                            );
+
+
+                        if (editStep) {
+
+                            showStep(
+                                editStep
+                            );
+                        }
+                    }
+                );
+            }
+        );
+
+
+
+    // =========================================================
+    // CLEAR FIELD ERRORS WHILE EDITING
+    // =========================================================
+
+    if (form) {
+
+        form.addEventListener(
+            "input",
+            event => {
+
+                const field =
+                    event.target;
+
+
+                if (
+                    field.matches(
+                        "input, select, textarea"
+                    )
+                ) {
+
+                    clearFieldError(
+                        field
+                    );
+                }
+            }
+        );
+
+
+        form.addEventListener(
+            "change",
+            event => {
+
+                const field =
+                    event.target;
+
+
+                if (
+                    field.matches(
+                        "input, select, textarea"
+                    )
+                ) {
+
+                    clearFieldError(
+                        field
+                    );
+                }
+            }
+        );
     }
 
 
-    /* ======================================================
-       FINAL REGISTRATION OBJECT
-    ====================================================== */
+
+    // =========================================================
+    // NEXT BUTTONS
+    // =========================================================
+
+    document
+        .querySelectorAll(
+            ".enrollment-next"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    event => {
+
+                        event.preventDefault();
+
+
+                        if (
+                            !validateStep(
+                                currentStep
+                            )
+                        ) {
+
+                            return;
+                        }
+
+
+                        const nextStep =
+                            Number(
+                                button.dataset.next
+                            ) ||
+                            currentStep + 1;
+
+
+                        showStep(
+                            nextStep
+                        );
+                    }
+                );
+            }
+        );
+
+
+
+    // =========================================================
+    // BACK BUTTONS
+    // =========================================================
+
+    document
+        .querySelectorAll(
+            ".enrollment-back"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    event => {
+
+                        event.preventDefault();
+
+
+                        const previousStep =
+                            Number(
+                                button.dataset.back
+                            ) ||
+                            currentStep - 1;
+
+
+                        showStep(
+                            previousStep
+                        );
+                    }
+                );
+            }
+        );
+
+
+
+    // =========================================================
+    // BUILD REGISTRATION DATA
+    // =========================================================
 
     function buildRegistrationData() {
 
-        const studentAge =
-            calculateAge(
-                value(
-                    "studentDob"
-                )
-            );
-
-
         return {
-
-            course: {
-
-                instrument,
-
-                course,
-
-                level,
-
-                price,
-
-
-                format,
-
-                formatLabel,
-
-
-                time,
-
-                timeLabel,
-
-
-                batch,
-
-                batchName,
-
-
-                theoryDay,
-
-                practicalDay,
-
-                songDay,
-
-
-                weeklyDays,
-
-
-                duration,
-
-                classesPerWeek,
-
-                totalClasses
-            },
-
 
             student: {
 
                 firstName:
-                    value(
-                        "firstName"
-                    ),
+                    value("firstName"),
 
                 lastName:
-                    value(
-                        "lastName"
-                    ),
+                    value("lastName"),
 
                 dateOfBirth:
-                    value(
-                        "studentDob"
-                    ),
-
-                age:
-                    studentAge,
+                    value("dateOfBirth"),
 
                 gender:
-                    value(
-                        "gender"
-                    )
+                    value("gender"),
+
+                age:
+                    value("age"),
+
+                occupation:
+                    value("occupation"),
+
+                city:
+                    value("city"),
+
+                country:
+                    value("country")
             },
-
-
-            guardian:
-                studentAge !== null &&
-                studentAge < ADULT_AGE
-
-                    ? {
-
-                        name:
-                            value(
-                                "guardianName"
-                            ),
-
-                        relationship:
-                            getGuardianRelationship(),
-
-                        phone:
-                            value(
-                                "guardianPhone"
-                            ),
-
-                        email:
-                            value(
-                                "guardianEmail"
-                            )
-                    }
-
-                    : null,
 
 
             contact: {
 
                 email:
-                    value(
-                        "email"
-                    ),
+                    value("email"),
 
                 phone:
+                    value("phone"),
+
+                whatsapp:
+                    value("whatsapp"),
+
+                preferredContact:
                     value(
-                        "phone"
+                        "preferredContact"
                     ),
 
-                address:
+                guardianName:
                     value(
-                        "address"
+                        "guardianName"
                     ),
 
-                city:
+                guardianPhone:
                     value(
-                        "city"
-                    ),
-
-                state:
-                    value(
-                        "state"
-                    ),
-
-                postalCode:
-                    value(
-                        "postalCode"
-                    ),
-
-                country:
-                    value(
-                        "country"
-                    )
-            },
-
-
-            emergencyContact: {
-
-                name:
-                    value(
-                        "emergencyName"
-                    ),
-
-                relationship:
-                    getEmergencyRelationship(),
-
-                phone:
-                    value(
-                        "emergencyPhone"
+                        "guardianPhone"
                     )
             },
 
@@ -2542,1174 +1745,567 @@ document.addEventListener("DOMContentLoaded", () => {
             },
 
 
-            payment: {
+            course: {
 
-                method:
-                    getRadioValue(
-                        "paymentMethod"
-                    ),
+                instrument,
 
-                amount:
-                    price,
+                level,
 
-                currency:
-                    "INR",
+                course,
 
-                status:
-                    "pending"
-            },
+                price,
 
+                duration,
 
-            createdAt:
-                new Date()
-                    .toISOString()
+                classesPerWeek,
+
+                totalClasses,
+
+                format,
+
+                formatLabel,
+
+                time,
+
+                timeLabel,
+
+                batch,
+
+                batchName,
+
+                theoryDay,
+
+                practicalDay,
+
+                songDay
+            }
         };
     }
 
-
-    /* ======================================================
-       NEXT BUTTONS
-    ====================================================== */
-
-    document
-        .querySelectorAll(
-            ".enrollment-next"
-        )
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                event => {
-
-                    event.preventDefault();
-
-
-                    if (
-                        !validateStep(
-                            currentStep
-                        )
-                    ) {
-
-                        return;
-                    }
-
-
-                    const nextStep =
-                        Number(
-                            button.dataset.next
-                        ) ||
-                        currentStep + 1;
-
-
-                    showStep(
-                        nextStep
-                    );
-                }
-            );
-        });
-
-
-    /* ======================================================
-       BACK BUTTONS
-    ====================================================== */
-
-    document
-        .querySelectorAll(
-            ".enrollment-back"
-        )
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                event => {
-
-                    event.preventDefault();
-
-
-                    const previousStep =
-                        Number(
-                            button.dataset.back
-                        ) ||
-                        currentStep - 1;
-
-
-                    showStep(
-                        previousStep
-                    );
-                }
-            );
-        });
-
-
-    /* ======================================================
-       REVIEW EDIT BUTTONS
-    ====================================================== */
-
-    document
-        .querySelectorAll(
-            ".review-edit"
-        )
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    showStep(
-                        Number(
-                            button.dataset.edit
-                        ) || 1
-                    );
-                }
-            );
-        });
-
-
-    /* ======================================================
-       CLEAR ERRORS WHEN USER FIXES ANSWER
-    ====================================================== */
-
-    document
-        .querySelectorAll(
-            ".enrollment-field input, .enrollment-field select, .enrollment-field textarea"
-        )
-        .forEach(field => {
-
-            [
-                "input",
-                "change"
-            ]
-                .forEach(eventName => {
-
-                    field.addEventListener(
-                        eventName,
-                        () => {
-
-                            clearFieldError(
-                                field
-                            );
-
-
-                            clearValidationSummary();
-                        }
-                    );
-                });
-        });
-
-
-    /* ======================================================
-       DATE LISTENERS
-    ====================================================== */
-
-    if (studentDob) {
-
-        /*
-         * Browser itself will not allow
-         * today or future dates.
-         */
-
-        const yesterday =
-            new Date();
-
-
-        yesterday.setDate(
-            yesterday.getDate() - 1
-        );
-
-
-        const year =
-            yesterday.getFullYear();
-
-
-        const month =
-            String(
-                yesterday.getMonth() + 1
-            ).padStart(
-                2,
-                "0"
-            );
-
-
-        const day =
-            String(
-                yesterday.getDate()
-            ).padStart(
-                2,
-                "0"
-            );
-
-
-        studentDob.max =
-            `${year}-${month}-${day}`;
-
-
-        [
-            "input",
-            "change"
-        ]
-            .forEach(eventName => {
-
-                studentDob.addEventListener(
-                    eventName,
-                    () => {
-
-                        const temporaryErrors =
-                            [];
-
-
-                        validateDateOfBirth(
-                            temporaryErrors
-                        );
-
-
-                        updateGuardianSection();
-                    }
-                );
-            });
-    }
-
-
-    /* ======================================================
-       RELATIONSHIP LISTENERS
-    ====================================================== */
-
-    guardianRelationship
-        ?.addEventListener(
-            "change",
-            updateGuardianSection
-        );
-
-
-    emergencyRelationship
-        ?.addEventListener(
-            "change",
-            updateEmergencyRelationship
-        );
-
-
-    /* ======================================================
-       PAYMENT BUTTON — RAZORPAY
-    ====================================================== */
-
-    const paymentButton =
-        $("payment-button");
-
-
-    let paymentInProgress =
-        false;
-
-
-    /* ======================================================
-       PAYMENT BUTTON LOADING STATE
-    ====================================================== */
-
-    function setPaymentButtonLoading(
-        loading
+        // =========================================================
+    // PAYMENT STATUS
+    // =========================================================
+
+    function setPaymentStatus(
+        title,
+        message,
+        type = "processing"
     ) {
 
-        if (!paymentButton) {
+        const status =
+            $("payment-status");
+
+
+        const statusTitle =
+            $("payment-status-title");
+
+
+        const statusMessage =
+            $("payment-status-message");
+
+
+        if (!status) {
 
             return;
         }
 
 
-        paymentButton.disabled =
-            loading;
+        status.hidden = false;
 
 
-        const buttonText =
-            $("payment-button-text");
+        status.classList.remove(
+            "success",
+            "error",
+            "processing"
+        );
 
 
-        if (buttonText) {
+        status.classList.add(type);
 
-            buttonText.textContent =
-                loading
-                    ? "Preparing Secure Payment..."
-                    : `Proceed to Secure Payment • ${formatMoney(price)}`;
+
+        if (statusTitle) {
+
+            statusTitle.textContent =
+                title;
+        }
+
+
+        if (statusMessage) {
+
+            statusMessage.textContent =
+                message;
+        }
+
+
+        const icon =
+            status.querySelector(
+                ".payment-status-icon i"
+            );
+
+
+        if (icon) {
+
+            if (type === "success") {
+
+                icon.className =
+                    "fa-solid fa-circle-check";
+            }
+
+            else if (type === "error") {
+
+                icon.className =
+                    "fa-solid fa-circle-xmark";
+            }
+
+            else {
+
+                icon.className =
+                    "fa-solid fa-spinner fa-spin";
+            }
         }
     }
 
 
-    /* ======================================================
-       SAFE SERVER RESPONSE READER
-    ====================================================== */
 
-    async function readJsonResponse(
-        response
-    ) {
+    // =========================================================
+    // CREATE PAYMENT ORDER
+    // =========================================================
 
-        const contentType =
-            response.headers.get(
-                "content-type"
-            ) || "";
+    async function createPaymentOrder() {
+
+        const response =
+            await fetch(
+                "/api/payment/create-order",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify(
+                        {
+                            amount:
+                                price,
+
+                            instrument,
+
+                            course,
+
+                            level,
+
+                            format,
+
+                            time,
+
+                            batch
+                        }
+                    )
+                }
+            );
+
+
+        const result =
+            await response.json();
 
 
         if (
-            contentType.includes(
-                "application/json"
-            )
+            !response.ok ||
+            !result
         ) {
 
-            return await response.json();
+            throw new Error(
+                result?.message ||
+                "Unable to create payment order."
+            );
         }
 
 
-        const text =
-            await response.text();
-
-
-        throw new Error(
-            text ||
-            `Server returned ${response.status}.`
-        );
+        return result;
     }
 
-    /* ======================================================
-       PAYMENT BUTTON
-    ====================================================== */
 
-    if (paymentButton) {
 
-        paymentButton.addEventListener(
+    // =========================================================
+    // VERIFY PAYMENT
+    // =========================================================
+
+    async function verifyPayment(
+        paymentResponse,
+        registrationData
+    ) {
+
+        const response =
+            await fetch(
+                "/api/payment/verify",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify(
+                        {
+                            razorpay_order_id:
+                                paymentResponse
+                                    .razorpay_order_id,
+
+                            razorpay_payment_id:
+                                paymentResponse
+                                    .razorpay_payment_id,
+
+                            razorpay_signature:
+                                paymentResponse
+                                    .razorpay_signature,
+
+                            registration:
+                                registrationData
+                        }
+                    )
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                result?.message ||
+                "Payment verification failed."
+            );
+        }
+
+
+        return result;
+    }
+
+
+
+    // =========================================================
+    // COMPLETE PAYMENT
+    // =========================================================
+
+    async function completePayment() {
+
+        const payButton =
+            $("pay-now-button");
+
+
+        if (!payButton) {
+
+            return;
+        }
+
+
+        if (
+            typeof Razorpay ===
+            "undefined"
+        ) {
+
+            setPaymentStatus(
+                "Payment Unavailable",
+                "The payment service could not be loaded. Please refresh the page and try again.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        payButton.disabled = true;
+
+
+        setPaymentStatus(
+            "Preparing Payment",
+            "Please wait while we prepare your secure payment.",
+            "processing"
+        );
+
+
+        try {
+
+            const order =
+                await createPaymentOrder();
+
+
+            const registrationData =
+                buildRegistrationData();
+
+
+            const options = {
+
+                key:
+                    order.key,
+
+                amount:
+                    order.amount,
+
+                currency:
+                    order.currency ||
+                    "INR",
+
+                name:
+                    "Vizag JamHub",
+
+                description:
+                    course,
+
+                order_id:
+                    order.orderId ||
+                    order.id,
+
+
+                handler:
+                    async paymentResponse => {
+
+                        setPaymentStatus(
+                            "Verifying Payment",
+                            "Your payment was received. We are confirming your enrollment.",
+                            "processing"
+                        );
+
+
+                        try {
+
+                            const result =
+                                await verifyPayment(
+                                    paymentResponse,
+                                    registrationData
+                                );
+
+
+                            setPaymentStatus(
+                                "Enrollment Confirmed",
+                                "Your payment was successful and your enrollment has been confirmed.",
+                                "success"
+                            );
+
+
+                            sessionStorage.removeItem(
+                                "vizagJamHubEnrollment"
+                            );
+
+
+                            const studentId =
+                                result?.studentId ||
+                                result?.enrollment
+                                    ?.studentId ||
+                                "";
+
+
+                            const destination =
+                                studentId
+                                    ? `/pages/academy/registered.html?studentId=${encodeURIComponent(studentId)}`
+                                    : "/pages/academy/registered.html";
+
+
+                            window.setTimeout(
+                                () => {
+
+                                    window.location.href =
+                                        destination;
+                                },
+                                1200
+                            );
+
+                        }
+
+                        catch (error) {
+
+                            console.error(
+                                "Payment verification error:",
+                                error
+                            );
+
+
+                            setPaymentStatus(
+                                "Verification Failed",
+                                error.message ||
+                                "We could not verify your payment. Please contact Vizag JamHub support.",
+                                "error"
+                            );
+
+
+                            payButton.disabled =
+                                false;
+                        }
+                    },
+
+
+                prefill: {
+
+                    name:
+                        [
+                            value("firstName"),
+                            value("lastName")
+                        ]
+                            .filter(Boolean)
+                            .join(" "),
+
+                    email:
+                        value("email"),
+
+                    contact:
+                        value("phone")
+                },
+
+
+                notes: {
+
+                    instrument,
+
+                    level,
+
+                    course,
+
+                    format,
+
+                    batch
+                },
+
+
+                theme: {
+                    color: "#000000"
+                },
+
+
+                modal: {
+
+                    ondismiss:
+                        () => {
+
+                            payButton.disabled =
+                                false;
+
+
+                            setPaymentStatus(
+                                "Payment Cancelled",
+                                "The payment window was closed. You can try again when you are ready.",
+                                "error"
+                            );
+                        }
+                }
+            };
+
+
+            const razorpay =
+                new Razorpay(options);
+
+
+            razorpay.on(
+                "payment.failed",
+                response => {
+
+                    console.error(
+                        "Razorpay payment failed:",
+                        response.error
+                    );
+
+
+                    payButton.disabled =
+                        false;
+
+
+                    setPaymentStatus(
+                        "Payment Failed",
+                        response.error
+                            ?.description ||
+                        "The payment could not be completed. Please try again.",
+                        "error"
+                    );
+                }
+            );
+
+
+            razorpay.open();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Payment initialization error:",
+                error
+            );
+
+
+            payButton.disabled =
+                false;
+
+
+            setPaymentStatus(
+                "Unable to Start Payment",
+                error.message ||
+                "Something went wrong while preparing your payment.",
+                "error"
+            );
+        }
+    }
+        // =========================================================
+    // PAY BUTTON
+    // =========================================================
+
+    const payButton =
+        $("pay-now-button");
+
+
+    if (payButton) {
+
+        payButton.addEventListener(
             "click",
-            async event => {
+            event => {
 
                 event.preventDefault();
 
 
-                /*
-                 * Prevent duplicate clicks while
-                 * Razorpay is being prepared.
-                 */
-
-                if (paymentInProgress) {
-
-                    return;
-                }
-
-
-                /* ==========================================
-                   VALIDATE FINAL PAYMENT STEP
-                ========================================== */
-
                 if (
-                    !validateStep(5)
+                    !validateStep(4)
                 ) {
 
+                    showStep(4);
+
                     return;
                 }
 
 
-                /* ==========================================
-                   BUILD COMPLETE REGISTRATION
-                ========================================== */
-
-                const registrationData =
-                    buildRegistrationData();
-
-
-                /*
-                 * Preserve ALL original course-selection
-                 * values from the previous course page.
-                 */
-
-                const updatedEnrollment = {
-
-                    ...enrollmentData,
-
-
-                    instrument:
-                        registrationData
-                            .course
-                            .instrument,
-
-
-                    course:
-                        registrationData
-                            .course
-                            .course,
-
-
-                    level:
-                        registrationData
-                            .course
-                            .level,
-
-
-                    price:
-                        registrationData
-                            .course
-                            .price,
-
-
-                    format:
-                        registrationData
-                            .course
-                            .format,
-
-
-                    formatLabel:
-                        registrationData
-                            .course
-                            .formatLabel,
-
-
-                    time:
-                        registrationData
-                            .course
-                            .time,
-
-
-                    timeLabel:
-                        registrationData
-                            .course
-                            .timeLabel,
-
-
-                    batch:
-                        registrationData
-                            .course
-                            .batch,
-
-
-                    batchName:
-                        registrationData
-                            .course
-                            .batchName,
-
-
-                    theoryDay:
-                        registrationData
-                            .course
-                            .theoryDay,
-
-
-                    practicalDay:
-                        registrationData
-                            .course
-                            .practicalDay,
-
-
-                    songDay:
-                        registrationData
-                            .course
-                            .songDay,
-
-
-                    weeklyDays:
-                        registrationData
-                            .course
-                            .weeklyDays,
-
-
-                    duration:
-                        registrationData
-                            .course
-                            .duration,
-
-
-                    classesPerWeek:
-                        registrationData
-                            .course
-                            .classesPerWeek,
-
-
-                    totalClasses:
-                        registrationData
-                            .course
-                            .totalClasses,
-
-
-                    student:
-                        registrationData
-                            .student,
-
-
-                    guardian:
-                        registrationData
-                            .guardian,
-
-
-                    contact:
-                        registrationData
-                            .contact,
-
-
-                    emergencyContact:
-                        registrationData
-                            .emergencyContact,
-
-
-                    learningProfile:
-                        registrationData
-                            .learningProfile,
-
-
-                    payment:
-                        registrationData
-                            .payment,
-
-
-                    createdAt:
-                        registrationData
-                            .createdAt
-                };
-
-
-                /* ==========================================
-                   SAVE PENDING ENROLLMENT
-                ========================================== */
-
-                sessionStorage.setItem(
-                    "vizagJamHubEnrollment",
-                    JSON.stringify(
-                        updatedEnrollment
-                    )
-                );
-
-
-                sessionStorage.setItem(
-                    "vizagJamHubPendingEnrollment",
-                    JSON.stringify(
-                        registrationData
-                    )
-                );
-
-
-                try {
-
-                    paymentInProgress =
-                        true;
-
-
-                    setPaymentButtonLoading(
-                        true
-                    );
-
-
-                    /* ======================================
-                       VERIFY RAZORPAY SCRIPT LOADED
-                    ====================================== */
-
-                    if (
-                        typeof Razorpay ===
-                        "undefined"
-                    ) {
-
-                        throw new Error(
-                            "Razorpay Checkout could not be loaded. Please refresh the page and try again."
-                        );
-                    }
-
-
-                    /* ======================================
-                       CREATE ORDER ON OUR SERVER
-                    ====================================== */
-
-                    const orderResponse =
-                        await fetch(
-                            "/api/payment/create-order",
-                            {
-
-                                method:
-                                    "POST",
-
-
-                                headers: {
-
-                                    "Content-Type":
-                                        "application/json"
-                                },
-
-
-                                body:
-                                    JSON.stringify({
-
-                                        instrument:
-                                            registrationData
-                                                .course
-                                                .instrument,
-
-
-                                        course:
-                                            registrationData
-                                                .course
-                                                .course,
-
-
-                                        level:
-                                            registrationData
-                                                .course
-                                                .level,
-
-
-                                        format:
-                                            registrationData
-                                                .course
-                                                .format,
-
-
-                                        time:
-                                            registrationData
-                                                .course
-                                                .time,
-
-
-                                        batch:
-                                            registrationData
-                                                .course
-                                                .batch
-                                    })
-                            }
-                        );
-
-
-                    const orderData =
-                        await readJsonResponse(
-                            orderResponse
-                        );
-
-
-                    /* ======================================
-                       VALIDATE SERVER ORDER RESPONSE
-                    ====================================== */
-
-                    if (
-                        !orderResponse.ok ||
-                        !orderData.success ||
-                        !orderData.key ||
-                        !orderData.order ||
-                        !orderData.order.id
-                    ) {
-
-                        throw new Error(
-                            orderData.message ||
-                            "Unable to create the payment order."
-                        );
-                    }
-
-
-                    /* ======================================
-                       STUDENT DETAILS
-                    ====================================== */
-
-                    const studentName =
-                        `${registrationData.student.firstName} ${registrationData.student.lastName}`
-                            .trim();
-
-
-                    /*
-                     * Find a valid phone number for
-                     * Razorpay prefill.
-                     *
-                     * Student phone is preferred.
-                     * For a minor, guardian phone can
-                     * be used when student phone is NA.
-                     */
-
-                    let razorpayPhone =
-                        "";
-
-
-                    if (
-                        isValidPhone(
-                            registrationData
-                                .contact
-                                .phone
-                        )
-                    ) {
-
-                        razorpayPhone =
-                            registrationData
-                                .contact
-                                .phone;
-                    }
-
-
-                    else if (
-                        registrationData
-                            .guardian &&
-                        isValidPhone(
-                            registrationData
-                                .guardian
-                                .phone
-                        )
-                    ) {
-
-                        razorpayPhone =
-                            registrationData
-                                .guardian
-                                .phone;
-                    }
-
-
-                    else if (
-                        isValidPhone(
-                            registrationData
-                                .emergencyContact
-                                .phone
-                        )
-                    ) {
-
-                        razorpayPhone =
-                            registrationData
-                                .emergencyContact
-                                .phone;
-                    }
-
-
-                    /* ======================================
-                       RAZORPAY CHECKOUT OPTIONS
-                    ====================================== */
-
-                    const options = {
-
-                        key:
-                            orderData.key,
-
-
-                        amount:
-                            orderData
-                                .order
-                                .amount,
-
-
-                        currency:
-                            orderData
-                                .order
-                                .currency,
-
-
-                        name:
-                            "Vizag JamHub",
-
-
-                        description:
-                            `${course} • ${formatLabel} • ${timeLabel}`,
-
-
-                        order_id:
-                            orderData
-                                .order
-                                .id,
-
-
-                        /* ==================================
-                           PAYMENT SUCCESS
-                        ================================== */
-
-                        handler:
-                            async function (
-                                response
-                            ) {
-
-                                try {
-
-                                    /*
-                                     * Payment succeeded in Razorpay.
-                                     *
-                                     * Verify the Razorpay signature
-                                     * on the server before treating
-                                     * the enrollment as paid.
-                                     */
-
-                                    const verifyResponse =
-                                        await fetch(
-                                            "/api/payment/verify",
-                                            {
-
-                                                method:
-                                                    "POST",
-
-
-                                                headers: {
-
-                                                    "Content-Type":
-                                                        "application/json"
-                                                },
-
-
-                                                body:
-                                                    JSON.stringify({
-
-                                                        razorpay_payment_id:
-                                                            response
-                                                                .razorpay_payment_id,
-
-
-                                                        razorpay_order_id:
-                                                            response
-                                                                .razorpay_order_id,
-
-
-                                                        razorpay_signature:
-                                                            response
-                                                                .razorpay_signature,
-
-
-                                                        enrollment:
-                                                            registrationData
-                                                    })
-                                            }
-                                        );
-
-
-                                    const verifyData =
-                                        await readJsonResponse(
-                                            verifyResponse
-                                        );
-
-
-                                    /* ==============================
-                                       SERVER VERIFICATION FAILED
-                                    ============================== */
-
-                                    if (
-                                        !verifyResponse.ok ||
-                                        !verifyData.success ||
-                                        !verifyData.verified ||
-                                        !verifyData.enrollment
-                                    ) {
-
-                                        throw new Error(
-                                            verifyData.message ||
-                                            "Payment could not be verified."
-                                        );
-                                    }
-
-
-                                    /* ==============================
-                                       VERIFIED ENROLLMENT
-                                    ============================== */
-
-                                    const verifiedEnrollment =
-                                        verifyData.enrollment;
-
-
-                                    /* ==================================
-                                       FIRST LOGIN INFORMATION
-                                    ================================== */
-
-                                    if (
-                                        verifyData.firstLogin
-                                    ) {
-
-                                        verifiedEnrollment.firstLogin = {
-
-                                            studentId:
-                                                verifyData
-                                                    .firstLogin
-                                                    .studentId,
-
-
-                                            temporaryPassword:
-                                                verifyData
-                                                    .firstLogin
-                                                    .temporaryPassword,
-
-
-                                            mustChangePassword:
-                                                verifyData
-                                                    .firstLogin
-                                                    .mustChangePassword
-                                        };
-                                    }
-
-
-                                    /* ==================================
-                                       EMAIL CONFIRMATION STATUS
-                                    ================================== */
-
-                                    verifiedEnrollment.emailConfirmation = {
-
-                                        ...(
-                                            verifiedEnrollment
-                                                .emailConfirmation ||
-                                            {}
-                                        ),
-
-                                        ...(
-                                            verifyData
-                                                .emailConfirmation ||
-                                            {}
-                                        )
-                                    };
-
-
-                                    /*
-                                     * Replace pending information
-                                     * with the final server-generated
-                                     * enrollment.
-                                     */
-
-                                    sessionStorage.setItem(
-                                        "vizagJamHubEnrollment",
-                                        JSON.stringify(
-                                            verifiedEnrollment
-                                        )
-                                    );
-
-
-                                    /*
-                                     * Keep a separate completed
-                                     * enrollment record for the
-                                     * registration success page.
-                                     */
-
-                                    sessionStorage.setItem(
-                                        "vizagJamHubCompletedEnrollment",
-                                        JSON.stringify(
-                                            verifiedEnrollment
-                                        )
-                                    );
-
-
-                                    /*
-                                     * Payment has now been verified,
-                                     * therefore pending data can go.
-                                     */
-
-                                    sessionStorage.removeItem(
-                                        "vizagJamHubPendingEnrollment"
-                                    );
-
-
-                                    /*
-                                     * Prevent another payment click.
-                                     */
-
-                                    paymentInProgress =
-                                        true;
-
-
-                                    /* ==============================
-                                       REGISTRATION COMPLETE
-                                    ============================== */
-
-                                    window.location.href =
-                                        "/pages/academy/registered.html";
-
-                                }
-
-                                catch (error) {
-
-                                    console.error(
-                                        "Payment verification error:",
-                                        error
-                                    );
-
-
-                                    paymentInProgress =
-                                        false;
-
-
-                                    setPaymentButtonLoading(
-                                        false
-                                    );
-
-
-                                    /*
-                                     * IMPORTANT:
-                                     *
-                                     * Razorpay may already have
-                                     * received the payment.
-                                     *
-                                     * Do NOT instruct the student
-                                     * to immediately pay again.
-                                     */
-
-                                    alert(
-                                        "Your payment was received, but we could not verify the enrollment automatically. Please do not make another payment. Contact Vizag JamHub with your payment details."
-                                    );
-                                }
-                            },
-
-
-                        /* ==================================
-                           PREFILL PAYMENT DETAILS
-                        ================================== */
-
-                        prefill: {
-
-                            name:
-                                studentName,
-
-
-                            email:
-                                registrationData
-                                    .contact
-                                    .email,
-
-
-                            contact:
-                                razorpayPhone
-                        },
-
-
-                        /* ==================================
-                           PAYMENT NOTES
-                        ================================== */
-
-                        notes: {
-
-                            instrument:
-                                instrument,
-
-
-                            course:
-                                course,
-
-
-                            level:
-                                level,
-
-
-                            format:
-                                formatLabel,
-
-
-                            time:
-                                timeLabel,
-
-
-                            batch:
-                                batchName
-                        },
-
-
-                        /* ==================================
-                           CHECKOUT APPEARANCE
-                        ================================== */
-
-                        theme: {
-
-                            color:
-                                "#00d4ff"
-                        },
-
-
-                        /* ==================================
-                           CHECKOUT CLOSED
-                        ================================== */
-
-                        modal: {
-
-                            ondismiss:
-                                function () {
-
-                                    paymentInProgress =
-                                        false;
-
-
-                                    setPaymentButtonLoading(
-                                        false
-                                    );
-                                }
-                        }
-                    };
-
-
-                    /* ======================================
-                       CREATE RAZORPAY CHECKOUT
-                    ====================================== */
-
-                    const razorpayCheckout =
-                        new Razorpay(
-                            options
-                        );
-
-
-                    /* ======================================
-                       PAYMENT FAILURE
-                    ====================================== */
-
-                    razorpayCheckout.on(
-                        "payment.failed",
-                        function (
-                            response
-                        ) {
-
-                            console.error(
-                                "Razorpay payment failed:",
-                                response.error
-                            );
-
-
-                            paymentInProgress =
-                                false;
-
-
-                            setPaymentButtonLoading(
-                                false
-                            );
-
-
-                            const description =
-                                response &&
-                                response.error &&
-                                response.error.description
-
-                                    ? response
-                                        .error
-                                        .description
-
-                                    : "The payment was unsuccessful.";
-
-
-                            alert(
-                                `${description} Please try again.`
-                            );
-                        }
-                    );
-
-
-                    /* ======================================
-                       OPEN RAZORPAY
-                    ====================================== */
-
-                    razorpayCheckout.open();
-
-                }
-
-                catch (error) {
-
-                    console.error(
-                        "Payment initialization error:",
-                        error
-                    );
-
-
-                    paymentInProgress =
-                        false;
-
-
-                    setPaymentButtonLoading(
-                        false
-                    );
-
-
-                    alert(
-                        error.message ||
-                        "Unable to start secure payment. Please try again."
-                    );
-                }
+                completePayment();
             }
         );
     }
 
 
-    /* ======================================================
-       INITIALIZE
-    ====================================================== */
 
-    populateCourseInformation();
+    // =========================================================
+    // PREVENT FORM SUBMISSION
+    // =========================================================
 
-    updateEmergencyRelationship();
+    if (form) {
 
-    updateGuardianSection();
+        form.addEventListener(
+            "submit",
+            event => {
+
+                event.preventDefault();
+            }
+        );
+    }
+
+
+
+    // =========================================================
+    // INITIALIZE ENROLLMENT
+    // =========================================================
+
+    populateInstrumentInformation();
+
+    populateCourseSummary();
 
     showStep(1);
 
 });
-
