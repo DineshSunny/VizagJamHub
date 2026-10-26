@@ -518,42 +518,104 @@
     "key": "G#m",
     "chords": "G#m C#m D#m\nG#m D#m E F"
   },
+
   {
     "title": "Mellaga Karagani",
     "movie": "Varsham",
     "key": "Bm",
     "chords": "> Mellaga\nBm\n\n> Vallupu Vana\nD F#m G A\nD F#m G F#\n\n> Thadipey\nBm F#m X 2\nBm G Em F#m F#\n\n> Ee Varsham Sakhi Ga\nBm A G F#\n\n> Ee Melikalu Lona\nBm F#m\nG A F#m D\n\n> Nee Jadai\nD F# G A\nD F#m Bm Em\nBm Bm D A Bm F#"
   },
+
   {
     "title": "Dhaari Choodu",
     "movie": "Krishnarjuna Yudham",
     "key": "G#",
     "chords": "G# C#\n\n> Kamala Poori\nG#m B E F#"
   },
+
   {
     "title": "Saregama",
     "movie": "Boys",
     "key": "Dm",
     "chords": "# Intro\nG#\n\nDm Gm Dm\n\n> Telusu Ko\nF C A# Am\nF A\n\n> To Be A Star\nA Gm A\n\n> We Kick It\nGm\n\n> Ohh Hoooo\nF A# C Dm X 2\nGm Dm A# C\n\n> Pitta Goda\nD Am\n\n> Thapina Darilo Velam\nA# Gm A# A\nF G A# A\nGm A\n\n> Saregama\nDm E\nF E\nDm C A#\n\nDm F\nGm G# A\nAm A# B C"
   },
+
   {
     "title": "Kikku Yekkele",
     "movie": "Narasimha",
     "key": "Fm",
     "chords": "Fm A#m C\n\n> Benju Caru\nF A# C\n\n> Naaku Neeku Nokia\nE\n\n> Farnickal Silpam La\nEm Bm A A G Bm\n\n# Solo\nEm A C D Bm\nEm A C D Em\n\n> Eeka Prema\nEm Am\n\n> Ohh Ho\nEm A C Bm\nEm D Em\n\n> Nokia\nEm Bm A C"
   },
+
   {
     "title": "Raa Raa",
     "movie": "Chandramukhi",
     "key": "Fm",
     "chords": "# Intro\nC E Fm A# Fm\n\n# Intro 1\nFm C# Fm\n\n# Break\nC A# E\nFm\n\n# Solo\nFm A#m C Fm\n\n> Main\nFm Fm\nFm C Fm"
+  },
+
+  {
+    "title": "Emo Emo",
+    "movie": "Raahu",
+    "key": "Cm",
+    "chords": "# - Intro\nG# A# Cm A#\nG# A# Cm Gm\n\n> Emo Emo Varnaalu - Verse 1\nG# A# Cm A#\nG# A# D# Gm\n\n> Ika Gundelo - Verse 2\nCm A# Fm Gm\n\n> Emo Emo - Chorus X 2\nG# A# Cm A#\nG# A# D# Gm"
+  },
+
+  {
+    "title": "Telisiney",
+    "movie": "Arjun Reddy",
+    "key": "Fm",
+    "chords": "> Telisiney Le - Chorus\nFm G# D# A# X 2\n\n> Mari Nedu - Verse 1\nC# Fm C Fm\nC Fm A# D#\n\n> Maru Naadu - Verse 2\nFm D# C# D# (A#)\nFm D# C# D#\n\n> Na Pranam Nuvvey - Bridge\nF5 F5 D#5 A#5\n\n> Oohalake - Outro\nFm A# C# C\nFm (D# A# C# C)\nFm C"
+  },
+
+  {
+    "title": "Arare Manasa",
+    "movie": "Falaknuma Das",
+    "key": "Dm",
+    "chords": "> Ye Manavo - Verse 1\nDm C Dm G Am\nDm C G C\nRepeat X 2\n\n> Teliyade - Verse 2\nA# C\nD G E\nAm G A# C\n\n> Arare Manasa - Chorus\nA# C X 2\nA# Am\nA# C\n\n> Ye Manavo - Reprise\nDm C F Am\nDm C G A#\n\n> Na Brathukuna - Verse 3\nF Am Dm C D Am\nF C A# Dm G C\n\n> Inalluga - Bridge\nD F G\nD G F\nD A# G\nD G F\n\n> Unnatthe - Outro [check label]\nGm Dm D# F\nC G E Am F A"
+  },
+
+  {
+    "title": "Chakori",
+    "movie": "Saahasam Swaasaga Saagipo",
+    "key": "E",
+    "chords": "# - Intro\nE\n\n> Padave - Verse 1\nA E A\n\n> Paruvam Lo - Verse 2\nG A\nG A\nG A E\n\n> Chakori - Chorus\nB\n\n> Chakori - Reprise\nE\n\n> Padamulo - Verse 3\nA C B\nE A\n\n> Ne Mundara - Bridge\nBm A E F#m"
+  },
+
+  {
+    "title": "Ammayi Ammayi",
+    "movie": "Animal",
+    "key": "Gm",
+    "chords": "# - Intro\nGm Cm X 3\nGm D# C (Gm)\nHold Gm into next section\n\n> Ninggi Nela - Verse 1 [check label]\nGm Gm Gm Gm\nCm Cm D# F\n\n> Prapancham Moginchindey - Verse 2 [check label]\nCm Cm Cm Cm\n\n> Sannayi - Outro [check label]\nGm C X 3\nGm (D# C) Gm"
+  },
+
+  {
+    "title": "Ye Vaipuga Daagunnado",
+    "movie": "Orange",
+    "key": "C",
+    "chords": "> Ye Vaipu - Verse 1\nC Am Em G F G C\n\n> Oo Ooo - Hook\nG# D# Fm Cm"
+  },
+
+  {
+    "title": "Rock On Bro",
+    "movie": "Janatha Garage",
+    "key": "Am",
+    "chords": "> Rock On Bro - Chorus\nAm G C\n\n> Ye Dikkulo - Verse 1\nAm G Dm (Em F) G\nAm G Dm (C F) G\n\n> Oh Oh - Hook\nAm Dm X 2\nAm G F Em F G\nAm"
+  },
+
+  {
+    "title": "Koyila",
+    "movie": "Independent Artist Vijai Bulganin",
+    "key": "Em",
+    "chords": "# - Intro\nEm\n\n> Antukuna Nippu - Verse 1\nEm Bm7 Am7 C7\nTime: 4/4\n\n> Nuvvu Lekapothey - Verse 2\nEm7 Bm7 Am7\nB7 C7 G7\nTime: 1/4 [check]\n\n> Koyila Koyila - Chorus\nEm Bm7 Am7 C7\nTime: 4/4\n\n> Chakkanina Chikkanaaina - Bridge [check label]\nEm Riff\n\n# - Trumpet Solo\nEm Bm7 Am7 Bm7\nTime: 1/4 [check]\n\n> Tidee Tidee Tidee - Hook\nRepeat Chorus X 2\nG7 F#m7 Em7 Am7\nC7 Bm7 Am7 Em7\nTime: 4/4\n\n> Katukalaina Nee Kanuley - Verse 3 [check label]\nAm7 Am7 Em7 D X 3\nTime: 4/4\n\n> Nuvvuntey Chalu Kadey - Verse 4\nAm7 C7 Bm G D X 3\n\n> Nuvvu Pakkana Untey - Verse 5\nEm Bm7 Am7 Bm7 C7 Bm7 G7\n\n> Koyila - Reprise\nEm Bm A7 C7\n\n# - Outro\nEm Bm Am"
+  },
+
+  {
+    "title": "Oola Oola",
+    "movie": "Orange",
+    "key": "Gm",
+    "chords": "> Sydney Nagaram - Verse 1\nGm Cm Gm Cm\n\n> This Is the Time To - Verse 2\nA# F Gm F\nA# F Gm Dm\n\n> Sagara Teerana - Verse 3\nGm Gm Cm Cm\n\n> Ivvey - Bridge [check label]\nGm F Cm"
   }
-
-
-
-
-
-
 
 
 
