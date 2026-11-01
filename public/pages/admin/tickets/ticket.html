@@ -1,112 +1,291 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>Buy Tickets</title>
+    <!-- =================================
+         PAGE INFORMATION
+    ================================= -->
 
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
 
-  <!-- MOBILE VIEW -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Ticket Management | Vizag JamHub</title>
+
+
+    <!-- =================================
+         DESKTOP STYLES
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="/css/website/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/index.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/website/buttons.css"
+    >
+
+
+    <!-- =================================
+         FONT AWESOME ICONS
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
+
 <body>
 
-<h1>Buy Tickets</h1>
 
-<h2 id="eventName"></h2>
+    <!-- =================================
+         VIDEO BACKGROUND
+    ================================= -->
 
-<form id="ticketForm">
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        id="bg-video"
+    >
 
-<input name="name" placeholder="Name" required>
+        <source
+            src="/video/1.mp4"
+            type="video/mp4"
+        >
 
-<input name="email" placeholder="Email" required>
-
-<input name="tickets" placeholder="Number of Tickets" required>
-
-<button>Buy Ticket</button>
-
-</form>
-
-<script src="js/ticket.js"></script>
-
-
-
-
+    </video>
 
 
-<!-- FOOTER -->
+    <!-- =================================
+         FLOATING MUSIC NOTES
+    ================================= -->
 
-<footer class="site-footer">
+    <div class="music-notes">
 
-    <div class="footer-links">
-
-        <a href="/about-us.html">About Us</a>
-
-        <span>|</span>
-
-        <a href="/our-team.html">Our Team</a>
-
-        <span>|</span>
-
-        <a href="/faq.html">FAQ</a>
-
-        <span>|</span>
-
-        <a href="/events.html">Events Calendar</a>
-
-        <span>|</span>
-
-        <a href="/sponsors.html">Sponsors & Partners</a>
-
-        <span>|</span>
-
-        <a href="/community.html">Join Our Community</a>
-
-        <span>|</span>
-
-        <a href="/volunteer.html">Volunteer</a>
-
-        <span>|</span>
-
-        <a href="/support.html">Support Us</a>
+        <span>♪</span>
+        <span>♫</span>
+        <span>♬</span>
+        <span>♩</span>
+        <span>𝄞</span>
+        <span>♭</span>
+        <span>♯</span>
+        <span>♬</span>
+        <span>♫</span>
+        <span>♪</span>
+        <span>♩</span>
+        <span>𝄢</span>
 
     </div>
 
-    <div class="footer-links">
 
-        <a href="/contactus.html">Contact Us</a>
+    <!-- =================================
+         FULLSCREEN NAVIGATION
+    ================================= -->
 
-        <span>|</span>
-
-        <a href="/privacypolicy.html">Privacy Policy</a>
-
-        <span>|</span>
-
-        <a href="/termsandconditions.html">Terms & Conditions</a>
-
-    </div>
-
-    <p class="footer-copyright">
-
-        © 2026 <strong>Vizag JamHub</strong>. All Rights Reserved.
-
-    </p>
-
-</footer>
+    <header>
 
 
+        <!-- =================================
+             HAMBURGER
+        ================================= -->
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
 
 
+        <!-- =================================
+             NAVIGATION OVERLAY
+        ================================= -->
+
+        <div class="nav-overlay">
 
 
+            <!-- CLOSE BUTTON -->
+
+            <button
+                class="menu-close"
+                type="button"
+                aria-label="Close navigation"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
 
 
+            <!-- NAVIGATION -->
+
+            <nav>
+
+                <ul class="nav-links">
+
+                    <li>
+                        <a href="/pages/admin/admin.html">
+                            Admin Panel
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/pages/admin/shows/shows.html">
+                            Shows
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/pages/admin/tickets/ticket.html">
+                            Tickets
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/">
+                            Home
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
 
 
+        </div>
+
+
+    </header>
+
+
+    <!-- =================================
+         TICKET MANAGEMENT
+    ================================= -->
+
+    <main>
+
+
+        <!-- =================================
+             SHOW SELECTION
+        ================================= -->
+
+        <section
+            id="shows"
+            class="index-shows-page"
+        >
+
+
+            <!-- =================================
+                 TICKET MANAGEMENT HEADING
+            ================================= -->
+
+            <div class="index-shows-heading">
+
+                <h1>
+                    TICKET MANAGEMENT
+                </h1>
+
+            </div>
+
+
+            <!-- =================================
+                 3D SHOWS STAGE
+            ================================= -->
+
+            <div
+                class="index-shows-stage"
+                aria-label="Ticket Management Shows"
+            >
+
+
+                <!-- =================================
+                     SHOWS CAROUSEL
+                ================================= -->
+
+                <div
+                    id="shows-container"
+                    class="index-shows"
+                >
+
+                    <!-- Shows generated by ticket.js -->
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================
+             SELECTED SHOW ANALYTICS
+        ================================= -->
+
+        <section
+            id="ticket-analytics"
+            hidden
+        >
+
+            <!-- Selected show analytics will be added here -->
+
+        </section>
+
+
+        <!-- =================================
+             CUSTOMER TICKET DATABASE
+        ================================= -->
+
+        <section
+            id="ticket-customers"
+            hidden
+        >
+
+            <!-- Customer ticket database will be added here -->
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =================================
+         SHARED JAVASCRIPT
+    ================================= -->
+
+    <script src="/js/pagebehaviour.js"></script>
+
+    <script src="/js/mobile.js"></script>
+
+
+    <!-- =================================
+         TICKET MANAGEMENT JAVASCRIPT
+    ================================= -->
+
+    <script src="/js/admin/tickets/ticket.js"></script>
 
 
 </body>
+
 </html>
